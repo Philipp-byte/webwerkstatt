@@ -1,0 +1,705 @@
+/* WebWerkstatt – Lernplattform für HTML, CSS & JavaScript */
+
+:root {
+  --bg: #f4f6fa;
+  --karte: #ffffff;
+  --ink: #1d2733;
+  --gedaempft: #5b6b7c;
+  --linie: #dde5ee;
+  --akzent: #2f6fdb;
+  --akzent-dunkel: #2557ad;
+  --ok: #1a9e5c;
+  --ok-hell: #e7f7ee;
+  --fehler: #d64545;
+  --fehler-hell: #fdeeee;
+  --tipp-hell: #fff8e1;
+  --code-bg: #101827;
+  --code-ink: #e4ebf5;
+  --radius: 12px;
+  --schatten: 0 1px 3px rgba(20, 35, 60, 0.08), 0 4px 14px rgba(20, 35, 60, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+/* ---------- Kopfzeile ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1.25rem;
+  background: var(--karte);
+  border-bottom: 1px solid var(--linie);
+  box-shadow: 0 1px 4px rgba(20, 35, 60, 0.06);
+}
+
+.brand {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.brand span {
+  background: linear-gradient(90deg, #e0632e, #2f6fdb 55%, #d4a017);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.topbar-progress {
+  font-size: 0.88rem;
+  color: var(--gedaempft);
+  background: var(--bg);
+  border: 1px solid var(--linie);
+  border-radius: 999px;
+  padding: 0.2rem 0.8rem;
+}
+
+#app {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem;
+}
+
+.seitenfuss {
+  text-align: center;
+  color: var(--gedaempft);
+  font-size: 0.8rem;
+  padding: 1rem;
+  border-top: 1px solid var(--linie);
+}
+
+.laden {
+  color: var(--gedaempft);
+  text-align: center;
+  padding: 3rem 0;
+}
+
+/* ---------- Startseite ---------- */
+
+.hero {
+  text-align: center;
+  margin: 1rem 0 2.25rem;
+}
+
+.hero h1 {
+  font-size: 2.1rem;
+  margin: 0 0 0.35rem;
+}
+
+.hero p {
+  color: var(--gedaempft);
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.block {
+  margin-bottom: 2.25rem;
+}
+
+.block-titel {
+  font-size: 1.15rem;
+  margin: 0 0 0.9rem;
+  padding-left: 0.75rem;
+  border-left: 5px solid var(--block-farbe, var(--akzent));
+}
+
+.kapitel-raster {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.9rem;
+}
+
+.kapitel-karte {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  border-left: 5px solid var(--kapitel-farbe, var(--akzent));
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  text-decoration: none;
+  color: var(--ink);
+  box-shadow: var(--schatten);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.kapitel-karte:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(20, 35, 60, 0.1), 0 8px 22px rgba(20, 35, 60, 0.08);
+}
+
+.kapitel-icon {
+  font-size: 1.7rem;
+}
+
+.kapitel-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.kapitel-titel {
+  font-weight: 650;
+}
+
+.kapitel-beschreibung {
+  font-size: 0.85rem;
+  color: var(--gedaempft);
+}
+
+.kapitel-stand {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gedaempft);
+  background: var(--bg);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  white-space: nowrap;
+}
+
+.kapitel-fertig .kapitel-stand {
+  color: #fff;
+  background: var(--ok);
+}
+
+/* ---------- Kapitel-Seite ---------- */
+
+.zurueck {
+  display: inline-block;
+  color: var(--gedaempft);
+  text-decoration: none;
+  font-size: 0.92rem;
+  margin-bottom: 1rem;
+}
+
+.zurueck:hover {
+  color: var(--akzent);
+}
+
+.kapitel-kopf {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  border-left: 6px solid var(--kapitel-farbe, var(--akzent));
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem;
+  box-shadow: var(--schatten);
+  margin-bottom: 1.2rem;
+}
+
+.kapitel-kopf-icon {
+  font-size: 2.4rem;
+}
+
+.kapitel-kopf h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.kapitel-kopf p {
+  margin: 0.2rem 0 0;
+  color: var(--gedaempft);
+}
+
+.lektion-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.lektion-zeile {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.lektion-zeile:hover {
+  border-color: var(--akzent);
+  box-shadow: var(--schatten);
+}
+
+.lektion-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--linie);
+  font-weight: 650;
+  font-size: 0.9rem;
+  color: var(--gedaempft);
+}
+
+.lektion-status-fertig {
+  background: var(--ok);
+  border-color: var(--ok);
+  color: #fff;
+}
+
+.lektion-titel {
+  flex: 1;
+  font-weight: 600;
+}
+
+.lektion-aktion {
+  color: var(--akzent);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ---------- Lektion & Schritte ---------- */
+
+.lektion-ueberschrift {
+  font-size: 1.6rem;
+  margin: 0 0 1.1rem;
+}
+
+.schritte {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.schritt {
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem;
+  box-shadow: var(--schatten);
+  animation: einblenden 0.25s ease;
+}
+
+@keyframes einblenden {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.schritt-inhalt p {
+  margin: 0.4rem 0;
+}
+
+.schritt-inhalt p:first-child {
+  margin-top: 0;
+}
+
+.schritt code,
+.quiz-option code,
+.rueckmeldung code {
+  background: #eef2f8;
+  border: 1px solid var(--linie);
+  border-radius: 5px;
+  padding: 0.05rem 0.35rem;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 0.92em;
+}
+
+.codeblock {
+  background: var(--code-bg);
+  color: var(--code-ink);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  white-space: pre;
+  line-height: 1.5;
+}
+
+.schritt-buttons {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.12s ease, transform 0.08s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primaer {
+  background: var(--akzent);
+  color: #fff;
+}
+
+.btn-primaer:hover {
+  background: var(--akzent-dunkel);
+}
+
+.btn-sekundaer {
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--linie);
+}
+
+.btn-sekundaer:hover {
+  border-color: var(--akzent);
+  color: var(--akzent);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* ---------- Quiz ---------- */
+
+.quiz-optionen {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.quiz-option {
+  text-align: left;
+  background: var(--bg);
+  border: 1.5px solid var(--linie);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.12s ease;
+}
+
+.quiz-option p {
+  margin: 0;
+  display: inline;
+}
+
+.quiz-option:hover:not(:disabled) {
+  border-color: var(--akzent);
+}
+
+.quiz-richtig {
+  border-color: var(--ok) !important;
+  background: var(--ok-hell);
+}
+
+.quiz-falsch {
+  border-color: var(--fehler) !important;
+  background: var(--fehler-hell);
+  opacity: 0.75;
+}
+
+/* ---------- Rückmeldungen ---------- */
+
+.rueckmeldung {
+  margin-top: 0.8rem;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.93rem;
+}
+
+.rueckmeldung p {
+  margin: 0.2rem 0;
+  display: inline;
+}
+
+.rueckmeldung-ok {
+  background: var(--ok-hell);
+  border: 1px solid #bfe6d0;
+}
+
+.rueckmeldung-fehler {
+  background: var(--fehler-hell);
+  border: 1px solid #f3cccc;
+}
+
+.rueckmeldung-tipp {
+  background: var(--tipp-hell);
+  border: 1px solid #f0dfa8;
+}
+
+.rueckmeldung-tipp .codeblock {
+  margin: 0.5rem 0 0.2rem;
+}
+
+/* ---------- Lückentext ---------- */
+
+.fill-zeile {
+  margin-top: 0.75rem;
+}
+
+.fill-input {
+  background: #1f2a3d;
+  color: #ffd97a;
+  border: 1.5px solid #3d4f6d;
+  border-radius: 6px;
+  padding: 0.15rem 0.5rem;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 0.9rem;
+  min-width: 7rem;
+}
+
+.fill-input:focus {
+  outline: none;
+  border-color: var(--akzent);
+}
+
+.fill-richtig {
+  border-color: var(--ok);
+  color: #9beebc;
+}
+
+.fill-falsch {
+  animation: wackeln 0.35s ease;
+  border-color: var(--fehler);
+}
+
+@keyframes wackeln {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* ---------- Werkbank ---------- */
+
+.werkbank {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  margin-top: 0.9rem;
+}
+
+@media (max-width: 820px) {
+  .werkbank {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 0.45rem;
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--bg);
+  border: 1px solid var(--linie);
+  border-radius: 7px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 650;
+  font-family: inherit;
+  color: var(--gedaempft);
+  cursor: pointer;
+}
+
+.tab.aktiv {
+  background: var(--code-bg);
+  color: var(--code-ink);
+  border-color: var(--code-bg);
+}
+
+.tab-punkt {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+}
+
+.tab-html .tab-punkt { background: #e0632e; }
+.tab-css .tab-punkt { background: #2f6fdb; }
+.tab-js .tab-punkt { background: #d4a017; }
+
+.editor {
+  width: 100%;
+  height: 280px;
+  resize: vertical;
+  background: var(--code-bg);
+  color: var(--code-ink);
+  border: 1px solid #2a3750;
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  tab-size: 2;
+}
+
+.editor:focus {
+  outline: 2px solid var(--akzent);
+  outline-offset: -1px;
+}
+
+.editor-gesperrt {
+  background: #1a2334;
+  color: #93a3ba;
+}
+
+.werkbank-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+
+.werkbank-hinweis {
+  font-size: 0.78rem;
+  color: var(--gedaempft);
+}
+
+.vorschau-kopf,
+.konsole-kopf {
+  font-size: 0.8rem;
+  font-weight: 650;
+  color: var(--gedaempft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+
+.vorschau {
+  width: 100%;
+  height: 280px;
+  background: #fff;
+  border: 1px solid var(--linie);
+  border-radius: 8px;
+}
+
+.vorschau-mini {
+  height: 90px;
+}
+
+.konsole {
+  margin-top: 0.6rem;
+}
+
+.konsole-inhalt {
+  margin: 0;
+  background: var(--code-bg);
+  color: #8fe3a8;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 0.88rem;
+  min-height: 3.2rem;
+  max-height: 180px;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+.konsole-fehler {
+  color: #ff9d9d;
+}
+
+/* ---------- Testergebnisse ---------- */
+
+.test-ergebnisse {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.8rem;
+}
+
+.test-zeile {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  border-radius: 8px;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.92rem;
+}
+
+.test-ok {
+  background: var(--ok-hell);
+  color: #14663d;
+}
+
+.test-fehler {
+  background: var(--fehler-hell);
+  color: #9c3030;
+}
+
+.test-symbol {
+  font-weight: 700;
+}
+
+.test-detail {
+  display: block;
+  font-size: 0.83rem;
+  opacity: 0.85;
+}
+
+/* ---------- Abschluss & Fehler ---------- */
+
+.schritt-abschluss {
+  border-left: 6px solid var(--ok);
+  background: linear-gradient(180deg, #f2fcf6, #ffffff);
+}
+
+.schritt-abschluss h2 {
+  margin: 0 0 0.3rem;
+  color: #14663d;
+}
+
+.abschluss-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+}
+
+.karte {
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem;
+}
+
+.fehler-karte {
+  border-left: 6px solid var(--fehler);
+}

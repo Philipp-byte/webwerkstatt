@@ -1,0 +1,37 @@
+{
+  "id": "01-was-ist-html",
+  "title": "Was ist HTML?",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Jede Webseite, die du im Internet siehst, besteht im Kern aus **HTML**.\n\nHTML steht für **HyperText Markup Language** – eine Sprache, mit der man Texte, Bilder und Links für den Browser **auszeichnet**. Man sagt dem Browser damit: „Das hier ist eine Überschrift, das ein Absatz, das ein Bild.“\n\nDer **Browser** (z. B. Edge, Chrome oder Firefox) liest den HTML-Code und macht daraus die fertige Seite, die du siehst."
+    },
+    {
+      "type": "example",
+      "text": "So sieht HTML aus: **links der Code, rechts die Vorschau** – also das, was der Browser daraus macht.\n\nÄndere den Text zwischen den Tags und schau zu, wie sich die Vorschau sofort mitverändert!",
+      "html": "<h1>Meine erste Webseite</h1>\n<p>Hallo! Schön, dass du da bist.</p>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Wofür steht die Abkürzung **HTML**?",
+      "options": [
+        "HyperText Markup Language",
+        "High Tech Modern Language",
+        "Homepage Tool Maker List"
+      ],
+      "correct": 0,
+      "explanation": "HTML ist eine **Auszeichnungssprache** (Markup Language) – sie beschreibt, was die einzelnen Teile einer Seite bedeuten."
+    },
+    {
+      "type": "quiz",
+      "question": "Wer macht aus dem HTML-Code die sichtbare Webseite?",
+      "options": [
+        "Der Drucker",
+        "Der Browser",
+        "Das Betriebssystem"
+      ],
+      "correct": 1,
+      "explanation": "Der Browser liest den HTML-Code Zeile für Zeile und **rendert** daraus die fertige Seite."
+    }
+  ]
+}

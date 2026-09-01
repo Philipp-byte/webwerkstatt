@@ -1,0 +1,39 @@
+{
+  "id": "01-ungeordnete-listen",
+  "title": "Ungeordnete Listen",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Eine **ungeordnete Liste** zeigt Aufzählungspunkte – wie eine Einkaufsliste.\n\nSie besteht aus zwei Teilen:\n\n`<ul>` ist die **Liste selbst** (unordered list).\n\n`<li>` ist ein **einzelner Eintrag** (list item) – davon kann es beliebig viele geben.\n\n```html\n<ul>\n  <li>Brot</li>\n  <li>Milch</li>\n</ul>\n```\n\nDie `<li>`-Einträge stehen **immer innerhalb** von `<ul>` und `</ul>`."
+    },
+    {
+      "type": "example",
+      "text": "Eine Packliste für den Schulausflug. Füge selbst einen weiteren Eintrag hinzu!",
+      "html": "<h2>Packliste</h2>\n<ul>\n  <li>Vesper</li>\n  <li>Trinkflasche</li>\n  <li>Regenjacke</li>\n</ul>\n"
+    },
+    {
+      "type": "fill",
+      "text": "Ein Eintrag ist kaputt: Setze den fehlenden **öffnenden Tag** ein.",
+      "template": "<ul>\n  <li>Pizza</li>\n  <___>Sushi</li>\n</ul>",
+      "solution": "li",
+      "accept": ["li"],
+      "hint": "Jeder Listeneintrag beginnt mit `<li>`."
+    },
+    {
+      "type": "code",
+      "task": "Erstelle eine ungeordnete Liste mit **mindestens drei** deiner Hobbys.",
+      "starter": {
+        "html": "<h2>Meine Hobbys</h2>\n<!-- Deine Liste hier -->\n"
+      },
+      "hints": [
+        "Zuerst die Liste öffnen: <ul> – ganz am Ende wieder schließen: </ul>.",
+        "Jedes Hobby bekommt ein eigenes <li>...</li>.",
+        "```html\n<h2>Meine Hobbys</h2>\n<ul>\n  <li>Fußball</li>\n  <li>Zocken</li>\n  <li>Kochen</li>\n</ul>\n```"
+      ],
+      "tests": [
+        { "type": "selector", "selector": "ul", "min": 1, "label": "Es gibt eine <ul>-Liste" },
+        { "type": "selector", "selector": "ul li", "min": 3, "label": "Die Liste hat mindestens drei Einträge" }
+      ]
+    }
+  ]
+}

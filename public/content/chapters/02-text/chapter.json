@@ -1,0 +1,12 @@
+{
+  "id": "02-text",
+  "title": "Text & Überschriften",
+  "icon": "✍️",
+  "color": "#cf5430",
+  "description": "Überschriften, Absätze und Hervorhebungen – bring Struktur in deinen Text.",
+  "lessons": [
+    "01-ueberschriften",
+    "02-absaetze",
+    "03-hervorheben"
+  ]
+}

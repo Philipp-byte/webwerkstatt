@@ -1,0 +1,41 @@
+{
+  "id": "02-geordnete-listen",
+  "title": "Geordnete Listen",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Wenn die **Reihenfolge wichtig** ist – wie bei einer Anleitung – nimmst du eine **geordnete Liste**: `<ol>` (ordered list).\n\n```html\n<ol>\n  <li>Wasser aufkochen</li>\n  <li>Nudeln hineingeben</li>\n  <li>10 Minuten warten</li>\n</ol>\n```\n\nDie Einträge heißen wieder `<li>`. Das Beste: Die **Nummern macht der Browser automatisch** – du musst keine 1., 2., 3. tippen!"
+    },
+    {
+      "type": "example",
+      "text": "Probier aus: Füge in der Mitte einen neuen Schritt ein – die Nummerierung passt sich von selbst an.",
+      "html": "<h2>Passwort ändern</h2>\n<ol>\n  <li>Einstellungen öffnen</li>\n  <li>Auf „Konto“ klicken</li>\n  <li>Neues Passwort eingeben</li>\n  <li>Speichern</li>\n</ol>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Du willst die **Top 3 deiner Lieblingsfilme** als Rangliste zeigen (Platz 1, 2, 3). Welche Liste passt?",
+      "options": [
+        "`<ul>` – die Punkte-Liste",
+        "`<ol>` – die nummerierte Liste"
+      ],
+      "correct": 1,
+      "explanation": "Bei einer Rangliste zählt die Reihenfolge – also `<ol>`. Punkte-Listen (`<ul>`) passen, wenn die Reihenfolge egal ist."
+    },
+    {
+      "type": "code",
+      "task": "Schreibe eine nummerierte Anleitung **Spaghetti kochen** mit mindestens drei Schritten.\n\nDie Überschrift `<h2>` ist schon da – dir fehlt nur noch die Liste.",
+      "starter": {
+        "html": "<h2>Spaghetti kochen</h2>\n<!-- Deine Anleitung hier -->\n"
+      },
+      "hints": [
+        "Eine nummerierte Liste beginnt mit <ol> und endet mit </ol>.",
+        "Jeder Schritt ist ein <li>...</li> – die Nummern kommen automatisch.",
+        "```html\n<h2>Spaghetti kochen</h2>\n<ol>\n  <li>Wasser salzen und aufkochen</li>\n  <li>Spaghetti 9 Minuten kochen</li>\n  <li>Abgießen und servieren</li>\n</ol>\n```"
+      ],
+      "tests": [
+        { "type": "selector", "selector": "ol", "min": 1, "label": "Es gibt eine <ol>-Liste" },
+        { "type": "selector", "selector": "ol li", "min": 3, "label": "Die Anleitung hat mindestens drei Schritte" }
+      ]
+    }
+  ]
+}

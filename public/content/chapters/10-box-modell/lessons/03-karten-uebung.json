@@ -1,0 +1,30 @@
+{
+  "id": "03-karten-uebung",
+  "title": "Übung: Profil-Karte",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Zeit, alles zu kombinieren – plus ein Neuzugang:\n\n`border-radius` – macht **runde Ecken**:\n\n```css\n.karte {\n  border-radius: 12px;\n}\n```\n\nJe größer der Wert, desto runder die Ecke. Zusammen mit Hintergrundfarbe, padding und width baust du damit die typischen „Karten“, die du von Instagram, YouTube & Co. kennst."
+    },
+    {
+      "type": "code",
+      "task": "Gestalte die Profil-Karte:\n\n1. Hintergrundfarbe **#eaf2ff**\n2. `border-radius: 12px;`\n3. `padding: 20px;`\n4. `width: 300px;`",
+      "starter": {
+        "html": "<div class=\"karte\">\n  <h2>Alex M.</h2>\n  <p>Klasse 10b · AG Robotik</p>\n  <p>Lieblingsfach: Informatik</p>\n</div>\n",
+        "css": ".karte {\n  /* Deine vier Eigenschaften hier */\n}\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Alle vier Eigenschaften kommen in die .karte-Regel.",
+        "Für den Hintergrund: background-color: #eaf2ff;",
+        "```css\n.karte {\n  background-color: #eaf2ff;\n  border-radius: 12px;\n  padding: 20px;\n  width: 300px;\n}\n```"
+      ],
+      "tests": [
+        { "type": "style", "selector": ".karte", "prop": "background-color", "expected": "#eaf2ff", "label": "Die Karte hat den Hintergrund #eaf2ff" },
+        { "type": "style", "selector": ".karte", "prop": "border-top-left-radius", "expected": "12px", "label": "Die Ecken sind mit 12px abgerundet" },
+        { "type": "style", "selector": ".karte", "prop": "padding-top", "expected": "20px", "label": "Der Innenabstand beträgt 20px" },
+        { "type": "style", "selector": ".karte", "prop": "width", "expected": "300px", "label": "Die Karte ist 300px breit" }
+      ]
+    }
+  ]
+}

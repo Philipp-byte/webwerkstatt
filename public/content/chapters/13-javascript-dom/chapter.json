@@ -1,0 +1,12 @@
+{
+  "id": "13-javascript-dom",
+  "title": "JavaScript & die Seite",
+  "icon": "🖱️",
+  "color": "#b8860b",
+  "description": "Jetzt greifen HTML und JavaScript ineinander: Inhalte ändern und auf Klicks reagieren.",
+  "lessons": [
+    "01-elemente-aendern",
+    "02-auf-klick-reagieren",
+    "03-klick-zaehler"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "02-auf-klick-reagieren",
+  "title": "Auf Klicks reagieren",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Für klickbare Knöpfe gibt es in HTML das `<button>`-Element:\n\n```html\n<button id=\"knopf\">Klick mich</button>\n```\n\nMit JavaScript legst du fest, **was beim Klick passiert** – mit einem **Event-Listener**:\n\n```js\nlet knopf = document.getElementById(\"knopf\");\nknopf.addEventListener(\"click\", function () {\n  console.log(\"Geklickt!\");\n});\n```\n\nLies es so: „Knopf, **horche** auf `click` – und wenn es passiert, **führe diese Funktion aus**.“ Der Code zwischen den geschweiften Klammern läuft bei **jedem** Klick neu."
+    },
+    {
+      "type": "example",
+      "text": "Klicke den Button in der Vorschau! Bei jedem Klick tauscht die Funktion den Text aus. Ändere den Text und probiere es erneut.",
+      "html": "<button id=\"knopf\">Klick mich</button>\n<p id=\"ausgabe\">Noch nichts passiert.</p>\n",
+      "js": "let knopf = document.getElementById(\"knopf\");\nlet ausgabe = document.getElementById(\"ausgabe\");\n\nknopf.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Du hast geklickt!\";\n});\n",
+      "editable": ["js"]
+    },
+    {
+      "type": "quiz",
+      "question": "Wann läuft der Code **innerhalb** von `addEventListener(\"click\", function () { ... })`?",
+      "options": [
+        "Sofort beim Laden der Seite",
+        "Bei jedem Klick auf das Element",
+        "Nur beim allerersten Klick"
+      ],
+      "correct": 1,
+      "explanation": "Der Listener wartet dauerhaft – die Funktion läuft bei **jedem** Klick erneut. Beim Laden passiert noch nichts."
+    },
+    {
+      "type": "code",
+      "task": "Das HTML 🔒 hat einen Button `id=\"knopf\"` und einen Absatz `id=\"ausgabe\"`.\n\nSchreibe das JavaScript: Beim Klick auf den Button soll der Absatz **Geschafft!** anzeigen.\n\nTeste deinen Button zuerst selbst in der Vorschau – dann klicke auf Prüfen (der Test klickt für dich!).",
+      "starter": {
+        "html": "<button id=\"knopf\">Los geht's</button>\n<p id=\"ausgabe\">Noch nichts passiert.</p>\n",
+        "js": "// Finde den Button und den Absatz, dann horche auf den Klick\n"
+      },
+      "editable": ["js"],
+      "hints": [
+        "Erst beide Elemente mit getElementById holen.",
+        "Dann: knopf.addEventListener(\"click\", function () { ... }); – im Inneren den textContent setzen.",
+        "```js\nlet knopf = document.getElementById(\"knopf\");\nlet ausgabe = document.getElementById(\"ausgabe\");\n\nknopf.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Geschafft!\";\n});\n```"
+      ],
+      "tests": [
+        { "type": "text", "selector": "#ausgabe", "expected": "Noch nichts passiert.", "label": "Vor dem Klick steht der Ausgangstext da" },
+        { "type": "action", "action": "click", "selector": "#knopf" },
+        { "type": "text", "selector": "#ausgabe", "expected": "Geschafft!", "label": "Nach dem Klick steht „Geschafft!“ da" }
+      ]
+    }
+  ]
+}

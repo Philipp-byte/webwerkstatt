@@ -1,0 +1,12 @@
+{
+  "id": "12-javascript-start",
+  "title": "JavaScript-Start",
+  "icon": "⚡",
+  "color": "#d4a017",
+  "description": "Die Programmiersprache des Webs: Ausgaben, Variablen und Rechnen.",
+  "lessons": [
+    "01-was-ist-javascript",
+    "02-variablen",
+    "03-rechnen"
+  ]
+}

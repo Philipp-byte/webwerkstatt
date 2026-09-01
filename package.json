@@ -1,0 +1,15 @@
+{
+  "name": "webwerkstatt",
+  "version": "0.1.0",
+  "description": "Interaktive Lernplattform fuer HTML, CSS und JavaScript im Schulunterricht",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}

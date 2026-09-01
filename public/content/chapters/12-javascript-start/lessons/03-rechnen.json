@@ -1,0 +1,42 @@
+{
+  "id": "03-rechnen",
+  "title": "Rechnen & verbinden",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "JavaScript rechnet mit den üblichen Zeichen: `+` `-` `*` (mal) `/` (geteilt).\n\n```js\nlet preis = 3 * 4;\nconsole.log(preis);\n```\n\nMit `+` kannst du außerdem **Text und Werte verbinden**:\n\n```js\nconsole.log(\"Der Preis ist: \" + preis);\n```\n\nAusgabe: `Der Preis ist: 12` – der Text und der Variablenwert werden aneinandergehängt."
+    },
+    {
+      "type": "example",
+      "text": "Ein kleiner Kiosk-Rechner. Ändere Anzahl oder Einzelpreis – die Rechnung passt sich an!",
+      "js": "let einzelpreis = 1.5;\nlet anzahl = 4;\nlet gesamt = einzelpreis * anzahl;\n\nconsole.log(\"Anzahl Brezeln: \" + anzahl);\nconsole.log(\"Gesamtpreis: \" + gesamt + \" Euro\");\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Was gibt `console.log(4 * 5);` aus?",
+      "options": [
+        "`4 * 5`",
+        "`20`",
+        "`45`"
+      ],
+      "correct": 1,
+      "explanation": "Ohne Anführungszeichen rechnet JavaScript den Ausdruck aus: 4 · 5 = 20."
+    },
+    {
+      "type": "code",
+      "task": "1. Lege eine Variable `ergebnis` an und lass JavaScript darin **7 * 6** rechnen (nicht selbst ausrechnen!).\n2. Gib genau **Ergebnis: 42** aus – verbinde dafür Text und Variable mit `+`.",
+      "starter": {
+        "js": "// Erst rechnen, dann ausgeben\n"
+      },
+      "hints": [
+        "let ergebnis = 7 * 6; – den Rest macht JavaScript.",
+        "Für die Ausgabe: console.log(\"Ergebnis: \" + ergebnis);",
+        "```js\nlet ergebnis = 7 * 6;\nconsole.log(\"Ergebnis: \" + ergebnis);\n```"
+      ],
+      "tests": [
+        { "type": "source", "file": "js", "matches": "7\\s*\\*\\s*6|6\\s*\\*\\s*7", "label": "JavaScript rechnet 7 * 6 selbst" },
+        { "type": "console", "expected": "Ergebnis: 42", "label": "Die Konsole zeigt „Ergebnis: 42“" }
+      ]
+    }
+  ]
+}

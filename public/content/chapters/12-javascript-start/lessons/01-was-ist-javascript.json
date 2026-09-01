@@ -1,0 +1,41 @@
+{
+  "id": "01-was-ist-javascript",
+  "title": "Was ist JavaScript?",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "HTML baut die Seite, CSS gestaltet sie – **JavaScript macht sie lebendig**: Es reagiert auf Klicks, rechnet, verändert Inhalte. JavaScript ist eine echte **Programmiersprache**, die direkt im Browser läuft.\n\nDer wichtigste Befehl für den Anfang:\n\n```js\nconsole.log(\"Hallo!\");\n```\n\nEr schreibt eine Ausgabe in die **Konsole** – das Ausgabefenster für Programmierende. In der WebWerkstatt siehst du die Konsole direkt unter der Vorschau.\n\nBeachte: Text steht in **Anführungszeichen**, und am Zeilenende steht ein **Semikolon**."
+    },
+    {
+      "type": "example",
+      "text": "Dein erstes JavaScript-Programm! Es läuft im **JS-Tab**. Schau in die **Konsole** unter der Vorschau – und füge eine dritte Ausgabe hinzu.",
+      "js": "console.log(\"Hallo aus der WebWerkstatt!\");\nconsole.log(\"JavaScript läuft.\");\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Was ist die Aufgabe von **JavaScript** auf einer Webseite?",
+      "options": [
+        "Es legt Farben und Schriften fest",
+        "Es macht die Seite interaktiv: reagieren, rechnen, verändern",
+        "Es baut die Grundstruktur aus Überschriften und Absätzen"
+      ],
+      "correct": 1,
+      "explanation": "Struktur = HTML, Aussehen = CSS, Verhalten = JavaScript. Zusammen ergeben sie das Web."
+    },
+    {
+      "type": "code",
+      "task": "Jetzt du! Gib mit `console.log` genau den Text **Hallo JavaScript!** in der Konsole aus.",
+      "starter": {
+        "js": "// Schreibe deinen Code hier\n"
+      },
+      "hints": [
+        "Der Befehl heißt console.log(...) – mit Punkt und runden Klammern.",
+        "Der Text kommt in Anführungszeichen in die Klammern.",
+        "```js\nconsole.log(\"Hallo JavaScript!\");\n```"
+      ],
+      "tests": [
+        { "type": "console", "expected": "Hallo JavaScript!", "label": "Die Konsole zeigt „Hallo JavaScript!“" }
+      ]
+    }
+  ]
+}

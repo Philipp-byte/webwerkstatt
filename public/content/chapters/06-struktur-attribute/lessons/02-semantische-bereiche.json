@@ -1,0 +1,48 @@
+{
+  "id": "02-semantische-bereiche",
+  "title": "Semantische Bereiche",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Echte Webseiten sind in **Bereiche** gegliedert. HTML hat dafür eigene Tags mit sprechenden Namen:\n\n`<header>` – der Kopfbereich (Logo, Seitentitel)\n\n`<nav>` – die Navigation (die Link-Leiste)\n\n`<main>` – der Hauptinhalt\n\n`<footer>` – der Fußbereich (Impressum, Kontakt)\n\nMan nennt sie **semantische** Elemente, weil ihr Name ihre **Bedeutung** verrät. Das hilft Suchmaschinen, Vorlese-Programmen – und dir selbst, wenn du deinen Code später wieder liest."
+    },
+    {
+      "type": "example",
+      "text": "Damit du die Bereiche sehen kannst, färbt der CSS-Tab 🔒 sie ein. Ohne CSS wären sie unsichtbare Ordnungs-Boxen.",
+      "html": "<header>\n  <h1>Pizzeria Bella Napoli</h1>\n</header>\n<nav>\n  <a href=\"https://example.com\">Speisekarte</a>\n  <a href=\"https://example.com\">Kontakt</a>\n</nav>\n<main>\n  <p>Willkommen! Bei uns gibt es die beste Pizza der Stadt.</p>\n</main>\n<footer>\n  <p>Bella Napoli · Musterstraße 1 · Heilbronn</p>\n</footer>\n",
+      "css": "header { background-color: #ffe0b3; padding: 10px; }\nnav { background-color: #cde8ff; padding: 10px; }\nmain { background-color: #e8f7e8; padding: 10px; min-height: 60px; }\nfooter { background-color: #e6e6e6; padding: 10px; font-size: 14px; }\n",
+      "editable": ["html"]
+    },
+    {
+      "type": "quiz",
+      "question": "In welchen Bereich gehört die **Link-Leiste** einer Webseite?",
+      "options": [
+        "`<footer>`",
+        "`<main>`",
+        "`<nav>`"
+      ],
+      "correct": 2,
+      "explanation": "`<nav>` steht für Navigation – dort sammelt man die wichtigsten Links der Seite."
+    },
+    {
+      "type": "code",
+      "task": "Baue die Grundstruktur einer Seite für einen **Schulkiosk**:\n\n1. `<header>` mit einer `<h1>` (z. B. **Schulkiosk**)\n2. `<nav>` mit **zwei Links** (Ziele frei wählbar, `https://...`)\n3. `<main>` mit einem Absatz\n4. `<footer>` mit einem Absatz",
+      "starter": {
+        "html": "<!-- header, nav, main und footer hier -->\n",
+        "css": "header { background-color: #ffe0b3; padding: 10px; }\nnav { background-color: #cde8ff; padding: 10px; }\nmain { background-color: #e8f7e8; padding: 10px; min-height: 60px; }\nfooter { background-color: #e6e6e6; padding: 10px; font-size: 14px; }\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Die vier Bereiche stehen untereinander, jeder mit öffnendem und schließendem Tag.",
+        "In den <nav> kommen zwei <a href=\"https://...\">-Links.",
+        "```html\n<header>\n  <h1>Schulkiosk</h1>\n</header>\n<nav>\n  <a href=\"https://example.com\">Angebot</a>\n  <a href=\"https://example.com\">Preise</a>\n</nav>\n<main>\n  <p>Jeden Tag frische Brezeln in der großen Pause.</p>\n</main>\n<footer>\n  <p>Der Kiosk ist in Raum 012.</p>\n</footer>\n```"
+      ],
+      "tests": [
+        { "type": "selector", "selector": "header h1", "min": 1, "label": "Im <header> steht eine <h1>" },
+        { "type": "selector", "selector": "nav a", "min": 2, "label": "Die <nav> enthält zwei Links" },
+        { "type": "selector", "selector": "main p", "min": 1, "label": "Im <main> steht ein Absatz" },
+        { "type": "selector", "selector": "footer p", "min": 1, "label": "Im <footer> steht ein Absatz" }
+      ]
+    }
+  ]
+}

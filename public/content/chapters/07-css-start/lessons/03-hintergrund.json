@@ -1,0 +1,47 @@
+{
+  "id": "03-hintergrund",
+  "title": "Hintergrundfarben",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Neben der Textfarbe (`color`) kann jedes Element eine **Hintergrundfarbe** bekommen:\n\n```css\nh1 {\n  background-color: #004466;\n  color: white;\n}\n```\n\nWichtig für gute Lesbarkeit: **Text- und Hintergrundfarbe müssen sich deutlich unterscheiden** – heller Text auf dunklem Grund oder umgekehrt.\n\nGibst du dem `body` eine Hintergrundfarbe, färbst du die **ganze Seite**."
+    },
+    {
+      "type": "example",
+      "text": "Achte auf den Kontrast: Stelle die `color` der Überschrift mal auf `#004466` – plötzlich ist sie fast unsichtbar!",
+      "html": "<h1>Kontrast zählt</h1>\n<p>Heller Hintergrund, dunkler Text – gut lesbar.</p>\n",
+      "css": "body {\n  background-color: #fdf3e3;\n}\nh1 {\n  background-color: #004466;\n  color: white;\n}\n",
+      "editable": ["css"]
+    },
+    {
+      "type": "quiz",
+      "question": "Welche Kombination ist am **besten lesbar**?",
+      "options": [
+        "Hellgelber Text auf weißem Grund",
+        "Weißer Text auf dunkelblauem Grund",
+        "Grauer Text auf grauem Grund"
+      ],
+      "correct": 1,
+      "explanation": "Je größer der Kontrast zwischen Text und Hintergrund, desto besser lesbar – das ist auch wichtig für Menschen mit Sehschwäche."
+    },
+    {
+      "type": "code",
+      "task": "Gestalte die Seite:\n\n1. Der `body` bekommt die Hintergrundfarbe **#e6f2ff**\n2. Die `h1` bekommt die Hintergrundfarbe **#004466**\n3. Die `h1` bekommt zusätzlich die Textfarbe **white**",
+      "starter": {
+        "html": "<h1>Schwimmbad Heilbronn</h1>\n<p>Öffnungszeiten: täglich 9 bis 20 Uhr.</p>\n",
+        "css": "/* Deine Regeln hier */\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Zwei Regeln: eine für body, eine für h1.",
+        "In der h1-Regel stehen zwei Eigenschaften: background-color und color.",
+        "```css\nbody {\n  background-color: #e6f2ff;\n}\nh1 {\n  background-color: #004466;\n  color: white;\n}\n```"
+      ],
+      "tests": [
+        { "type": "style", "selector": "body", "prop": "background-color", "expected": "#e6f2ff", "label": "Die Seite hat den Hintergrund #e6f2ff" },
+        { "type": "style", "selector": "h1", "prop": "background-color", "expected": "#004466", "label": "Die Überschrift hat den Hintergrund #004466" },
+        { "type": "style", "selector": "h1", "prop": "color", "expected": "white", "label": "Der Überschriften-Text ist weiß" }
+      ]
+    }
+  ]
+}

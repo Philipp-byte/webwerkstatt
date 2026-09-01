@@ -1,0 +1,12 @@
+{
+  "id": "05-tabellen",
+  "title": "Tabellen",
+  "icon": "📊",
+  "color": "#b85c2e",
+  "description": "Daten übersichtlich in Zeilen und Spalten anordnen – bis hin zum eigenen Stundenplan.",
+  "lessons": [
+    "01-tabellen-aufbau",
+    "02-kopfzeile",
+    "03-tabellen-uebung"
+  ]
+}

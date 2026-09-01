@@ -1,0 +1,37 @@
+{
+  "title": "WebWerkstatt",
+  "subtitle": "Schritt für Schritt eigene Webseiten bauen – mit HTML, CSS und JavaScript.",
+  "blocks": [
+    {
+      "title": "HTML – Inhalt & Struktur",
+      "color": "#e0632e",
+      "chapters": [
+        "01-erste-schritte",
+        "02-text",
+        "03-listen",
+        "04-links-und-bilder",
+        "05-tabellen",
+        "06-struktur-attribute"
+      ]
+    },
+    {
+      "title": "CSS – Gestaltung",
+      "color": "#2f6fdb",
+      "chapters": [
+        "07-css-start",
+        "08-selektoren",
+        "09-schrift-und-text",
+        "10-box-modell",
+        "11-flexbox"
+      ]
+    },
+    {
+      "title": "JavaScript – Interaktion",
+      "color": "#d4a017",
+      "chapters": [
+        "12-javascript-start",
+        "13-javascript-dom"
+      ]
+    }
+  ]
+}

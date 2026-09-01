@@ -1,0 +1,30 @@
+{
+  "id": "03-tabellen-uebung",
+  "title": "Übung: Stundenplan",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Abschluss-Übung: ein **Mini-Stundenplan**. Du brauchst alles aus diesem Kapitel:\n\n`<table>` → `<tr>` → `<th>` / `<td>`\n\nTipp: Bau die Tabelle **zeilenweise** auf und prüfe zwischendurch in der Vorschau, ob alles an der richtigen Stelle sitzt."
+    },
+    {
+      "type": "code",
+      "task": "Baue einen Stundenplan:\n\n1. **Kopfzeile** mit drei `<th>`-Zellen: **Stunde**, **Montag**, **Dienstag**\n2. Mindestens **zwei Datenzeilen** – z. B. Stunde 1 und Stunde 2 mit je zwei Fächern",
+      "starter": {
+        "html": "<h2>Mein Stundenplan</h2>\n<!-- Deine Tabelle hier -->\n",
+        "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\nth { background-color: #f0e6d6; }\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Erst die Kopfzeile mit drei <th>, dann jede Datenzeile mit drei <td>.",
+        "Jede Zeile hat gleich viele Zellen – sonst verrutscht die Tabelle.",
+        "```html\n<h2>Mein Stundenplan</h2>\n<table>\n  <tr>\n    <th>Stunde</th>\n    <th>Montag</th>\n    <th>Dienstag</th>\n  </tr>\n  <tr>\n    <td>1</td>\n    <td>Deutsch</td>\n    <td>IT</td>\n  </tr>\n  <tr>\n    <td>2</td>\n    <td>Mathe</td>\n    <td>Sport</td>\n  </tr>\n</table>\n```"
+      ],
+      "tests": [
+        { "type": "selector", "selector": "th", "min": 3, "label": "Die Kopfzeile hat drei <th>-Zellen" },
+        { "type": "text", "selector": "th:nth-child(2)", "expected": "Montag", "label": "Die zweite Spalte heißt „Montag“" },
+        { "type": "selector", "selector": "tr", "min": 3, "label": "Es gibt mindestens drei Zeilen" },
+        { "type": "selector", "selector": "td", "min": 6, "label": "Es gibt mindestens sechs Daten-Zellen" }
+      ]
+    }
+  ]
+}

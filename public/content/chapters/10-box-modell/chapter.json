@@ -1,0 +1,12 @@
+{
+  "id": "10-box-modell",
+  "title": "Das Box-Modell",
+  "icon": "📦",
+  "color": "#1f66c2",
+  "description": "Jedes Element ist eine Box: Rahmen, Innen- und Außenabstand machen den Unterschied.",
+  "lessons": [
+    "01-rahmen-innenabstand",
+    "02-aussenabstand-breite",
+    "03-karten-uebung"
+  ]
+}

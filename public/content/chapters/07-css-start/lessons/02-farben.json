@@ -1,0 +1,43 @@
+{
+  "id": "02-farben",
+  "title": "Farben",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Für Farbwerte gibt es in CSS zwei wichtige Schreibweisen:\n\n**1. Farbnamen** (englisch): `red`, `blue`, `green`, `orange`, `hotpink`, `black`, `white` …\n\n**2. Hex-Codes**: ein `#` gefolgt von sechs Zeichen, z. B. `#ff6600` (Orange) oder `#00344d` (Dunkelblau). Je zwei Zeichen stehen für den **R**ot-, **G**rün- und **B**lau-Anteil.\n\n```css\nh1 { color: #ff6600; }\np { color: green; }\n```\n\nMit Hex-Codes triffst du **jede** Farbe exakt – deshalb nutzen Profis fast nur sie."
+    },
+    {
+      "type": "example",
+      "text": "Ein kleiner Farb-Spielplatz. Probiere eigene Hex-Codes aus – z. B. `#ff0000`, `#00ff00`, `#123456`!",
+      "html": "<h1>Farblabor</h1>\n<p class=\"eins\">Erste Testfarbe</p>\n<p class=\"zwei\">Zweite Testfarbe</p>\n<p class=\"drei\">Dritte Testfarbe</p>\n",
+      "css": ".eins { color: crimson; }\n.zwei { color: #1a9e5c; }\n.drei { color: #7a3fbf; }\n",
+      "editable": ["css"]
+    },
+    {
+      "type": "fill",
+      "text": "Setze den englischen **Farbnamen** für Rot ein.",
+      "template": "h1 { color: ___; }",
+      "solution": "red",
+      "accept": ["red"],
+      "hint": "Die Farbnamen sind englisch – Rot heißt `red`."
+    },
+    {
+      "type": "code",
+      "task": "Färbe die Speisekarte:\n\n1. Die `h1` bekommt den Hex-Code **#ff6600**\n2. Alle `p` bekommen die Farbe **green**",
+      "starter": {
+        "html": "<h1>Unsere Smoothies</h1>\n<p>Mango-Maracuja – 3,50 €</p>\n<p>Erdbeer-Banane – 3,00 €</p>\n",
+        "css": "/* Deine zwei Regeln hier */\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Du brauchst zwei Regeln: eine für h1, eine für p.",
+        "Hex-Codes schreibst du mit Raute: color: #ff6600;",
+        "```css\nh1 {\n  color: #ff6600;\n}\np {\n  color: green;\n}\n```"
+      ],
+      "tests": [
+        { "type": "style", "selector": "h1", "prop": "color", "expected": "#ff6600", "label": "Die Überschrift hat die Farbe #ff6600" },
+        { "type": "style", "selector": "p", "prop": "color", "expected": "green", "label": "Die Absätze sind grün" }
+      ]
+    }
+  ]
+}

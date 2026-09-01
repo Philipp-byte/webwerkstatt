@@ -1,0 +1,48 @@
+{
+  "id": "02-kopfzeile",
+  "title": "Kopfzeilen",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Die **erste Zeile** einer Tabelle enthält meist die Spaltentitel – die **Kopfzeile**.\n\nDafür gibt es einen eigenen Zellen-Tag: `<th>` (table header) statt `<td>`. Der Browser stellt `<th>`-Zellen automatisch **fett und zentriert** dar.\n\n```html\n<tr>\n  <th>Name</th>\n  <th>Alter</th>\n</tr>\n```\n\nDanach folgen die normalen Datenzeilen mit `<td>`."
+    },
+    {
+      "type": "example",
+      "text": "Vergleiche die Kopfzeile (`<th>`, fett) mit den Datenzeilen (`<td>`).",
+      "html": "<table>\n  <tr>\n    <th>Tier</th>\n    <th>Beine</th>\n  </tr>\n  <tr>\n    <td>Katze</td>\n    <td>4</td>\n  </tr>\n  <tr>\n    <td>Spinne</td>\n    <td>8</td>\n  </tr>\n</table>\n",
+      "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\n",
+      "editable": ["html"]
+    },
+    {
+      "type": "quiz",
+      "question": "Was ist der Unterschied zwischen `<th>` und `<td>`?",
+      "options": [
+        "`<th>` ist für Kopf-Zellen (fett), `<td>` für normale Daten-Zellen",
+        "`<th>` macht die Tabelle höher, `<td>` breiter",
+        "Es gibt keinen Unterschied"
+      ],
+      "correct": 0,
+      "explanation": "`<th>` = table **header**, `<td>` = table **data**. Kopf-Zellen werden fett und zentriert angezeigt."
+    },
+    {
+      "type": "code",
+      "task": "Baue eine Tabelle über deine Familie oder Freunde:\n\n1. Eine **Kopfzeile** mit `<th>`-Zellen: **Name** und **Alter**\n2. Darunter **zwei Datenzeilen** mit `<td>`-Zellen",
+      "starter": {
+        "html": "<!-- Deine Tabelle mit Kopfzeile hier -->\n",
+        "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Die erste <tr> bekommt <th>-Zellen, die anderen <td>-Zellen.",
+        "Insgesamt brauchst du drei <tr>-Zeilen: eine Kopfzeile + zwei Datenzeilen.",
+        "```html\n<table>\n  <tr>\n    <th>Name</th>\n    <th>Alter</th>\n  </tr>\n  <tr>\n    <td>Lena</td>\n    <td>16</td>\n  </tr>\n  <tr>\n    <td>Samir</td>\n    <td>17</td>\n  </tr>\n</table>\n```"
+      ],
+      "tests": [
+        { "type": "selector", "selector": "th", "min": 2, "label": "Die Kopfzeile hat mindestens zwei <th>-Zellen" },
+        { "type": "text", "selector": "th", "expected": "Name", "label": "Die erste Kopf-Zelle lautet „Name“" },
+        { "type": "selector", "selector": "tr", "min": 3, "label": "Es gibt mindestens drei Zeilen (Kopf + 2 Daten)" },
+        { "type": "selector", "selector": "td", "min": 4, "label": "Es gibt mindestens vier Daten-Zellen" }
+      ]
+    }
+  ]
+}
