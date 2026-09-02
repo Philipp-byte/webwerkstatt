@@ -1,0 +1,67 @@
+{
+  "id": "01-externe-links",
+  "title": "Externe Links",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Links machen aus einzelnen Seiten das **World Wide Web**. In HTML schreibst du sie mit dem `<a>`-Tag (anchor = Anker):\n\n```html\n<a href=\"https://de.wikipedia.org\">Zur Wikipedia</a>\n```\n\nDas **Attribut** `href` steht **im öffnenden Tag** und gibt das **Linkziel** an – die Adresse, zu der der Link führt.\n\nZwischen den Tags steht der **Linktext** – das, worauf man klicken kann. Einen Link zu einer fremden Webseite nennt man **externen Link**."
+    },
+    {
+      "type": "example",
+      "text": "Klick den Link in der Vorschau ruhig an! Ändere danach den Linktext und das Ziel.",
+      "html": "<p>Mehr Infos findest du hier:</p>\n<a href=\"https://de.wikipedia.org\">Zur Wikipedia</a>\n"
+    },
+    {
+      "type": "explain",
+      "text": "Schau dir die Adresse genau an: Sie beginnt mit `https://`.\n\n**https** bedeutet, dass die Verbindung **verschlüsselt** ist: Niemand kann unterwegs mitlesen oder die Seite verändern. Beim alten `http://` (ohne s) ist das möglich – moderne Browser warnen davor. Verlinke deshalb immer die vollständige Adresse **mit** `https://`.\n\nEin typischer Fehler: `href=\"wikipedia.de\"` – ohne `https://` davor. Dann sucht der Browser eine **Datei** namens „wikipedia.de“ in deinem eigenen Ordner, und der Link geht ins Leere!"
+    },
+    {
+      "type": "fill",
+      "text": "Setze das fehlende **Attribut** ein, das das Linkziel angibt.",
+      "template": "<a ___=\"https://de.wikipedia.org\">Wikipedia</a>",
+      "solution": "href",
+      "accept": ["href"],
+      "hint": "Das Attribut heißt `href` – kurz für „hypertext reference“."
+    },
+    {
+      "type": "explain",
+      "text": "Genauso wichtig wie das Ziel ist der **Linktext**. Vergleiche:\n\n- „**Hier klicken**, um zur Anmeldung zu kommen“ – schlecht\n- „**Zur Anmeldung für das Sportfest**“ – gut\n\nWarum? Viele Menschen **überfliegen** Seiten nur und lesen bloß die Links. Und Vorlese-Programme können von Link zu Link springen – wer dann dreimal „hier klicken“ hört, weiß gar nichts. Regel: **Der Linktext beschreibt das Ziel**, ohne dass man den Satz drumherum lesen muss."
+    },
+    {
+      "type": "quiz",
+      "question": "Deine Seite soll auf die Anmeldung zum Sportfest verlinken. Welcher Linktext ist am besten?",
+      "options": [
+        "„Hier klicken“",
+        "„Zur Anmeldung für das Sportfest“",
+        "„Link“"
+      ],
+      "correct": 1,
+      "explanation": "Ein guter Linktext beschreibt das Ziel. „Hier klicken“ oder „Link“ sagen nichts darüber, wohin es geht – besonders für Menschen, die sich Seiten vorlesen lassen."
+    },
+    {
+      "type": "explain",
+      "text": "Zwei nützliche Extras für Links:\n\nDas Attribut `title` zeigt eine **Zusatzinfo** an, wenn man mit der Maus auf dem Link stehen bleibt (ein sogenannter Tooltip):\n\n```html\n<a href=\"https://de.wikipedia.org\" title=\"Öffnet die freie Enzyklopädie Wikipedia\">Zur Wikipedia</a>\n```\n\nUnd mit `target=\"_blank\"` öffnet sich das Ziel in einem **neuen Tab** – praktisch bei externen Links, damit deine eigene Seite offen bleibt. Merk dir fürs Erste nur, dass es das gibt."
+    },
+    {
+      "type": "code",
+      "task": "Erstelle einen sauberen externen Link:\n\n1. Der **Linktext** lautet **Zur Wikipedia**\n2. Das **Ziel** ist `https://de.wikipedia.org` – mit vollständiger Adresse!\n3. Gib dem Link ein `title`-Attribut mit einer kurzen Zusatzinfo deiner Wahl",
+      "starter": {
+        "html": "<p>Mein Lieblingslink:</p>\n<!-- Dein Link hier -->\n"
+      },
+      "hints": [
+        "Ein Link beginnt mit <a href=\"...\"> und endet mit </a>. Das title-Attribut kommt mit in den öffnenden Tag.",
+        "Beide Attribute stehen nebeneinander im öffnenden Tag: <a href=\"https://...\" title=\"...\">Linktext</a>",
+        "```html\n<p>Mein Lieblingslink:</p>\n<a href=\"https://de.wikipedia.org\" title=\"Öffnet die Wikipedia\">Zur Wikipedia</a>\n```"
+      ],
+      "solution": {
+        "html": "<p>Mein Lieblingslink:</p>\n<a href=\"https://de.wikipedia.org\" title=\"Öffnet die Wikipedia\">Zur Wikipedia</a>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "a", "min": 1, "label": "Es gibt einen Link (<a>)" },
+        { "type": "attr", "selector": "a", "attr": "href", "expected": ["https://de.wikipedia.org", "https://de.wikipedia.org/"], "label": "Das Linkziel ist https://de.wikipedia.org" },
+        { "type": "text", "selector": "a", "expected": "Zur Wikipedia", "label": "Der Linktext lautet „Zur Wikipedia“" },
+        { "type": "attr", "selector": "a", "attr": "title", "matches": "\\S", "label": "Der Link hat ein title-Attribut mit Zusatzinfo" }
+      ]
+    }
+  ]
+}

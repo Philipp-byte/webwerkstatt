@@ -1,0 +1,57 @@
+{
+  "id": "03-browser-editor-standards",
+  "title": "Browser, Editor & Standards",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Um Webseiten zu bauen, brauchst du genau zwei Werkzeuge – und beide hast du schon:\n\nEinen **Editor**: ein Programm, mit dem man reine Textdateien schreibt – zum Beispiel der Windows-Editor oder Visual Studio Code. In der WebWerkstatt übernimmt das die eingebaute **Werkbank**: links schreibst du den Code.\n\nEinen **Browser**: Er öffnet die Datei und macht daraus die sichtbare Seite. In der Werkbank siehst du das rechts in der **Vorschau**.\n\nMehr ist es nicht – eine Webseite ist am Ende eine **Textdatei**, die der Browser darstellt. Word ist dafür übrigens ungeeignet: Es speichert keine reinen Textdateien, sondern packt unsichtbare Formatierungen dazu, die den Browser verwirren."
+    },
+    {
+      "type": "explain",
+      "text": "Das Beste am Web: Jede echte Webseite zeigt dir freiwillig ihren Code!\n\nKlicke auf einer beliebigen Webseite mit der **rechten Maustaste** und wähle **„Seitenquelltext anzeigen“** – oder drücke einfach **Strg + U**. Du siehst dann den **Quelltext**: die HTML-Datei, die der Server geliefert hat.\n\nProbiere das heute mal bei deiner Lieblingsseite aus. Noch sieht der Code kryptisch aus – aber schon nach den nächsten Kapiteln kannst du vieles davon lesen. So haben übrigens viele Profis angefangen: bei fremden Seiten nachgeschaut, wie etwas gemacht ist."
+    },
+    {
+      "type": "example",
+      "text": "Genau dieses Paar siehst du bei Strg + U auch: **links der Quelltext, rechts die fertige Seite.**\n\nÄndere links etwas am Text und schau, was rechts passiert – du arbeitest gerade wie eine echte Web-Entwicklerin.",
+      "html": "<h1>Jede Seite zeigt ihren Code</h1>\n<p>Drücke auf einer echten Webseite Strg + U – und du siehst ihren Quelltext.</p>\n"
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige: Mit Strg + U zeigt der Browser den … einer Webseite an.",
+      "template": "Rechtsklick → „Seiten___ anzeigen“ (oder Strg + U)",
+      "solution": "quelltext",
+      "accept": ["quelltext", "Quelltext"],
+      "hint": "Gesucht ist der Code, aus dem die Seite entsteht – die „Quelle“ der Seite."
+    },
+    {
+      "type": "explain",
+      "text": "Es gibt viele verschiedene Browser: Chrome, Firefox, Safari, Edge … Und jede Webseite soll in **allen** gleich funktionieren.\n\nDas klappt nur, wenn sich alle an gemeinsame Regeln halten: **Standards**. Ein Standard legt genau fest, was zum Beispiel ein Überschriften-Tag bedeutet und wie ein Browser ihn darstellen soll – so wie sich alle im Straßenverkehr auf „Rot heißt Stopp“ geeinigt haben.\n\nOhne Standards müsstest du jede Seite mehrfach bauen – für jeden Browser einzeln. Genau so war es in den 1990er-Jahren: Damals stand auf Webseiten ernsthaft „Diese Seite funktioniert am besten im Browser XY“."
+    },
+    {
+      "type": "quiz",
+      "question": "Warum braucht das Web **Standards**?",
+      "options": [
+        "Damit jede Webseite von allen Browsern gleich verstanden und dargestellt wird",
+        "Damit Webseiten automatisch schöner aussehen",
+        "Damit nur ausgebildete Profis Webseiten bauen dürfen"
+      ],
+      "correct": 0,
+      "explanation": "Standards sind gemeinsame Regeln für alle Browser-Hersteller und Webseiten-Bauer. Nur so funktioniert dieselbe HTML-Datei überall – egal ob in Chrome, Firefox oder Safari."
+    },
+    {
+      "type": "explain",
+      "text": "Und wer legt diese Standards fest? Das **W3C** – das **World Wide Web Consortium**. In dieser internationalen Organisation entwickeln Browser-Hersteller, Firmen und Fachleute gemeinsam die Regeln des Webs und veröffentlichen sie für alle.\n\nGegründet wurde das W3C 1994 von **Tim Berners-Lee** – dem Erfinder des World Wide Web.\n\nAuch HTML und CSS, die du in der WebWerkstatt lernst, sind solche Standards. Deshalb kannst du sicher sein: Dein Code funktioniert nachher in jedem Browser."
+    },
+    {
+      "type": "quiz",
+      "question": "Welche Organisation entwickelt und veröffentlicht die Standards des Webs – etwa für HTML und CSS?",
+      "options": [
+        "Das W3C (World Wide Web Consortium)",
+        "Die Firma hinter dem beliebtesten Browser – sie entscheidet allein",
+        "Niemand – jeder Browser legt eigene Regeln fest"
+      ],
+      "correct": 0,
+      "explanation": "Im W3C arbeiten viele Organisationen gemeinsam an den Web-Standards – gegründet wurde es von Tim Berners-Lee, dem Erfinder des Web. Würde jeder Browser eigene Regeln machen, sähe jede Seite überall anders aus."
+    }
+  ]
+}

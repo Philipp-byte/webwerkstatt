@@ -1,0 +1,38 @@
+{
+  "id": "03-projekt-impressum",
+  "title": "Projekt: Impressum fürs Café",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Heute bekommt das **Café Pause**, was jede veröffentlichte Webseite braucht: eine eigene **Impressum-Seite** mit Datenschutzerklärung. Damit wendest du das Wissen der letzten beiden Lektionen direkt an – und die Café-Website wächst um ihre fünfte Seite.\n\nZur Erinnerung: Das Café Pause ist ein **fiktiver Betrieb für Übungszwecke** – Adresse und E-Mail sind ausgedacht. Genau dieser Hinweis kommt auch **deutlich sichtbar** aufs Impressum, damit niemand die Übungsseite für echt hält. (Und wie immer gilt: vereinfachtes Übungs-Impressum, keine Rechtsberatung.)"
+    },
+    {
+      "type": "code",
+      "task": "Baue die Impressum-Seite auf – das Grundgerüst steht schon, alles kommt in den `<body>`:\n\n1. `<h1>Impressum</h1>`\n2. Ein Absatz mit dem Betreiber: `Betreiber: Schülerfirma Café Pause`\n3. Ein Absatz mit der Anschrift: `Musterstraße 12, 74072 Heilbronn`\n4. Ein Absatz mit dem Kontakt: `E-Mail: hallo@cafe-pause-beispiel.de`\n5. Darunter `<h2>Datenschutzerklärung</h2>` mit diesem Absatz: `Diese Übungsseite verarbeitet keine personenbezogenen Daten. Bei Fragen erreichst du uns per E-Mail.`\n6. Ganz unten ein Absatz, dessen Text in `<strong>` steckt: `Fiktiver Betrieb für Übungszwecke – alle Angaben sind ausgedacht.`\n7. Zum Schluss ein Zurück-Link: `<a href=\"index.html\">Zurück zur Startseite</a>`",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Impressum – Café Pause</title>\n</head>\n<body>\n  <!-- Hier entsteht das Impressum -->\n</body>\n</html>\n"
+      },
+      "editable": ["html"],
+      "project": { "page": "impressum", "save": ["html"] },
+      "hints": [
+        "Arbeite die Liste von oben nach unten ab – jeder Punkt ist eine Zeile zwischen <body> und </body>. Die Absätze sind ganz normale <p>-Elemente.",
+        "So sehen zwei der Zeilen aus:\n\n```html\n<p>Betreiber: Schülerfirma Café Pause</p>\n<p><strong>Fiktiver Betrieb für Übungszwecke – alle Angaben sind ausgedacht.</strong></p>\n```",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Impressum – Café Pause</title>\n</head>\n<body>\n  <h1>Impressum</h1>\n  <p>Betreiber: Schülerfirma Café Pause</p>\n  <p>Musterstraße 12, 74072 Heilbronn</p>\n  <p>E-Mail: hallo@cafe-pause-beispiel.de</p>\n  <h2>Datenschutzerklärung</h2>\n  <p>Diese Übungsseite verarbeitet keine personenbezogenen Daten. Bei Fragen erreichst du uns per E-Mail.</p>\n  <p><strong>Fiktiver Betrieb für Übungszwecke – alle Angaben sind ausgedacht.</strong></p>\n  <a href=\"index.html\">Zurück zur Startseite</a>\n</body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Impressum – Café Pause</title>\n</head>\n<body>\n  <h1>Impressum</h1>\n  <p>Betreiber: Schülerfirma Café Pause</p>\n  <p>Musterstraße 12, 74072 Heilbronn</p>\n  <p>E-Mail: hallo@cafe-pause-beispiel.de</p>\n  <h2>Datenschutzerklärung</h2>\n  <p>Diese Übungsseite verarbeitet keine personenbezogenen Daten. Bei Fragen erreichst du uns per E-Mail.</p>\n  <p><strong>Fiktiver Betrieb für Übungszwecke – alle Angaben sind ausgedacht.</strong></p>\n  <a href=\"index.html\">Zurück zur Startseite</a>\n</body>\n</html>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "h1", "expected": "Impressum", "label": "Die Hauptüberschrift lautet „Impressum“" },
+        { "type": "text", "selector": "body", "expected": "Schülerfirma Café Pause", "contains": true, "label": "Der Betreiber „Schülerfirma Café Pause“ ist genannt" },
+        { "type": "text", "selector": "body", "expected": "Musterstraße 12", "contains": true, "label": "Die Anschrift enthält „Musterstraße 12“" },
+        { "type": "text", "selector": "body", "expected": "74072 Heilbronn", "contains": true, "label": "Die Anschrift enthält „74072 Heilbronn“" },
+        { "type": "text", "selector": "body", "expected": "hallo@cafe-pause-beispiel.de", "contains": true, "label": "Die Kontakt-E-Mail-Adresse ist angegeben" },
+        { "type": "text", "selector": "h2", "expected": "Datenschutzerklärung", "label": "Es gibt die Zwischenüberschrift „Datenschutzerklärung“" },
+        { "type": "selector", "selector": "p", "min": 4, "label": "Die Angaben stehen in Absätzen (mindestens 4)" },
+        { "type": "text", "selector": "strong", "expected": "Fiktiver Betrieb für Übungszwecke", "contains": true, "label": "Der Fiktiv-Hinweis ist deutlich hervorgehoben (strong)" },
+        { "type": "attr", "selector": "a", "attr": "href", "expected": "index.html", "label": "Der Zurück-Link führt zur Startseite" }
+      ]
+    }
+  ]
+}

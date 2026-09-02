@@ -1,0 +1,85 @@
+{
+  "id": "03-wiederholung",
+  "title": "Wiederholung: CSS-Grundlagen & Selektoren",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Kurzer Boxenstopp: Bevor gleich das Café-Projekt weitergeht, rufst du die letzten beiden Kapitel noch einmal aktiv ab – CSS-Grundlagen und Selektoren. Genau dieses **Wieder-Hervorholen** macht Wissen dauerhaft, nicht das erneute Durchlesen.\n\n5 Aufgaben, kein neuer Stoff."
+    },
+    {
+      "type": "quiz",
+      "question": "**Aufgabe 1.** In der Regel `.hinweis { background-color: yellow; }` – was ist `.hinweis`?",
+      "options": [
+        "Der **Selektor** – er wählt alle Elemente mit `class=\"hinweis\"` aus",
+        "Die **Eigenschaft** – sie bestimmt, was verändert wird",
+        "Der **Wert** – er bestimmt die Farbe"
+      ],
+      "correct": 0,
+      "explanation": "Vor den geschweiften Klammern steht immer der Selektor. `background-color` ist die Eigenschaft, `yellow` der Wert."
+    },
+    {
+      "type": "code",
+      "task": "**Aufgabe 2 – Farben in allen Schreibweisen.** Gestalte den Aushang:\n\n1. Der `body` bekommt die Hintergrundfarbe `#eef7ee` (Hex-Code)\n2. Die `h1` bekommt die Textfarbe `darkgreen` (Farbname)\n3. Alle `p` bekommen die Textfarbe `rgb(60, 60, 60)`",
+      "starter": {
+        "html": "<h1>Die Garten-AG sucht Verstärkung</h1>\n<p>Wir treffen uns jeden Mittwoch in der 7. Stunde.</p>\n<p>Anmeldung bei Frau Berger im Lehrerzimmer.</p>\n",
+        "css": "/* Deine drei Regeln hier */\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Drei Regeln: body (background-color), h1 (color) und p (color).",
+        "Hex mit Raute (#eef7ee), Farbname pur (darkgreen), rgb mit Klammern: rgb(60, 60, 60).",
+        "```css\nbody {\n  background-color: #eef7ee;\n}\nh1 {\n  color: darkgreen;\n}\np {\n  color: rgb(60, 60, 60);\n}\n```"
+      ],
+      "solution": {
+        "css": "body {\n  background-color: #eef7ee;\n}\nh1 {\n  color: darkgreen;\n}\np {\n  color: rgb(60, 60, 60);\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": "body", "prop": "background-color", "expected": "#eef7ee", "label": "Die Seite hat den Hintergrund #eef7ee" },
+        { "type": "style", "selector": "h1", "prop": "color", "expected": "darkgreen", "label": "Die Überschrift ist dunkelgrün" },
+        { "type": "style", "selector": "p", "prop": "color", "expected": "rgb(60, 60, 60)", "label": "Die Absätze haben die Farbe rgb(60, 60, 60)" }
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "**Aufgabe 3.** Nur die Links **in der Navigation** sollen weiß werden. Vervollständige den Nachfahren-Selektor.",
+      "template": "nav ___ { color: white; }",
+      "solution": "a",
+      "accept": ["a"],
+      "hint": "Nach dem Leerzeichen folgt das innere Element – Links schreibst du als `a`."
+    },
+    {
+      "type": "code",
+      "task": "**Aufgabe 4 – Selektoren-Mix.** Das HTML ist gesperrt 🔒. Schreibe drei Regeln:\n\n1. `.hinweis`: Textfarbe `red`\n2. `#fazit`: Hintergrundfarbe `#fff3b0`\n3. Nur die Links **in der Navigation**: Textfarbe `#2f6fdb`\n\nDer erste Absatz muss **schwarz bleiben**!",
+      "starter": {
+        "html": "<nav>\n  <a href=\"index.html\">Start</a>\n  <a href=\"kontakt.html\">Kontakt</a>\n</nav>\n<main>\n  <h2>Projektwoche</h2>\n  <p>Die Projektwoche startet am Montag.</p>\n  <p class=\"hinweis\">Anmeldung bis Freitag im Sekretariat!</p>\n  <p id=\"fazit\">Es sind noch Plätze frei.</p>\n</main>\n",
+        "css": "/* Deine drei Regeln hier */\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Punkt für die Klasse (.hinweis), Raute für die id (#fazit), Leerzeichen für „darin“ (nav a).",
+        "Wenn du p statt .hinweis nimmst, wird auch der erste Absatz rot – das lässt der Test nicht durch!",
+        "```css\n.hinweis {\n  color: red;\n}\n#fazit {\n  background-color: #fff3b0;\n}\nnav a {\n  color: #2f6fdb;\n}\n```"
+      ],
+      "solution": {
+        "css": ".hinweis {\n  color: red;\n}\n#fazit {\n  background-color: #fff3b0;\n}\nnav a {\n  color: #2f6fdb;\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": ".hinweis", "prop": "color", "expected": "red", "label": "Der Hinweis-Absatz ist rot" },
+        { "type": "style", "selector": "#fazit", "prop": "background-color", "expected": "#fff3b0", "label": "Das Fazit ist gelb hinterlegt" },
+        { "type": "style", "selector": "nav a", "prop": "color", "expected": "#2f6fdb", "label": "Die Navigations-Links sind blau (#2f6fdb)" },
+        { "type": "style", "selector": "main p:nth-of-type(1)", "prop": "color", "expected": "black", "label": "Der erste Absatz bleibt schwarz" }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "**Aufgabe 5.** Welche Farbkombination ist am **schlechtesten** lesbar?",
+      "options": [
+        "Schwarzer Text auf weißem Grund",
+        "Weißer Text auf dunkelblauem Grund",
+        "Hellgelber Text auf weißem Grund"
+      ],
+      "correct": 2,
+      "explanation": "Hellgelb auf Weiß hat kaum Kontrast – auf einem spiegelnden Display oder mit Sehschwäche wird das unlesbar. Die anderen beiden Kombinationen haben starken Kontrast."
+    }
+  ]
+}

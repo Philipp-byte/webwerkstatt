@@ -1,0 +1,13 @@
+{
+  "id": "08-struktur-und-attribute",
+  "title": "Struktur & Attribute",
+  "icon": "🧩",
+  "color": "#a85632",
+  "description": "class, id, div, span und semantische Bereiche – Ordnung für deine Seiten.",
+  "lessons": [
+    "01-class-und-id",
+    "02-div-span-und-semantik",
+    "03-wiederholung",
+    "04-projekt-seitenstruktur"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "id": "03-wiederholung",
+  "title": "Wiederholung: Text & Listen",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Wiederholungsrunde! Aktives Abrufen aus dem Gedächtnis wirkt besser als jedes Nochmal-Lesen – also los.\n\nHeute dran: **Text** (Überschriften, Absätze, `<hr>`, `<strong>` und `<em>`) und **Listen** – von der einfachen Punkte-Liste bis zur verschachtelten Packliste. Das Thema: dein Traumurlaub."
+    },
+    {
+      "type": "quiz",
+      "question": "Du listest auf, was in deinen Koffer soll – die Reihenfolge ist völlig egal. Welche Liste passt?",
+      "options": [
+        "`<ul>` – die Punkte-Liste",
+        "`<ol>` – die nummerierte Liste"
+      ],
+      "correct": 0,
+      "explanation": "Wenn die Reihenfolge keine Rolle spielt, ist `<ul>` richtig. Die `<ol>` nimmst du nur, wenn Vertauschen die Bedeutung ändern würde – etwa bei einer Anleitung."
+    },
+    {
+      "type": "fill",
+      "text": "Die Reisevorbereitung ist fast fertig – nur der **schließende Tag** fehlt. Setze ihn ein.",
+      "template": "<ol>\n  <li>Koffer packen</li>\n  <li>Zum Bahnhof fahren</li>\n</___>",
+      "solution": "ol",
+      "accept": ["ol"],
+      "hint": "Der schließende Tag passt immer zum öffnenden – hier hat eine **nummerierte** Liste geöffnet."
+    },
+    {
+      "type": "code",
+      "task": "Baue die Startseite deiner Urlaubsplanung:\n\n1. Eine `<h1>` mit dem Text **Mein Traumurlaub**\n2. Ein Absatz über deinen Traumurlaub – mindestens ein Wort darin ist mit `<em>` betont\n3. Eine Trennlinie `<hr>`\n4. Eine `<h2>` mit dem Text **Meine Top-3-Ziele**\n5. Darunter eine **nummerierte Liste** mit genau deinen drei Wunschzielen",
+      "starter": {
+        "html": "<!-- Deine Urlaubsseite entsteht hier -->\n"
+      },
+      "hints": [
+        "Von oben nach unten: h1 → p (mit em) → hr → h2 → ol.",
+        "Das <em> steht mitten im Absatz, direkt um ein Wort herum: <em>direkt</em>. Die Rangliste ist eine <ol> mit drei <li>.",
+        "```html\n<h1>Mein Traumurlaub</h1>\n<p>Ich träume von einer Woche <em>direkt</em> am Meer.</p>\n<hr>\n<h2>Meine Top-3-Ziele</h2>\n<ol>\n  <li>Lissabon</li>\n  <li>Kopenhagen</li>\n  <li>Gardasee</li>\n</ol>\n```"
+      ],
+      "solution": {
+        "html": "<h1>Mein Traumurlaub</h1>\n<p>Ich träume von einer Woche <em>direkt</em> am Meer.</p>\n<hr>\n<h2>Meine Top-3-Ziele</h2>\n<ol>\n  <li>Lissabon</li>\n  <li>Kopenhagen</li>\n  <li>Gardasee</li>\n</ol>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "h1", "expected": "Mein Traumurlaub", "label": "Die <h1> lautet „Mein Traumurlaub“" },
+        { "type": "selector", "selector": "p em", "min": 1, "label": "Im Absatz ist ein Wort mit <em> betont" },
+        { "type": "source", "file": "html", "matches": "<hr\\s*/?>", "label": "Eine Trennlinie <hr> ist eingebaut" },
+        { "type": "text", "selector": "h2", "expected": "Meine Top-3-Ziele", "label": "Die <h2> lautet „Meine Top-3-Ziele“" },
+        { "type": "selector", "selector": "ol li", "min": 3, "label": "Die Rangliste hat drei Ziele" }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Jemand schreibt eine innere `<ul>` **direkt** in die äußere `<ul>` – zwischen zwei `<li>`-Einträge. Was stimmt?",
+      "options": [
+        "Das ist der richtige Weg für verschachtelte Listen",
+        "Fehler: Die innere Liste gehört in ein `<li>` hinein",
+        "Listen kann man in HTML gar nicht verschachteln"
+      ],
+      "correct": 1,
+      "explanation": "Merksatz: Die innere Liste wohnt im `<li>` – nach dem Text des Eintrags, vor dessen `</li>`. Direkt in der `<ul>` dürfen nur `<li>`-Einträge stehen."
+    },
+    {
+      "type": "code",
+      "task": "Jetzt die große Packliste – **verschachtelt**:\n\n1. Unter der Überschrift eine `<ul>` mit zwei Einträgen: **Kleidung** und **Strandsachen**\n2. Beide Einträge bekommen eine **innere `<ul>`** mit mindestens zwei Dingen\n3. Markiere ein besonders wichtiges Teil (z. B. die Sonnencreme) mit `<strong>`",
+      "starter": {
+        "html": "<h2>Packliste</h2>\n<!-- Deine verschachtelte Liste hier -->\n"
+      },
+      "hints": [
+        "Erst die äußere Liste mit den zwei Rubriken bauen – dann in jedes <li> die innere <ul> einsetzen, vor dem </li>.",
+        "Das <strong> steht innerhalb eines inneren <li>: <li><strong>Sonnencreme</strong></li>.",
+        "```html\n<h2>Packliste</h2>\n<ul>\n  <li>Kleidung\n    <ul>\n      <li>T-Shirts</li>\n      <li>Pulli</li>\n    </ul>\n  </li>\n  <li>Strandsachen\n    <ul>\n      <li>Handtuch</li>\n      <li><strong>Sonnencreme</strong></li>\n    </ul>\n  </li>\n</ul>\n```"
+      ],
+      "solution": {
+        "html": "<h2>Packliste</h2>\n<ul>\n  <li>Kleidung\n    <ul>\n      <li>T-Shirts</li>\n      <li>Pulli</li>\n    </ul>\n  </li>\n  <li>Strandsachen\n    <ul>\n      <li>Handtuch</li>\n      <li><strong>Sonnencreme</strong></li>\n    </ul>\n  </li>\n</ul>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "ul li ul", "min": 2, "label": "Beide Rubriken enthalten eine innere Liste" },
+        { "type": "selector", "selector": "ul li ul li", "min": 4, "label": "Die inneren Listen haben zusammen mindestens vier Dinge" },
+        { "type": "selector", "selector": "li strong", "min": 1, "label": "Ein besonders wichtiges Teil ist mit <strong> markiert" },
+        { "type": "source", "file": "html", "matches": "<ul>\\s*<ul", "absent": true, "label": "Keine Liste steht direkt in einer Liste – die innere Liste wohnt im <li>" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "07-tabellen",
+  "title": "Tabellen",
+  "icon": "📊",
+  "color": "#a3612c",
+  "description": "Zeilen, Spalten, Kopfzeilen und verbundene Zellen – bis zur fertigen Speisekarte.",
+  "lessons": [
+    "01-tabellen-aufbau",
+    "02-kopfzeile-und-verbundene-zellen",
+    "03-wiederholung",
+    "04-projekt-speisekarte"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "id": "02-variablen",
+  "title": "Variablen & Konstanten",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Eine **Variable** ist wie eine beschriftete Kiste, in der ein Wert liegt. Du legst sie mit `let` an:\n\n```js\nlet name = \"Mia\";\nlet alter = 16;\n```\n\n**Text** (ein „String“) steht in Anführungszeichen – **Zahlen** stehen ohne.\n\nGibst du die Variable aus, schreibst du sie **ohne** Anführungszeichen:\n\n```js\nconsole.log(name);\n```\n\nDas zeigt den **Inhalt** der Kiste: `Mia`. Mit Anführungszeichen (`console.log(\"name\")`) käme nur das Wort „name“."
+    },
+    {
+      "type": "example",
+      "text": "Ändere den Wert von `stadt` und führe den Code neu aus – die Ausgabe ändert sich mit. Genau das ist der Trick: **Einmal schreiben, überall wirkt es.**",
+      "js": "let stadt = \"Heilbronn\";\nlet einwohner = 130000;\n\nconsole.log(stadt);\nconsole.log(einwohner);\n"
+    },
+    {
+      "type": "fill",
+      "text": "Die Variable soll den **Text** Berlin enthalten. Setze den Wert richtig ein – denk an die Anführungszeichen!",
+      "template": "let stadt = ___;",
+      "solution": "\"Berlin\"",
+      "accept": ["\"Berlin\"", "'Berlin'"],
+      "hint": "Text braucht Anführungszeichen: `\"Berlin\"`"
+    },
+    {
+      "type": "explain",
+      "text": "Eine Variable heißt Variable, weil ihr Wert **variabel** ist – er darf sich ändern. Dafür weist du einfach einen neuen Wert zu, diesmal **ohne** `let`:\n\n```js\nlet punkte = 10;\npunkte = 12;\nconsole.log(punkte);\n```\n\nAusgabe: `12`. Die zweite Zeile legt keine neue Kiste an – sie tauscht nur den **Inhalt** der vorhandenen Kiste aus.\n\nMerke: `let` schreibst du nur beim **allerersten** Anlegen der Variable."
+    },
+    {
+      "type": "quiz",
+      "question": "Was gibt dieser Code aus?\n\n```js\nlet stand = 5;\nstand = 8;\nconsole.log(stand);\n```",
+      "options": [
+        "`5`",
+        "`8`",
+        "`5 8`"
+      ],
+      "correct": 1,
+      "explanation": "Die zweite Zeile überschreibt den alten Wert: In der Kiste liegt jetzt 8. Der alte Wert 5 ist weg."
+    },
+    {
+      "type": "explain",
+      "text": "Manche Werte sollen sich **nie** ändern – zum Beispiel ein Steuersatz oder der Name deines Cafés. Dafür gibt es `const` (von **Konstante**):\n\n```js\nconst mwst = 19;\n```\n\nVersuchst du später `mwst = 7;`, stoppt JavaScript mit einer Fehlermeldung – `const`-Kisten sind sozusagen zugeklebt.\n\n**Faustregel:** Nimm `const`, wenn der Wert fest steht. Nimm `let` nur, wenn sich der Wert wirklich ändern soll – wie ein Punktestand. Profis schreiben deshalb meistens `const`."
+    },
+    {
+      "type": "quiz",
+      "question": "Für welchen Wert passt `const` am besten?",
+      "options": [
+        "Für den Punktestand in einem Spiel, der ständig steigt",
+        "Für den Namen des Cafés, der sich nie ändert",
+        "Egal – `const` und `let` sind austauschbar"
+      ],
+      "correct": 1,
+      "explanation": "Der Name steht fest → const. Der Punktestand ändert sich dauernd → let. Der Unterschied schützt dich vor versehentlichem Überschreiben."
+    },
+    {
+      "type": "code",
+      "task": "1. Lege eine **Konstante** `cafe` mit dem Text **Café Pause** an.\n2. Lege eine **Variable** `alter` mit dem Zahlenwert **16** an.\n3. Gib beide mit `console.log` aus – erst `cafe`, dann `alter`.",
+      "starter": {
+        "js": "// Konstante, Variable und zwei Ausgaben\n"
+      },
+      "hints": [
+        "Feste Werte legst du mit const an, veränderliche mit let.",
+        "const cafe = \"Café Pause\"; – der Text braucht Anführungszeichen, die Zahl bei alter nicht.",
+        "```js\nconst cafe = \"Café Pause\";\nlet alter = 16;\n\nconsole.log(cafe);\nconsole.log(alter);\n```"
+      ],
+      "solution": {
+        "js": "const cafe = \"Café Pause\";\nlet alter = 16;\n\nconsole.log(cafe);\nconsole.log(alter);\n"
+      },
+      "tests": [
+        { "type": "source", "file": "js", "matches": "const\\s+cafe\\s*=", "label": "cafe wird mit const angelegt" },
+        { "type": "source", "file": "js", "matches": "let\\s+alter\\s*=\\s*16", "label": "alter wird mit let angelegt und hat den Wert 16" },
+        { "type": "console", "expected": "Café Pause", "label": "Die Konsole zeigt Café Pause" },
+        { "type": "console", "expected": "16", "label": "Die Konsole zeigt 16" }
+      ]
+    }
+  ]
+}

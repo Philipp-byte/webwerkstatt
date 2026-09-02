@@ -1,0 +1,93 @@
+{
+  "id": "04-wiederholung",
+  "title": "Wiederholung",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "**Wiederholen wirkt:** Was du nach ein paar Tagen noch einmal aktiv aus dem Kopf abrufst, bleibt viel länger hängen als das, was du nur einmal gelesen hast. Deshalb mischt diese Lektion den JavaScript-Stoff aus diesem Kapitel mit zwei kleinen CSS-Häppchen von früher.\n\nKein neuer Stoff – alles hier kannst du schon. Los geht's!"
+    },
+    {
+      "type": "quiz",
+      "question": "Was gibt dieser Code aus?\n\n```js\nlet preis = 4;\npreis = 6;\nconsole.log(\"Preis: \" + preis);\n```",
+      "options": [
+        "`Preis: 4`",
+        "`Preis: 6`",
+        "`Preis: preis`"
+      ],
+      "correct": 1,
+      "explanation": "Die zweite Zeile tauscht den Inhalt der Kiste: aus 4 wird 6. Das `+` hängt Text und Variablenwert aneinander."
+    },
+    {
+      "type": "code",
+      "task": "Der Brezel-Bon:\n\n1. Lege eine **Konstante** `stueckpreis` mit dem Wert **1.5** an.\n2. Lege eine Variable `menge` mit dem Wert **4** an.\n3. Lass JavaScript in einer Variablen `summe` **stueckpreis mal menge** rechnen.\n4. Gib genau **4 Brezeln kosten 6 Euro** aus – baue die Zeile aus `menge`, Text, `summe` und Text zusammen.",
+      "starter": {
+        "js": "// Bon: stueckpreis, menge, summe – dann die Ausgabe\n"
+      },
+      "hints": [
+        "Wie an der Café-Kasse: erst anlegen und rechnen lassen, dann eine Ausgabe-Zeile.",
+        "Die Ausgabe: console.log(menge + \" Brezeln kosten \" + summe + \" Euro\");",
+        "```js\nconst stueckpreis = 1.5;\nlet menge = 4;\nlet summe = stueckpreis * menge;\n\nconsole.log(menge + \" Brezeln kosten \" + summe + \" Euro\");\n```"
+      ],
+      "solution": {
+        "js": "const stueckpreis = 1.5;\nlet menge = 4;\nlet summe = stueckpreis * menge;\n\nconsole.log(menge + \" Brezeln kosten \" + summe + \" Euro\");\n"
+      },
+      "tests": [
+        { "type": "source", "file": "js", "matches": "const\\s+stueckpreis\\s*=\\s*1\\.5", "label": "stueckpreis ist eine Konstante mit dem Wert 1.5" },
+        { "type": "source", "file": "js", "matches": "stueckpreis\\s*\\*\\s*menge|menge\\s*\\*\\s*stueckpreis", "label": "summe wird berechnet, nicht selbst ausgerechnet" },
+        { "type": "console", "expected": "4 Brezeln kosten 6 Euro", "label": "Die Konsole zeigt „4 Brezeln kosten 6 Euro“" }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Zurück zu CSS: Welcher Selektor trifft **nur** das Element mit `id=\"logo\"`?",
+      "options": [
+        "`#logo { ... }`",
+        "`.logo { ... }`",
+        "`logo { ... }`"
+      ],
+      "correct": 0,
+      "explanation": "Die Raute `#` ist für IDs, der Punkt `.` für Klassen. Ohne Zeichen davor triffst du alle Tags mit diesem Namen – ein `<logo>`-Tag gibt es aber gar nicht."
+    },
+    {
+      "type": "code",
+      "task": "Ein Mini-Plakat fürs Café – gestalte es mit CSS:\n\n1. Die `h1` bekommt die Textfarbe **#5a3e2b** (Kaffeebraun) und wird **zentriert**.\n2. Alle `p` bekommen `font-size: 18px;`.",
+      "starter": {
+        "html": "<h1>Café Pause</h1>\n<p>Frische Waffeln in jeder großen Pause.</p>\n<p>Montag bis Freitag geöffnet.</p>\n",
+        "css": "/* Deine zwei Regeln hier */\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Zwei Regeln: eine für h1 (mit zwei Eigenschaften), eine für p.",
+        "Zentrieren geht mit text-align: center; – die Farbe mit color: #5a3e2b;",
+        "```css\nh1 {\n  color: #5a3e2b;\n  text-align: center;\n}\n\np {\n  font-size: 18px;\n}\n```"
+      ],
+      "solution": {
+        "css": "h1 {\n  color: #5a3e2b;\n  text-align: center;\n}\n\np {\n  font-size: 18px;\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": "h1", "prop": "color", "expected": "#5a3e2b", "label": "Die Überschrift ist kaffeebraun (#5a3e2b)" },
+        { "type": "style", "selector": "h1", "prop": "text-align", "expected": "center", "label": "Die Überschrift ist zentriert" },
+        { "type": "style", "selector": "p", "prop": "font-size", "expected": "18px", "label": "Die Absätze haben Schriftgröße 18px" }
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "Der Zählerstand soll sich später noch **ändern** können. Mit welchem Schlüsselwort legst du die Variable an?",
+      "template": "___ zaehler = 0;",
+      "solution": "let",
+      "accept": ["let"],
+      "hint": "Werte, die sich ändern sollen, bekommen `let` – eine `const`-Kiste wäre zugeklebt."
+    },
+    {
+      "type": "quiz",
+      "question": "Was gibt `console.log(\"3 + 4\");` aus?",
+      "options": [
+        "`7`",
+        "`3 + 4`",
+        "Eine Fehlermeldung"
+      ],
+      "correct": 1,
+      "explanation": "In Anführungszeichen ist 3 + 4 nur Text – JavaScript rechnet nicht, sondern zeigt die Zeichen an. Ohne Anführungszeichen käme 7."
+    }
+  ]
+}

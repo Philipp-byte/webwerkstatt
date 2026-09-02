@@ -1,0 +1,15 @@
+{
+  "id": "10-css-grundlagen",
+  "title": "CSS-Grundlagen",
+  "icon": "🎨",
+  "color": "#2f6fdb",
+  "description": "Wie CSS-Regeln aufgebaut sind, die drei Orte für CSS und die ersten Farben.",
+  "lessons": [
+    "01-was-ist-css",
+    "02-drei-orte-fuer-css",
+    "03-farben",
+    "04-hintergrund",
+    "05-wiederholung",
+    "06-projekt-erste-styles"
+  ]
+}

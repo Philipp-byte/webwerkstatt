@@ -1,0 +1,62 @@
+{
+  "id": "03-farben",
+  "title": "Farben",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Für Farbwerte gibt es in CSS mehrere Schreibweisen. Die zwei wichtigsten:\n\n**1. Farbnamen** (englisch): `red`, `blue`, `green`, `orange`, `hotpink`, `black`, `white` … Schnell getippt, aber es gibt nur eine begrenzte Auswahl.\n\n**2. Hex-Codes**: eine Raute `#` gefolgt von **sechs Zeichen** (Ziffern `0–9` und Buchstaben `a–f`). Je **zwei Zeichen** stehen für den **R**ot-, **G**rün- und **B**lau-Anteil des Lichts: `00` heißt „gar nicht“, `ff` heißt „volle Stärke“.\n\n```css\nh1 { color: #ff6600; }  /* volles Rot + etwas Grün = Orange */\np { color: green; }\n```\n\nEin paar Klassiker: `#000000` = Schwarz (alles aus), `#ffffff` = Weiß (alles an), `#ff0000` = reines Rot.\n\nMit Hex-Codes triffst du **jede** der über 16 Millionen Bildschirmfarben exakt – deshalb nutzen Profis fast nur sie."
+    },
+    {
+      "type": "example",
+      "text": "Ein kleiner Farb-Spielplatz. Probiere eigene Hex-Codes aus – z. B. `#ff0000`, `#00ff00`, `#123456`. Was passiert bei `#000000` und `#ffffff`?",
+      "html": "<h1>Farblabor</h1>\n<p>Die Preise sind <strong>heiß</strong>, die Auswahl ist <em>riesig</em>.</p>\n<p>Nur heute: Alles zum halben Preis!</p>\n",
+      "css": "h1 {\n  color: crimson;\n}\nstrong {\n  color: #1a9e5c;\n}\nem {\n  color: #7a3fbf;\n}\n",
+      "editable": ["css"]
+    },
+    {
+      "type": "explain",
+      "text": "Eine dritte Schreibweise wirst du oft in Vorlagen und Werkzeugen sehen: **`rgb()`**. Auch sie mischt Rot, Grün und Blau – aber mit Zahlen von **0 bis 255** statt mit Hex-Zeichen. `rgb(255, 102, 0)` ist exakt dieselbe Farbe wie `#ff6600`, nur anders geschrieben:\n\n```css\nh1 { color: rgb(255, 102, 0); }\n```\n\nDer Browser versteht alle drei Schreibweisen gleich gut – du darfst sie sogar mischen. Wichtig ist nur: erkennen und lesen können solltest du alle."
+    },
+    {
+      "type": "quiz",
+      "question": "Welcher Hex-Code ergibt **reines Rot**?",
+      "options": [
+        "`#00ff00`",
+        "`#ff0000`",
+        "`#0000ff`"
+      ],
+      "correct": 1,
+      "explanation": "Die Reihenfolge ist immer **R**ot–**G**rün–**B**lau: `#ff0000` bedeutet Rot auf voller Stärke (`ff`), Grün und Blau aus (`00`)."
+    },
+    {
+      "type": "fill",
+      "text": "Setze den englischen **Farbnamen** für Rot ein.",
+      "template": "h1 { color: ___; }",
+      "solution": "red",
+      "accept": ["red"],
+      "hint": "Die Farbnamen sind englisch – Rot heißt `red`."
+    },
+    {
+      "type": "code",
+      "task": "Färbe die Smoothie-Karte – mit allen drei Schreibweisen:\n\n1. Die `h1` bekommt den **Hex-Code** `#ff6600`\n2. Alle `p` bekommen den **Farbnamen** `green`\n3. Alle `strong`-Elemente bekommen die **rgb-Farbe** `rgb(90, 62, 43)`",
+      "starter": {
+        "html": "<h1>Unsere Smoothies</h1>\n<p>Mango-Maracuja – <strong>3,50 €</strong></p>\n<p>Erdbeer-Banane – <strong>3,00 €</strong></p>\n",
+        "css": "/* Deine drei Regeln hier */\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Du brauchst drei Regeln: eine für h1, eine für p, eine für strong.",
+        "Hex-Codes schreibst du mit Raute (color: #ff6600;), rgb mit Klammern und Kommas: color: rgb(90, 62, 43);",
+        "```css\nh1 {\n  color: #ff6600;\n}\np {\n  color: green;\n}\nstrong {\n  color: rgb(90, 62, 43);\n}\n```"
+      ],
+      "solution": {
+        "css": "h1 {\n  color: #ff6600;\n}\np {\n  color: green;\n}\nstrong {\n  color: rgb(90, 62, 43);\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": "h1", "prop": "color", "expected": "#ff6600", "label": "Die Überschrift hat die Farbe #ff6600" },
+        { "type": "style", "selector": "p", "prop": "color", "expected": "green", "label": "Die Absätze sind grün" },
+        { "type": "style", "selector": "strong", "prop": "color", "expected": "rgb(90, 62, 43)", "label": "Die Preise haben die Farbe rgb(90, 62, 43)" }
+      ]
+    }
+  ]
+}

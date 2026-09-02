@@ -1,0 +1,56 @@
+{
+  "id": "02-geordnete-listen",
+  "title": "Geordnete Listen",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Wenn die **Reihenfolge wichtig** ist – wie bei einer Anleitung – nimmst du eine **geordnete Liste**: `<ol>` (ordered list = geordnete Liste).\n\n```html\n<ol>\n  <li>Wasser aufkochen</li>\n  <li>Nudeln hineingeben</li>\n  <li>10 Minuten warten</li>\n</ol>\n```\n\nDie Einträge heißen wieder `<li>`. Das Beste: Die **Nummern macht der Browser automatisch** – du musst keine 1., 2., 3. tippen! Löschst du einen Schritt oder schiebst einen dazwischen, stimmt die Nummerierung trotzdem immer."
+    },
+    {
+      "type": "example",
+      "text": "Probier aus: Füge in der Mitte einen neuen Schritt ein – die Nummerierung passt sich von selbst an.",
+      "html": "<h2>Passwort ändern</h2>\n<ol>\n  <li>Einstellungen öffnen</li>\n  <li>Auf „Konto“ klicken</li>\n  <li>Neues Passwort eingeben</li>\n  <li>Speichern</li>\n</ol>\n"
+    },
+    {
+      "type": "explain",
+      "text": "**Welche Liste nehme ich?** Stell dir eine einfache Frage: *Ändert es die Bedeutung, wenn ich die Einträge vertausche?*\n\n- **Ja** → `<ol>` (Anleitung, Rangliste, Wegbeschreibung)\n- **Nein** → `<ul>` (Einkaufsliste, Zutaten, Hobbys)\n\nPraktisch: Beide Listen benutzen dieselben `<li>`-Einträge. Willst du eine Punkte-Liste in eine nummerierte verwandeln, tauschst du **nur** `<ul>`/`</ul>` gegen `<ol>`/`</ol>` – die Einträge bleiben, wie sie sind."
+    },
+    {
+      "type": "quiz",
+      "question": "Du willst die **Top 3 deiner Lieblingsfilme** als Rangliste zeigen (Platz 1, 2, 3). Welche Liste passt?",
+      "options": [
+        "`<ul>` – die Punkte-Liste",
+        "`<ol>` – die nummerierte Liste"
+      ],
+      "correct": 1,
+      "explanation": "Bei einer Rangliste zählt die Reihenfolge – also `<ol>`. Punkte-Listen (`<ul>`) passen, wenn die Reihenfolge egal ist."
+    },
+    {
+      "type": "fill",
+      "text": "Diese Morgenroutine soll **nummeriert** erscheinen. Setze den passenden öffnenden Tag ein.",
+      "template": "<___>\n  <li>Wecker ausschalten</li>\n  <li>Aufstehen</li>\n  <li>Zähne putzen</li>\n</ol>",
+      "solution": "ol",
+      "accept": ["ol"],
+      "hint": "Der schließende Tag verrät es: Die nummerierte Liste heißt `<ol>` – ordered list."
+    },
+    {
+      "type": "code",
+      "task": "Schreibe eine nummerierte Anleitung **Spaghetti kochen** mit mindestens drei Schritten.\n\n1. Die Überschrift `<h2>` ist schon da – dir fehlt nur noch die Liste.\n2. Achte auf eine sinnvolle Reihenfolge der Schritte!",
+      "starter": {
+        "html": "<h2>Spaghetti kochen</h2>\n<!-- Deine Anleitung hier -->\n"
+      },
+      "hints": [
+        "Eine nummerierte Liste beginnt mit <ol> und endet mit </ol>.",
+        "Jeder Schritt ist ein <li>...</li> – die Nummern kommen automatisch.",
+        "```html\n<h2>Spaghetti kochen</h2>\n<ol>\n  <li>Wasser salzen und aufkochen</li>\n  <li>Spaghetti 9 Minuten kochen</li>\n  <li>Abgießen und servieren</li>\n</ol>\n```"
+      ],
+      "solution": {
+        "html": "<h2>Spaghetti kochen</h2>\n<ol>\n  <li>Wasser salzen und aufkochen</li>\n  <li>Spaghetti 9 Minuten kochen</li>\n  <li>Abgießen und servieren</li>\n</ol>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "ol", "min": 1, "label": "Es gibt eine <ol>-Liste" },
+        { "type": "selector", "selector": "ol li", "min": 3, "label": "Die Anleitung hat mindestens drei Schritte" }
+      ]
+    }
+  ]
+}

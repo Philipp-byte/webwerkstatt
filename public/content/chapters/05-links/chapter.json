@@ -1,0 +1,13 @@
+{
+  "id": "05-links",
+  "title": "Links",
+  "icon": "🔗",
+  "color": "#c9563e",
+  "description": "Externe Links, Links zwischen eigenen Seiten und Sprungmarken innerhalb einer Seite.",
+  "lessons": [
+    "01-externe-links",
+    "02-interne-links-und-sprungmarken",
+    "03-wiederholung",
+    "04-projekt-navigation"
+  ]
+}

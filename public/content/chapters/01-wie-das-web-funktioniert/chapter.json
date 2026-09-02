@@ -1,0 +1,12 @@
+{
+  "id": "01-wie-das-web-funktioniert",
+  "title": "So funktioniert das Web",
+  "icon": "🌍",
+  "color": "#7a3fbf",
+  "description": "Client, Server, URL und HTTP – was wirklich passiert, wenn du eine Webseite aufrufst.",
+  "lessons": [
+    "01-was-passiert-beim-seitenaufruf",
+    "02-url-und-http",
+    "03-browser-editor-standards"
+  ]
+}

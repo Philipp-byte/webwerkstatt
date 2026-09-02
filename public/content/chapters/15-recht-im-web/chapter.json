@@ -1,0 +1,12 @@
+{
+  "id": "15-recht-im-web",
+  "title": "Recht im Web",
+  "icon": "⚖️",
+  "color": "#5b6b7c",
+  "description": "Urheberrecht, Impressum und Datenschutzerklärung – was jede Webseite braucht.",
+  "lessons": [
+    "01-urheberrecht-und-bilder",
+    "02-impressum-und-datenschutz",
+    "03-projekt-impressum"
+  ]
+}

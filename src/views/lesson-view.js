@@ -2,13 +2,28 @@
 // Schritt-Typen: explain, example, quiz, fill, code (wie bei PyQuest, ohne XP).
 
 import { loadChapter, loadLesson, nextLessonAfter } from '../content.js';
-import { markDone } from '../progress.js';
+import { markDone, isChapterLocked } from '../progress.js';
 import { md } from '../markdown.js';
 import { createWorkbench } from '../workbench.js';
 import { runTests } from '../checker.js';
 import { updateProgressBadge } from '../router.js';
+import { getProjektSeite, getProjektCss, setProjektSeite, setProjektCss } from '../projekt.js';
 
 export async function renderLesson(app, chapterId, lessonId) {
+  // Direktlink in ein gesperrtes Kapitel (Schulmodus): freundlich abweisen –
+  // der Server lehnt das Speichern gesperrter Lektionen ohnehin ab.
+  if (isChapterLocked(chapterId)) {
+    app.innerHTML = `
+      <div class="lektion-seite">
+        <a class="zurueck" href="#/">← Zur Übersicht</a>
+        <div class="karte gesperrt-karte">
+          <p><strong>🔒 Diese Lektion gehört zu einem gesperrten Kapitel.</strong></p>
+          <p>Deine Lehrkraft schaltet das Kapitel frei, sobald es im Unterricht dran ist.</p>
+        </div>
+      </div>`;
+    return;
+  }
+
   const [kapitel, lektion] = await Promise.all([
     loadChapter(chapterId),
     loadLesson(chapterId, lessonId),
@@ -212,7 +227,22 @@ function renderFill(karte, step, fertig) {
 
 function renderCode(karte, step, fertig) {
   karte.innerHTML = `<div class="schritt-inhalt">${md(step.task)}</div>`;
-  const werkbank = createWorkbench(karte, step.starter, { editable: step.editable });
+
+  // Projekt-Etappe: gespeicherten Projektstand als Ausgangspunkt laden
+  // (der starter aus der Lektion bleibt Fallback für Quereinsteiger).
+  const files = { ...step.starter };
+  if (step.project) {
+    if (step.project.page && files.html != null) {
+      const stand = getProjektSeite(step.project.page);
+      if (stand != null) files.html = stand;
+    }
+    if (files.css != null) {
+      const css = getProjektCss();
+      if (css != null) files.css = css;
+    }
+  }
+
+  const werkbank = createWorkbench(karte, files, { editable: step.editable });
 
   const ergebnisse = document.createElement('div');
   ergebnisse.className = 'test-ergebnisse';
@@ -272,6 +302,19 @@ function renderCode(karte, step, fertig) {
       const ok = document.createElement('div');
       ok.className = 'rueckmeldung rueckmeldung-ok';
       ok.innerHTML = '<strong>Alle Prüfungen bestanden!</strong> 🎉';
+
+      // Projekt-Etappe geschafft → Ergebnis im Café-Projekt sichern
+      if (step.project && Array.isArray(step.project.save)) {
+        const stand = werkbank.getFiles();
+        if (step.project.save.includes('html') && step.project.page && stand.html != null) {
+          setProjektSeite(step.project.page, stand.html);
+        }
+        if (step.project.save.includes('css') && stand.css != null) {
+          setProjektCss(stand.css);
+        }
+        ok.innerHTML += ' <a href="#/projekt">Im Café-Projekt gespeichert →</a>';
+      }
+
       karte.insertBefore(ok, buttons);
       fertig();
     }

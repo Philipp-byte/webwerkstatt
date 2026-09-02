@@ -1,0 +1,86 @@
+{
+  "id": "03-wiederholung",
+  "title": "Wiederholung: Listen & Links",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Zeit zum Festigen! Beim **aktiven Abrufen** merkt dein Gehirn: Das wird gebraucht – und speichert es dauerhaft.\n\nHeute dran: **Listen** (auch verschachtelte) und **Links** – extern, relativ und mit Sprungmarke. Das Ganze rund um die Planung eines Schulfests."
+    },
+    {
+      "type": "quiz",
+      "question": "Ein Link soll **innerhalb derselben Seite** zu einem Abschnitt springen. Was braucht das Ziel-Element?",
+      "options": [
+        "Ein `title`-Attribut",
+        "Eine `id`",
+        "Ein eigenes `href`"
+      ],
+      "correct": 1,
+      "explanation": "Sprungmarken bestehen aus zwei Teilen: Das Ziel bekommt eine `id`, der Link zeigt mit `href=\"#idname\"` darauf. `title` ist nur der Tooltip, und `href` gehört zum Link, nicht zum Ziel."
+    },
+    {
+      "type": "fill",
+      "text": "Ganz oben auf der Seite steht `<h1 id=\"oben\">`. Vervollständige den Link am Seitenende, der dorthin **zurückspringt**.",
+      "template": "<a href=\"___\">Nach oben</a>",
+      "solution": "#oben",
+      "accept": ["#oben"],
+      "hint": "Sprungmarken-Ziele beginnen im `href` immer mit dem Doppelkreuz `#`, gefolgt vom id-Namen."
+    },
+    {
+      "type": "code",
+      "task": "Baue eine Linksammlung für die Schulfest-Orga:\n\n1. Eine `<h2>` mit dem Text **Meine Lieblingsseiten**\n2. Darunter eine `<ul>` mit mindestens **drei** Einträgen\n3. In **jedem** `<li>` steht ein Link zu einer echten Webseite – Adresse mit `https://` und einem Linktext, der das Ziel beschreibt",
+      "starter": {
+        "html": "<!-- Deine Linksammlung hier -->\n"
+      },
+      "hints": [
+        "Erst die Liste bauen, dann in jedes <li> einen kompletten <a href=\"https://...\">Beschreibender Text</a> setzen.",
+        "So sieht ein Eintrag aus: <li><a href=\"https://de.wikipedia.org\">Zur Wikipedia</a></li>",
+        "```html\n<h2>Meine Lieblingsseiten</h2>\n<ul>\n  <li><a href=\"https://de.wikipedia.org\">Zur Wikipedia</a></li>\n  <li><a href=\"https://www.tagesschau.de\">Nachrichten bei der Tagesschau</a></li>\n  <li><a href=\"https://www.dwd.de\">Wetterbericht des Wetterdienstes</a></li>\n</ul>\n```"
+      ],
+      "solution": {
+        "html": "<h2>Meine Lieblingsseiten</h2>\n<ul>\n  <li><a href=\"https://de.wikipedia.org\">Zur Wikipedia</a></li>\n  <li><a href=\"https://www.tagesschau.de\">Nachrichten bei der Tagesschau</a></li>\n  <li><a href=\"https://www.dwd.de\">Wetterbericht des Wetterdienstes</a></li>\n</ul>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "h2", "expected": "Meine Lieblingsseiten", "label": "Die <h2> lautet „Meine Lieblingsseiten“" },
+        { "type": "selector", "selector": "ul li a", "min": 3, "label": "Mindestens drei Listeneinträge enthalten je einen Link" },
+        { "type": "attr", "selector": "ul li a", "attr": "href", "matches": "^https://", "label": "Die Links führen zu https-Adressen" }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Welcher Link führt zu einer **eigenen Datei im selben Ordner**?",
+      "options": [
+        "`<a href=\"https://www.galerie.de\">`",
+        "`<a href=\"galerie.html\">`",
+        "`<a href=\"#galerie\">`"
+      ],
+      "correct": 1,
+      "explanation": "Nur der Dateiname ohne `https://` ist ein relativer Link zur eigenen Datei. Mit `#galerie` würdest du zu einer Sprungmarke auf derselben Seite springen, mit `https://...` zu einer fremden Webseite."
+    },
+    {
+      "type": "code",
+      "task": "Die große Schulfest-Seite – alles auf einmal:\n\n1. Eine `<h1>` mit dem Text **Schulfest**\n2. Direkt darunter ein Absatz mit zwei Sprungmarken-Links: **Zum Programm** (Ziel `#programm`) und **Zum Essen** (Ziel `#essen`)\n3. Eine `<h2>` **Programm** mit `id=\"programm\"` – darunter eine `<ol>` mit mindestens drei Programmpunkten\n4. Eine `<h2>` **Essen** mit `id=\"essen\"` – darunter eine **verschachtelte** `<ul>`: zwei Rubriken **Herzhaft** und **Süß**, jede mit innerer `<ul>` und mindestens zwei Angeboten",
+      "starter": {
+        "html": "<!-- Baue hier die Schulfest-Seite -->\n"
+      },
+      "hints": [
+        "Arbeite von oben nach unten: h1 → Absatz mit den zwei #-Links → h2 mit id → ol → h2 mit id → verschachtelte ul. Die id-Namen müssen exakt zu den hrefs passen.",
+        "Die verschachtelte Liste kennst du: Die innere <ul> wohnt im <li>, nach dem Rubriknamen, vor dem </li>:\n```html\n<li>Herzhaft\n  <ul>\n    <li>Brezeln</li>\n    <li>Hotdogs</li>\n  </ul>\n</li>\n```",
+        "```html\n<h1>Schulfest</h1>\n<p>\n  <a href=\"#programm\">Zum Programm</a>\n  <a href=\"#essen\">Zum Essen</a>\n</p>\n\n<h2 id=\"programm\">Programm</h2>\n<ol>\n  <li>Begrüßung auf dem Pausenhof</li>\n  <li>Auftritt der Schulband</li>\n  <li>Große Tombola</li>\n</ol>\n\n<h2 id=\"essen\">Essen</h2>\n<ul>\n  <li>Herzhaft\n    <ul>\n      <li>Brezeln</li>\n      <li>Hotdogs</li>\n    </ul>\n  </li>\n  <li>Süß\n    <ul>\n      <li>Waffeln</li>\n      <li>Muffins</li>\n    </ul>\n  </li>\n</ul>\n```"
+      ],
+      "solution": {
+        "html": "<h1>Schulfest</h1>\n<p>\n  <a href=\"#programm\">Zum Programm</a>\n  <a href=\"#essen\">Zum Essen</a>\n</p>\n\n<h2 id=\"programm\">Programm</h2>\n<ol>\n  <li>Begrüßung auf dem Pausenhof</li>\n  <li>Auftritt der Schulband</li>\n  <li>Große Tombola</li>\n</ol>\n\n<h2 id=\"essen\">Essen</h2>\n<ul>\n  <li>Herzhaft\n    <ul>\n      <li>Brezeln</li>\n      <li>Hotdogs</li>\n    </ul>\n  </li>\n  <li>Süß\n    <ul>\n      <li>Waffeln</li>\n      <li>Muffins</li>\n    </ul>\n  </li>\n</ul>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "h1", "expected": "Schulfest", "label": "Die <h1> lautet „Schulfest“" },
+        { "type": "text", "selector": "a[href='#programm']", "expected": "Zum Programm", "label": "Der Link „Zum Programm“ zeigt auf #programm" },
+        { "type": "text", "selector": "a[href='#essen']", "expected": "Zum Essen", "label": "Der Link „Zum Essen“ zeigt auf #essen" },
+        { "type": "text", "selector": "#programm", "expected": "Programm", "label": "Die Programm-Überschrift trägt die id \"programm\"" },
+        { "type": "selector", "selector": "ol li", "min": 3, "label": "Das Programm hat mindestens drei Punkte" },
+        { "type": "text", "selector": "#essen", "expected": "Essen", "label": "Die Essens-Überschrift trägt die id \"essen\"" },
+        { "type": "selector", "selector": "ul li ul", "min": 2, "label": "Beide Essens-Rubriken enthalten eine innere Liste" },
+        { "type": "selector", "selector": "ul li ul li", "min": 4, "label": "Die inneren Listen haben zusammen mindestens vier Angebote" },
+        { "type": "source", "file": "html", "matches": "<ul>\\s*<ul", "absent": true, "label": "Keine Liste steht direkt in einer Liste – die innere Liste wohnt im <li>" }
+      ]
+    }
+  ]
+}

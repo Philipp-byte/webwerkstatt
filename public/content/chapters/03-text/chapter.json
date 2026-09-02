@@ -1,0 +1,14 @@
+{
+  "id": "03-text",
+  "title": "Text & Überschriften",
+  "icon": "✍️",
+  "color": "#cf5430",
+  "description": "Überschriften, Absätze, Umbrüche, Linien, Hervorhebungen und Kommentare.",
+  "lessons": [
+    "01-ueberschriften",
+    "02-absaetze-umbrueche-linien",
+    "03-hervorheben-und-kommentare",
+    "04-wiederholung",
+    "05-projekt-ueber-uns"
+  ]
+}

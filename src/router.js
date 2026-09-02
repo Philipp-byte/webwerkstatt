@@ -1,6 +1,8 @@
 import { renderHome } from './views/home-view.js';
 import { renderChapter } from './views/chapter-view.js';
 import { renderLesson } from './views/lesson-view.js';
+import { renderProjekt } from './views/projekt-view.js';
+import { renderPruefung } from './views/pruefung-view.js';
 import { loadFlatLessons } from './content.js';
 import { doneCount } from './progress.js';
 
@@ -24,6 +26,10 @@ async function route() {
       await renderChapter(app, parts[1]);
     } else if (parts[0] === 'lektion' && parts[1] && parts[2]) {
       await renderLesson(app, parts[1], parts[2]);
+    } else if (parts[0] === 'projekt') {
+      await renderProjekt(app);
+    } else if (parts[0] === 'pruefung') {
+      await renderPruefung(app);
     } else {
       await renderHome(app);
     }

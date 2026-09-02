@@ -1,0 +1,86 @@
+{
+  "id": "01-tabellen-aufbau",
+  "title": "Aufbau einer Tabelle",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Stundenplan, Preisliste, Spieltabelle – alles, was in **Zeilen und Spalten** passt, gehört in eine Tabelle. HTML baut Tabellen aus drei Bausteinen – **von außen nach innen**:\n\n`<table>` – die Tabelle selbst\n\n`<tr>` – eine **Zeile** (table row)\n\n`<td>` – eine **Zelle** in der Zeile (table data)\n\n```html\n<table>\n  <tr>\n    <td>Deutsch</td>\n    <td>Raum 101</td>\n  </tr>\n</table>\n```\n\nMerke: **Zellen stehen in Zeilen, Zeilen stehen in der Tabelle.** Die Spalten musst du nirgends extra anlegen – sie entstehen von selbst, weil die Zellen jeder Zeile untereinander ausgerichtet werden."
+    },
+    {
+      "type": "example",
+      "text": "Eine kleine Tabelle mit zwei Zeilen und zwei Spalten. Die Linien kommen übrigens aus dem **CSS-Tab** 🔒 – was es damit auf sich hat, lernst du im CSS-Teil.\n\nFüge eine dritte Zeile hinzu!",
+      "html": "<table>\n  <tr>\n    <td>Deutsch</td>\n    <td>Raum 101</td>\n  </tr>\n  <tr>\n    <td>Mathe</td>\n    <td>Raum 204</td>\n  </tr>\n</table>\n",
+      "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\n",
+      "editable": ["html"]
+    },
+    {
+      "type": "explain",
+      "text": "So liest der Browser deine Tabelle:\n\n1. Er geht die Zeilen (`<tr>`) **von oben nach unten** durch.\n2. In jeder Zeile setzt er die Zellen (`<td>`) **von links nach rechts**.\n\nDaraus folgt die wichtigste Tabellen-Regel: **Jede Zeile braucht gleich viele Zellen.** Hat eine Zeile weniger Zellen als die anderen, bleibt rechts eine Lücke – die Tabelle sieht „ausgefranst“ aus.\n\nUnd noch etwas: Inhalt gehört immer **in eine Zelle**, nie direkt zwischen `<tr>` oder `<table>`. Text, der dort steht, wird vom Browser kurzerhand **vor** die Tabelle geschoben – er landet also an einer ganz anderen Stelle, als du denkst."
+    },
+    {
+      "type": "fill",
+      "text": "Hier fehlt der öffnende Tag für die zweite **Zeile**. Setze ihn ein.",
+      "template": "<table>\n  <tr>\n    <td>Deutsch</td>\n  </tr>\n  <___>\n    <td>Mathe</td>\n  </tr>\n</table>",
+      "solution": "tr",
+      "accept": ["tr"],
+      "hint": "Eine Zeile beginnt mit `<tr>` – table row."
+    },
+    {
+      "type": "code",
+      "task": "Baue eine Tabelle mit **zwei Zeilen und zwei Spalten**:\n\nZeile 1: **Deutsch** und **Raum 101**\nZeile 2: **IT** und **Raum 204**",
+      "starter": {
+        "html": "<!-- Deine Tabelle hier -->\n",
+        "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Gerüst: <table> außen, darin zwei <tr>, in jedem <tr> zwei <td>.",
+        "Achte darauf, jede Zeile mit </tr> zu schließen.",
+        "```html\n<table>\n  <tr>\n    <td>Deutsch</td>\n    <td>Raum 101</td>\n  </tr>\n  <tr>\n    <td>IT</td>\n    <td>Raum 204</td>\n  </tr>\n</table>\n```"
+      ],
+      "solution": {
+        "html": "<table>\n  <tr>\n    <td>Deutsch</td>\n    <td>Raum 101</td>\n  </tr>\n  <tr>\n    <td>IT</td>\n    <td>Raum 204</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "table", "min": 1, "label": "Es gibt eine <table>" },
+        { "type": "selector", "selector": "tr", "min": 2, "label": "Die Tabelle hat mindestens zwei Zeilen" },
+        { "type": "selector", "selector": "td", "min": 4, "label": "Es gibt mindestens vier Zellen" },
+        { "type": "text", "selector": "td", "expected": "Deutsch", "label": "Die erste Zelle enthält „Deutsch“" }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Welcher Baustein darf **direkt** in `<table>` stehen?",
+      "options": [
+        "`<td>` – die Zelle",
+        "`<tr>` – die Zeile",
+        "Normaler Text ohne Tag"
+      ],
+      "correct": 1,
+      "explanation": "Die Reihenfolge ist fest: In der Tabelle stehen **Zeilen**, erst in den Zeilen stehen die **Zellen**. Loser Text würde vom Browser vor die Tabelle geschoben."
+    },
+    {
+      "type": "code",
+      "task": "Jetzt eine Nummer größer – ein Raumplan mit **drei Zeilen und drei Spalten**:\n\nZeile 1: **Deutsch**, **Raum 101**, **Frau Sommer**\nZeile 2: **IT**, **Raum 204**, **Herr Alvarez**\nZeile 3: **Sport**, **Sporthalle**, **Frau Krause**\n\nProfi-Tipp: Bau erst **eine** Zeile fertig, kopiere sie zweimal und tausche dann nur die Inhalte aus.",
+      "starter": {
+        "html": "<h2>Unser Raumplan</h2>\n<!-- Deine Tabelle hier -->\n",
+        "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Wie eben: <table> außen, drei <tr> – aber diesmal stecken in jedem <tr> drei <td>.",
+        "Zeile 1 sieht so aus: <tr><td>Deutsch</td><td>Raum 101</td><td>Frau Sommer</td></tr>",
+        "```html\n<h2>Unser Raumplan</h2>\n<table>\n  <tr>\n    <td>Deutsch</td>\n    <td>Raum 101</td>\n    <td>Frau Sommer</td>\n  </tr>\n  <tr>\n    <td>IT</td>\n    <td>Raum 204</td>\n    <td>Herr Alvarez</td>\n  </tr>\n  <tr>\n    <td>Sport</td>\n    <td>Sporthalle</td>\n    <td>Frau Krause</td>\n  </tr>\n</table>\n```"
+      ],
+      "solution": {
+        "html": "<h2>Unser Raumplan</h2>\n<table>\n  <tr>\n    <td>Deutsch</td>\n    <td>Raum 101</td>\n    <td>Frau Sommer</td>\n  </tr>\n  <tr>\n    <td>IT</td>\n    <td>Raum 204</td>\n    <td>Herr Alvarez</td>\n  </tr>\n  <tr>\n    <td>Sport</td>\n    <td>Sporthalle</td>\n    <td>Frau Krause</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "tr", "min": 3, "label": "Die Tabelle hat drei Zeilen" },
+        { "type": "selector", "selector": "td", "min": 9, "label": "Es gibt neun Zellen (3 × 3)" },
+        { "type": "text", "selector": "td", "expected": "Deutsch", "label": "Die erste Zelle enthält „Deutsch“" },
+        { "type": "text", "selector": "tr:nth-child(3) td", "expected": "Sport", "label": "Die dritte Zeile beginnt mit „Sport“" }
+      ]
+    }
+  ]
+}

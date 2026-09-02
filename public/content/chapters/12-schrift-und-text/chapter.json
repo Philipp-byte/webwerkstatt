@@ -1,0 +1,13 @@
+{
+  "id": "12-schrift-und-text",
+  "title": "Schrift & Text",
+  "icon": "🔤",
+  "color": "#3d82e0",
+  "description": "Schriftarten, Schriftgrößen und Textausrichtung – Typografie für deine Seite.",
+  "lessons": [
+    "01-schriftart-groesse",
+    "02-textgestaltung",
+    "03-wiederholung",
+    "04-projekt-typografie"
+  ]
+}

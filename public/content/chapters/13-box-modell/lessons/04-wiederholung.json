@@ -1,0 +1,73 @@
+{
+  "id": "04-wiederholung",
+  "title": "Wiederholung: Selektoren & Text",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Kurze Verschnaufpause vom Box-Modell! Dein Gehirn behält Wissen am besten, wenn es dieses **aktiv abruft** – nicht beim erneuten Durchlesen, sondern beim Selbst-Lösen. Genau das machen wir jetzt: eine gemischte Runde zu **Selektoren** (Klasse, ID, Gruppe) und **Schrift & Text**. Alles schon gelernt – hol es aus dem Kopf!"
+    },
+    {
+      "type": "quiz",
+      "question": "Welcher Selektor trifft **genau das eine** Element mit `id=\"fazit\"`?",
+      "options": [
+        "`.fazit { ... }`",
+        "`#fazit { ... }`",
+        "`fazit { ... }`"
+      ],
+      "correct": 1,
+      "explanation": "IDs sprichst du mit der **Raute** `#` an. Der Punkt ist für Klassen reserviert, ohne Zeichen wäre es ein Element-Selektor."
+    },
+    {
+      "type": "fill",
+      "text": "Alle `h2`- **und** alle `h3`-Überschriften sollen mit **einer** gemeinsamen Regel blau werden. Welcher Selektor fehlt?",
+      "template": "___ {\n  color: #1f66c2;\n}",
+      "solution": "h2, h3",
+      "accept": ["h2, h3", "h2,h3", "h3, h2", "h3,h2"],
+      "hint": "Der Gruppen-Selektor verbindet mehrere Selektoren mit einem Komma."
+    },
+    {
+      "type": "quiz",
+      "question": "Ein Absatz soll **kursiv** erscheinen. Welche Eigenschaft brauchst du?",
+      "options": [
+        "`font-style: italic;`",
+        "`text-decoration: italic;`",
+        "`text-align: italic;`"
+      ],
+      "correct": 0,
+      "explanation": "Kursivschrift ist Sache von `font-style`. text-decoration steuert Linien wie die Unterstreichung, text-align die Ausrichtung."
+    },
+    {
+      "type": "fill",
+      "text": "Hinter der Wunschschrift steht immer eine **Ersatz-Kategorie**, falls die Schrift auf dem Gerät fehlt. Welche passt zu Arial (serifenlos)?",
+      "template": "font-family: Arial, ___;",
+      "solution": "sans-serif",
+      "accept": ["sans-serif"],
+      "hint": "„Ohne Serifen“ heißt auf Französisch/Englisch sans-serif – mit Bindestrich."
+    },
+    {
+      "type": "code",
+      "task": "Gestalte den Steckbrief – alles Wiederholung:\n\n1. Der `body` bekommt `font-family: Verdana, sans-serif;`\n2. **Eine gemeinsame Regel** für `h1` und `h2` (mit Komma!): Farbe **#1f66c2**\n3. Der Absatz mit der id `motto` wird **kursiv**\n4. Der Link verliert seine **Unterstreichung**",
+      "starter": {
+        "html": "<h1>Steckbrief: Ben</h1>\n<h2>Das mag ich</h2>\n<p>Basketball, Pizza und Programmieren.</p>\n<p id=\"motto\">Mein Motto: Einfach mal ausprobieren!</p>\n<a href=\"https://example.com\">Mein Lieblingsspiel</a>\n",
+        "css": "/* Deine vier Regeln hier */\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Du brauchst vier Regeln: body, die Gruppe h1, h2, dann #motto und a.",
+        "Kursiv = font-style: italic; – keine Unterstreichung = text-decoration: none;",
+        "```css\nbody {\n  font-family: Verdana, sans-serif;\n}\nh1, h2 {\n  color: #1f66c2;\n}\n#motto {\n  font-style: italic;\n}\na {\n  text-decoration: none;\n}\n```"
+      ],
+      "solution": {
+        "css": "body {\n  font-family: Verdana, sans-serif;\n}\nh1, h2 {\n  color: #1f66c2;\n}\n#motto {\n  font-style: italic;\n}\na {\n  text-decoration: none;\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": "body", "prop": "font-family", "expected": "Verdana", "contains": true, "label": "Die Seite nutzt Verdana" },
+        { "type": "source", "file": "css", "matches": "h1\\s*,\\s*h2|h2\\s*,\\s*h1", "label": "h1 und h2 stehen als Gruppe in einer Regel" },
+        { "type": "style", "selector": "h1", "prop": "color", "expected": "#1f66c2", "label": "Die h1 hat die Farbe #1f66c2" },
+        { "type": "style", "selector": "h2", "prop": "color", "expected": "#1f66c2", "label": "Die h2 hat die Farbe #1f66c2" },
+        { "type": "style", "selector": "#motto", "prop": "font-style", "expected": "italic", "label": "Das Motto ist kursiv" },
+        { "type": "style", "selector": "a", "prop": "text-decoration-line", "expected": "none", "label": "Der Link ist nicht mehr unterstrichen" }
+      ]
+    }
+  ]
+}

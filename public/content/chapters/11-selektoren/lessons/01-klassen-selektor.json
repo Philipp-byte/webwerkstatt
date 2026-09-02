@@ -1,0 +1,61 @@
+{
+  "id": "01-klassen-selektor",
+  "title": "Der Klassen-Selektor",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Bisher hast du **alle** Elemente einer Sorte gestaltet (`p { ... }` trifft jeden Absatz). Oft willst du aber nur **bestimmte** Elemente treffen.\n\nDafür gibt es die **class** aus dem HTML-Kapitel! In CSS sprichst du sie mit einem **Punkt** an:\n\n```css\n.warnung {\n  color: red;\n}\n```\n\nDiese Regel trifft **jedes Element** mit `class=\"warnung\"` – egal ob Absatz, Überschrift oder Liste. Alle anderen bleiben unberührt.\n\nGanz wichtig: **Der Punkt gehört nur in den CSS-Selektor.** Im HTML schreibst du die Klasse ohne Punkt:\n\n```html\n<p class=\"warnung\">Achtung!</p>\n```"
+    },
+    {
+      "type": "example",
+      "text": "Nur die Absätze mit `class=\"angebot\"` sind grün. Der HTML-Tab ist offen: Gib dem letzten Absatz auch die Klasse und schau, was passiert!",
+      "html": "<h2>Speisekarte</h2>\n<p class=\"angebot\">Pizza Margherita – heute nur 5 €!</p>\n<p>Lasagne – 7 €</p>\n<p>Salatteller – 4 €</p>\n",
+      "css": ".angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n"
+    },
+    {
+      "type": "explain",
+      "text": "Warum sind Klassen so mächtig? Weil sie **wiederverwendbar** sind:\n\n- **Eine Klasse, viele Elemente:** Zehn Absätze mit `class=\"angebot\"`? Eine einzige CSS-Regel gestaltet alle zehn.\n- **Sortenübergreifend:** Auch eine `h2` oder ein `li` darf `class=\"angebot\"` tragen – die Regel trifft sie alle.\n- **Mehrere Klassen pro Element:** Im class-Attribut dürfen mehrere Namen stehen, getrennt durch Leerzeichen: `<p class=\"angebot neu\">`. Das Element bekommt dann die Gestaltung **beider** Klassen.\n\nNoch zwei Kleinigkeiten aus der Praxis: Klassennamen schreibst du **klein und ohne Leerzeichen** (`mein-hinweis` statt `Mein Hinweis`), und sie sollten sagen, **was etwas ist** (`warnung`), nicht wie es aussieht (`roter-text`) – die Farbe könnte sich ja mal ändern."
+    },
+    {
+      "type": "quiz",
+      "question": "Wie sprichst du in CSS alle Elemente mit `class=\"info\"` an?",
+      "options": [
+        "`#info { ... }`",
+        "`.info { ... }`",
+        "`info { ... }`"
+      ],
+      "correct": 1,
+      "explanation": "Klassen bekommen in CSS einen **Punkt** davor. Die Raute `#` ist für IDs reserviert, und `info` ohne alles würde nach einem HTML-Tag namens `<info>` suchen."
+    },
+    {
+      "type": "fill",
+      "text": "Schreibe den **Selektor**, der alle Elemente mit `class=\"tipp\"` trifft.",
+      "template": "___ { color: green; }",
+      "solution": ".tipp",
+      "accept": [".tipp"],
+      "hint": "Punkt plus Klassenname: `.tipp`"
+    },
+    {
+      "type": "code",
+      "task": "Im HTML 🔒 gibt es zwei Absätze mit `class=\"warnung\"` und einen normalen Absatz.\n\nSchreibe eine Regel für `.warnung`:\n\n1. Textfarbe `red`\n2. `font-weight: bold` (macht den Text fett)\n\nDer normale Absatz muss **schwarz bleiben**!",
+      "starter": {
+        "html": "<h2>Laborregeln</h2>\n<p class=\"warnung\">Schutzbrille aufsetzen!</p>\n<p>Die Versuche stehen auf dem Arbeitsblatt.</p>\n<p class=\"warnung\">Niemals ohne Lehrkraft experimentieren!</p>\n",
+        "css": "/* Deine Regel für .warnung */\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Der Selektor beginnt mit einem Punkt: .warnung",
+        "Wenn du stattdessen p als Selektor nimmst, färbst du auch den normalen Absatz – das lässt der Test nicht durch!",
+        "```css\n.warnung {\n  color: red;\n  font-weight: bold;\n}\n```"
+      ],
+      "solution": {
+        "css": ".warnung {\n  color: red;\n  font-weight: bold;\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": ".warnung", "prop": "color", "expected": "red", "label": "Warnungen sind rot" },
+        { "type": "style", "selector": ".warnung", "prop": "font-weight", "expected": ["700", "bold"], "label": "Warnungen sind fett" },
+        { "type": "style", "selector": "p:not(.warnung)", "prop": "color", "expected": "black", "label": "Der normale Absatz bleibt schwarz" }
+      ]
+    }
+  ]
+}

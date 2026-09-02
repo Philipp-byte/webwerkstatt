@@ -1,0 +1,62 @@
+{
+  "id": "01-schriftart-groesse",
+  "title": "Schriftart & Schriftgröße",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Nichts verändert die Wirkung einer Seite so stark wie die **Schrift**. Zwei Grundbegriffe zuerst:\n\n**Serifen** sind die kleinen „Füßchen“ an den Buchstabenenden (wie in Zeitungen gedruckt). Schriften **ohne** diese Füßchen heißen **serifenlos** – auf Englisch `sans-serif`. Am Bildschirm liest sich serifenlos meist angenehmer.\n\nDie **Schriftart** wählst du mit `font-family`. Dabei gibst du eine **Liste** an – hat der Computer die erste Schrift nicht installiert, nimmt er die nächste:\n\n```css\nbody {\n  font-family: Arial, sans-serif;\n}\n```\n\n`sans-serif` am Ende ist keine konkrete Schrift, sondern eine **Ersatz-Kategorie** („irgendeine serifenlose Schrift“) – die funktioniert auf jedem Gerät. Häng sie immer ans Ende!"
+    },
+    {
+      "type": "example",
+      "text": "Vergleiche: Ändere `Arial` in `Georgia` (eine Schrift **mit** Serifen) oder `Consolas` (eine Schreibmaschinen-Schrift). Spiele auch mit den Größen!",
+      "html": "<h1>Typografie</h1>\n<p>Die Wahl der Schrift verändert die ganze Wirkung einer Seite.</p>\n",
+      "css": "body {\n  font-family: Arial, sans-serif;\n}\nh1 {\n  font-size: 40px;\n}\np {\n  font-size: 18px;\n}\n",
+      "editable": ["css"]
+    },
+    {
+      "type": "explain",
+      "text": "Drei Dinge musst du noch wissen:\n\n**1. Vererbung:** Setzt du die `font-family` auf den `body`, **erben** alle Elemente der Seite die Schrift – Überschriften, Absätze, Listen, alles. Du schreibst die Regel also nur **einmal**.\n\n**2. Schriftnamen mit Leerzeichen** brauchen **Anführungszeichen**:\n\n```css\nbody {\n  font-family: 'Segoe UI', Arial, sans-serif;\n}\n```\n\nOhne die Anführungszeichen um `'Segoe UI'` versteht der Browser die Liste falsch.\n\n**3. Schriftgröße:** Die setzt du mit `font-size`, meist in Pixeln:\n\n```css\nh1 { font-size: 40px; }\n```\n\nNormaler Text ist im Browser standardmäßig **16px** groß – ein guter Anhaltspunkt: 18px ist angenehm lesbar, 40px ist eine stattliche Überschrift. Die Einheit `px` muss immer dabeistehen, `font-size: 40;` wird still ignoriert!"
+    },
+    {
+      "type": "quiz",
+      "question": "Warum steht in `font-family: Arial, sans-serif;` noch `sans-serif` **hinter** Arial?",
+      "options": [
+        "Damit die Schrift fett wird",
+        "Als Ersatz, falls Arial auf dem Gerät fehlt",
+        "Das ist Pflicht, sonst ist die Regel ungültig"
+      ],
+      "correct": 1,
+      "explanation": "Die Liste ist eine Kette von Ersatzschriften: Der Browser nimmt die erste, die er findet – `sans-serif` klappt immer."
+    },
+    {
+      "type": "fill",
+      "text": "Die Überschrift soll 32 Pixel groß werden. Setze die fehlende **Einheit** ein.",
+      "template": "h1 { font-size: 32___; }",
+      "solution": "px",
+      "accept": ["px"],
+      "hint": "Pixel kürzt man `px` ab – ohne Einheit ignoriert der Browser die ganze Deklaration."
+    },
+    {
+      "type": "code",
+      "task": "Gestalte das Plakat:\n\n1. Der `body` bekommt die Schriftliste `'Segoe UI', Arial, sans-serif` – Achtung: `Segoe UI` enthält ein Leerzeichen!\n2. Die `h1` bekommt `font-size: 40px;`\n3. Alle `p` bekommen `font-size: 18px;`",
+      "starter": {
+        "html": "<h1>Sommerfest</h1>\n<p>Am Freitag ab 16 Uhr auf dem Schulhof.</p>\n<p>Mit Musik, Grillstand und Torwandschießen.</p>\n",
+        "css": "/* Deine drei Regeln hier */\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Drei Regeln: body, h1 und p. Schriftnamen mit Leerzeichen brauchen Anführungszeichen: 'Segoe UI'.",
+        "Größen brauchen eine Einheit: 40px, nicht nur 40.",
+        "```css\nbody {\n  font-family: 'Segoe UI', Arial, sans-serif;\n}\nh1 {\n  font-size: 40px;\n}\np {\n  font-size: 18px;\n}\n```"
+      ],
+      "solution": {
+        "css": "body {\n  font-family: 'Segoe UI', Arial, sans-serif;\n}\nh1 {\n  font-size: 40px;\n}\np {\n  font-size: 18px;\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": "body", "prop": "font-family", "expected": "Segoe UI", "contains": true, "label": "Die Seite nutzt die Schrift Segoe UI" },
+        { "type": "style", "selector": "h1", "prop": "font-size", "expected": "40px", "label": "Die Überschrift ist 40px groß" },
+        { "type": "style", "selector": "p", "prop": "font-size", "expected": "18px", "label": "Absätze sind 18px groß" }
+      ]
+    }
+  ]
+}

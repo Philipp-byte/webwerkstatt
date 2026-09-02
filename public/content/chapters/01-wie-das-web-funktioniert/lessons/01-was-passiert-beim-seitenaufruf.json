@@ -1,0 +1,64 @@
+{
+  "id": "01-was-passiert-beim-seitenaufruf",
+  "title": "Was passiert beim Seitenaufruf?",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Du tippst eine Adresse ein, drückst Enter – und einen Wimpernschlag später ist die Webseite da. Was ist in dieser kurzen Zeit eigentlich passiert?\n\nStell dir ein Café vor: Du bist der Gast und bestellst am Tresen ein Stück Kuchen. Die Person hinter dem Tresen holt den Kuchen und **serviert** ihn dir.\n\nIm Web läuft es genauso: Dein Browser **bestellt** eine Seite – und ein anderer Computer irgendwo im Internet **liefert** sie. Diesen Computer nennt man **Server** (von englisch „to serve“ = servieren, bedienen)."
+    },
+    {
+      "type": "explain",
+      "text": "Die beiden Rollen haben feste Namen – zusammen bilden sie das **Client-Server-Prinzip**:\n\nDer **Client** (englisch für „Kunde“) ist das Programm, das etwas anfordert. Beim Surfen ist das dein **Browser**, zum Beispiel Edge, Chrome oder Firefox.\n\nDer **Server** ist der Computer, auf dem die Webseite gespeichert ist. Er läuft Tag und Nacht und wartet auf Bestellungen.\n\nDer Ablauf ist immer gleich:\n\n1. Der Client schickt eine **Anfrage** (englisch: Request): „Gib mir bitte die Startseite!“\n2. Der Server schickt eine **Antwort** (englisch: Response): die bestellte Seite.\n\nWichtig: Der Client macht immer den ersten Schritt. Ein Server ruft nie von sich aus bei deinem Browser an – er antwortet nur."
+    },
+    {
+      "type": "quiz",
+      "question": "Du rufst auf deinem Handy eine Webseite auf. Wer ist in diesem Moment der **Client**?",
+      "options": [
+        "Der Browser auf deinem Handy",
+        "Der Computer, auf dem die Webseite gespeichert ist",
+        "Die Person, die die Webseite geschrieben hat"
+      ],
+      "correct": 0,
+      "explanation": "Der Client ist das Programm, das die Anfrage schickt – also dein Browser. Der Computer mit der gespeicherten Seite ist der Server."
+    },
+    {
+      "type": "explain",
+      "text": "Und was steckt nun in der **Antwort** des Servers? Kein fertiges Bild der Seite – sondern eine **HTML-Datei**: eine ganz normale Textdatei mit Anweisungen, was auf der Seite stehen soll.\n\nErst dein Browser verwandelt diesen Text in die fertige, sichtbare Seite. Man sagt: Der Browser **rendert** die Seite.\n\nDas ist wie beim Möbelhaus: Geliefert wird ein Paket mit Bauanleitung – aufgebaut wird bei dir zu Hause. Genau diese „Bauanleitung“ heißt **HTML**, und ab dem nächsten Kapitel schreibst du sie selbst."
+    },
+    {
+      "type": "example",
+      "text": "So eine Server-Antwort siehst du hier: **links die HTML-Textdatei, rechts das, was dein Browser daraus baut.**\n\nÄndere links etwas am Text – zum Beispiel den Namen des Cafés – und beobachte, wie sich die Vorschau sofort mitverändert!",
+      "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Diese Seite hat ein Server als Textdatei geliefert.</p>\n    <p>Dein Browser hat daraus die fertige Ansicht gebaut.</p>\n  </body>\n</html>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Welcher Ablauf beschreibt einen Seitenaufruf **richtig**?",
+      "options": [
+        "Browser schickt Anfrage → Server schickt Antwort → Browser zeigt die Seite an",
+        "Server schickt Anfrage → Browser schickt Antwort → Server zeigt die Seite an",
+        "Browser zeigt die Seite an → Browser schickt Anfrage → Server schickt Antwort"
+      ],
+      "correct": 0,
+      "explanation": "Der Client (dein Browser) beginnt immer mit der Anfrage. Der Server antwortet mit der HTML-Datei – und der Browser rendert daraus die sichtbare Seite."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige den Merksatz: Der Client schickt eine Anfrage – der Server schickt eine …",
+      "template": "Client → Anfrage → Server\nServer → ___ → Client",
+      "solution": "Antwort",
+      "accept": ["Antwort", "antwort", "Response", "response"],
+      "hint": "Das englische Wort dafür ist „Response“ – gesucht ist das deutsche."
+    },
+    {
+      "type": "quiz",
+      "question": "Was steckt in der **Antwort** des Servers, wenn du eine Webseite aufrufst?",
+      "options": [
+        "Ein fertiges Foto der Webseite",
+        "Eine HTML-Textdatei, die der Browser erst noch in eine sichtbare Seite verwandelt",
+        "Ein Video vom Bildschirm des Servers"
+      ],
+      "correct": 1,
+      "explanation": "Der Server liefert nur Text: die HTML-Datei. Das Rendern – also das Bauen der sichtbaren Seite – übernimmt dein Browser."
+    }
+  ]
+}

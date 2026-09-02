@@ -1,0 +1,71 @@
+{
+  "id": "01-ueberschriften",
+  "title": "Überschriften",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Für Überschriften gibt es in HTML **sechs Stufen**: `<h1>` bis `<h6>` – h wie „heading“, englisch für Überschrift.\n\nDenk an die Gliederung eines Referats:\n\n```\nMein Referat über Kaffee        → h1 (Titel)\n  1. Geschichte des Kaffees     → h2 (Kapitel)\n     1.1 Kaffee kommt nach Europa → h3 (Unterkapitel)\n  2. Zubereitung                → h2 (Kapitel)\n```\n\n`<h1>` ist der Titel der ganzen Seite. `<h2>` sind die großen Abschnitte, `<h3>` deren Unterabschnitte – und so weiter bis `<h6>`, das man nur selten braucht."
+    },
+    {
+      "type": "explain",
+      "text": "Drei Regeln für gute Überschriften:\n\n1. **Genau eine `<h1>` pro Seite** – so wie ein Buch genau einen Titel hat. Suchmaschinen und Vorlese-Programme orientieren sich an der h1, um zu verstehen, worum es auf der Seite geht.\n\n2. **Keine Stufe überspringen:** Nach `<h1>` kommt `<h2>` – nicht gleich `<h4>`. Sonst wirkt die Gliederung wie ein Referat, in dem nach dem Titel sofort Unterpunkt 1.1.1 kommt.\n\n3. **Bedeutung zählt, nicht Größe.** Wähle die Stufe danach, wie der Inhalt gegliedert ist – nicht danach, welche Schriftgröße dir gefällt. Das Aussehen änderst du später ganz einfach mit CSS."
+    },
+    {
+      "type": "example",
+      "text": "Hier siehst du drei Überschriften-Stufen im Vergleich.\n\nÄndere die Zahlen in den Tags – probiere auch mal `h6` – und beobachte die Größe. Denk daran: Öffnender **und** schließender Tag brauchen dieselbe Zahl!",
+      "html": "<h1>Hauptüberschrift (h1)</h1>\n<h2>Zwischenüberschrift (h2)</h2>\n<h3>Kleinere Überschrift (h3)</h3>\n<p>Und das ist normaler Text in einem Absatz.</p>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Welche Überschrift wird am **größten** dargestellt?",
+      "options": [
+        "`<h6>`",
+        "`<h1>`",
+        "`<h3>`"
+      ],
+      "correct": 1,
+      "explanation": "Je kleiner die Zahl, desto wichtiger und größer die Überschrift. `<h1>` ist die Hauptüberschrift, `<h6>` die kleinste Stufe."
+    },
+    {
+      "type": "fill",
+      "text": "Welche Stufe ist für die **großen Abschnitte** einer Seite zuständig? Setze den Tag-Namen ein.",
+      "template": "Titel der Seite:   <h1>\nGroße Abschnitte:  <___>\nUnterabschnitte:   <h3>",
+      "solution": "h2",
+      "accept": ["h2"],
+      "hint": "Die Stufen gehen der Reihe nach: 1, 2, 3 … – keine überspringen!"
+    },
+    {
+      "type": "quiz",
+      "question": "Wie viele `<h1>`-Überschriften sollte eine Seite haben?",
+      "options": [
+        "Genau eine",
+        "Mindestens drei",
+        "So viele wie möglich – das sieht wichtig aus"
+      ],
+      "correct": 0,
+      "explanation": "Eine Seite, ein Titel – wie bei einem Buch. Für alle weiteren Abschnitte sind `<h2>` bis `<h6>` da."
+    },
+    {
+      "type": "code",
+      "task": "Baue eine gegliederte Seite über dein Hobby:\n\n1. Eine `<h1>` mit dem Text **Mein Hobby**\n2. Darunter eine `<h2>` mit dem Text **Warum es Spaß macht**\n3. Darunter eine zweite `<h2>` mit dem Text **So habe ich angefangen**",
+      "starter": {
+        "html": "<!-- Deine Überschriften hier -->\n"
+      },
+      "hints": [
+        "Erst der Seitentitel als h1, dann die beiden Abschnitte als h2 – Stufe für Stufe, nichts überspringen.",
+        "Jede Überschrift ist ein eigenes Element, z. B. <h2>Warum es Spaß macht</h2>. Die zweite h2 kommt einfach in die Zeile darunter.",
+        "```html\n<h1>Mein Hobby</h1>\n<h2>Warum es Spaß macht</h2>\n<h2>So habe ich angefangen</h2>\n```"
+      ],
+      "solution": {
+        "html": "<h1>Mein Hobby</h1>\n<h2>Warum es Spaß macht</h2>\n<h2>So habe ich angefangen</h2>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "h1", "count": 1, "label": "Es gibt genau eine <h1> auf der Seite" },
+        { "type": "text", "selector": "h1", "expected": "Mein Hobby", "label": "Die <h1> lautet „Mein Hobby“" },
+        { "type": "selector", "selector": "h2", "min": 2, "label": "Es gibt zwei <h2>-Überschriften" },
+        { "type": "text", "selector": "h2:first-of-type", "expected": "Warum es Spaß macht", "label": "Die erste <h2> lautet „Warum es Spaß macht“" },
+        { "type": "text", "selector": "h2:last-of-type", "expected": "So habe ich angefangen", "label": "Die zweite <h2> lautet „So habe ich angefangen“" }
+      ]
+    }
+  ]
+}

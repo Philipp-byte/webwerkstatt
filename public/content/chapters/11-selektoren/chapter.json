@@ -1,0 +1,13 @@
+{
+  "id": "11-selektoren",
+  "title": "Selektoren",
+  "icon": "🎯",
+  "color": "#2558b8",
+  "description": "Klassen, IDs, Gruppen und verschachtelte Selektoren – gezielt gestalten.",
+  "lessons": [
+    "01-klassen-selektor",
+    "02-id-und-gruppen",
+    "03-verschachtelte-selektoren",
+    "04-wiederholung"
+  ]
+}

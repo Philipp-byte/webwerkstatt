@@ -1,0 +1,14 @@
+{
+  "id": "04-listen",
+  "title": "Listen",
+  "icon": "📋",
+  "color": "#e0832e",
+  "description": "Aufzählungen mit Punkten, Nummern – und Listen in Listen.",
+  "lessons": [
+    "01-ungeordnete-listen",
+    "02-geordnete-listen",
+    "03-verschachtelte-listen",
+    "04-wiederholung",
+    "05-projekt-angebote"
+  ]
+}

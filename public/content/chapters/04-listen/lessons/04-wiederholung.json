@@ -1,0 +1,83 @@
+{
+  "id": "04-wiederholung",
+  "title": "Wiederholung: HTML-Grundlagen",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Kurze Wiederholungsrunde! Wissen bleibt viel besser hängen, wenn du es **aktiv aus dem Gedächtnis abrufst**, statt es nur noch einmal zu lesen. Genau das machst du jetzt.\n\nHeute dran: das **Grundgerüst**, Überschriften, Absätze mit `<br>` und `<hr>`, Hervorhebungen mit `<strong>` und `<em>` sowie **Kommentare** – verpackt in die Planung eines Filmabends."
+    },
+    {
+      "type": "quiz",
+      "question": "Welcher Teil einer HTML-Datei erscheint **nicht** auf der Seite selbst, sondern oben im Browser-Tab?",
+      "options": [
+        "Die `<h1>`-Überschrift",
+        "Der `<title>` im `<head>`",
+        "Der erste Absatz im `<body>`"
+      ],
+      "correct": 1,
+      "explanation": "Der `<head>` enthält unsichtbare Infos über die Seite – darunter den `<title>`, den der Browser im Tab anzeigt. Sichtbar auf der Seite ist nur, was im `<body>` steht."
+    },
+    {
+      "type": "fill",
+      "text": "Das Wort „pünktlich“ soll **fett** hervorgehoben werden, weil es wichtig ist. Setze den fehlenden öffnenden Tag ein.",
+      "template": "<p>Der Film startet <___>pünktlich</strong> um 19 Uhr.</p>",
+      "solution": "strong",
+      "accept": ["strong"],
+      "hint": "Der schließende Tag steht schon da – für „wichtig“ nimmst du `<strong>`."
+    },
+    {
+      "type": "code",
+      "task": "Baue die Einladung zum Filmabend:\n\n1. Eine `<h1>` mit dem Text **Filmabend**\n2. Ein Absatz mit dem Termin – das Wort **Freitag** ist darin mit `<strong>` markiert\n3. Eine Trennlinie `<hr>`\n4. Ein Absatz mit der Adresse: **Musterweg 5**, dann ein `<br>`, dann **74072 Heilbronn**\n5. Ein HTML-Kommentar als Notiz an dich selbst, in dem das Wort **Snacks** vorkommt",
+      "starter": {
+        "html": "<!-- Deine Einladung entsteht hier -->\n"
+      },
+      "hints": [
+        "Arbeite die Punkte der Reihe nach ab: h1 → p mit strong → hr → p mit br → Kommentar. Ein Kommentar beginnt mit <!-- und endet mit -->.",
+        "So sieht der Adressabsatz aus: <p>Musterweg 5<br>74072 Heilbronn</p> – und der Kommentar zum Beispiel so: <!-- Snacks nicht vergessen -->",
+        "```html\n<h1>Filmabend</h1>\n<p>Wir treffen uns am <strong>Freitag</strong> um 19 Uhr.</p>\n<hr>\n<p>Musterweg 5<br>74072 Heilbronn</p>\n<!-- Snacks nicht vergessen -->\n```"
+      ],
+      "solution": {
+        "html": "<h1>Filmabend</h1>\n<p>Wir treffen uns am <strong>Freitag</strong> um 19 Uhr.</p>\n<hr>\n<p>Musterweg 5<br>74072 Heilbronn</p>\n<!-- Snacks nicht vergessen -->\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "h1", "expected": "Filmabend", "label": "Die <h1> lautet „Filmabend“" },
+        { "type": "text", "selector": "strong", "expected": "Freitag", "label": "Das Wort „Freitag“ ist mit <strong> markiert" },
+        { "type": "source", "file": "html", "matches": "<hr\\s*/?>", "label": "Eine Trennlinie <hr> ist eingebaut" },
+        { "type": "source", "file": "html", "matches": "Musterweg 5\\s*<br\\s*/?>", "label": "Die Adresse hat einen Zeilenumbruch mit <br>" },
+        { "type": "selector", "selector": "p", "min": 2, "label": "Es gibt mindestens zwei Absätze" },
+        { "type": "source", "file": "html", "matches": "<!--[^>]*Snacks", "label": "Ein Kommentar mit dem Wort „Snacks“ steht im Code" }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "`<br>` und `<hr>` klingen ähnlich. Welcher Tag zieht eine **sichtbare Trennlinie** quer über die Seite?",
+      "options": [
+        "`<br>`",
+        "`<hr>`"
+      ],
+      "correct": 1,
+      "explanation": "`<hr>` steht für „horizontal rule“ – eine waagerechte Linie. `<br>` („break“) macht nur einen Zeilenumbruch, ganz ohne Linie."
+    },
+    {
+      "type": "code",
+      "task": "Zum Abschluss: Schreibe das **komplette Grundgerüst** aus dem Gedächtnis – ohne zurückzublättern!\n\n1. `<!DOCTYPE html>`, `<html>`, `<head>` und `<body>`\n2. Im `<head>`: ein `<title>` mit dem Text **Filmabend bei mir**\n3. Im `<body>`: eine `<h1>` mit dem Text **Programm** und darunter ein Absatz mit einem Satz deiner Wahl",
+      "starter": {
+        "html": "<!-- Lösche diese Zeile und schreibe das komplette Grundgerüst -->\n"
+      },
+      "hints": [
+        "Die Reihenfolge: DOCTYPE, dann <html>, darin erst <head>, dann <body>.",
+        "Der <title> gehört in den <head>, die <h1> und der Absatz in den <body>.",
+        "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Filmabend bei mir</title>\n  </head>\n  <body>\n    <h1>Programm</h1>\n    <p>Erst Pizza, dann der Film, danach Nachbesprechung.</p>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Filmabend bei mir</title>\n  </head>\n  <body>\n    <h1>Programm</h1>\n    <p>Erst Pizza, dann der Film, danach Nachbesprechung.</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        { "type": "source", "file": "html", "matches": "<!doctype\\s+html>", "label": "Der DOCTYPE steht am Anfang" },
+        { "type": "text", "selector": "title", "expected": "Filmabend bei mir", "label": "Der Seitentitel lautet „Filmabend bei mir“" },
+        { "type": "text", "selector": "body h1", "expected": "Programm", "label": "Im Body steht die <h1> „Programm“" },
+        { "type": "selector", "selector": "body p", "min": 1, "label": "Unter der Überschrift gibt es einen Absatz" }
+      ]
+    }
+  ]
+}

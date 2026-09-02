@@ -1,0 +1,68 @@
+{
+  "id": "01-was-ist-javascript",
+  "title": "Was ist JavaScript?",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "HTML baut die Seite, CSS gestaltet sie – **JavaScript macht sie lebendig**: Es reagiert auf Klicks, rechnet, verändert Inhalte. JavaScript ist eine echte **Programmiersprache**, die direkt im Browser läuft.\n\nDer wichtigste Befehl für den Anfang:\n\n```js\nconsole.log(\"Hallo!\");\n```\n\nEr schreibt eine Ausgabe in die **Konsole** – das Ausgabefenster für Programmierende. In der WebWerkstatt siehst du die Konsole direkt unter der Vorschau.\n\nBeachte: Text steht in **Anführungszeichen**, und am Zeilenende steht ein **Semikolon**."
+    },
+    {
+      "type": "example",
+      "text": "Dein erstes JavaScript-Programm! Es läuft im **JS-Tab**. Schau in die **Konsole** unter der Vorschau – und füge eine dritte Ausgabe hinzu.",
+      "js": "console.log(\"Hallo aus der WebWerkstatt!\");\nconsole.log(\"JavaScript läuft.\");\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Was ist die Aufgabe von **JavaScript** auf einer Webseite?",
+      "options": [
+        "Es legt Farben und Schriften fest",
+        "Es macht die Seite interaktiv: reagieren, rechnen, verändern",
+        "Es baut die Grundstruktur aus Überschriften und Absätzen"
+      ],
+      "correct": 1,
+      "explanation": "Struktur = HTML, Aussehen = CSS, Verhalten = JavaScript. Zusammen ergeben sie das Web."
+    },
+    {
+      "type": "explain",
+      "text": "Schau dir den Befehl noch einmal ganz genau an – **jedes Zeichen hat eine Aufgabe**:\n\n```js\nconsole.log(\"Hallo!\");\n```\n\n`console` ist die Konsole, `.log` der Befehl „schreib etwas hinein“. Die **runden Klammern** übergeben, *was* geschrieben werden soll. Das **Semikolon** schließt die Anweisung ab – wie der Punkt am Satzende.\n\nComputer sind pingelig: Vergisst du eine Klammer oder ein Anführungszeichen, zeigt die Konsole eine **rote Fehlermeldung** und das Programm stoppt. Das ist nicht schlimm – Fehlermeldungen sind Hinweise, keine Strafen: lesen, verbessern, neu ausführen."
+    },
+    {
+      "type": "fill",
+      "text": "Der Befehl für eine Konsolen-Ausgabe – setze den fehlenden Teil ein.",
+      "template": "console.___(\"Guten Morgen!\");",
+      "solution": "log",
+      "accept": ["log"],
+      "hint": "Der Teil nach dem Punkt heißt `log` – wie „Logbuch“."
+    },
+    {
+      "type": "quiz",
+      "question": "Was passiert bei `console.log(Hallo);` – also **ohne** Anführungszeichen?",
+      "options": [
+        "Die Konsole zeigt trotzdem „Hallo“",
+        "Es gibt eine Fehlermeldung – JavaScript sucht nach einer Variablen namens Hallo",
+        "Der Browser ergänzt die Anführungszeichen automatisch"
+      ],
+      "correct": 1,
+      "explanation": "Ohne Anführungszeichen hält JavaScript „Hallo“ nicht für Text, sondern für einen Namen – und den gibt es hier nicht. Text braucht immer Anführungszeichen."
+    },
+    {
+      "type": "code",
+      "task": "Jetzt du! Schreibe **zwei** Ausgaben:\n\n1. Die erste Zeile gibt genau **Hallo JavaScript!** aus.\n2. Die zweite Zeile gibt genau **Ich lerne programmieren.** aus.",
+      "starter": {
+        "js": "// Schreibe deine zwei Befehle hier\n"
+      },
+      "hints": [
+        "Du brauchst zweimal console.log(...); – jede Ausgabe bekommt eine eigene Zeile.",
+        "Der Text kommt jeweils in Anführungszeichen in die Klammern: console.log(\"Hallo JavaScript!\");",
+        "```js\nconsole.log(\"Hallo JavaScript!\");\nconsole.log(\"Ich lerne programmieren.\");\n```"
+      ],
+      "solution": {
+        "js": "console.log(\"Hallo JavaScript!\");\nconsole.log(\"Ich lerne programmieren.\");\n"
+      },
+      "tests": [
+        { "type": "console", "expected": "Hallo JavaScript!", "label": "Die Konsole zeigt „Hallo JavaScript!“" },
+        { "type": "console", "expected": "Ich lerne programmieren.", "label": "Die Konsole zeigt „Ich lerne programmieren.“" }
+      ]
+    }
+  ]
+}

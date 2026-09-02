@@ -4,3 +4,4 @@ server/instance/
 server/__pycache__/
 server/venv/
 *.pyc
+arbeitsblaetter/blaetter/

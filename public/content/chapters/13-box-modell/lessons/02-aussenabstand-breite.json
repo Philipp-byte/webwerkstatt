@@ -1,0 +1,60 @@
+{
+  "id": "02-aussenabstand-breite",
+  "title": "Außenabstand & Breite",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Die Box hat noch eine dritte Schicht – ganz **außen**:\n\n`margin` – der **Außenabstand**: der Platz zwischen der Box und ihren Nachbarn.\n\n`width` – die **Breite** der Box:\n\n```css\n.karte {\n  width: 300px;\n  margin-bottom: 24px;\n}\n```\n\n**Eselsbrücken zum Auseinanderhalten:**\n\n- **P**adding = **P**olster – wirkt **innen** (die Luftpolsterfolie im Paket)\n- **M**argin = **M**auer-Abstand – wirkt **außen** (der Platz zwischen deinem Paket und dem nächsten im Regal)\n\nVon innen nach außen heißt die Reihenfolge also: Inhalt → padding → border → margin."
+    },
+    {
+      "type": "example",
+      "text": "Zwei Karten untereinander. Stelle `margin-bottom` auf `0` – die Karten kleben aneinander. Und mit `width: 150px` werden sie schmal.",
+      "html": "<div class=\"karte\">\n  <p>Karte eins</p>\n</div>\n<div class=\"karte\">\n  <p>Karte zwei</p>\n</div>\n",
+      "css": ".karte {\n  border: 2px solid #888;\n  padding: 12px;\n  width: 300px;\n  margin-bottom: 24px;\n}\n"
+    },
+    {
+      "type": "explain",
+      "text": "Du kannst den Außenabstand für **jede Seite einzeln** setzen:\n\n```css\nmargin-top: 8px;      /* oben */\nmargin-right: 16px;   /* rechts */\nmargin-bottom: 24px;  /* unten */\nmargin-left: 16px;    /* links */\n```\n\nSchreibst du nur `margin: 16px;`, gilt der Wert für **alle vier Seiten** gleichzeitig.\n\nDasselbe funktioniert übrigens auch beim Innenabstand: `padding-top`, `padding-left` und so weiter."
+    },
+    {
+      "type": "fill",
+      "text": "Nur **unter** der Box sollen 24px Abstand entstehen. Welche Eigenschaft brauchst du?",
+      "template": "___: 24px;",
+      "solution": "margin-bottom",
+      "accept": ["margin-bottom"],
+      "hint": "Außenabstand = margin, unten = bottom – beides mit Bindestrich verbinden."
+    },
+    {
+      "type": "quiz",
+      "question": "Zwei Boxen sollen **mehr Abstand zueinander** bekommen. Welche Eigenschaft brauchst du?",
+      "options": [
+        "`padding`",
+        "`border`",
+        "`margin`"
+      ],
+      "correct": 2,
+      "explanation": "margin ist der Abstand **nach außen** – also zwischen den Boxen (**M**argin = **M**auer-Abstand). padding wirkt nur innen."
+    },
+    {
+      "type": "code",
+      "task": "Rahmen und Innenabstand stehen schon. Ergänze bei `.karte`:\n\n1. `width: 300px;`\n2. `margin-bottom: 24px;`",
+      "starter": {
+        "html": "<div class=\"karte\">\n  <h2>Montag</h2>\n  <p>Mathe-Test in der 3. Stunde.</p>\n</div>\n<div class=\"karte\">\n  <h2>Dienstag</h2>\n  <p>Ausflug zur Experimenta.</p>\n</div>\n",
+        "css": ".karte {\n  border: 2px solid #1f66c2;\n  padding: 16px;\n  /* Ergänze Breite und Außenabstand */\n}\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Beide Eigenschaften kommen mit in die bestehende .karte-Regel.",
+        "width: 300px; macht die Karte 300 Pixel breit, margin-bottom: 24px; schafft Abstand nach unten.",
+        "```css\n.karte {\n  border: 2px solid #1f66c2;\n  padding: 16px;\n  width: 300px;\n  margin-bottom: 24px;\n}\n```"
+      ],
+      "solution": {
+        "css": ".karte {\n  border: 2px solid #1f66c2;\n  padding: 16px;\n  width: 300px;\n  margin-bottom: 24px;\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": ".karte", "prop": "width", "expected": "300px", "label": "Die Karten sind 300px breit" },
+        { "type": "style", "selector": ".karte", "prop": "margin-bottom", "expected": "24px", "label": "Unter jeder Karte sind 24px Abstand" }
+      ]
+    }
+  ]
+}

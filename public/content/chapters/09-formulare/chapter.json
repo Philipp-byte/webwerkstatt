@@ -1,0 +1,13 @@
+{
+  "id": "09-formulare",
+  "title": "Formulare",
+  "icon": "📝",
+  "color": "#8f5a2b",
+  "description": "Eingabefelder, Labels, Auswahllisten und Knöpfe – so sammeln Webseiten Eingaben.",
+  "lessons": [
+    "01-eingabefelder-und-labels",
+    "02-auswahlfelder-und-knoepfe",
+    "03-wiederholung",
+    "04-projekt-kontaktformular"
+  ]
+}

@@ -1,7 +1,20 @@
 import { loadChapter, loadLesson } from '../content.js';
-import { isDone } from '../progress.js';
+import { isDone, isChapterLocked } from '../progress.js';
 
 export async function renderChapter(app, chapterId) {
+  // Von der Lehrkraft gesperrtes Kapitel (Schulmodus): freundlich abweisen.
+  if (isChapterLocked(chapterId)) {
+    app.innerHTML = `
+      <div class="kapitel-seite">
+        <a class="zurueck" href="#/">← Zur Übersicht</a>
+        <div class="karte gesperrt-karte">
+          <p><strong>🔒 Dieses Kapitel ist noch gesperrt.</strong></p>
+          <p>Deine Lehrkraft schaltet es frei, sobald es im Unterricht dran ist. Schau dir so lange die offenen Kapitel an.</p>
+        </div>
+      </div>`;
+    return;
+  }
+
   const kapitel = await loadChapter(chapterId);
   const lektionen = await Promise.all(kapitel.lessons.map((l) => loadLesson(chapterId, l)));
 

@@ -1,0 +1,62 @@
+{
+  "id": "03-verschachtelte-selektoren",
+  "title": "Verschachtelte Selektoren",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Ein typisches Problem: Die Links in deiner **Navigation** sollen anders aussehen als die Links **im Text**. Aber `a { ... }` trifft ja alle Links gleichzeitig …\n\nDie Lösung ist der **Nachfahren-Selektor**: zwei Selektoren, getrennt durch ein **Leerzeichen**:\n\n```css\nnav a {\n  color: white;\n}\n```\n\nGelesen wird er **von rechts nach links**: „Alle `a`-Elemente, **die innerhalb** eines `nav` stecken.“ Links außerhalb der Navigation bleiben unberührt.\n\nDas unscheinbare Leerzeichen ist also ein echter Operator – es bedeutet „**darin**“. Dabei ist egal, wie tief das Element steckt: `nav a` findet den Link auch, wenn er im `nav` noch in einer Liste steckt."
+    },
+    {
+      "type": "example",
+      "text": "Die Regel `nav a` trifft nur die zwei Navigations-Links – der Link im Text bleibt normal. Ändere den Selektor testweise in `a` (ohne `nav`): Jetzt sind alle Links orange!",
+      "html": "<nav>\n  <a href=\"index.html\">Start</a>\n  <a href=\"galerie.html\">Galerie</a>\n</nav>\n<main>\n  <p>Unsere Fotos entstehen mit Tipps von <a href=\"https://www.example.com\">dieser Fotoseite</a>.</p>\n</main>\n",
+      "css": "nav a {\n  color: #e08a2e;\n  font-weight: bold;\n}\n",
+      "editable": ["css"]
+    },
+    {
+      "type": "explain",
+      "text": "Der Nachfahren-Selektor funktioniert mit **allem**, was du schon kennst – auch mit Klassen:\n\n```css\n.karte p {\n  color: #444444;\n}\n```\n\nDas trifft alle Absätze, die **innerhalb** eines Elements mit `class=\"karte\"` liegen.\n\nUnd jetzt die Auflösung aus der letzten Lektion – **Komma und Leerzeichen sind zwei völlig verschiedene Dinge**:\n\n```css\nfooter, p { color: gray; }  /* GRUPPE: der footer UND alle p der Seite */\nfooter p { color: gray; }   /* NACHFAHRE: nur die p IM footer */\n```\n\nMerksatz: **Komma heißt „und auch“, Leerzeichen heißt „darin“.**"
+    },
+    {
+      "type": "quiz",
+      "question": "Was trifft der Selektor `.karte p`?",
+      "options": [
+        "Alle Absätze, die in einem Element mit `class=\"karte\"` stecken",
+        "Alle Absätze mit `class=\"karte\"`",
+        "Alle Elemente mit `class=\"karte\"` und zusätzlich alle Absätze der Seite"
+      ],
+      "correct": 0,
+      "explanation": "Das Leerzeichen heißt „darin“: erst das Element mit der Klasse `karte`, dann die Absätze **darin**. Für „alle Elemente mit karte und alle p“ bräuchtest du das Komma: `.karte, p`."
+    },
+    {
+      "type": "fill",
+      "text": "Schreibe den **Selektor**, der nur die Links **innerhalb der Navigation** (`<nav>`) trifft.",
+      "template": "___ { color: white; }",
+      "solution": "nav a",
+      "accept": ["nav a"],
+      "hint": "Erst der äußere Selektor, dann ein Leerzeichen, dann der innere: `nav a`"
+    },
+    {
+      "type": "code",
+      "task": "Im HTML 🔒 gibt es eine Navigation und einen Link im Fließtext.\n\nSchreibe **eine** Regel, die **nur die Navigations-Links** trifft:\n\n1. Textfarbe `#2f6fdb`\n2. `font-weight: bold`\n\nDer Link im Text muss **normal bleiben** – nimm also nicht einfach `a` als Selektor!",
+      "starter": {
+        "html": "<nav>\n  <a href=\"index.html\">Start</a>\n  <a href=\"speisekarte.html\">Speisekarte</a>\n</nav>\n<main>\n  <h2>Rezept der Woche</h2>\n  <p>Alle Rezepte findest du auf <a href=\"https://www.example.com\">unserer Rezeptseite</a>.</p>\n</main>\n",
+        "css": "/* Deine Regel hier */\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Du brauchst den Nachfahren-Selektor: äußeres Element, Leerzeichen, inneres Element.",
+        "nav a { ... } trifft nur Links in der Navigation – der Link im main bleibt außen vor.",
+        "```css\nnav a {\n  color: #2f6fdb;\n  font-weight: bold;\n}\n```"
+      ],
+      "solution": {
+        "css": "nav a {\n  color: #2f6fdb;\n  font-weight: bold;\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": "nav a", "prop": "color", "expected": "#2f6fdb", "label": "Die Navigations-Links haben die Farbe #2f6fdb" },
+        { "type": "style", "selector": "nav a", "prop": "font-weight", "expected": ["700", "bold"], "label": "Die Navigations-Links sind fett" },
+        { "type": "style", "selector": "main a", "prop": "font-weight", "expected": ["400", "normal"], "label": "Der Link im Fließtext bleibt normal (nicht fett)" }
+      ]
+    }
+  ]
+}

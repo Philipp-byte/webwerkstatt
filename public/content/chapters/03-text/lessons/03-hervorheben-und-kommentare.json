@@ -1,0 +1,67 @@
+{
+  "id": "03-hervorheben-und-kommentare",
+  "title": "Hervorheben & Kommentare",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Wichtige Wörter kannst du in HTML hervorheben:\n\n`<strong>` bedeutet **wichtig** – der Browser zeigt den Text **fett**.\n\n`<em>` bedeutet **betont** (von „emphasis“) – der Browser zeigt den Text kursiv, also schräg gestellt.\n\n```html\n<p>Das ist <strong>sehr wichtig</strong> und das <em>betont</em>.</p>\n```\n\nBeide Tags stehen **innerhalb** eines Absatzes, mitten im Text. Und beide beschreiben eine **Bedeutung**, nicht nur ein Aussehen: Ein Vorlese-Programm spricht ein `<strong>` zum Beispiel nachdrücklicher aus. Wie etwas am Ende aussieht, bestimmst du später mit CSS."
+    },
+    {
+      "type": "example",
+      "text": "Probiere es aus: Markiere weitere Wörter mit `<strong>` oder `<em>` – und denk an die schließenden Tags!",
+      "html": "<p>Bitte den Herd <strong>niemals</strong> unbeaufsichtigt lassen.</p>\n<p>Das Rezept ist <em>wirklich</em> einfach.</p>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Wie stellt der Browser ein `<strong>`-Element normalerweise dar?",
+      "options": [
+        "Kursiv",
+        "Fett",
+        "Unterstrichen"
+      ],
+      "correct": 1,
+      "explanation": "`<strong>` heißt „stark/wichtig“ – der Browser zeigt es fett. Kursiv ist die Darstellung von `<em>`."
+    },
+    {
+      "type": "explain",
+      "text": "Manchmal willst du dir **Notizen im Code** machen, die auf der Seite unsichtbar bleiben. Dafür gibt es **Kommentare**:\n\n```html\n<!-- Das hier zeigt der Browser nicht an -->\n<p>Das hier schon.</p>\n```\n\nEin Kommentar beginnt mit `<!--` und endet mit `-->`. Alles dazwischen überspringt der Browser komplett.\n\nWofür Kommentare gut sind:\n\n1. **Notizen an dich selbst:** `<!-- TODO: Öffnungszeiten ergänzen -->`\n2. **Abschnitte beschriften:** `<!-- Ab hier: Speisekarte -->`\n3. **Code testweise ausschalten**, ohne ihn zu löschen.\n\nAber Achtung: Kommentare sind nicht geheim! Mit Strg + U (kennst du aus Kapitel 1) kann jeder sie im Quelltext lesen – also keine Passwörter oder Lästereien hineinschreiben."
+    },
+    {
+      "type": "example",
+      "text": "Links stehen zwei Kommentare – rechts ist von beiden nichts zu sehen.\n\nDeine Mission: **Entferne die Kommentarzeichen** `<!--` und `-->` um den zweiten Absatz und hole ihn damit zurück auf die Seite!",
+      "html": "<!-- Notiz an mich: Diesen Text sieht niemand. -->\n<p>Diesen Absatz zeigt der Browser an.</p>\n<!-- <p>Diesen Absatz hat jemand ausgeschaltet.</p> -->\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Wie beginnt ein HTML-Kommentar?",
+      "options": [
+        "`<!--`",
+        "`//`",
+        "`(*`"
+      ],
+      "correct": 0,
+      "explanation": "`<!--` öffnet den Kommentar, `-->` schließt ihn. `//` leitet in anderen Sprachen (z. B. JavaScript) Kommentare ein – in HTML funktioniert das nicht."
+    },
+    {
+      "type": "code",
+      "task": "Schreibe einen Absatz über deinen Lernstand – mit allem aus dieser Lektion:\n\n1. Schreibe **über** den Absatz einen Kommentar mit einer kurzen Notiz an dich selbst.\n2. Baue im Absatz das Wort **HTML** ein und markiere es mit `<strong>`.\n3. Baue außerdem das Wort **super** ein und markiere es mit `<em>`.",
+      "starter": {
+        "html": "<p>Schreibe hier deinen Satz.</p>\n"
+      },
+      "hints": [
+        "Der Kommentar steht in einer eigenen Zeile über dem <p>. Die Hervorhebungs-Tags stehen mitten im Satz, direkt um das jeweilige Wort herum.",
+        "Ein Kommentar sieht so aus: <!-- meine Notiz -->. Und so wird ein Wort fett markiert: <strong>HTML</strong>.",
+        "```html\n<!-- Diesen Satz habe ich selbst geschrieben. -->\n<p>Ich lerne gerade <strong>HTML</strong> und finde es <em>super</em>.</p>\n```"
+      ],
+      "solution": {
+        "html": "<!-- Diesen Satz habe ich selbst geschrieben. -->\n<p>Ich lerne gerade <strong>HTML</strong> und finde es <em>super</em>.</p>\n"
+      },
+      "tests": [
+        { "type": "source", "file": "html", "matches": "<!--[\\s\\S]*?-->", "label": "Im Code steht ein Kommentar" },
+        { "type": "selector", "selector": "p", "min": 1, "label": "Es gibt einen Absatz" },
+        { "type": "text", "selector": "strong", "expected": "HTML", "label": "Das Wort „HTML“ ist mit <strong> markiert" },
+        { "type": "text", "selector": "em", "expected": "super", "label": "Das Wort „super“ ist mit <em> markiert" }
+      ]
+    }
+  ]
+}

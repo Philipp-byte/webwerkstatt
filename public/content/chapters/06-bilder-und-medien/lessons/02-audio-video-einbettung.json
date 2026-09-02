@@ -1,0 +1,71 @@
+{
+  "id": "02-audio-video-einbettung",
+  "title": "Audio, Video & Einbettungen",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Webseiten können mehr als Text und Bilder – zum Beispiel **Ton abspielen**. Dafür gibt es das `<audio>`-Element:\n\n```html\n<audio controls src=\"cafe-jingle.wav\"></audio>\n```\n\n`src` kennst du schon von den Bildern – der Pfad zur Datei.\n\nNeu ist `controls`: ein **Boolean-Attribut** – ein Attribut **ohne Wert**. Allein sein Name schaltet die Funktion ein: Der Browser zeigt Play-Knopf, Zeitleiste und Lautstärkeregler. **Ohne** `controls` bleibt der Player unsichtbar!\n\nBeachte außerdem: `<audio>` hat – anders als `<img>` – einen **schließenden Tag**."
+    },
+    {
+      "type": "example",
+      "text": "Drück auf Play – die Datei `cafe-jingle.wav` liegt in der Werkstatt bereit und spielt wirklich! Entferne testweise das Wort `controls` und schau, was passiert.",
+      "html": "<h2>Unser Café-Jingle</h2>\n<audio controls src=\"cafe-jingle.wav\"></audio>\n"
+    },
+    {
+      "type": "explain",
+      "text": "Für **Videos** funktioniert alles genauso – mit `<video>`:\n\n```html\n<video controls src=\"rundgang.mp4\" poster=\"vorschaubild.jpg\"></video>\n```\n\nNeu ist `poster`: das **Vorschaubild**, das angezeigt wird, bevor jemand auf Play drückt. Ohne `poster` zeigt der Browser einfach das erste Videobild.\n\n**Hinweis für die Werkstatt:** Eine echte Videodatei liegt hier nicht bereit – die bringst du im Unterricht mit. Die Tests prüfen deshalb nur die **Attribute**. Nimm als `poster` eines der Übungsbilder, dann siehst du in der Vorschau trotzdem etwas!"
+    },
+    {
+      "type": "quiz",
+      "question": "Wozu dient das Attribut `controls` bei `<audio>` und `<video>`?",
+      "options": [
+        "Es startet die Wiedergabe automatisch",
+        "Der Browser zeigt Bedienelemente wie Play-Knopf und Lautstärkeregler",
+        "Es regelt, wie laut die Datei abgespielt wird"
+      ],
+      "correct": 1,
+      "explanation": "`controls` blendet die Bedienelemente ein – ohne dieses Boolean-Attribut sieht man den Player gar nicht und kann nichts starten."
+    },
+    {
+      "type": "explain",
+      "text": "Der dritte Baustein heißt `<iframe>` – ein **Fenster in deiner Seite**, das eine andere Datei oder sogar eine ganz andere Webseite anzeigt:\n\n```html\n<iframe src=\"haus.svg\" width=\"300\" height=\"200\"></iframe>\n```\n\n`width` und `height` legen die Größe des Fensters in Bildpunkten fest.\n\nGenau so betten viele Seiten Inhalte **fremder Anbieter** ein – etwa Landkarten oder Videos von Videoplattformen: Der Anbieter stellt einen fertigen `<iframe>`-Schnipsel bereit, den man nur einfügt. Ein Gedanke zum **Datenschutz** gehört dazu: Beim Einbetten fremder Inhalte sendet der Browser deiner Besucher automatisch Daten (z. B. ihre IP-Adresse) an diesen Anbieter – mehr dazu im Kapitel „Recht im Web“."
+    },
+    {
+      "type": "example",
+      "text": "Hier zeigt der `<iframe>` unsere eigene Datei `haus.svg` als eingebettete Seite an. Ändere `width` und `height` und beobachte das Fenster!",
+      "html": "<h2>Eingebettete Datei</h2>\n<iframe src=\"haus.svg\" width=\"300\" height=\"200\"></iframe>\n<p>Das Haus ist hier nicht als Bild eingebunden, sondern als eigene Seite im Fenster.</p>\n"
+    },
+    {
+      "type": "fill",
+      "text": "Der Player soll Bedienelemente anzeigen. Setze das fehlende **Boolean-Attribut** ein.",
+      "template": "<audio ___ src=\"cafe-jingle.wav\"></audio>",
+      "solution": "controls",
+      "accept": ["controls"],
+      "hint": "Das Attribut steht ohne Wert im öffnenden Tag und heißt wie „Steuerung“ auf Englisch."
+    },
+    {
+      "type": "code",
+      "task": "Baue die Medien-Ecke des Café Pause:\n\n1. Unter **Hörprobe**: ein `<audio>`-Element mit `controls` und der Datei `cafe-jingle.wav` – teste es gleich mit Play!\n2. Unter **Rundgang**: ein `<video>`-Element mit `controls`, der Datei `rundgang.mp4` (kommt im Unterricht dazu) und dem Übungsbild `cafe-raum.svg` als `poster`",
+      "starter": {
+        "html": "<h2>Hörprobe</h2>\n<!-- Dein Audio-Player hier -->\n\n<h2>Rundgang</h2>\n<!-- Dein Video hier -->\n"
+      },
+      "hints": [
+        "Beide Elemente haben einen schließenden Tag: <audio ...></audio> und <video ...></video>. Das controls steht ohne Wert im öffnenden Tag.",
+        "Das Video braucht drei Attribute: controls, src=\"rundgang.mp4\" und poster=\"cafe-raum.svg\".",
+        "```html\n<h2>Hörprobe</h2>\n<audio controls src=\"cafe-jingle.wav\"></audio>\n\n<h2>Rundgang</h2>\n<video controls src=\"rundgang.mp4\" poster=\"cafe-raum.svg\"></video>\n```"
+      ],
+      "solution": {
+        "html": "<h2>Hörprobe</h2>\n<audio controls src=\"cafe-jingle.wav\"></audio>\n\n<h2>Rundgang</h2>\n<video controls src=\"rundgang.mp4\" poster=\"cafe-raum.svg\"></video>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "audio", "min": 1, "label": "Es gibt ein <audio>-Element" },
+        { "type": "attr", "selector": "audio", "attr": "src", "expected": "cafe-jingle.wav", "label": "Der Audio-Player spielt cafe-jingle.wav" },
+        { "type": "attr", "selector": "audio", "attr": "controls", "expected": ["", "controls"], "label": "Der Audio-Player zeigt Bedienelemente (controls)" },
+        { "type": "selector", "selector": "video", "min": 1, "label": "Es gibt ein <video>-Element" },
+        { "type": "attr", "selector": "video", "attr": "src", "expected": "rundgang.mp4", "label": "Das Video verweist auf rundgang.mp4" },
+        { "type": "attr", "selector": "video", "attr": "controls", "expected": ["", "controls"], "label": "Das Video zeigt Bedienelemente (controls)" },
+        { "type": "attr", "selector": "video", "attr": "poster", "expected": "cafe-raum.svg", "label": "Das Vorschaubild ist cafe-raum.svg" }
+      ]
+    }
+  ]
+}

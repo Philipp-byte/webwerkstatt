@@ -1,0 +1,12 @@
+{
+  "id": "18-projekt-finale",
+  "title": "Projekt-Finale",
+  "icon": "🏁",
+  "color": "#1a9e5c",
+  "description": "Alle Café-Seiten werden zusammengesetzt, geprüft und verfeinert – dein Meisterstück.",
+  "lessons": [
+    "01-alles-zusammenfuegen",
+    "02-grosse-wiederholung",
+    "03-feinschliff-und-ausblick"
+  ]
+}

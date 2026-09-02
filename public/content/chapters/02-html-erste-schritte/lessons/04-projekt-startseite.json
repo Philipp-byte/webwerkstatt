@@ -1,0 +1,33 @@
+{
+  "id": "04-projekt-startseite",
+  "title": "Projekt: Die Startseite",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Ab heute baust du nebenbei ein echtes Projekt: die Website vom **Café Pause** – einem ausgedachten Schülercafé in Heilbronn. In fast jedem Kapitel wächst die Website ein Stück. Am Ende hat das Café eine komplette Seite mit Speisekarte, Galerie und Kontaktformular.\n\nDein Stand wird gespeichert: Was du heute baust, ist bei der nächsten Projekt-Etappe wieder da und wird weiter ausgebaut.\n\nHeute entsteht die **Startseite** `index.html` – mit allem aus diesem Kapitel: Grundgerüst, Tags und Elementen. Übrigens: Die Vorschau der Werkbank kümmert sich automatisch um die Zeichenkodierung, deshalb klappt das **é** in „Café“ hier auch so. Wenn du magst, baue `<meta charset=\"utf-8\">` und `lang=\"de\"` aus Lektion 3 trotzdem mit ein – schaden kann es nie."
+    },
+    {
+      "type": "code",
+      "task": "**Etappe 1: Die Startseite vom Café Pause.**\n\nBaue in der Werkbank ein vollständiges Grundgerüst mit Inhalt:\n\n1. `<!DOCTYPE html>` und darunter das `<html>`-Element – mit dem passenden schließenden Tag ganz am Ende.\n2. Ein `<head>` mit `<title>Café Pause</title>`.\n3. Ein `<body>` mit einer `<h1>`-Überschrift **Café Pause**.\n4. Darunter ein Absatz `<p>`, der die Gäste begrüßt – er muss das Wort **Willkommen** enthalten, den Rest des Satzes darfst du dir ausdenken.",
+      "starter": {
+        "html": "<!-- index.html – hier entsteht die Startseite vom Café Pause -->\n"
+      },
+      "project": { "page": "index", "save": ["html"] },
+      "hints": [
+        "Das Grundgerüst kennst du aus Lektion 3: DOCTYPE, html, darin head und body. Schreib erst den Rahmen komplett hin und fülle dann title, h1 und p.",
+        "In den head kommt <title>Café Pause</title>. In den body: erst <h1>Café Pause</h1>, darunter der <p> mit „Willkommen …“.",
+        "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen in unserem Schülercafé! Bei uns kannst du jede Pause genießen.</p>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen in unserem Schülercafé! Bei uns kannst du jede Pause genießen.</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        { "type": "source", "file": "html", "matches": "<!doctype\\s+html>", "label": "Der DOCTYPE steht am Anfang" },
+        { "type": "source", "file": "html", "matches": "</html>", "label": "Das <html>-Element wird am Ende geschlossen" },
+        { "type": "text", "selector": "title", "expected": "Café Pause", "label": "Der Seitentitel lautet „Café Pause“" },
+        { "type": "text", "selector": "body h1", "expected": "Café Pause", "label": "Die Überschrift lautet „Café Pause“" },
+        { "type": "text", "selector": "body p", "expected": "Willkommen", "contains": true, "label": "Der Begrüßungsabsatz enthält das Wort „Willkommen“" }
+      ]
+    }
+  ]
+}

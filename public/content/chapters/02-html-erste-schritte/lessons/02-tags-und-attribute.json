@@ -1,0 +1,70 @@
+{
+  "id": "02-tags-und-attribute",
+  "title": "Tags & Attribute",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "HTML besteht aus **Tags**. Ein Tag steht in spitzen Klammern, zum Beispiel `<p>`.\n\nDie meisten Tags treten **paarweise** auf:\n\n```html\n<p>Das ist ein Absatz.</p>\n```\n\n`<p>` ist der **öffnende Tag**, `</p>` der **schließende Tag** – erkennbar am Schrägstrich `/`. Alles zusammen (öffnender Tag + Inhalt + schließender Tag) nennt man ein **Element**.\n\nDer Tag-Name verrät dem Browser, was der Inhalt **ist**: `p` steht für „paragraph“ (Absatz), `h1` für „heading“ (Überschrift)."
+    },
+    {
+      "type": "example",
+      "text": "Hier sind zwei Elemente: eine Überschrift `<h1>` und ein Absatz `<p>`.\n\nProbier aus: Was passiert, wenn du den schließenden Tag `</h1>` löschst? Setze ihn danach wieder ein.",
+      "html": "<h1>Tags sind wie Klammern</h1>\n<p>Sie zeigen, wo etwas anfängt und wo es aufhört.</p>\n"
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige den **schließenden Tag** des Absatzes.",
+      "template": "<p>Hallo!</___>",
+      "solution": "p",
+      "accept": ["p"],
+      "hint": "Der schließende Tag enthält denselben Namen wie der öffnende – hier also `p`."
+    },
+    {
+      "type": "explain",
+      "text": "Der häufigste HTML-Fehler überhaupt: der **vergessene schließende Tag**.\n\n```html\n<h1>Meine Überschrift\n<p>Und hier der Text.</p>\n```\n\nHier fehlt `</h1>` – der Browser weiß nicht, wo die Überschrift aufhört, und stellt womöglich alles Folgende riesig dar.\n\nDas Tückische: Der Browser zeigt **keine Fehlermeldung**. Er rät einfach, wie es gemeint sein könnte – und rät oft falsch. Wenn deine Seite seltsam aussieht, prüfe deshalb zuerst: Hat jedes Element seinen schließenden Tag? Und stimmt der Name – `<p>` schließt mit `</p>`, nicht mit `</h1>`?"
+    },
+    {
+      "type": "explain",
+      "text": "Tags können Zusatzinformationen tragen: **Attribute**. Ein Attribut steht **immer im öffnenden Tag** und hat die Form `name=\"wert\"`:\n\n```html\n<html lang=\"de\">\n```\n\nDieses Attribut heißt `lang`, sein Wert ist `de` – es verrät: Der Inhalt der Seite ist auf Deutsch. Das hilft zum Beispiel Vorlese-Programmen bei der richtigen Aussprache.\n\nDie Regeln für Attribute:\n\n1. Nur im **öffnenden** Tag – nie im schließenden.\n2. Nach dem Tag-Namen kommt ein **Leerzeichen**, dann das Attribut.\n3. Zwischen Name und Wert steht ein **Gleichheitszeichen** `=`.\n4. Der Wert steht in **Anführungszeichen** `\"...\"`.\n\nAusblick: Bald benutzt du Attribute ständig – bei Links gibt `href` das Ziel an, bei Bildern nennt `src` die Bilddatei."
+    },
+    {
+      "type": "quiz",
+      "question": "Wo darf ein Attribut wie `lang=\"de\"` stehen?",
+      "options": [
+        "Nur im öffnenden Tag",
+        "Nur im schließenden Tag",
+        "Hinter dem Element, in eigenen Klammern"
+      ],
+      "correct": 0,
+      "explanation": "Attribute stehen immer im öffnenden Tag, z. B. `<html lang=\"de\">`. Der schließende Tag besteht nur aus Schrägstrich und Tag-Name: `</html>`."
+    },
+    {
+      "type": "fill",
+      "text": "Diese Seite ist auf Deutsch. Setze den **Namen des Attributs** ein.",
+      "template": "<html ___=\"de\">",
+      "solution": "lang",
+      "accept": ["lang"],
+      "hint": "Das Attribut gibt die Sprache an – Englisch „language“, abgekürzt mit vier Buchstaben."
+    },
+    {
+      "type": "code",
+      "task": "In der Werkbank stehen zwei Absätze – der zweite ist auf Englisch.\n\n1. Gib dem zweiten Absatz das Attribut `lang=\"en\"`, damit klar ist: Dieser Satz ist Englisch.\n2. Ergänze **darunter** einen dritten Absatz mit genau dem Text **Ich lerne HTML!**",
+      "starter": {
+        "html": "<p>Willkommen in der WebWerkstatt!</p>\n<p>Let's write some code!</p>\n"
+      },
+      "hints": [
+        "Das Attribut kommt in den öffnenden Tag des zweiten Absatzes: nach dem p ein Leerzeichen, dann name=\"wert\".",
+        "Der zweite Absatz beginnt dann so: <p lang=\"en\">. Der neue dritte Absatz ist ein ganz normales <p>-Element ohne Attribut.",
+        "```html\n<p>Willkommen in der WebWerkstatt!</p>\n<p lang=\"en\">Let's write some code!</p>\n<p>Ich lerne HTML!</p>\n```"
+      ],
+      "solution": {
+        "html": "<p>Willkommen in der WebWerkstatt!</p>\n<p lang=\"en\">Let's write some code!</p>\n<p>Ich lerne HTML!</p>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "p", "min": 3, "label": "Es gibt drei Absätze" },
+        { "type": "attr", "selector": "p[lang]", "attr": "lang", "expected": "en", "label": "Der englische Absatz hat das Attribut lang=\"en\"" },
+        { "type": "text", "selector": "p:last-of-type", "expected": "Ich lerne HTML!", "label": "Der neue dritte Absatz lautet „Ich lerne HTML!“" }
+      ]
+    }
+  ]
+}

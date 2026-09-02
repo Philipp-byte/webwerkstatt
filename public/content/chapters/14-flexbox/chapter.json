@@ -1,0 +1,13 @@
+{
+  "id": "14-flexbox",
+  "title": "Flexbox",
+  "icon": "🧲",
+  "color": "#4a90d9",
+  "description": "Elemente nebeneinander anordnen und sauber ausrichten – modernes Layout.",
+  "lessons": [
+    "01-flex-grundlagen",
+    "02-ausrichten",
+    "03-wiederholung",
+    "04-projekt-layout"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "id": "02-auswahlfelder-und-knoepfe",
+  "title": "Auswahlfelder & Knöpfe",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Nicht immer soll man frei tippen – oft ist eine **feste Auswahl** besser. Dafür gibt es die Klappliste `<select>` mit ihren Einträgen `<option>`:\n\n```html\n<label for=\"getraenk\">Dein Getränk:</label>\n<select id=\"getraenk\">\n  <option>Kakao</option>\n  <option>Tee</option>\n  <option>Apfelschorle</option>\n</select>\n```\n\nDas `<select>` bekommt die `id` (für die Label-Verbindung, wie gewohnt). Jede Auswahlmöglichkeit ist eine eigene `<option>` – mit öffnendem und schließendem Tag. Der erste Eintrag wird zu Beginn angezeigt."
+    },
+    {
+      "type": "example",
+      "text": "Klappe die Liste in der Vorschau auf und wähle etwas aus!\n\nFüge dann eine vierte `<option>` hinzu – und stelle deinen Lieblingseintrag an die erste Stelle. Beobachte, was sich in der zugeklappten Liste ändert.",
+      "html": "<form>\n  <label for=\"getraenk\">Dein Getränk:</label>\n  <select id=\"getraenk\">\n    <option>Kakao</option>\n    <option>Tee</option>\n    <option>Apfelschorle</option>\n  </select>\n</form>\n"
+    },
+    {
+      "type": "fill",
+      "text": "In der Klappliste fehlt der öffnende Tag für den zweiten Eintrag. Setze ihn ein.",
+      "template": "<select id=\"snack\">\n  <option>Brezel</option>\n  <___>Muffin</option>\n</select>",
+      "solution": "option",
+      "accept": ["option"],
+      "hint": "Jeder Eintrag einer Klappliste ist eine `<option>`."
+    },
+    {
+      "type": "explain",
+      "text": "Zwei Bausteine fehlen noch für ein komplettes Formular:\n\n`<textarea>` – ein **mehrzeiliges** Textfeld für Nachrichten und Kommentare. Anders als `<input>` hat es einen öffnenden **und** einen schließenden Tag:\n\n```html\n<textarea id=\"nachricht\"></textarea>\n```\n\nAchtung: Zwischen die beiden Tags kommt **nichts** – was dort steht, erscheint als vorgetippter Text im Feld!\n\n`<button>` – der Knopf. Sein Text steht zwischen den Tags:\n\n```html\n<button>Absenden</button>\n```\n\nIn einem `<form>` löst der Button das **Absenden** aus – das unsere Vorschau ja abfängt, du erinnerst dich."
+    },
+    {
+      "type": "example",
+      "text": "Tippe eine mehrzeilige Nachricht in das große Feld (Enter macht einen Zeilenumbruch). Klicke dann auf **Absenden** – nichts geht verloren, die Vorschau fängt es ab.\n\nProbiere außerdem: Schreib ein Wort **zwischen** die beiden textarea-Tags und schau, was im Feld passiert.",
+      "html": "<form>\n  <label for=\"nachricht\">Deine Nachricht:</label>\n  <br>\n  <textarea id=\"nachricht\"></textarea>\n  <br>\n  <button>Absenden</button>\n</form>\n"
+    },
+    {
+      "type": "explain",
+      "text": "Zum Schluss zwei Spezial-Eingaben, kurz vorgestellt:\n\n`type=\"radio\"` – Ankreuzfelder, bei denen genau **eine** Wahl möglich ist (entweder–oder). Alle zusammengehörigen Radio-Knöpfe brauchen dasselbe `name`-Attribut – dann schaltet der Browser automatisch um.\n\n`type=\"checkbox\"` – Häkchen-Felder, **mehrere** gleichzeitig erlaubt.\n\n```html\n<label><input type=\"radio\" name=\"groesse\"> klein</label>\n<label><input type=\"radio\" name=\"groesse\"> groß</label>\n<label><input type=\"checkbox\"> Schokostreusel dazu</label>\n```\n\nHier steckt das Feld einfach **im** Label – auch das verbindet die beiden, ganz ohne for und id."
+    },
+    {
+      "type": "quiz",
+      "question": "Im Café-Formular soll man **mehrere** Lieblings-Snacks gleichzeitig ankreuzen können. Welcher Feldtyp passt?",
+      "options": [
+        "`type=\"radio\"`",
+        "`type=\"checkbox\"`",
+        "`type=\"email\"`"
+      ],
+      "correct": 1,
+      "explanation": "Checkboxen erlauben beliebig viele Häkchen. Radio-Knöpfe mit gleichem name lassen nur **eine** Wahl zu – gut für Entweder-oder-Fragen."
+    },
+    {
+      "type": "code",
+      "task": "Baue ein Feedback-Formular für die Schule:\n\n1. Ein `<form>`-Element als Container\n2. `<label for=\"pause\">Lieblingspause:</label>` und eine Klappliste mit `id=\"pause\"` und mindestens **drei** `<option>`-Einträgen – der erste lautet **Große Pause**\n3. `<label for=\"kommentar\">Dein Kommentar:</label>` und ein mehrzeiliges Textfeld mit `id=\"kommentar\"`\n4. Ein `<button>` mit dem Text **Abschicken**",
+      "starter": {
+        "html": "<h2>Pausen-Feedback</h2>\n<!-- Dein Formular hier -->\n"
+      },
+      "hints": [
+        "Der Reihe nach: Label + <select> mit drei <option>, dann Label + <textarea>, zum Schluss der <button>.",
+        "Denk an die Paare: for=\"pause\" gehört zu id=\"pause\", for=\"kommentar\" zu id=\"kommentar\". Die textarea bleibt innen leer!",
+        "```html\n<h2>Pausen-Feedback</h2>\n<form>\n  <label for=\"pause\">Lieblingspause:</label>\n  <select id=\"pause\">\n    <option>Große Pause</option>\n    <option>Mittagspause</option>\n    <option>Fünf-Minuten-Pause</option>\n  </select>\n  <br>\n  <label for=\"kommentar\">Dein Kommentar:</label>\n  <br>\n  <textarea id=\"kommentar\"></textarea>\n  <br>\n  <button>Abschicken</button>\n</form>\n```"
+      ],
+      "solution": {
+        "html": "<h2>Pausen-Feedback</h2>\n<form>\n  <label for=\"pause\">Lieblingspause:</label>\n  <select id=\"pause\">\n    <option>Große Pause</option>\n    <option>Mittagspause</option>\n    <option>Fünf-Minuten-Pause</option>\n  </select>\n  <br>\n  <label for=\"kommentar\">Dein Kommentar:</label>\n  <br>\n  <textarea id=\"kommentar\"></textarea>\n  <br>\n  <button>Abschicken</button>\n</form>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "form select#pause", "count": 1, "label": "Im Formular steht eine Klappliste mit der id „pause“" },
+        { "type": "selector", "selector": "select#pause option", "min": 3, "label": "Die Klappliste hat mindestens drei Einträge" },
+        { "type": "text", "selector": "select#pause option", "expected": "Große Pause", "label": "Der erste Eintrag lautet „Große Pause“" },
+        { "type": "selector", "selector": "label[for='pause']", "min": 1, "label": "Die Klappliste hat ein verbundenes Label" },
+        { "type": "selector", "selector": "form textarea#kommentar", "count": 1, "label": "Es gibt ein mehrzeiliges Feld mit der id „kommentar“" },
+        { "type": "selector", "selector": "label[for='kommentar']", "min": 1, "label": "Das Kommentarfeld hat ein verbundenes Label" },
+        { "type": "text", "selector": "form button", "expected": "Abschicken", "label": "Der Knopf trägt den Text „Abschicken“" }
+      ]
+    }
+  ]
+}

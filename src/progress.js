@@ -1,37 +1,29 @@
-// Lernfortschritt im localStorage – bewusst simpel, keine Punkte, keine Level.
+// Fassade für den Lernfortschritt: wählt zur Laufzeit zwischen localStorage
+// (Demo-Modus, z. B. GitHub Pages) und Schulserver (Schulmodus, Flask +
+// SQLite). Beide Backends bieten dieselbe Funktions-Schnittstelle
+// (progress-local.js / progress-remote.js) – die Views importieren nur von
+// hier und müssen den Unterschied nie kennen.
+//
+// Der Modus wird beim Start in main.js erkannt (/api/ping) und per
+// setBackendMode gesetzt; Standard ist der Demo-Modus.
 
-const KEY = 'webwerkstatt.fortschritt.v1';
+import * as local from './progress-local.js';
+import * as remote from './progress-remote.js';
 
-function load() {
-  try {
-    return JSON.parse(localStorage.getItem(KEY)) || {};
-  } catch {
-    return {};
-  }
+let backend = local;
+
+export function setBackendMode(mode) {
+  backend = mode === 'remote' ? remote : local;
 }
 
-function save(data) {
-  try {
-    localStorage.setItem(KEY, JSON.stringify(data));
-  } catch {
-    // Speicher voll oder blockiert – Fortschritt geht dann nur für diese Sitzung verloren.
-  }
+export function getBackendMode() {
+  return backend === remote ? 'remote' : 'local';
 }
 
-export function isDone(chapterId, lessonId) {
-  return !!load()[`${chapterId}/${lessonId}`];
-}
-
-export function markDone(chapterId, lessonId) {
-  const data = load();
-  data[`${chapterId}/${lessonId}`] = true;
-  save(data);
-}
-
-export function doneCount() {
-  return Object.values(load()).filter(Boolean).length;
-}
-
-export function chapterDoneCount(chapterId, lessonIds) {
-  return lessonIds.filter((l) => isDone(chapterId, l)).length;
-}
+export const isDone = (...a) => backend.isDone(...a);
+export const markDone = (...a) => backend.markDone(...a);
+export const doneCount = (...a) => backend.doneCount(...a);
+export const chapterDoneCount = (...a) => backend.chapterDoneCount(...a);
+export const isChapterLocked = (...a) => backend.isChapterLocked(...a);
+export const exportAll = (...a) => backend.exportAll(...a);
+export const importAll = (...a) => backend.importAll(...a);

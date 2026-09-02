@@ -1,0 +1,70 @@
+{
+  "id": "02-textgestaltung",
+  "title": "Text ausrichten & gestalten",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Drei nützliche Text-Eigenschaften:\n\n`text-align` – richtet Text aus: `left` (Standard), `center` oder `right`. Die Eigenschaft setzt du auf den **Block**, in dem der Text steht (die Überschrift, den Absatz) – nicht auf einzelne Wörter.\n\n`font-style: italic;` – macht Text **kursiv**.\n\n`text-decoration: none;` – entfernt die **Unterstreichung**. Das nutzt man oft bei Links, die der Browser standardmäßig unterstreicht:\n\n```css\nh1 { text-align: center; }\na { text-decoration: none; }\n```\n\nAber Vorsicht beim Link-Styling: Die Unterstreichung zeigt Besuchern „hier kann man klicken“. Nimmst du sie weg, sollten deine Links anders erkennbar bleiben – zum Beispiel durch eine kräftige Farbe."
+    },
+    {
+      "type": "example",
+      "text": "Beobachte den Link: Mit `text-decoration: none;` verliert er die Unterstreichung. Stelle testweise `center` auf `right` um – und lösche die `a`-Regel, um die Standard-Unterstreichung zurückzuholen.",
+      "html": "<h1>Zitat des Tages</h1>\n<p class=\"zitat\">Wer aufhört zu lernen, hört auf, gut zu sein.</p>\n<a href=\"https://example.com\">Mehr Zitate</a>\n",
+      "css": "h1 {\n  text-align: center;\n}\n.zitat {\n  font-style: italic;\n}\na {\n  text-decoration: none;\n  color: #e08a2e;\n}\n",
+      "editable": ["css"]
+    },
+    {
+      "type": "explain",
+      "text": "Eine Zugabe, die Profis von Anfängern unterscheidet: der **Zeilenabstand** mit `line-height`.\n\n```css\np {\n  line-height: 1.5;\n}\n```\n\nDie Zahl **ohne Einheit** ist ein Faktor: `1.5` bedeutet „anderthalbfache Schriftgröße“ – bei 16px Schrift also 24px pro Zeile.\n\nWarum lohnt sich das? Der Standardabstand des Browsers (etwa `1.2`) ist für längere Texte ziemlich gequetscht. Mit `1.5` bekommen die Zeilen Luft, das Auge findet leichter in die nächste Zeile – der Text liest sich sofort angenehmer. Für Fließtext gilt: **`1.5` ist ein guter Wert.** (Achtung beim Tippen: Dezimalzahlen schreibst du in CSS mit **Punkt**, nicht mit Komma.)"
+    },
+    {
+      "type": "example",
+      "text": "Zweimal derselbe Text: oben mit `line-height: 1`, unten mit `1.6`. Welcher liest sich besser? Probiere auch extreme Werte wie `0.8` oder `3`!",
+      "html": "<p class=\"eng\">Die Schülerfirma trifft sich jeden Dienstag in Raum 012. Auf dem Plan stehen die neue Website, das Sommerfest und die Bestellung der T-Shirts für die Abschlussklasse.</p>\n<hr>\n<p class=\"luftig\">Die Schülerfirma trifft sich jeden Dienstag in Raum 012. Auf dem Plan stehen die neue Website, das Sommerfest und die Bestellung der T-Shirts für die Abschlussklasse.</p>\n",
+      "css": ".eng {\n  line-height: 1;\n}\n.luftig {\n  line-height: 1.6;\n}\n",
+      "editable": ["css"]
+    },
+    {
+      "type": "quiz",
+      "question": "Mit welcher Eigenschaft **zentrierst** du eine Überschrift?",
+      "options": [
+        "`text-align: center;`",
+        "`font-style: center;`",
+        "`text-decoration: center;`"
+      ],
+      "correct": 0,
+      "explanation": "`text-align` steuert die Ausrichtung – `left`, `center` oder `right`. `font-style` macht kursiv, `text-decoration` unterstreicht."
+    },
+    {
+      "type": "fill",
+      "text": "Die Absätze sollen **anderthalbfachen** Zeilenabstand bekommen. Setze den Wert ein.",
+      "template": "p { line-height: ___; }",
+      "solution": "1.5",
+      "accept": ["1.5"],
+      "hint": "Anderthalbfach = Faktor `1.5` – mit Punkt geschrieben, ohne Einheit."
+    },
+    {
+      "type": "code",
+      "task": "Gestalte die Zitat-Seite:\n\n1. Die `h1` wird **zentriert**\n2. Der Absatz mit der Klasse `zitat` wird **kursiv**\n3. Der Link verliert seine **Unterstreichung**\n4. **Alle** Absätze bekommen `line-height: 1.5`",
+      "starter": {
+        "html": "<h1>Mein Lieblingszitat</h1>\n<p class=\"zitat\">Man muss die Dinge so einfach wie möglich machen. Aber nicht einfacher.</p>\n<p>Dieses Zitat wird oft Albert Einstein zugeschrieben – ganz sicher ist das aber nicht.</p>\n<a href=\"https://example.com\">Wer hat das gesagt?</a>\n",
+        "css": "/* Deine Regeln hier */\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Für die Klasse brauchst du den Punkt-Selektor: .zitat – für den Zeilenabstand eine Regel für alle p.",
+        "Beim Link heißt es text-decoration: none; – und line-height: 1.5 schreibst du mit Punkt.",
+        "```css\nh1 {\n  text-align: center;\n}\n.zitat {\n  font-style: italic;\n}\na {\n  text-decoration: none;\n}\np {\n  line-height: 1.5;\n}\n```"
+      ],
+      "solution": {
+        "css": "h1 {\n  text-align: center;\n}\n.zitat {\n  font-style: italic;\n}\na {\n  text-decoration: none;\n}\np {\n  line-height: 1.5;\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": "h1", "prop": "text-align", "expected": "center", "label": "Die Überschrift ist zentriert" },
+        { "type": "style", "selector": ".zitat", "prop": "font-style", "expected": "italic", "label": "Das Zitat ist kursiv" },
+        { "type": "style", "selector": "a", "prop": "text-decoration-line", "expected": "none", "label": "Der Link ist nicht mehr unterstrichen" },
+        { "type": "source", "file": "css", "matches": "line-height\\s*:\\s*1\\.5", "label": "Die Absätze haben line-height 1.5" }
+      ]
+    }
+  ]
+}

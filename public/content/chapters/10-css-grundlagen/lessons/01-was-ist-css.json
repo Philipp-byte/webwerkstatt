@@ -1,0 +1,68 @@
+{
+  "id": "01-was-ist-css",
+  "title": "Was ist CSS?",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "HTML legt fest, **was** auf der Seite steht. **CSS** (Cascading Style Sheets) legt fest, **wie es aussieht**: Farben, Schriften, Abstände, Anordnung.\n\nEine **CSS-Regel** sieht so aus:\n\n```css\nh1 {\n  color: red;\n}\n```\n\nDas liest sich: „Alle `h1`-Elemente bekommen die Textfarbe Rot.“ Jedes Teil hat einen Namen:\n\n- `h1` ist der **Selektor** – er wählt aus, **welche Elemente** gestaltet werden.\n- `color` ist die **Eigenschaft** – **was** verändert wird.\n- `red` ist der **Wert** – **wie** es verändert wird.\n\nUnd die Satzzeichen sind kein Deko-Kram, sondern Pflicht: **Doppelpunkt** zwischen Eigenschaft und Wert, **Semikolon** am Ende der Zeile, **geschweifte Klammern** `{ }` um alles, was zum Selektor gehört."
+    },
+    {
+      "type": "example",
+      "text": "In der WebWerkstatt hat CSS seinen **eigenen Tab** – wie im echten Projekt eine eigene Datei `style.css`. Ändere `red` in `blue`, `green` oder `hotpink` und beobachte die Vorschau!",
+      "html": "<h1>CSS färbt mich</h1>\n<p>Und mich lässt es (noch) in Ruhe.</p>\n",
+      "css": "h1 {\n  color: red;\n}\n",
+      "editable": ["css"]
+    },
+    {
+      "type": "explain",
+      "text": "Eine Regel darf **mehrere** Eigenschaft-Wert-Paare enthalten. Jedes Paar heißt **Deklaration** und endet mit einem Semikolon:\n\n```css\nh1 {\n  color: white;\n  background-color: darkblue;\n}\n```\n\n(`background-color` ist die Hintergrundfarbe – die lernst du in Lektion 4 genauer kennen.)\n\nUnd was passiert bei einem **Tippfehler**? Etwas Wichtiges: **CSS meldet keine Fehler.** Schreibst du `colr` statt `color`, erscheint keine Warnung – der Browser **ignoriert die Deklaration einfach still** und macht weiter. Deine Seite sieht dann „irgendwie falsch“ aus, ohne dass dir jemand sagt, warum.\n\nAuch ein **vergessenes Semikolon** ist tückisch: Der Browser klebt dann die nächste Zeile an die kaputte dran – und schon sind **zwei** Deklarationen wirkungslos."
+    },
+    {
+      "type": "example",
+      "text": "Hier ist absichtlich beides kaputt: In der `h1`-Regel steckt ein **Tippfehler** (`colr`), beim Absatz **fehlt ein Semikolon** – dadurch funktioniert auch die Zeile danach nicht. Repariere beide Stellen und beobachte, wie die Vorschau reagiert!",
+      "html": "<h1>Fehlersuche</h1>\n<p>Ich sollte grün auf hellgelbem Grund sein.</p>\n",
+      "css": "h1 {\n  colr: red;\n}\np {\n  color: green\n  background-color: lightyellow;\n}\n",
+      "editable": ["css"]
+    },
+    {
+      "type": "quiz",
+      "question": "Welche CSS-Regel ist **richtig** geschrieben?",
+      "options": [
+        "`h1 { color: blue; }`",
+        "`h1 ( color = blue )`",
+        "`color: h1 { blue };`"
+      ],
+      "correct": 0,
+      "explanation": "Selektor, dann geschweifte Klammern, darin `eigenschaft: wert;` – mit Doppelpunkt und Semikolon."
+    },
+    {
+      "type": "fill",
+      "text": "Ein Zeichen fehlt: Setze das **Satzzeichen** ein, das zwischen Eigenschaft und Wert gehört.",
+      "template": "h1 { color___ red; }",
+      "solution": ":",
+      "accept": [":"],
+      "hint": "Zwischen Eigenschaft und Wert steht immer ein **Doppelpunkt** – das Semikolon kommt erst ganz ans Ende."
+    },
+    {
+      "type": "code",
+      "task": "Der HTML-Tab ist diesmal gesperrt 🔒 – du arbeitest nur im **CSS-Tab**.\n\nSchreibe zwei Regeln:\n\n1. **Alle Absätze** (`p`) werden **blau** (`blue`)\n2. Die **Überschrift** (`h1`) wird **grün** (`green`)\n\nDenk an Doppelpunkt, Semikolon und geschweifte Klammern!",
+      "starter": {
+        "html": "<h1>Tageszeitung</h1>\n<p>Die Schülerfirma verkauft ab Montag Waffeln.</p>\n<p>Der Erlös geht an die Abschlussfahrt.</p>\n",
+        "css": "/* Deine Regeln hier */\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Die Selektoren für Absätze und Überschriften sind einfach p und h1 – ohne spitze Klammern.",
+        "Die Eigenschaft für Textfarbe heißt color. Du brauchst zwei getrennte Regeln, jede mit eigenen geschweiften Klammern.",
+        "```css\np {\n  color: blue;\n}\nh1 {\n  color: green;\n}\n```"
+      ],
+      "solution": {
+        "css": "p {\n  color: blue;\n}\nh1 {\n  color: green;\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": "p", "prop": "color", "expected": "blue", "label": "Absätze sind blau" },
+        { "type": "style", "selector": "h1", "prop": "color", "expected": "green", "label": "Die Überschrift ist grün" }
+      ]
+    }
+  ]
+}

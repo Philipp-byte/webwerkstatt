@@ -1,0 +1,62 @@
+{
+  "id": "01-bilder",
+  "title": "Bilder",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Bilder bindest du mit dem `<img>`-Tag ein. Er steht **allein** – ohne schließenden Tag – und braucht zwei Attribute:\n\n```html\n<img src=\"haus.svg\" alt=\"Ein kleines Haus mit rotem Dach\">\n```\n\n`src` (source = Quelle) sagt dem Browser, **wo** die Bilddatei liegt.\n\n`alt` (alternative) ist die **Beschreibung** des Bildes. Sie wird angezeigt, wenn das Bild nicht lädt, und von Vorlese-Programmen für blinde Menschen vorgelesen. Ein gutes `alt` gehört zu **jedem** Bild – das ist keine Kür, sondern Pflicht.\n\nIn der WebWerkstatt liegen die Übungsbilder `haus.svg`, `katze.svg` und `strand.svg` für dich bereit."
+    },
+    {
+      "type": "example",
+      "text": "Probiere die Übungsbilder aus: Tausche `haus.svg` gegen `katze.svg` oder `strand.svg`. Und tippe den Dateinamen mal absichtlich falsch – dann siehst du, wozu `alt` gut ist!",
+      "html": "<h2>Bildergalerie</h2>\n<img src=\"haus.svg\" alt=\"Ein kleines Haus mit rotem Dach\">\n"
+    },
+    {
+      "type": "explain",
+      "text": "Was du in `src` schreibst, nennt man einen **Pfad** – den Weg zur Datei.\n\n**Gleiche Ebene:** Liegt das Bild im selben Ordner wie deine HTML-Datei, genügt der Dateiname: `src=\"haus.svg\"`.\n\n**Unterordner:** Liegt das Bild in einem Ordner `bilder`, schreibst du den Ordnernamen davor, getrennt mit `/`: `src=\"bilder/haus.svg\"`.\n\n**Warum Bilder „kaputtgehen“:** Der Browser findet die Datei nicht mehr, sobald der Pfad nicht mehr stimmt – etwa weil die Datei umbenannt oder verschoben wurde, ein Tippfehler drin ist oder die **Groß-/Kleinschreibung** nicht passt (`Haus.svg` ist auf vielen Servern nicht dasselbe wie `haus.svg`). Dann zeigt der Browser ein Kaputtes-Bild-Symbol und deinen `alt`-Text.\n\nIn der Werkstatt liegen alle Übungsbilder auf **gleicher Ebene** – der Dateiname genügt."
+    },
+    {
+      "type": "quiz",
+      "question": "Dein Bild `hund.jpg` liegt im Unterordner `fotos`. Was gehört ins `src`?",
+      "options": [
+        "`hund.jpg`",
+        "`fotos/hund.jpg`",
+        "`fotos\\hund.jpg`"
+      ],
+      "correct": 1,
+      "explanation": "Ordnername, dann `/`, dann Dateiname. Im Web wird immer der normale Schrägstrich `/` benutzt – der umgekehrte `\\` funktioniert nicht."
+    },
+    {
+      "type": "explain",
+      "text": "Bilddateien gibt es in verschiedenen **Formaten** – erkennbar an der Endung:\n\n- **jpg** – für **Fotos**: Millionen Farben, stark komprimiert, kleine Dateien\n- **png** – für **Grafiken und Screenshots**: verlustfrei, kann durchsichtige Flächen (Transparenz)\n- **svg** – **Vektorgrafik**: besteht aus geometrischen Formen statt Bildpunkten und bleibt beim Vergrößern gestochen scharf. Deshalb sind Logos und unsere Übungsbilder SVGs.\n\nDazu ein Satz zu **webp**: ein modernes Format, das Fotos noch kleiner speichert als jpg – es begegnet dir im Netz immer öfter.\n\nMerkhilfe: Foto von der Klassenfahrt → **jpg**. Logo oder Zeichnung, die scharf bleiben soll → **svg**. Screenshot oder Grafik mit durchsichtigen Stellen → **png**."
+    },
+    {
+      "type": "fill",
+      "text": "Dem Bild fehlt die **Beschreibung** für Vorlese-Programme und den Notfall. Setze das fehlende Attribut ein.",
+      "template": "<img src=\"haus.svg\" ___=\"Ein kleines Haus mit rotem Dach\">",
+      "solution": "alt",
+      "accept": ["alt"],
+      "hint": "Das Attribut heißt `alt` – kurz für „alternative“: der Text, der das Bild ersetzt, wenn es nicht angezeigt werden kann."
+    },
+    {
+      "type": "code",
+      "task": "Baue eine kleine Galerie mit **zwei** Übungsbildern:\n\n1. Binde `haus.svg` ein – im `alt`-Text kommt das Wort **Haus** vor\n2. Binde darunter `katze.svg` ein – im `alt`-Text kommt das Wort **Katze** vor",
+      "starter": {
+        "html": "<h2>Bildergalerie</h2>\n<!-- Deine zwei Bilder hier -->\n"
+      },
+      "hints": [
+        "Der Tag heißt <img ...> und hat keinen schließenden Tag. Jedes Bild braucht src und alt.",
+        "Zwei <img>-Tags untereinander – der Dateiname genügt, die Bilder liegen auf gleicher Ebene: <img src=\"haus.svg\" alt=\"...\">",
+        "```html\n<h2>Bildergalerie</h2>\n<img src=\"haus.svg\" alt=\"Ein kleines Haus mit rotem Dach\">\n<img src=\"katze.svg\" alt=\"Eine Katze sitzt und schaut nach vorn\">\n```"
+      ],
+      "solution": {
+        "html": "<h2>Bildergalerie</h2>\n<img src=\"haus.svg\" alt=\"Ein kleines Haus mit rotem Dach\">\n<img src=\"katze.svg\" alt=\"Eine Katze sitzt und schaut nach vorn\">\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "img", "min": 2, "label": "Es gibt zwei Bilder" },
+        { "type": "attr", "selector": "img[src='haus.svg']", "attr": "alt", "matches": "haus", "label": "haus.svg ist da und der alt-Text enthält „Haus“" },
+        { "type": "attr", "selector": "img[src='katze.svg']", "attr": "alt", "matches": "katze", "label": "katze.svg ist da und der alt-Text enthält „Katze“" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "id": "01-rahmen-innenabstand",
+  "title": "Rahmen & Innenabstand",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "In CSS ist **jedes Element eine rechteckige Box** – jede Überschrift, jeder Absatz, jedes Bild. Und jede Box besteht aus **Schichten**, von innen nach außen:\n\n```\n┌── margin ─ Außenabstand (unsichtbar) ──┐\n│  ┌── border ─ der Rahmen ───────────┐  │\n│  │  ┌── padding ─ Innenabstand ──┐  │  │\n│  │  │     Inhalt (Text, Bild)    │  │  │\n│  │  └────────────────────────────┘  │  │\n│  └──────────────────────────────────┘  │\n└────────────────────────────────────────┘\n```\n\n**Eselsbrücke – das Paket-Bild:** Der Inhalt ist das Geschenk, das `padding` die Luftpolsterfolie, der `border` der Karton – und `margin` der Abstand zum nächsten Paket im Regal.\n\nHeute geht es um die zwei inneren Schichten: **Rahmen** und **Innenabstand**. Der Außenabstand kommt in der nächsten Lektion."
+    },
+    {
+      "type": "explain",
+      "text": "`border` – der **Rahmen**. Er braucht drei Angaben in einer Zeile, immer in dieser Reihenfolge: **Dicke, Linienart, Farbe**.\n\n```css\n.karte {\n  border: 3px solid #2f6fdb;\n}\n```\n\nFür die **Linienart** gibt es mehrere Wörter:\n\n- `solid` – durchgezogen (der Klassiker)\n- `dashed` – gestrichelt\n- `dotted` – gepunktet\n- `double` – doppelte Linie\n\nFehlt eine der drei Angaben (z. B. die Linienart), zeichnet der Browser **gar keinen** Rahmen – ein sehr häufiger Anfängerfehler!"
+    },
+    {
+      "type": "example",
+      "text": "Vier Boxen, vier Linienarten. Ändere die Dicke (z. B. `6px`) und die Farben – und tausche testweise mal eine Linienart gegen eine andere.",
+      "html": "<p class=\"a\">solid – durchgezogen</p>\n<p class=\"b\">dashed – gestrichelt</p>\n<p class=\"c\">dotted – gepunktet</p>\n<p class=\"d\">double – doppelt</p>\n",
+      "css": "p {\n  padding: 10px;\n}\n.a { border: 3px solid #2f6fdb; }\n.b { border: 3px dashed #1a9e5c; }\n.c { border: 3px dotted #d97706; }\n.d { border: 3px double #b13f3f; }\n"
+    },
+    {
+      "type": "fill",
+      "text": "Die Box soll einen 4px dicken, **gestrichelten**, blauen Rahmen bekommen. Welche Linienart fehlt?",
+      "template": "border: 4px ___ #2f6fdb;",
+      "solution": "dashed",
+      "accept": ["dashed"],
+      "hint": "Gestrichelt heißt auf Englisch dashed – gepunktet wäre dotted."
+    },
+    {
+      "type": "explain",
+      "text": "`padding` – der **Innenabstand**: der Platz zwischen Inhalt und Rahmen.\n\n```css\n.karte {\n  padding: 20px;\n}\n```\n\nOhne padding klebt der Text direkt am Rahmen – das sieht gequetscht aus und liest sich schlecht.\n\n**Eselsbrücke:** **P**adding = **P**olster. Im Paket-Bild ist padding die Luftpolsterfolie zwischen Geschenk und Karton."
+    },
+    {
+      "type": "example",
+      "text": "Stelle das `padding` einmal auf `0` – siehst du, wie der Text am Rahmen klebt? Und mit `40px` bekommt die Box richtig viel Luft.",
+      "html": "<div class=\"karte\">\n  <h2>Infobox</h2>\n  <p>Ich bin eine Box mit Rahmen und Innenabstand.</p>\n</div>\n",
+      "css": ".karte {\n  border: 3px solid #2f6fdb;\n  padding: 20px;\n}\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Was bewirkt `padding`?",
+      "options": [
+        "Abstand **innerhalb** der Box – zwischen Inhalt und Rahmen",
+        "Abstand **außerhalb** der Box – zu den Nachbarn",
+        "Die Dicke des Rahmens"
+      ],
+      "correct": 0,
+      "explanation": "padding = Innenabstand (**P**adding = **P**olster). Der Abstand nach außen heißt margin – der kommt in der nächsten Lektion."
+    },
+    {
+      "type": "code",
+      "task": "Gestalte die Hinweis-Karte:\n\n1. `border: 3px solid #2f6fdb;`\n2. `padding: 20px;`",
+      "starter": {
+        "html": "<div class=\"karte\">\n  <h2>Wichtiger Hinweis</h2>\n  <p>Morgen beginnt der Unterricht erst zur 2. Stunde.</p>\n</div>\n",
+        "css": ".karte {\n  /* Rahmen und Innenabstand hier */\n}\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "border braucht drei Werte: Dicke, Art, Farbe – z. B. 3px solid #2f6fdb.",
+        "padding: 20px; sorgt für Luft zwischen Text und Rahmen.",
+        "```css\n.karte {\n  border: 3px solid #2f6fdb;\n  padding: 20px;\n}\n```"
+      ],
+      "solution": {
+        "css": ".karte {\n  border: 3px solid #2f6fdb;\n  padding: 20px;\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": ".karte", "prop": "border-top-width", "expected": "3px", "label": "Der Rahmen ist 3px dick" },
+        { "type": "style", "selector": ".karte", "prop": "border-top-style", "expected": "solid", "label": "Der Rahmen ist eine durchgezogene Linie" },
+        { "type": "style", "selector": ".karte", "prop": "border-top-color", "expected": "#2f6fdb", "label": "Der Rahmen hat die Farbe #2f6fdb" },
+        { "type": "style", "selector": ".karte", "prop": "padding-top", "expected": "20px", "label": "Der Innenabstand beträgt 20px" }
+      ]
+    }
+  ]
+}

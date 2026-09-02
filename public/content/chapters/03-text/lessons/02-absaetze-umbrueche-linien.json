@@ -1,0 +1,62 @@
+{
+  "id": "02-absaetze-umbrueche-linien",
+  "title": "Absätze, Umbrüche & Linien",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Fließtext gehört in **Absätze**: `<p>...</p>` – p wie „paragraph“. Jeder Absatz bekommt vom Browser automatisch etwas Abstand nach oben und unten, damit der Text lesbar bleibt.\n\n**Überraschung:** Zeilenumbrüche, die du im Code mit der Enter-Taste machst, **ignoriert der Browser komplett**. Auch fünf Leerzeichen hintereinander presst er zu einem einzigen zusammen.\n\nDer Browser richtet sich nur nach den **Tags** – nicht danach, wie hübsch dein Code formatiert ist."
+    },
+    {
+      "type": "explain",
+      "text": "Und wenn du **innerhalb** eines Absatzes eine neue Zeile brauchst – etwa bei einer Adresse? Dafür gibt es `<br>` („break“ = Umbruch):\n\n```html\n<p>Musterstraße 12<br>74072 Heilbronn</p>\n```\n\n`<br>` steht **allein** – ein `</br>` gibt es nicht. Solche Tags ohne Inhalt und ohne schließenden Tag heißen **leere Elemente**. Eines kennst du schon: `<meta charset=\"utf-8\">`.\n\nAber Vorsicht: `<br>` ist nur für Umbrüche **mitten im Text** gedacht – Adressen, Gedichte, Liedzeilen. Für einen neuen Gedanken beginnst du einen neuen Absatz, statt viele `<br>` aneinanderzureihen."
+    },
+    {
+      "type": "example",
+      "text": "Schau genau hin: Im ersten Absatz steht der Text im Code auf **drei Zeilen** – der Browser macht trotzdem eine einzige daraus. Im zweiten Absatz erzwingt `<br>` die Umbrüche.\n\nProbier aus: Lösche eines der `<br>` und beobachte die Adresse.",
+      "html": "<p>Diese Zeile\nund diese Zeile\nund auch diese werden zu einer einzigen.</p>\n\n<p>Musterstraße 12<br>74072 Heilbronn<br>Deutschland</p>\n"
+    },
+    {
+      "type": "fill",
+      "text": "Setze den Tag ein, der einen **Zeilenumbruch** erzwingt.",
+      "template": "<p>Erste Zeile<___>Zweite Zeile</p>",
+      "solution": "br",
+      "accept": ["br", "br/", "br /"],
+      "hint": "Der Tag heißt `br` – kurz für „break“ (Umbruch)."
+    },
+    {
+      "type": "explain",
+      "text": "Noch ein leeres Element: `<hr>` („horizontal rule“) zeichnet eine **Trennlinie** quer über die Seite.\n\n```html\n<p>Hier endet das erste Thema.</p>\n<hr>\n<p>Und hier beginnt etwas Neues.</p>\n```\n\nDie Linie markiert einen **Themenwechsel** – zum Beispiel zwischen einem Artikel und den Kommentaren darunter. `<hr>` steht deshalb **zwischen** Absätzen, nie mitten im Text.\n\nMerkhilfe: `<br>` bricht die Zeile (unsichtbarer Umbruch), `<hr>` zieht eine sichtbare Linie."
+    },
+    {
+      "type": "quiz",
+      "question": "Du willst zwischen zwei Themen eine **sichtbare Trennlinie** ziehen. Welcher Tag passt?",
+      "options": [
+        "`<hr>`",
+        "`<br>`",
+        "`<p>`"
+      ],
+      "correct": 0,
+      "explanation": "`<hr>` zeichnet die horizontale Linie für einen Themenwechsel. `<br>` macht nur einen unsichtbaren Zeilenumbruch, und `<p>` ist ein Absatz."
+    },
+    {
+      "type": "code",
+      "task": "Schreibe eine kleine Seite über dein **Lieblingsessen**:\n\n1. Ein Absatz `<p>`: Was ist dein Lieblingsessen?\n2. Danach eine Trennlinie `<hr>`.\n3. Danach ein zweiter Absatz: Warum magst du es? Baue in diesen Absatz mindestens einen Zeilenumbruch mit `<br>` ein.",
+      "starter": {
+        "html": "<h1>Mein Lieblingsessen</h1>\n"
+      },
+      "hints": [
+        "Ein Absatz = <p>Dein Text</p>. Die Trennlinie und der Umbruch sind leere Elemente – sie stehen allein, ohne schließenden Tag.",
+        "Die Reihenfolge unter der Überschrift: <p>…</p>, dann <hr>, dann <p>… <br> …</p>.",
+        "```html\n<h1>Mein Lieblingsessen</h1>\n<p>Am liebsten esse ich Linsen mit Spätzle.</p>\n<hr>\n<p>Es schmeckt super<br>und erinnert mich an zu Hause.</p>\n```"
+      ],
+      "solution": {
+        "html": "<h1>Mein Lieblingsessen</h1>\n<p>Am liebsten esse ich Linsen mit Spätzle.</p>\n<hr>\n<p>Es schmeckt super<br>und erinnert mich an zu Hause.</p>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "p", "min": 2, "label": "Es gibt mindestens zwei Absätze" },
+        { "type": "selector", "selector": "hr", "min": 1, "label": "Zwischen den Absätzen ist eine <hr>-Trennlinie" },
+        { "type": "source", "file": "html", "matches": "<br\\s*/?>", "label": "Im zweiten Absatz sorgt ein <br> für einen Zeilenumbruch" }
+      ]
+    }
+  ]
+}

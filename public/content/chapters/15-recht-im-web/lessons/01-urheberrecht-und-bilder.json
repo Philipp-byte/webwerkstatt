@@ -1,0 +1,77 @@
+{
+  "id": "01-urheberrecht-und-bilder",
+  "title": "Urheberrecht & Bilder",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Du baust eine Webseite und brauchst noch ein Bild. Schnell eins aus der Bildersuche kopiert – fertig? **Stopp!**\n\nJedes Foto, jeder Text, jede Melodie im Netz hat eine **Urheberin** oder einen **Urheber** – den Menschen, der das Werk geschaffen hat. Das **Urheberrecht** schützt dieses Werk **automatisch**: Es entsteht in dem Moment, in dem das Werk entsteht. Keine Anmeldung nötig, kein ©-Zeichen nötig.\n\nDas bedeutet: Auch ein Bild **ohne** Copyright-Hinweis gehört jemandem. „Steht doch frei im Internet“ zählt nicht – **einfach kopieren ist nicht erlaubt**. Wer fremde Bilder ohne Erlaubnis auf die eigene Webseite stellt, riskiert richtig Ärger – bis hin zu teuren Abmahnungen."
+    },
+    {
+      "type": "quiz",
+      "question": "Du findest über die Bildersuche ein tolles Foto – ohne ©-Zeichen, ohne Namen. Darfst du es für deine Webseite kopieren?",
+      "options": [
+        "Ja – ohne ©-Zeichen ist es nicht geschützt",
+        "Nein – das Urheberrecht gilt automatisch, auch ohne Hinweis",
+        "Ja, aber nur, wenn ich es vorher verkleinere"
+      ],
+      "correct": 1,
+      "explanation": "Das Urheberrecht entsteht automatisch mit dem Werk. Ob ein ©-Zeichen dabei steht oder ob du das Bild veränderst, spielt keine Rolle."
+    },
+    {
+      "type": "explain",
+      "text": "Wie kommst du dann **legal** an Bilder? Mit einer **Lizenz** – einer Erlaubnis der Urheberin oder des Urhebers.\n\nEs gibt Webseiten mit **frei nutzbaren Bildern**, deren Fotografinnen und Fotografen die Nutzung ausdrücklich erlauben. Lies dort trotzdem die Bedingungen – „frei“ heißt nicht automatisch „alles erlaubt“.\n\nHäufig begegnet dir dabei **Creative Commons** (kurz **CC**): ein Baukasten fertiger Lizenzen, mit denen Urheber die Nutzung unter klaren Bedingungen erlauben. Die Bedingungen stecken im Kürzel – `CC BY` heißt zum Beispiel: Nutzung erlaubt, aber nur **mit Namensnennung** (englisch *by* = von). Bedingungen lesen, einhalten – dann bist du auf der sicheren Seite."
+    },
+    {
+      "type": "quiz",
+      "question": "Ein Bild steht unter der Lizenz `CC BY`. Was musst du tun, wenn du es auf deiner Webseite verwendest?",
+      "options": [
+        "Nichts – CC bedeutet, alles ist erlaubt",
+        "Den Namen der Urheberin bzw. des Urhebers angeben",
+        "Vorher Geld an die Fotografin überweisen"
+      ],
+      "correct": 1,
+      "explanation": "BY steht für Namensnennung: Du darfst das Bild nutzen, musst aber angeben, von wem es stammt."
+    },
+    {
+      "type": "explain",
+      "text": "Drei Dinge zum Merken:\n\n**1. Quellenangabe:** Gib bei fremden Bildern immer sichtbar an, von wem sie stammen, woher sie kommen und unter welcher Lizenz sie stehen – zum Beispiel: „Foto: Maria Beispiel, beispielfotos.de, CC BY“.\n\n**2. Die sichere Wahl:** eigene Fotos und Grafiken! Was du selbst fotografierst oder zeichnest, gehört **dir** – du darfst es uneingeschränkt verwenden. (Sind fremde Personen erkennbar im Bild, frage sie vorher um Erlaubnis.)\n\n**3. KI-Bilder:** Bilder aus KI-Generatoren darfst du meist verwenden – die genauen Regeln stehen in den Bedingungen des jeweiligen Anbieters. Fair und zunehmend üblich ist, KI-Bilder als solche zu kennzeichnen."
+    },
+    {
+      "type": "quiz",
+      "question": "Welche Bildquelle ist für deine Webseite die **sicherste**?",
+      "options": [
+        "Ein Treffer aus der Google-Bildersuche",
+        "Ein selbst aufgenommenes Foto",
+        "Ein Screenshot aus einem YouTube-Video"
+      ],
+      "correct": 1,
+      "explanation": "Bei eigenen Fotos bist du selbst die Urheberin bzw. der Urheber – niemand kann dir die Nutzung verbieten. Bildersuche-Treffer und Video-Screenshots sind fast immer fremde, geschützte Werke."
+    },
+    {
+      "type": "explain",
+      "text": "Und wohin mit der Quellenangabe im HTML? Dafür gibt es zwei Tags, die zusammengehören:\n\n`<figure>` umschließt ein Bild **samt Beschriftung**, und `<figcaption>` (von englisch *figure caption* = Bildunterschrift) enthält die Beschriftung selbst – der perfekte Platz für die Quellenangabe:\n\n```html\n<figure>\n  <img src=\"katze.svg\" alt=\"Gezeichnete Katze\">\n  <figcaption>Grafik: WebWerkstatt, eigene Zeichnung</figcaption>\n</figure>\n```\n\nDer Browser zeigt die Unterschrift direkt beim Bild an – und alle sehen auf einen Blick, woher es stammt."
+    },
+    {
+      "type": "code",
+      "task": "Der Reisebericht zeigt ein Bild – aber noch ohne Quellenangabe. Baue sie sauber ein:\n\n1. Umschließe das `<img>` mit einem `<figure>`-Element\n2. Ergänze darin **nach** dem Bild ein `<figcaption>` mit genau diesem Text: `Grafik: WebWerkstatt, eigene Zeichnung`",
+      "starter": {
+        "html": "<h1>Mein Tag am Meer</h1>\n<p>Morgens waren wir die Ersten am Strand.</p>\n<img src=\"strand.svg\" alt=\"Strand mit Palme und Sonne\">\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "figure ist ein Container: <figure> davor, </figure> dahinter – das img wandert komplett hinein.",
+        "Direkt nach der img-Zeile kommt: <figcaption>Grafik: WebWerkstatt, eigene Zeichnung</figcaption>",
+        "```html\n<h1>Mein Tag am Meer</h1>\n<p>Morgens waren wir die Ersten am Strand.</p>\n<figure>\n  <img src=\"strand.svg\" alt=\"Strand mit Palme und Sonne\">\n  <figcaption>Grafik: WebWerkstatt, eigene Zeichnung</figcaption>\n</figure>\n```"
+      ],
+      "solution": {
+        "html": "<h1>Mein Tag am Meer</h1>\n<p>Morgens waren wir die Ersten am Strand.</p>\n<figure>\n  <img src=\"strand.svg\" alt=\"Strand mit Palme und Sonne\">\n  <figcaption>Grafik: WebWerkstatt, eigene Zeichnung</figcaption>\n</figure>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "figure", "count": 1, "label": "Es gibt genau ein figure-Element" },
+        { "type": "selector", "selector": "figure > img", "count": 1, "label": "Das Bild steckt im figure" },
+        { "type": "selector", "selector": "figure > figcaption", "count": 1, "label": "Im figure steht eine Bildunterschrift (figcaption)" },
+        { "type": "text", "selector": "figcaption", "expected": "Grafik: WebWerkstatt, eigene Zeichnung", "label": "Die Quellenangabe lautet „Grafik: WebWerkstatt, eigene Zeichnung“" }
+      ]
+    }
+  ]
+}

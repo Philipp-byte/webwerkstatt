@@ -1,0 +1,71 @@
+{
+  "id": "02-div-span-und-semantik",
+  "title": "div, span & semantische Bereiche",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Manchmal willst du mehrere Elemente zu einem **Bereich** zusammenfassen – zum Beispiel, um sie später gemeinsam zu gestalten. Dafür gibt es zwei neutrale **Container**:\n\n`<div>` – ein **Block**-Container: Er beginnt in einer **neuen Zeile** und nimmt die ganze Breite ein – wie ein Kasten, der von Rand zu Rand reicht.\n\n`<span>` – ein **Inline**-Container: Er fließt **mitten im Text** mit, ohne eine neue Zeile zu beginnen – wie ein Textmarker über ein paar Wörtern.\n\n```html\n<div class=\"angebot\">\n  <h2>Tagesangebot</h2>\n  <p>Heute: Muffin für <span class=\"preis\">1,00 €</span>!</p>\n</div>\n```\n\nBeide Tags sind für sich **unsichtbar** – sie ordnen nur. Erst zusammen mit class oder id (und später CSS) werden sie nützlich."
+    },
+    {
+      "type": "example",
+      "text": "Der CSS-Tab 🔒 macht die Container sichtbar: `div.angebot` bekommt einen Rahmen, `span.preis` wird orange.\n\nProbiere: Setze den `<span class=\"preis\">` um ein anderes Wort – der Text fließt einfach weiter, keine neue Zeile. Füge dann einen zweiten `<div class=\"angebot\">` mit eigenem Inhalt hinzu – ein neuer Kasten entsteht.",
+      "html": "<div class=\"angebot\">\n  <h2>Tagesangebot</h2>\n  <p>Heute: Muffin für <span class=\"preis\">1,00 €</span>!</p>\n</div>\n<div class=\"angebot\">\n  <h2>Wochenangebot</h2>\n  <p>Kakao und Brezel zusammen für <span class=\"preis\">2,00 €</span>.</p>\n</div>\n",
+      "css": ".angebot { border: 2px solid #a3612c; padding: 10px; margin-bottom: 10px; background-color: #fdf6ec; }\n.preis { color: #e08a2e; font-weight: bold; }\n",
+      "editable": ["html"]
+    },
+    {
+      "type": "quiz",
+      "question": "Du willst **zwei Wörter mitten im Satz** hervorheben, ohne dass der Satz umbricht. Welcher Container passt?",
+      "options": [
+        "`<div>` – der Block-Container",
+        "`<span>` – der Inline-Container",
+        "`<table>` – die Tabelle"
+      ],
+      "correct": 1,
+      "explanation": "`<span>` fließt im Text mit (Inline). Ein `<div>` würde eine neue Zeile beginnen und den Satz auseinanderreißen."
+    },
+    {
+      "type": "explain",
+      "text": "Ganze Webseiten bestehen aus solchen Kästen. Aber ein `<div>` hat ein Problem: Sein Name verrät **nicht, was drinsteckt**. Eine Seite aus zwanzig divs ist wie ein Umzug mit zwanzig unbeschrifteten Kartons.\n\nDeshalb hat HTML Ordnungs-Tags mit **sprechenden Namen** – die **semantischen** Elemente (Semantik = Bedeutung):\n\n`<header>` – der Kopfbereich (Logo, Seitentitel)\n\n`<nav>` – die Navigation (die Link-Leiste)\n\n`<main>` – der Hauptinhalt (gibt es nur **einmal** pro Seite!)\n\n`<footer>` – der Fußbereich (Adresse, Impressum)\n\nSie verhalten sich genau wie `<div>` (Block-Kästen) – aber ihr Name sagt Suchmaschinen, Vorlese-Programmen und dir selbst sofort, was drinsteckt."
+    },
+    {
+      "type": "example",
+      "text": "Damit du die Bereiche sehen kannst, färbt der CSS-Tab 🔒 sie ein. Ohne CSS wären sie unsichtbare Ordnungs-Boxen.\n\nProbiere: Füge in die `<nav>` einen dritten Link ein – er landet automatisch im blauen Navigations-Band.",
+      "html": "<header>\n  <h1>Pizzeria Bella Napoli</h1>\n</header>\n<nav>\n  <a href=\"https://www.example.com\">Speisekarte</a>\n  <a href=\"https://www.example.com\">Kontakt</a>\n</nav>\n<main>\n  <p>Willkommen! Bei uns gibt es die beste Pizza der Stadt.</p>\n</main>\n<footer>\n  <p>Bella Napoli · Musterstraße 1 · Heilbronn</p>\n</footer>\n",
+      "css": "header { background-color: #ffe0b3; padding: 10px; }\nnav { background-color: #cde8ff; padding: 10px; }\nmain { background-color: #e8f7e8; padding: 10px; min-height: 60px; }\nfooter { background-color: #e6e6e6; padding: 10px; font-size: 14px; }\n",
+      "editable": ["html"]
+    },
+    {
+      "type": "fill",
+      "text": "Die Link-Leiste braucht noch ihren sprechenden Bereichs-Tag. Setze den öffnenden Tag ein (der schließende steht schon da).",
+      "template": "<header>\n  <h1>Sportverein</h1>\n</header>\n<___>\n  <a href=\"training.html\">Training</a>\n  <a href=\"kontakt.html\">Kontakt</a>\n</nav>",
+      "solution": "nav",
+      "accept": ["nav"],
+      "hint": "Der Bereich für die Navigation heißt `<nav>` – schau auf den schließenden Tag."
+    },
+    {
+      "type": "code",
+      "task": "Baue die Grundstruktur einer Seite für den **Schulkiosk** – mit allem aus dieser Lektion:\n\n1. `<header>` mit einer `<h1>` (z. B. **Schulkiosk**)\n2. `<nav>` mit **zwei Links** (Ziele frei wählbar, `https://...`)\n3. `<main>` mit einem Absatz – markiere darin den Preis mit `<span class=\"preis\">…</span>`\n4. `<footer>` mit einem Absatz",
+      "starter": {
+        "html": "<!-- header, nav, main und footer hier -->\n",
+        "css": "header { background-color: #ffe0b3; padding: 10px; }\nnav { background-color: #cde8ff; padding: 10px; }\nmain { background-color: #e8f7e8; padding: 10px; min-height: 60px; }\nfooter { background-color: #e6e6e6; padding: 10px; font-size: 14px; }\n.preis { color: #e08a2e; font-weight: bold; }\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Die vier Bereiche stehen untereinander, jeder mit öffnendem und schließendem Tag.",
+        "Im <main>-Absatz kommt der span mitten in den Satz: <p>Brezel für <span class=\"preis\">1,00 €</span></p>.",
+        "```html\n<header>\n  <h1>Schulkiosk</h1>\n</header>\n<nav>\n  <a href=\"https://www.example.com\">Angebot</a>\n  <a href=\"https://www.example.com\">Preise</a>\n</nav>\n<main>\n  <p>Frische Brezeln gibt es heute für <span class=\"preis\">1,00 €</span>.</p>\n</main>\n<footer>\n  <p>Den Kiosk findest du in Raum 012.</p>\n</footer>\n```"
+      ],
+      "solution": {
+        "html": "<header>\n  <h1>Schulkiosk</h1>\n</header>\n<nav>\n  <a href=\"https://www.example.com\">Angebot</a>\n  <a href=\"https://www.example.com\">Preise</a>\n</nav>\n<main>\n  <p>Frische Brezeln gibt es heute für <span class=\"preis\">1,00 €</span>.</p>\n</main>\n<footer>\n  <p>Den Kiosk findest du in Raum 012.</p>\n</footer>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "header h1", "min": 1, "label": "Im <header> steht eine <h1>" },
+        { "type": "selector", "selector": "nav a", "min": 2, "label": "Die <nav> enthält zwei Links" },
+        { "type": "selector", "selector": "main p", "min": 1, "label": "Im <main> steht ein Absatz" },
+        { "type": "selector", "selector": "main p span.preis", "min": 1, "label": "Der Preis ist mit <span class=\"preis\"> markiert" },
+        { "type": "selector", "selector": "footer p", "min": 1, "label": "Im <footer> steht ein Absatz" }
+      ]
+    }
+  ]
+}

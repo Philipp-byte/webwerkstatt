@@ -1,0 +1,109 @@
+{
+  "id": "04-wiederholung",
+  "title": "Wiederholung: CSS & Selektoren",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Zeit zum Festigen! Wissen bleibt hängen, wenn du es **aus dem Kopf abrufst**, statt es nur wiederzuerkennen – genau das passiert jetzt.\n\nIn diesen 6 Aufgaben steckt der Stoff aus dem CSS-Grundlagen-Kapitel und deine neuen Selektoren – plus eine Prise `class` und `id` aus dem HTML-Kapitel. Kein neuer Stoff, versprochen."
+    },
+    {
+      "type": "quiz",
+      "question": "**Aufgabe 1.** Eure Website hat fünf Seiten, alle sollen dasselbe Design bekommen. Wo schreibst du das CSS am besten hin?",
+      "options": [
+        "Als Inline-Style per style-Attribut an jedes Element",
+        "In eine externe Datei `style.css`, die alle Seiten per `<link>` einbinden",
+        "In ein `<style>`-Element, das du in jede Seite kopierst"
+      ],
+      "correct": 1,
+      "explanation": "Die externe CSS-Datei ist der Profi-Weg: **ein** Ort für das Design, alle Seiten binden ihn ein – Trennung von Inhalt und Design."
+    },
+    {
+      "type": "code",
+      "task": "**Aufgabe 2 – Farben und Hintergrund.** Gestalte das Herbstfest-Plakat:\n\n1. Der `body` bekommt die Hintergrundfarbe `#fff4e6`\n2. Die `h1` bekommt die Textfarbe `#b45309`\n3. Alle `p` bekommen die Textfarbe `rgb(60, 50, 40)`",
+      "starter": {
+        "html": "<h1>Herbstfest der Schule</h1>\n<p>Am Freitag ab 15 Uhr auf dem Schulhof.</p>\n<p>Mit Kürbissuppe, Waffeln und Lagerfeuer.</p>\n",
+        "css": "/* Deine drei Regeln hier */\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Drei Regeln: body, h1 und p. Für den Hintergrund brauchst du background-color, für Textfarben color.",
+        "Die rgb-Schreibweise: color: rgb(60, 50, 40); – drei Zahlen, mit Kommas getrennt.",
+        "```css\nbody {\n  background-color: #fff4e6;\n}\nh1 {\n  color: #b45309;\n}\np {\n  color: rgb(60, 50, 40);\n}\n```"
+      ],
+      "solution": {
+        "css": "body {\n  background-color: #fff4e6;\n}\nh1 {\n  color: #b45309;\n}\np {\n  color: rgb(60, 50, 40);\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": "body", "prop": "background-color", "expected": "#fff4e6", "label": "Die Seite hat den Hintergrund #fff4e6" },
+        { "type": "style", "selector": "h1", "prop": "color", "expected": "#b45309", "label": "Die Überschrift hat die Farbe #b45309" },
+        { "type": "style", "selector": "p", "prop": "color", "expected": "rgb(60, 50, 40)", "label": "Die Absätze haben die Farbe rgb(60, 50, 40)" }
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "**Aufgabe 3.** Genau dieser eine Absatz soll rot werden – direkt im HTML, ohne CSS-Tab. Setze das fehlende **Attribut** ein.",
+      "template": "<p ___=\"color: red;\">Achtung, Änderung!</p>",
+      "solution": "style",
+      "accept": ["style"],
+      "hint": "Der Inline-Style nutzt das `style`-Attribut im öffnenden Tag."
+    },
+    {
+      "type": "code",
+      "task": "**Aufgabe 4 – class und id, von HTML bis CSS.** Diesmal sind **beide Tabs** offen!\n\nIm HTML:\n\n1. Gib den beiden Absätzen mit Ausrufezeichen `class=\"achtung\"`\n2. Gib dem letzten Absatz (Entschuldigung) `id=\"orga\"`\n\nIm CSS:\n\n3. `.achtung`: Textfarbe `red` und `font-weight: bold`\n4. `#orga`: Hintergrundfarbe `#fff3b0`",
+      "starter": {
+        "html": "<h2>Wandertag</h2>\n<p>Wir treffen uns um 8 Uhr am Bahnhof.</p>\n<p>Festes Schuhwerk ist Pflicht!</p>\n<p>Bei Gewitter fällt der Wandertag aus!</p>\n<p>Wer fehlt, braucht eine Entschuldigung.</p>\n",
+        "css": "/* Deine Regeln für .achtung und #orga */\n"
+      },
+      "editable": ["html", "css"],
+      "hints": [
+        "Im HTML kommen die Attribute in die öffnenden Tags: <p class=\"achtung\"> bzw. <p id=\"orga\"> – ohne Punkt und ohne Raute.",
+        "Im CSS ist es umgekehrt: Der Punkt (.achtung) und die Raute (#orga) gehören in die Selektoren.",
+        "```html\n<h2>Wandertag</h2>\n<p>Wir treffen uns um 8 Uhr am Bahnhof.</p>\n<p class=\"achtung\">Festes Schuhwerk ist Pflicht!</p>\n<p class=\"achtung\">Bei Gewitter fällt der Wandertag aus!</p>\n<p id=\"orga\">Wer fehlt, braucht eine Entschuldigung.</p>\n```\n\n```css\n.achtung {\n  color: red;\n  font-weight: bold;\n}\n#orga {\n  background-color: #fff3b0;\n}\n```"
+      ],
+      "solution": {
+        "html": "<h2>Wandertag</h2>\n<p>Wir treffen uns um 8 Uhr am Bahnhof.</p>\n<p class=\"achtung\">Festes Schuhwerk ist Pflicht!</p>\n<p class=\"achtung\">Bei Gewitter fällt der Wandertag aus!</p>\n<p id=\"orga\">Wer fehlt, braucht eine Entschuldigung.</p>\n",
+        "css": ".achtung {\n  color: red;\n  font-weight: bold;\n}\n#orga {\n  background-color: #fff3b0;\n}\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "p.achtung", "min": 2, "label": "Zwei Absätze haben die class „achtung“" },
+        { "type": "selector", "selector": "p#orga", "count": 1, "label": "Genau ein Absatz hat die id „orga“" },
+        { "type": "style", "selector": ".achtung", "prop": "color", "expected": "red", "label": "Die Achtung-Absätze sind rot" },
+        { "type": "style", "selector": ".achtung", "prop": "font-weight", "expected": ["700", "bold"], "label": "Die Achtung-Absätze sind fett" },
+        { "type": "style", "selector": "#orga", "prop": "background-color", "expected": "#fff3b0", "label": "Der Orga-Absatz ist gelb hinterlegt" }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "**Aufgabe 5.** Was ist der Unterschied zwischen `footer p` und `footer, p`?",
+      "options": [
+        "Keiner – das Komma ist nur ein Schreibstil",
+        "`footer p` trifft nur Absätze **im** footer; `footer, p` trifft den footer **und** alle Absätze der Seite",
+        "`footer p` ist ein Schreibfehler, gültig ist nur die Version mit Komma"
+      ],
+      "correct": 1,
+      "explanation": "Leerzeichen heißt „darin“ (Nachfahren-Selektor), Komma heißt „und auch“ (Gruppe). Beide sind gültig – aber sie tun völlig verschiedene Dinge."
+    },
+    {
+      "type": "code",
+      "task": "**Aufgabe 6 – alles zusammen.** Gestalte die Kiosk-Seite (HTML 🔒):\n\n1. Der `body` bekommt die Hintergrundfarbe `#f7f1e3`\n2. **Nur** die Links in der Navigation bekommen die Farbe `#e08a2e`\n3. Die Preise (`class=\"preis\"`) bekommen die Farbe `#1a9e5c`",
+      "starter": {
+        "html": "<nav>\n  <a href=\"index.html\">Start</a>\n  <a href=\"angebot.html\">Angebot</a>\n</nav>\n<main>\n  <h2>Snacks der Woche</h2>\n  <p>Heiße Schokolade <strong class=\"preis\">2,00 €</strong></p>\n  <p>Frischer Muffin <strong class=\"preis\">1,50 €</strong></p>\n</main>\n",
+        "css": "/* Deine drei Regeln hier */\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Drei Regeln: eine für body, eine mit dem Nachfahren-Selektor für die Navigations-Links, eine mit dem Punkt-Selektor für die Preise.",
+        "„Nur die Links in der Navigation“ heißt: nav a { ... } – mit Leerzeichen, ohne Komma.",
+        "```css\nbody {\n  background-color: #f7f1e3;\n}\nnav a {\n  color: #e08a2e;\n}\n.preis {\n  color: #1a9e5c;\n}\n```"
+      ],
+      "solution": {
+        "css": "body {\n  background-color: #f7f1e3;\n}\nnav a {\n  color: #e08a2e;\n}\n.preis {\n  color: #1a9e5c;\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": "body", "prop": "background-color", "expected": "#f7f1e3", "label": "Die Seite hat den Hintergrund #f7f1e3" },
+        { "type": "style", "selector": "nav a", "prop": "color", "expected": "#e08a2e", "label": "Die Navigations-Links sind orange (#e08a2e)" },
+        { "type": "style", "selector": ".preis", "prop": "color", "expected": "#1a9e5c", "label": "Die Preise sind grün (#1a9e5c)" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "04-projekt-layout",
+  "title": "Projekt: Layout fürs Café",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Weiter geht es am **Café Pause**! In der letzten Etappe hat die Website ihre Typografie bekommen – Schrift, zentrierte Überschrift, orangefarbene Links. Heute bekommt sie ihr **Layout**:\n\n1. Die Navigation wird mit **Flexbox** zu einer echten Menüleiste – die Links stehen nebeneinander statt untereinander.\n2. Der **Header** bekommt einen kaffeebraunen Hintergrund mit weißer Schrift und Innenabstand – wie ein richtiges Websiten-Banner.\n\nGenau dafür hast du Flexbox und das Box-Modell gelernt!"
+    },
+    {
+      "type": "explain",
+      "text": "Ein kleiner Handgriff fehlt dir noch: Im braunen Header steht unsere `h1` – aber die ist seit Kapitel 10 selbst kaffeebraun. Braun auf Braun wäre unsichtbar!\n\nDafür gibt es den **Verschachtelungs-Selektor**: zwei Selektoren, getrennt durch ein **Leerzeichen**. Er trifft nur Elemente, die **innerhalb** eines anderen stecken:\n\n```css\nheader h1 {\n  color: white;\n}\n```\n\nGelesen von rechts nach links: „Jede `h1`, die in einem `header` steckt.“ Die Überschriften auf den anderen Seiten (ohne header drumherum) behalten ihr Braun – nur die im Header wird weiß."
+    },
+    {
+      "type": "code",
+      "task": "Baue das Layout der Startseite (das HTML ist gesperrt – heute wächst nur das Stylesheet):\n\n1. Eine Regel für `nav`: `display: flex;` und `gap: 16px;`\n2. Eine Regel für `header`: `background-color: #5a3e2b;`, `color: white;` und `padding: 16px;`\n3. Eine Regel für `header h1` (Verschachtelungs-Selektor!): `color: white;`\n\nSchau dir in der Vorschau an, wie aus der Linkliste eine Menüleiste wird!",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Café Pause</title>\n</head>\n<body>\n  <header>\n    <h1>Café Pause</h1>\n    <p>Willkommen in unserem Schülercafé – schön, dass du da bist!</p>\n  </header>\n  <nav>\n    <a href=\"speisekarte.html\">Speisekarte</a>\n    <a href=\"galerie.html\">Galerie</a>\n    <a href=\"kontakt.html\">Kontakt</a>\n    <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    <a href=\"https://www.example.com\">Unsere Region</a>\n  </nav>\n  <main>\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von einer <strong>Schülerfirma</strong> betrieben.</p>\n    <p><em>Jede Pause wird bei uns zur besten Stunde des Tages.</em></p>\n    <hr>\n    <p>Musterstraße 12<br>74072 Heilbronn</p>\n    <h2 id=\"angebote\">Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Laugenbrezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>Stell dich an der Theke an.</li>\n      <li>Sag uns deine Bestellung.</li>\n      <li>Bezahlen, abholen, genießen!</li>\n    </ol>\n  </main>\n  <footer>\n    <p>Café Pause · Musterstraße 12 · 74072 Heilbronn</p>\n    <p id=\"oeffnungszeiten\">Geöffnet: Montag bis Freitag, 9:00 bis 15:00 Uhr</p>\n    <p class=\"hinweis\">Fiktiver Betrieb für Übungszwecke.</p>\n  </footer>\n</body>\n</html>\n",
+        "css": "body {\n  background-color: #f7f1e3;\n  color: #2c2016;\n  font-family: 'Segoe UI', Arial, sans-serif;\n}\n\nh1 {\n  color: #5a3e2b;\n  text-align: center;\n}\n\na {\n  color: #e08a2e;\n}\n"
+      },
+      "editable": ["css"],
+      "project": { "page": "index", "save": ["css"] },
+      "hints": [
+        "Drei neue Regeln kommen unten ans Stylesheet: nav { ... }, header { ... } und header h1 { ... }. Die bestehenden Regeln bleiben unverändert stehen.",
+        "Die nav-Regel bekommt display: flex; und gap: 16px; – die header-Regel background-color: #5a3e2b;, color: white; und padding: 16px;. Beim Verschachtelungs-Selektor trennt NUR ein Leerzeichen: header h1 { color: white; }",
+        "```css\nbody {\n  background-color: #f7f1e3;\n  color: #2c2016;\n  font-family: 'Segoe UI', Arial, sans-serif;\n}\n\nh1 {\n  color: #5a3e2b;\n  text-align: center;\n}\n\na {\n  color: #e08a2e;\n}\n\nnav {\n  display: flex;\n  gap: 16px;\n}\n\nheader {\n  background-color: #5a3e2b;\n  color: white;\n  padding: 16px;\n}\n\nheader h1 {\n  color: white;\n}\n```"
+      ],
+      "solution": {
+        "css": "body {\n  background-color: #f7f1e3;\n  color: #2c2016;\n  font-family: 'Segoe UI', Arial, sans-serif;\n}\n\nh1 {\n  color: #5a3e2b;\n  text-align: center;\n}\n\na {\n  color: #e08a2e;\n}\n\nnav {\n  display: flex;\n  gap: 16px;\n}\n\nheader {\n  background-color: #5a3e2b;\n  color: white;\n  padding: 16px;\n}\n\nheader h1 {\n  color: white;\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": "nav", "prop": "display", "expected": "flex", "label": "Die Navigation ist ein Flex-Container" },
+        { "type": "style", "selector": "nav", "prop": "column-gap", "expected": "16px", "label": "Zwischen den Menü-Links sind 16px Abstand" },
+        { "type": "style", "selector": "header", "prop": "background-color", "expected": "#5a3e2b", "label": "Der Header ist kaffeebraun (#5a3e2b)" },
+        { "type": "style", "selector": "header", "prop": "color", "expected": "white", "label": "Die Schrift im Header ist weiß" },
+        { "type": "style", "selector": "header", "prop": "padding-top", "expected": "16px", "label": "Der Header hat 16px Innenabstand" },
+        { "type": "style", "selector": "header h1", "prop": "color", "expected": "white", "label": "Die Überschrift im Header ist weiß" }
+      ]
+    }
+  ]
+}

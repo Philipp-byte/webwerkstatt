@@ -1,0 +1,72 @@
+{
+  "id": "01-was-ist-html",
+  "title": "Was ist HTML?",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "In Kapitel 1 hast du gelernt: Beim Seitenaufruf schickt der Server deinem Browser eine **Textdatei** – und der Browser baut daraus die sichtbare Seite.\n\nJetzt schauen wir in diese Datei hinein. Sie ist in **HTML** geschrieben – der Sprache, in der jede Webseite der Welt verfasst ist. Und genau diese Sprache lernst du ab jetzt selbst zu schreiben."
+    },
+    {
+      "type": "explain",
+      "text": "**HTML** steht für **HyperText Markup Language**. Klingt sperrig, es stecken aber nur zwei Ideen drin:\n\n**HyperText** heißt: Text mit Verknüpfungen. Webseiten können aufeinander verweisen – über Links springst du von Seite zu Seite. Das macht das Web überhaupt erst zum „Netz“.\n\n**Markup Language** heißt auf Deutsch **Auszeichnungssprache**. „Auszeichnen“ bedeutet: Textstellen markieren und ihnen eine Bedeutung geben – „das hier ist eine Überschrift“, „das ist ein Absatz“, „das ist ein Bild“. Wie mit Textmarkern in einem Skript: Der Text bleibt derselbe, aber die Markierungen sagen, was jede Stelle **ist**.\n\nHTML ist damit **keine Programmiersprache** – es rechnet nichts aus und trifft keine Entscheidungen. Es beschreibt die **Struktur** einer Seite."
+    },
+    {
+      "type": "example",
+      "text": "So sieht HTML aus: **links der Code, rechts die Vorschau** – also das, was der Browser daraus macht.\n\nÄndere den Text zwischen den spitzen Klammern und schau zu, wie sich die Vorschau sofort mitverändert!",
+      "html": "<h1>Meine erste Webseite</h1>\n<p>Hallo! Schön, dass du da bist.</p>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Wofür steht die Abkürzung **HTML**?",
+      "options": [
+        "HyperText Markup Language",
+        "High Tech Modern Language",
+        "Homepage Tool Maker List"
+      ],
+      "correct": 0,
+      "explanation": "HTML ist eine **Auszeichnungssprache** (Markup Language) – sie beschreibt, was die einzelnen Teile einer Seite bedeuten. Und HyperText ist Text mit Links."
+    },
+    {
+      "type": "explain",
+      "text": "HTML steckt in ganz normalen **Textdateien** mit der Endung **.html** – die Startseite heißt üblicherweise `index.html`.\n\nZum Schreiben genügt ein einfacher Editor, zum Ansehen ein Browser – teure Spezialprogramme braucht niemand. Klickst du eine `.html`-Datei auf deinem Computer doppelt an, öffnet dein Browser sie direkt, ganz ohne Server und Internet.\n\nBeim echten Seitenaufruf im Internet passiert dasselbe – nur dass die Datei vorher als **Antwort vom Server** zu deinem Browser reist."
+    },
+    {
+      "type": "fill",
+      "text": "Wie endet der Dateiname einer HTML-Datei? Setze die Endung ein.",
+      "template": "index.___",
+      "solution": "html",
+      "accept": ["html"],
+      "hint": "Die Endung verrät, in welcher Sprache die Datei geschrieben ist."
+    },
+    {
+      "type": "quiz",
+      "question": "Du rufst `www.cafe-pause-beispiel.de` auf. Was liefert der Server als Antwort?",
+      "options": [
+        "Eine HTML-Datei, aus der dein Browser die sichtbare Seite baut",
+        "Ein fertiges Bild der Webseite",
+        "Den Browser, mit dem man die Seite ansieht"
+      ],
+      "correct": 0,
+      "explanation": "Das ist das Client-Server-Prinzip aus Kapitel 1: Der Server antwortet mit einer Textdatei – und die ist in HTML geschrieben. Das Rendern übernimmt dein Browser."
+    },
+    {
+      "type": "code",
+      "task": "Zeit für deine erste eigene Änderung! In der Werkbank steht schon eine kleine Seite.\n\n1. Ändere den Text der Überschrift in **Hallo Welt!**\n2. Ändere den Text des Absatzes in **Das ist meine erste Änderung.**\n\nDie spitzen Klammern und die Wörter darin (die Tags) bleiben unverändert stehen – du änderst nur den Text dazwischen.",
+      "starter": {
+        "html": "<h1>Meine erste Webseite</h1>\n<p>Hallo! Schön, dass du da bist.</p>\n"
+      },
+      "hints": [
+        "Der Text, den du ändern sollst, steht jeweils zwischen einem öffnenden Tag wie <h1> und einem schließenden Tag wie </h1>.",
+        "Ersetze „Meine erste Webseite“ durch „Hallo Welt!“ – Punkt und Ausrufezeichen genau wie in der Aufgabe. Dann dasselbe beim Absatz.",
+        "```html\n<h1>Hallo Welt!</h1>\n<p>Das ist meine erste Änderung.</p>\n```"
+      ],
+      "solution": {
+        "html": "<h1>Hallo Welt!</h1>\n<p>Das ist meine erste Änderung.</p>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "h1", "expected": "Hallo Welt!", "label": "Die Überschrift lautet „Hallo Welt!“" },
+        { "type": "text", "selector": "p", "expected": "Das ist meine erste Änderung.", "label": "Der Absatz lautet „Das ist meine erste Änderung.“" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "id": "03-wiederholung",
+  "title": "Wiederholung: Medien & Tabellen",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Zeit für eine Wiederholungsrunde! Dein Gehirn behält Stoff am besten, wenn es ihn **selbst wieder hervorholen** muss – genau deshalb gibt es diese Lektionen.\n\nHeute dran: **Bilder und Audio** (Kapitel 6) und **Tabellen mit Kopfzeilen und colspan** (Kapitel 7). Und am Ende kombinieren wir beides!"
+    },
+    {
+      "type": "quiz",
+      "question": "Mit welchem Tag baust du eine Kopf-Zelle, die automatisch **fett und zentriert** angezeigt wird?",
+      "options": [
+        "`<td>`",
+        "`<th>`",
+        "`<tr>`"
+      ],
+      "correct": 1,
+      "explanation": "`<th>` = table header, die Kopf-Zelle. `<td>` ist die normale Daten-Zelle, `<tr>` ist die ganze Zeile."
+    },
+    {
+      "type": "fill",
+      "text": "Die Titel-Zelle soll über **beide** Spalten der Tabelle reichen. Setze das fehlende Attribut ein.",
+      "template": "<tr>\n  <th ___=\"2\">Öffnungszeiten</th>\n</tr>",
+      "solution": "colspan",
+      "accept": ["colspan"],
+      "hint": "Das Attribut zum Verbinden von Zellen **nach rechts** heißt `colspan`."
+    },
+    {
+      "type": "code",
+      "task": "Baue eine Galerie-Tabelle fürs Café:\n\n1. Kopfzeile mit den `<th>`-Zellen **Bild** und **Beschreibung**\n2. Datenzeile 1: eine Zelle mit dem Bild **cafe-theke.svg** (alt-Text nicht vergessen!) und eine Zelle mit einer kurzen Beschreibung\n3. Datenzeile 2: genauso mit **cafe-kuchen.svg**",
+      "starter": {
+        "html": "<h2>Einblicke ins Café</h2>\n<!-- Deine Galerie-Tabelle hier -->\n",
+        "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\nth { background-color: #f0e6d6; }\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Ein Bild in einer Zelle sieht so aus: <td><img src=\"...\" alt=\"...\"></td>.",
+        "Drei Zeilen insgesamt: die Kopfzeile mit zwei <th>, dann zwei Datenzeilen mit je einem Bild und einer Beschreibung.",
+        "```html\n<h2>Einblicke ins Café</h2>\n<table>\n  <tr>\n    <th>Bild</th>\n    <th>Beschreibung</th>\n  </tr>\n  <tr>\n    <td><img src=\"cafe-theke.svg\" alt=\"Die Theke des Café Pause\"></td>\n    <td>Unsere Theke – hier bestellst du.</td>\n  </tr>\n  <tr>\n    <td><img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen auf einem Teller\"></td>\n    <td>Frischer Kuchen, jeden Tag.</td>\n  </tr>\n</table>\n```"
+      ],
+      "solution": {
+        "html": "<h2>Einblicke ins Café</h2>\n<table>\n  <tr>\n    <th>Bild</th>\n    <th>Beschreibung</th>\n  </tr>\n  <tr>\n    <td><img src=\"cafe-theke.svg\" alt=\"Die Theke des Café Pause\"></td>\n    <td>Unsere Theke – hier bestellst du.</td>\n  </tr>\n  <tr>\n    <td><img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen auf einem Teller\"></td>\n    <td>Frischer Kuchen, jeden Tag.</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "table", "min": 1, "label": "Es gibt eine Tabelle" },
+        { "type": "text", "selector": "th", "expected": "Bild", "label": "Die erste Kopf-Zelle lautet „Bild“" },
+        { "type": "selector", "selector": "th", "min": 2, "label": "Die Kopfzeile hat zwei <th>-Zellen" },
+        { "type": "selector", "selector": "td img", "min": 2, "label": "In den Zellen stecken zwei Bilder" },
+        { "type": "attr", "selector": "td img", "attr": "src", "expected": "cafe-theke.svg", "label": "Das erste Bild ist cafe-theke.svg" },
+        { "type": "attr", "selector": "td img", "attr": "alt", "matches": "\\S", "label": "Das erste Bild hat einen alt-Text" },
+        { "type": "source", "file": "html", "matches": "cafe-kuchen\\.svg", "label": "Das zweite Bild ist cafe-kuchen.svg" },
+        { "type": "attr", "selector": "tr:nth-child(3) img", "attr": "alt", "matches": "\\S", "label": "Auch das zweite Bild hat einen alt-Text" }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Was bewirkt das Attribut `controls` beim `<audio>`-Element?",
+      "options": [
+        "Die Musik startet automatisch",
+        "Der Player zeigt sichtbare Abspielknöpfe an",
+        "Die Lautstärke wird automatisch geregelt"
+      ],
+      "correct": 1,
+      "explanation": "Ohne `controls` ist der Player unsichtbar und niemand kann ihn bedienen. `controls` blendet Play-Knopf, Zeitleiste und Lautstärkeregler ein."
+    },
+    {
+      "type": "code",
+      "task": "Baue eine Öffnungszeiten-Tabelle mit verbundener Titel-Zelle:\n\n1. Erste Zeile: **eine** `<th>`-Zelle mit `colspan=\"2\"` und dem Text **Öffnungszeiten**\n2. Datenzeile 1: **Wochentags** und **9 bis 15 Uhr** (je eine `<td>`)\n3. Datenzeile 2: **Wochenende** und **geschlossen**",
+      "starter": {
+        "html": "<!-- Deine Tabelle hier -->\n",
+        "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\nth { background-color: #f0e6d6; }\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Die Titelzeile hat nur eine Zelle – dank colspan=\"2\" ist sie trotzdem so breit wie die zwei Zellen darunter.",
+        "Titelzeile: <tr><th colspan=\"2\">Öffnungszeiten</th></tr> – danach zwei Zeilen mit je zwei <td>.",
+        "```html\n<table>\n  <tr>\n    <th colspan=\"2\">Öffnungszeiten</th>\n  </tr>\n  <tr>\n    <td>Wochentags</td>\n    <td>9 bis 15 Uhr</td>\n  </tr>\n  <tr>\n    <td>Wochenende</td>\n    <td>geschlossen</td>\n  </tr>\n</table>\n```"
+      ],
+      "solution": {
+        "html": "<table>\n  <tr>\n    <th colspan=\"2\">Öffnungszeiten</th>\n  </tr>\n  <tr>\n    <td>Wochentags</td>\n    <td>9 bis 15 Uhr</td>\n  </tr>\n  <tr>\n    <td>Wochenende</td>\n    <td>geschlossen</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        { "type": "attr", "selector": "th[colspan]", "attr": "colspan", "expected": "2", "label": "Die Titel-Zelle reicht über beide Spalten (colspan=\"2\")" },
+        { "type": "text", "selector": "th[colspan='2']", "expected": "Öffnungszeiten", "label": "Die Titel-Zelle enthält „Öffnungszeiten“" },
+        { "type": "selector", "selector": "tr", "min": 3, "label": "Es gibt die Titelzeile und zwei Datenzeilen" },
+        { "type": "selector", "selector": "td", "min": 4, "label": "Die Datenzeilen haben je zwei Zellen" },
+        { "type": "text", "selector": "td", "expected": "Wochentags", "label": "Die erste Datenzeile beginnt mit „Wochentags“" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "04-hintergrund",
+  "title": "Hintergrundfarben",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Neben der Textfarbe (`color`) kann jedes Element eine **Hintergrundfarbe** bekommen – mit `background-color`:\n\n```css\nh1 {\n  background-color: #004466;\n  color: white;\n}\n```\n\nDer Hintergrund füllt die ganze Fläche des Elements – bei einer Überschrift also einen Balken über die volle Breite.\n\nGibst du dem `body` eine Hintergrundfarbe, färbst du die **ganze Seite**:\n\n```css\nbody {\n  background-color: #fdf3e3;\n}\n```\n\nAlle Farbschreibweisen aus der letzten Lektion funktionieren auch hier: Farbnamen, Hex-Codes und `rgb()`."
+    },
+    {
+      "type": "example",
+      "text": "Achte auf den Kontrast: Stelle die `color` der Überschrift mal auf `#004466` – gleiche Farbe wie der Hintergrund, plötzlich ist sie unsichtbar! Und gib dem `body` testweise `background-color: #333333;`.",
+      "html": "<h1>Kontrast zählt</h1>\n<p>Heller Hintergrund, dunkler Text – gut lesbar.</p>\n",
+      "css": "body {\n  background-color: #fdf3e3;\n}\nh1 {\n  background-color: #004466;\n  color: white;\n}\n",
+      "editable": ["css"]
+    },
+    {
+      "type": "explain",
+      "text": "Sobald du Text- **und** Hintergrundfarbe wählst, bist du für die **Lesbarkeit** verantwortlich. Die wichtigste Regel: **Der Kontrast muss groß sein** – dunkler Text auf hellem Grund oder heller Text auf dunklem Grund. Ton in Ton (grau auf grau, gelb auf weiß) ist tabu.\n\nWarum ist das so wichtig?\n\n- **Nicht jeder sieht wie du.** Viele Menschen haben eine Sehschwäche – für sie wird schwacher Kontrast schnell unlesbar.\n- Etwa **jeder zwölfte Mann** hat eine Rot-Grün-Farbfehlsichtigkeit. Wichtige Unterschiede solltest du deshalb **nie nur über die Farbe** zeigen.\n- **Auch Situationen zählen:** Auf einem spiegelnden Handydisplay in der Sonne überlebt nur kräftiger Kontrast.\n\nProfis verlassen sich dabei nicht auf ihr Gefühl: Es gibt offizielle Mindest-Kontrastwerte für Websites, und Werkzeuge wie ein **Contrast-Checker** prüfen jede Farbkombination automatisch. Merk dir fürs Erste die Faustregel: **Im Zweifel dunkler Text, heller Hintergrund.**"
+    },
+    {
+      "type": "quiz",
+      "question": "Welche Kombination ist am **besten lesbar**?",
+      "options": [
+        "Hellgelber Text auf weißem Grund",
+        "Weißer Text auf dunkelblauem Grund",
+        "Grauer Text auf grauem Grund"
+      ],
+      "correct": 1,
+      "explanation": "Je größer der Kontrast zwischen Text und Hintergrund, desto besser lesbar – für alle, besonders aber für Menschen mit Sehschwäche."
+    },
+    {
+      "type": "fill",
+      "text": "Die ganze Seite soll cremefarben werden. Setze die fehlende **Eigenschaft** ein.",
+      "template": "body { ___: #fdf3e3; }",
+      "solution": "background-color",
+      "accept": ["background-color"],
+      "hint": "Die Eigenschaft für die Hintergrundfarbe heißt `background-color` – mit Bindestrich."
+    },
+    {
+      "type": "code",
+      "task": "Gestalte die Seite – mit gutem Kontrast:\n\n1. Der `body` bekommt die Hintergrundfarbe `#e6f2ff`\n2. Die `h1` bekommt die Hintergrundfarbe `#004466`\n3. Die `h1` bekommt zusätzlich die Textfarbe `white` – sonst wäre sie auf dem dunklen Balken kaum lesbar",
+      "starter": {
+        "html": "<h1>Schwimmbad Heilbronn</h1>\n<p>Öffnungszeiten: täglich 9 bis 20 Uhr.</p>\n",
+        "css": "/* Deine Regeln hier */\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Zwei Regeln: eine für body, eine für h1.",
+        "In der h1-Regel stehen zwei Deklarationen: background-color und color – jede mit Semikolon.",
+        "```css\nbody {\n  background-color: #e6f2ff;\n}\nh1 {\n  background-color: #004466;\n  color: white;\n}\n```"
+      ],
+      "solution": {
+        "css": "body {\n  background-color: #e6f2ff;\n}\nh1 {\n  background-color: #004466;\n  color: white;\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": "body", "prop": "background-color", "expected": "#e6f2ff", "label": "Die Seite hat den Hintergrund #e6f2ff" },
+        { "type": "style", "selector": "h1", "prop": "background-color", "expected": "#004466", "label": "Die Überschrift hat den Hintergrund #004466" },
+        { "type": "style", "selector": "h1", "prop": "color", "expected": "white", "label": "Der Überschriften-Text ist weiß" }
+      ]
+    }
+  ]
+}

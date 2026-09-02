@@ -1,0 +1,83 @@
+{
+  "id": "01-class-und-id",
+  "title": "class und id",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "**Attribute** kennst du schon: `href` bei Links, `src` und `alt` bei Bildern, `colspan` bei Tabellenzellen. Sie stehen immer im **öffnenden Tag** nach dem Muster `name=\"wert\"`.\n\nZwei Attribute kann **jedes** Element bekommen:\n\n`class` – ein **Gruppen-Name**. Viele Elemente dürfen dieselbe class haben.\n\n`id` – ein **einmaliger Name**. Jede id darf auf der Seite nur **ein einziges Mal** vorkommen.\n\n```html\n<p class=\"hinweis\">Ich gehöre zur Gruppe „hinweis“.</p>\n<p id=\"fazit\">Mich gibt es nur einmal.</p>\n```\n\nWozu das gut ist? Mit class und id kann man Elemente später **gezielt gestalten** (CSS) und **ansteuern** (JavaScript)."
+    },
+    {
+      "type": "example",
+      "text": "Im CSS-Tab 🔒 stehen schon Gestaltungsregeln für die Gruppe `wichtig` und die id `fazit`. Beobachte, was passiert, wenn du einem weiteren Absatz `class=\"wichtig\"` gibst!",
+      "html": "<p>Ein ganz normaler Absatz.</p>\n<p class=\"wichtig\">Dieser Absatz gehört zur Gruppe „wichtig“.</p>\n<p>Noch ein normaler Absatz.</p>\n<p id=\"fazit\">Und das hier ist das einmalige Fazit.</p>\n",
+      "css": ".wichtig { color: #c0392b; font-weight: bold; }\n#fazit { background-color: #fff3b0; padding: 6px; }\n",
+      "editable": ["html"]
+    },
+    {
+      "type": "quiz",
+      "question": "Was ist der wichtigste Unterschied zwischen `class` und `id`?",
+      "options": [
+        "class ist für Texte, id für Bilder",
+        "Eine class dürfen viele Elemente haben, eine id nur ein einziges Element",
+        "id ist die englische Abkürzung für class"
+      ],
+      "correct": 1,
+      "explanation": "class = Gruppe (mehrfach erlaubt), id = einmaliger Name (nur einmal pro Seite)."
+    },
+    {
+      "type": "explain",
+      "text": "Drei Praxis-Regeln für gute Namen:\n\n1. **Klein schreiben, keine Leerzeichen, keine Umlaute** – statt `Große Schrift` lieber `gross`.\n2. **Sprechende Namen** wählen: `hinweis` sagt mehr aus als `rot`. (Soll der Hinweis später blau werden, lügt der Name `rot` plötzlich.)\n3. Ein Element darf **mehrere Klassen** gleichzeitig tragen – getrennt durch Leerzeichen:\n\n```html\n<p class=\"hinweis wichtig\">Morgen fällt die 6. Stunde aus.</p>\n```\n\nUnd ein Bonus, den du schon kennst: Eine **id** ist zugleich ein **Sprungziel**! Ein Link mit `href=\"#fazit\"` springt genau zu dem Element mit `id=\"fazit\"` – das waren die Sprungmarken aus Kapitel 5."
+    },
+    {
+      "type": "code",
+      "task": "Der CSS-Tab 🔒 ist schon vorbereitet. Baue drei Absätze:\n\n1. **Zwei** Absätze mit `class=\"wichtig\"`\n2. **Einen** Absatz mit `id=\"fazit\"`\n\nIn der Vorschau siehst du sofort, ob die Gestaltung greift!",
+      "starter": {
+        "html": "<h2>Sicherheitsregeln</h2>\n<!-- Deine drei Absätze hier -->\n",
+        "css": ".wichtig { color: #c0392b; font-weight: bold; }\n#fazit { background-color: #fff3b0; padding: 6px; }\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Das Attribut kommt in den öffnenden Tag: <p class=\"wichtig\">.",
+        "Für das Fazit: <p id=\"fazit\">...</p> – nur einmal!",
+        "```html\n<h2>Sicherheitsregeln</h2>\n<p class=\"wichtig\">Niemals Passwörter weitergeben.</p>\n<p class=\"wichtig\">Immer abmelden am Schulrechner.</p>\n<p id=\"fazit\">Sicherheit geht vor.</p>\n```"
+      ],
+      "solution": {
+        "html": "<h2>Sicherheitsregeln</h2>\n<p class=\"wichtig\">Niemals Passwörter weitergeben.</p>\n<p class=\"wichtig\">Immer abmelden am Schulrechner.</p>\n<p id=\"fazit\">Sicherheit geht vor.</p>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "p.wichtig", "min": 2, "label": "Zwei Absätze haben die class „wichtig“" },
+        { "type": "selector", "selector": "p#fazit", "count": 1, "label": "Genau ein Absatz hat die id „fazit“" }
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "Dieser Absatz soll zu **beiden** Gruppen gehören: `hinweis` und `wichtig`. Setze den fehlenden Attributwert ein.",
+      "template": "<p class=\"___\">Morgen Ausflug – Sportsachen mitbringen!</p>",
+      "solution": "hinweis wichtig",
+      "accept": ["hinweis wichtig", "wichtig hinweis"],
+      "hint": "Beide Namen in dieselben Anführungszeichen, getrennt durch ein Leerzeichen."
+    },
+    {
+      "type": "code",
+      "task": "Fehlersuche! In diesem Code kommt die id `regel` **zweimal** vor – das ist verboten. Repariere die Seite:\n\n1. Ändere bei **beiden** Regel-Absätzen `id=\"regel\"` zu `class=\"regel\"` – als Gruppe ist der doppelte Name erlaubt\n2. Gib dem letzten Absatz die id `hilfe`\n\nDer CSS-Tab 🔒 gestaltet die Gruppe und die id schon – du siehst also sofort, ob es klappt.",
+      "starter": {
+        "html": "<h2>Unsere Klassenregeln</h2>\n<p id=\"regel\">Handys bleiben im Unterricht in der Tasche.</p>\n<p id=\"regel\">Wir lassen einander ausreden.</p>\n<p>Fragen? Sprich einfach die Klassensprecherin an.</p>\n",
+        "css": ".regel { color: #1d6fb8; font-weight: bold; }\n#hilfe { background-color: #e8f7e8; padding: 6px; }\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Aus id wird class: Ersetze in beiden Regel-Absätzen das Wort id durch class.",
+        "Der letzte Absatz bekommt zusätzlich ein Attribut in den öffnenden Tag: <p id=\"hilfe\">.",
+        "```html\n<h2>Unsere Klassenregeln</h2>\n<p class=\"regel\">Handys bleiben im Unterricht in der Tasche.</p>\n<p class=\"regel\">Wir lassen einander ausreden.</p>\n<p id=\"hilfe\">Fragen? Sprich einfach die Klassensprecherin an.</p>\n```"
+      ],
+      "solution": {
+        "html": "<h2>Unsere Klassenregeln</h2>\n<p class=\"regel\">Handys bleiben im Unterricht in der Tasche.</p>\n<p class=\"regel\">Wir lassen einander ausreden.</p>\n<p id=\"hilfe\">Fragen? Sprich einfach die Klassensprecherin an.</p>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "p.regel", "min": 2, "label": "Beide Regeln gehören jetzt zur Gruppe „regel“" },
+        { "type": "source", "file": "html", "matches": "id=[\"']regel[\"']", "absent": true, "label": "Die doppelte id „regel“ ist verschwunden" },
+        { "type": "selector", "selector": "p#hilfe", "count": 1, "label": "Genau ein Absatz hat die id „hilfe“" }
+      ]
+    }
+  ]
+}

@@ -1,37 +1,47 @@
 {
   "title": "WebWerkstatt",
-  "subtitle": "Schritt für Schritt eigene Webseiten bauen – mit HTML, CSS und JavaScript.",
+  "subtitle": "Schritt für Schritt eigene Webseiten bauen – von den Grundlagen des Web bis zur fertigen Café-Website.",
   "blocks": [
+    {
+      "title": "Grundlagen – So funktioniert das Web",
+      "color": "#7a3fbf",
+      "chapters": ["01-wie-das-web-funktioniert"]
+    },
     {
       "title": "HTML – Inhalt & Struktur",
       "color": "#e0632e",
       "chapters": [
-        "01-erste-schritte",
-        "02-text",
-        "03-listen",
-        "04-links-und-bilder",
-        "05-tabellen",
-        "06-struktur-attribute"
+        "02-html-erste-schritte",
+        "03-text",
+        "04-listen",
+        "05-links",
+        "06-bilder-und-medien",
+        "07-tabellen",
+        "08-struktur-und-attribute",
+        "09-formulare"
       ]
     },
     {
-      "title": "CSS – Gestaltung",
+      "title": "CSS – Gestaltung & Recht",
       "color": "#2f6fdb",
       "chapters": [
-        "07-css-start",
-        "08-selektoren",
-        "09-schrift-und-text",
-        "10-box-modell",
-        "11-flexbox"
+        "10-css-grundlagen",
+        "11-selektoren",
+        "12-schrift-und-text",
+        "13-box-modell",
+        "14-flexbox",
+        "15-recht-im-web"
       ]
     },
     {
       "title": "JavaScript – Interaktion",
       "color": "#d4a017",
-      "chapters": [
-        "12-javascript-start",
-        "13-javascript-dom"
-      ]
+      "chapters": ["16-javascript-start", "17-javascript-dom"]
+    },
+    {
+      "title": "Das große Projekt",
+      "color": "#1a9e5c",
+      "chapters": ["18-projekt-finale"]
     }
   ]
 }

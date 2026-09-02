@@ -1,0 +1,62 @@
+{
+  "id": "02-interne-links-und-sprungmarken",
+  "title": "Interne Links & Sprungmarken",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Bisher zeigten deine Links nach draußen. Aber eine echte Website besteht aus **mehreren eigenen Seiten** – beim Café Pause zum Beispiel `index.html` und `speisekarte.html`.\n\nFür den Weg zwischen den eigenen Dateien nimmst du einen **relativen Link**: Ins `href` kommt **nur der Dateiname**, kein `https://`:\n\n```html\n<a href=\"speisekarte.html\">Zur Speisekarte</a>\n```\n\nDer Browser sucht die Datei dann im **selben Ordner** wie die aktuelle Seite. Wichtig: Der Dateiname muss **exakt** stimmen – inklusive Groß-/Kleinschreibung und der Endung `.html`."
+    },
+    {
+      "type": "quiz",
+      "question": "Welcher Link führt zur **eigenen Datei** `kontakt.html` im selben Ordner?",
+      "options": [
+        "`<a href=\"https://kontakt.html\">`",
+        "`<a href=\"kontakt.html\">`",
+        "`<a href=\"www.kontakt.de\">`"
+      ],
+      "correct": 1,
+      "explanation": "Für eigene Dateien genügt der Dateiname – das ist ein relativer Link. `https://` gehört nur vor echte Web-Adressen fremder Server."
+    },
+    {
+      "type": "explain",
+      "text": "Der dritte Linktyp bleibt **auf derselben Seite**: die **Sprungmarke**. Sie besteht aus zwei Teilen:\n\n**1. Das Ziel markieren** – das Element, zu dem gesprungen werden soll, bekommt eine `id` (einen eindeutigen Namen ohne Leerzeichen):\n\n```html\n<h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n```\n\n**2. Der Link darauf** – ins `href` kommt ein `#` plus der id-Name:\n\n```html\n<a href=\"#oeffnungszeiten\">Zu den Öffnungszeiten</a>\n```\n\nDas `#` bedeutet: „Springe auf **dieser** Seite zum Element mit dieser id.“ Beim Klick scrollt der Browser dorthin – perfekt für lange Seiten. Jede `id` darf pro Seite nur **einmal** vorkommen."
+    },
+    {
+      "type": "example",
+      "text": "Eine lange Seite mit Sprungmarken – **klick die Links an, die Vorschau scrollt wirklich!** Oben geht es hinunter zu den Tipps, unten wieder hinauf zum Anfang.",
+      "html": "<h1 id=\"anfang\">Schulfest-Infos</h1>\n<p><a href=\"#tipps\">Direkt zu den Tipps springen ↓</a></p>\n\n<h2>Ablauf</h2>\n<p>Das Schulfest beginnt um 14 Uhr auf dem Pausenhof.</p>\n<p>Um 15 Uhr treten die Bands im Musiksaal auf.</p>\n<p>Ab 16 Uhr gibt es das große Fußballturnier.</p>\n<p>Um 17 Uhr startet die Tombola in der Aula.</p>\n<p>Gegen 18 Uhr klingt das Fest gemütlich aus.</p>\n<p>Den ganzen Nachmittag über gibt es Essen und Getränke.</p>\n<p>Die Einnahmen gehen an die SMV.</p>\n\n<h2 id=\"tipps\">Tipps</h2>\n<p>Komm früh, die besten Waffeln sind schnell weg!</p>\n<p><a href=\"#anfang\">Zurück nach oben ↑</a></p>\n"
+    },
+    {
+      "type": "fill",
+      "text": "Die Überschrift soll als **Sprungziel** dienen. Setze das fehlende Attribut ein.",
+      "template": "<h2 ___=\"preise\">Unsere Preise</h2>",
+      "solution": "id",
+      "accept": ["id"],
+      "hint": "Das Ziel einer Sprungmarke bekommt eine `id` – der Link zeigt dann mit `href=\"#preise\"` darauf."
+    },
+    {
+      "type": "explain",
+      "text": "**So testest du das in der Werkstatt:** Klicks auf Sprungmarken (`#...`) scrollen wirklich in der Vorschau – probier es aus!\n\nKlicks auf eigene `.html`-Seiten wie `speisekarte.html` zeigen dagegen erst im Café-Projekt (`#/projekt`) Wirkung, wenn die Nachbarseiten wirklich existieren. Hier in der Übung gibt es sie noch nicht – die automatischen Tests prüfen deshalb die **Attribute** deiner Links."
+    },
+    {
+      "type": "code",
+      "task": "Baue die Seite der Schulband aus:\n\n1. Füge direkt unter der `<h1>` einen Absatz mit einem **Sprungmarken-Link** ein: Text **Direkt zum Kontakt**, Ziel ist die Kontakt-Überschrift\n2. Gib der `<h2>` **Kontakt** die passende `id=\"kontakt\"`\n3. Füge unter dem Auftritts-Absatz einen **relativen Link** zur Datei `termine.html` ein – Linktext: **Alle Termine**",
+      "starter": {
+        "html": "<h1>Unsere Schulband</h1>\n\n<h2>Auftritte</h2>\n<p>Wir spielen beim Sommerfest und beim Weihnachtskonzert.</p>\n\n<h2>Kontakt</h2>\n<p>Schreib uns oder komm einfach donnerstags zur Probe.</p>\n"
+      },
+      "hints": [
+        "Der Sprungmarken-Link braucht href=\"#kontakt\" – und die Kontakt-Überschrift die id=\"kontakt\". Beide Namen müssen exakt gleich sein.",
+        "Der relative Link ist ein ganz normaler <a>-Tag: <a href=\"termine.html\">Alle Termine</a> – ohne https://, nur der Dateiname.",
+        "```html\n<h1>Unsere Schulband</h1>\n<p><a href=\"#kontakt\">Direkt zum Kontakt</a></p>\n\n<h2>Auftritte</h2>\n<p>Wir spielen beim Sommerfest und beim Weihnachtskonzert.</p>\n<p><a href=\"termine.html\">Alle Termine</a></p>\n\n<h2 id=\"kontakt\">Kontakt</h2>\n<p>Schreib uns oder komm einfach donnerstags zur Probe.</p>\n```"
+      ],
+      "solution": {
+        "html": "<h1>Unsere Schulband</h1>\n<p><a href=\"#kontakt\">Direkt zum Kontakt</a></p>\n\n<h2>Auftritte</h2>\n<p>Wir spielen beim Sommerfest und beim Weihnachtskonzert.</p>\n<p><a href=\"termine.html\">Alle Termine</a></p>\n\n<h2 id=\"kontakt\">Kontakt</h2>\n<p>Schreib uns oder komm einfach donnerstags zur Probe.</p>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "a[href='#kontakt']", "expected": "Direkt zum Kontakt", "label": "Der Sprungmarken-Link „Direkt zum Kontakt“ zeigt auf #kontakt" },
+        { "type": "text", "selector": "h2#kontakt", "expected": "Kontakt", "label": "Die Kontakt-Überschrift trägt die id \"kontakt\"" },
+        { "type": "text", "selector": "a[href='termine.html']", "expected": "Alle Termine", "label": "Der Link „Alle Termine“ führt zur Datei termine.html" }
+      ]
+    }
+  ]
+}

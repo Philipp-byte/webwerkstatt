@@ -1,0 +1,104 @@
+{
+  "id": "05-wiederholung",
+  "title": "Große HTML-Wiederholung",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Bevor es tief ins CSS geht, holen wir noch einmal **alles HTML** aus deinem Kopf: Grundgerüst, Listen, Links, Bilder, Tabellen, Formulare. Warum? Dein Gehirn behält Dinge dann, wenn es sie **aktiv abrufen** muss – nicht beim bloßen Durchlesen. Und ab jetzt brauchst du dein HTML ständig, denn CSS gestaltet immer HTML.\n\nAlso: 6 gemischte Aufgaben, kein neuer Stoff. Los geht's!"
+    },
+    {
+      "type": "code",
+      "task": "**Aufgabe 1 – das Grundgerüst.** Baue eine komplette HTML-Datei von Hand:\n\n1. `<!DOCTYPE html>`, `<html>`, `<head>` und `<body>`\n2. Im `<head>`: ein `<title>` mit dem Text **Mein Steckbrief**\n3. Im `<body>`: eine `<h1>` mit dem Text **Steckbrief** und ein Absatz mit einem Satz über dich",
+      "starter": {
+        "html": "<!-- Baue hier das komplette Grundgerüst -->\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Die Reihenfolge: DOCTYPE, dann <html>, darin <head> und <body>.",
+        "Der <title> gehört in den <head>, die <h1> und der <p> in den <body>.",
+        "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Mein Steckbrief</title>\n  </head>\n  <body>\n    <h1>Steckbrief</h1>\n    <p>Ich lerne gerade HTML und CSS.</p>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Mein Steckbrief</title>\n  </head>\n  <body>\n    <h1>Steckbrief</h1>\n    <p>Ich lerne gerade HTML und CSS.</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        { "type": "source", "file": "html", "matches": "<!doctype\\s+html>", "label": "Der DOCTYPE steht am Anfang" },
+        { "type": "text", "selector": "title", "expected": "Mein Steckbrief", "label": "Der Seitentitel lautet „Mein Steckbrief“" },
+        { "type": "text", "selector": "h1", "expected": "Steckbrief", "label": "Die Überschrift lautet „Steckbrief“" },
+        { "type": "selector", "selector": "body p", "min": 1, "label": "Im Body steht ein Absatz" }
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "**Aufgabe 2 – Listen.** Die Teezubereitung hat eine feste Reihenfolge. Setze den passenden **öffnenden Tag** für die Liste ein.",
+      "template": "<___>\n  <li>Wasser kochen</li>\n  <li>Teebeutel ziehen lassen</li>\n  <li>Genießen</li>\n</ol>",
+      "solution": "ol",
+      "accept": ["ol"],
+      "hint": "Feste Reihenfolge = **geordnete** Liste. Sie heißt `<ol>` (ordered list) – schau auch auf den schließenden Tag unten."
+    },
+    {
+      "type": "code",
+      "task": "**Aufgabe 3 – Links und Bilder.**\n\n1. Binde das Übungsbild `strand.svg` ein – mit einem alt-Text, in dem das Wort **Strand** vorkommt\n2. Erstelle darunter einen Link zu `https://www.example.com` mit dem Linktext **Mehr Reisetipps**",
+      "starter": {
+        "html": "<h2>Mein Traumurlaub</h2>\n<!-- Bild und Link hier -->\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Das Bild braucht zwei Attribute: src für die Datei, alt für die Beschreibung.",
+        "Der Link: <a href=\"https://www.example.com\">…</a> – der Text zwischen den Tags ist der Linktext.",
+        "```html\n<h2>Mein Traumurlaub</h2>\n<img src=\"strand.svg\" alt=\"Ein Strand mit Palme und Meer\">\n<a href=\"https://www.example.com\">Mehr Reisetipps</a>\n```"
+      ],
+      "solution": {
+        "html": "<h2>Mein Traumurlaub</h2>\n<img src=\"strand.svg\" alt=\"Ein Strand mit Palme und Meer\">\n<a href=\"https://www.example.com\">Mehr Reisetipps</a>\n"
+      },
+      "tests": [
+        { "type": "attr", "selector": "img", "attr": "src", "expected": "strand.svg", "label": "Das Bild ist strand.svg" },
+        { "type": "attr", "selector": "img", "attr": "alt", "matches": "strand", "label": "Der alt-Text enthält das Wort „Strand“" },
+        { "type": "attr", "selector": "a", "attr": "href", "expected": ["https://www.example.com", "https://www.example.com/"], "label": "Das Linkziel ist https://www.example.com" },
+        { "type": "text", "selector": "a", "expected": "Mehr Reisetipps", "label": "Der Linktext lautet „Mehr Reisetipps“" }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "**Aufgabe 4 – class und id.** Ein einziger Absatz auf der Seite soll als „Fazit“ markiert werden, damit man ihn später gezielt gestalten kann. Was nimmst du?",
+      "options": [
+        "`class=\"fazit\"` – Klassen sind für einzelne Elemente da",
+        "`id=\"fazit\"` – eine id gibt es pro Seite nur einmal",
+        "Einfach `<strong>` – das fällt auch auf"
+      ],
+      "correct": 1,
+      "explanation": "Für ein **einmaliges** Element ist die `id` gedacht. Eine `class` nutzt du, wenn **mehrere** Elemente dieselbe Markierung bekommen sollen."
+    },
+    {
+      "type": "code",
+      "task": "**Aufgabe 5 – Tabellen.** Baue die Preisliste des Schulkiosks:\n\n1. Eine **Kopfzeile** mit den `<th>`-Zellen **Snack** und **Preis**\n2. Darunter **zwei Datenzeilen** mit `<td>`-Zellen (z. B. Brezel – 1,00 € und Muffin – 1,50 €)",
+      "starter": {
+        "html": "<h2>Preisliste</h2>\n<!-- Deine Tabelle hier -->\n",
+        "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Alles steht in <table>…</table>. Jede Zeile ist ein <tr>.",
+        "Die erste <tr> bekommt <th>-Zellen (Kopf), die anderen <td>-Zellen (Daten).",
+        "```html\n<h2>Preisliste</h2>\n<table>\n  <tr>\n    <th>Snack</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Brezel</td>\n    <td>1,00 €</td>\n  </tr>\n  <tr>\n    <td>Muffin</td>\n    <td>1,50 €</td>\n  </tr>\n</table>\n```"
+      ],
+      "solution": {
+        "html": "<h2>Preisliste</h2>\n<table>\n  <tr>\n    <th>Snack</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Brezel</td>\n    <td>1,00 €</td>\n  </tr>\n  <tr>\n    <td>Muffin</td>\n    <td>1,50 €</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "th", "min": 2, "label": "Die Kopfzeile hat mindestens zwei <th>-Zellen" },
+        { "type": "text", "selector": "th", "expected": "Snack", "label": "Die erste Kopf-Zelle lautet „Snack“" },
+        { "type": "selector", "selector": "tr", "min": 3, "label": "Es gibt mindestens drei Zeilen (Kopf + 2 Daten)" },
+        { "type": "selector", "selector": "td", "min": 4, "label": "Es gibt mindestens vier Daten-Zellen" }
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "**Aufgabe 6 – Formulare.** Das Eingabefeld soll E-Mail-Adressen abfragen und prüfen. Setze das fehlende **Attribut** ein.",
+      "template": "<input ___=\"email\" id=\"email\">",
+      "solution": "type",
+      "accept": ["type"],
+      "hint": "Das Attribut bestimmt die **Art** des Eingabefelds: `type=\"text\"`, `type=\"email\"` …"
+    }
+  ]
+}

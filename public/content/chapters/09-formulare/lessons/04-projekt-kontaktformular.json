@@ -1,0 +1,41 @@
+{
+  "id": "04-projekt-kontaktformular",
+  "title": "Projekt: Das Kontaktformular",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Letzte Etappe vor dem CSS-Teil! Zuletzt hast du die Startseite des **Café Pause** in Bereiche gegliedert. Heute bekommt das Café seinen Draht zu den Gästen: die **Kontaktseite** – mit allem, was du in diesem Kapitel gelernt hast.\n\nDie Navigation der Startseite zeigt schon auf `kontakt.html` – Zeit, die Seite zu bauen: Eingabefelder mit Labels, eine Klappliste für den Anlass, ein Nachrichtenfeld und der Absenden-Knopf.\n\nZur Erinnerung: Verschickt wird beim Absenden **nichts** – wir haben keinen Server, die Vorschau fängt das ab. Die Struktur ist trotzdem die gleiche wie bei jedem echten Kontaktformular im Web."
+    },
+    {
+      "type": "code",
+      "task": "Das Grundgerüst der neuen Seite steht schon – arbeite im `<body>`:\n\n1. `<h1>` mit dem Text **Kontakt**\n2. Ein `<form>` mit folgenden Feldern, jeweils **mit verbundenem Label**:\n   - `<label for=\"name\">Name:</label>` und ein Textfeld (`type=\"text\"`) mit `id=\"name\"`\n   - `<label for=\"email\">E-Mail:</label>` und ein E-Mail-Feld mit `id=\"email\"`\n   - `<label for=\"anlass\">Anlass:</label>` und eine Klappliste mit `id=\"anlass\"` und mindestens **drei** `<option>` (z. B. Lob, Frage, Kritik)\n   - `<label for=\"nachricht\">Nachricht:</label>` und ein mehrzeiliges Feld mit `id=\"nachricht\"`\n   - Ein `<button>` mit dem Text **Absenden**\n3. Unter dem Formular ein Zurück-Link zu `index.html` mit dem Text **Zurück zur Startseite**\n\nTipp: `<br>` zwischen den Feld-Paaren hält das Formular übersichtlich.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Kontakt – Café Pause</title>\n</head>\n<body>\n  <!-- Hier entsteht die Kontaktseite -->\n</body>\n</html>\n"
+      },
+      "project": { "page": "kontakt", "save": ["html"] },
+      "hints": [
+        "Arbeite Paar für Paar: immer erst das <label for=\"...\">, direkt danach das Feld mit derselben id. Teste zwischendurch den Label-Klick in der Vorschau!",
+        "Die Klappliste: <select id=\"anlass\"> mit drei <option>Lob</option>-Zeilen. Das Nachrichtenfeld: <textarea id=\"nachricht\"></textarea> – innen leer lassen.",
+        "```html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>Kontakt – Café Pause</title>\n</head>\n<body>\n  <h1>Kontakt</h1>\n\n  <form>\n    <label for=\"name\">Name:</label>\n    <input type=\"text\" id=\"name\" placeholder=\"Vor- und Nachname\">\n    <br>\n    <label for=\"email\">E-Mail:</label>\n    <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n    <br>\n    <label for=\"anlass\">Anlass:</label>\n    <select id=\"anlass\">\n      <option>Lob</option>\n      <option>Frage</option>\n      <option>Kritik</option>\n    </select>\n    <br>\n    <label for=\"nachricht\">Nachricht:</label>\n    <br>\n    <textarea id=\"nachricht\"></textarea>\n    <br>\n    <button>Absenden</button>\n  </form>\n\n  <a href=\"index.html\">Zurück zur Startseite</a>\n</body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Kontakt – Café Pause</title>\n</head>\n<body>\n  <h1>Kontakt</h1>\n\n  <form>\n    <label for=\"name\">Name:</label>\n    <input type=\"text\" id=\"name\" placeholder=\"Vor- und Nachname\">\n    <br>\n    <label for=\"email\">E-Mail:</label>\n    <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n    <br>\n    <label for=\"anlass\">Anlass:</label>\n    <select id=\"anlass\">\n      <option>Lob</option>\n      <option>Frage</option>\n      <option>Kritik</option>\n    </select>\n    <br>\n    <label for=\"nachricht\">Nachricht:</label>\n    <br>\n    <textarea id=\"nachricht\"></textarea>\n    <br>\n    <button>Absenden</button>\n  </form>\n\n  <a href=\"index.html\">Zurück zur Startseite</a>\n</body>\n</html>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "h1", "expected": "Kontakt", "label": "Die Hauptüberschrift lautet „Kontakt“" },
+        { "type": "selector", "selector": "form", "min": 1, "label": "Es gibt ein <form>-Element" },
+        { "type": "selector", "selector": "form input#name", "count": 1, "label": "Das Namensfeld hat die id „name“" },
+        { "type": "attr", "selector": "input#name", "attr": "type", "expected": "text", "label": "Das Namensfeld ist ein Textfeld (type=\"text\")" },
+        { "type": "selector", "selector": "label[for='name']", "min": 1, "label": "Das Namensfeld hat ein verbundenes Label" },
+        { "type": "selector", "selector": "form input#email", "count": 1, "label": "Das E-Mail-Feld hat die id „email“" },
+        { "type": "attr", "selector": "input#email", "attr": "type", "expected": "email", "label": "Das E-Mail-Feld hat type=\"email\"" },
+        { "type": "selector", "selector": "label[for='email']", "min": 1, "label": "Das E-Mail-Feld hat ein verbundenes Label" },
+        { "type": "selector", "selector": "form select#anlass", "count": 1, "label": "Die Klappliste hat die id „anlass“" },
+        { "type": "selector", "selector": "select#anlass option", "min": 3, "label": "Die Klappliste hat mindestens drei Einträge" },
+        { "type": "selector", "selector": "form textarea#nachricht", "count": 1, "label": "Das Nachrichtenfeld hat die id „nachricht“" },
+        { "type": "text", "selector": "form button", "expected": "Absenden", "label": "Der Knopf trägt den Text „Absenden“" },
+        { "type": "text", "selector": "a[href='index.html']", "expected": "Zurück zur Startseite", "label": "Der Zurück-Link zu index.html ist da" }
+      ]
+    }
+  ]
+}

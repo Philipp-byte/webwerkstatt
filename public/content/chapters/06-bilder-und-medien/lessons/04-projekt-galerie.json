@@ -1,0 +1,35 @@
+{
+  "id": "04-projekt-galerie",
+  "title": "Projekt: Galerie",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "In der letzten Etappe hast du auf der Startseite des **Café Pause** den Link zur Galerie angelegt – nur die Seite dahinter gab es noch nicht. Das ändern wir jetzt: Heute entsteht **galerie.html** als eigene Projektseite.\n\nDrei Café-Bilder liegen dafür in der Werkstatt bereit: `cafe-theke.svg`, `cafe-kuchen.svg` und `cafe-raum.svg` – dazu unser Jingle `cafe-jingle.wav`.\n\nWeil es eine **neue Seite** ist, startest du mit einem frischen Grundgerüst. Beim Bestehen der Tests wird sie als Seite „galerie“ in deinem Projekt gespeichert."
+    },
+    {
+      "type": "code",
+      "task": "Baue die Galerie-Seite des Café Pause:\n\n1. In den `<body>`: eine `<h1>` mit dem Text **Galerie**\n2. Darunter die drei Café-Bilder `cafe-theke.svg`, `cafe-kuchen.svg` und `cafe-raum.svg` – **jedes** mit einem sinnvollen `alt`-Text\n3. Dann ein `<audio>`-Element mit `controls` und der Datei `cafe-jingle.wav`\n4. Ganz unten ein Absatz mit dem Zurück-Link zu `index.html` – Linktext: **Zurück zur Startseite**",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <!-- Überschrift, Bilder, Audio und Zurück-Link hier -->\n  </body>\n</html>\n"
+      },
+      "project": { "page": "galerie", "save": ["html"] },
+      "hints": [
+        "Alles Sichtbare kommt in den <body>. Jedes Bild ist ein <img> mit src und alt – der alt-Text beschreibt, was auf dem Bild zu sehen ist.",
+        "Der Audio-Player: <audio controls src=\"cafe-jingle.wav\"></audio>. Der Zurück-Link ist ein relativer Link: <a href=\"index.html\">Zurück zur Startseite</a>.",
+        "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <h1>Galerie</h1>\n    <p>So sieht es bei uns aus – schau dich um und hör rein!</p>\n\n    <img src=\"cafe-theke.svg\" alt=\"Unsere Theke mit Kasse und frischen Brezeln\">\n    <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen auf einem Teller\">\n    <img src=\"cafe-raum.svg\" alt=\"Der Gastraum mit Tischen und Stühlen\">\n\n    <p>Unser Café-Jingle:</p>\n    <audio controls src=\"cafe-jingle.wav\"></audio>\n\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <h1>Galerie</h1>\n    <p>So sieht es bei uns aus – schau dich um und hör rein!</p>\n\n    <img src=\"cafe-theke.svg\" alt=\"Unsere Theke mit Kasse und frischen Brezeln\">\n    <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen auf einem Teller\">\n    <img src=\"cafe-raum.svg\" alt=\"Der Gastraum mit Tischen und Stühlen\">\n\n    <p>Unser Café-Jingle:</p>\n    <audio controls src=\"cafe-jingle.wav\"></audio>\n\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "h1", "expected": "Galerie", "label": "Die <h1> lautet „Galerie“" },
+        { "type": "attr", "selector": "img[src='cafe-theke.svg']", "attr": "alt", "matches": "\\S", "label": "cafe-theke.svg ist da und hat einen alt-Text" },
+        { "type": "attr", "selector": "img[src='cafe-kuchen.svg']", "attr": "alt", "matches": "\\S", "label": "cafe-kuchen.svg ist da und hat einen alt-Text" },
+        { "type": "attr", "selector": "img[src='cafe-raum.svg']", "attr": "alt", "matches": "\\S", "label": "cafe-raum.svg ist da und hat einen alt-Text" },
+        { "type": "attr", "selector": "audio", "attr": "src", "expected": "cafe-jingle.wav", "label": "Der Audio-Player spielt cafe-jingle.wav" },
+        { "type": "attr", "selector": "audio", "attr": "controls", "expected": ["", "controls"], "label": "Der Audio-Player zeigt Bedienelemente (controls)" },
+        { "type": "text", "selector": "a[href='index.html']", "expected": "Zurück zur Startseite", "label": "Der Zurück-Link führt zu index.html" }
+      ]
+    }
+  ]
+}

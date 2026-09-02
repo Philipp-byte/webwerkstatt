@@ -1,0 +1,56 @@
+{
+  "id": "02-impressum-und-datenschutz",
+  "title": "Impressum & Datenschutz",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Stell dir vor, eine Webseite verkauft Handyhüllen, liefert aber nie. An wen wendest du dich? Genau dafür gibt es das **Impressum**: eine Seite, auf der steht, **wer** hinter einer Webseite steckt.\n\nIn Deutschland ist das Impressum **gesetzlich vorgeschrieben** – heute geregelt im Digitale-Dienste-Gesetz (kurz **DDG**; früher hieß das Gesetz Telemediengesetz). Die Pflicht gilt praktisch für alle Webseiten, die nicht rein privat sind: Firmen, Vereine, Schülerfirmen, Blogs mit Werbung.\n\n**Wichtig:** Diese Lektion erklärt die Grundidee **vereinfacht** (Stand 2026) und ist **keine Rechtsberatung**. Wer eine echte Webseite veröffentlicht, lässt Impressum und Datenschutzerklärung im Zweifel von einer Fachperson prüfen."
+    },
+    {
+      "type": "quiz",
+      "question": "Warum verlangt der Gesetzgeber ein Impressum auf Webseiten?",
+      "options": [
+        "Damit Besucher wissen, wer hinter der Seite steckt und wen sie kontaktieren können",
+        "Damit die Seite in Suchmaschinen weiter oben landet",
+        "Als kostenlose Werbefläche für den Betreiber"
+      ],
+      "correct": 0,
+      "explanation": "Das Impressum schafft Transparenz: Wer eine Webseite betreibt, soll erreichbar sein – etwa bei Beschwerden oder rechtlichen Fragen."
+    },
+    {
+      "type": "explain",
+      "text": "Was gehört mindestens ins Impressum?\n\n- **Name** des Betreibers (bei Firmen: Firmenname plus eine verantwortliche Person)\n- **Anschrift** – eine echte Post-Adresse (ein Postfach reicht nicht)\n- **Kontakt**, zum Beispiel eine E-Mail-Adresse\n\nUnd genauso wichtig: Das Impressum muss **leicht zu finden** sein. Üblich ist ein Link mit dem Namen „Impressum“ unten auf **jeder** Seite – im Footer. Zwei Klicks von jeder Stelle der Website, mehr darf es nicht sein."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige die Merkliste fürs Impressum:",
+      "template": "Ins Impressum gehören: Name, ___ und Kontakt (z. B. E-Mail) des Betreibers.",
+      "solution": "Anschrift",
+      "accept": ["Anschrift", "anschrift", "Adresse", "adresse", "Postadresse", "postadresse"],
+      "hint": "Gemeint ist die echte Post-Adresse – ein Postfach reicht nicht."
+    },
+    {
+      "type": "explain",
+      "text": "Der zweite Pflichttext: die **Datenschutzerklärung**. Grundlage ist die **DSGVO**, die europäische Datenschutz-Grundverordnung.\n\nSobald eine Webseite **personenbezogene Daten** verarbeitet – Namen, E-Mail-Adressen, auch IP-Adressen –, müssen die Besucher erfahren: **Welche** Daten werden gesammelt? **Wofür**? **Wie lange** gespeichert? Genau das steht in der Datenschutzerklärung.\n\nUnd das trifft schneller zu, als du denkst: Schon ein **Kontaktformular** verarbeitet Namen und E-Mail-Adressen, Statistik-Tools sammeln Besucherdaten. Praktisch braucht deshalb fast jede Webseite eine Datenschutzerklärung.\n\nVielleicht kennst du auch den **Disclaimer** („Für Inhalte externer Links übernehmen wir keine Haftung …“): ein Haftungshinweis, den viele Seiten zusätzlich aufnehmen. Er kann sinnvoll sein, **ersetzt aber weder Impressum noch Datenschutzerklärung**."
+    },
+    {
+      "type": "quiz",
+      "question": "Eure Schülerfirmen-Webseite hat ein Kontaktformular für Bestellungen. Braucht sie eine Datenschutzerklärung?",
+      "options": [
+        "Ja – das Formular verarbeitet personenbezogene Daten wie Name und E-Mail-Adresse",
+        "Nein – Schülerfirmen sind von allen Regeln befreit",
+        "Nur, wenn mehr als 1000 Personen die Seite besuchen"
+      ],
+      "correct": 0,
+      "explanation": "Sobald personenbezogene Daten verarbeitet werden, greift die DSGVO – egal wie groß die Seite ist. Ein Kontaktformular reicht dafür schon aus."
+    },
+    {
+      "type": "fill",
+      "text": "Wofür steht die Abkürzung DSGVO? Vervollständige:",
+      "template": "DSGVO = Datenschutz-___",
+      "solution": "Grundverordnung",
+      "accept": ["Grundverordnung", "grundverordnung"],
+      "hint": "Es ist die grundlegende Verordnung der EU zum Datenschutz – ein zusammengesetztes Wort mit „Grund…“."
+    }
+  ]
+}

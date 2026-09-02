@@ -18,6 +18,26 @@ const CAPTURE = `<script>
   window.addEventListener('error', function (e) {
     window.__ww_errors.push(e.message);
   });
+  // Links abfangen: Sprungmarken scrollen (die base-URL würde sie sonst kapern),
+  // Links auf eigene .html-Seiten melden sich beim Projekt-Viewer der App.
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.charAt(0) === '#') {
+      e.preventDefault();
+      var ziel = document.getElementById(href.slice(1)) ||
+        document.querySelector('[name="' + href.slice(1).replace(/"/g, '') + '"]');
+      if (ziel) ziel.scrollIntoView({ behavior: 'smooth' });
+    } else if (/\.html$/i.test(href)) {
+      e.preventDefault();
+      parent.postMessage({ type: 'ww-navigate', page: href.replace(/\.html$/i, '') }, '*');
+    }
+  }, true);
+  // Formular-Absenden abfangen: ohne Server würde die Vorschau sonst wegnavigieren.
+  document.addEventListener('submit', function (e) {
+    e.preventDefault();
+  }, true);
 })();
 <\/script>`;
 

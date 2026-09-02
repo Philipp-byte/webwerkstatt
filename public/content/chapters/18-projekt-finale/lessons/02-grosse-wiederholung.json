@@ -1,0 +1,150 @@
+{
+  "id": "02-grosse-wiederholung",
+  "title": "Die große Wiederholung",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "**Die große Wiederholung** – einmal quer durch alle 17 Kapitel. Aktives Erinnern ist der stärkste Lern-Trick, den die Forschung kennt: Jedes Mal, wenn du Wissen selbst aus dem Kopf holst statt es nur nachzulesen, wird die Gedächtnisspur dicker.\n\nNeun kleine Aufgaben, kein neuer Stoff – alles hier hast du schon einmal gemeistert. Wenn etwas hakt: kurz zurückblättern ist erlaubt und sogar schlau."
+    },
+    {
+      "type": "quiz",
+      "question": "Ganz zurück zu Kapitel 1: Du tippst eine Adresse in den Browser und drückst Enter. Was passiert dahinter?",
+      "options": [
+        "Der Browser (Client) schickt eine Anfrage an einen Server – der schickt die Seite zurück",
+        "Der Browser baut die Seite komplett selbst, ganz ohne Internet",
+        "Der Server tippt die Anfrage, und der Browser antwortet ihm"
+      ],
+      "correct": 0,
+      "explanation": "Client fragt, Server antwortet – dieses Frage-Antwort-Spiel steckt hinter jedem einzelnen Seitenaufruf im Web."
+    },
+    {
+      "type": "fill",
+      "text": "Das Grundgerüst jeder HTML-Datei. Welcher Tag umschließt den **sichtbaren Inhalt**?",
+      "template": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <___>\n    <h1>Café Pause</h1>\n  </body>\n</html>",
+      "solution": "body",
+      "accept": ["body"],
+      "hint": "Der `<head>` enthält Unsichtbares wie den Titel – der sichtbare Inhalt steht im … genau."
+    },
+    {
+      "type": "code",
+      "task": "HTML-Handwerk: eine Mini-Seite für den Pausen-Kiosk.\n\n1. Eine `<h2>` mit dem Text **Pausen-Kiosk**\n2. Eine **ungeordnete Liste** mit mindestens **3** Angeboten\n3. Ein Link zum Ziel `https://www.example.com` mit dem Linktext **Mehr erfahren**",
+      "starter": {
+        "html": "<!-- Überschrift, Liste und Link hier -->\n"
+      },
+      "hints": [
+        "Drei Bausteine untereinander: <h2>, dann <ul> mit <li>-Einträgen, dann <a>.",
+        "Der Link braucht das Attribut href: <a href=\"https://www.example.com\">Mehr erfahren</a>",
+        "```html\n<h2>Pausen-Kiosk</h2>\n<ul>\n  <li>Brezeln</li>\n  <li>Muffins</li>\n  <li>Apfelschorle</li>\n</ul>\n<a href=\"https://www.example.com\">Mehr erfahren</a>\n```"
+      ],
+      "solution": {
+        "html": "<h2>Pausen-Kiosk</h2>\n<ul>\n  <li>Brezeln</li>\n  <li>Muffins</li>\n  <li>Apfelschorle</li>\n</ul>\n<a href=\"https://www.example.com\">Mehr erfahren</a>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "h2", "expected": "Pausen-Kiosk", "label": "Die Überschrift lautet „Pausen-Kiosk“" },
+        { "type": "selector", "selector": "ul li", "min": 3, "label": "Die ungeordnete Liste hat mindestens 3 Einträge" },
+        { "type": "attr", "selector": "a", "attr": "href", "expected": ["https://www.example.com", "https://www.example.com/"], "label": "Das Linkziel ist https://www.example.com" },
+        { "type": "text", "selector": "a", "expected": "Mehr erfahren", "label": "Der Linktext lautet „Mehr erfahren“" }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Adresse, E-Mail und Kleingedrucktes stehen auf Webseiten üblicherweise in welchem Bereich?",
+      "options": [
+        "`<header>`",
+        "`<footer>`",
+        "`<nav>`"
+      ],
+      "correct": 1,
+      "explanation": "Der `<footer>` ist der Fußbereich – wie bei deinem Café-Projekt: Adresse, Öffnungszeiten, E-Mail-Adresse."
+    },
+    {
+      "type": "code",
+      "task": "Die Getränke-Tabelle aus dem Kopf:\n\n1. Eine **Kopfzeile** mit den `<th>`-Zellen **Getränk** und **Preis**\n2. Darunter **zwei Datenzeilen** mit `<td>`-Zellen (Getränke und Preise frei wählbar)",
+      "starter": {
+        "html": "<!-- Deine Tabelle mit Kopfzeile hier -->\n",
+        "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Eine Tabelle besteht aus <table>, Zeilen <tr> und Zellen – <th> für den Kopf, <td> für Daten.",
+        "Insgesamt drei <tr>: die erste mit zwei <th>, die beiden anderen mit je zwei <td>.",
+        "```html\n<table>\n  <tr>\n    <th>Getränk</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Kakao</td>\n    <td>2,50 €</td>\n  </tr>\n  <tr>\n    <td>Apfelschorle</td>\n    <td>2,00 €</td>\n  </tr>\n</table>\n```"
+      ],
+      "solution": {
+        "html": "<table>\n  <tr>\n    <th>Getränk</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Kakao</td>\n    <td>2,50 €</td>\n  </tr>\n  <tr>\n    <td>Apfelschorle</td>\n    <td>2,00 €</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "th", "min": 2, "label": "Die Kopfzeile hat mindestens zwei <th>-Zellen" },
+        { "type": "text", "selector": "th", "expected": "Getränk", "label": "Die erste Kopf-Zelle lautet „Getränk“" },
+        { "type": "selector", "selector": "tr", "min": 3, "label": "Es gibt mindestens drei Zeilen (Kopf + 2 Daten)" },
+        { "type": "selector", "selector": "td", "min": 4, "label": "Es gibt mindestens vier Daten-Zellen" }
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "Nur die Elemente mit `class=\"hinweis\"` sollen gestaltet werden. Setze den passenden **Selektor** ein.",
+      "template": "___ {\n  color: #e08a2e;\n}",
+      "solution": ".hinweis",
+      "accept": [".hinweis"],
+      "hint": "Klassen sprichst du mit einem **Punkt** an – die Raute wäre für IDs."
+    },
+    {
+      "type": "code",
+      "task": "CSS-Layout: Drei Angebots-Karten sollen nebeneinander stehen.\n\n1. `.leiste` wird zum Flex-Container: `display: flex;` und `gap: 16px;`\n2. Jede `.karte` bekommt `border: 2px solid #5a3e2b;` und `padding: 16px;`",
+      "starter": {
+        "html": "<div class=\"leiste\">\n  <div class=\"karte\">Kakao 2,50 €</div>\n  <div class=\"karte\">Brezel 1,50 €</div>\n  <div class=\"karte\">Muffin 2,00 €</div>\n</div>\n",
+        "css": "/* Zwei Regeln: .leiste und .karte */\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "display: flex; kommt auf den Container (.leiste) – die Karten ordnen sich dann von selbst nebeneinander an.",
+        "Die zweite Regel gestaltet die Boxen: border mit Dicke, Linienart und Farbe, dazu padding.",
+        "```css\n.leiste {\n  display: flex;\n  gap: 16px;\n}\n\n.karte {\n  border: 2px solid #5a3e2b;\n  padding: 16px;\n}\n```"
+      ],
+      "solution": {
+        "css": ".leiste {\n  display: flex;\n  gap: 16px;\n}\n\n.karte {\n  border: 2px solid #5a3e2b;\n  padding: 16px;\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": ".leiste", "prop": "display", "expected": "flex", "label": "Die Leiste ist ein Flex-Container" },
+        { "type": "style", "selector": ".leiste", "prop": "column-gap", "expected": "16px", "label": "Zwischen den Karten sind 16px Abstand" },
+        { "type": "style", "selector": ".karte", "prop": "border-top-width", "expected": "2px", "label": "Die Karten haben einen 2px-Rahmen" },
+        { "type": "style", "selector": ".karte", "prop": "border-top-style", "expected": "solid", "label": "Der Rahmen ist eine durchgezogene Linie" },
+        { "type": "style", "selector": ".karte", "prop": "border-top-color", "expected": "#5a3e2b", "label": "Der Rahmen ist kaffeebraun (#5a3e2b)" },
+        { "type": "style", "selector": ".karte", "prop": "padding-top", "expected": "16px", "label": "Die Karten haben 16px Innenabstand" }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Deine Café-Seite geht **echt** online. Was gilt für das Impressum?",
+      "options": [
+        "Es ist Pflicht: Wer die Seite betreibt, muss mit Name, Anschrift und Kontakt genannt sein",
+        "Es ist freiwillig – nur große Firmen brauchen eins",
+        "Ein Impressum braucht man nur für Online-Shops"
+      ],
+      "correct": 0,
+      "explanation": "Impressumspflicht: Besucher müssen erkennen können, wer hinter einer veröffentlichten Seite steht – genau dafür hast du in Kapitel 15 die Impressum-Seite gebaut."
+    },
+    {
+      "type": "code",
+      "task": "Zum Schluss JavaScript: Das HTML 🔒 hat einen Button `id=\"knopf\"` und einen leeren Absatz `id=\"ausgabe\"`.\n\nBeim Klick auf den Button soll der Absatz genau **Bis bald im Café Pause!** anzeigen.",
+      "starter": {
+        "html": "<button id=\"knopf\">Verabschieden</button>\n<p id=\"ausgabe\"></p>\n",
+        "js": "// Elemente holen, Event-Listener schreiben\n"
+      },
+      "editable": ["js"],
+      "hints": [
+        "Das Muster kennst du: zwei Elemente mit getElementById holen, dann addEventListener auf den Button.",
+        "In der Funktion: ausgabe.textContent = \"Bis bald im Café Pause!\";",
+        "```js\nlet knopf = document.getElementById(\"knopf\");\nlet ausgabe = document.getElementById(\"ausgabe\");\n\nknopf.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Bis bald im Café Pause!\";\n});\n```"
+      ],
+      "solution": {
+        "js": "let knopf = document.getElementById(\"knopf\");\nlet ausgabe = document.getElementById(\"ausgabe\");\n\nknopf.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Bis bald im Café Pause!\";\n});\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "#ausgabe", "expected": "", "label": "Vor dem Klick ist der Absatz leer" },
+        { "type": "action", "action": "click", "selector": "#knopf" },
+        { "type": "text", "selector": "#ausgabe", "expected": "Bis bald im Café Pause!", "label": "Nach dem Klick steht „Bis bald im Café Pause!“ da" }
+      ]
+    }
+  ]
+}

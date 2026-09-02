@@ -1,0 +1,37 @@
+{
+  "id": "05-projekt-angebote",
+  "title": "Projekt: Unsere Angebote",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Weiter geht es mit dem **Café Pause**! Deine Startseite hat schon das Grundgerüst, die Begrüßung und den Bereich „Über uns“ mit der Adresse.\n\nHeute kommt das Herzstück dazu: **das Angebot** – als verschachtelte Liste mit den Rubriken Getränke und Snacks – und eine nummerierte **Bestell-Anleitung**.\n\nDein zuletzt gespeicherter Projektstand wird automatisch geladen. Falls du neu einsteigst, startest du mit dem Stand der letzten Etappe."
+    },
+    {
+      "type": "code",
+      "task": "Erweitere die Startseite des Café Pause. Füge die neuen Abschnitte **vor der `<hr>`** ein, damit die Adresse unten bleibt:\n\n1. Eine Überschrift `<h2>` mit dem Text **Das gibt es bei uns**\n2. Darunter eine `<ul>` mit genau zwei Einträgen: **Getränke** und **Snacks**\n3. Jeder der beiden Einträge bekommt eine **innere `<ul>`** mit mindestens zwei konkreten Angeboten (z. B. Kakao, Apfelschorle, Brezeln, Muffins)\n4. Danach eine Überschrift `<h2>` mit dem Text **So bestellst du**\n5. Darunter eine `<ol>` mit mindestens drei Schritten",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen in unserem Schülercafé! Bei uns kannst du jede Pause genießen.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von Schülerinnen und Schülern <strong>selbst organisiert</strong>.</p>\n    <p>Alle Einnahmen fließen <em>direkt</em> in neue Projekte unserer Schule.</p>\n\n    <hr>\n    <p>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "project": { "page": "index", "save": ["html"] },
+      "hints": [
+        "Das Muster für die verschachtelte Liste kennst du aus Lektion 3: Die innere <ul> wohnt im <li> – nach dem Rubriknamen, vor dem </li>.",
+        "So sieht eine fertige Rubrik aus:\n```html\n<li>Getränke\n  <ul>\n    <li>Kakao</li>\n    <li>Apfelschorle</li>\n  </ul>\n</li>\n```\nDanach kommt die zweite Rubrik nach demselben Muster – und unter „So bestellst du“ eine ganz normale <ol>.",
+        "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen in unserem Schülercafé! Bei uns kannst du jede Pause genießen.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von Schülerinnen und Schülern <strong>selbst organisiert</strong>.</p>\n    <p>Alle Einnahmen fließen <em>direkt</em> in neue Projekte unserer Schule.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezeln</li>\n          <li>Muffins</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>Stell dich an der Theke an.</li>\n      <li>Sag uns deinen Wunsch und bezahle.</li>\n      <li>Hol deine Bestellung ab.</li>\n    </ol>\n\n    <hr>\n    <p>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen in unserem Schülercafé! Bei uns kannst du jede Pause genießen.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von Schülerinnen und Schülern <strong>selbst organisiert</strong>.</p>\n    <p>Alle Einnahmen fließen <em>direkt</em> in neue Projekte unserer Schule.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezeln</li>\n          <li>Muffins</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>Stell dich an der Theke an.</li>\n      <li>Sag uns deinen Wunsch und bezahle.</li>\n      <li>Hol deine Bestellung ab.</li>\n    </ol>\n\n    <hr>\n    <p>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "h2:nth-of-type(2)", "expected": "Das gibt es bei uns", "label": "Die zweite <h2> lautet „Das gibt es bei uns“" },
+        { "type": "source", "file": "html", "matches": "Getränke", "label": "Die Rubrik „Getränke“ ist da" },
+        { "type": "source", "file": "html", "matches": "Snacks", "label": "Die Rubrik „Snacks“ ist da" },
+        { "type": "selector", "selector": "ul li ul", "min": 2, "label": "Beide Rubriken enthalten eine innere Liste" },
+        { "type": "selector", "selector": "ul > li:first-of-type ul li", "min": 2, "label": "Die erste Rubrik hat mindestens zwei Angebote" },
+        { "type": "selector", "selector": "ul > li:nth-of-type(2) ul li", "min": 2, "label": "Die zweite Rubrik hat mindestens zwei Angebote" },
+        { "type": "source", "file": "html", "matches": "<ul>\\s*<ul", "absent": true, "label": "Keine Liste steht direkt in einer Liste – die innere Liste wohnt im <li>" },
+        { "type": "text", "selector": "h2:nth-of-type(3)", "expected": "So bestellst du", "label": "Die dritte <h2> lautet „So bestellst du“" },
+        { "type": "selector", "selector": "ol li", "min": 3, "label": "Die Bestell-Anleitung hat mindestens drei Schritte" }
+      ]
+    }
+  ]
+}

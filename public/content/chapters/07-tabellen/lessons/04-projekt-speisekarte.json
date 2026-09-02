@@ -1,0 +1,39 @@
+{
+  "id": "04-projekt-speisekarte",
+  "title": "Projekt: Die Speisekarte",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Projekt-Zeit im **Café Pause**! Zuletzt hast du die Galerie-Seite gebaut – und die Navigation der Startseite verweist längst auf `speisekarte.html`. Zeit, dass es diese Seite wirklich gibt.\n\nHeute entsteht die **Speisekarte**: eine neue Seite mit **zwei Tabellen** – eine für Getränke, eine für Snacks. Genau dein Thema aus diesem Kapitel!\n\nEin Hinweis vorweg: Die Tabellen haben hier noch **keine Linien** – die zeichnen wir später im CSS-Teil. Die `<th>`-Zellen erkennst du trotzdem sofort an der fetten Schrift."
+    },
+    {
+      "type": "code",
+      "task": "Das Grundgerüst der neuen Seite steht schon – arbeite im `<body>`:\n\n1. `<h1>` mit dem Text **Speisekarte**\n2. `<h2>` mit dem Text **Getränke**, darunter eine Tabelle: Kopfzeile mit den `<th>`-Zellen **Getränk**, **Größe**, **Preis** und mindestens **drei** Datenzeilen mit je drei `<td>`\n3. `<h2>` mit dem Text **Snacks**, darunter eine zweite Tabelle: Kopfzeile mit den `<th>`-Zellen **Snack**, **Preis** und mindestens **zwei** Datenzeilen mit je zwei `<td>`\n4. Ganz unten ein Zurück-Link zu `index.html` mit dem Text **Zurück zur Startseite**\n\nWelche Getränke und Snacks es gibt, entscheidest du – Hauptsache, die Struktur stimmt!",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Speisekarte – Café Pause</title>\n</head>\n<body>\n  <!-- Hier entsteht die Speisekarte -->\n</body>\n</html>\n"
+      },
+      "project": { "page": "speisekarte", "save": ["html"] },
+      "hints": [
+        "Zwei Tabellen nacheinander – jede mit eigenem <table>-Tag. Bau erst die Getränke-Tabelle komplett fertig, dann die Snacks.",
+        "Die Getränke-Kopfzeile: <tr><th>Getränk</th><th>Größe</th><th>Preis</th></tr> – danach drei Zeilen mit je drei <td>. Bei den Snacks sind es nur zwei Spalten.",
+        "```html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>Speisekarte – Café Pause</title>\n</head>\n<body>\n  <h1>Speisekarte</h1>\n\n  <h2>Getränke</h2>\n  <table>\n    <tr>\n      <th>Getränk</th>\n      <th>Größe</th>\n      <th>Preis</th>\n    </tr>\n    <tr>\n      <td>Kakao</td>\n      <td>0,3 l</td>\n      <td>1,50 €</td>\n    </tr>\n    <tr>\n      <td>Apfelschorle</td>\n      <td>0,4 l</td>\n      <td>1,80 €</td>\n    </tr>\n    <tr>\n      <td>Mineralwasser</td>\n      <td>0,5 l</td>\n      <td>1,00 €</td>\n    </tr>\n  </table>\n\n  <h2>Snacks</h2>\n  <table>\n    <tr>\n      <th>Snack</th>\n      <th>Preis</th>\n    </tr>\n    <tr>\n      <td>Brezel</td>\n      <td>1,00 €</td>\n    </tr>\n    <tr>\n      <td>Muffin</td>\n      <td>1,50 €</td>\n    </tr>\n  </table>\n\n  <a href=\"index.html\">Zurück zur Startseite</a>\n</body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Speisekarte – Café Pause</title>\n</head>\n<body>\n  <h1>Speisekarte</h1>\n\n  <h2>Getränke</h2>\n  <table>\n    <tr>\n      <th>Getränk</th>\n      <th>Größe</th>\n      <th>Preis</th>\n    </tr>\n    <tr>\n      <td>Kakao</td>\n      <td>0,3 l</td>\n      <td>1,50 €</td>\n    </tr>\n    <tr>\n      <td>Apfelschorle</td>\n      <td>0,4 l</td>\n      <td>1,80 €</td>\n    </tr>\n    <tr>\n      <td>Mineralwasser</td>\n      <td>0,5 l</td>\n      <td>1,00 €</td>\n    </tr>\n  </table>\n\n  <h2>Snacks</h2>\n  <table>\n    <tr>\n      <th>Snack</th>\n      <th>Preis</th>\n    </tr>\n    <tr>\n      <td>Brezel</td>\n      <td>1,00 €</td>\n    </tr>\n    <tr>\n      <td>Muffin</td>\n      <td>1,50 €</td>\n    </tr>\n  </table>\n\n  <a href=\"index.html\">Zurück zur Startseite</a>\n</body>\n</html>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "h1", "expected": "Speisekarte", "label": "Die Hauptüberschrift lautet „Speisekarte“" },
+        { "type": "text", "selector": "h2", "expected": "Getränke", "label": "Die erste Zwischenüberschrift lautet „Getränke“" },
+        { "type": "selector", "selector": "table", "min": 2, "label": "Es gibt zwei Tabellen" },
+        { "type": "text", "selector": "th", "expected": "Getränk", "label": "Die erste Spaltenüberschrift lautet „Getränk“" },
+        { "type": "selector", "selector": "table:first-of-type th", "min": 3, "label": "Die Getränke-Tabelle hat drei Kopf-Zellen" },
+        { "type": "selector", "selector": "table:first-of-type tr", "min": 4, "label": "Die Getränke-Tabelle hat eine Kopfzeile und mindestens drei Datenzeilen" },
+        { "type": "selector", "selector": "table:first-of-type td", "min": 9, "label": "Jede Getränke-Zeile hat drei Zellen" },
+        { "type": "selector", "selector": "table:nth-of-type(2) th", "min": 2, "label": "Die Snack-Tabelle hat eine Kopfzeile mit zwei Zellen" },
+        { "type": "selector", "selector": "table:nth-of-type(2) tr", "min": 3, "label": "Die Snack-Tabelle hat mindestens zwei Datenzeilen" },
+        { "type": "selector", "selector": "table:nth-of-type(2) td", "min": 4, "label": "Jede Snack-Zeile hat zwei Zellen" },
+        { "type": "text", "selector": "a[href='index.html']", "expected": "Zurück zur Startseite", "label": "Der Zurück-Link zu index.html ist da" }
+      ]
+    }
+  ]
+}

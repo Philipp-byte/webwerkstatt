@@ -1,0 +1,72 @@
+{
+  "id": "01-eingabefelder-und-labels",
+  "title": "Eingabefelder & Labels",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Anmeldung, Suchfeld, Online-Bestellung – überall im Web tippst du etwas in **Formulare**. Ein Formular ist der Teil einer Seite, in dem die Besucherin selbst etwas **eingeben** kann.\n\nDer Container dafür ist `<form>` – in ihn kommen alle Eingabefelder:\n\n```html\n<form>\n  <input type=\"text\">\n</form>\n```\n\n**Wichtig, bevor wir loslegen:** Beim Absenden schickt ein echtes Formular die eingetippten Daten an einen **Server** – einen Computer im Internet, der sie entgegennimmt. Wir haben keinen Server. Die Werkstatt-Vorschau **fängt das Absenden ab**: Es wird nichts verschickt, nirgendwohin. Formulare sind bei uns also reine **Struktur-Übung** – es geht um sauberes HTML."
+    },
+    {
+      "type": "quiz",
+      "question": "Was passiert, wenn du in der Werkstatt-Vorschau ein Formular absendest?",
+      "options": [
+        "Die Daten gehen an einen Server im Internet",
+        "Nichts wird verschickt – die Vorschau fängt das Absenden ab",
+        "Der Code im Editor wird gelöscht"
+      ],
+      "correct": 1,
+      "explanation": "Zum Verschicken bräuchte es einen Server – den haben wir nicht. Die Vorschau fängt das Absenden ab. Du kannst also gefahrlos alles ausprobieren."
+    },
+    {
+      "type": "explain",
+      "text": "Das wichtigste Formular-Element ist `<input>` – ein Eingabefeld. Es steht **allein**, ohne schließenden Tag (wie `<img>`). Das Attribut `type` bestimmt, **was für ein Feld** es ist:\n\n`type=\"text\"` – ein einzeiliges Textfeld für beliebigen Text.\n\n`type=\"email\"` – ein Feld für E-Mail-Adressen. Der Browser weiß dann: Hier gehört ein @ hinein.\n\nDazu gibt es `placeholder` – einen **grauen Hinweistext**, der im leeren Feld steht und verschwindet, sobald man tippt:\n\n```html\n<input type=\"text\" placeholder=\"Vor- und Nachname\">\n<input type=\"email\" placeholder=\"name@beispiel.de\">\n```"
+    },
+    {
+      "type": "example",
+      "text": "Tippe in der Vorschau in die Felder! Beobachte, wie der placeholder verschwindet, sobald du schreibst – und wieder auftaucht, wenn du alles löschst.\n\nÄndere dann einen placeholder-Text im Code.",
+      "html": "<form>\n  <input type=\"text\" placeholder=\"Vor- und Nachname\">\n  <input type=\"email\" placeholder=\"name@beispiel.de\">\n</form>\n"
+    },
+    {
+      "type": "explain",
+      "text": "Ein Eingabefeld allein ist rätselhaft – was soll man da eintippen? Felder brauchen eine **Beschriftung**: das `<label>`.\n\nDamit der Browser weiß, **welches Label zu welchem Feld gehört**, verbindest du beide: Das Label bekommt `for`, das Feld bekommt `id` – mit **demselben Wert**:\n\n```html\n<label for=\"name\">Dein Name:</label>\n<input type=\"text\" id=\"name\">\n```\n\nDie Verbindung hat einen Klick-Bonus: **Klickst du auf das Label, springt der Cursor ins Feld!** Das macht die Klickfläche größer (praktisch am Handy) – und Vorlese-Programme lesen zum Feld die richtige Beschriftung vor."
+    },
+    {
+      "type": "example",
+      "text": "**Probiere es aus:** Klicke in der Vorschau auf das Wort **Dein Name** – der Cursor springt ins Textfeld!\n\nLösche dann testweise das `for=\"name\"` aus dem Label und klicke wieder: nichts passiert mehr. (Danach wieder einbauen!)",
+      "html": "<form>\n  <label for=\"name\">Dein Name:</label>\n  <input type=\"text\" id=\"name\" placeholder=\"Vor- und Nachname\">\n</form>\n"
+    },
+    {
+      "type": "fill",
+      "text": "Verbinde das Label mit dem E-Mail-Feld darunter. Setze das fehlende Attribut ein.",
+      "template": "<label ___=\"email\">Deine E-Mail:</label>\n<input type=\"email\" id=\"email\">",
+      "solution": "for",
+      "accept": ["for"],
+      "hint": "Beim Label heißt das Attribut `for` – sein Wert muss zur `id` des Feldes passen."
+    },
+    {
+      "type": "code",
+      "task": "Baue ein kleines Anmelde-Formular:\n\n1. Ein `<form>`-Element als Container\n2. Darin: `<label for=\"name\">Name:</label>` und ein Textfeld (`type=\"text\"`) mit `id=\"name\"` und einem placeholder deiner Wahl\n3. Darunter: ein Label mit dem Text **E-Mail:** (mit passendem `for`) und ein E-Mail-Feld mit `id=\"email\"`\n\nTeste am Ende in der Vorschau: Klick auf die Labels muss die Felder fokussieren!",
+      "starter": {
+        "html": "<h2>Anmeldung zur Schul-AG</h2>\n<!-- Dein Formular hier -->\n"
+      },
+      "hints": [
+        "Immer im Paar denken: erst <label for=\"...\">, direkt danach das <input> mit derselben id.",
+        "Das zweite Paar: <label for=\"email\">E-Mail:</label> und <input type=\"email\" id=\"email\">. Ein <br> dazwischen sorgt für saubere Zeilen.",
+        "```html\n<h2>Anmeldung zur Schul-AG</h2>\n<form>\n  <label for=\"name\">Name:</label>\n  <input type=\"text\" id=\"name\" placeholder=\"Vor- und Nachname\">\n  <br>\n  <label for=\"email\">E-Mail:</label>\n  <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n</form>\n```"
+      ],
+      "solution": {
+        "html": "<h2>Anmeldung zur Schul-AG</h2>\n<form>\n  <label for=\"name\">Name:</label>\n  <input type=\"text\" id=\"name\" placeholder=\"Vor- und Nachname\">\n  <br>\n  <label for=\"email\">E-Mail:</label>\n  <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n</form>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "form", "min": 1, "label": "Es gibt ein <form>-Element" },
+        { "type": "selector", "selector": "form input#name", "count": 1, "label": "Im Formular steht ein Feld mit der id „name“" },
+        { "type": "attr", "selector": "input#name", "attr": "type", "expected": "text", "label": "Das Namensfeld ist ein Textfeld (type=\"text\")" },
+        { "type": "attr", "selector": "input#name", "attr": "placeholder", "matches": "\\S", "label": "Das Namensfeld hat einen placeholder" },
+        { "type": "selector", "selector": "label[for='name']", "min": 1, "label": "Ein Label ist mit dem Namensfeld verbunden (for=\"name\")" },
+        { "type": "selector", "selector": "form input#email", "count": 1, "label": "Im Formular steht ein Feld mit der id „email“" },
+        { "type": "attr", "selector": "input#email", "attr": "type", "expected": "email", "label": "Das E-Mail-Feld hat type=\"email\"" },
+        { "type": "selector", "selector": "label[for='email']", "min": 1, "label": "Ein Label ist mit dem E-Mail-Feld verbunden (for=\"email\")" }
+      ]
+    }
+  ]
+}

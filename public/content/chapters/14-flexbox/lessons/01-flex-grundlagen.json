@@ -1,0 +1,66 @@
+{
+  "id": "01-flex-grundlagen",
+  "title": "display: flex",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Normalerweise stapelt der Browser Boxen **untereinander**. Sollen sie **nebeneinander** stehen – wie die Buttons einer Menüleiste – nutzt du **Flexbox**:\n\n```css\n.leiste {\n  display: flex;\n  gap: 16px;\n}\n```\n\n**Wichtig:** `display: flex;` kommt auf den **Container** (das Eltern-Element) – seine **Kinder** ordnen sich dann automatisch nebeneinander an:\n\n```\n┌─ Container (display: flex) ───────────┐\n│  [Kind 1]   [Kind 2]   [Kind 3]       │\n└───────────────────────────────────────┘\n```\n\n`gap` legt den **Abstand zwischen** den Kindern fest – ohne dass du an jedem Kind einzeln margin setzen musst."
+    },
+    {
+      "type": "example",
+      "text": "Lösche `display: flex;` testweise – die Boxen stapeln sich wieder untereinander. Spiele auch mit dem `gap`!",
+      "html": "<div class=\"leiste\">\n  <div class=\"kachel\">Eins</div>\n  <div class=\"kachel\">Zwei</div>\n  <div class=\"kachel\">Drei</div>\n</div>\n",
+      "css": ".leiste {\n  display: flex;\n  gap: 16px;\n}\n.kachel {\n  background-color: #cde8ff;\n  padding: 16px;\n  border-radius: 8px;\n}\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Wo schreibt man `display: flex;` hin?",
+      "options": [
+        "Auf jedes einzelne Kind-Element",
+        "Auf den Container, dessen Kinder nebeneinander sollen",
+        "Immer auf den `body`"
+      ],
+      "correct": 1,
+      "explanation": "Flexbox steuert man über den **Container** – die Kinder folgen automatisch."
+    },
+    {
+      "type": "explain",
+      "text": "**Zugabe:** Die Richtung kannst du umdrehen! Mit `flex-direction` bestimmst du, in welche Richtung die Kinder fließen:\n\n```css\n.leiste {\n  display: flex;\n  flex-direction: column;\n}\n```\n\n- `row` – nebeneinander (das ist die Standard-Einstellung)\n- `column` – untereinander, **aber** mit allen Flex-Vorteilen: `gap` wirkt weiter, und auch das Ausrichten aus der nächsten Lektion funktioniert.\n\nMerke: Flexbox heißt nicht automatisch „nebeneinander“ – es heißt „ich habe die Kontrolle über die Anordnung“."
+    },
+    {
+      "type": "example",
+      "text": "Dieselbe Leiste mit `flex-direction: column;` – die Kacheln stapeln sich, der `gap` hält trotzdem sauber Abstand. Stelle `column` auf `row` um und beobachte den Unterschied.",
+      "html": "<div class=\"leiste\">\n  <div class=\"kachel\">Eins</div>\n  <div class=\"kachel\">Zwei</div>\n  <div class=\"kachel\">Drei</div>\n</div>\n",
+      "css": ".leiste {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n}\n.kachel {\n  background-color: #cde8ff;\n  padding: 16px;\n  border-radius: 8px;\n}\n"
+    },
+    {
+      "type": "fill",
+      "text": "Zwischen den Kindern eines Flex-Containers sollen 24px Platz sein. Welche Eigenschaft fehlt?",
+      "template": "___: 24px;",
+      "solution": "gap",
+      "accept": ["gap"],
+      "hint": "Die Eigenschaft heißt wie „Lücke“ auf Englisch – ein kurzes Wort."
+    },
+    {
+      "type": "code",
+      "task": "Die Navigations-Links stehen noch untereinander. Mache aus `.menue` eine Flex-Leiste:\n\n1. `display: flex;`\n2. `gap: 16px;`",
+      "starter": {
+        "html": "<nav class=\"menue\">\n  <a href=\"https://example.com\">Start</a>\n  <a href=\"https://example.com\">Galerie</a>\n  <a href=\"https://example.com\">Kontakt</a>\n</nav>\n",
+        "css": ".menue {\n  background-color: #eef3fa;\n  padding: 12px;\n  /* Mach mich zur Flex-Leiste! */\n}\n.menue a {\n  display: block;\n  text-decoration: none;\n  color: #1f66c2;\n  font-weight: bold;\n}\n"
+      },
+      "editable": ["css"],
+      "hints": [
+        "Beide Eigenschaften gehören in die .menue-Regel – das ist der Container der Links.",
+        "display: flex; stellt nebeneinander, gap: 16px; sorgt für Abstand.",
+        "```css\n.menue {\n  background-color: #eef3fa;\n  padding: 12px;\n  display: flex;\n  gap: 16px;\n}\n.menue a {\n  display: block;\n  text-decoration: none;\n  color: #1f66c2;\n  font-weight: bold;\n}\n```"
+      ],
+      "solution": {
+        "css": ".menue {\n  background-color: #eef3fa;\n  padding: 12px;\n  display: flex;\n  gap: 16px;\n}\n.menue a {\n  display: block;\n  text-decoration: none;\n  color: #1f66c2;\n  font-weight: bold;\n}\n"
+      },
+      "tests": [
+        { "type": "style", "selector": ".menue", "prop": "display", "expected": "flex", "label": "Die Leiste ist ein Flex-Container" },
+        { "type": "style", "selector": ".menue", "prop": "column-gap", "expected": "16px", "label": "Zwischen den Links sind 16px Abstand" }
+      ]
+    }
+  ]
+}

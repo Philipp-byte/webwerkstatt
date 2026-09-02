@@ -1,0 +1,13 @@
+{
+  "id": "02-html-erste-schritte",
+  "title": "HTML: Erste Schritte",
+  "icon": "🌐",
+  "color": "#e0632e",
+  "description": "Was HTML ist, wie Tags und Attribute funktionieren – und deine erste eigene Seite.",
+  "lessons": [
+    "01-was-ist-html",
+    "02-tags-und-attribute",
+    "03-grundgeruest",
+    "04-projekt-startseite"
+  ]
+}

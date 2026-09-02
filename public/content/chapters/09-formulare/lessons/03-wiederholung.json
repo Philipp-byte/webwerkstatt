@@ -1,0 +1,88 @@
+{
+  "id": "03-wiederholung",
+  "title": "Wiederholung: Tabellen & Struktur",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Bevor das Kontaktformular ans Café geht: eine Wiederholungsrunde. Jedes Mal, wenn du Wissen **selbst aus dem Kopf holst**, verankerst du es tiefer – Nachschlagen allein schafft das nicht.\n\nHeute dran: **Tabellen** (Kapitel 7) sowie **class, id, div, span und die semantischen Bereiche** (Kapitel 8)."
+    },
+    {
+      "type": "quiz",
+      "question": "Welche Aussage über `class` und `id` stimmt?",
+      "options": [
+        "Eine id darf auf einer Seite beliebig oft vorkommen",
+        "Eine class dürfen viele Elemente tragen, eine id nur ein einziges Element",
+        "class und id sind zwei Namen für dasselbe Attribut"
+      ],
+      "correct": 1,
+      "explanation": "class = Gruppen-Name (mehrfach erlaubt), id = einmaliger Name (nur einmal pro Seite) – und zugleich Sprungziel für Links mit #."
+    },
+    {
+      "type": "fill",
+      "text": "Die Adresse steht im Fußbereich der Seite. Setze den passenden öffnenden Bereichs-Tag ein (der schließende steht schon da).",
+      "template": "<main>\n  <p>Hier steht der Hauptinhalt.</p>\n</main>\n<___>\n  <p>Musterstraße 12, 74072 Heilbronn</p>\n</footer>",
+      "solution": "footer",
+      "accept": ["footer"],
+      "hint": "Der Fußbereich einer Seite heißt `<footer>` – schau auf den schließenden Tag."
+    },
+    {
+      "type": "code",
+      "task": "Baue eine Preistabelle und gib ihr eine class:\n\n1. Eine Tabelle mit Kopfzeile: `<th>`-Zellen **Getränk** und **Preis**\n2. Mindestens **zwei** Datenzeilen mit je zwei `<td>`\n3. Die Tabelle bekommt `class=\"preise\"` – der CSS-Tab 🔒 gestaltet sie dann automatisch",
+      "starter": {
+        "html": "<h2>Unsere Preise</h2>\n<!-- Deine Tabelle hier -->\n",
+        "css": "table.preise { border-collapse: collapse; }\n.preise td, .preise th { border: 1px solid #888; padding: 6px 12px; }\n.preise th { background-color: #f0e6d6; }\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Die class kommt in den öffnenden Tag der Tabelle: <table class=\"preise\">.",
+        "Danach wie gewohnt: Kopfzeile mit zwei <th>, dann zwei Zeilen mit je zwei <td>. Sobald die class stimmt, erscheinen die Linien!",
+        "```html\n<h2>Unsere Preise</h2>\n<table class=\"preise\">\n  <tr>\n    <th>Getränk</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Kakao</td>\n    <td>1,50 €</td>\n  </tr>\n  <tr>\n    <td>Apfelschorle</td>\n    <td>1,80 €</td>\n  </tr>\n</table>\n```"
+      ],
+      "solution": {
+        "html": "<h2>Unsere Preise</h2>\n<table class=\"preise\">\n  <tr>\n    <th>Getränk</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Kakao</td>\n    <td>1,50 €</td>\n  </tr>\n  <tr>\n    <td>Apfelschorle</td>\n    <td>1,80 €</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "table.preise", "count": 1, "label": "Die Tabelle trägt die class „preise“ (die Linien erscheinen!)" },
+        { "type": "selector", "selector": "table.preise th", "min": 2, "label": "Die Kopfzeile hat zwei <th>-Zellen" },
+        { "type": "text", "selector": "th", "expected": "Getränk", "label": "Die erste Kopf-Zelle lautet „Getränk“" },
+        { "type": "selector", "selector": "tr", "min": 3, "label": "Es gibt die Kopfzeile und mindestens zwei Datenzeilen" },
+        { "type": "selector", "selector": "td", "min": 4, "label": "Die Datenzeilen haben je zwei Zellen" }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Ein einzelnes Wort **mitten im Satz** soll eine class bekommen, ohne dass der Satz umbricht. Welcher Tag passt?",
+      "options": [
+        "`<div>`",
+        "`<span>`",
+        "`<header>`"
+      ],
+      "correct": 1,
+      "explanation": "`<span>` ist der Inline-Container – er fließt im Text mit. `<div>` und `<header>` sind Block-Elemente und würden eine neue Zeile beginnen."
+    },
+    {
+      "type": "code",
+      "task": "Baue die Grundstruktur einer Seite für ein **Jugendzentrum**:\n\n1. `<header>` mit `<h1>Jugendzentrum</h1>`\n2. `<nav>` mit **zwei** Links (Ziele frei wählbar, `https://...`)\n3. `<main>` mit **zwei** Absätzen – der zweite bekommt `class=\"wichtig\"` (z. B. eine dringende Info)\n4. `<footer>` mit einem Absatz",
+      "starter": {
+        "html": "<!-- header, nav, main und footer hier -->\n",
+        "css": "header { background-color: #ffe0b3; padding: 10px; }\nnav { background-color: #cde8ff; padding: 10px; }\nmain { background-color: #e8f7e8; padding: 10px; min-height: 60px; }\nfooter { background-color: #e6e6e6; padding: 10px; font-size: 14px; }\n.wichtig { color: #c0392b; font-weight: bold; }\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Die vier Bereiche stehen untereinander – wie beim Schulkiosk aus Kapitel 8.",
+        "Der zweite Absatz im <main> bekommt das Attribut in den öffnenden Tag: <p class=\"wichtig\">…</p>.",
+        "```html\n<header>\n  <h1>Jugendzentrum</h1>\n</header>\n<nav>\n  <a href=\"https://www.example.com\">Programm</a>\n  <a href=\"https://www.example.com\">Anfahrt</a>\n</nav>\n<main>\n  <p>Bei uns kannst du kickern, Musik machen und Freunde treffen.</p>\n  <p class=\"wichtig\">Am Freitag bleibt das Jugendzentrum geschlossen!</p>\n</main>\n<footer>\n  <p>Jugendzentrum · Musterstraße 5 · Heilbronn</p>\n</footer>\n```"
+      ],
+      "solution": {
+        "html": "<header>\n  <h1>Jugendzentrum</h1>\n</header>\n<nav>\n  <a href=\"https://www.example.com\">Programm</a>\n  <a href=\"https://www.example.com\">Anfahrt</a>\n</nav>\n<main>\n  <p>Bei uns kannst du kickern, Musik machen und Freunde treffen.</p>\n  <p class=\"wichtig\">Am Freitag bleibt das Jugendzentrum geschlossen!</p>\n</main>\n<footer>\n  <p>Jugendzentrum · Musterstraße 5 · Heilbronn</p>\n</footer>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "header h1", "expected": "Jugendzentrum", "label": "Im <header> steht die <h1> „Jugendzentrum“" },
+        { "type": "selector", "selector": "nav a", "min": 2, "label": "Die <nav> enthält zwei Links" },
+        { "type": "selector", "selector": "main p", "min": 2, "label": "Im <main> stehen zwei Absätze" },
+        { "type": "selector", "selector": "main p.wichtig", "min": 1, "label": "Ein Absatz im <main> hat die class „wichtig“" },
+        { "type": "selector", "selector": "footer p", "min": 1, "label": "Im <footer> steht ein Absatz" }
+      ]
+    }
+  ]
+}

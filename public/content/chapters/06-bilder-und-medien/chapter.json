@@ -1,0 +1,13 @@
+{
+  "id": "06-bilder-und-medien",
+  "title": "Bilder & Medien",
+  "icon": "🖼️",
+  "color": "#b85c2e",
+  "description": "Bilder mit alt-Text und Pfaden, Audio, Video und Einbettungen.",
+  "lessons": [
+    "01-bilder",
+    "02-audio-video-einbettung",
+    "03-wiederholung",
+    "04-projekt-galerie"
+  ]
+}

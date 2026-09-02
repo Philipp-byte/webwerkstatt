@@ -1,0 +1,75 @@
+{
+  "id": "03-grundgeruest",
+  "title": "Das Grundgerüst",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Bisher hast du HTML-Schnipsel geschrieben. Eine **echte HTML-Datei** hat aber immer denselben festen Rahmen – das **Grundgerüst**:\n\n```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Seitentitel</title>\n  </head>\n  <body>\n    Sichtbarer Inhalt\n  </body>\n</html>\n```\n\nGanz oben steht `<!DOCTYPE html>` – die Ansage an den Browser: „Das hier ist modernes HTML.“ Diese Zeile ist ein Sonderfall: kein normales Element, kein schließender Tag.\n\nDanach umschließt `<html lang=\"de\">` die gesamte Seite – mit dem Attribut `lang` aus der letzten Lektion: Der Inhalt ist auf Deutsch."
+    },
+    {
+      "type": "explain",
+      "text": "Im `<html>`-Element stecken genau zwei Bereiche:\n\n`<head>` – der „Kopf“: **unsichtbare Informationen über die Seite**. Hier steht zum Beispiel der `<title>`. Er erscheint nicht auf der Seite selbst, sondern oben im **Browser-Tab** – und als Titel in Suchmaschinen-Ergebnissen.\n\n`<body>` – der „Körper“: **alles, was auf der Seite sichtbar ist** – Überschriften, Absätze, später auch Bilder und Links.\n\nMerksatz: Was im Kopf ist, sieht man nicht. Was im Körper ist, sieht man."
+    },
+    {
+      "type": "explain",
+      "text": "Eine Zeile im head ist für uns besonders wichtig:\n\n```html\n<meta charset=\"utf-8\">\n```\n\nSie legt die **Zeichenkodierung** fest – die Übersetzungstabelle, mit der der Browser die gespeicherten Daten wieder in Buchstaben verwandelt. `utf-8` ist der weltweite Standard und kennt alle Zeichen: ä, ö, ü, ß, é und sogar Emojis.\n\nFehlt die Angabe, muss der Browser raten – und dann wird aus „Schöne Grüße“ schnell Zeichensalat wie „SchÃ¶ne GrÃ¼ÃŸe“. Wenn dir irgendwo kaputte Umlaute begegnen, weißt du jetzt: Das ist fast immer ein charset-Problem.\n\n`<meta ...>` steht übrigens wie `<!DOCTYPE html>` allein – ohne schließenden Tag."
+    },
+    {
+      "type": "example",
+      "text": "Ein komplettes Grundgerüst zum Ausprobieren.\n\nÄndere zuerst den Text im `<title>` – in der Vorschau ändert sich **nichts**, denn der head ist unsichtbar (im echten Browser stünde der Titel oben im Tab). Ändere dann den Text im `<body>` – das siehst du sofort.",
+      "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Werkstatt-Demo</title>\n  </head>\n  <body>\n    <h1>Nur der Body ist sichtbar</h1>\n    <p>Alles im head bleibt unsichtbar – auch der Titel.</p>\n  </body>\n</html>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Wo steht der **sichtbare Inhalt** einer Webseite?",
+      "options": [
+        "Im `<head>`",
+        "Im `<title>`",
+        "Im `<body>`"
+      ],
+      "correct": 2,
+      "explanation": "Der `<body>` ist der Körper der Seite – alles darin wird angezeigt. Der `<head>` enthält nur unsichtbare Infos wie `<title>` und `<meta charset=\"utf-8\">`."
+    },
+    {
+      "type": "fill",
+      "text": "Ergänze den Namen des Attributs, das die Zeichenkodierung festlegt.",
+      "template": "<meta ___=\"utf-8\">",
+      "solution": "charset",
+      "accept": ["charset"],
+      "hint": "Das englische Wort für Zeichensatz: char(acter) set – zusammengeschrieben."
+    },
+    {
+      "type": "quiz",
+      "question": "Auf einer Webseite steht statt „Grüße“ plötzlich „GrÃ¼ÃŸe“. Was ist die wahrscheinlichste Ursache?",
+      "options": [
+        "Im head fehlt die Zeile `<meta charset=\"utf-8\">`",
+        "Der Server ist abgestürzt",
+        "Der Text steht im falschen Absatz"
+      ],
+      "correct": 0,
+      "explanation": "Ohne charset-Angabe rät der Browser die Zeichenkodierung – und macht aus Umlauten Zeichensalat. Mit `<meta charset=\"utf-8\">` passiert das nicht."
+    },
+    {
+      "type": "code",
+      "task": "Vervollständige das Grundgerüst:\n\n1. Gib dem `<html>`-Tag das Attribut `lang=\"de\"`.\n2. Ergänze im head über dem Titel die Zeile `<meta charset=\"utf-8\">`.\n3. Trage als `<title>` den Text **Meine Seite** ein.\n4. Schreibe in den `<body>` eine `<h1>`-Überschrift mit dem Text **Schön, dass du da bist!**",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title></title>\n  </head>\n  <body>\n\n  </body>\n</html>\n"
+      },
+      "hints": [
+        "Arbeite die Punkte von oben nach unten ab: erst das lang-Attribut in den öffnenden <html>-Tag, dann die meta-Zeile in den head.",
+        "Die beiden neuen Teile sehen so aus: <html lang=\"de\"> und <meta charset=\"utf-8\">. Titel und Überschrift kommen jeweils zwischen öffnenden und schließenden Tag.",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Meine Seite</title>\n  </head>\n  <body>\n    <h1>Schön, dass du da bist!</h1>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Meine Seite</title>\n  </head>\n  <body>\n    <h1>Schön, dass du da bist!</h1>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        { "type": "source", "file": "html", "matches": "<!doctype\\s+html>", "label": "Der DOCTYPE steht am Anfang" },
+        { "type": "source", "file": "html", "matches": "<html[^>]*lang=[\"']?de", "label": "Das <html>-Tag hat das Attribut lang=\"de\"" },
+        { "type": "source", "file": "html", "matches": "<meta[^>]*charset=[\"']?utf-8", "label": "Im head steht <meta charset=\"utf-8\">" },
+        { "type": "text", "selector": "title", "expected": "Meine Seite", "label": "Der Seitentitel lautet „Meine Seite“" },
+        { "type": "text", "selector": "body h1", "expected": "Schön, dass du da bist!", "label": "Die Überschrift lautet „Schön, dass du da bist!“" }
+      ]
+    }
+  ]
+}

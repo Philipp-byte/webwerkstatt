@@ -1,0 +1,50 @@
+{
+  "id": "01-alles-zusammenfuegen",
+  "title": "Alles zusammenfügen",
+  "steps": [
+    {
+      "type": "explain",
+      "text": "**Das Finale beginnt!** In 17 Kapiteln hast du Stück für Stück eine komplette Website gebaut: fünf HTML-Seiten (Startseite, Speisekarte, Galerie, Kontakt, Impressum), ein gemeinsames Stylesheet – und seit der letzten Etappe sogar JavaScript.\n\nAb jetzt siehst du alles zusammen: Auf der Startseite der WebWerkstatt gibt es die Kachel **Mein Café-Projekt** (Route `#/projekt`). Dahinter stecken alle Etappen, die du gemeistert hast – als **echte, klickbare Website**: Du wechselst über deine eigene Navigation zwischen den Seiten, dein Stylesheet gestaltet alle Seiten gleichzeitig.\n\nNur der Öffnungszeiten-Knopf bleibt dort still: Sein JavaScript wird im Unterricht als eigene Datei eingebunden und war in der Werkbank deine Übung – gespeichert wird im Projekt HTML und CSS."
+    },
+    {
+      "type": "quiz",
+      "question": "Alle fünf Café-Seiten sehen gleich aus – dieselben Farben, dieselbe Schrift. Woran liegt das?",
+      "options": [
+        "Jede Seite hat zufällig die gleichen Einstellungen",
+        "Alle Seiten nutzen dasselbe gemeinsame Stylesheet",
+        "Der Browser gleicht Seiten automatisch aneinander an"
+      ],
+      "correct": 1,
+      "explanation": "Genau dafür gibt es die gemeinsame CSS-Datei: Eine Änderung dort wirkt sofort auf alle Seiten. Deshalb haben Profis fast nie CSS in der einzelnen Seite stehen."
+    },
+    {
+      "type": "code",
+      "task": "**Feinschliff für die Startseite** – dreimal genau hinschauen:\n\n1. **Titel-Check:** Im `<head>` muss `<title>Café Pause</title>` stehen – der Titel erscheint im Browser-Tab.\n2. **Footer ergänzen:** Füge im `<footer>` einen neuen Absatz mit der E-Mail-Adresse **hallo@cafe-pause-beispiel.de** hinzu.\n3. **Sprungmarken-Check:** Der Link **Direkt zu den Angeboten** (`href=\"#angebote\"`) und sein Ziel (`id=\"angebote\"`) müssen beide da sein – probiere den Klick in der Vorschau!",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Café Pause</h1>\n      <p>Willkommen im Café Pause – deinem Schülercafé für die große Pause!</p>\n    </header>\n    <nav>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"https://www.example.com\">Unsere Stadt</a>\n    </nav>\n    <main>\n      <button id=\"status-knopf\">Haben wir gerade offen?</button>\n      <p id=\"status\"></p>\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alle Snacks sind <em>frisch zubereitet</em>.</p>\n      <hr>\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezeln</li>\n            <li>Muffins</li>\n          </ul>\n        </li>\n      </ul>\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>Stell dich an der Theke an.</li>\n        <li>Sag uns deinen Wunsch.</li>\n        <li>Bezahlen, hinsetzen, Pause genießen.</li>\n      </ol>\n    </main>\n    <footer>\n      <p>Café Pause · Musterstraße 12 · 74072 Heilbronn</p>\n      <p id=\"oeffnungszeiten\">Öffnungszeiten: Montag bis Freitag, 9:00 bis 15:00 Uhr</p>\n      <p class=\"hinweis\">Fiktiver Betrieb für Übungszwecke.</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  background-color: #f7f1e3;\n  color: #2c2016;\n  font-family: 'Segoe UI', Arial, sans-serif;\n}\n\nh1 {\n  color: #5a3e2b;\n  text-align: center;\n}\n\na {\n  color: #e08a2e;\n}\n\nnav {\n  display: flex;\n  gap: 16px;\n}\n\nheader {\n  background-color: #5a3e2b;\n  color: white;\n  padding: 16px;\n}\n\nheader h1 {\n  color: white;\n}\n"
+      },
+      "editable": ["html"],
+      "project": { "page": "index", "save": ["html"] },
+      "hints": [
+        "Nur Punkt 2 verlangt neuen Code – einen <p> mit der Adresse im Footer. Punkte 1 und 3 sind Kontrollblicke.",
+        "Zum Beispiel: <p>E-Mail: hallo@cafe-pause-beispiel.de</p> – irgendwo zwischen <footer> und </footer>.",
+        "```html\n<footer>\n  <p>Café Pause · Musterstraße 12 · 74072 Heilbronn</p>\n  <p>E-Mail: hallo@cafe-pause-beispiel.de</p>\n  <p id=\"oeffnungszeiten\">Öffnungszeiten: Montag bis Freitag, 9:00 bis 15:00 Uhr</p>\n  <p class=\"hinweis\">Fiktiver Betrieb für Übungszwecke.</p>\n</footer>\n```\n\nAlles andere in der Datei bleibt unverändert."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Café Pause</h1>\n      <p>Willkommen im Café Pause – deinem Schülercafé für die große Pause!</p>\n    </header>\n    <nav>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"https://www.example.com\">Unsere Stadt</a>\n    </nav>\n    <main>\n      <button id=\"status-knopf\">Haben wir gerade offen?</button>\n      <p id=\"status\"></p>\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alle Snacks sind <em>frisch zubereitet</em>.</p>\n      <hr>\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezeln</li>\n            <li>Muffins</li>\n          </ul>\n        </li>\n      </ul>\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>Stell dich an der Theke an.</li>\n        <li>Sag uns deinen Wunsch.</li>\n        <li>Bezahlen, hinsetzen, Pause genießen.</li>\n      </ol>\n    </main>\n    <footer>\n      <p>Café Pause · Musterstraße 12 · 74072 Heilbronn</p>\n      <p>E-Mail: hallo@cafe-pause-beispiel.de</p>\n      <p id=\"oeffnungszeiten\">Öffnungszeiten: Montag bis Freitag, 9:00 bis 15:00 Uhr</p>\n      <p class=\"hinweis\">Fiktiver Betrieb für Übungszwecke.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "title", "expected": "Café Pause", "label": "Der Seitentitel lautet „Café Pause“" },
+        { "type": "text", "selector": "footer", "expected": "hallo@cafe-pause-beispiel.de", "contains": true, "label": "Im Footer steht die E-Mail-Adresse hallo@cafe-pause-beispiel.de" },
+        { "type": "selector", "selector": "a[href=\"#angebote\"]", "min": 1, "label": "Der Sprungmarken-Link zu den Angeboten ist da" },
+        { "type": "selector", "selector": "#angebote", "min": 1, "label": "Das Sprungziel id=\"angebote\" existiert" },
+        { "type": "selector", "selector": "button#status-knopf", "min": 1, "label": "Der Status-Knopf aus der JavaScript-Etappe ist noch da" }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Gespeichert!** Öffne jetzt über die Startseite der WebWerkstatt die Kachel **Mein Café-Projekt** und klick dich einmal komplett durch: Startseite → Speisekarte → Galerie → Kontakt → Impressum – und über die Zurück-Links wieder heim.\n\nFunktionieren alle Links? Zeigt jede Seite deine Inhalte? Dann bist du bereit für die große Wiederholung."
+    }
+  ]
+}
