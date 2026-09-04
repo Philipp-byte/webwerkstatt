@@ -41,5 +41,21 @@ export async function renderChapter(app, chapterId) {
         </div>
       </header>
       <div class="lektion-liste">${zeilen}</div>
+      <section class="extra-karten kapitel-extras">
+        <a class="extra-karte" href="#/arbeitsblatt/${chapterId}">
+          <div class="extra-karte-icon">📄</div>
+          <div>
+            <div class="extra-karte-titel">Arbeitsblatt mit deinen Lösungen</div>
+            <div class="extra-karte-text">PDF im JJWS-Design – mit dem Code, den du in diesem Kapitel geschrieben hast.</div>
+          </div>
+        </a>
+        <a class="extra-karte" href="${new URL(`worksheets/${chapterId}.pdf`, document.baseURI).href}" target="_blank" rel="noopener">
+          <div class="extra-karte-icon">🖨</div>
+          <div>
+            <div class="extra-karte-titel">Leeres Arbeitsblatt zum Ausdrucken</div>
+            <div class="extra-karte-text">Informations- &amp; Aufgabenblatt für die Arbeit auf Papier.</div>
+          </div>
+        </a>
+      </section>
     </div>`;
 }

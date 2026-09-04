@@ -4,16 +4,21 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Ein Listeneintrag darf selbst wieder eine ganze Liste enthalten – das nennt man eine **verschachtelte Liste**. So baust du Ober- und Unterpunkte, wie in einer Gliederung.\n\nDie Regel: Die innere Liste steht **innerhalb eines `<li>`** – nach dem Text des Eintrags, aber **vor** dessen `</li>`.\n\n```html\n<ul>\n  <li>Getränke\n    <ul>\n      <li>Wasser</li>\n      <li>Saft</li>\n    </ul>\n  </li>\n  <li>Snacks</li>\n</ul>\n```\n\nDer Browser rückt die innere Liste automatisch ein und verwendet andere Aufzählungszeichen. Übrigens: Du darfst auch eine `<ol>` in eine `<ul>` schachteln – und umgekehrt."
-    },
-    {
-      "type": "example",
-      "text": "Ein Mensa-Speiseplan mit Unterpunkten. Füge einen dritten Tag mit eigener innerer Liste hinzu! Beobachte dabei, wie die Einrückung im Code dir hilft, den Überblick zu behalten.",
-      "html": "<h2>Mensa-Speiseplan</h2>\n<ul>\n  <li>Montag\n    <ul>\n      <li>Spaghetti Bolognese</li>\n      <li>Gemüselasagne</li>\n    </ul>\n  </li>\n  <li>Dienstag\n    <ul>\n      <li>Schnitzel mit Pommes</li>\n      <li>Falafel-Wrap</li>\n    </ul>\n  </li>\n</ul>\n"
+      "text": "Ein Listeneintrag darf selbst eine ganze Liste enthalten – eine **verschachtelte Liste**. So baust du Ober- und Unterpunkte.\n\nDie Regel: Die innere Liste steht **innerhalb eines `<li>`** – nach dem Text des Eintrags, aber **vor** dessen `</li>`.\n\nMerksatz: **Die innere Liste wohnt im `<li>`.**",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect x=\"6\" y=\"6\" width=\"308\" height=\"148\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"14\" y=\"22\" fill=\"#2f6fdb\" font-weight=\"bold\">&lt;ul&gt;</text><rect x=\"18\" y=\"28\" width=\"284\" height=\"78\" rx=\"6\" fill=\"none\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"26\" y=\"45\" fill=\"#e0632e\" font-weight=\"bold\">&lt;li&gt; Getränke</text><rect x=\"30\" y=\"52\" width=\"260\" height=\"46\" rx=\"6\" fill=\"none\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"38\" y=\"80\" fill=\"#2f6fdb\" font-weight=\"bold\">&lt;ul&gt;</text><rect x=\"84\" y=\"59\" width=\"96\" height=\"32\" rx=\"6\" fill=\"none\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"132\" y=\"80\" text-anchor=\"middle\" fill=\"#1d2733\">&lt;li&gt; Wasser</text><rect x=\"188\" y=\"59\" width=\"96\" height=\"32\" rx=\"6\" fill=\"none\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"236\" y=\"80\" text-anchor=\"middle\" fill=\"#1d2733\">&lt;li&gt; Saft</text><rect x=\"18\" y=\"114\" width=\"284\" height=\"32\" rx=\"6\" fill=\"none\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"26\" y=\"135\" fill=\"#e0632e\" font-weight=\"bold\">&lt;li&gt; Snacks</text></svg>"
     },
     {
       "type": "explain",
-      "text": "Der **häufigste Fehler** bei verschachtelten Listen: die innere `<ul>` **direkt** in die äußere `<ul>` schreiben, zwischen zwei Einträge.\n\n```html\n<ul>\n  <li>Getränke</li>\n  <ul>              <!-- FALSCH: Liste direkt in Liste -->\n    <li>Wasser</li>\n  </ul>\n</ul>\n```\n\nDer Browser zeigt oft trotzdem etwas Ähnliches an – aber der Code ist fehlerhaft: Vorlese-Programme und automatische Prüfungen stolpern darüber. Merksatz: **Die innere Liste wohnt im `<li>`.**\n\nDamit du bei mehreren Ebenen nicht den Überblick verlierst, gilt: **pro Ebene zwei Leerzeichen weiter einrücken**. Die Einrückung ist reine Lesehilfe für dich – aber genau deshalb findest du damit Fehler in Sekunden statt Minuten."
+      "text": "So sieht das im Code aus:\n\n```html\n<ul>\n  <li>Getränke\n    <ul>\n      <li>Wasser</li>\n      <li>Saft</li>\n    </ul>\n  </li>\n  <li>Snacks</li>\n</ul>\n```\n\nDer Browser rückt die innere Liste automatisch ein und nimmt andere Aufzählungszeichen. Du darfst auch eine `<ol>` in eine `<ul>` schachteln – und umgekehrt."
+    },
+    {
+      "type": "example",
+      "text": "Dein Setup mit Unterpunkten. Füge eine dritte Rubrik mit eigener innerer Liste hinzu – die Einrückung im Code hilft dir, den Überblick zu behalten.",
+      "html": "<h2>Mein Gaming-Setup</h2>\n<ul>\n  <li>Schreibtisch\n    <ul>\n      <li>Monitor</li>\n      <li>Tastatur</li>\n    </ul>\n  </li>\n  <li>Konsole\n    <ul>\n      <li>Controller</li>\n      <li>Headset</li>\n    </ul>\n  </li>\n</ul>\n"
+    },
+    {
+      "type": "explain",
+      "text": "Der **häufigste Fehler**: die innere `<ul>` **direkt** in die äußere `<ul>` schreiben, zwischen zwei Einträge.\n\n```html\n<ul>\n  <li>Getränke</li>\n  <ul>              <!-- FALSCH: Liste direkt in Liste -->\n    <li>Wasser</li>\n  </ul>\n</ul>\n```\n\nDer Browser zeigt oft trotzdem etwas Ähnliches – aber der Code ist fehlerhaft, Vorlese-Programme stolpern darüber. Tipp: **pro Ebene zwei Leerzeichen** weiter einrücken, dann findest du solche Fehler sofort."
     },
     {
       "type": "quiz",
@@ -28,15 +33,15 @@
     },
     {
       "type": "fill",
-      "text": "Der Eintrag „Obst“ soll eine innere Liste bekommen. Setze den fehlenden **öffnenden Tag** ein, in dem die innere Liste wohnt.",
-      "template": "<ul>\n  <___>Obst\n    <ul>\n      <li>Äpfel</li>\n      <li>Bananen</li>\n    </ul>\n  </li>\n</ul>",
+      "text": "Der Eintrag „Serien“ soll eine innere Liste bekommen. Setze den fehlenden **öffnenden Tag** ein, in dem die innere Liste wohnt.",
+      "template": "<ul>\n  <___>Serien\n    <ul>\n      <li>Krimi</li>\n      <li>Comedy</li>\n    </ul>\n  </li>\n</ul>",
       "solution": "li",
       "accept": ["li"],
-      "hint": "„Obst“ ist ein ganz normaler Listeneintrag – die innere Liste steht **in** ihm, vor seinem `</li>`."
+      "hint": "„Serien“ ist ein ganz normaler Listeneintrag – die innere Liste steht **in** ihm, vor seinem `</li>`."
     },
     {
       "type": "code",
-      "task": "Die Packliste für die Klassenfahrt ist noch zu grob. Verwandle sie in eine **verschachtelte Liste**:\n\n1. Gib dem Eintrag **Kleidung** eine innere `<ul>` mit mindestens zwei Dingen (z. B. T-Shirts, Regenjacke).\n2. Gib dem Eintrag **Technik** eine innere `<ul>` mit mindestens zwei Dingen (z. B. Ladekabel, Kopfhörer).\n3. Denk an den Merksatz: Die innere Liste wohnt im `<li>`!",
+      "task": "Die Packliste für die Klassenfahrt ist zu grob. Mach daraus eine **verschachtelte Liste**:\n\n1. **Kleidung** bekommt eine innere `<ul>` mit mindestens zwei Dingen (z. B. T-Shirts, Regenjacke).\n2. **Technik** bekommt eine innere `<ul>` mit mindestens zwei Dingen (z. B. Ladekabel, Kopfhörer).\n3. Merksatz: Die innere Liste wohnt im `<li>`!",
       "starter": {
         "html": "<h2>Packliste Klassenfahrt</h2>\n<ul>\n  <li>Kleidung</li>\n  <li>Technik</li>\n</ul>\n"
       },

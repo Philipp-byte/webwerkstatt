@@ -94,6 +94,19 @@ function pruefeLektion(chId, lessonId) {
     const sWo = `${wo} step[${i}]`;
     if (!STEP_TYPEN.includes(step.type)) return melde('FEHLER', sWo, `unbekannter Typ ${step.type}`);
     if (step.type === 'explain' && !step.text) melde('FEHLER', sWo, 'explain ohne text');
+    if (step.type === 'explain' && step.text) {
+      const woerter = step.text.replace(/```[\s\S]*?```/g, '').split(/\s+/).filter(Boolean).length;
+      if (woerter > 90) melde('WARNUNG', sWo, `explain hat ${woerter} Wörter (Regel: max. 70 – aufteilen!)`);
+    }
+    if (step.figure != null) {
+      if (typeof step.figure !== 'string' || !/^\s*<svg[\s>]/.test(step.figure) || !/viewBox=/.test(step.figure)) {
+        melde('FEHLER', sWo, 'figure muss ein Inline-SVG mit viewBox sein');
+      }
+    }
+    if (step.type === 'code' && step.task) {
+      const woerter = step.task.split(/\s+/).filter(Boolean).length;
+      if (woerter > 65) melde('WARNUNG', sWo, `task hat ${woerter} Wörter (Regel: max. 50)`);
+    }
     if (step.type === 'example' && !DATEI_KEYS.some((k) => step[k] != null)) {
       melde('FEHLER', sWo, 'example ohne html/css/js');
     }
@@ -115,6 +128,10 @@ function pruefeLektion(chId, lessonId) {
   const codeAnzahl = lektion.steps.filter((s) => s.type === 'code').length;
   if (!codeAnzahl && !lessonId.includes('wiederholung') && !chId.startsWith('01-')) {
     melde('WARNUNG', wo, 'Lektion ohne Code-Aufgabe');
+  }
+  const istLernlektion = !lessonId.includes('wiederholung') && !lessonId.includes('projekt');
+  if (istLernlektion && !lektion.steps.some((s) => s.figure)) {
+    melde('WARNUNG', wo, 'Lernlektion ohne Grafik (figure)');
   }
 }
 

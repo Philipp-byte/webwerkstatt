@@ -4,12 +4,13 @@
   "steps": [
     {
       "type": "explain",
-      "text": "HTML besteht aus **Tags**. Ein Tag steht in spitzen Klammern, zum Beispiel `<p>`.\n\nDie meisten Tags treten **paarweise** auf:\n\n```html\n<p>Das ist ein Absatz.</p>\n```\n\n`<p>` ist der **öffnende Tag**, `</p>` der **schließende Tag** – erkennbar am Schrägstrich `/`. Alles zusammen (öffnender Tag + Inhalt + schließender Tag) nennt man ein **Element**.\n\nDer Tag-Name verrät dem Browser, was der Inhalt **ist**: `p` steht für „paragraph“ (Absatz), `h1` für „heading“ (Überschrift)."
+      "text": "HTML besteht aus **Tags**. Ein Tag steht in spitzen Klammern, zum Beispiel `<p>`. Die meisten Tags treten **paarweise** auf:\n\n```html\n<p>Das ist ein Absatz.</p>\n```\n\n`<p>` ist der **öffnende Tag**, `</p>` der **schließende Tag** – erkennbar am Schrägstrich `/`. Alles zusammen nennt man ein **Element**.\n\nDer Tag-Name verrät, was der Inhalt **ist**: `p` steht für „paragraph“ (Absatz), `h1` für „heading“ (Überschrift).",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><text x=\"165\" y=\"28\" text-anchor=\"middle\" fill=\"#1d2733\" font-weight=\"bold\">Element</text><path d=\"M70,34 L70,40 L262,40 L262,34\" fill=\"none\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"88\" y=\"72\" text-anchor=\"middle\" font-size=\"20\" fill=\"#2f6fdb\">&lt;p&gt;</text><text x=\"165\" y=\"72\" text-anchor=\"middle\" font-size=\"20\" fill=\"#1d2733\">Hallo Fans!</text><text x=\"245\" y=\"72\" text-anchor=\"middle\" font-size=\"20\" fill=\"#1a9e5c\">&lt;/p&gt;</text><line x1=\"88\" y1=\"80\" x2=\"88\" y2=\"98\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><line x1=\"165\" y1=\"80\" x2=\"165\" y2=\"98\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><line x1=\"245\" y1=\"80\" x2=\"245\" y2=\"98\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"70\" y=\"114\" text-anchor=\"middle\" fill=\"#2f6fdb\" font-weight=\"bold\">öffnender Tag</text><text x=\"165\" y=\"114\" text-anchor=\"middle\" fill=\"#5b6b7c\" font-weight=\"bold\">Inhalt</text><text x=\"258\" y=\"114\" text-anchor=\"middle\" fill=\"#1a9e5c\" font-weight=\"bold\">schließender Tag</text><text x=\"160\" y=\"146\" text-anchor=\"middle\" fill=\"#e0632e\">Schrägstrich / = schließender Tag</text></svg>"
     },
     {
       "type": "example",
       "text": "Hier sind zwei Elemente: eine Überschrift `<h1>` und ein Absatz `<p>`.\n\nProbier aus: Was passiert, wenn du den schließenden Tag `</h1>` löschst? Setze ihn danach wieder ein.",
-      "html": "<h1>Tags sind wie Klammern</h1>\n<p>Sie zeigen, wo etwas anfängt und wo es aufhört.</p>\n"
+      "html": "<h1>Tags sind wie Klammern</h1>\n<p>Sie zeigen, wo etwas anfängt und wo es aufhört – wie Anpfiff und Abpfiff beim Fußball.</p>\n"
     },
     {
       "type": "fill",
@@ -21,11 +22,19 @@
     },
     {
       "type": "explain",
-      "text": "Der häufigste HTML-Fehler überhaupt: der **vergessene schließende Tag**.\n\n```html\n<h1>Meine Überschrift\n<p>Und hier der Text.</p>\n```\n\nHier fehlt `</h1>` – der Browser weiß nicht, wo die Überschrift aufhört, und stellt womöglich alles Folgende riesig dar.\n\nDas Tückische: Der Browser zeigt **keine Fehlermeldung**. Er rät einfach, wie es gemeint sein könnte – und rät oft falsch. Wenn deine Seite seltsam aussieht, prüfe deshalb zuerst: Hat jedes Element seinen schließenden Tag? Und stimmt der Name – `<p>` schließt mit `</p>`, nicht mit `</h1>`?"
+      "text": "Der häufigste HTML-Fehler überhaupt: der **vergessene schließende Tag**.\n\n```html\n<h1>Spielbericht\n<p>Und hier der Text.</p>\n```\n\nHier fehlt `</h1>` – der Browser weiß nicht, wo die Überschrift aufhört, und stellt womöglich alles Folgende riesig dar."
     },
     {
       "type": "explain",
-      "text": "Tags können Zusatzinformationen tragen: **Attribute**. Ein Attribut steht **immer im öffnenden Tag** und hat die Form `name=\"wert\"`:\n\n```html\n<html lang=\"de\">\n```\n\nDieses Attribut heißt `lang`, sein Wert ist `de` – es verrät: Der Inhalt der Seite ist auf Deutsch. Das hilft zum Beispiel Vorlese-Programmen bei der richtigen Aussprache.\n\nDie Regeln für Attribute:\n\n1. Nur im **öffnenden** Tag – nie im schließenden.\n2. Nach dem Tag-Namen kommt ein **Leerzeichen**, dann das Attribut.\n3. Zwischen Name und Wert steht ein **Gleichheitszeichen** `=`.\n4. Der Wert steht in **Anführungszeichen** `\"...\"`.\n\nAusblick: Bald benutzt du Attribute ständig – bei Links gibt `href` das Ziel an, bei Bildern nennt `src` die Bilddatei."
+      "text": "Das Tückische: Der Browser zeigt **keine Fehlermeldung**. Er rät einfach, wie es gemeint sein könnte – und rät oft falsch.\n\nWenn deine Seite seltsam aussieht, prüfe deshalb zuerst: Hat jedes Element seinen schließenden Tag? Und stimmt der Name – `<p>` schließt mit `</p>`, nicht mit `</h1>`?"
+    },
+    {
+      "type": "explain",
+      "text": "Tags können Zusatzinformationen tragen: **Attribute**. Ein Attribut steht **immer im öffnenden Tag** und hat die Form `name=\"wert\"`:\n\n```html\n<html lang=\"de\">\n```\n\nDieses Attribut heißt `lang`, sein Wert ist `de` – es verrät: Der Inhalt der Seite ist auf Deutsch. Das hilft zum Beispiel Vorlese-Programmen bei der richtigen Aussprache."
+    },
+    {
+      "type": "explain",
+      "text": "Die Regeln für Attribute:\n\n1. Nur im **öffnenden** Tag – nie im schließenden.\n2. Nach dem Tag-Namen kommt ein **Leerzeichen**, dann das Attribut.\n3. Zwischen Name und Wert steht ein **Gleichheitszeichen** `=`.\n4. Der Wert steht in **Anführungszeichen** `\"...\"`.\n\nAusblick: Bald benutzt du Attribute ständig – bei Links gibt `href` das Ziel an, bei Bildern nennt `src` die Bilddatei."
     },
     {
       "type": "quiz",
@@ -50,15 +59,15 @@
       "type": "code",
       "task": "In der Werkbank stehen zwei Absätze – der zweite ist auf Englisch.\n\n1. Gib dem zweiten Absatz das Attribut `lang=\"en\"`, damit klar ist: Dieser Satz ist Englisch.\n2. Ergänze **darunter** einen dritten Absatz mit genau dem Text **Ich lerne HTML!**",
       "starter": {
-        "html": "<p>Willkommen in der WebWerkstatt!</p>\n<p>Let's write some code!</p>\n"
+        "html": "<p>Mein Lieblingsspiel hat ein neues Update.</p>\n<p>Game on, let's go!</p>\n"
       },
       "hints": [
         "Das Attribut kommt in den öffnenden Tag des zweiten Absatzes: nach dem p ein Leerzeichen, dann name=\"wert\".",
         "Der zweite Absatz beginnt dann so: <p lang=\"en\">. Der neue dritte Absatz ist ein ganz normales <p>-Element ohne Attribut.",
-        "```html\n<p>Willkommen in der WebWerkstatt!</p>\n<p lang=\"en\">Let's write some code!</p>\n<p>Ich lerne HTML!</p>\n```"
+        "```html\n<p>Mein Lieblingsspiel hat ein neues Update.</p>\n<p lang=\"en\">Game on, let's go!</p>\n<p>Ich lerne HTML!</p>\n```"
       ],
       "solution": {
-        "html": "<p>Willkommen in der WebWerkstatt!</p>\n<p lang=\"en\">Let's write some code!</p>\n<p>Ich lerne HTML!</p>\n"
+        "html": "<p>Mein Lieblingsspiel hat ein neues Update.</p>\n<p lang=\"en\">Game on, let's go!</p>\n<p>Ich lerne HTML!</p>\n"
       },
       "tests": [
         { "type": "selector", "selector": "p", "min": 3, "label": "Es gibt drei Absätze" },

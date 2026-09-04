@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Kurzer Boxenstopp: Bevor gleich das Café-Projekt weitergeht, rufst du die letzten beiden Kapitel noch einmal aktiv ab – CSS-Grundlagen und Selektoren. Genau dieses **Wieder-Hervorholen** macht Wissen dauerhaft, nicht das erneute Durchlesen.\n\n5 Aufgaben, kein neuer Stoff."
+      "text": "Kurzer Boxenstopp: Bevor das Café-Projekt weitergeht, rufst du die letzten beiden Kapitel noch einmal aktiv ab – CSS-Grundlagen und Selektoren. Dieses **Wieder-Hervorholen** macht Wissen dauerhaft, nicht das erneute Durchlesen.\n\n5 Aufgaben, kein neuer Stoff."
     },
     {
       "type": "quiz",
@@ -21,7 +21,7 @@
       "type": "code",
       "task": "**Aufgabe 2 – Farben in allen Schreibweisen.** Gestalte den Aushang:\n\n1. Der `body` bekommt die Hintergrundfarbe `#eef7ee` (Hex-Code)\n2. Die `h1` bekommt die Textfarbe `darkgreen` (Farbname)\n3. Alle `p` bekommen die Textfarbe `rgb(60, 60, 60)`",
       "starter": {
-        "html": "<h1>Die Garten-AG sucht Verstärkung</h1>\n<p>Wir treffen uns jeden Mittwoch in der 7. Stunde.</p>\n<p>Anmeldung bei Frau Berger im Lehrerzimmer.</p>\n",
+        "html": "<h1>Die E-Sport-AG sucht Verstärkung</h1>\n<p>Wir trainieren jeden Mittwoch in der 7. Stunde.</p>\n<p>Anmeldung bei der Schülervertretung.</p>\n",
         "css": "/* Deine drei Regeln hier */\n"
       },
       "editable": ["css"],

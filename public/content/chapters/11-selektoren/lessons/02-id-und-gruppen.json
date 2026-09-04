@@ -4,7 +4,12 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Aus dem HTML-Kapitel weißt du: Eine **id** ist ein **einmaliger Name** – sie darf pro Seite nur ein einziges Mal vergeben werden. In CSS sprichst du sie mit der **Raute** `#` an:\n\n```css\n#fazit {\n  background-color: yellow;\n}\n```\n\nDiese Regel trifft **genau das eine Element** mit `id=\"fazit\"`. Wie beim Klassen-Punkt gilt: Die Raute gehört **nur in den CSS-Selektor** – im HTML steht `id=\"fazit\"` ohne Raute.\n\nWann id, wann class? Ganz einfach: **class für Gruppen** (viele Warnungen, viele Angebote), **id für Einzelstücke** (das eine Fazit, die eine Navigation)."
+      "text": "Aus dem HTML-Kapitel weißt du: Eine **id** ist ein **einmaliger Name** – pro Seite nur ein einziges Mal vergeben. In CSS sprichst du sie mit der **Raute** `#` an:\n\n```css\n#fazit {\n  background-color: yellow;\n}\n```\n\nDiese Regel trifft **genau das eine Element** mit `id=\"fazit\"`. Wie beim Klassen-Punkt gilt: Die Raute gehört **nur in den CSS-Selektor** – im HTML steht `id=\"fazit\"` ohne Raute.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\"><text x=\"80\" y=\"24\" font-size=\"13\" font-weight=\"bold\" fill=\"#5b6b7c\" text-anchor=\"middle\">im HTML</text><text x=\"240\" y=\"24\" font-size=\"13\" font-weight=\"bold\" fill=\"#5b6b7c\" text-anchor=\"middle\">im CSS</text><rect x=\"16\" y=\"38\" width=\"128\" height=\"34\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"80\" y=\"60\" font-size=\"13\" fill=\"#1d2733\" text-anchor=\"middle\">class=\"tipp\"</text><line x1=\"150\" y1=\"55\" x2=\"170\" y2=\"55\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><rect x=\"176\" y=\"38\" width=\"128\" height=\"34\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"240\" y=\"60\" font-size=\"14\" font-weight=\"bold\" fill=\"#1a9e5c\" text-anchor=\"middle\">.tipp { }</text><rect x=\"16\" y=\"92\" width=\"128\" height=\"34\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"80\" y=\"114\" font-size=\"13\" fill=\"#1d2733\" text-anchor=\"middle\">id=\"fazit\"</text><line x1=\"150\" y1=\"109\" x2=\"170\" y2=\"109\" stroke=\"#e0632e\" stroke-width=\"2\"/><rect x=\"176\" y=\"92\" width=\"128\" height=\"34\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"240\" y=\"114\" font-size=\"14\" font-weight=\"bold\" fill=\"#e0632e\" text-anchor=\"middle\">#fazit { }</text><text x=\"80\" y=\"148\" font-size=\"12\" fill=\"#1a9e5c\" text-anchor=\"middle\">Punkt = viele Elemente</text><text x=\"240\" y=\"148\" font-size=\"12\" fill=\"#e0632e\" text-anchor=\"middle\">Raute = genau eins</text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Wann id, wann class?\n\n- **class für Gruppen:** viele Warnhinweise, viele Highlight-Spieler – alle bekommen dieselbe Klasse.\n- **id für Einzelstücke:** das eine Fazit, die eine Navigation, der eine Live-Ticker.\n\nMerkhilfe: Die **Raute** `#` ist wie eine Startnummer – jede gibt es nur einmal."
     },
     {
       "type": "fill",
@@ -16,12 +21,16 @@
     },
     {
       "type": "explain",
-      "text": "Der zweite Neuzugang heute: der **Gruppen-Selektor**. Sollen mehrere Selektoren **dieselbe** Gestaltung bekommen, verbindest du sie mit einem **Komma**:\n\n```css\nh1, h2 {\n  color: darkblue;\n}\n```\n\nDas erspart dir Tipparbeit und Fehlerquellen – ohne Gruppe müsstest du zwei identische Regeln schreiben. Und wenn die Farbe sich ändert, änderst du sie nur an **einer** Stelle.\n\nIn der Gruppe darf alles stehen, was du kennst: `h1, .warnung, #fazit { ... }` gestaltet alle drei auf einen Schlag.\n\n⚠️ Aber Vorsicht: Das Komma ist Pflicht! `h1 h2 { ... }` **ohne** Komma bedeutet etwas völlig anderes – was genau, erfährst du in der nächsten Lektion."
+      "text": "Der zweite Neuzugang: der **Gruppen-Selektor**. Sollen mehrere Selektoren **dieselbe** Gestaltung bekommen, verbindest du sie mit einem **Komma**:\n\n```css\nh1, h2 {\n  color: darkblue;\n}\n```\n\nOhne Gruppe müsstest du zwei identische Regeln schreiben. Ändert sich die Clan-Farbe, änderst du sie nur an **einer** Stelle.\n\nIn der Gruppe darf alles stehen, was du kennst: `h1, .warnung, #fazit { … }`."
+    },
+    {
+      "type": "explain",
+      "text": "⚠️ Vorsicht: Das Komma ist Pflicht! `h1 h2 { … }` **ohne** Komma bedeutet etwas völlig anderes – was genau, erfährst du in der nächsten Lektion.\n\nMerksatz vorab: **Komma heißt „und auch“.**"
     },
     {
       "type": "example",
-      "text": "Eine Regel für `h1` **und** `h2` gemeinsam, eine für die id `#hinweis`. Füge der Gruppe testweise noch `p` hinzu: `h1, h2, p { ... }` – und nimm das Komma mal probeweise raus. Was passiert?",
-      "html": "<h1>Sporttag</h1>\n<h2>Programm</h2>\n<p>Um 9 Uhr geht es los mit dem Staffellauf.</p>\n<p id=\"hinweis\">Bitte Sportkleidung mitbringen!</p>\n",
+      "text": "Eine Regel für `h1` **und** `h2` gemeinsam, eine für die id `#hinweis`. Füge der Gruppe testweise `p` hinzu: `h1, h2, p { … }` – und nimm das Komma probeweise raus. Was passiert?",
+      "html": "<h1>Turnierabend</h1>\n<h2>Ablauf</h2>\n<p>Um 18 Uhr geht es los mit der Gruppenphase.</p>\n<p id=\"hinweis\">Bitte eigene Kopfhörer mitbringen!</p>\n",
       "css": "h1, h2 {\n  color: #7a3fbf;\n}\n#hinweis {\n  background-color: #fff3b0;\n}\n",
       "editable": ["css"]
     },
@@ -38,9 +47,9 @@
     },
     {
       "type": "code",
-      "task": "Gestalte den Klassen-Blog:\n\n1. **Eine gemeinsame Regel** für `h1` und `h2` (mit Komma!): Farbe `#2f6fdb`\n2. Eine Regel für die id `fazit`: Hintergrundfarbe `#fff3b0`",
+      "task": "Gestalte den Match-Bericht:\n\n1. **Eine gemeinsame Regel** für `h1` und `h2` (mit Komma!): Farbe `#2f6fdb`\n2. Eine Regel für die id `fazit`: Hintergrundfarbe `#fff3b0`",
       "starter": {
-        "html": "<h1>Unser Ausflug in den Zoo</h1>\n<h2>Die Highlights</h2>\n<p>Am besten waren die Erdmännchen.</p>\n<p id=\"fazit\">Fazit: Der Ausflug war ein voller Erfolg.</p>\n",
+        "html": "<h1>Finale gegen Team Nordlicht</h1>\n<h2>Die Highlights</h2>\n<p>In Runde 3 hat unser Support das Spiel gedreht.</p>\n<p id=\"fazit\">Fazit: Nächste Saison holen wir den Pokal.</p>\n",
         "css": "/* Deine zwei Regeln hier */\n"
       },
       "editable": ["css"],

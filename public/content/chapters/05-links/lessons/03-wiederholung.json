@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Wiederholungsrunde! Aktives Abrufen aus dem Gedächtnis wirkt besser als jedes Nochmal-Lesen – also los.\n\nHeute dran: **Text** (Überschriften, Absätze, `<hr>`, `<strong>` und `<em>`) und **Listen** – von der einfachen Punkte-Liste bis zur verschachtelten Packliste. Das Thema: dein Traumurlaub."
+      "text": "Wiederholungsrunde – aktives Abrufen aus dem Gedächtnis wirkt besser als jedes Nochmal-Lesen. Heute dran: **Text** (Überschriften, Absätze, `<hr>`, `<strong>`, `<em>`) und **Listen** bis zur verschachtelten Packliste – Thema: dein Traumurlaub."
     },
     {
       "type": "quiz",
@@ -26,7 +26,7 @@
     },
     {
       "type": "code",
-      "task": "Baue die Startseite deiner Urlaubsplanung:\n\n1. Eine `<h1>` mit dem Text **Mein Traumurlaub**\n2. Ein Absatz über deinen Traumurlaub – mindestens ein Wort darin ist mit `<em>` betont\n3. Eine Trennlinie `<hr>`\n4. Eine `<h2>` mit dem Text **Meine Top-3-Ziele**\n5. Darunter eine **nummerierte Liste** mit genau deinen drei Wunschzielen",
+      "task": "Baue die Startseite deiner Urlaubsplanung:\n\n1. `<h1>` mit dem Text **Mein Traumurlaub**\n2. Ein Absatz über den Urlaub – mindestens ein Wort darin mit `<em>` betont\n3. Trennlinie `<hr>`\n4. `<h2>` mit dem Text **Meine Top-3-Ziele**\n5. Darunter eine **nummerierte Liste** mit deinen drei Wunschzielen",
       "starter": {
         "html": "<!-- Deine Urlaubsseite entsteht hier -->\n"
       },
@@ -59,7 +59,7 @@
     },
     {
       "type": "code",
-      "task": "Jetzt die große Packliste – **verschachtelt**:\n\n1. Unter der Überschrift eine `<ul>` mit zwei Einträgen: **Kleidung** und **Strandsachen**\n2. Beide Einträge bekommen eine **innere `<ul>`** mit mindestens zwei Dingen\n3. Markiere ein besonders wichtiges Teil (z. B. die Sonnencreme) mit `<strong>`",
+      "task": "Jetzt die große Packliste – **verschachtelt**:\n\n1. Unter der Überschrift eine `<ul>` mit zwei Einträgen: **Kleidung** und **Strandsachen**\n2. Beide bekommen eine **innere `<ul>`** mit mindestens zwei Dingen\n3. Markiere ein besonders wichtiges Teil (z. B. Sonnencreme) mit `<strong>`",
       "starter": {
         "html": "<h2>Packliste</h2>\n<!-- Deine verschachtelte Liste hier -->\n"
       },

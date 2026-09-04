@@ -4,16 +4,17 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Webseiten können mehr als Text und Bilder – zum Beispiel **Ton abspielen**. Dafür gibt es das `<audio>`-Element:\n\n```html\n<audio controls src=\"cafe-jingle.wav\"></audio>\n```\n\n`src` kennst du schon von den Bildern – der Pfad zur Datei.\n\nNeu ist `controls`: ein **Boolean-Attribut** – ein Attribut **ohne Wert**. Allein sein Name schaltet die Funktion ein: Der Browser zeigt Play-Knopf, Zeitleiste und Lautstärkeregler. **Ohne** `controls` bleibt der Player unsichtbar!\n\nBeachte außerdem: `<audio>` hat – anders als `<img>` – einen **schließenden Tag**."
+      "text": "Webseiten können auch **Ton abspielen** – dein Intro-Sound, ein Podcast-Schnipsel. Dafür gibt es `<audio>`:\n\n```html\n<audio controls src=\"cafe-jingle.wav\"></audio>\n```\n\n`src` kennst du von den Bildern. Neu ist `controls`: ein **Boolean-Attribut** – ein Attribut **ohne Wert**. Sein Name allein schaltet Play-Knopf, Zeitleiste und Lautstärke ein. **Ohne** `controls` bleibt der Player unsichtbar!",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><text x=\"160\" y=\"24\" text-anchor=\"middle\" fill=\"#1d2733\">&lt;audio <tspan fill=\"#e0632e\" font-weight=\"bold\">controls</tspan> src=\"jingle.wav\"&gt;</text><line x1=\"160\" y1=\"34\" x2=\"160\" y2=\"58\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><polygon points=\"152,58 160,70 168,58\" fill=\"#5b6b7c\"/><rect x=\"30\" y=\"78\" width=\"260\" height=\"40\" rx=\"20\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><polygon points=\"50,88 50,108 68,98\" fill=\"#2f6fdb\"/><text x=\"80\" y=\"102\" fill=\"#1d2733\">0:00</text><line x1=\"112\" y1=\"98\" x2=\"232\" y2=\"98\" stroke=\"#5b6b7c\" stroke-width=\"3\"/><circle cx=\"130\" cy=\"98\" r=\"6\" fill=\"#e0632e\"/><text x=\"244\" y=\"102\" fill=\"#1d2733\">0:07</text><text x=\"160\" y=\"146\" text-anchor=\"middle\" fill=\"#5b6b7c\">controls blendet den Player ein – ohne: nichts zu sehen</text></svg>"
     },
     {
       "type": "example",
-      "text": "Drück auf Play – die Datei `cafe-jingle.wav` liegt in der Werkstatt bereit und spielt wirklich! Entferne testweise das Wort `controls` und schau, was passiert.",
-      "html": "<h2>Unser Café-Jingle</h2>\n<audio controls src=\"cafe-jingle.wav\"></audio>\n"
+      "text": "Drück auf Play – `cafe-jingle.wav` liegt in der Werkstatt bereit und spielt wirklich! Entferne testweise das Wort `controls` und schau, was passiert.",
+      "html": "<h2>Sound-Test</h2>\n<audio controls src=\"cafe-jingle.wav\"></audio>\n"
     },
     {
       "type": "explain",
-      "text": "Für **Videos** funktioniert alles genauso – mit `<video>`:\n\n```html\n<video controls src=\"rundgang.mp4\" poster=\"vorschaubild.jpg\"></video>\n```\n\nNeu ist `poster`: das **Vorschaubild**, das angezeigt wird, bevor jemand auf Play drückt. Ohne `poster` zeigt der Browser einfach das erste Videobild.\n\n**Hinweis für die Werkstatt:** Eine echte Videodatei liegt hier nicht bereit – die bringst du im Unterricht mit. Die Tests prüfen deshalb nur die **Attribute**. Nimm als `poster` eines der Übungsbilder, dann siehst du in der Vorschau trotzdem etwas!"
+      "text": "Beachte: `<audio>` hat – anders als `<img>` – einen **schließenden Tag**.\n\nFür **Videos** funktioniert alles genauso – mit `<video>`:\n\n```html\n<video controls src=\"clip.mp4\" poster=\"vorschau.jpg\"></video>\n```\n\nNeu ist `poster`: das **Vorschaubild** vor dem Play-Klick. Ohne `poster` zeigt der Browser das erste Videobild.\n\nIn der Werkstatt liegt keine Videodatei – die Tests prüfen nur die **Attribute**. Nimm als `poster` ein Übungsbild, dann siehst du trotzdem etwas!"
     },
     {
       "type": "quiz",
@@ -28,12 +29,16 @@
     },
     {
       "type": "explain",
-      "text": "Der dritte Baustein heißt `<iframe>` – ein **Fenster in deiner Seite**, das eine andere Datei oder sogar eine ganz andere Webseite anzeigt:\n\n```html\n<iframe src=\"haus.svg\" width=\"300\" height=\"200\"></iframe>\n```\n\n`width` und `height` legen die Größe des Fensters in Bildpunkten fest.\n\nGenau so betten viele Seiten Inhalte **fremder Anbieter** ein – etwa Landkarten oder Videos von Videoplattformen: Der Anbieter stellt einen fertigen `<iframe>`-Schnipsel bereit, den man nur einfügt. Ein Gedanke zum **Datenschutz** gehört dazu: Beim Einbetten fremder Inhalte sendet der Browser deiner Besucher automatisch Daten (z. B. ihre IP-Adresse) an diesen Anbieter – mehr dazu im Kapitel „Recht im Web“."
+      "text": "Der dritte Baustein ist `<iframe>` – ein **Fenster in deiner Seite**, das eine andere Datei oder sogar eine fremde Webseite anzeigt:\n\n```html\n<iframe src=\"haus.svg\" width=\"300\" height=\"200\"></iframe>\n```\n\n`width` und `height` legen die Größe des Fensters in Bildpunkten fest."
     },
     {
       "type": "example",
-      "text": "Hier zeigt der `<iframe>` unsere eigene Datei `haus.svg` als eingebettete Seite an. Ändere `width` und `height` und beobachte das Fenster!",
+      "text": "Hier zeigt der `<iframe>` unsere Datei `haus.svg` als eingebettete Seite. Ändere `width` und `height` und beobachte das Fenster!",
       "html": "<h2>Eingebettete Datei</h2>\n<iframe src=\"haus.svg\" width=\"300\" height=\"200\"></iframe>\n<p>Das Haus ist hier nicht als Bild eingebunden, sondern als eigene Seite im Fenster.</p>\n"
+    },
+    {
+      "type": "explain",
+      "text": "So betten viele Seiten Inhalte **fremder Anbieter** ein – Landkarten oder Clips einer Videoplattform: Der Anbieter liefert einen fertigen `<iframe>`-Schnipsel, du fügst ihn nur ein.\n\n**Datenschutz:** Beim Einbetten sendet der Browser deiner Besucher automatisch Daten (z. B. die IP-Adresse) an diesen Anbieter. Mehr dazu im Kapitel „Recht im Web“."
     },
     {
       "type": "fill",
@@ -45,26 +50,26 @@
     },
     {
       "type": "code",
-      "task": "Baue die Medien-Ecke des Café Pause:\n\n1. Unter **Hörprobe**: ein `<audio>`-Element mit `controls` und der Datei `cafe-jingle.wav` – teste es gleich mit Play!\n2. Unter **Rundgang**: ein `<video>`-Element mit `controls`, der Datei `rundgang.mp4` (kommt im Unterricht dazu) und dem Übungsbild `cafe-raum.svg` als `poster`",
+      "task": "Baue deine Medien-Ecke:\n\n1. Unter **Intro-Sound**: ein `<audio>` mit `controls` und der Datei `cafe-jingle.wav` – teste es gleich mit Play!\n2. Unter **Strand-Clip**: ein `<video>` mit `controls`, der Datei `strand.mp4` (bringst du im Unterricht mit) und dem Übungsbild `strand.svg` als `poster`",
       "starter": {
-        "html": "<h2>Hörprobe</h2>\n<!-- Dein Audio-Player hier -->\n\n<h2>Rundgang</h2>\n<!-- Dein Video hier -->\n"
+        "html": "<h2>Intro-Sound</h2>\n<!-- Dein Audio-Player hier -->\n\n<h2>Strand-Clip</h2>\n<!-- Dein Video hier -->\n"
       },
       "hints": [
         "Beide Elemente haben einen schließenden Tag: <audio ...></audio> und <video ...></video>. Das controls steht ohne Wert im öffnenden Tag.",
-        "Das Video braucht drei Attribute: controls, src=\"rundgang.mp4\" und poster=\"cafe-raum.svg\".",
-        "```html\n<h2>Hörprobe</h2>\n<audio controls src=\"cafe-jingle.wav\"></audio>\n\n<h2>Rundgang</h2>\n<video controls src=\"rundgang.mp4\" poster=\"cafe-raum.svg\"></video>\n```"
+        "Das Video braucht drei Attribute: controls, src=\"strand.mp4\" und poster=\"strand.svg\".",
+        "```html\n<h2>Intro-Sound</h2>\n<audio controls src=\"cafe-jingle.wav\"></audio>\n\n<h2>Strand-Clip</h2>\n<video controls src=\"strand.mp4\" poster=\"strand.svg\"></video>\n```"
       ],
       "solution": {
-        "html": "<h2>Hörprobe</h2>\n<audio controls src=\"cafe-jingle.wav\"></audio>\n\n<h2>Rundgang</h2>\n<video controls src=\"rundgang.mp4\" poster=\"cafe-raum.svg\"></video>\n"
+        "html": "<h2>Intro-Sound</h2>\n<audio controls src=\"cafe-jingle.wav\"></audio>\n\n<h2>Strand-Clip</h2>\n<video controls src=\"strand.mp4\" poster=\"strand.svg\"></video>\n"
       },
       "tests": [
         { "type": "selector", "selector": "audio", "min": 1, "label": "Es gibt ein <audio>-Element" },
         { "type": "attr", "selector": "audio", "attr": "src", "expected": "cafe-jingle.wav", "label": "Der Audio-Player spielt cafe-jingle.wav" },
         { "type": "attr", "selector": "audio", "attr": "controls", "expected": ["", "controls"], "label": "Der Audio-Player zeigt Bedienelemente (controls)" },
         { "type": "selector", "selector": "video", "min": 1, "label": "Es gibt ein <video>-Element" },
-        { "type": "attr", "selector": "video", "attr": "src", "expected": "rundgang.mp4", "label": "Das Video verweist auf rundgang.mp4" },
+        { "type": "attr", "selector": "video", "attr": "src", "expected": "strand.mp4", "label": "Das Video verweist auf strand.mp4" },
         { "type": "attr", "selector": "video", "attr": "controls", "expected": ["", "controls"], "label": "Das Video zeigt Bedienelemente (controls)" },
-        { "type": "attr", "selector": "video", "attr": "poster", "expected": "cafe-raum.svg", "label": "Das Vorschaubild ist cafe-raum.svg" }
+        { "type": "attr", "selector": "video", "attr": "poster", "expected": "strand.svg", "label": "Das Vorschaubild ist strand.svg" }
       ]
     }
   ]

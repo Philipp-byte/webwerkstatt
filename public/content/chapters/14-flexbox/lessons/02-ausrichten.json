@@ -4,17 +4,22 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Zwei Eigenschaften steuern, **wo** die Kinder im Flex-Container landen:\n\n`justify-content` – verteilt **in der Reihe** (bei `row` also waagerecht):\n\n- `flex-start` – alle am Anfang (links)\n- `center` – alle in der Mitte\n- `space-between` – erstes Kind ganz links, letztes ganz rechts, der Rest gleichmäßig dazwischen\n\n`align-items` – richtet **quer zur Reihe** aus (bei `row` also senkrecht):\n`center` zentriert die Kinder in der Höhe.\n\n```css\n.kopf {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n```\n\n**Merkhilfe:** **justify** verteilt **entlang der Reihe**, **align-items** richtet die Kinder **quer dazu** aus. Zusammen zentrieren sie Inhalte perfekt – einer der häufigsten Handgriffe im Webdesign!"
+      "text": "`justify-content` verteilt die Kinder **in der Reihe** (bei `row` also waagerecht) – wie Spieler auf dem Taktikbrett:\n\n- `flex-start` – alle am Anfang (links)\n- `center` – alle in der Mitte\n- `space-between` – erstes Kind ganz links, letztes ganz rechts, der Rest gleichmäßig dazwischen\n\n```css\n.aufstellung {\n  display: flex;\n  justify-content: center;\n}\n```",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><text x=\"8\" y=\"30\" fill=\"#1d2733\">flex-start</text><rect x=\"100\" y=\"8\" width=\"210\" height=\"36\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><rect x=\"106\" y=\"14\" width=\"24\" height=\"24\" rx=\"4\" fill=\"#2f6fdb\"/><rect x=\"136\" y=\"14\" width=\"24\" height=\"24\" rx=\"4\" fill=\"#2f6fdb\"/><rect x=\"166\" y=\"14\" width=\"24\" height=\"24\" rx=\"4\" fill=\"#2f6fdb\"/><text x=\"8\" y=\"82\" fill=\"#1d2733\">center</text><rect x=\"100\" y=\"60\" width=\"210\" height=\"36\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><rect x=\"163\" y=\"66\" width=\"24\" height=\"24\" rx=\"4\" fill=\"#e0632e\"/><rect x=\"193\" y=\"66\" width=\"24\" height=\"24\" rx=\"4\" fill=\"#e0632e\"/><rect x=\"223\" y=\"66\" width=\"24\" height=\"24\" rx=\"4\" fill=\"#e0632e\"/><text x=\"8\" y=\"134\" fill=\"#1d2733\">space-between</text><rect x=\"100\" y=\"112\" width=\"210\" height=\"36\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><rect x=\"106\" y=\"118\" width=\"24\" height=\"24\" rx=\"4\" fill=\"#1a9e5c\"/><rect x=\"193\" y=\"118\" width=\"24\" height=\"24\" rx=\"4\" fill=\"#1a9e5c\"/><rect x=\"280\" y=\"118\" width=\"24\" height=\"24\" rx=\"4\" fill=\"#1a9e5c\"/></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "`align-items` richtet die Kinder **quer zur Reihe** aus (bei `row` also senkrecht). `center` zentriert sie in der Höhe.\n\n```css\n.kopf {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n```\n\n**Merkhilfe:** **justify** verteilt **entlang** der Reihe, **align-items** richtet **quer** dazu aus. Zusammen zentrieren sie Inhalte perfekt – einer der häufigsten Handgriffe im Webdesign!"
     },
     {
       "type": "example",
-      "text": "Der Spielplatz: Probiere für `justify-content` nacheinander `flex-start`, `center` und `space-between` aus – und schalte `align-items` um.",
-      "html": "<div class=\"buehne\">\n  <div class=\"kachel\">A</div>\n  <div class=\"kachel\">B</div>\n  <div class=\"kachel\">C</div>\n</div>\n",
+      "text": "Das Taktikbrett: Probiere für `justify-content` nacheinander `flex-start`, `center` und `space-between` aus – und schalte `align-items` um.",
+      "html": "<div class=\"buehne\">\n  <div class=\"kachel\">Nr. 1</div>\n  <div class=\"kachel\">Nr. 7</div>\n  <div class=\"kachel\">Nr. 10</div>\n</div>\n",
       "css": ".buehne {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 12px;\n  height: 160px;\n  background-color: #eef3fa;\n}\n.kachel {\n  background-color: #4a90d9;\n  color: white;\n  padding: 16px 22px;\n  border-radius: 8px;\n}\n"
     },
     {
       "type": "quiz",
-      "question": "Eine Kopfzeile: Das Logo soll **ganz links**, der Login-Button **ganz rechts** stehen. Welcher Wert für `justify-content` macht das?",
+      "question": "Kopfzeile deiner Clan-Seite: Das Logo soll **ganz links**, der Login-Button **ganz rechts** stehen. Welcher Wert für `justify-content`?",
       "options": [
         "`center`",
         "`space-between`",
@@ -44,9 +49,9 @@
     },
     {
       "type": "code",
-      "task": "Der Willkommens-Banner soll seinen Text **genau in der Mitte** zeigen. Ergänze bei `.banner`:\n\n1. `justify-content: center;`\n2. `align-items: center;`",
+      "task": "Der Banner deiner Team-Seite soll den Namen **genau in der Mitte** zeigen. Ergänze bei `.banner`:\n\n1. `justify-content: center;`\n2. `align-items: center;`",
       "starter": {
-        "html": "<header class=\"banner\">\n  <h1>Willkommen!</h1>\n</header>\n",
+        "html": "<header class=\"banner\">\n  <h1>Team Nordlicht</h1>\n</header>\n",
         "css": ".banner {\n  display: flex;\n  height: 150px;\n  background-color: #dcebff;\n  /* Zentriere mich! */\n}\n"
       },
       "editable": ["css"],

@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Kurze Pause von den Tabellen! Wissen bleibt am besten hängen, wenn du es **aktiv aus dem Gedächtnis holst** – nicht durch bloßes Nachlesen. Genau das machen wir jetzt.\n\nHeute dran: **Links und Sprungmarken** (Kapitel 5) sowie **Bilder, alt-Texte und Audio** (Kapitel 6). Los geht's!"
+      "text": "Kurze Pause von den Tabellen! Wissen bleibt am besten hängen, wenn du es **aktiv aus dem Gedächtnis holst** – nicht durch bloßes Nachlesen.\n\nHeute dran: **Links und Sprungmarken** (Kapitel 5) sowie **Bilder, alt-Texte und Audio** (Kapitel 6). Los geht's!"
     },
     {
       "type": "quiz",
@@ -19,25 +19,25 @@
     },
     {
       "type": "fill",
-      "text": "Der Link oben soll zur Überschrift unten springen. Der Überschrift fehlt aber noch ihr einmaliger Name – setze das fehlende Attribut ein.",
-      "template": "<a href=\"#snacks\">Zu den Snacks</a>\n\n<h2 ___=\"snacks\">Snacks</h2>",
+      "text": "Der Link oben soll zur Überschrift unten springen. Der Überschrift fehlt noch ihr einmaliger Name – setze das fehlende Attribut ein.",
+      "template": "<a href=\"#snacks\">Zu den Snacks</a>\n\n<h2 ___=\"snacks\">Snacks am Kiosk</h2>",
       "solution": "id",
       "accept": ["id"],
       "hint": "Sprungmarken funktionieren über die `id`: Der Link zielt mit `#snacks` auf das Element mit `id=\"snacks\"`."
     },
     {
       "type": "code",
-      "task": "Ein Mini-Beitrag über den Urlaub:\n\n1. Binde das Übungsbild **strand.svg** ein – mit einem alt-Text, in dem das Wort **Strand** vorkommt\n2. Darunter ein Link zum Ziel `https://www.example.com` mit dem Linktext **Mehr Reisetipps**",
+      "task": "Ein Mini-Beitrag zur Klassenfahrt:\n\n1. Binde das Übungsbild **strand.svg** ein – mit einem alt-Text, in dem **Strand** vorkommt\n2. Darunter ein Link zu `https://www.example.com` mit dem Linktext **Mehr Reisetipps**",
       "starter": {
-        "html": "<h2>Mein Urlaub</h2>\n<p>Dieses Jahr ging es ans Meer!</p>\n<!-- Bild und Link hier -->\n"
+        "html": "<h2>Klassenfahrt ans Meer</h2>\n<p>Drei Tage Strand, Sonne und null Hausaufgaben!</p>\n<!-- Bild und Link hier -->\n"
       },
       "hints": [
         "Das Bild braucht <img> mit src und alt, der Link <a> mit href und Linktext.",
         "So sieht das Muster aus: <img src=\"...\" alt=\"...\"> und <a href=\"https://...\">Linktext</a>",
-        "```html\n<h2>Mein Urlaub</h2>\n<p>Dieses Jahr ging es ans Meer!</p>\n<img src=\"strand.svg\" alt=\"Ein Strand mit Palme und Meer\">\n<a href=\"https://www.example.com\">Mehr Reisetipps</a>\n```"
+        "```html\n<h2>Klassenfahrt ans Meer</h2>\n<p>Drei Tage Strand, Sonne und null Hausaufgaben!</p>\n<img src=\"strand.svg\" alt=\"Ein Strand mit Palme und Meer\">\n<a href=\"https://www.example.com\">Mehr Reisetipps</a>\n```"
       ],
       "solution": {
-        "html": "<h2>Mein Urlaub</h2>\n<p>Dieses Jahr ging es ans Meer!</p>\n<img src=\"strand.svg\" alt=\"Ein Strand mit Palme und Meer\">\n<a href=\"https://www.example.com\">Mehr Reisetipps</a>\n"
+        "html": "<h2>Klassenfahrt ans Meer</h2>\n<p>Drei Tage Strand, Sonne und null Hausaufgaben!</p>\n<img src=\"strand.svg\" alt=\"Ein Strand mit Palme und Meer\">\n<a href=\"https://www.example.com\">Mehr Reisetipps</a>\n"
       },
       "tests": [
         { "type": "selector", "selector": "img", "min": 1, "label": "Es gibt ein Bild" },
@@ -60,17 +60,17 @@
     },
     {
       "type": "code",
-      "task": "Baue eine kleine Musik-Seite mit Sprungmarke:\n\n1. Ganz oben (unter der `<h1>`) ein Sprungmarken-Link mit Ziel `#musik` und dem Text **Direkt zur Musik**\n2. Unten die Überschrift `<h2>` mit dem Text **Musik** und der id `musik`\n3. Darunter ein Audio-Element mit Bedienknöpfen für **cafe-jingle.wav**\n\nKlicke danach in der Vorschau auf deinen Link – es scrollt zur Überschrift!",
+      "task": "Baue eine Clan-Seite mit Sprungmarke:\n\n1. Unter der `<h1>` ein Sprungmarken-Link mit Ziel `#musik` und dem Text **Direkt zur Musik**\n2. Unten eine `<h2>` mit dem Text **Musik** und der id `musik`\n3. Darunter ein Audio-Element mit Bedienknöpfen für **cafe-jingle.wav**\n\nKlicke danach auf deinen Link – es scrollt!",
       "starter": {
-        "html": "<h1>Meine Seite</h1>\n<!-- 1. Sprungmarken-Link hier -->\n\n<p>Hier steht später noch ganz viel Inhalt …</p>\n<p>… und noch mehr Inhalt …</p>\n\n<!-- 2. Überschrift und 3. Audio hier -->\n"
+        "html": "<h1>Team Blitz</h1>\n<!-- 1. Sprungmarken-Link hier -->\n\n<p>Hier kommt später unser Clan-Intro …</p>\n<p>… und die Spielerliste …</p>\n\n<!-- 2. Überschrift und 3. Audio hier -->\n"
       },
       "hints": [
         "Der Link zielt mit # auf eine id: <a href=\"#musik\">…</a> springt zum Element mit id=\"musik\".",
         "Das Audio-Element: <audio controls src=\"cafe-jingle.wav\"></audio> – vergiss controls nicht, sonst siehst du keine Knöpfe.",
-        "```html\n<h1>Meine Seite</h1>\n<a href=\"#musik\">Direkt zur Musik</a>\n\n<p>Hier steht später noch ganz viel Inhalt …</p>\n<p>… und noch mehr Inhalt …</p>\n\n<h2 id=\"musik\">Musik</h2>\n<audio controls src=\"cafe-jingle.wav\"></audio>\n```"
+        "```html\n<h1>Team Blitz</h1>\n<a href=\"#musik\">Direkt zur Musik</a>\n\n<p>Hier kommt später unser Clan-Intro …</p>\n<p>… und die Spielerliste …</p>\n\n<h2 id=\"musik\">Musik</h2>\n<audio controls src=\"cafe-jingle.wav\"></audio>\n```"
       ],
       "solution": {
-        "html": "<h1>Meine Seite</h1>\n<a href=\"#musik\">Direkt zur Musik</a>\n\n<p>Hier steht später noch ganz viel Inhalt …</p>\n<p>… und noch mehr Inhalt …</p>\n\n<h2 id=\"musik\">Musik</h2>\n<audio controls src=\"cafe-jingle.wav\"></audio>\n"
+        "html": "<h1>Team Blitz</h1>\n<a href=\"#musik\">Direkt zur Musik</a>\n\n<p>Hier kommt später unser Clan-Intro …</p>\n<p>… und die Spielerliste …</p>\n\n<h2 id=\"musik\">Musik</h2>\n<audio controls src=\"cafe-jingle.wav\"></audio>\n"
       },
       "tests": [
         { "type": "attr", "selector": "a", "attr": "href", "expected": "#musik", "label": "Der Link zielt auf #musik" },

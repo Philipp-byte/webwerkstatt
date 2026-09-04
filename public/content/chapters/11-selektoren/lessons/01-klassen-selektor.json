@@ -4,17 +4,26 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Bisher hast du **alle** Elemente einer Sorte gestaltet (`p { ... }` trifft jeden Absatz). Oft willst du aber nur **bestimmte** Elemente treffen.\n\nDafür gibt es die **class** aus dem HTML-Kapitel! In CSS sprichst du sie mit einem **Punkt** an:\n\n```css\n.warnung {\n  color: red;\n}\n```\n\nDiese Regel trifft **jedes Element** mit `class=\"warnung\"` – egal ob Absatz, Überschrift oder Liste. Alle anderen bleiben unberührt.\n\nGanz wichtig: **Der Punkt gehört nur in den CSS-Selektor.** Im HTML schreibst du die Klasse ohne Punkt:\n\n```html\n<p class=\"warnung\">Achtung!</p>\n```"
-    },
-    {
-      "type": "example",
-      "text": "Nur die Absätze mit `class=\"angebot\"` sind grün. Der HTML-Tab ist offen: Gib dem letzten Absatz auch die Klasse und schau, was passiert!",
-      "html": "<h2>Speisekarte</h2>\n<p class=\"angebot\">Pizza Margherita – heute nur 5 €!</p>\n<p>Lasagne – 7 €</p>\n<p>Salatteller – 4 €</p>\n",
-      "css": ".angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n"
+      "text": "Bisher hast du **alle** Elemente einer Sorte gestaltet: `p { … }` trifft jeden Absatz. Auf der Turnier-Seite deines Clans sollen aber nur die **Warnhinweise** rot werden – nicht jeder Absatz.\n\nDafür gibt es die **class** aus dem HTML-Kapitel! In CSS sprichst du sie mit einem **Punkt** an:\n\n```css\n.warnung {\n  color: red;\n}\n```"
     },
     {
       "type": "explain",
-      "text": "Warum sind Klassen so mächtig? Weil sie **wiederverwendbar** sind:\n\n- **Eine Klasse, viele Elemente:** Zehn Absätze mit `class=\"angebot\"`? Eine einzige CSS-Regel gestaltet alle zehn.\n- **Sortenübergreifend:** Auch eine `h2` oder ein `li` darf `class=\"angebot\"` tragen – die Regel trifft sie alle.\n- **Mehrere Klassen pro Element:** Im class-Attribut dürfen mehrere Namen stehen, getrennt durch Leerzeichen: `<p class=\"angebot neu\">`. Das Element bekommt dann die Gestaltung **beider** Klassen.\n\nNoch zwei Kleinigkeiten aus der Praxis: Klassennamen schreibst du **klein und ohne Leerzeichen** (`mein-hinweis` statt `Mein Hinweis`), und sie sollten sagen, **was etwas ist** (`warnung`), nicht wie es aussieht (`roter-text`) – die Farbe könnte sich ja mal ändern."
+      "text": "Diese Regel trifft **jedes Element** mit `class=\"warnung\"` – egal ob Absatz, Überschrift oder Listenpunkt. Alle anderen bleiben unberührt.\n\nGanz wichtig: **Der Punkt gehört nur in den CSS-Selektor.** Im HTML steht die Klasse ohne Punkt:\n\n```html\n<p class=\"warnung\">Achtung!</p>\n```",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\"><rect x=\"10\" y=\"58\" width=\"112\" height=\"44\" rx=\"8\" fill=\"#2f6fdb\"/><text x=\"66\" y=\"85\" font-size=\"14\" font-weight=\"bold\" fill=\"#eef2f8\" text-anchor=\"middle\">.warnung { }</text><rect x=\"176\" y=\"10\" width=\"134\" height=\"26\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"243\" y=\"28\" font-size=\"12\" fill=\"#1d2733\" text-anchor=\"middle\">&lt;p class=\"warnung\"&gt;</text><rect x=\"176\" y=\"46\" width=\"134\" height=\"26\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"243\" y=\"64\" font-size=\"12\" fill=\"#1d2733\" text-anchor=\"middle\">&lt;li class=\"warnung\"&gt;</text><rect x=\"176\" y=\"82\" width=\"134\" height=\"26\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#5b6b7c\" stroke-dasharray=\"4 3\"/><text x=\"243\" y=\"100\" font-size=\"12\" fill=\"#5b6b7c\" text-anchor=\"middle\">&lt;p&gt; ohne Klasse</text><rect x=\"176\" y=\"118\" width=\"134\" height=\"26\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"243\" y=\"136\" font-size=\"12\" fill=\"#1d2733\" text-anchor=\"middle\">&lt;h2 class=\"warnung\"&gt;</text><line x1=\"122\" y1=\"80\" x2=\"176\" y2=\"23\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><line x1=\"122\" y1=\"80\" x2=\"176\" y2=\"59\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><line x1=\"122\" y1=\"80\" x2=\"176\" y2=\"131\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"66\" y=\"130\" font-size=\"12\" fill=\"#5b6b7c\" text-anchor=\"middle\">eine Regel, viele Treffer</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Nur der Absatz mit `class=\"highlight\"` ist grün. Der HTML-Tab ist offen: Gib einem weiteren Spieler die Klasse und schau, was passiert!",
+      "html": "<h2>Unser Kader</h2>\n<p class=\"highlight\">Lena – Spielerin des Monats!</p>\n<p>Deniz – Support</p>\n<p>Mara – Sniper</p>\n",
+      "css": ".highlight {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n"
+    },
+    {
+      "type": "explain",
+      "text": "Warum sind Klassen so mächtig? Weil sie **wiederverwendbar** sind:\n\n- **Eine Klasse, viele Elemente:** Zehn Warnhinweise mit `class=\"warnung\"`? Eine einzige Regel gestaltet alle zehn.\n- **Sortenübergreifend:** Auch eine `h2` oder ein `li` darf `class=\"warnung\"` tragen.\n- **Mehrere Klassen pro Element:** `<p class=\"warnung neu\">` – getrennt durch Leerzeichen. Das Element bekommt die Gestaltung **beider** Klassen."
+    },
+    {
+      "type": "explain",
+      "text": "Zwei Regeln aus der Praxis für Klassennamen:\n\n1. **Klein und ohne Leerzeichen**: `mein-hinweis` statt `Mein Hinweis`.\n2. Der Name sagt, **was etwas ist** (`warnung`, `highlight`), nicht wie es aussieht (`roter-text`) – die Farbe kann sich ja mal ändern, der Name bleibt."
     },
     {
       "type": "quiz",
@@ -37,9 +46,9 @@
     },
     {
       "type": "code",
-      "task": "Im HTML 🔒 gibt es zwei Absätze mit `class=\"warnung\"` und einen normalen Absatz.\n\nSchreibe eine Regel für `.warnung`:\n\n1. Textfarbe `red`\n2. `font-weight: bold` (macht den Text fett)\n\nDer normale Absatz muss **schwarz bleiben**!",
+      "task": "Im HTML 🔒 stehen zwei Absätze mit `class=\"warnung\"` und ein normaler Absatz.\n\nSchreibe eine Regel für `.warnung`:\n\n1. Textfarbe `red`\n2. `font-weight: bold` (macht den Text fett)\n\nDer normale Absatz muss **schwarz bleiben**!",
       "starter": {
-        "html": "<h2>Laborregeln</h2>\n<p class=\"warnung\">Schutzbrille aufsetzen!</p>\n<p>Die Versuche stehen auf dem Arbeitsblatt.</p>\n<p class=\"warnung\">Niemals ohne Lehrkraft experimentieren!</p>\n",
+        "html": "<h2>Turnier-Regeln</h2>\n<p class=\"warnung\">Cheating führt zum sofortigen Ausschluss!</p>\n<p>Die Matches starten pünktlich nach Spielplan.</p>\n<p class=\"warnung\">Handys während der Matches ausschalten!</p>\n",
         "css": "/* Deine Regel für .warnung */\n"
       },
       "editable": ["css"],

@@ -4,35 +4,37 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Die **erste Zeile** einer Tabelle enthält meist die Spaltentitel – die **Kopfzeile**.\n\nDafür gibt es einen eigenen Zellen-Tag: `<th>` (table header) statt `<td>`. Der Browser stellt `<th>`-Zellen automatisch **fett und zentriert** dar – ganz ohne CSS.\n\n```html\n<tr>\n  <th>Name</th>\n  <th>Alter</th>\n</tr>\n```\n\nDanach folgen die normalen Datenzeilen mit `<td>`. Der Unterschied ist nicht nur Optik: Vorlese-Programme erkennen an `<th>`, **wofür** eine Spalte steht, und können die Tabelle blinden Menschen sinnvoll vorlesen."
+      "text": "Die **erste Zeile** einer Tabelle enthält meist die Spaltentitel – die **Kopfzeile**.\n\nDafür gibt es einen eigenen Zellen-Tag: `<th>` (table header) statt `<td>`. Der Browser zeigt `<th>` automatisch **fett und zentriert** – ohne CSS.\n\n```html\n<tr>\n  <th>Platz</th>\n  <th>Verein</th>\n  <th>Punkte</th>\n</tr>\n```\n\nDanach folgen die Datenzeilen mit `<td>`. Bonus: Vorlese-Programme erkennen an `<th>`, **wofür** eine Spalte steht."
     },
     {
       "type": "example",
-      "text": "Vergleiche die Kopfzeile (`<th>`, fett) mit den Datenzeilen (`<td>`).\n\nProbiere: Mach aus den beiden `<td>` der Katzen-Zeile testweise `<th>` – und beobachte, wie sich die Darstellung ändert. Danach wieder zurück!",
-      "html": "<table>\n  <tr>\n    <th>Tier</th>\n    <th>Beine</th>\n  </tr>\n  <tr>\n    <td>Katze</td>\n    <td>4</td>\n  </tr>\n  <tr>\n    <td>Spinne</td>\n    <td>8</td>\n  </tr>\n</table>\n",
+      "text": "Vergleiche die Kopfzeile (`<th>`, fett) mit den Datenzeilen (`<td>`).\n\nProbiere: Mach aus den `<td>` der zweiten Zeile testweise `<th>` – und schau, wie sich die Darstellung ändert. Danach zurück!",
+      "html": "<table>\n  <tr>\n    <th>Platz</th>\n    <th>Verein</th>\n    <th>Punkte</th>\n  </tr>\n  <tr>\n    <td>1</td>\n    <td>FC Nordstadt</td>\n    <td>21</td>\n  </tr>\n  <tr>\n    <td>2</td>\n    <td>SV Südpark</td>\n    <td>19</td>\n  </tr>\n</table>\n",
       "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\n",
       "editable": ["html"]
     },
     {
       "type": "explain",
-      "text": "Manchmal soll **eine** Zelle über **mehrere Spalten** reichen – zum Beispiel eine Titelzeile über der ganzen Tabelle. Dafür gibt es das Attribut `colspan` (column span = „spannt sich über Spalten“):\n\n```html\n<tr>\n  <th colspan=\"2\">Speiseplan</th>\n</tr>\n<tr>\n  <td>Montag</td>\n  <td>Pizza</td>\n</tr>\n```\n\nDie Zahl sagt, **über wie viele Spalten** sich die Zelle erstreckt. Wichtig fürs Zählen: Eine Zelle mit `colspan=\"2\"` **zählt wie zwei** – die Zeile oben hat deshalb nur **einen** Zellen-Tag, ist aber genauso breit wie die Zeile mit zwei Zellen darunter."
+      "text": "Manchmal soll **eine** Zelle über **mehrere Spalten** reichen – etwa eine Titelzeile über der ganzen Tabelle. Dafür gibt es das Attribut `colspan` (column span = „spannt sich über Spalten“):\n\n```html\n<tr>\n  <th colspan=\"3\">Handy-Tarife</th>\n</tr>\n<tr>\n  <td>Tarif S</td>\n  <td>5 GB</td>\n  <td>9,99 €</td>\n</tr>\n```\n\nDie Zahl sagt, **über wie viele Spalten** die Zelle reicht. Fürs Zählen: `colspan=\"3\"` **zählt wie drei** – die obere Zeile hat nur **einen** Zellen-Tag, ist aber genauso breit.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect x=\"20\" y=\"30\" width=\"240\" height=\"30\" fill=\"#e0632e\" fill-opacity=\"0.25\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"30\" y=\"50\" fill=\"#1d2733\" font-weight=\"bold\">Handy-Tarife</text><text x=\"166\" y=\"50\" fill=\"#e0632e\" font-weight=\"bold\">colspan=\"3\"</text><rect x=\"20\" y=\"60\" width=\"80\" height=\"30\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><rect x=\"100\" y=\"60\" width=\"80\" height=\"30\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><rect x=\"180\" y=\"60\" width=\"80\" height=\"30\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><rect x=\"20\" y=\"90\" width=\"80\" height=\"30\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><rect x=\"100\" y=\"90\" width=\"80\" height=\"30\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><rect x=\"180\" y=\"90\" width=\"80\" height=\"30\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><text x=\"28\" y=\"80\" fill=\"#1d2733\">Tarif S</text><text x=\"108\" y=\"80\" fill=\"#1d2733\">5 GB</text><text x=\"188\" y=\"80\" fill=\"#1d2733\">9,99 €</text><text x=\"20\" y=\"140\" fill=\"#1d2733\">Oben: ein Zellen-Tag mit colspan=\"3\"</text><text x=\"20\" y=\"156\" fill=\"#5b6b7c\">– so breit wie die 3 Zellen darunter</text></svg>"
     },
     {
       "type": "fill",
       "text": "Die Titel-Zelle soll über **drei** Spalten reichen. Setze das fehlende Attribut ein.",
-      "template": "<tr>\n  <th ___=\"3\">Wochenplan</th>\n</tr>",
+      "template": "<tr>\n  <th ___=\"3\">Trainingsplan</th>\n</tr>",
       "solution": "colspan",
       "accept": ["colspan"],
       "hint": "Das Attribut heißt `colspan` – column span. Die 3 steht schon da."
     },
     {
       "type": "explain",
-      "text": "Das Gleiche gibt es auch **senkrecht**: Mit `rowspan` (row span) reicht eine Zelle über **mehrere Zeilen** nach unten.\n\n```html\n<tr>\n  <th rowspan=\"2\">Kalt</th>\n  <td>Apfelschorle</td>\n</tr>\n<tr>\n  <td>Sprudel</td>\n</tr>\n```\n\nDie Zelle „Kalt“ belegt zwei Zeilen. Deshalb gilt: Die **nächste Zeile lässt diese Zelle weg** – sie hat nur noch einen Zellen-Tag, denn ihr erster Platz ist ja schon von „Kalt“ besetzt.\n\nMerke: `colspan` verbindet **nach rechts**, `rowspan` verbindet **nach unten**."
+      "text": "Das Gleiche gibt es **senkrecht**: Mit `rowspan` (row span) reicht eine Zelle über **mehrere Zeilen** nach unten.\n\n```html\n<tr>\n  <th rowspan=\"2\">Montag</th>\n  <td>Beine</td>\n</tr>\n<tr>\n  <td>Bauch</td>\n</tr>\n```\n\nDie Zelle „Montag“ belegt zwei Zeilen. Deshalb **lässt die nächste Zeile diese Zelle weg** – ihr erster Platz ist schon besetzt.\n\nMerke: `colspan` verbindet **nach rechts**, `rowspan` **nach unten**.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect x=\"20\" y=\"30\" width=\"80\" height=\"30\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><rect x=\"100\" y=\"30\" width=\"120\" height=\"30\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><rect x=\"20\" y=\"60\" width=\"80\" height=\"60\" fill=\"#1a9e5c\" fill-opacity=\"0.25\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><rect x=\"100\" y=\"60\" width=\"120\" height=\"30\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><rect x=\"100\" y=\"90\" width=\"120\" height=\"30\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><text x=\"28\" y=\"50\" fill=\"#1d2733\" font-weight=\"bold\">Tag</text><text x=\"108\" y=\"50\" fill=\"#1d2733\" font-weight=\"bold\">Übung</text><text x=\"28\" y=\"95\" fill=\"#1d2733\" font-weight=\"bold\">Montag</text><text x=\"108\" y=\"80\" fill=\"#1d2733\">Beine</text><text x=\"108\" y=\"110\" fill=\"#1d2733\">Bauch</text><text x=\"230\" y=\"95\" fill=\"#1a9e5c\" font-weight=\"bold\">rowspan=\"2\"</text><text x=\"20\" y=\"140\" fill=\"#1d2733\">Zeile 3 hat nur eine Zelle:</text><text x=\"20\" y=\"156\" fill=\"#5b6b7c\">ihr erster Platz ist schon belegt</text></svg>"
     },
     {
       "type": "example",
-      "text": "Eine Getränkekarte mit beidem: Die Titelzeile nutzt `colspan=\"2\"`, die Zellen „Kalt“ und „Warm“ nutzen `rowspan=\"2\"`.\n\nProbiere: Ändere bei „Kalt“ das `rowspan=\"2\"` in `rowspan=\"3\"` und beobachte, wie die Tabelle verrutscht. Stelle es danach zurück – und füge bei „Warm“ ein drittes Getränk hinzu (eine neue Zeile mit nur **einer** `<td>`, dazu `rowspan=\"3\"` bei „Warm“).",
-      "html": "<table>\n  <tr>\n    <th colspan=\"2\">Getränkekarte</th>\n  </tr>\n  <tr>\n    <th rowspan=\"2\">Kalt</th>\n    <td>Apfelschorle</td>\n  </tr>\n  <tr>\n    <td>Sprudel</td>\n  </tr>\n  <tr>\n    <th rowspan=\"2\">Warm</th>\n    <td>Kakao</td>\n  </tr>\n  <tr>\n    <td>Tee</td>\n  </tr>\n</table>\n",
+      "text": "Ein Trainingsplan mit beidem: Titelzeile mit `colspan=\"2\"`, die Tage mit `rowspan=\"2\"`.\n\nProbiere: Ändere bei „Montag“ `rowspan=\"2\"` in `rowspan=\"3\"` – die Tabelle verrutscht. Stelle es zurück und gib „Mittwoch“ eine dritte Übung (neue Zeile mit **einer** `<td>`, dazu `rowspan=\"3\"`).",
+      "html": "<table>\n  <tr>\n    <th colspan=\"2\">Trainingsplan</th>\n  </tr>\n  <tr>\n    <th rowspan=\"2\">Montag</th>\n    <td>Beine</td>\n  </tr>\n  <tr>\n    <td>Bauch</td>\n  </tr>\n  <tr>\n    <th rowspan=\"2\">Mittwoch</th>\n    <td>Rücken</td>\n  </tr>\n  <tr>\n    <td>Arme</td>\n  </tr>\n</table>\n",
       "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\nth { background-color: #f0e6d6; }\n",
       "editable": ["html"]
     },
@@ -49,27 +51,27 @@
     },
     {
       "type": "code",
-      "task": "Baue einen Speiseplan mit Titelzeile:\n\n1. Erste Zeile: **eine** `<th>`-Zelle mit `colspan=\"3\"` und dem Text **Speiseplan**\n2. Kopfzeile mit drei `<th>`-Zellen: **Tag**, **Essen**, **Preis**\n3. Zwei Datenzeilen mit je drei `<td>` – die erste beginnt mit **Montag** (Essen und Preis darfst du dir ausdenken)",
+      "task": "Baue einen Tarif-Vergleich mit Titelzeile:\n\n1. Erste Zeile: **eine** `<th>` mit `colspan=\"3\"` und dem Text **Handy-Tarife**\n2. Kopfzeile mit drei `<th>`: **Tarif**, **Daten**, **Preis**\n3. Zwei Datenzeilen mit je drei `<td>` – die erste beginnt mit **Tarif S** (Daten und Preis denkst du dir aus)",
       "starter": {
-        "html": "<!-- Dein Speiseplan hier -->\n",
+        "html": "<!-- Dein Tarif-Vergleich hier -->\n",
         "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\nth { background-color: #f0e6d6; }\n"
       },
       "editable": ["html"],
       "hints": [
         "Drei Arten von Zeilen: erst die Titelzeile (1 Zelle mit colspan), dann die Kopfzeile (3 <th>), dann die Datenzeilen (je 3 <td>).",
-        "Die Titelzeile sieht so aus: <tr><th colspan=\"3\">Speiseplan</th></tr>",
-        "```html\n<table>\n  <tr>\n    <th colspan=\"3\">Speiseplan</th>\n  </tr>\n  <tr>\n    <th>Tag</th>\n    <th>Essen</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Montag</td>\n    <td>Pizza</td>\n    <td>3,50 €</td>\n  </tr>\n  <tr>\n    <td>Dienstag</td>\n    <td>Nudeln</td>\n    <td>3,00 €</td>\n  </tr>\n</table>\n```"
+        "Die Titelzeile sieht so aus: <tr><th colspan=\"3\">Handy-Tarife</th></tr>",
+        "```html\n<table>\n  <tr>\n    <th colspan=\"3\">Handy-Tarife</th>\n  </tr>\n  <tr>\n    <th>Tarif</th>\n    <th>Daten</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Tarif S</td>\n    <td>5 GB</td>\n    <td>9,99 €</td>\n  </tr>\n  <tr>\n    <td>Tarif M</td>\n    <td>15 GB</td>\n    <td>14,99 €</td>\n  </tr>\n</table>\n```"
       ],
       "solution": {
-        "html": "<table>\n  <tr>\n    <th colspan=\"3\">Speiseplan</th>\n  </tr>\n  <tr>\n    <th>Tag</th>\n    <th>Essen</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Montag</td>\n    <td>Pizza</td>\n    <td>3,50 €</td>\n  </tr>\n  <tr>\n    <td>Dienstag</td>\n    <td>Nudeln</td>\n    <td>3,00 €</td>\n  </tr>\n</table>\n"
+        "html": "<table>\n  <tr>\n    <th colspan=\"3\">Handy-Tarife</th>\n  </tr>\n  <tr>\n    <th>Tarif</th>\n    <th>Daten</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Tarif S</td>\n    <td>5 GB</td>\n    <td>9,99 €</td>\n  </tr>\n  <tr>\n    <td>Tarif M</td>\n    <td>15 GB</td>\n    <td>14,99 €</td>\n  </tr>\n</table>\n"
       },
       "tests": [
         { "type": "attr", "selector": "th[colspan]", "attr": "colspan", "expected": "3", "label": "Die Titel-Zelle reicht über drei Spalten (colspan=\"3\")" },
-        { "type": "text", "selector": "th[colspan='3']", "expected": "Speiseplan", "label": "Die Titel-Zelle enthält „Speiseplan“" },
+        { "type": "text", "selector": "th[colspan='3']", "expected": "Handy-Tarife", "label": "Die Titel-Zelle enthält „Handy-Tarife“" },
         { "type": "selector", "selector": "th", "min": 4, "label": "Es gibt die Titel-Zelle und drei Kopf-Zellen" },
         { "type": "selector", "selector": "tr", "min": 4, "label": "Titelzeile, Kopfzeile und zwei Datenzeilen sind da" },
         { "type": "selector", "selector": "td", "min": 6, "label": "Die Datenzeilen haben je drei Zellen" },
-        { "type": "text", "selector": "td", "expected": "Montag", "label": "Die erste Datenzeile beginnt mit „Montag“" }
+        { "type": "text", "selector": "td", "expected": "Tarif S", "label": "Die erste Datenzeile beginnt mit „Tarif S“" }
       ]
     }
   ]

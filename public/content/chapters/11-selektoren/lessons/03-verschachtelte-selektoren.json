@@ -4,18 +4,27 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Ein typisches Problem: Die Links in deiner **Navigation** sollen anders aussehen als die Links **im Text**. Aber `a { ... }` trifft ja alle Links gleichzeitig …\n\nDie Lösung ist der **Nachfahren-Selektor**: zwei Selektoren, getrennt durch ein **Leerzeichen**:\n\n```css\nnav a {\n  color: white;\n}\n```\n\nGelesen wird er **von rechts nach links**: „Alle `a`-Elemente, **die innerhalb** eines `nav` stecken.“ Links außerhalb der Navigation bleiben unberührt.\n\nDas unscheinbare Leerzeichen ist also ein echter Operator – es bedeutet „**darin**“. Dabei ist egal, wie tief das Element steckt: `nav a` findet den Link auch, wenn er im `nav` noch in einer Liste steckt."
+      "text": "Ein typisches Problem: Die Links in der **Navigation** deiner Clan-Seite sollen anders aussehen als die Links **im Text**. Aber `a { … }` trifft alle Links gleichzeitig …\n\nDie Lösung ist der **Nachfahren-Selektor**: zwei Selektoren, getrennt durch ein **Leerzeichen**:\n\n```css\nnav a {\n  color: white;\n}\n```\n\nGelesen: „Alle `a`-Elemente, **die innerhalb** eines `nav` stecken.“"
+    },
+    {
+      "type": "explain",
+      "text": "Links außerhalb der Navigation bleiben unberührt. Das unscheinbare Leerzeichen ist also ein echter Operator – es bedeutet „**darin**“.\n\nDabei ist egal, wie tief das Element steckt: `nav a` findet den Link auch, wenn er im `nav` noch in einer Liste liegt. Im Baum trifft die Regel nur die blauen Links.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\"><text x=\"160\" y=\"22\" font-size=\"13\" font-weight=\"bold\" fill=\"#1d2733\" text-anchor=\"middle\">body</text><line x1=\"150\" y1=\"28\" x2=\"90\" y2=\"50\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><line x1=\"170\" y1=\"28\" x2=\"230\" y2=\"50\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"90\" y=\"66\" font-size=\"13\" font-weight=\"bold\" fill=\"#2f6fdb\" text-anchor=\"middle\">nav</text><text x=\"230\" y=\"66\" font-size=\"13\" font-weight=\"bold\" fill=\"#1d2733\" text-anchor=\"middle\">main</text><line x1=\"80\" y1=\"72\" x2=\"50\" y2=\"94\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><line x1=\"100\" y1=\"72\" x2=\"130\" y2=\"94\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><line x1=\"230\" y1=\"72\" x2=\"230\" y2=\"94\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"50\" y=\"110\" font-size=\"13\" font-weight=\"bold\" fill=\"#2f6fdb\" text-anchor=\"middle\">a ✓</text><text x=\"130\" y=\"110\" font-size=\"13\" font-weight=\"bold\" fill=\"#2f6fdb\" text-anchor=\"middle\">a ✓</text><text x=\"230\" y=\"110\" font-size=\"13\" fill=\"#1d2733\" text-anchor=\"middle\">p</text><line x1=\"230\" y1=\"116\" x2=\"230\" y2=\"132\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"230\" y=\"148\" font-size=\"13\" fill=\"#5b6b7c\" text-anchor=\"middle\">a ✗ (nicht im nav)</text><text x=\"90\" y=\"148\" font-size=\"12\" fill=\"#2f6fdb\" text-anchor=\"middle\">nav a trifft nur diese</text></svg>"
     },
     {
       "type": "example",
       "text": "Die Regel `nav a` trifft nur die zwei Navigations-Links – der Link im Text bleibt normal. Ändere den Selektor testweise in `a` (ohne `nav`): Jetzt sind alle Links orange!",
-      "html": "<nav>\n  <a href=\"index.html\">Start</a>\n  <a href=\"galerie.html\">Galerie</a>\n</nav>\n<main>\n  <p>Unsere Fotos entstehen mit Tipps von <a href=\"https://www.example.com\">dieser Fotoseite</a>.</p>\n</main>\n",
+      "html": "<nav>\n  <a href=\"index.html\">Start</a>\n  <a href=\"team.html\">Team</a>\n</nav>\n<main>\n  <p>Alle Ergebnisse stehen auf <a href=\"https://www.example.com\">der Turnier-Seite</a>.</p>\n</main>\n",
       "css": "nav a {\n  color: #e08a2e;\n  font-weight: bold;\n}\n",
       "editable": ["css"]
     },
     {
       "type": "explain",
-      "text": "Der Nachfahren-Selektor funktioniert mit **allem**, was du schon kennst – auch mit Klassen:\n\n```css\n.karte p {\n  color: #444444;\n}\n```\n\nDas trifft alle Absätze, die **innerhalb** eines Elements mit `class=\"karte\"` liegen.\n\nUnd jetzt die Auflösung aus der letzten Lektion – **Komma und Leerzeichen sind zwei völlig verschiedene Dinge**:\n\n```css\nfooter, p { color: gray; }  /* GRUPPE: der footer UND alle p der Seite */\nfooter p { color: gray; }   /* NACHFAHRE: nur die p IM footer */\n```\n\nMerksatz: **Komma heißt „und auch“, Leerzeichen heißt „darin“.**"
+      "text": "Der Nachfahren-Selektor funktioniert mit **allem**, was du kennst – auch mit Klassen:\n\n```css\n.karte p {\n  color: #444444;\n}\n```\n\nDas trifft alle Absätze **innerhalb** eines Elements mit `class=\"karte\"` – etwa die Spielerkarten im Kader."
+    },
+    {
+      "type": "explain",
+      "text": "Jetzt die Auflösung aus der letzten Lektion – **Komma und Leerzeichen sind zwei völlig verschiedene Dinge**:\n\n```css\nfooter, p { color: gray; }  /* GRUPPE: footer UND alle p */\nfooter p { color: gray; }   /* NACHFAHRE: nur p IM footer */\n```\n\nMerksatz: **Komma heißt „und auch“, Leerzeichen heißt „darin“.**"
     },
     {
       "type": "quiz",
@@ -23,7 +32,7 @@
       "options": [
         "Alle Absätze, die in einem Element mit `class=\"karte\"` stecken",
         "Alle Absätze mit `class=\"karte\"`",
-        "Alle Elemente mit `class=\"karte\"` und zusätzlich alle Absätze der Seite"
+        "Alle Elemente mit `class=\"karte\"` und zusätzlich alle Absätze"
       ],
       "correct": 0,
       "explanation": "Das Leerzeichen heißt „darin“: erst das Element mit der Klasse `karte`, dann die Absätze **darin**. Für „alle Elemente mit karte und alle p“ bräuchtest du das Komma: `.karte, p`."
@@ -38,9 +47,9 @@
     },
     {
       "type": "code",
-      "task": "Im HTML 🔒 gibt es eine Navigation und einen Link im Fließtext.\n\nSchreibe **eine** Regel, die **nur die Navigations-Links** trifft:\n\n1. Textfarbe `#2f6fdb`\n2. `font-weight: bold`\n\nDer Link im Text muss **normal bleiben** – nimm also nicht einfach `a` als Selektor!",
+      "task": "Im HTML 🔒 gibt es eine Navigation und einen Link im Fließtext.\n\nSchreibe **eine** Regel, die **nur die Navigations-Links** trifft:\n\n1. Textfarbe `#2f6fdb`\n2. `font-weight: bold`\n\nDer Link im Text muss **normal bleiben** – nimm also nicht einfach `a`!",
       "starter": {
-        "html": "<nav>\n  <a href=\"index.html\">Start</a>\n  <a href=\"speisekarte.html\">Speisekarte</a>\n</nav>\n<main>\n  <h2>Rezept der Woche</h2>\n  <p>Alle Rezepte findest du auf <a href=\"https://www.example.com\">unserer Rezeptseite</a>.</p>\n</main>\n",
+        "html": "<nav>\n  <a href=\"index.html\">Start</a>\n  <a href=\"spielplan.html\">Spielplan</a>\n</nav>\n<main>\n  <h2>Spieler der Woche</h2>\n  <p>Alle Stats findest du auf <a href=\"https://www.example.com\">unserer Stats-Seite</a>.</p>\n</main>\n",
         "css": "/* Deine Regel hier */\n"
       },
       "editable": ["css"],

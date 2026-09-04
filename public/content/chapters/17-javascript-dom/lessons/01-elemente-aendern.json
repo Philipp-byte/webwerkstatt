@@ -4,14 +4,21 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Jetzt wird es richtig spannend: **JavaScript kann die HTML-Seite verändern!**\n\nDafür brauchst du zwei Schritte:\n\n**1. Element finden** – über seine `id` (kennst du aus dem HTML-Teil!):\n\n```js\nlet titel = document.getElementById(\"titel\");\n```\n\n**2. Inhalt ändern** – mit `.textContent`:\n\n```js\ntitel.textContent = \"Neuer Text!\";\n```\n\nAchte auf die **exakte Schreibweise** von `getElementById` – großes E, großes B, kleines d am Ende."
+      "text": "Jetzt wird es spannend: **JavaScript kann die Seite verändern** – wie ein Like-Button, der nach dem Klick eine neue Zahl zeigt.\n\nSchritt 1: das Element **finden**, über seine `id`:\n\n```js\nlet titel = document.getElementById(\"titel\");\n```\n\nAchte auf die Schreibweise von `getElementById`: großes E, großes B, kleines d am Ende.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"13\"><rect x=\"10\" y=\"50\" width=\"130\" height=\"60\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"75\" y=\"72\" text-anchor=\"middle\" fill=\"#e0632e\" font-size=\"12\">JavaScript</text><text x=\"75\" y=\"94\" text-anchor=\"middle\" fill=\"#1d2733\" font-size=\"12\">getElementById(\"titel\")</text><rect x=\"190\" y=\"14\" width=\"120\" height=\"132\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"250\" y=\"32\" text-anchor=\"middle\" fill=\"#5b6b7c\" font-size=\"12\">HTML-Seite</text><rect x=\"200\" y=\"46\" width=\"100\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"250\" y=\"64\" text-anchor=\"middle\" fill=\"#2f6fdb\" font-size=\"12\">h1 id=\"titel\"</text><text x=\"250\" y=\"98\" text-anchor=\"middle\" fill=\"#5b6b7c\" font-size=\"12\">p</text><text x=\"250\" y=\"126\" text-anchor=\"middle\" fill=\"#5b6b7c\" font-size=\"12\">p</text><path d=\"M140 80 L192 60 M182 58 L192 60 L186 68\" fill=\"none\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"160\" y=\"140\" text-anchor=\"middle\" fill=\"#5b6b7c\" font-size=\"12\">findet genau das Element mit dieser id</text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Schritt 2: den Inhalt **ändern** – mit `.textContent`:\n\n```js\ntitel.textContent = \"Neuer Text!\";\n```\n\nAlles, was vorher im Element stand, wird ersetzt. Dein HTML-Code bleibt gleich – nur die Anzeige im Browser ändert sich."
     },
     {
       "type": "example",
-      "text": "Im HTML 🔒 steht „Alter Text“ – aber in der Vorschau liest du etwas anderes! JavaScript hat den Inhalt beim Laden sofort ausgetauscht. Ändere den neuen Text im JS-Tab.",
-      "html": "<h1 id=\"titel\">Alter Text</h1>\n<p>Der Rest der Seite bleibt, wie er ist.</p>\n",
-      "js": "let titel = document.getElementById(\"titel\");\ntitel.textContent = \"JavaScript war hier!\";\n",
-      "editable": ["js"]
+      "text": "Im HTML 🔒 steht „Kein neuer Rekord“ – in der Vorschau liest du etwas anderes! JavaScript hat den Text beim Laden sofort ausgetauscht. Ändere den neuen Text im JS-Tab.",
+      "html": "<h1 id=\"meldung\">Kein neuer Rekord</h1>\n<p>Der Rest der Seite bleibt, wie er ist.</p>\n",
+      "js": "let meldung = document.getElementById(\"meldung\");\nmeldung.textContent = \"Neuer Highscore: 9999!\";\n",
+      "editable": [
+        "js"
+      ]
     },
     {
       "type": "quiz",
@@ -26,47 +33,61 @@
     },
     {
       "type": "explain",
-      "text": "Und was passiert, wenn die id **nicht existiert** – etwa wegen eines Tippfehlers?\n\n```js\nlet el = document.getElementById(\"titell\");\nel.textContent = \"Hallo\";\n```\n\n`getElementById` findet nichts und liefert den Sonderwert `null` („nichts gefunden“). Die zweite Zeile stoppt dann mit einer Fehlermeldung wie `Cannot set properties of null`.\n\nWenn du diese Meldung siehst, weißt du ab jetzt sofort, was zu tun ist: **id im HTML und id im JavaScript Zeichen für Zeichen vergleichen.** Auch Groß- und Kleinschreibung muss exakt stimmen – `\"Titel\"` findet `id=\"titel\"` nicht."
+      "text": "Was passiert bei einem **Tippfehler** in der id?\n\n```js\nlet el = document.getElementById(\"titell\");\nel.textContent = \"Hallo\";\n```\n\n`getElementById` findet nichts und liefert `null` („nichts gefunden“). Die zweite Zeile stoppt mit `Cannot set properties of null`.\n\nSiehst du diese Meldung: **id im HTML und im JavaScript Zeichen für Zeichen vergleichen** – auch Groß- und Kleinschreibung."
     },
     {
       "type": "fill",
       "text": "Setze die fehlende Eigenschaft ein, die den **Textinhalt** eines Elements ändert.",
       "template": "ueberschrift.___ = \"Neue Überschrift\";",
       "solution": "textContent",
-      "accept": ["textContent"],
+      "accept": [
+        "textContent"
+      ],
       "hint": "Die Eigenschaft heißt `textContent` – mit großem C in der Mitte."
     },
     {
       "type": "code",
-      "task": "Das HTML 🔒 hat eine Überschrift mit `id=\"titel\"` und einen Absatz mit `id=\"info\"`.\n\nÄndere per JavaScript:\n\n1. Die Überschrift soll **Willkommen!** anzeigen\n2. Der Absatz soll **Diese Seite kann sich verändern.** anzeigen",
+      "task": "Das HTML 🔒 hat eine Überschrift `id=\"titel\"` und einen Absatz `id=\"info\"`.\n\nÄndere per JavaScript:\n\n1. Die Überschrift zeigt **Mein Highscore**\n2. Der Absatz zeigt **Neuer Rekord: 12500 Punkte**",
       "starter": {
-        "html": "<h1 id=\"titel\">Platzhalter</h1>\n<p id=\"info\">Hier steht noch nichts Sinnvolles.</p>\n",
+        "html": "<h1 id=\"titel\">Platzhalter</h1>\n<p id=\"info\">Hier steht noch nichts.</p>\n",
         "js": "// Finde die Elemente und ändere ihren textContent\n"
       },
-      "editable": ["js"],
+      "editable": [
+        "js"
+      ],
       "hints": [
         "Zwei Schritte pro Element: erst mit getElementById finden, dann textContent setzen.",
-        "let titel = document.getElementById(\"titel\"); titel.textContent = \"Willkommen!\";",
-        "```js\nlet titel = document.getElementById(\"titel\");\ntitel.textContent = \"Willkommen!\";\n\nlet info = document.getElementById(\"info\");\ninfo.textContent = \"Diese Seite kann sich verändern.\";\n```"
+        "let titel = document.getElementById(\"titel\"); titel.textContent = \"Mein Highscore\";",
+        "```js\nlet titel = document.getElementById(\"titel\");\ntitel.textContent = \"Mein Highscore\";\n\nlet info = document.getElementById(\"info\");\ninfo.textContent = \"Neuer Rekord: 12500 Punkte\";\n```"
       ],
       "solution": {
-        "js": "let titel = document.getElementById(\"titel\");\ntitel.textContent = \"Willkommen!\";\n\nlet info = document.getElementById(\"info\");\ninfo.textContent = \"Diese Seite kann sich verändern.\";\n"
+        "js": "let titel = document.getElementById(\"titel\");\ntitel.textContent = \"Mein Highscore\";\n\nlet info = document.getElementById(\"info\");\ninfo.textContent = \"Neuer Rekord: 12500 Punkte\";\n"
       },
       "tests": [
-        { "type": "text", "selector": "#titel", "expected": "Willkommen!", "label": "Die Überschrift zeigt „Willkommen!“" },
-        { "type": "text", "selector": "#info", "expected": "Diese Seite kann sich verändern.", "label": "Der Absatz zeigt den neuen Text" }
+        {
+          "type": "text",
+          "selector": "#titel",
+          "expected": "Mein Highscore",
+          "label": "Die Überschrift zeigt „Mein Highscore“"
+        },
+        {
+          "type": "text",
+          "selector": "#info",
+          "expected": "Neuer Rekord: 12500 Punkte",
+          "label": "Der Absatz zeigt „Neuer Rekord: 12500 Punkte“"
+        }
       ]
     },
     {
       "type": "quiz",
-      "question": "Im HTML steht `<p id=\"preis\">`. Das JavaScript ruft `document.getElementById(\"Preis\")` auf. Was passiert?",
+      "question": "Im HTML steht `<p id=\"likes\">`. Das JavaScript ruft `document.getElementById(\"Likes\")` auf. Was passiert?",
       "options": [
         "Der Absatz wird trotzdem gefunden",
-        "Es wird nichts gefunden (null) – Groß- und Kleinschreibung zählt",
+        "Nichts gefunden (null) – Groß- und Kleinschreibung zählt",
         "Der Browser benennt die id automatisch um"
       ],
       "correct": 1,
-      "explanation": "„Preis“ und „preis“ sind für JavaScript zwei verschiedene Namen. Die Folge: null – und beim nächsten Zugriff die Fehlermeldung aus dieser Lektion."
+      "explanation": "„Likes“ und „likes“ sind für JavaScript zwei verschiedene Namen. Die Folge: null – und beim nächsten Zugriff die Fehlermeldung aus dieser Lektion."
     }
   ]
 }

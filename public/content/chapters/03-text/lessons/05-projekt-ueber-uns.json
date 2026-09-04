@@ -4,11 +4,11 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Weiter geht es mit dem **Café Pause**! In Etappe 1 hast du die Startseite gebaut: Grundgerüst, Titel, Überschrift und Willkommensabsatz. Genau da machst du jetzt weiter – dein gespeicherter Stand ist schon in der Werkbank geladen.\n\nHeute bekommt die Startseite einen Bereich **„Über uns“** – mit allem aus diesem Kapitel: einer `<h2>`-Zwischenüberschrift, Hervorhebungen mit `<strong>` und `<em>`, einer `<hr>`-Trennlinie und der Adresse mit `<br>`-Zeilenumbruch."
+      "text": "Weiter geht es mit dem **Café Pause**! In Etappe 1 hast du die Startseite gebaut: Grundgerüst, Titel, Überschrift und Willkommensabsatz. Dein gespeicherter Stand ist schon in der Werkbank geladen.\n\nHeute bekommt die Startseite einen Bereich **„Über uns“** – mit allem aus diesem Kapitel: `<h2>`, `<strong>` und `<em>`, einer `<hr>`-Trennlinie und der Adresse mit `<br>`."
     },
     {
       "type": "code",
-      "task": "**Etappe 2: Über uns.**\n\nErgänze im `<body>` unter dem Willkommensabsatz:\n\n1. Eine Zwischenüberschrift `<h2>` mit dem Text **Über uns**.\n2. Darunter zwei Absätze über das Café (den Text darfst du dir ausdenken): Hebe im ersten ein Wort oder eine Wortgruppe mit `<strong>` hervor, im zweiten eine mit `<em>`.\n3. Danach eine Trennlinie `<hr>`.\n4. Unter der Linie einen Absatz mit der Adresse – die beiden Zeilen trennst du mit `<br>`:\n\n```\nMusterstraße 12\n74072 Heilbronn\n```\n\nAlles Vorhandene bleibt stehen!",
+      "task": "**Etappe 2: Über uns.**\n\nErgänze im `<body>` unter dem Willkommensabsatz:\n\n1. `<h2>` mit dem Text **Über uns**.\n2. Zwei Absätze über das Café – einer mit `<strong>`, einer mit `<em>`.\n3. Eine Trennlinie `<hr>`.\n4. Die Adresse als Absatz mit `<br>`: **Musterstraße 12** / **74072 Heilbronn**.\n\nAlles Vorhandene bleibt stehen!",
       "starter": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen in unserem Schülercafé! Bei uns kannst du jede Pause genießen.</p>\n  </body>\n</html>\n"
       },

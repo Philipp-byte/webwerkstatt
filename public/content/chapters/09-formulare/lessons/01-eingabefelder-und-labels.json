@@ -4,7 +4,12 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Anmeldung, Suchfeld, Online-Bestellung – überall im Web tippst du etwas in **Formulare**. Ein Formular ist der Teil einer Seite, in dem die Besucherin selbst etwas **eingeben** kann.\n\nDer Container dafür ist `<form>` – in ihn kommen alle Eingabefelder:\n\n```html\n<form>\n  <input type=\"text\">\n</form>\n```\n\n**Wichtig, bevor wir loslegen:** Beim Absenden schickt ein echtes Formular die eingetippten Daten an einen **Server** – einen Computer im Internet, der sie entgegennimmt. Wir haben keinen Server. Die Werkstatt-Vorschau **fängt das Absenden ab**: Es wird nichts verschickt, nirgendwohin. Formulare sind bei uns also reine **Struktur-Übung** – es geht um sauberes HTML."
+      "text": "Turnier-Anmeldung, Suchfeld, Online-Bestellung – überall im Web tippst du etwas in **Formulare**. Ein Formular ist der Teil einer Seite, in dem Besucher:innen selbst etwas **eingeben** können.\n\nDer Container dafür ist `<form>` – in ihn kommen alle Eingabefelder:\n\n```html\n<form>\n  <input type=\"text\">\n</form>\n```"
+    },
+    {
+      "type": "explain",
+      "text": "**Wichtig, bevor wir loslegen:** Beim Absenden schickt ein echtes Formular die Daten an einen **Server** – einen Computer im Internet, der sie entgegennimmt.\n\nWir haben keinen Server. Die Werkstatt-Vorschau **fängt das Absenden ab**: Es wird nichts verschickt, nirgendwohin.\n\nFormulare sind bei uns also reine **Struktur-Übung** – es geht um sauberes HTML.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect x=\"20\" y=\"46\" width=\"100\" height=\"60\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"40\" y=\"72\" fill=\"#1d2733\" font-weight=\"bold\">Browser</text><text x=\"40\" y=\"92\" fill=\"#5b6b7c\">Formular</text><line x1=\"120\" y1=\"76\" x2=\"200\" y2=\"76\" stroke=\"#e0632e\" stroke-width=\"2\" stroke-dasharray=\"6 4\"/><text x=\"130\" y=\"64\" fill=\"#e0632e\" font-weight=\"bold\">Absenden</text><line x1=\"150\" y1=\"66\" x2=\"170\" y2=\"86\" stroke=\"#e0632e\" stroke-width=\"3\"/><line x1=\"170\" y1=\"66\" x2=\"150\" y2=\"86\" stroke=\"#e0632e\" stroke-width=\"3\"/><rect x=\"200\" y=\"46\" width=\"100\" height=\"60\" rx=\"6\" fill=\"none\" stroke=\"#5b6b7c\" stroke-dasharray=\"4 4\"/><text x=\"228\" y=\"72\" fill=\"#5b6b7c\" font-weight=\"bold\">Server</text><text x=\"212\" y=\"92\" fill=\"#5b6b7c\">gibt es nicht</text><text x=\"20\" y=\"140\" fill=\"#1d2733\">Die Vorschau fängt das Absenden ab.</text></svg>"
     },
     {
       "type": "quiz",
@@ -19,16 +24,17 @@
     },
     {
       "type": "explain",
-      "text": "Das wichtigste Formular-Element ist `<input>` – ein Eingabefeld. Es steht **allein**, ohne schließenden Tag (wie `<img>`). Das Attribut `type` bestimmt, **was für ein Feld** es ist:\n\n`type=\"text\"` – ein einzeiliges Textfeld für beliebigen Text.\n\n`type=\"email\"` – ein Feld für E-Mail-Adressen. Der Browser weiß dann: Hier gehört ein @ hinein.\n\nDazu gibt es `placeholder` – einen **grauen Hinweistext**, der im leeren Feld steht und verschwindet, sobald man tippt:\n\n```html\n<input type=\"text\" placeholder=\"Vor- und Nachname\">\n<input type=\"email\" placeholder=\"name@beispiel.de\">\n```"
+      "text": "Das wichtigste Formular-Element ist `<input>` – ein Eingabefeld. Es steht **allein**, ohne schließenden Tag (wie `<img>`). Das Attribut `type` bestimmt, **was für ein Feld** es ist:\n\n`type=\"text\"` – einzeiliges Textfeld für beliebigen Text.\n\n`type=\"email\"` – Feld für E-Mail-Adressen; der Browser weiß: Hier gehört ein @ hinein.\n\n`placeholder` – grauer **Hinweistext**, der verschwindet, sobald man tippt:\n\n```html\n<input type=\"text\" placeholder=\"Dein Gamertag\">\n<input type=\"email\" placeholder=\"name@beispiel.de\">\n```"
     },
     {
       "type": "example",
-      "text": "Tippe in der Vorschau in die Felder! Beobachte, wie der placeholder verschwindet, sobald du schreibst – und wieder auftaucht, wenn du alles löschst.\n\nÄndere dann einen placeholder-Text im Code.",
-      "html": "<form>\n  <input type=\"text\" placeholder=\"Vor- und Nachname\">\n  <input type=\"email\" placeholder=\"name@beispiel.de\">\n</form>\n"
+      "text": "Tippe in der Vorschau in die Felder! Der placeholder verschwindet, sobald du schreibst – und taucht wieder auf, wenn du alles löschst.\n\nÄndere dann einen placeholder-Text im Code.",
+      "html": "<form>\n  <input type=\"text\" placeholder=\"Dein Gamertag\">\n  <input type=\"email\" placeholder=\"name@beispiel.de\">\n</form>\n"
     },
     {
       "type": "explain",
-      "text": "Ein Eingabefeld allein ist rätselhaft – was soll man da eintippen? Felder brauchen eine **Beschriftung**: das `<label>`.\n\nDamit der Browser weiß, **welches Label zu welchem Feld gehört**, verbindest du beide: Das Label bekommt `for`, das Feld bekommt `id` – mit **demselben Wert**:\n\n```html\n<label for=\"name\">Dein Name:</label>\n<input type=\"text\" id=\"name\">\n```\n\nDie Verbindung hat einen Klick-Bonus: **Klickst du auf das Label, springt der Cursor ins Feld!** Das macht die Klickfläche größer (praktisch am Handy) – und Vorlese-Programme lesen zum Feld die richtige Beschriftung vor."
+      "text": "Ein Eingabefeld allein ist rätselhaft – was soll man eintippen? Felder brauchen eine **Beschriftung**: das `<label>`.\n\nDamit der Browser weiß, **welches Label zu welchem Feld gehört**, verbindest du beide: Das Label bekommt `for`, das Feld `id` – mit **demselben Wert**:\n\n```html\n<label for=\"name\">Dein Name:</label>\n<input type=\"text\" id=\"name\">\n```\n\nKlick-Bonus: **Klickst du aufs Label, springt der Cursor ins Feld** – größere Klickfläche (praktisch am Handy), und Vorlese-Programme lesen die richtige Beschriftung vor.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><text x=\"14\" y=\"26\" fill=\"#e0632e\" font-weight=\"bold\">&lt;label for=\"name\"&gt;</text><rect x=\"14\" y=\"34\" width=\"86\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"20\" y=\"51\" fill=\"#1d2733\" font-weight=\"bold\">Dein Name:</text><text x=\"156\" y=\"26\" fill=\"#2f6fdb\" font-weight=\"bold\">&lt;input id=\"name\"&gt;</text><rect x=\"156\" y=\"34\" width=\"146\" height=\"26\" rx=\"4\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"164\" y=\"51\" fill=\"#5b6b7c\">Vor- und Nachname</text><line x1=\"100\" y1=\"47\" x2=\"154\" y2=\"47\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><path d=\"M146 41 L154 47 L146 53\" fill=\"none\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"14\" y=\"100\" fill=\"#1a9e5c\" font-weight=\"bold\">for = id → Label und Feld sind verbunden</text><text x=\"14\" y=\"122\" fill=\"#1d2733\">Klick aufs Label springt ins Feld</text></svg>"
     },
     {
       "type": "example",
@@ -45,17 +51,17 @@
     },
     {
       "type": "code",
-      "task": "Baue ein kleines Anmelde-Formular:\n\n1. Ein `<form>`-Element als Container\n2. Darin: `<label for=\"name\">Name:</label>` und ein Textfeld (`type=\"text\"`) mit `id=\"name\"` und einem placeholder deiner Wahl\n3. Darunter: ein Label mit dem Text **E-Mail:** (mit passendem `for`) und ein E-Mail-Feld mit `id=\"email\"`\n\nTeste am Ende in der Vorschau: Klick auf die Labels muss die Felder fokussieren!",
+      "task": "Baue die Anmeldung zum Schul-Turnier:\n\n1. Ein `<form>` als Container\n2. Darin `<label for=\"name\">Name:</label>` und ein Textfeld (`type=\"text\"`) mit `id=\"name\"` und einem placeholder deiner Wahl\n3. Darunter ein Label **E-Mail:** (mit passendem `for`) und ein E-Mail-Feld mit `id=\"email\"`\n\nTeste: Klick aufs Label muss das Feld fokussieren!",
       "starter": {
-        "html": "<h2>Anmeldung zur Schul-AG</h2>\n<!-- Dein Formular hier -->\n"
+        "html": "<h2>Anmeldung zum Schul-Turnier</h2>\n<!-- Dein Formular hier -->\n"
       },
       "hints": [
         "Immer im Paar denken: erst <label for=\"...\">, direkt danach das <input> mit derselben id.",
         "Das zweite Paar: <label for=\"email\">E-Mail:</label> und <input type=\"email\" id=\"email\">. Ein <br> dazwischen sorgt für saubere Zeilen.",
-        "```html\n<h2>Anmeldung zur Schul-AG</h2>\n<form>\n  <label for=\"name\">Name:</label>\n  <input type=\"text\" id=\"name\" placeholder=\"Vor- und Nachname\">\n  <br>\n  <label for=\"email\">E-Mail:</label>\n  <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n</form>\n```"
+        "```html\n<h2>Anmeldung zum Schul-Turnier</h2>\n<form>\n  <label for=\"name\">Name:</label>\n  <input type=\"text\" id=\"name\" placeholder=\"Dein Gamertag\">\n  <br>\n  <label for=\"email\">E-Mail:</label>\n  <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n</form>\n```"
       ],
       "solution": {
-        "html": "<h2>Anmeldung zur Schul-AG</h2>\n<form>\n  <label for=\"name\">Name:</label>\n  <input type=\"text\" id=\"name\" placeholder=\"Vor- und Nachname\">\n  <br>\n  <label for=\"email\">E-Mail:</label>\n  <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n</form>\n"
+        "html": "<h2>Anmeldung zum Schul-Turnier</h2>\n<form>\n  <label for=\"name\">Name:</label>\n  <input type=\"text\" id=\"name\" placeholder=\"Dein Gamertag\">\n  <br>\n  <label for=\"email\">E-Mail:</label>\n  <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n</form>\n"
       },
       "tests": [
         { "type": "selector", "selector": "form", "min": 1, "label": "Es gibt ein <form>-Element" },

@@ -16,11 +16,28 @@ Schülerinnen und Schüler an beruflichen Schulen (1BK1T und TG, 16–19 Jahre),
 6. **Abwechslung:** nicht zweimal dasselbe Aufgabenformat direkt hintereinander.
 7. **Beispiele zum Anfassen:** example-Steps laden zum Verändern ein („Ändere X und beobachte Y“).
 
-## Umfang
+## Umfang & Textmenge (Regel seit 03.09.2026: die App BLÄTTERT)
 
-- Lernlektion: 5–8 Steps (mind. 2 explain, 1 example, 1–2 quiz/fill, 1–2 code).
-- Wiederholungslektion: kurzes Intro (warum Wiederholen wirkt, 2–3 Sätze) + 4–6 gemischte Aufgaben **ausschließlich aus früherem Stoff** (steht im Kapitel-Auftrag). Kein neuer Stoff!
-- Projektlektion: kurzes Intro (was heute am Café entsteht, Anschluss an letzte Etappe) + 1 große Code-Aufgabe (die Etappe) — exakt nach Projekt-Bibel.
+Die App zeigt **einen Schritt pro Seite** (Weiterblättern/Wischen statt Scrollen). Jeder Schritt muss **ohne Scrollen auf einen Blick** erfassbar sein:
+
+- **explain: maximal 70 Wörter** — höchstens 3 kurze Absätze à 1–2 Sätze, plus optional EIN kurzer Codeblock. Ist ein Thema größer, in ZWEI explain-Steps aufteilen (mehr, kürzere Steps sind ausdrücklich erwünscht).
+- **task in code-Steps: maximal 50 Wörter** (nummerierte Teilschritte zählen mit).
+- Quiz-Optionen: je maximal 12 Wörter.
+- Lernlektion: 6–10 kurze Steps; Wiederholungslektion: Intro (2 Sätze) + 4–6 Aufgaben; Projektlektion: Intro + 1 Etappen-Aufgabe (nach Projekt-Bibel).
+
+## SuS-Nähe (Pflicht)
+
+Beispiele und Aufgabenthemen kommen aus der Lebenswelt 16–19-jähriger Berufsschüler:innen: **Gaming/E-Sport, Handy & Apps, Sneaker & Style, Fußball & Fitness, Streaming & Serien, Döner/Pizza/Bubble Tea, Führerschein & Moped, Schulalltag (Kiosk, Vertretungsplan, Klassenfahrt), Praktikum & Ausbildung.** Keine echten Markennamen (schreibe „deine Lieblings-App“, „ein Streamingdienst“). Keine Beispiele aus der Erwachsenen-Bürowelt (kein „Quartalsbericht“, keine „Abteilungsliste“). Das Café-Pause-Projekt und seine Texte bleiben unverändert bestehen.
+
+## Grafiken (figure-Feld)
+
+Jede **Lernlektion** enthält mindestens **eine Grafik**, eingebaut als Inline-SVG im ersten passenden explain-Step:
+
+```json
+{ "type": "explain", "text": "…", "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\">…</svg>" }
+```
+
+Regeln: `viewBox="0 0 320 160"` (Breitformat, keine width/height — die App skaliert); Farben nur `#2f6fdb` (blau), `#e0632e` (orange), `#1a9e5c` (grün), `#5b6b7c` (grau), `#1d2733` (Text), Flächen `#eef2f8`; Schrift `font-family="sans-serif"` und mindestens 12px; maximal ~15 Elemente; die Grafik zeigt den **Mechanismus** (z. B. Browser→Server-Pfeile, Box-Modell-Schichten, Baumstruktur), keine Deko. Beschriftungen auf Deutsch.
 
 ## Dateien & Schema
 

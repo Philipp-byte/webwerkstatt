@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Zeit für eine Wiederholungsrunde! Dein Gehirn behält Stoff am besten, wenn es ihn **selbst wieder hervorholen** muss – genau deshalb gibt es diese Lektionen.\n\nHeute dran: **Bilder und Audio** (Kapitel 6) und **Tabellen mit Kopfzeilen und colspan** (Kapitel 7). Und am Ende kombinieren wir beides!"
+      "text": "Zeit für eine Wiederholungsrunde! Dein Gehirn behält Stoff am besten, wenn es ihn **selbst wieder hervorholen** muss – genau deshalb gibt es diese Lektionen.\n\nHeute dran: **Bilder und Audio** (Kapitel 6) und **Tabellen mit Kopfzeilen und colspan** (Kapitel 7). Am Ende kombinieren wir beides!"
     },
     {
       "type": "quiz",
@@ -20,14 +20,14 @@
     {
       "type": "fill",
       "text": "Die Titel-Zelle soll über **beide** Spalten der Tabelle reichen. Setze das fehlende Attribut ein.",
-      "template": "<tr>\n  <th ___=\"2\">Öffnungszeiten</th>\n</tr>",
+      "template": "<tr>\n  <th ___=\"2\">Trainingszeiten</th>\n</tr>",
       "solution": "colspan",
       "accept": ["colspan"],
       "hint": "Das Attribut zum Verbinden von Zellen **nach rechts** heißt `colspan`."
     },
     {
       "type": "code",
-      "task": "Baue eine Galerie-Tabelle fürs Café:\n\n1. Kopfzeile mit den `<th>`-Zellen **Bild** und **Beschreibung**\n2. Datenzeile 1: eine Zelle mit dem Bild **cafe-theke.svg** (alt-Text nicht vergessen!) und eine Zelle mit einer kurzen Beschreibung\n3. Datenzeile 2: genauso mit **cafe-kuchen.svg**",
+      "task": "Baue eine Galerie-Tabelle fürs Café:\n\n1. Kopfzeile mit den `<th>`-Zellen **Bild** und **Beschreibung**\n2. Datenzeile 1: eine Zelle mit dem Bild **cafe-theke.svg** (alt-Text nicht vergessen!) und eine Zelle mit kurzer Beschreibung\n3. Datenzeile 2: genauso mit **cafe-kuchen.svg**",
       "starter": {
         "html": "<h2>Einblicke ins Café</h2>\n<!-- Deine Galerie-Tabelle hier -->\n",
         "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\nth { background-color: #f0e6d6; }\n"
@@ -65,7 +65,7 @@
     },
     {
       "type": "code",
-      "task": "Baue eine Öffnungszeiten-Tabelle mit verbundener Titel-Zelle:\n\n1. Erste Zeile: **eine** `<th>`-Zelle mit `colspan=\"2\"` und dem Text **Öffnungszeiten**\n2. Datenzeile 1: **Wochentags** und **9 bis 15 Uhr** (je eine `<td>`)\n3. Datenzeile 2: **Wochenende** und **geschlossen**",
+      "task": "Baue eine Tabelle mit verbundener Titel-Zelle:\n\n1. Erste Zeile: **eine** `<th>` mit `colspan=\"2\"` und dem Text **Trainingszeiten**\n2. Datenzeile 1: **Montag** und **18 bis 20 Uhr** (je eine `<td>`)\n3. Datenzeile 2: **Samstag** und **10 bis 12 Uhr**",
       "starter": {
         "html": "<!-- Deine Tabelle hier -->\n",
         "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\nth { background-color: #f0e6d6; }\n"
@@ -73,18 +73,18 @@
       "editable": ["html"],
       "hints": [
         "Die Titelzeile hat nur eine Zelle – dank colspan=\"2\" ist sie trotzdem so breit wie die zwei Zellen darunter.",
-        "Titelzeile: <tr><th colspan=\"2\">Öffnungszeiten</th></tr> – danach zwei Zeilen mit je zwei <td>.",
-        "```html\n<table>\n  <tr>\n    <th colspan=\"2\">Öffnungszeiten</th>\n  </tr>\n  <tr>\n    <td>Wochentags</td>\n    <td>9 bis 15 Uhr</td>\n  </tr>\n  <tr>\n    <td>Wochenende</td>\n    <td>geschlossen</td>\n  </tr>\n</table>\n```"
+        "Titelzeile: <tr><th colspan=\"2\">Trainingszeiten</th></tr> – danach zwei Zeilen mit je zwei <td>.",
+        "```html\n<table>\n  <tr>\n    <th colspan=\"2\">Trainingszeiten</th>\n  </tr>\n  <tr>\n    <td>Montag</td>\n    <td>18 bis 20 Uhr</td>\n  </tr>\n  <tr>\n    <td>Samstag</td>\n    <td>10 bis 12 Uhr</td>\n  </tr>\n</table>\n```"
       ],
       "solution": {
-        "html": "<table>\n  <tr>\n    <th colspan=\"2\">Öffnungszeiten</th>\n  </tr>\n  <tr>\n    <td>Wochentags</td>\n    <td>9 bis 15 Uhr</td>\n  </tr>\n  <tr>\n    <td>Wochenende</td>\n    <td>geschlossen</td>\n  </tr>\n</table>\n"
+        "html": "<table>\n  <tr>\n    <th colspan=\"2\">Trainingszeiten</th>\n  </tr>\n  <tr>\n    <td>Montag</td>\n    <td>18 bis 20 Uhr</td>\n  </tr>\n  <tr>\n    <td>Samstag</td>\n    <td>10 bis 12 Uhr</td>\n  </tr>\n</table>\n"
       },
       "tests": [
         { "type": "attr", "selector": "th[colspan]", "attr": "colspan", "expected": "2", "label": "Die Titel-Zelle reicht über beide Spalten (colspan=\"2\")" },
-        { "type": "text", "selector": "th[colspan='2']", "expected": "Öffnungszeiten", "label": "Die Titel-Zelle enthält „Öffnungszeiten“" },
+        { "type": "text", "selector": "th[colspan='2']", "expected": "Trainingszeiten", "label": "Die Titel-Zelle enthält „Trainingszeiten“" },
         { "type": "selector", "selector": "tr", "min": 3, "label": "Es gibt die Titelzeile und zwei Datenzeilen" },
         { "type": "selector", "selector": "td", "min": 4, "label": "Die Datenzeilen haben je zwei Zellen" },
-        { "type": "text", "selector": "td", "expected": "Wochentags", "label": "Die erste Datenzeile beginnt mit „Wochentags“" }
+        { "type": "text", "selector": "td", "expected": "Montag", "label": "Die erste Datenzeile beginnt mit „Montag“" }
       ]
     }
   ]

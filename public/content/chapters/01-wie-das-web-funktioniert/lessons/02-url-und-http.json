@@ -4,33 +4,42 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Jede Seite im Web hat eine eindeutige Adresse: die **URL** (Uniform Resource Locator). Eine URL besteht aus drei wichtigen Teilen:\n\n```\nhttps://www.cafe-pause-beispiel.de/speisekarte.html\n\nSchema:  https\nDomain:  www.cafe-pause-beispiel.de\nPfad:    /speisekarte.html\n```\n\nDas **Schema** (auch Protokoll genannt) legt fest, **wie** Browser und Server miteinander sprechen – im Web meist `https`.\n\nDie **Domain** ist der Name des Servers – sie sagt, **wo** die Seite liegt.\n\nDer **Pfad** sagt, **welche** Datei auf dem Server gemeint ist – hier die Datei `speisekarte.html`. Lässt du den Pfad weg, liefert der Server seine Startseite."
+      "text": "Jede Seite im Web hat eine eindeutige Adresse: die **URL** (Uniform Resource Locator). Sie besteht aus drei Bausteinen:\n\n```\nhttps://www.esport-beispiel.de/turnier.html\n\nSchema:  https\nDomain:  www.esport-beispiel.de\nPfad:    /turnier.html\n```",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><text x=\"160\" y=\"26\" text-anchor=\"middle\" fill=\"#1d2733\" font-weight=\"bold\">Eine URL – drei Bausteine</text><rect x=\"6\" y=\"48\" width=\"60\" height=\"36\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"36\" y=\"71\" text-anchor=\"middle\" fill=\"#1d2733\">https://</text><rect x=\"70\" y=\"48\" width=\"150\" height=\"36\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"145\" y=\"71\" text-anchor=\"middle\" fill=\"#1d2733\">www.esport-beispiel.de</text><rect x=\"224\" y=\"48\" width=\"90\" height=\"36\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"269\" y=\"71\" text-anchor=\"middle\" fill=\"#1d2733\">/turnier.html</text><text x=\"36\" y=\"112\" text-anchor=\"middle\" fill=\"#e0632e\" font-weight=\"bold\">Schema</text><text x=\"36\" y=\"130\" text-anchor=\"middle\" fill=\"#5b6b7c\">wie?</text><text x=\"145\" y=\"112\" text-anchor=\"middle\" fill=\"#2f6fdb\" font-weight=\"bold\">Domain</text><text x=\"145\" y=\"130\" text-anchor=\"middle\" fill=\"#5b6b7c\">welcher Server?</text><text x=\"269\" y=\"112\" text-anchor=\"middle\" fill=\"#1a9e5c\" font-weight=\"bold\">Pfad</text><text x=\"269\" y=\"130\" text-anchor=\"middle\" fill=\"#5b6b7c\">welche Datei?</text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Das **Schema** (auch Protokoll) legt fest, **wie** Browser und Server miteinander sprechen – im Web meist `https`.\n\nDie **Domain** ist der Name des Servers – sie sagt, **wo** die Seite liegt.\n\nDer **Pfad** sagt, **welche** Datei auf dem Server gemeint ist – hier `turnier.html`. Lässt du den Pfad weg, liefert der Server seine Startseite."
     },
     {
       "type": "example",
-      "text": "Diese Mini-Seite zerlegt eine URL farbig in ihre drei Teile.\n\nProbier aus: **Tausche im HTML den Pfad** `/speisekarte.html` gegen `/galerie.html` und beobachte die Anzeige. Was müsstest du ändern, damit die Adresse zu einem anderen Server zeigt?",
-      "html": "<p>Eine URL besteht aus drei Teilen:</p>\n<p class=\"url\"><span class=\"schema\">https://</span><span class=\"domain\">www.cafe-pause-beispiel.de</span><span class=\"pfad\">/speisekarte.html</span></p>\n<p>\n  <span class=\"schema\">Schema</span> – wie gesprochen wird<br>\n  <span class=\"domain\">Domain</span> – welcher Server<br>\n  <span class=\"pfad\">Pfad</span> – welche Datei\n</p>\n",
+      "text": "Diese Mini-Seite zerlegt eine URL farbig in ihre drei Teile.\n\nProbier aus: **Tausche im HTML den Pfad** `/turnier.html` gegen `/teams.html` und beobachte die Anzeige. Was müsstest du ändern, damit die Adresse zu einem anderen Server zeigt?",
+      "html": "<p>Eine URL besteht aus drei Teilen:</p>\n<p class=\"url\"><span class=\"schema\">https://</span><span class=\"domain\">www.esport-beispiel.de</span><span class=\"pfad\">/turnier.html</span></p>\n<p>\n  <span class=\"schema\">Schema</span> – wie gesprochen wird<br>\n  <span class=\"domain\">Domain</span> – welcher Server<br>\n  <span class=\"pfad\">Pfad</span> – welche Datei\n</p>\n",
       "css": ".url {\n  font-family: monospace;\n  font-size: 1.15em;\n}\n.schema { background-color: #ffd9b3; }\n.domain { background-color: #c9e7ff; }\n.pfad { background-color: #d4f7c5; }\n"
     },
     {
       "type": "quiz",
-      "question": "Schau dir die URL `https://www.schule-heilbronn-beispiel.de/termine.html` an. Welcher Teil ist die **Domain**?",
+      "question": "Schau dir die URL `https://www.game-news-beispiel.de/patchnotes.html` an. Welcher Teil ist die **Domain**?",
       "options": [
-        "`www.schule-heilbronn-beispiel.de`",
+        "`www.game-news-beispiel.de`",
         "`https`",
-        "`/termine.html`"
+        "`/patchnotes.html`"
       ],
       "correct": 0,
-      "explanation": "Die Domain ist der Name des Servers. `https` ist das Schema, `/termine.html` der Pfad zur Datei auf dem Server."
+      "explanation": "Die Domain ist der Name des Servers. `https` ist das Schema, `/patchnotes.html` der Pfad zur Datei auf dem Server."
     },
     {
       "type": "explain",
-      "text": "Das Schema `http` steht für **HyperText Transfer Protocol** – die „Sprache“, in der Browser und Server ihre Anfragen und Antworten austauschen.\n\nHeute siehst du fast überall `https`. Das **s** steht für **secure** (sicher): Die Daten werden **verschlüsselt** übertragen. Wer die Leitung abhört, sieht nur Zeichensalat – wichtig bei Passwörtern, Nachrichten oder Bankgeschäften.\n\nIm Browser erkennst du das in der Adressleiste: `https://` am Anfang, bei vielen Browsern zusätzlich ein **Schloss-Symbol**. Vor Seiten mit reinem `http` warnen moderne Browser dagegen mit „Nicht sicher“."
+      "text": "Das Schema `http` steht für **HyperText Transfer Protocol** – die „Sprache“, in der Browser und Server ihre Anfragen und Antworten austauschen.\n\nHeute siehst du fast überall `https`. Das **s** steht für **secure** (sicher): Die Daten werden **verschlüsselt** übertragen. Wer die Leitung abhört, sieht nur Zeichensalat – wichtig bei Passwörtern, Chats oder beim Online-Shopping."
+    },
+    {
+      "type": "explain",
+      "text": "Im Browser erkennst du die Verschlüsselung in der Adressleiste: `https://` am Anfang, bei vielen Browsern zusätzlich ein **Schloss-Symbol**.\n\nVor Seiten mit reinem `http` warnen moderne Browser dagegen mit „Nicht sicher“. Auf so einer Seite solltest du nie ein Passwort eingeben."
     },
     {
       "type": "fill",
       "text": "Setze das Schema für eine **verschlüsselte** Verbindung ein.",
-      "template": "___://www.meine-bank-beispiel.de",
+      "template": "___://www.sneaker-shop-beispiel.de",
       "solution": "https",
       "accept": ["https", "HTTPS"],
       "hint": "Denk an das s wie „secure“ am Ende."
@@ -39,7 +48,7 @@
       "type": "quiz",
       "question": "Woran erkennst du im Browser, dass eine Verbindung **verschlüsselt** ist?",
       "options": [
-        "An `https://` in der Adressleiste – oft zusätzlich mit Schloss-Symbol",
+        "An `https://` in der Adressleiste – oft mit Schloss-Symbol",
         "Daran, dass die Seite besonders schnell lädt",
         "An einem grünen Hintergrund der Webseite"
       ],
@@ -48,7 +57,7 @@
     },
     {
       "type": "explain",
-      "text": "Zwei Begriffe solltest du noch kennen – ganz kurz:\n\n**DNS** (Domain Name System) ist das Telefonbuch des Internets: Es übersetzt die Domain in eine **IP-Adresse** – also einen Namen wie `www.cafe-pause-beispiel.de` in eine Nummer wie `203.0.113.7`, unter der der Server wirklich erreichbar ist. Das passiert automatisch, bevor dein Browser die Anfrage losschickt.\n\n**Ports** sind durchnummerierte „Türen“ eines Servers – `https` klopft standardmäßig an Tür Nummer 443. Eintippen musst du das nie; es reicht zu wissen, dass es diese Türen gibt."
+      "text": "Zwei Begriffe noch, ganz kurz:\n\n**DNS** (Domain Name System) ist das Telefonbuch des Internets: Es übersetzt die Domain in eine **IP-Adresse** – aus `www.esport-beispiel.de` wird eine Nummer wie `203.0.113.7`, unter der der Server erreichbar ist. Wie ein Kontakt im Handy: Du tippst den Namen, gewählt wird die Nummer.\n\n**Ports** sind nummerierte „Türen“ eines Servers – `https` klopft an Tür 443. Eintippen musst du das nie."
     },
     {
       "type": "quiz",

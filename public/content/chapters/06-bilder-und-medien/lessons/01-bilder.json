@@ -4,31 +4,37 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Bilder bindest du mit dem `<img>`-Tag ein. Er steht **allein** – ohne schließenden Tag – und braucht zwei Attribute:\n\n```html\n<img src=\"haus.svg\" alt=\"Ein kleines Haus mit rotem Dach\">\n```\n\n`src` (source = Quelle) sagt dem Browser, **wo** die Bilddatei liegt.\n\n`alt` (alternative) ist die **Beschreibung** des Bildes. Sie wird angezeigt, wenn das Bild nicht lädt, und von Vorlese-Programmen für blinde Menschen vorgelesen. Ein gutes `alt` gehört zu **jedem** Bild – das ist keine Kür, sondern Pflicht.\n\nIn der WebWerkstatt liegen die Übungsbilder `haus.svg`, `katze.svg` und `strand.svg` für dich bereit."
+      "text": "Bilder bindest du mit `<img>` ein. Der Tag steht **allein** – ohne schließenden Tag – und braucht zwei Attribute:\n\n```html\n<img src=\"haus.svg\" alt=\"Ein kleines Haus mit rotem Dach\">\n```\n\n`src` (source = Quelle) sagt dem Browser, **wo** die Bilddatei liegt.\n\n`alt` (alternative) **beschreibt** das Bild: Es erscheint, wenn das Bild nicht lädt, und wird blinden Menschen vorgelesen. Pflicht bei **jedem** Bild!",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect x=\"6\" y=\"40\" width=\"50\" height=\"36\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"31\" y=\"63\" text-anchor=\"middle\" fill=\"#1d2733\" font-weight=\"bold\">&lt;img</text><rect x=\"62\" y=\"40\" width=\"108\" height=\"36\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"116\" y=\"63\" text-anchor=\"middle\" fill=\"#1d2733\">src=\"haus.svg\"</text><rect x=\"176\" y=\"40\" width=\"108\" height=\"36\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"230\" y=\"63\" text-anchor=\"middle\" fill=\"#1d2733\">alt=\"Ein Haus\"</text><rect x=\"290\" y=\"40\" width=\"24\" height=\"36\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"302\" y=\"63\" text-anchor=\"middle\" fill=\"#1d2733\" font-weight=\"bold\">&gt;</text><text x=\"116\" y=\"104\" text-anchor=\"middle\" fill=\"#e0632e\" font-weight=\"bold\">Wo liegt sie?</text><text x=\"116\" y=\"122\" text-anchor=\"middle\" fill=\"#5b6b7c\">Pfad zur Datei</text><text x=\"230\" y=\"104\" text-anchor=\"middle\" fill=\"#1a9e5c\" font-weight=\"bold\">Was ist zu sehen?</text><text x=\"230\" y=\"122\" text-anchor=\"middle\" fill=\"#5b6b7c\">Text für den Notfall</text><text x=\"160\" y=\"150\" text-anchor=\"middle\" fill=\"#5b6b7c\">kein schließender Tag nötig</text></svg>"
     },
     {
       "type": "example",
-      "text": "Probiere die Übungsbilder aus: Tausche `haus.svg` gegen `katze.svg` oder `strand.svg`. Und tippe den Dateinamen mal absichtlich falsch – dann siehst du, wozu `alt` gut ist!",
-      "html": "<h2>Bildergalerie</h2>\n<img src=\"haus.svg\" alt=\"Ein kleines Haus mit rotem Dach\">\n"
+      "text": "In der Werkstatt liegen `haus.svg`, `katze.svg` und `strand.svg` bereit. Tausche das Bild – und tippe den Namen mal absichtlich falsch: Dann siehst du, wozu `alt` gut ist!",
+      "html": "<h2>Meine Galerie</h2>\n<img src=\"haus.svg\" alt=\"Ein kleines Haus mit rotem Dach\">\n"
     },
     {
       "type": "explain",
-      "text": "Was du in `src` schreibst, nennt man einen **Pfad** – den Weg zur Datei.\n\n**Gleiche Ebene:** Liegt das Bild im selben Ordner wie deine HTML-Datei, genügt der Dateiname: `src=\"haus.svg\"`.\n\n**Unterordner:** Liegt das Bild in einem Ordner `bilder`, schreibst du den Ordnernamen davor, getrennt mit `/`: `src=\"bilder/haus.svg\"`.\n\n**Warum Bilder „kaputtgehen“:** Der Browser findet die Datei nicht mehr, sobald der Pfad nicht mehr stimmt – etwa weil die Datei umbenannt oder verschoben wurde, ein Tippfehler drin ist oder die **Groß-/Kleinschreibung** nicht passt (`Haus.svg` ist auf vielen Servern nicht dasselbe wie `haus.svg`). Dann zeigt der Browser ein Kaputtes-Bild-Symbol und deinen `alt`-Text.\n\nIn der Werkstatt liegen alle Übungsbilder auf **gleicher Ebene** – der Dateiname genügt."
+      "text": "Was in `src` steht, heißt **Pfad** – der Weg zur Datei.\n\n**Gleiche Ebene:** Bild im selben Ordner wie die HTML-Datei → nur der Dateiname: `src=\"haus.svg\"`.\n\n**Unterordner:** Bild im Ordner `bilder` → Ordnername davor, getrennt mit `/`: `src=\"bilder/katze.svg\"`.\n\nIn der Werkstatt liegen alle Übungsbilder auf **gleicher Ebene** – der Dateiname genügt.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect x=\"6\" y=\"6\" width=\"130\" height=\"148\" rx=\"8\" fill=\"#eef2f8\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"16\" y=\"26\" fill=\"#5b6b7c\" font-weight=\"bold\">meine-seite/</text><text x=\"28\" y=\"54\" fill=\"#2f6fdb\" font-weight=\"bold\">index.html</text><text x=\"28\" y=\"78\" fill=\"#e0632e\">haus.svg</text><rect x=\"18\" y=\"92\" width=\"110\" height=\"52\" rx=\"6\" fill=\"none\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"28\" y=\"110\" fill=\"#5b6b7c\" font-weight=\"bold\">bilder/</text><text x=\"42\" y=\"132\" fill=\"#1a9e5c\">katze.svg</text><text x=\"146\" y=\"78\" fill=\"#e0632e\" font-weight=\"bold\">src=\"haus.svg\"</text><text x=\"146\" y=\"94\" fill=\"#5b6b7c\">gleiche Ebene</text><text x=\"146\" y=\"126\" fill=\"#1a9e5c\" font-weight=\"bold\">src=\"bilder/katze.svg\"</text><text x=\"146\" y=\"142\" fill=\"#5b6b7c\">im Unterordner</text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "**Warum Bilder „kaputtgehen“:** Der Browser findet die Datei nicht mehr, sobald der Pfad nicht stimmt – Datei umbenannt, verschoben, Tippfehler oder falsche **Groß-/Kleinschreibung** (`Haus.svg` ist auf vielen Servern nicht dasselbe wie `haus.svg`).\n\nDann zeigt der Browser ein Kaputtes-Bild-Symbol und deinen `alt`-Text."
     },
     {
       "type": "quiz",
-      "question": "Dein Bild `hund.jpg` liegt im Unterordner `fotos`. Was gehört ins `src`?",
+      "question": "Dein Sneaker-Foto `sneaker.jpg` liegt im Unterordner `fotos`. Was gehört ins `src`?",
       "options": [
-        "`hund.jpg`",
-        "`fotos/hund.jpg`",
-        "`fotos\\hund.jpg`"
+        "`sneaker.jpg`",
+        "`fotos/sneaker.jpg`",
+        "`fotos\\sneaker.jpg`"
       ],
       "correct": 1,
       "explanation": "Ordnername, dann `/`, dann Dateiname. Im Web wird immer der normale Schrägstrich `/` benutzt – der umgekehrte `\\` funktioniert nicht."
     },
     {
       "type": "explain",
-      "text": "Bilddateien gibt es in verschiedenen **Formaten** – erkennbar an der Endung:\n\n- **jpg** – für **Fotos**: Millionen Farben, stark komprimiert, kleine Dateien\n- **png** – für **Grafiken und Screenshots**: verlustfrei, kann durchsichtige Flächen (Transparenz)\n- **svg** – **Vektorgrafik**: besteht aus geometrischen Formen statt Bildpunkten und bleibt beim Vergrößern gestochen scharf. Deshalb sind Logos und unsere Übungsbilder SVGs.\n\nDazu ein Satz zu **webp**: ein modernes Format, das Fotos noch kleiner speichert als jpg – es begegnet dir im Netz immer öfter.\n\nMerkhilfe: Foto von der Klassenfahrt → **jpg**. Logo oder Zeichnung, die scharf bleiben soll → **svg**. Screenshot oder Grafik mit durchsichtigen Stellen → **png**."
+      "text": "Bildformate erkennst du an der Endung:\n\n- **jpg** – **Fotos**: Millionen Farben, stark komprimiert, kleine Dateien\n- **png** – **Grafiken, Screenshots**: verlustfrei, kann durchsichtige Flächen\n- **svg** – **Vektorgrafik** aus Formen statt Bildpunkten, bleibt beim Vergrößern scharf (Logos, unsere Übungsbilder)\n- **webp** – modern, speichert Fotos noch kleiner als jpg\n\nMerkhilfe: Sneaker-Foto → jpg. Logo → svg. Screenshot deines Highscores → png."
     },
     {
       "type": "fill",
@@ -42,15 +48,15 @@
       "type": "code",
       "task": "Baue eine kleine Galerie mit **zwei** Übungsbildern:\n\n1. Binde `haus.svg` ein – im `alt`-Text kommt das Wort **Haus** vor\n2. Binde darunter `katze.svg` ein – im `alt`-Text kommt das Wort **Katze** vor",
       "starter": {
-        "html": "<h2>Bildergalerie</h2>\n<!-- Deine zwei Bilder hier -->\n"
+        "html": "<h2>Meine Galerie</h2>\n<!-- Deine zwei Bilder hier -->\n"
       },
       "hints": [
         "Der Tag heißt <img ...> und hat keinen schließenden Tag. Jedes Bild braucht src und alt.",
         "Zwei <img>-Tags untereinander – der Dateiname genügt, die Bilder liegen auf gleicher Ebene: <img src=\"haus.svg\" alt=\"...\">",
-        "```html\n<h2>Bildergalerie</h2>\n<img src=\"haus.svg\" alt=\"Ein kleines Haus mit rotem Dach\">\n<img src=\"katze.svg\" alt=\"Eine Katze sitzt und schaut nach vorn\">\n```"
+        "```html\n<h2>Meine Galerie</h2>\n<img src=\"haus.svg\" alt=\"Ein kleines Haus mit rotem Dach\">\n<img src=\"katze.svg\" alt=\"Eine Katze sitzt und schaut nach vorn\">\n```"
       ],
       "solution": {
-        "html": "<h2>Bildergalerie</h2>\n<img src=\"haus.svg\" alt=\"Ein kleines Haus mit rotem Dach\">\n<img src=\"katze.svg\" alt=\"Eine Katze sitzt und schaut nach vorn\">\n"
+        "html": "<h2>Meine Galerie</h2>\n<img src=\"haus.svg\" alt=\"Ein kleines Haus mit rotem Dach\">\n<img src=\"katze.svg\" alt=\"Eine Katze sitzt und schaut nach vorn\">\n"
       },
       "tests": [
         { "type": "selector", "selector": "img", "min": 2, "label": "Es gibt zwei Bilder" },

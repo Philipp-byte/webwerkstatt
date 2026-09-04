@@ -4,16 +4,17 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Links machen aus einzelnen Seiten das **World Wide Web**. In HTML schreibst du sie mit dem `<a>`-Tag (anchor = Anker):\n\n```html\n<a href=\"https://de.wikipedia.org\">Zur Wikipedia</a>\n```\n\nDas **Attribut** `href` steht **im öffnenden Tag** und gibt das **Linkziel** an – die Adresse, zu der der Link führt.\n\nZwischen den Tags steht der **Linktext** – das, worauf man klicken kann. Einen Link zu einer fremden Webseite nennt man **externen Link**."
+      "text": "Links machen aus einzelnen Seiten das **World Wide Web**. In HTML schreibst du sie mit dem `<a>`-Tag (anchor = Anker):\n\n```html\n<a href=\"https://de.wikipedia.org\">Zur Wikipedia</a>\n```\n\nDas **Attribut** `href` im öffnenden Tag nennt das **Linkziel** – die Adresse. Zwischen den Tags steht der **Linktext**, das Klickbare. Ein Link auf eine fremde Webseite heißt **externer Link**.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect x=\"8\" y=\"30\" width=\"130\" height=\"100\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"73\" y=\"50\" text-anchor=\"middle\" fill=\"#2f6fdb\" font-weight=\"bold\">deine Seite</text><text x=\"73\" y=\"80\" text-anchor=\"middle\" fill=\"#1d2733\">&lt;a href=\"https://…\"&gt;</text><text x=\"73\" y=\"100\" text-anchor=\"middle\" fill=\"#e0632e\">Zur Wikipedia</text><line x1=\"142\" y1=\"88\" x2=\"172\" y2=\"88\" stroke=\"#e0632e\" stroke-width=\"3\"/><polygon points=\"172,80 186,88 172,96\" fill=\"#e0632e\"/><rect x=\"190\" y=\"30\" width=\"122\" height=\"100\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"251\" y=\"50\" text-anchor=\"middle\" fill=\"#1a9e5c\" font-weight=\"bold\">fremde Webseite</text><text x=\"251\" y=\"80\" text-anchor=\"middle\" fill=\"#1d2733\">auf einem</text><text x=\"251\" y=\"98\" text-anchor=\"middle\" fill=\"#1d2733\">anderen Server</text><text x=\"160\" y=\"150\" text-anchor=\"middle\" fill=\"#5b6b7c\">externer Link = Ziel auf einem fremden Server</text></svg>"
     },
     {
       "type": "example",
-      "text": "Klick den Link in der Vorschau ruhig an! Ändere danach den Linktext und das Ziel.",
-      "html": "<p>Mehr Infos findest du hier:</p>\n<a href=\"https://de.wikipedia.org\">Zur Wikipedia</a>\n"
+      "text": "Nachschlagen fürs Referat: Klick den Link in der Vorschau ruhig an! Ändere danach Linktext und Ziel.",
+      "html": "<p>Meine Quelle fürs Referat:</p>\n<a href=\"https://de.wikipedia.org\">Zur Wikipedia</a>\n"
     },
     {
       "type": "explain",
-      "text": "Schau dir die Adresse genau an: Sie beginnt mit `https://`.\n\n**https** bedeutet, dass die Verbindung **verschlüsselt** ist: Niemand kann unterwegs mitlesen oder die Seite verändern. Beim alten `http://` (ohne s) ist das möglich – moderne Browser warnen davor. Verlinke deshalb immer die vollständige Adresse **mit** `https://`.\n\nEin typischer Fehler: `href=\"wikipedia.de\"` – ohne `https://` davor. Dann sucht der Browser eine **Datei** namens „wikipedia.de“ in deinem eigenen Ordner, und der Link geht ins Leere!"
+      "text": "Die Adresse beginnt mit `https://`.\n\n**https** heißt: Die Verbindung ist **verschlüsselt** – niemand kann unterwegs mitlesen oder die Seite verändern. Beim alten `http://` (ohne s) geht das; moderne Browser warnen davor.\n\nTypischer Fehler: `href=\"wikipedia.de\"` ohne `https://`. Dann sucht der Browser eine **Datei** namens „wikipedia.de“ in deinem Ordner – der Link geht ins Leere!"
     },
     {
       "type": "fill",
@@ -25,14 +26,14 @@
     },
     {
       "type": "explain",
-      "text": "Genauso wichtig wie das Ziel ist der **Linktext**. Vergleiche:\n\n- „**Hier klicken**, um zur Anmeldung zu kommen“ – schlecht\n- „**Zur Anmeldung für das Sportfest**“ – gut\n\nWarum? Viele Menschen **überfliegen** Seiten nur und lesen bloß die Links. Und Vorlese-Programme können von Link zu Link springen – wer dann dreimal „hier klicken“ hört, weiß gar nichts. Regel: **Der Linktext beschreibt das Ziel**, ohne dass man den Satz drumherum lesen muss."
+      "text": "Genauso wichtig wie das Ziel ist der **Linktext**. Vergleiche:\n\n- „**Hier klicken**, um zum Turnier zu kommen“ – schlecht\n- „**Zur Anmeldung fürs E-Sport-Turnier**“ – gut\n\nViele Menschen **überfliegen** Seiten und lesen nur die Links. Vorlese-Programme springen von Link zu Link – dreimal „hier klicken“ sagt nichts. Regel: **Der Linktext beschreibt das Ziel.**"
     },
     {
       "type": "quiz",
-      "question": "Deine Seite soll auf die Anmeldung zum Sportfest verlinken. Welcher Linktext ist am besten?",
+      "question": "Deine Seite soll auf die Anmeldung zum E-Sport-Turnier der Schule verlinken. Welcher Linktext ist am besten?",
       "options": [
         "„Hier klicken“",
-        "„Zur Anmeldung für das Sportfest“",
+        "„Zur Anmeldung fürs E-Sport-Turnier“",
         "„Link“"
       ],
       "correct": 1,
@@ -40,21 +41,21 @@
     },
     {
       "type": "explain",
-      "text": "Zwei nützliche Extras für Links:\n\nDas Attribut `title` zeigt eine **Zusatzinfo** an, wenn man mit der Maus auf dem Link stehen bleibt (ein sogenannter Tooltip):\n\n```html\n<a href=\"https://de.wikipedia.org\" title=\"Öffnet die freie Enzyklopädie Wikipedia\">Zur Wikipedia</a>\n```\n\nUnd mit `target=\"_blank\"` öffnet sich das Ziel in einem **neuen Tab** – praktisch bei externen Links, damit deine eigene Seite offen bleibt. Merk dir fürs Erste nur, dass es das gibt."
+      "text": "Zwei nützliche Extras:\n\n`title` zeigt eine **Zusatzinfo**, wenn die Maus auf dem Link stehen bleibt (ein Tooltip):\n\n```html\n<a href=\"https://de.wikipedia.org\" title=\"Öffnet die Wikipedia\">Zur Wikipedia</a>\n```\n\n`target=\"_blank\"` öffnet das Ziel in einem **neuen Tab** – praktisch bei externen Links, damit deine Seite offen bleibt. Merk dir fürs Erste nur, dass es das gibt."
     },
     {
       "type": "code",
-      "task": "Erstelle einen sauberen externen Link:\n\n1. Der **Linktext** lautet **Zur Wikipedia**\n2. Das **Ziel** ist `https://de.wikipedia.org` – mit vollständiger Adresse!\n3. Gib dem Link ein `title`-Attribut mit einer kurzen Zusatzinfo deiner Wahl",
+      "task": "Baue den Quellen-Link für dein Referat:\n\n1. Der **Linktext** lautet **Zur Wikipedia**\n2. Das **Ziel** ist `https://de.wikipedia.org` – mit vollständiger Adresse!\n3. Gib dem Link ein `title`-Attribut mit einer kurzen Zusatzinfo deiner Wahl",
       "starter": {
-        "html": "<p>Mein Lieblingslink:</p>\n<!-- Dein Link hier -->\n"
+        "html": "<p>Meine Quelle fürs Referat:</p>\n<!-- Dein Link hier -->\n"
       },
       "hints": [
         "Ein Link beginnt mit <a href=\"...\"> und endet mit </a>. Das title-Attribut kommt mit in den öffnenden Tag.",
         "Beide Attribute stehen nebeneinander im öffnenden Tag: <a href=\"https://...\" title=\"...\">Linktext</a>",
-        "```html\n<p>Mein Lieblingslink:</p>\n<a href=\"https://de.wikipedia.org\" title=\"Öffnet die Wikipedia\">Zur Wikipedia</a>\n```"
+        "```html\n<p>Meine Quelle fürs Referat:</p>\n<a href=\"https://de.wikipedia.org\" title=\"Öffnet die Wikipedia\">Zur Wikipedia</a>\n```"
       ],
       "solution": {
-        "html": "<p>Mein Lieblingslink:</p>\n<a href=\"https://de.wikipedia.org\" title=\"Öffnet die Wikipedia\">Zur Wikipedia</a>\n"
+        "html": "<p>Meine Quelle fürs Referat:</p>\n<a href=\"https://de.wikipedia.org\" title=\"Öffnet die Wikipedia\">Zur Wikipedia</a>\n"
       },
       "tests": [
         { "type": "selector", "selector": "a", "min": 1, "label": "Es gibt einen Link (<a>)" },

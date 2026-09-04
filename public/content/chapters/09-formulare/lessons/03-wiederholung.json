@@ -11,7 +11,7 @@
       "question": "Welche Aussage über `class` und `id` stimmt?",
       "options": [
         "Eine id darf auf einer Seite beliebig oft vorkommen",
-        "Eine class dürfen viele Elemente tragen, eine id nur ein einziges Element",
+        "class dürfen viele Elemente tragen, id nur ein einziges",
         "class und id sind zwei Namen für dasselbe Attribut"
       ],
       "correct": 1,
@@ -27,19 +27,19 @@
     },
     {
       "type": "code",
-      "task": "Baue eine Preistabelle und gib ihr eine class:\n\n1. Eine Tabelle mit Kopfzeile: `<th>`-Zellen **Getränk** und **Preis**\n2. Mindestens **zwei** Datenzeilen mit je zwei `<td>`\n3. Die Tabelle bekommt `class=\"preise\"` – der CSS-Tab 🔒 gestaltet sie dann automatisch",
+      "task": "Baue eine Preistabelle für den Schulkiosk:\n\n1. Kopfzeile: `<th>`-Zellen **Getränk** und **Preis**\n2. Mindestens **zwei** Datenzeilen mit je zwei `<td>`\n3. Die Tabelle bekommt `class=\"preise\"` – der CSS-Tab 🔒 gestaltet sie dann automatisch",
       "starter": {
-        "html": "<h2>Unsere Preise</h2>\n<!-- Deine Tabelle hier -->\n",
+        "html": "<h2>Kiosk-Preise</h2>\n<!-- Deine Tabelle hier -->\n",
         "css": "table.preise { border-collapse: collapse; }\n.preise td, .preise th { border: 1px solid #888; padding: 6px 12px; }\n.preise th { background-color: #f0e6d6; }\n"
       },
       "editable": ["html"],
       "hints": [
         "Die class kommt in den öffnenden Tag der Tabelle: <table class=\"preise\">.",
         "Danach wie gewohnt: Kopfzeile mit zwei <th>, dann zwei Zeilen mit je zwei <td>. Sobald die class stimmt, erscheinen die Linien!",
-        "```html\n<h2>Unsere Preise</h2>\n<table class=\"preise\">\n  <tr>\n    <th>Getränk</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Kakao</td>\n    <td>1,50 €</td>\n  </tr>\n  <tr>\n    <td>Apfelschorle</td>\n    <td>1,80 €</td>\n  </tr>\n</table>\n```"
+        "```html\n<h2>Kiosk-Preise</h2>\n<table class=\"preise\">\n  <tr>\n    <th>Getränk</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Eistee</td>\n    <td>1,00 €</td>\n  </tr>\n  <tr>\n    <td>Apfelschorle</td>\n    <td>0,80 €</td>\n  </tr>\n</table>\n```"
       ],
       "solution": {
-        "html": "<h2>Unsere Preise</h2>\n<table class=\"preise\">\n  <tr>\n    <th>Getränk</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Kakao</td>\n    <td>1,50 €</td>\n  </tr>\n  <tr>\n    <td>Apfelschorle</td>\n    <td>1,80 €</td>\n  </tr>\n</table>\n"
+        "html": "<h2>Kiosk-Preise</h2>\n<table class=\"preise\">\n  <tr>\n    <th>Getränk</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Eistee</td>\n    <td>1,00 €</td>\n  </tr>\n  <tr>\n    <td>Apfelschorle</td>\n    <td>0,80 €</td>\n  </tr>\n</table>\n"
       },
       "tests": [
         { "type": "selector", "selector": "table.preise", "count": 1, "label": "Die Tabelle trägt die class „preise“ (die Linien erscheinen!)" },
@@ -69,7 +69,7 @@
       },
       "editable": ["html"],
       "hints": [
-        "Die vier Bereiche stehen untereinander – wie beim Schulkiosk aus Kapitel 8.",
+        "Die vier Bereiche stehen untereinander – wie bei Team Blitz aus Kapitel 8.",
         "Der zweite Absatz im <main> bekommt das Attribut in den öffnenden Tag: <p class=\"wichtig\">…</p>.",
         "```html\n<header>\n  <h1>Jugendzentrum</h1>\n</header>\n<nav>\n  <a href=\"https://www.example.com\">Programm</a>\n  <a href=\"https://www.example.com\">Anfahrt</a>\n</nav>\n<main>\n  <p>Bei uns kannst du kickern, Musik machen und Freunde treffen.</p>\n  <p class=\"wichtig\">Am Freitag bleibt das Jugendzentrum geschlossen!</p>\n</main>\n<footer>\n  <p>Jugendzentrum · Musterstraße 5 · Heilbronn</p>\n</footer>\n```"
       ],

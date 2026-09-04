@@ -4,16 +4,21 @@
   "steps": [
     {
       "type": "explain",
-      "text": "In Kapitel 1 hast du gelernt: Beim Seitenaufruf schickt der Server deinem Browser eine **Textdatei** – und der Browser baut daraus die sichtbare Seite.\n\nJetzt schauen wir in diese Datei hinein. Sie ist in **HTML** geschrieben – der Sprache, in der jede Webseite der Welt verfasst ist. Und genau diese Sprache lernst du ab jetzt selbst zu schreiben."
+      "text": "In Kapitel 1 hast du gelernt: Beim Seitenaufruf schickt der Server deinem Browser eine **Textdatei** – und der Browser baut daraus die sichtbare Seite.\n\nJetzt schauen wir in diese Datei hinein. Sie ist in **HTML** geschrieben – der Sprache, in der jede Webseite der Welt verfasst ist. Genau diese Sprache lernst du ab jetzt selbst zu schreiben."
     },
     {
       "type": "explain",
-      "text": "**HTML** steht für **HyperText Markup Language**. Klingt sperrig, es stecken aber nur zwei Ideen drin:\n\n**HyperText** heißt: Text mit Verknüpfungen. Webseiten können aufeinander verweisen – über Links springst du von Seite zu Seite. Das macht das Web überhaupt erst zum „Netz“.\n\n**Markup Language** heißt auf Deutsch **Auszeichnungssprache**. „Auszeichnen“ bedeutet: Textstellen markieren und ihnen eine Bedeutung geben – „das hier ist eine Überschrift“, „das ist ein Absatz“, „das ist ein Bild“. Wie mit Textmarkern in einem Skript: Der Text bleibt derselbe, aber die Markierungen sagen, was jede Stelle **ist**.\n\nHTML ist damit **keine Programmiersprache** – es rechnet nichts aus und trifft keine Entscheidungen. Es beschreibt die **Struktur** einer Seite."
+      "text": "**HTML** steht für **HyperText Markup Language**. Klingt sperrig, es stecken aber nur zwei Ideen drin.\n\n**HyperText** heißt: Text mit Verknüpfungen. Webseiten verweisen aufeinander – über Links springst du von Seite zu Seite. Das macht das Web überhaupt erst zum „Netz“."
+    },
+    {
+      "type": "explain",
+      "text": "**Markup Language** heißt auf Deutsch **Auszeichnungssprache**. „Auszeichnen“ bedeutet: Textstellen markieren und ihnen eine Bedeutung geben – „das ist eine Überschrift“, „das ist ein Absatz“, „das ist ein Link“.\n\nWie mit Textmarkern im Heft: Der Text bleibt derselbe, die Markierungen sagen, was jede Stelle **ist**.\n\nHTML ist damit **keine Programmiersprache** – es rechnet nichts aus. Es beschreibt die **Struktur** einer Seite.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><text x=\"160\" y=\"24\" text-anchor=\"middle\" fill=\"#1d2733\" font-weight=\"bold\">Tags sagen, was der Text ist</text><rect x=\"6\" y=\"38\" width=\"308\" height=\"108\" rx=\"8\" fill=\"#eef2f8\"/><text x=\"16\" y=\"64\" font-size=\"13\"><tspan fill=\"#e0632e\">&lt;h1&gt;</tspan><tspan fill=\"#1d2733\">Meine Sneaker</tspan><tspan fill=\"#e0632e\">&lt;/h1&gt;</tspan></text><text x=\"304\" y=\"64\" text-anchor=\"end\" fill=\"#2f6fdb\" font-weight=\"bold\">→ Überschrift</text><text x=\"16\" y=\"96\" font-size=\"13\"><tspan fill=\"#e0632e\">&lt;p&gt;</tspan><tspan fill=\"#1d2733\">Ich sammle seit 2023.</tspan><tspan fill=\"#e0632e\">&lt;/p&gt;</tspan></text><text x=\"304\" y=\"96\" text-anchor=\"end\" fill=\"#2f6fdb\" font-weight=\"bold\">→ Absatz</text><text x=\"16\" y=\"128\" font-size=\"13\"><tspan fill=\"#e0632e\">&lt;a&gt;</tspan><tspan fill=\"#1d2733\">zum Shop</tspan><tspan fill=\"#e0632e\">&lt;/a&gt;</tspan></text><text x=\"304\" y=\"128\" text-anchor=\"end\" fill=\"#2f6fdb\" font-weight=\"bold\">→ Link</text></svg>"
     },
     {
       "type": "example",
       "text": "So sieht HTML aus: **links der Code, rechts die Vorschau** – also das, was der Browser daraus macht.\n\nÄndere den Text zwischen den spitzen Klammern und schau zu, wie sich die Vorschau sofort mitverändert!",
-      "html": "<h1>Meine erste Webseite</h1>\n<p>Hallo! Schön, dass du da bist.</p>\n"
+      "html": "<h1>Meine Sneaker-Sammlung</h1>\n<p>Drei Paar bis jetzt – und die Liste wird länger.</p>\n"
     },
     {
       "type": "quiz",
@@ -28,7 +33,7 @@
     },
     {
       "type": "explain",
-      "text": "HTML steckt in ganz normalen **Textdateien** mit der Endung **.html** – die Startseite heißt üblicherweise `index.html`.\n\nZum Schreiben genügt ein einfacher Editor, zum Ansehen ein Browser – teure Spezialprogramme braucht niemand. Klickst du eine `.html`-Datei auf deinem Computer doppelt an, öffnet dein Browser sie direkt, ganz ohne Server und Internet.\n\nBeim echten Seitenaufruf im Internet passiert dasselbe – nur dass die Datei vorher als **Antwort vom Server** zu deinem Browser reist."
+      "text": "HTML steckt in ganz normalen **Textdateien** mit der Endung **.html** – die Startseite heißt üblicherweise `index.html`.\n\nZum Schreiben genügt ein einfacher Editor, zum Ansehen ein Browser. Klickst du eine `.html`-Datei auf deinem Computer doppelt an, öffnet der Browser sie direkt – ohne Server und Internet.\n\nBeim echten Seitenaufruf passiert dasselbe – nur reist die Datei vorher als **Antwort vom Server** zu dir."
     },
     {
       "type": "fill",
@@ -40,7 +45,7 @@
     },
     {
       "type": "quiz",
-      "question": "Du rufst `www.cafe-pause-beispiel.de` auf. Was liefert der Server als Antwort?",
+      "question": "Du rufst die Seite eines Streamingdienstes auf. Was liefert der Server als Antwort?",
       "options": [
         "Eine HTML-Datei, aus der dein Browser die sichtbare Seite baut",
         "Ein fertiges Bild der Webseite",
@@ -51,13 +56,13 @@
     },
     {
       "type": "code",
-      "task": "Zeit für deine erste eigene Änderung! In der Werkbank steht schon eine kleine Seite.\n\n1. Ändere den Text der Überschrift in **Hallo Welt!**\n2. Ändere den Text des Absatzes in **Das ist meine erste Änderung.**\n\nDie spitzen Klammern und die Wörter darin (die Tags) bleiben unverändert stehen – du änderst nur den Text dazwischen.",
+      "task": "Deine erste eigene Änderung! In der Werkbank steht schon eine kleine Seite.\n\n1. Ändere den Text der Überschrift in **Hallo Welt!**\n2. Ändere den Text des Absatzes in **Das ist meine erste Änderung.**\n\nDie spitzen Klammern samt Tag-Namen bleiben stehen – du änderst nur den Text dazwischen.",
       "starter": {
-        "html": "<h1>Meine erste Webseite</h1>\n<p>Hallo! Schön, dass du da bist.</p>\n"
+        "html": "<h1>Meine Sneaker-Sammlung</h1>\n<p>Drei Paar bis jetzt – und die Liste wird länger.</p>\n"
       },
       "hints": [
         "Der Text, den du ändern sollst, steht jeweils zwischen einem öffnenden Tag wie <h1> und einem schließenden Tag wie </h1>.",
-        "Ersetze „Meine erste Webseite“ durch „Hallo Welt!“ – Punkt und Ausrufezeichen genau wie in der Aufgabe. Dann dasselbe beim Absatz.",
+        "Ersetze „Meine Sneaker-Sammlung“ durch „Hallo Welt!“ – Ausrufezeichen genau wie in der Aufgabe. Dann dasselbe beim Absatz.",
         "```html\n<h1>Hallo Welt!</h1>\n<p>Das ist meine erste Änderung.</p>\n```"
       ],
       "solution": {

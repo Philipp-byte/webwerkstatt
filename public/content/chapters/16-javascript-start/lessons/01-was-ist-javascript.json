@@ -4,34 +4,41 @@
   "steps": [
     {
       "type": "explain",
-      "text": "HTML baut die Seite, CSS gestaltet sie – **JavaScript macht sie lebendig**: Es reagiert auf Klicks, rechnet, verändert Inhalte. JavaScript ist eine echte **Programmiersprache**, die direkt im Browser läuft.\n\nDer wichtigste Befehl für den Anfang:\n\n```js\nconsole.log(\"Hallo!\");\n```\n\nEr schreibt eine Ausgabe in die **Konsole** – das Ausgabefenster für Programmierende. In der WebWerkstatt siehst du die Konsole direkt unter der Vorschau.\n\nBeachte: Text steht in **Anführungszeichen**, und am Zeilenende steht ein **Semikolon**."
+      "text": "HTML baut die Seite, CSS gestaltet sie – **JavaScript** macht sie lebendig. Like-Button, Ticket-Zähler, Highscore: alles JavaScript. Es ist eine echte **Programmiersprache** und läuft direkt im Browser.\n\nDer wichtigste Befehl zum Start:\n\n```js\nconsole.log(\"Hallo!\");\n```\n\nEr schreibt Text in die **Konsole** – das Ausgabefenster für Programmierende. In der WebWerkstatt findest du sie direkt unter der Vorschau.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"13\"><text x=\"160\" y=\"18\" text-anchor=\"middle\" fill=\"#5b6b7c\" font-size=\"12\">Drei Schichten – eine Webseite</text><rect x=\"20\" y=\"108\" width=\"210\" height=\"38\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"125\" y=\"132\" text-anchor=\"middle\" fill=\"#1d2733\">HTML – Struktur</text><rect x=\"45\" y=\"68\" width=\"210\" height=\"38\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"150\" y=\"92\" text-anchor=\"middle\" fill=\"#2f6fdb\">CSS – Aussehen</text><rect x=\"70\" y=\"28\" width=\"210\" height=\"38\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"175\" y=\"52\" text-anchor=\"middle\" fill=\"#e0632e\">JavaScript – Verhalten</text><text x=\"300\" y=\"52\" text-anchor=\"middle\" fill=\"#e0632e\" font-size=\"12\">Klick!</text></svg>"
     },
     {
       "type": "example",
-      "text": "Dein erstes JavaScript-Programm! Es läuft im **JS-Tab**. Schau in die **Konsole** unter der Vorschau – und füge eine dritte Ausgabe hinzu.",
-      "js": "console.log(\"Hallo aus der WebWerkstatt!\");\nconsole.log(\"JavaScript läuft.\");\n"
+      "text": "Dein erstes Programm! Es läuft im **JS-Tab**. Schau in die **Konsole** unter der Vorschau – und füge eine dritte Ausgabe hinzu.",
+      "js": "console.log(\"Hallo aus der WebWerkstatt!\");\nconsole.log(\"Level 1 geschafft.\");\n"
     },
     {
       "type": "quiz",
       "question": "Was ist die Aufgabe von **JavaScript** auf einer Webseite?",
       "options": [
-        "Es legt Farben und Schriften fest",
-        "Es macht die Seite interaktiv: reagieren, rechnen, verändern",
-        "Es baut die Grundstruktur aus Überschriften und Absätzen"
+        "Farben und Schriften festlegen",
+        "Die Seite interaktiv machen: reagieren, rechnen, verändern",
+        "Überschriften und Absätze aufbauen"
       ],
       "correct": 1,
       "explanation": "Struktur = HTML, Aussehen = CSS, Verhalten = JavaScript. Zusammen ergeben sie das Web."
     },
     {
       "type": "explain",
-      "text": "Schau dir den Befehl noch einmal ganz genau an – **jedes Zeichen hat eine Aufgabe**:\n\n```js\nconsole.log(\"Hallo!\");\n```\n\n`console` ist die Konsole, `.log` der Befehl „schreib etwas hinein“. Die **runden Klammern** übergeben, *was* geschrieben werden soll. Das **Semikolon** schließt die Anweisung ab – wie der Punkt am Satzende.\n\nComputer sind pingelig: Vergisst du eine Klammer oder ein Anführungszeichen, zeigt die Konsole eine **rote Fehlermeldung** und das Programm stoppt. Das ist nicht schlimm – Fehlermeldungen sind Hinweise, keine Strafen: lesen, verbessern, neu ausführen."
+      "text": "Schau den Befehl genau an – **jedes Zeichen hat eine Aufgabe**:\n\n```js\nconsole.log(\"Hallo!\");\n```\n\n`console` ist die Konsole, `.log` der Befehl „schreib etwas hinein“. Die **runden Klammern** übergeben, *was* geschrieben wird. Der Text steht in **Anführungszeichen**. Das **Semikolon** schließt die Anweisung ab – wie der Punkt am Satzende."
+    },
+    {
+      "type": "explain",
+      "text": "Computer sind pingelig: Vergisst du eine Klammer oder ein Anführungszeichen, zeigt die Konsole eine **rote Fehlermeldung** und das Programm stoppt.\n\nDas ist nicht schlimm. Fehlermeldungen sind Hinweise, keine Strafen: **lesen, verbessern, neu ausführen.** So arbeiten auch Profis – jeden Tag."
     },
     {
       "type": "fill",
       "text": "Der Befehl für eine Konsolen-Ausgabe – setze den fehlenden Teil ein.",
-      "template": "console.___(\"Guten Morgen!\");",
+      "template": "console.___(\"Neuer Highscore!\");",
       "solution": "log",
-      "accept": ["log"],
+      "accept": [
+        "log"
+      ],
       "hint": "Der Teil nach dem Punkt heißt `log` – wie „Logbuch“."
     },
     {
@@ -39,29 +46,37 @@
       "question": "Was passiert bei `console.log(Hallo);` – also **ohne** Anführungszeichen?",
       "options": [
         "Die Konsole zeigt trotzdem „Hallo“",
-        "Es gibt eine Fehlermeldung – JavaScript sucht nach einer Variablen namens Hallo",
-        "Der Browser ergänzt die Anführungszeichen automatisch"
+        "Fehlermeldung – JavaScript sucht eine Variable namens Hallo",
+        "Der Browser ergänzt die Anführungszeichen selbst"
       ],
       "correct": 1,
       "explanation": "Ohne Anführungszeichen hält JavaScript „Hallo“ nicht für Text, sondern für einen Namen – und den gibt es hier nicht. Text braucht immer Anführungszeichen."
     },
     {
       "type": "code",
-      "task": "Jetzt du! Schreibe **zwei** Ausgaben:\n\n1. Die erste Zeile gibt genau **Hallo JavaScript!** aus.\n2. Die zweite Zeile gibt genau **Ich lerne programmieren.** aus.",
+      "task": "Jetzt du! Schreibe **zwei** Ausgaben:\n\n1. Die erste Zeile gibt genau **Highscore geknackt!** aus.\n2. Die zweite Zeile gibt genau **Weiter zu Level 2.** aus.",
       "starter": {
         "js": "// Schreibe deine zwei Befehle hier\n"
       },
       "hints": [
         "Du brauchst zweimal console.log(...); – jede Ausgabe bekommt eine eigene Zeile.",
-        "Der Text kommt jeweils in Anführungszeichen in die Klammern: console.log(\"Hallo JavaScript!\");",
-        "```js\nconsole.log(\"Hallo JavaScript!\");\nconsole.log(\"Ich lerne programmieren.\");\n```"
+        "Der Text kommt in Anführungszeichen in die Klammern: console.log(\"Highscore geknackt!\");",
+        "```js\nconsole.log(\"Highscore geknackt!\");\nconsole.log(\"Weiter zu Level 2.\");\n```"
       ],
       "solution": {
-        "js": "console.log(\"Hallo JavaScript!\");\nconsole.log(\"Ich lerne programmieren.\");\n"
+        "js": "console.log(\"Highscore geknackt!\");\nconsole.log(\"Weiter zu Level 2.\");\n"
       },
       "tests": [
-        { "type": "console", "expected": "Hallo JavaScript!", "label": "Die Konsole zeigt „Hallo JavaScript!“" },
-        { "type": "console", "expected": "Ich lerne programmieren.", "label": "Die Konsole zeigt „Ich lerne programmieren.“" }
+        {
+          "type": "console",
+          "expected": "Highscore geknackt!",
+          "label": "Die Konsole zeigt „Highscore geknackt!“"
+        },
+        {
+          "type": "console",
+          "expected": "Weiter zu Level 2.",
+          "label": "Die Konsole zeigt „Weiter zu Level 2.“"
+        }
       ]
     }
   ]

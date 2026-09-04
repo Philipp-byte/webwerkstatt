@@ -4,11 +4,11 @@
   "steps": [
     {
       "type": "explain",
-      "text": "In der letzten Etappe hast du auf der Startseite des **Café Pause** den Link zur Galerie angelegt – nur die Seite dahinter gab es noch nicht. Das ändern wir jetzt: Heute entsteht **galerie.html** als eigene Projektseite.\n\nDrei Café-Bilder liegen dafür in der Werkstatt bereit: `cafe-theke.svg`, `cafe-kuchen.svg` und `cafe-raum.svg` – dazu unser Jingle `cafe-jingle.wav`.\n\nWeil es eine **neue Seite** ist, startest du mit einem frischen Grundgerüst. Beim Bestehen der Tests wird sie als Seite „galerie“ in deinem Projekt gespeichert."
+      "text": "Auf der Startseite des **Café Pause** gibt es schon den Link zur Galerie – nur die Seite dahinter fehlt. Heute entsteht **galerie.html** als eigene Projektseite.\n\nBereit liegen `cafe-theke.svg`, `cafe-kuchen.svg`, `cafe-raum.svg` und der Jingle `cafe-jingle.wav`.\n\nWeil es eine **neue Seite** ist, startest du mit einem frischen Grundgerüst. Bestehen die Tests, wird sie als Seite „galerie“ gespeichert."
     },
     {
       "type": "code",
-      "task": "Baue die Galerie-Seite des Café Pause:\n\n1. In den `<body>`: eine `<h1>` mit dem Text **Galerie**\n2. Darunter die drei Café-Bilder `cafe-theke.svg`, `cafe-kuchen.svg` und `cafe-raum.svg` – **jedes** mit einem sinnvollen `alt`-Text\n3. Dann ein `<audio>`-Element mit `controls` und der Datei `cafe-jingle.wav`\n4. Ganz unten ein Absatz mit dem Zurück-Link zu `index.html` – Linktext: **Zurück zur Startseite**",
+      "task": "Baue die Galerie-Seite des Café Pause:\n\n1. Im `<body>` eine `<h1>` mit dem Text **Galerie**\n2. Darunter die drei Bilder `cafe-theke.svg`, `cafe-kuchen.svg`, `cafe-raum.svg` – **jedes** mit sinnvollem `alt`-Text\n3. Ein `<audio>` mit `controls` und `cafe-jingle.wav`\n4. Ganz unten ein Absatz mit Zurück-Link zu `index.html` – Linktext **Zurück zur Startseite**",
       "starter": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <!-- Überschrift, Bilder, Audio und Zurück-Link hier -->\n  </body>\n</html>\n"
       },

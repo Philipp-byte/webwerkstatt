@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Bevor es tief ins CSS geht, holen wir noch einmal **alles HTML** aus deinem Kopf: Grundgerüst, Listen, Links, Bilder, Tabellen, Formulare. Warum? Dein Gehirn behält Dinge dann, wenn es sie **aktiv abrufen** muss – nicht beim bloßen Durchlesen. Und ab jetzt brauchst du dein HTML ständig, denn CSS gestaltet immer HTML.\n\nAlso: 6 gemischte Aufgaben, kein neuer Stoff. Los geht's!"
+      "text": "Bevor es tief ins CSS geht, holst du noch einmal **alles HTML** aus deinem Kopf: Grundgerüst, Listen, Links, Bilder, Tabellen, Formulare. Dein Gehirn behält Dinge, die es **aktiv abrufen** muss – und CSS gestaltet immer HTML.\n\n6 gemischte Aufgaben, kein neuer Stoff. Los geht's!"
     },
     {
       "type": "code",
@@ -30,8 +30,8 @@
     },
     {
       "type": "fill",
-      "text": "**Aufgabe 2 – Listen.** Die Teezubereitung hat eine feste Reihenfolge. Setze den passenden **öffnenden Tag** für die Liste ein.",
-      "template": "<___>\n  <li>Wasser kochen</li>\n  <li>Teebeutel ziehen lassen</li>\n  <li>Genießen</li>\n</ol>",
+      "text": "**Aufgabe 2 – Listen.** Bubble Tea hat eine feste Reihenfolge. Setze den passenden **öffnenden Tag** für die Liste ein.",
+      "template": "<___>\n  <li>Tee kochen und abkühlen</li>\n  <li>Tapioka-Perlen dazu</li>\n  <li>Schütteln und genießen</li>\n</ol>",
       "solution": "ol",
       "accept": ["ol"],
       "hint": "Feste Reihenfolge = **geordnete** Liste. Sie heißt `<ol>` (ordered list) – schau auch auf den schließenden Tag unten."

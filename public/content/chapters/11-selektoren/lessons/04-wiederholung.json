@@ -4,14 +4,14 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Zeit zum Festigen! Wissen bleibt hängen, wenn du es **aus dem Kopf abrufst**, statt es nur wiederzuerkennen – genau das passiert jetzt.\n\nIn diesen 6 Aufgaben steckt der Stoff aus dem CSS-Grundlagen-Kapitel und deine neuen Selektoren – plus eine Prise `class` und `id` aus dem HTML-Kapitel. Kein neuer Stoff, versprochen."
+      "text": "Zeit zum Festigen! Wissen bleibt hängen, wenn du es **aus dem Kopf abrufst**, statt es nur wiederzuerkennen.\n\n6 Aufgaben zu CSS-Grundlagen und deinen neuen Selektoren – plus eine Prise `class` und `id` aus dem HTML-Kapitel. Kein neuer Stoff, versprochen."
     },
     {
       "type": "quiz",
       "question": "**Aufgabe 1.** Eure Website hat fünf Seiten, alle sollen dasselbe Design bekommen. Wo schreibst du das CSS am besten hin?",
       "options": [
         "Als Inline-Style per style-Attribut an jedes Element",
-        "In eine externe Datei `style.css`, die alle Seiten per `<link>` einbinden",
+        "In eine externe `style.css`, die alle Seiten per `<link>` einbinden",
         "In ein `<style>`-Element, das du in jede Seite kopierst"
       ],
       "correct": 1,
@@ -19,9 +19,9 @@
     },
     {
       "type": "code",
-      "task": "**Aufgabe 2 – Farben und Hintergrund.** Gestalte das Herbstfest-Plakat:\n\n1. Der `body` bekommt die Hintergrundfarbe `#fff4e6`\n2. Die `h1` bekommt die Textfarbe `#b45309`\n3. Alle `p` bekommen die Textfarbe `rgb(60, 50, 40)`",
+      "task": "**Aufgabe 2 – Farben und Hintergrund.** Gestalte das LAN-Party-Plakat:\n\n1. Der `body` bekommt die Hintergrundfarbe `#fff4e6`\n2. Die `h1` bekommt die Textfarbe `#b45309`\n3. Alle `p` bekommen die Textfarbe `rgb(60, 50, 40)`",
       "starter": {
-        "html": "<h1>Herbstfest der Schule</h1>\n<p>Am Freitag ab 15 Uhr auf dem Schulhof.</p>\n<p>Mit Kürbissuppe, Waffeln und Lagerfeuer.</p>\n",
+        "html": "<h1>LAN-Party der Schule</h1>\n<p>Am Freitag ab 17 Uhr in der Aula.</p>\n<p>Mit Turnier, Pizza und Preisen.</p>\n",
         "css": "/* Deine drei Regeln hier */\n"
       },
       "editable": ["css"],
@@ -49,19 +49,19 @@
     },
     {
       "type": "code",
-      "task": "**Aufgabe 4 – class und id, von HTML bis CSS.** Diesmal sind **beide Tabs** offen!\n\nIm HTML:\n\n1. Gib den beiden Absätzen mit Ausrufezeichen `class=\"achtung\"`\n2. Gib dem letzten Absatz (Entschuldigung) `id=\"orga\"`\n\nIm CSS:\n\n3. `.achtung`: Textfarbe `red` und `font-weight: bold`\n4. `#orga`: Hintergrundfarbe `#fff3b0`",
+      "task": "**Aufgabe 4 – class und id.** Diesmal sind **beide Tabs** offen!\n\nIm HTML:\n\n1. Gib den beiden Absätzen mit Ausrufezeichen `class=\"achtung\"`\n2. Gib dem letzten Absatz (Entschuldigung) `id=\"orga\"`\n\nIm CSS:\n\n3. `.achtung`: Textfarbe `red` und `font-weight: bold`\n4. `#orga`: Hintergrundfarbe `#fff3b0`",
       "starter": {
-        "html": "<h2>Wandertag</h2>\n<p>Wir treffen uns um 8 Uhr am Bahnhof.</p>\n<p>Festes Schuhwerk ist Pflicht!</p>\n<p>Bei Gewitter fällt der Wandertag aus!</p>\n<p>Wer fehlt, braucht eine Entschuldigung.</p>\n",
+        "html": "<h2>Klassenfahrt</h2>\n<p>Wir treffen uns um 8 Uhr am Bahnhof.</p>\n<p>Handy-Ladekabel nicht vergessen!</p>\n<p>Wer zu spät kommt, fährt nicht mit!</p>\n<p>Wer fehlt, braucht eine Entschuldigung.</p>\n",
         "css": "/* Deine Regeln für .achtung und #orga */\n"
       },
       "editable": ["html", "css"],
       "hints": [
         "Im HTML kommen die Attribute in die öffnenden Tags: <p class=\"achtung\"> bzw. <p id=\"orga\"> – ohne Punkt und ohne Raute.",
         "Im CSS ist es umgekehrt: Der Punkt (.achtung) und die Raute (#orga) gehören in die Selektoren.",
-        "```html\n<h2>Wandertag</h2>\n<p>Wir treffen uns um 8 Uhr am Bahnhof.</p>\n<p class=\"achtung\">Festes Schuhwerk ist Pflicht!</p>\n<p class=\"achtung\">Bei Gewitter fällt der Wandertag aus!</p>\n<p id=\"orga\">Wer fehlt, braucht eine Entschuldigung.</p>\n```\n\n```css\n.achtung {\n  color: red;\n  font-weight: bold;\n}\n#orga {\n  background-color: #fff3b0;\n}\n```"
+        "```html\n<h2>Klassenfahrt</h2>\n<p>Wir treffen uns um 8 Uhr am Bahnhof.</p>\n<p class=\"achtung\">Handy-Ladekabel nicht vergessen!</p>\n<p class=\"achtung\">Wer zu spät kommt, fährt nicht mit!</p>\n<p id=\"orga\">Wer fehlt, braucht eine Entschuldigung.</p>\n```\n\n```css\n.achtung {\n  color: red;\n  font-weight: bold;\n}\n#orga {\n  background-color: #fff3b0;\n}\n```"
       ],
       "solution": {
-        "html": "<h2>Wandertag</h2>\n<p>Wir treffen uns um 8 Uhr am Bahnhof.</p>\n<p class=\"achtung\">Festes Schuhwerk ist Pflicht!</p>\n<p class=\"achtung\">Bei Gewitter fällt der Wandertag aus!</p>\n<p id=\"orga\">Wer fehlt, braucht eine Entschuldigung.</p>\n",
+        "html": "<h2>Klassenfahrt</h2>\n<p>Wir treffen uns um 8 Uhr am Bahnhof.</p>\n<p class=\"achtung\">Handy-Ladekabel nicht vergessen!</p>\n<p class=\"achtung\">Wer zu spät kommt, fährt nicht mit!</p>\n<p id=\"orga\">Wer fehlt, braucht eine Entschuldigung.</p>\n",
         "css": ".achtung {\n  color: red;\n  font-weight: bold;\n}\n#orga {\n  background-color: #fff3b0;\n}\n"
       },
       "tests": [
@@ -77,7 +77,7 @@
       "question": "**Aufgabe 5.** Was ist der Unterschied zwischen `footer p` und `footer, p`?",
       "options": [
         "Keiner – das Komma ist nur ein Schreibstil",
-        "`footer p` trifft nur Absätze **im** footer; `footer, p` trifft den footer **und** alle Absätze der Seite",
+        "`footer p`: nur Absätze **im** footer; `footer, p`: footer **und** alle Absätze",
         "`footer p` ist ein Schreibfehler, gültig ist nur die Version mit Komma"
       ],
       "correct": 1,

@@ -4,11 +4,15 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Letzte Etappe vor dem CSS-Teil! Zuletzt hast du die Startseite des **Café Pause** in Bereiche gegliedert. Heute bekommt das Café seinen Draht zu den Gästen: die **Kontaktseite** – mit allem, was du in diesem Kapitel gelernt hast.\n\nDie Navigation der Startseite zeigt schon auf `kontakt.html` – Zeit, die Seite zu bauen: Eingabefelder mit Labels, eine Klappliste für den Anlass, ein Nachrichtenfeld und der Absenden-Knopf.\n\nZur Erinnerung: Verschickt wird beim Absenden **nichts** – wir haben keinen Server, die Vorschau fängt das ab. Die Struktur ist trotzdem die gleiche wie bei jedem echten Kontaktformular im Web."
+      "text": "Letzte Etappe vor dem CSS-Teil! Zuletzt hast du die Startseite des **Café Pause** in Bereiche gegliedert. Heute bekommt das Café seinen Draht zu den Gästen: die **Kontaktseite** – mit allem aus diesem Kapitel.\n\nDie Navigation der Startseite zeigt auf `kontakt.html` – Zeit, die Seite zu bauen.\n\nZur Erinnerung: Verschickt wird beim Absenden **nichts** – die Vorschau fängt das ab. Die Struktur ist die gleiche wie bei jedem echten Kontaktformular."
+    },
+    {
+      "type": "explain",
+      "text": "Der **Bauplan** des Formulars – jedes Feld mit verbundenem Label (`for` = `id`):\n\n```\nName:      <input type=\"text\"  id=\"name\">\nE-Mail:    <input type=\"email\" id=\"email\">\nAnlass:    <select id=\"anlass\">   (mind. 3 <option>, z. B. Lob, Frage, Kritik)\nNachricht: <textarea id=\"nachricht\">\n           <button>Absenden</button>\n```\n\nTipp: `<br>` zwischen den Feld-Paaren hält das Formular übersichtlich."
     },
     {
       "type": "code",
-      "task": "Das Grundgerüst der neuen Seite steht schon – arbeite im `<body>`:\n\n1. `<h1>` mit dem Text **Kontakt**\n2. Ein `<form>` mit folgenden Feldern, jeweils **mit verbundenem Label**:\n   - `<label for=\"name\">Name:</label>` und ein Textfeld (`type=\"text\"`) mit `id=\"name\"`\n   - `<label for=\"email\">E-Mail:</label>` und ein E-Mail-Feld mit `id=\"email\"`\n   - `<label for=\"anlass\">Anlass:</label>` und eine Klappliste mit `id=\"anlass\"` und mindestens **drei** `<option>` (z. B. Lob, Frage, Kritik)\n   - `<label for=\"nachricht\">Nachricht:</label>` und ein mehrzeiliges Feld mit `id=\"nachricht\"`\n   - Ein `<button>` mit dem Text **Absenden**\n3. Unter dem Formular ein Zurück-Link zu `index.html` mit dem Text **Zurück zur Startseite**\n\nTipp: `<br>` zwischen den Feld-Paaren hält das Formular übersichtlich.",
+      "task": "Das Grundgerüst steht – arbeite im `<body>`:\n\n1. `<h1>` **Kontakt**\n2. Ein `<form>` mit den Feldern aus dem Bauplan – jedes **mit verbundenem Label** (`for` = `id`), die Klappliste mit mindestens **drei** `<option>`, zum Schluss `<button>` **Absenden**\n3. Darunter ein Zurück-Link zu `index.html`: **Zurück zur Startseite**",
       "starter": {
         "html": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Kontakt – Café Pause</title>\n</head>\n<body>\n  <!-- Hier entsteht die Kontaktseite -->\n</body>\n</html>\n"
       },

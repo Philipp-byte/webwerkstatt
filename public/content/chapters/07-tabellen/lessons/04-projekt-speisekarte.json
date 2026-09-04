@@ -4,11 +4,15 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Projekt-Zeit im **Café Pause**! Zuletzt hast du die Galerie-Seite gebaut – und die Navigation der Startseite verweist längst auf `speisekarte.html`. Zeit, dass es diese Seite wirklich gibt.\n\nHeute entsteht die **Speisekarte**: eine neue Seite mit **zwei Tabellen** – eine für Getränke, eine für Snacks. Genau dein Thema aus diesem Kapitel!\n\nEin Hinweis vorweg: Die Tabellen haben hier noch **keine Linien** – die zeichnen wir später im CSS-Teil. Die `<th>`-Zellen erkennst du trotzdem sofort an der fetten Schrift."
+      "text": "Projekt-Zeit im **Café Pause**! Zuletzt hast du die Galerie gebaut – und die Navigation der Startseite verweist längst auf `speisekarte.html`. Zeit, dass es diese Seite wirklich gibt.\n\nHeute entsteht die **Speisekarte**: eine neue Seite mit **zwei Tabellen** – Getränke und Snacks.\n\nHinweis: Die Tabellen haben noch **keine Linien** – die zeichnen wir im CSS-Teil. Die `<th>`-Zellen erkennst du trotzdem an der fetten Schrift."
+    },
+    {
+      "type": "explain",
+      "text": "Der **Bauplan** für die Seite – alles im `<body>`:\n\n```\n<h1> Speisekarte\n<h2> Getränke\n  Tabelle: Getränk | Größe | Preis   (mind. 3 Datenzeilen)\n<h2> Snacks\n  Tabelle: Snack | Preis            (mind. 2 Datenzeilen)\nLink zu index.html: Zurück zur Startseite\n```\n\nWelche Getränke und Snacks es gibt, entscheidest du – Hauptsache, die Struktur stimmt!"
     },
     {
       "type": "code",
-      "task": "Das Grundgerüst der neuen Seite steht schon – arbeite im `<body>`:\n\n1. `<h1>` mit dem Text **Speisekarte**\n2. `<h2>` mit dem Text **Getränke**, darunter eine Tabelle: Kopfzeile mit den `<th>`-Zellen **Getränk**, **Größe**, **Preis** und mindestens **drei** Datenzeilen mit je drei `<td>`\n3. `<h2>` mit dem Text **Snacks**, darunter eine zweite Tabelle: Kopfzeile mit den `<th>`-Zellen **Snack**, **Preis** und mindestens **zwei** Datenzeilen mit je zwei `<td>`\n4. Ganz unten ein Zurück-Link zu `index.html` mit dem Text **Zurück zur Startseite**\n\nWelche Getränke und Snacks es gibt, entscheidest du – Hauptsache, die Struktur stimmt!",
+      "task": "Das Grundgerüst steht – arbeite im `<body>`:\n\n1. `<h1>` **Speisekarte**\n2. `<h2>` **Getränke** + Tabelle: Kopfzeile mit `<th>` **Getränk**, **Größe**, **Preis**, mindestens drei Datenzeilen mit je drei `<td>`\n3. `<h2>` **Snacks** + Tabelle: Kopfzeile **Snack**, **Preis**, mindestens zwei Datenzeilen\n4. Zurück-Link zu `index.html`: **Zurück zur Startseite**",
       "starter": {
         "html": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Speisekarte – Café Pause</title>\n</head>\n<body>\n  <!-- Hier entsteht die Speisekarte -->\n</body>\n</html>\n"
       },

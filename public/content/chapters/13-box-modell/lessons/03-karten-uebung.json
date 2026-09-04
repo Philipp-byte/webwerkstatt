@@ -4,12 +4,13 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Zeit, alles zu kombinieren – plus ein Neuzugang:\n\n`border-radius` – macht **runde Ecken**:\n\n```css\n.karte {\n  border-radius: 12px;\n}\n```\n\nJe größer der Wert, desto runder die Ecke. Und ein Profi-Trick: Gibst du einer **quadratischen** Box `border-radius: 50%;`, wird aus ihr ein **Kreis** – so entstehen die runden Profilbilder, die du aus jeder App kennst.\n\nZusammen mit Hintergrundfarbe, padding und width baust du damit die typischen „Karten“ von Instagram, YouTube & Co."
+      "text": "Zeit, alles zu kombinieren – plus ein Neuzugang: `border-radius` macht **runde Ecken**.\n\n```css\n.karte {\n  border-radius: 12px;\n}\n```\n\nJe größer der Wert, desto runder die Ecke. **Profi-Trick:** Eine **quadratische** Box mit `border-radius: 50%;` wird zum **Kreis** – so entstehen die runden Profilbilder in Gaming-Profilen und Apps.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect x=\"30\" y=\"28\" width=\"70\" height=\"70\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"3\"/><text x=\"65\" y=\"122\" text-anchor=\"middle\" fill=\"#1d2733\">radius: 0</text><rect x=\"125\" y=\"28\" width=\"70\" height=\"70\" rx=\"12\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"3\"/><text x=\"160\" y=\"122\" text-anchor=\"middle\" fill=\"#1d2733\">radius: 12px</text><rect x=\"220\" y=\"28\" width=\"70\" height=\"70\" rx=\"35\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-width=\"3\"/><text x=\"255\" y=\"122\" text-anchor=\"middle\" fill=\"#1d2733\">radius: 50%</text><text x=\"160\" y=\"148\" text-anchor=\"middle\" fill=\"#5b6b7c\">quadratische Box + 50 % = Kreis</text></svg>"
     },
     {
       "type": "example",
-      "text": "Eine Karte mit rundem „Profilbild“ (der Kreis ist eine ganz normale Box!). Ändere den `border-radius` der Karte auf `0` oder `30px` – und stelle beim `.avatar` die `50%` mal auf `10%` um.",
-      "html": "<div class=\"karte\">\n  <div class=\"avatar\"></div>\n  <h2>Alex M.</h2>\n  <p>Klasse 10b · AG Robotik</p>\n</div>\n",
+      "text": "Ein Gaming-Profil mit rundem „Profilbild“ (der Kreis ist eine ganz normale Box!). Stelle den `border-radius` der Karte auf `0` oder `30px` – und beim `.avatar` die `50%` auf `10%`.",
+      "html": "<div class=\"karte\">\n  <div class=\"avatar\"></div>\n  <h2>Alex M.</h2>\n  <p>Level 42 · Team Nordlicht</p>\n</div>\n",
       "css": ".karte {\n  background-color: #eaf2ff;\n  border-radius: 12px;\n  padding: 20px;\n  width: 300px;\n}\n.avatar {\n  width: 80px;\n  height: 80px;\n  background-color: #1f66c2;\n  border-radius: 50%;\n}\n"
     },
     {
@@ -31,7 +32,7 @@
       "type": "code",
       "task": "Gestalte die Profil-Karte:\n\n1. Hintergrundfarbe **#eaf2ff**\n2. `border-radius: 12px;`\n3. `padding: 20px;`\n4. `width: 300px;`",
       "starter": {
-        "html": "<div class=\"karte\">\n  <h2>Alex M.</h2>\n  <p>Klasse 10b · AG Robotik</p>\n  <p>Lieblingsfach: Informatik</p>\n</div>\n",
+        "html": "<div class=\"karte\">\n  <h2>Alex M.</h2>\n  <p>Level 42 · Team Nordlicht</p>\n  <p>Lieblingsspiel: Rennspiele</p>\n</div>\n",
         "css": ".karte {\n  /* Deine vier Eigenschaften hier */\n}\n"
       },
       "editable": ["css"],

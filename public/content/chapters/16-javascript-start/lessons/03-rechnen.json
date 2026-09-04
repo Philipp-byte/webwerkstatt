@@ -4,12 +4,17 @@
   "steps": [
     {
       "type": "explain",
-      "text": "JavaScript rechnet mit den üblichen Zeichen: `+` `-` `*` (mal) `/` (geteilt).\n\n```js\nlet preis = 3 * 4;\nconsole.log(preis);\n```\n\nMit `+` kannst du außerdem **Text und Werte verbinden**:\n\n```js\nconsole.log(\"Der Preis ist: \" + preis);\n```\n\nAusgabe: `Der Preis ist: 12` – der Text und der Variablenwert werden aneinandergehängt."
+      "text": "JavaScript rechnet mit den üblichen Zeichen: `+` `-` `*` (mal) `/` (geteilt).\n\n```js\nlet preis = 6 * 3;\nconsole.log(preis);\n```\n\nAusgabe: `18` – drei Döner zu je 6 Euro. Du tippst die Rechnung, JavaScript rechnet aus.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"13\"><text x=\"20\" y=\"28\" fill=\"#2f6fdb\" font-size=\"12\">Zahl * Zahl → JavaScript rechnet</text><rect x=\"20\" y=\"38\" width=\"110\" height=\"34\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"75\" y=\"60\" text-anchor=\"middle\" fill=\"#1d2733\">6 * 3</text><path d=\"M140 55 L185 55 M178 49 L185 55 L178 61\" fill=\"none\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><rect x=\"195\" y=\"38\" width=\"105\" height=\"34\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"247\" y=\"60\" text-anchor=\"middle\" fill=\"#1d2733\" font-weight=\"bold\">18</text><text x=\"20\" y=\"104\" fill=\"#e0632e\" font-size=\"12\">Text + Zahl → JavaScript verbindet</text><rect x=\"20\" y=\"114\" width=\"110\" height=\"34\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"75\" y=\"136\" text-anchor=\"middle\" fill=\"#1d2733\" font-size=\"12\">\"Preis: \" + 18</text><path d=\"M140 131 L185 131 M178 125 L185 131 L178 137\" fill=\"none\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><rect x=\"195\" y=\"114\" width=\"105\" height=\"34\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"247\" y=\"136\" text-anchor=\"middle\" fill=\"#1d2733\" font-weight=\"bold\">Preis: 18</text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Mit `+` kannst du außerdem **Text und Werte verbinden**:\n\n```js\nconsole.log(\"Preis: \" + preis);\n```\n\nAusgabe: `Preis: 18`. Der Text und der Variablenwert werden einfach aneinandergehängt.\n\nMerke: Zwischen zwei Zahlen **rechnet** `+`, neben einem Text **verbindet** es."
     },
     {
       "type": "example",
-      "text": "Ein kleiner Kiosk-Rechner. Ändere Anzahl oder Einzelpreis – die Rechnung passt sich an!",
-      "js": "let einzelpreis = 1.5;\nlet anzahl = 4;\nlet gesamt = einzelpreis * anzahl;\n\nconsole.log(\"Anzahl Brezeln: \" + anzahl);\nconsole.log(\"Gesamtpreis: \" + gesamt + \" Euro\");\n"
+      "text": "Ein Döner-Rechner für die Mittagspause. Ändere Anzahl oder Einzelpreis – die Rechnung passt sich an!",
+      "js": "let einzelpreis = 6;\nlet anzahl = 4;\nlet gesamt = einzelpreis * anzahl;\n\nconsole.log(\"Anzahl Döner: \" + anzahl);\nconsole.log(\"Gesamtpreis: \" + gesamt + \" Euro\");\n"
     },
     {
       "type": "quiz",
@@ -24,26 +29,35 @@
     },
     {
       "type": "code",
-      "task": "1. Lege eine Variable `ergebnis` an und lass JavaScript darin **7 * 6** rechnen (nicht selbst ausrechnen!).\n2. Gib genau **Ergebnis: 42** aus – verbinde dafür Text und Variable mit `+`.",
+      "task": "Wie viele Stunden zockst du pro Woche?\n\n1. Lege eine Variable `stunden` an und lass JavaScript darin **2 * 7** rechnen (nicht selbst ausrechnen!).\n2. Gib genau **Spielstunden pro Woche: 14** aus – verbinde Text und Variable mit `+`.",
       "starter": {
         "js": "// Erst rechnen, dann ausgeben\n"
       },
       "hints": [
-        "let ergebnis = 7 * 6; – den Rest macht JavaScript.",
-        "Für die Ausgabe: console.log(\"Ergebnis: \" + ergebnis);",
-        "```js\nlet ergebnis = 7 * 6;\nconsole.log(\"Ergebnis: \" + ergebnis);\n```"
+        "let stunden = 2 * 7; – den Rest macht JavaScript.",
+        "Für die Ausgabe: console.log(\"Spielstunden pro Woche: \" + stunden);",
+        "```js\nlet stunden = 2 * 7;\nconsole.log(\"Spielstunden pro Woche: \" + stunden);\n```"
       ],
       "solution": {
-        "js": "let ergebnis = 7 * 6;\nconsole.log(\"Ergebnis: \" + ergebnis);\n"
+        "js": "let stunden = 2 * 7;\nconsole.log(\"Spielstunden pro Woche: \" + stunden);\n"
       },
       "tests": [
-        { "type": "source", "file": "js", "matches": "7\\s*\\*\\s*6|6\\s*\\*\\s*7", "label": "JavaScript rechnet 7 * 6 selbst" },
-        { "type": "console", "expected": "Ergebnis: 42", "label": "Die Konsole zeigt „Ergebnis: 42“" }
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "2\\s*\\*\\s*7|7\\s*\\*\\s*2",
+          "label": "JavaScript rechnet 2 * 7 selbst"
+        },
+        {
+          "type": "console",
+          "expected": "Spielstunden pro Woche: 14",
+          "label": "Die Konsole zeigt „Spielstunden pro Woche: 14“"
+        }
       ]
     },
     {
       "type": "explain",
-      "text": "Zwei Dinge solltest du beim Rechnen noch wissen:\n\n**Punkt vor Strich** gilt auch in JavaScript: `2 + 3 * 4` ergibt `14`, nicht `20`. Mit **runden Klammern** änderst du die Reihenfolge: `(2 + 3) * 4` ergibt `20`.\n\n**Kommazahlen** schreibst du mit **Punkt** statt Komma – das ist die englische Schreibweise:\n\n```js\nlet preis = 2.5;\n```\n\n`2,5` mit Komma wäre ein Fehler. Auch in der Ausgabe zeigt JavaScript den Punkt: `2.5`."
+      "text": "**Punkt vor Strich** gilt auch in JavaScript: `2 + 3 * 4` ergibt `14`, nicht `20`. Mit **runden Klammern** änderst du die Reihenfolge: `(2 + 3) * 4` ergibt `20`.\n\n**Kommazahlen** schreibst du mit **Punkt** – englische Schreibweise:\n\n```js\nlet preis = 4.5;\n```\n\n`4,5` mit Komma wäre ein Fehler. Auch in der Ausgabe steht der Punkt: `4.5`."
     },
     {
       "type": "quiz",
@@ -58,22 +72,36 @@
     },
     {
       "type": "code",
-      "task": "Die Café-Kasse rechnet den Bon aus:\n\n1. Lege eine **Konstante** `preis` mit dem Wert **2.5** an (ein Kakao kostet 2,50 €).\n2. Lege eine Variable `anzahl` mit dem Wert **3** an.\n3. Lass JavaScript in einer Variablen `gesamt` **preis mal anzahl** rechnen.\n4. Gib genau **Gesamt: 7.5 Euro** aus – verbinde Text, Variable und Text mit `+`.",
+      "task": "Bubble Tea für die ganze Clique:\n\n1. Lege eine **Konstante** `preis` mit dem Wert **4.5** an (ein Becher kostet 4,50 €).\n2. Lege eine Variable `anzahl` mit dem Wert **3** an.\n3. Lass JavaScript in `gesamt` **preis mal anzahl** rechnen.\n4. Gib genau **Gesamt: 13.5 Euro** aus.",
       "starter": {
         "js": "// Kasse: preis, anzahl, gesamt – dann die Ausgabe\n"
       },
       "hints": [
         "Drei Zeilen zum Anlegen (const bzw. let), eine Zeile für die Ausgabe.",
         "Die Ausgabe baust du aus drei Teilen: \"Gesamt: \" + gesamt + \" Euro\"",
-        "```js\nconst preis = 2.5;\nlet anzahl = 3;\nlet gesamt = preis * anzahl;\n\nconsole.log(\"Gesamt: \" + gesamt + \" Euro\");\n```"
+        "```js\nconst preis = 4.5;\nlet anzahl = 3;\nlet gesamt = preis * anzahl;\n\nconsole.log(\"Gesamt: \" + gesamt + \" Euro\");\n```"
       ],
       "solution": {
-        "js": "const preis = 2.5;\nlet anzahl = 3;\nlet gesamt = preis * anzahl;\n\nconsole.log(\"Gesamt: \" + gesamt + \" Euro\");\n"
+        "js": "const preis = 4.5;\nlet anzahl = 3;\nlet gesamt = preis * anzahl;\n\nconsole.log(\"Gesamt: \" + gesamt + \" Euro\");\n"
       },
       "tests": [
-        { "type": "source", "file": "js", "matches": "const\\s+preis\\s*=\\s*2\\.5", "label": "preis ist eine Konstante mit dem Wert 2.5" },
-        { "type": "source", "file": "js", "matches": "preis\\s*\\*\\s*anzahl|anzahl\\s*\\*\\s*preis", "label": "gesamt wird aus preis mal anzahl berechnet" },
-        { "type": "console", "expected": "Gesamt: 7.5 Euro", "label": "Die Konsole zeigt „Gesamt: 7.5 Euro“" }
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "const\\s+preis\\s*=\\s*4\\.5",
+          "label": "preis ist eine Konstante mit dem Wert 4.5"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "preis\\s*\\*\\s*anzahl|anzahl\\s*\\*\\s*preis",
+          "label": "gesamt wird aus preis mal anzahl berechnet"
+        },
+        {
+          "type": "console",
+          "expected": "Gesamt: 13.5 Euro",
+          "label": "Die Konsole zeigt „Gesamt: 13.5 Euro“"
+        }
       ]
     }
   ]

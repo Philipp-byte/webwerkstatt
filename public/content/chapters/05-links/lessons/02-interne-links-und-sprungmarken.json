@@ -4,7 +4,8 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Bisher zeigten deine Links nach draußen. Aber eine echte Website besteht aus **mehreren eigenen Seiten** – beim Café Pause zum Beispiel `index.html` und `speisekarte.html`.\n\nFür den Weg zwischen den eigenen Dateien nimmst du einen **relativen Link**: Ins `href` kommt **nur der Dateiname**, kein `https://`:\n\n```html\n<a href=\"speisekarte.html\">Zur Speisekarte</a>\n```\n\nDer Browser sucht die Datei dann im **selben Ordner** wie die aktuelle Seite. Wichtig: Der Dateiname muss **exakt** stimmen – inklusive Groß-/Kleinschreibung und der Endung `.html`."
+      "text": "Bisher zeigten deine Links nach draußen. Eine echte Website hat aber **mehrere eigene Seiten** – beim Café Pause etwa `index.html` und `speisekarte.html`.\n\nFür den Weg zwischen eigenen Dateien nimmst du einen **relativen Link**: Ins `href` kommt **nur der Dateiname**, kein `https://`:\n\n```html\n<a href=\"speisekarte.html\">Zur Speisekarte</a>\n```\n\nDer Browser sucht die Datei im **selben Ordner**. Der Name muss **exakt** stimmen – inklusive Groß-/Kleinschreibung und `.html`.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect x=\"6\" y=\"20\" width=\"308\" height=\"122\" rx=\"8\" fill=\"#eef2f8\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"16\" y=\"14\" fill=\"#5b6b7c\" font-weight=\"bold\">Ordner: meine-website</text><rect x=\"24\" y=\"52\" width=\"110\" height=\"60\" rx=\"6\" fill=\"none\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"79\" y=\"76\" text-anchor=\"middle\" fill=\"#2f6fdb\" font-weight=\"bold\">index.html</text><text x=\"79\" y=\"98\" text-anchor=\"middle\" fill=\"#1d2733\">&lt;a href=\"…\"&gt;</text><line x1=\"138\" y1=\"82\" x2=\"168\" y2=\"82\" stroke=\"#e0632e\" stroke-width=\"3\"/><polygon points=\"168,74 182,82 168,90\" fill=\"#e0632e\"/><rect x=\"186\" y=\"52\" width=\"124\" height=\"60\" rx=\"6\" fill=\"none\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"248\" y=\"86\" text-anchor=\"middle\" fill=\"#1a9e5c\" font-weight=\"bold\">speisekarte.html</text><text x=\"160\" y=\"132\" text-anchor=\"middle\" fill=\"#5b6b7c\">href=\"speisekarte.html\" – nur der Dateiname</text></svg>"
     },
     {
       "type": "quiz",
@@ -19,38 +20,43 @@
     },
     {
       "type": "explain",
-      "text": "Der dritte Linktyp bleibt **auf derselben Seite**: die **Sprungmarke**. Sie besteht aus zwei Teilen:\n\n**1. Das Ziel markieren** – das Element, zu dem gesprungen werden soll, bekommt eine `id` (einen eindeutigen Namen ohne Leerzeichen):\n\n```html\n<h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n```\n\n**2. Der Link darauf** – ins `href` kommt ein `#` plus der id-Name:\n\n```html\n<a href=\"#oeffnungszeiten\">Zu den Öffnungszeiten</a>\n```\n\nDas `#` bedeutet: „Springe auf **dieser** Seite zum Element mit dieser id.“ Beim Klick scrollt der Browser dorthin – perfekt für lange Seiten. Jede `id` darf pro Seite nur **einmal** vorkommen."
+      "text": "Der dritte Linktyp bleibt **auf derselben Seite**: die **Sprungmarke**. Sie hat zwei Teile.\n\n**Teil 1 – das Ziel markieren:** Das Element, zu dem gesprungen wird, bekommt eine `id` – einen eindeutigen Namen ohne Leerzeichen:\n\n```html\n<h2 id=\"regeln\">Turnier-Regeln</h2>\n```\n\nJede `id` darf pro Seite nur **einmal** vorkommen."
+    },
+    {
+      "type": "explain",
+      "text": "**Teil 2 – der Link darauf:** Ins `href` kommt `#` plus der id-Name:\n\n```html\n<a href=\"#regeln\">Zu den Regeln</a>\n```\n\nDas `#` bedeutet: „Springe auf **dieser** Seite zum Element mit dieser id.“ Beim Klick scrollt der Browser dorthin – perfekt für lange Seiten.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect x=\"70\" y=\"6\" width=\"180\" height=\"148\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"160\" y=\"24\" text-anchor=\"middle\" fill=\"#5b6b7c\" font-weight=\"bold\">eine lange Seite</text><rect x=\"84\" y=\"34\" width=\"152\" height=\"28\" rx=\"6\" fill=\"none\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"160\" y=\"53\" text-anchor=\"middle\" fill=\"#1d2733\">&lt;a href=\"#regeln\"&gt;</text><text x=\"8\" y=\"53\" fill=\"#e0632e\" font-weight=\"bold\">Link</text><line x1=\"160\" y1=\"66\" x2=\"160\" y2=\"108\" stroke=\"#e0632e\" stroke-width=\"3\"/><polygon points=\"152,108 160,122 168,108\" fill=\"#e0632e\"/><text x=\"262\" y=\"90\" fill=\"#5b6b7c\">springt</text><text x=\"262\" y=\"106\" fill=\"#5b6b7c\">nach unten</text><rect x=\"84\" y=\"124\" width=\"152\" height=\"24\" rx=\"6\" fill=\"none\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"160\" y=\"141\" text-anchor=\"middle\" fill=\"#1d2733\">&lt;h2 id=\"regeln\"&gt;</text><text x=\"8\" y=\"141\" fill=\"#1a9e5c\" font-weight=\"bold\">Ziel</text></svg>"
     },
     {
       "type": "example",
-      "text": "Eine lange Seite mit Sprungmarken – **klick die Links an, die Vorschau scrollt wirklich!** Oben geht es hinunter zu den Tipps, unten wieder hinauf zum Anfang.",
-      "html": "<h1 id=\"anfang\">Schulfest-Infos</h1>\n<p><a href=\"#tipps\">Direkt zu den Tipps springen ↓</a></p>\n\n<h2>Ablauf</h2>\n<p>Das Schulfest beginnt um 14 Uhr auf dem Pausenhof.</p>\n<p>Um 15 Uhr treten die Bands im Musiksaal auf.</p>\n<p>Ab 16 Uhr gibt es das große Fußballturnier.</p>\n<p>Um 17 Uhr startet die Tombola in der Aula.</p>\n<p>Gegen 18 Uhr klingt das Fest gemütlich aus.</p>\n<p>Den ganzen Nachmittag über gibt es Essen und Getränke.</p>\n<p>Die Einnahmen gehen an die SMV.</p>\n\n<h2 id=\"tipps\">Tipps</h2>\n<p>Komm früh, die besten Waffeln sind schnell weg!</p>\n<p><a href=\"#anfang\">Zurück nach oben ↑</a></p>\n"
+      "text": "Eine lange Seite mit Sprungmarken – **klick die Links an, die Vorschau scrollt wirklich!** Oben geht es hinunter zu den Tipps, unten wieder hinauf.",
+      "html": "<h1 id=\"anfang\">E-Sport-Turnier der Schule</h1>\n<p><a href=\"#tipps\">Direkt zu den Tipps springen ↓</a></p>\n\n<h2>Ablauf</h2>\n<p>Check-in ab 14 Uhr im PC-Raum.</p>\n<p>Um 15 Uhr starten die Gruppenspiele.</p>\n<p>Ab 16 Uhr laufen die Halbfinals.</p>\n<p>Um 17 Uhr steigt das Finale auf der großen Leinwand.</p>\n<p>Gegen 18 Uhr gibt es die Siegerehrung.</p>\n<p>Den ganzen Nachmittag über gibt es Pizza und Getränke.</p>\n<p>Die Einnahmen gehen an die SMV.</p>\n\n<h2 id=\"tipps\">Tipps</h2>\n<p>Bring dein eigenes Headset mit – die Schul-Headsets sind schnell weg!</p>\n<p><a href=\"#anfang\">Zurück nach oben ↑</a></p>\n"
     },
     {
       "type": "fill",
       "text": "Die Überschrift soll als **Sprungziel** dienen. Setze das fehlende Attribut ein.",
-      "template": "<h2 ___=\"preise\">Unsere Preise</h2>",
+      "template": "<h2 ___=\"regeln\">Turnier-Regeln</h2>",
       "solution": "id",
       "accept": ["id"],
-      "hint": "Das Ziel einer Sprungmarke bekommt eine `id` – der Link zeigt dann mit `href=\"#preise\"` darauf."
+      "hint": "Das Ziel einer Sprungmarke bekommt eine `id` – der Link zeigt dann mit `href=\"#regeln\"` darauf."
     },
     {
       "type": "explain",
-      "text": "**So testest du das in der Werkstatt:** Klicks auf Sprungmarken (`#...`) scrollen wirklich in der Vorschau – probier es aus!\n\nKlicks auf eigene `.html`-Seiten wie `speisekarte.html` zeigen dagegen erst im Café-Projekt (`#/projekt`) Wirkung, wenn die Nachbarseiten wirklich existieren. Hier in der Übung gibt es sie noch nicht – die automatischen Tests prüfen deshalb die **Attribute** deiner Links."
+      "text": "**So testest du das in der Werkstatt:** Klicks auf Sprungmarken (`#...`) scrollen wirklich in der Vorschau – probier es aus!\n\nKlicks auf eigene `.html`-Seiten wirken erst im Café-Projekt (`#/projekt`), wenn die Nachbarseiten existieren. Hier gibt es sie noch nicht – die Tests prüfen deshalb die **Attribute** deiner Links."
     },
     {
       "type": "code",
-      "task": "Baue die Seite der Schulband aus:\n\n1. Füge direkt unter der `<h1>` einen Absatz mit einem **Sprungmarken-Link** ein: Text **Direkt zum Kontakt**, Ziel ist die Kontakt-Überschrift\n2. Gib der `<h2>` **Kontakt** die passende `id=\"kontakt\"`\n3. Füge unter dem Auftritts-Absatz einen **relativen Link** zur Datei `termine.html` ein – Linktext: **Alle Termine**",
+      "task": "Baue die Seite des E-Sport-Teams aus:\n\n1. Direkt unter der `<h1>` ein Absatz mit einem **Sprungmarken-Link**: Text **Direkt zum Kontakt**, Ziel ist die Kontakt-Überschrift\n2. Die `<h2>` **Kontakt** bekommt `id=\"kontakt\"`\n3. Unter dem Turnier-Absatz ein **relativer Link** zur Datei `termine.html` – Linktext **Alle Termine**",
       "starter": {
-        "html": "<h1>Unsere Schulband</h1>\n\n<h2>Auftritte</h2>\n<p>Wir spielen beim Sommerfest und beim Weihnachtskonzert.</p>\n\n<h2>Kontakt</h2>\n<p>Schreib uns oder komm einfach donnerstags zur Probe.</p>\n"
+        "html": "<h1>Unser E-Sport-Team</h1>\n\n<h2>Turniere</h2>\n<p>Wir spielen beim Schulcup und beim Stadtfinale.</p>\n\n<h2>Kontakt</h2>\n<p>Schreib uns oder komm donnerstags zum Training im PC-Raum.</p>\n"
       },
       "hints": [
         "Der Sprungmarken-Link braucht href=\"#kontakt\" – und die Kontakt-Überschrift die id=\"kontakt\". Beide Namen müssen exakt gleich sein.",
         "Der relative Link ist ein ganz normaler <a>-Tag: <a href=\"termine.html\">Alle Termine</a> – ohne https://, nur der Dateiname.",
-        "```html\n<h1>Unsere Schulband</h1>\n<p><a href=\"#kontakt\">Direkt zum Kontakt</a></p>\n\n<h2>Auftritte</h2>\n<p>Wir spielen beim Sommerfest und beim Weihnachtskonzert.</p>\n<p><a href=\"termine.html\">Alle Termine</a></p>\n\n<h2 id=\"kontakt\">Kontakt</h2>\n<p>Schreib uns oder komm einfach donnerstags zur Probe.</p>\n```"
+        "```html\n<h1>Unser E-Sport-Team</h1>\n<p><a href=\"#kontakt\">Direkt zum Kontakt</a></p>\n\n<h2>Turniere</h2>\n<p>Wir spielen beim Schulcup und beim Stadtfinale.</p>\n<p><a href=\"termine.html\">Alle Termine</a></p>\n\n<h2 id=\"kontakt\">Kontakt</h2>\n<p>Schreib uns oder komm donnerstags zum Training im PC-Raum.</p>\n```"
       ],
       "solution": {
-        "html": "<h1>Unsere Schulband</h1>\n<p><a href=\"#kontakt\">Direkt zum Kontakt</a></p>\n\n<h2>Auftritte</h2>\n<p>Wir spielen beim Sommerfest und beim Weihnachtskonzert.</p>\n<p><a href=\"termine.html\">Alle Termine</a></p>\n\n<h2 id=\"kontakt\">Kontakt</h2>\n<p>Schreib uns oder komm einfach donnerstags zur Probe.</p>\n"
+        "html": "<h1>Unser E-Sport-Team</h1>\n<p><a href=\"#kontakt\">Direkt zum Kontakt</a></p>\n\n<h2>Turniere</h2>\n<p>Wir spielen beim Schulcup und beim Stadtfinale.</p>\n<p><a href=\"termine.html\">Alle Termine</a></p>\n\n<h2 id=\"kontakt\">Kontakt</h2>\n<p>Schreib uns oder komm donnerstags zum Training im PC-Raum.</p>\n"
       },
       "tests": [
         { "type": "text", "selector": "a[href='#kontakt']", "expected": "Direkt zum Kontakt", "label": "Der Sprungmarken-Link „Direkt zum Kontakt“ zeigt auf #kontakt" },

@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Bevor wir das Flexbox-Wissen ins Café-Projekt einbauen, eine kurze Abruf-Runde: Was du **selbst aus dem Gedächtnis holst**, bleibt viel länger hängen als alles, was du nur noch einmal liest. Heute gemischt dran: **Schrift & Text** und das **Box-Modell**. Los geht's!"
+      "text": "Bevor Flexbox ins Café-Projekt kommt, eine kurze Abruf-Runde zu **Schrift & Text** und dem **Box-Modell**. Was du selbst aus dem Gedächtnis holst, bleibt am längsten hängen!"
     },
     {
       "type": "quiz",

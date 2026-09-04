@@ -4,16 +4,17 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Eine **ungeordnete Liste** zeigt Aufzählungspunkte – wie eine Einkaufsliste.\n\nSie besteht aus zwei Teilen:\n\n`<ul>` ist die **Liste selbst** (unordered list = ungeordnete Liste).\n\n`<li>` ist ein **einzelner Eintrag** (list item = Listeneintrag) – davon kann es beliebig viele geben.\n\n```html\n<ul>\n  <li>Brot</li>\n  <li>Milch</li>\n</ul>\n```\n\nDie `<li>`-Einträge stehen **immer innerhalb** von `<ul>` und `</ul>`. Die Punkte vor den Einträgen malt der Browser automatisch – du musst sie nicht tippen."
+      "text": "Eine **ungeordnete Liste** zeigt Aufzählungspunkte – wie deine Einkaufsliste für den Zock-Abend.\n\n`<ul>` ist die **Liste selbst** (unordered list). `<li>` ist ein **einzelner Eintrag** (list item) – davon kann es beliebig viele geben.\n\n```html\n<ul>\n  <li>Chips</li>\n  <li>Energydrink</li>\n</ul>\n```\n\nDie Punkte davor malt der Browser automatisch – du tippst sie nicht.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect x=\"100\" y=\"8\" width=\"120\" height=\"32\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"160\" y=\"29\" text-anchor=\"middle\" fill=\"#1d2733\" font-weight=\"bold\">&lt;ul&gt; die Liste</text><line x1=\"160\" y1=\"40\" x2=\"56\" y2=\"86\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><line x1=\"160\" y1=\"40\" x2=\"160\" y2=\"86\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><line x1=\"160\" y1=\"40\" x2=\"264\" y2=\"86\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><rect x=\"8\" y=\"86\" width=\"96\" height=\"32\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"56\" y=\"107\" text-anchor=\"middle\" fill=\"#1d2733\">&lt;li&gt; Monitor</text><rect x=\"112\" y=\"86\" width=\"96\" height=\"32\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"160\" y=\"107\" text-anchor=\"middle\" fill=\"#1d2733\">&lt;li&gt; Headset</text><rect x=\"216\" y=\"86\" width=\"96\" height=\"32\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"264\" y=\"107\" text-anchor=\"middle\" fill=\"#1d2733\">&lt;li&gt; Controller</text><text x=\"160\" y=\"146\" text-anchor=\"middle\" fill=\"#5b6b7c\">Punkte davor malt der Browser automatisch</text></svg>"
     },
     {
       "type": "example",
-      "text": "Eine Packliste für den Schulausflug. Füge selbst einen weiteren Eintrag hinzu – und lösche testweise mal ein `</li>`, um zu sehen, was passiert!",
-      "html": "<h2>Packliste</h2>\n<ul>\n  <li>Vesper</li>\n  <li>Trinkflasche</li>\n  <li>Regenjacke</li>\n</ul>\n"
+      "text": "Dein Gaming-Setup als Liste. Füge einen Eintrag hinzu – und lösche testweise ein `</li>`, um zu sehen, was passiert!",
+      "html": "<h2>Mein Setup</h2>\n<ul>\n  <li>Monitor</li>\n  <li>Headset</li>\n  <li>Controller</li>\n</ul>\n"
     },
     {
       "type": "explain",
-      "text": "Zwei Stolperfallen, die am Anfang fast jedem passieren:\n\n**1. Text direkt in die `<ul>` schreiben.** Zwischen `<ul>` und `</ul>` gehören **nur `<li>`-Einträge** – kein loser Text, keine Absätze. Der Browser zeigt losen Text zwar oft an, aber ohne Aufzählungspunkt, und der Code ist fehlerhaft.\n\n```html\n<ul>\n  Brot          <!-- FALSCH: Text ohne <li> -->\n  <li>Milch</li>\n</ul>\n```\n\n**2. Den schließenden Tag vergessen.** Jeder Eintrag endet mit `</li>`, die Liste mit `</ul>`. Die **Einrückung** (zwei Leerzeichen vor jedem `<li>`) ist übrigens nur eine Lesehilfe für Menschen – dem Browser ist sie egal, aber dir hilft sie beim Fehlersuchen."
+      "text": "**Stolperfalle 1: Text direkt in die `<ul>` schreiben.**\n\nZwischen `<ul>` und `</ul>` gehören **nur `<li>`-Einträge** – kein loser Text, keine Absätze. Der Browser zeigt den Text zwar oft an, aber ohne Punkt – und der Code ist fehlerhaft.\n\n```html\n<ul>\n  Monitor          <!-- FALSCH: Text ohne <li> -->\n  <li>Headset</li>\n</ul>\n```"
     },
     {
       "type": "quiz",
@@ -27,26 +28,30 @@
       "explanation": "Eine `<ul>` ist ein reiner Behälter für Listeneinträge. Alles, was in der Liste stehen soll, kommt in ein `<li>`...`</li>`."
     },
     {
+      "type": "explain",
+      "text": "**Stolperfalle 2: schließende Tags vergessen.** Jeder Eintrag endet mit `</li>`, die Liste mit `</ul>`.\n\nDie **Einrückung** (zwei Leerzeichen vor jedem `<li>`) ist nur eine Lesehilfe: Dem Browser ist sie egal – dir hilft sie bei der Fehlersuche."
+    },
+    {
       "type": "fill",
       "text": "Ein Eintrag ist kaputt: Setze den fehlenden **öffnenden Tag** ein.",
-      "template": "<ul>\n  <li>Pizza</li>\n  <___>Sushi</li>\n</ul>",
+      "template": "<ul>\n  <li>Pizza</li>\n  <___>Döner</li>\n</ul>",
       "solution": "li",
       "accept": ["li"],
       "hint": "Jeder Listeneintrag beginnt mit `<li>`."
     },
     {
       "type": "code",
-      "task": "Erstelle eine ungeordnete Liste mit **mindestens drei** deiner Hobbys.\n\n1. Öffne unter der Überschrift eine `<ul>`.\n2. Schreibe jedes Hobby in ein eigenes `<li>`.\n3. Vergiss die schließenden Tags nicht!",
+      "task": "Erstelle eine ungeordnete Liste mit **mindestens drei** Teilen deines Gaming- oder Handy-Setups.\n\n1. Öffne unter der Überschrift eine `<ul>`.\n2. Schreibe jedes Teil in ein eigenes `<li>`.\n3. Vergiss die schließenden Tags nicht!",
       "starter": {
-        "html": "<h2>Meine Hobbys</h2>\n<!-- Deine Liste hier -->\n"
+        "html": "<h2>Mein Setup</h2>\n<!-- Deine Liste hier -->\n"
       },
       "hints": [
         "Zuerst die Liste öffnen: <ul> – ganz am Ende wieder schließen: </ul>.",
-        "Jedes Hobby bekommt ein eigenes <li>...</li>, zum Beispiel <li>Fußball</li>.",
-        "```html\n<h2>Meine Hobbys</h2>\n<ul>\n  <li>Fußball</li>\n  <li>Zocken</li>\n  <li>Kochen</li>\n</ul>\n```"
+        "Jedes Teil bekommt ein eigenes <li>...</li>, zum Beispiel <li>Headset</li>.",
+        "```html\n<h2>Mein Setup</h2>\n<ul>\n  <li>Monitor</li>\n  <li>Headset</li>\n  <li>Controller</li>\n</ul>\n```"
       ],
       "solution": {
-        "html": "<h2>Meine Hobbys</h2>\n<ul>\n  <li>Fußball</li>\n  <li>Zocken</li>\n  <li>Kochen</li>\n</ul>\n"
+        "html": "<h2>Mein Setup</h2>\n<ul>\n  <li>Monitor</li>\n  <li>Headset</li>\n  <li>Controller</li>\n</ul>\n"
       },
       "tests": [
         { "type": "selector", "selector": "ul", "min": 1, "label": "Es gibt eine <ul>-Liste" },

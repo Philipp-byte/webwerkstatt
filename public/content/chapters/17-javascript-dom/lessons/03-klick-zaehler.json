@@ -1,84 +1,145 @@
 {
   "id": "03-klick-zaehler",
-  "title": "Mini-Projekt: Klick-Zähler",
+  "title": "Mini-Projekt: Like-Zähler",
   "steps": [
     {
       "type": "explain",
-      "text": "Dein erstes Mini-Projekt! Du kombinierst **alles** aus dem JavaScript-Teil:\n\nEine **Variable** merkt sich den Zählerstand. Bei jedem **Klick** wird sie um 1 erhöht und auf der Seite **angezeigt**:\n\n```js\nzaehler = zaehler + 1;\nanzeige.textContent = zaehler;\n```\n\n`zaehler = zaehler + 1` bedeutet: „Nimm den alten Wert, zähle 1 dazu, speichere das Ergebnis zurück.“ So funktionieren Likes, Warenkörbe und Highscores – überall zählt eine Variable mit."
+      "text": "Dein erstes Mini-Projekt: ein **Like-Zähler**. Du kombinierst alles aus dem JavaScript-Teil.\n\nEine **Variable** merkt sich den Stand. Bei jedem **Klick** wird sie um 1 erhöht und angezeigt:\n\n```js\nlikes = likes + 1;\nanzeige.textContent = likes;\n```\n\n`likes = likes + 1` heißt: alten Wert nehmen, 1 dazuzählen, zurückspeichern. So funktionieren Likes, Highscores und Ticket-Zähler.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"13\"><rect x=\"8\" y=\"46\" width=\"88\" height=\"44\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"52\" y=\"73\" text-anchor=\"middle\" fill=\"#1d2733\" font-size=\"12\">Klick auf Like</text><path d=\"M98 68 L112 68 M106 62 L112 68 L106 74\" fill=\"none\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><rect x=\"116\" y=\"46\" width=\"88\" height=\"44\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"160\" y=\"73\" text-anchor=\"middle\" fill=\"#e0632e\" font-size=\"12\">likes = likes + 1</text><path d=\"M206 68 L220 68 M214 62 L220 68 L214 74\" fill=\"none\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><rect x=\"224\" y=\"46\" width=\"88\" height=\"44\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"268\" y=\"73\" text-anchor=\"middle\" fill=\"#2f6fdb\" font-size=\"12\">Anzeige: likes</text><path d=\"M268 92 L268 118 L52 118 L52 96 M46 104 L52 96 L58 104\" fill=\"none\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"160\" y=\"134\" text-anchor=\"middle\" fill=\"#1a9e5c\" font-size=\"12\">nächster Klick: dieselbe Kiste, Wert +1</text><text x=\"160\" y=\"28\" text-anchor=\"middle\" fill=\"#5b6b7c\" font-size=\"12\">Kiste likes:  0 → 1 → 2 → 3 …</text></svg>"
     },
     {
       "type": "example",
-      "text": "So soll es am Ende funktionieren – klicke ein paarmal auf **+1**! Schau dir den Code genau an, gleich baust du ihn selbst.",
-      "html": "<h1>Klick-Zähler</h1>\n<button id=\"knopf\">+1</button>\n<p id=\"anzeige\">0</p>\n",
+      "text": "So soll es am Ende funktionieren – klicke ein paarmal auf **Like**! Schau dir den Code genau an, gleich baust du ihn selbst.",
+      "html": "<h1>Like-Zähler</h1>\n<button id=\"knopf\">Like</button>\n<p id=\"anzeige\">0</p>\n",
       "css": "#anzeige { font-size: 40px; font-weight: bold; }\nbutton { font-size: 20px; padding: 8px 20px; }\n",
-      "js": "let zaehler = 0;\nlet knopf = document.getElementById(\"knopf\");\nlet anzeige = document.getElementById(\"anzeige\");\n\nknopf.addEventListener(\"click\", function () {\n  zaehler = zaehler + 1;\n  anzeige.textContent = zaehler;\n});\n",
-      "editable": ["js"]
+      "js": "let likes = 0;\nlet knopf = document.getElementById(\"knopf\");\nlet anzeige = document.getElementById(\"anzeige\");\n\nknopf.addEventListener(\"click\", function () {\n  likes = likes + 1;\n  anzeige.textContent = likes;\n});\n",
+      "editable": [
+        "js"
+      ]
     },
     {
       "type": "quiz",
-      "question": "Warum muss `let zaehler = 0;` **außerhalb** der Funktion stehen – also vor dem addEventListener?",
+      "question": "Warum muss `let likes = 0;` **außerhalb** der Funktion stehen – also vor dem addEventListener?",
       "options": [
-        "Damit die Variable bei jedem Klick wieder auf 0 springt",
+        "Damit die Variable bei jedem Klick auf 0 springt",
         "Weil in Funktionen keine Variablen erlaubt sind",
-        "Damit der Zählerstand zwischen den Klicks erhalten bleibt"
+        "Damit der Stand zwischen den Klicks erhalten bleibt"
       ],
       "correct": 2,
       "explanation": "Stünde die Zeile **in** der Funktion, würde bei jedem Klick eine frische Kiste mit 0 angelegt – der Zähler käme nie über 1. Außerhalb wird sie nur einmal angelegt, und alle Klicks teilen sich dieselbe Kiste."
     },
     {
       "type": "code",
-      "task": "Baue den Klick-Zähler selbst – das JS-Feld ist diesmal **leer**:\n\n1. Lege eine Variable `zaehler` mit dem Wert **0** an\n2. Hole Button (`id=\"knopf\"`) und Anzeige (`id=\"anzeige\"`)\n3. Bei jedem Klick: `zaehler` um 1 erhöhen und in der Anzeige zeigen\n\nDer Test klickt dreimal – danach muss die Anzeige **3** zeigen.",
+      "task": "Baue den Like-Zähler selbst – das JS-Feld ist **leer**:\n\n1. Variable `likes` mit dem Wert **0** anlegen\n2. Button (`id=\"knopf\"`) und Anzeige (`id=\"anzeige\"`) holen\n3. Bei jedem Klick: `likes` um 1 erhöhen und anzeigen\n\nDer Test klickt dreimal – danach muss die Anzeige **3** zeigen.",
       "starter": {
-        "html": "<h1>Klick-Zähler</h1>\n<button id=\"knopf\">+1</button>\n<p id=\"anzeige\">0</p>\n",
+        "html": "<h1>Like-Zähler</h1>\n<button id=\"knopf\">Like</button>\n<p id=\"anzeige\">0</p>\n",
         "css": "#anzeige { font-size: 40px; font-weight: bold; }\nbutton { font-size: 20px; padding: 8px 20px; }\n",
-        "js": "// Baue hier deinen Klick-Zähler\n"
+        "js": "// Baue hier deinen Like-Zähler\n"
       },
-      "editable": ["js"],
+      "editable": [
+        "js"
+      ],
       "hints": [
-        "Beginne mit let zaehler = 0; und hole dann beide Elemente mit getElementById.",
-        "Im Event-Listener: zaehler = zaehler + 1; und dann anzeige.textContent = zaehler;",
-        "```js\nlet zaehler = 0;\nlet knopf = document.getElementById(\"knopf\");\nlet anzeige = document.getElementById(\"anzeige\");\n\nknopf.addEventListener(\"click\", function () {\n  zaehler = zaehler + 1;\n  anzeige.textContent = zaehler;\n});\n```"
+        "Beginne mit let likes = 0; und hole dann beide Elemente mit getElementById.",
+        "Im Event-Listener: likes = likes + 1; und dann anzeige.textContent = likes;",
+        "```js\nlet likes = 0;\nlet knopf = document.getElementById(\"knopf\");\nlet anzeige = document.getElementById(\"anzeige\");\n\nknopf.addEventListener(\"click\", function () {\n  likes = likes + 1;\n  anzeige.textContent = likes;\n});\n```"
       ],
       "solution": {
-        "js": "let zaehler = 0;\nlet knopf = document.getElementById(\"knopf\");\nlet anzeige = document.getElementById(\"anzeige\");\n\nknopf.addEventListener(\"click\", function () {\n  zaehler = zaehler + 1;\n  anzeige.textContent = zaehler;\n});\n"
+        "js": "let likes = 0;\nlet knopf = document.getElementById(\"knopf\");\nlet anzeige = document.getElementById(\"anzeige\");\n\nknopf.addEventListener(\"click\", function () {\n  likes = likes + 1;\n  anzeige.textContent = likes;\n});\n"
       },
       "tests": [
-        { "type": "text", "selector": "#anzeige", "expected": "0", "label": "Vor dem Klicken zeigt die Anzeige 0" },
-        { "type": "action", "action": "click", "selector": "#knopf" },
-        { "type": "action", "action": "click", "selector": "#knopf" },
-        { "type": "action", "action": "click", "selector": "#knopf" },
-        { "type": "text", "selector": "#anzeige", "expected": "3", "label": "Nach drei Klicks zeigt die Anzeige 3" },
-        { "type": "source", "file": "js", "matches": "let\\s+zaehler", "label": "Eine Variable zaehler wird angelegt" }
+        {
+          "type": "text",
+          "selector": "#anzeige",
+          "expected": "0",
+          "label": "Vor dem Klicken zeigt die Anzeige 0"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#knopf"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#knopf"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#knopf"
+        },
+        {
+          "type": "text",
+          "selector": "#anzeige",
+          "expected": "3",
+          "label": "Nach drei Klicks zeigt die Anzeige 3"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "let\\s+likes",
+          "label": "Eine Variable likes wird angelegt"
+        }
       ]
     },
     {
       "type": "explain",
-      "text": "Jetzt bauen wir den Zähler komfortabler. Zwei Ideen, die du schon kennst, neu kombiniert:\n\n**Lesbare Anzeige:** Mit `\"Klicks: \" + zaehler` (Text verbinden – aus dem Rechnen-Kapitel) wird aus der nackten Zahl eine echte Anzeige.\n\n**Zurücksetzen:** Ein zweiter Button bekommt seinen eigenen Event-Listener und setzt dieselbe Variable auf 0:\n\n```js\nreset.addEventListener(\"click\", function () {\n  zaehler = 0;\n  anzeige.textContent = \"Klicks: \" + zaehler;\n});\n```\n\nBeide Funktionen greifen auf **dieselbe** Kiste `zaehler` zu – deshalb passt der Stand immer zusammen."
+      "text": "Jetzt wird der Zähler komfortabler – zwei bekannte Ideen, neu kombiniert:\n\n**Lesbare Anzeige:** `\"Likes: \" + likes` macht aus der nackten Zahl eine echte Anzeige (Text verbinden!).\n\n**Zurücksetzen:** Ein zweiter Button setzt dieselbe Variable auf 0:\n\n```js\nreset.addEventListener(\"click\", function () {\n  likes = 0;\n  anzeige.textContent = \"Likes: \" + likes;\n});\n```\n\nBeide Funktionen nutzen **dieselbe** Kiste `likes` – deshalb passt der Stand immer."
     },
     {
       "type": "code",
-      "task": "Baue den Komfort-Zähler:\n\n1. Variable `zaehler` mit **0** anlegen\n2. Die drei Elemente holen: Button `id=\"knopf\"`, Button `id=\"reset\"`, Absatz `id=\"anzeige\"`\n3. Klick auf **+1**: `zaehler` um 1 erhöhen, die Anzeige zeigt **Klicks:** und den Stand\n4. Klick auf **Zurücksetzen**: `zaehler` auf 0 setzen, die Anzeige zeigt wieder **Klicks: 0**\n\nDer Test klickt zweimal **+1**, prüft **Klicks: 2**, klickt **Zurücksetzen** und prüft **Klicks: 0**.",
+      "task": "Baue den Komfort-Zähler:\n\n1. Variable `likes` mit **0** anlegen\n2. Drei Elemente holen: `id=\"knopf\"`, `id=\"reset\"`, `id=\"anzeige\"`\n3. Klick auf **Like**: `likes` um 1 erhöhen, Anzeige zeigt **Likes:** und den Stand\n4. Klick auf **Zurücksetzen**: `likes` auf 0, Anzeige zeigt **Likes: 0**",
       "starter": {
-        "html": "<h1>Klick-Zähler</h1>\n<button id=\"knopf\">+1</button>\n<button id=\"reset\">Zurücksetzen</button>\n<p id=\"anzeige\">Klicks: 0</p>\n",
+        "html": "<h1>Like-Zähler</h1>\n<button id=\"knopf\">Like</button>\n<button id=\"reset\">Zurücksetzen</button>\n<p id=\"anzeige\">Likes: 0</p>\n",
         "css": "#anzeige { font-size: 40px; font-weight: bold; }\nbutton { font-size: 20px; padding: 8px 20px; }\n",
-        "js": "// Zähler mit +1 und Zurücksetzen\n"
+        "js": "// Zähler mit Like und Zurücksetzen\n"
       },
-      "editable": ["js"],
+      "editable": [
+        "js"
+      ],
       "hints": [
         "Der Aufbau ist wie beim ersten Zähler – nur mit einem zweiten addEventListener für den Reset-Button.",
-        "In beiden Funktionen steht zum Schluss dieselbe Zeile: anzeige.textContent = \"Klicks: \" + zaehler;",
-        "```js\nlet zaehler = 0;\nlet knopf = document.getElementById(\"knopf\");\nlet reset = document.getElementById(\"reset\");\nlet anzeige = document.getElementById(\"anzeige\");\n\nknopf.addEventListener(\"click\", function () {\n  zaehler = zaehler + 1;\n  anzeige.textContent = \"Klicks: \" + zaehler;\n});\n\nreset.addEventListener(\"click\", function () {\n  zaehler = 0;\n  anzeige.textContent = \"Klicks: \" + zaehler;\n});\n```"
+        "In beiden Funktionen steht zum Schluss dieselbe Zeile: anzeige.textContent = \"Likes: \" + likes;",
+        "```js\nlet likes = 0;\nlet knopf = document.getElementById(\"knopf\");\nlet reset = document.getElementById(\"reset\");\nlet anzeige = document.getElementById(\"anzeige\");\n\nknopf.addEventListener(\"click\", function () {\n  likes = likes + 1;\n  anzeige.textContent = \"Likes: \" + likes;\n});\n\nreset.addEventListener(\"click\", function () {\n  likes = 0;\n  anzeige.textContent = \"Likes: \" + likes;\n});\n```"
       ],
       "solution": {
-        "js": "let zaehler = 0;\nlet knopf = document.getElementById(\"knopf\");\nlet reset = document.getElementById(\"reset\");\nlet anzeige = document.getElementById(\"anzeige\");\n\nknopf.addEventListener(\"click\", function () {\n  zaehler = zaehler + 1;\n  anzeige.textContent = \"Klicks: \" + zaehler;\n});\n\nreset.addEventListener(\"click\", function () {\n  zaehler = 0;\n  anzeige.textContent = \"Klicks: \" + zaehler;\n});\n"
+        "js": "let likes = 0;\nlet knopf = document.getElementById(\"knopf\");\nlet reset = document.getElementById(\"reset\");\nlet anzeige = document.getElementById(\"anzeige\");\n\nknopf.addEventListener(\"click\", function () {\n  likes = likes + 1;\n  anzeige.textContent = \"Likes: \" + likes;\n});\n\nreset.addEventListener(\"click\", function () {\n  likes = 0;\n  anzeige.textContent = \"Likes: \" + likes;\n});\n"
       },
       "tests": [
-        { "type": "text", "selector": "#anzeige", "expected": "Klicks: 0", "label": "Am Anfang zeigt die Anzeige „Klicks: 0“" },
-        { "type": "action", "action": "click", "selector": "#knopf" },
-        { "type": "action", "action": "click", "selector": "#knopf" },
-        { "type": "text", "selector": "#anzeige", "expected": "Klicks: 2", "label": "Nach zwei Klicks zeigt die Anzeige „Klicks: 2“" },
-        { "type": "action", "action": "click", "selector": "#reset" },
-        { "type": "text", "selector": "#anzeige", "expected": "Klicks: 0", "label": "Nach dem Zurücksetzen zeigt die Anzeige „Klicks: 0“" }
+        {
+          "type": "text",
+          "selector": "#anzeige",
+          "expected": "Likes: 0",
+          "label": "Am Anfang zeigt die Anzeige „Likes: 0“"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#knopf"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#knopf"
+        },
+        {
+          "type": "text",
+          "selector": "#anzeige",
+          "expected": "Likes: 2",
+          "label": "Nach zwei Klicks zeigt die Anzeige „Likes: 2“"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#reset"
+        },
+        {
+          "type": "text",
+          "selector": "#anzeige",
+          "expected": "Likes: 0",
+          "label": "Nach dem Zurücksetzen zeigt die Anzeige „Likes: 0“"
+        }
       ]
     }
   ]

@@ -4,23 +4,32 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Drei nützliche Text-Eigenschaften:\n\n`text-align` – richtet Text aus: `left` (Standard), `center` oder `right`. Die Eigenschaft setzt du auf den **Block**, in dem der Text steht (die Überschrift, den Absatz) – nicht auf einzelne Wörter.\n\n`font-style: italic;` – macht Text **kursiv**.\n\n`text-decoration: none;` – entfernt die **Unterstreichung**. Das nutzt man oft bei Links, die der Browser standardmäßig unterstreicht:\n\n```css\nh1 { text-align: center; }\na { text-decoration: none; }\n```\n\nAber Vorsicht beim Link-Styling: Die Unterstreichung zeigt Besuchern „hier kann man klicken“. Nimmst du sie weg, sollten deine Links anders erkennbar bleiben – zum Beispiel durch eine kräftige Farbe."
+      "text": "Zwei nützliche Text-Eigenschaften:\n\n`text-align` richtet Text aus: `left` (Standard), `center` oder `right`. Die Eigenschaft setzt du auf den **Block**, in dem der Text steht (Überschrift, Absatz) – nicht auf einzelne Wörter.\n\n`font-style: italic;` macht Text **kursiv** – etwa das Motto auf deiner Fanpage.\n\n```css\nh1 { text-align: center; }\n.motto { font-style: italic; }\n```",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\"><text x=\"160\" y=\"20\" font-size=\"12\" fill=\"#5b6b7c\" text-anchor=\"middle\">text-align: …</text><rect x=\"8\" y=\"30\" width=\"96\" height=\"80\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><rect x=\"16\" y=\"44\" width=\"70\" height=\"8\" fill=\"#2f6fdb\"/><rect x=\"16\" y=\"64\" width=\"50\" height=\"8\" fill=\"#2f6fdb\"/><rect x=\"16\" y=\"84\" width=\"62\" height=\"8\" fill=\"#2f6fdb\"/><text x=\"56\" y=\"130\" font-size=\"13\" fill=\"#1d2733\" text-anchor=\"middle\">left</text><rect x=\"112\" y=\"30\" width=\"96\" height=\"80\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><rect x=\"125\" y=\"44\" width=\"70\" height=\"8\" fill=\"#1a9e5c\"/><rect x=\"135\" y=\"64\" width=\"50\" height=\"8\" fill=\"#1a9e5c\"/><rect x=\"129\" y=\"84\" width=\"62\" height=\"8\" fill=\"#1a9e5c\"/><text x=\"160\" y=\"130\" font-size=\"13\" fill=\"#1d2733\" text-anchor=\"middle\">center</text><rect x=\"216\" y=\"30\" width=\"96\" height=\"80\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><rect x=\"234\" y=\"44\" width=\"70\" height=\"8\" fill=\"#e0632e\"/><rect x=\"254\" y=\"64\" width=\"50\" height=\"8\" fill=\"#e0632e\"/><rect x=\"242\" y=\"84\" width=\"62\" height=\"8\" fill=\"#e0632e\"/><text x=\"264\" y=\"130\" font-size=\"13\" fill=\"#1d2733\" text-anchor=\"middle\">right</text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Die dritte: `text-decoration: none;` entfernt die **Unterstreichung**. Das nutzt man oft bei Links, die der Browser standardmäßig unterstreicht:\n\n```css\na { text-decoration: none; }\n```\n\nAber Vorsicht: Die Unterstreichung zeigt Besuchern „hier kann man klicken“. Nimmst du sie weg, sollten deine Links anders erkennbar bleiben – zum Beispiel durch eine kräftige Farbe."
     },
     {
       "type": "example",
-      "text": "Beobachte den Link: Mit `text-decoration: none;` verliert er die Unterstreichung. Stelle testweise `center` auf `right` um – und lösche die `a`-Regel, um die Standard-Unterstreichung zurückzuholen.",
-      "html": "<h1>Zitat des Tages</h1>\n<p class=\"zitat\">Wer aufhört zu lernen, hört auf, gut zu sein.</p>\n<a href=\"https://example.com\">Mehr Zitate</a>\n",
+      "text": "Beobachte den Link: Mit `text-decoration: none;` verliert er die Unterstreichung. Stelle testweise `center` auf `right` um – und lösche die `a`-Regel, um die Unterstreichung zurückzuholen.",
+      "html": "<h1>Song des Tages</h1>\n<p class=\"zitat\">Lauter, als die Nachbarn erlauben.</p>\n<a href=\"https://example.com\">Zur ganzen Playlist</a>\n",
       "css": "h1 {\n  text-align: center;\n}\n.zitat {\n  font-style: italic;\n}\na {\n  text-decoration: none;\n  color: #e08a2e;\n}\n",
       "editable": ["css"]
     },
     {
       "type": "explain",
-      "text": "Eine Zugabe, die Profis von Anfängern unterscheidet: der **Zeilenabstand** mit `line-height`.\n\n```css\np {\n  line-height: 1.5;\n}\n```\n\nDie Zahl **ohne Einheit** ist ein Faktor: `1.5` bedeutet „anderthalbfache Schriftgröße“ – bei 16px Schrift also 24px pro Zeile.\n\nWarum lohnt sich das? Der Standardabstand des Browsers (etwa `1.2`) ist für längere Texte ziemlich gequetscht. Mit `1.5` bekommen die Zeilen Luft, das Auge findet leichter in die nächste Zeile – der Text liest sich sofort angenehmer. Für Fließtext gilt: **`1.5` ist ein guter Wert.** (Achtung beim Tippen: Dezimalzahlen schreibst du in CSS mit **Punkt**, nicht mit Komma.)"
+      "text": "Eine Zugabe, die Profis von Anfängern unterscheidet: der **Zeilenabstand** mit `line-height`.\n\n```css\np {\n  line-height: 1.5;\n}\n```\n\nDie Zahl **ohne Einheit** ist ein Faktor: `1.5` bedeutet „anderthalbfache Schriftgröße“ – bei 16px Schrift also 24px pro Zeile. Achtung: Dezimalzahlen schreibst du mit **Punkt**, nicht mit Komma."
+    },
+    {
+      "type": "explain",
+      "text": "Warum lohnt sich das? Der Standardabstand des Browsers (etwa `1.2`) ist für längere Texte ziemlich gequetscht. Mit `1.5` bekommen die Zeilen Luft, das Auge findet leichter in die nächste Zeile – der Text liest sich sofort angenehmer.\n\nFür Fließtext gilt: **`1.5` ist ein guter Wert.**"
     },
     {
       "type": "example",
       "text": "Zweimal derselbe Text: oben mit `line-height: 1`, unten mit `1.6`. Welcher liest sich besser? Probiere auch extreme Werte wie `0.8` oder `3`!",
-      "html": "<p class=\"eng\">Die Schülerfirma trifft sich jeden Dienstag in Raum 012. Auf dem Plan stehen die neue Website, das Sommerfest und die Bestellung der T-Shirts für die Abschlussklasse.</p>\n<hr>\n<p class=\"luftig\">Die Schülerfirma trifft sich jeden Dienstag in Raum 012. Auf dem Plan stehen die neue Website, das Sommerfest und die Bestellung der T-Shirts für die Abschlussklasse.</p>\n",
+      "html": "<p class=\"eng\">Unser Clan trainiert jeden Dienstag ab 19 Uhr. Auf dem Plan stehen das Schulturnier, die neue Clan-Seite und die Bestellung der Trikots für die Finalrunde.</p>\n<hr>\n<p class=\"luftig\">Unser Clan trainiert jeden Dienstag ab 19 Uhr. Auf dem Plan stehen das Schulturnier, die neue Clan-Seite und die Bestellung der Trikots für die Finalrunde.</p>\n",
       "css": ".eng {\n  line-height: 1;\n}\n.luftig {\n  line-height: 1.6;\n}\n",
       "editable": ["css"]
     },
@@ -45,9 +54,9 @@
     },
     {
       "type": "code",
-      "task": "Gestalte die Zitat-Seite:\n\n1. Die `h1` wird **zentriert**\n2. Der Absatz mit der Klasse `zitat` wird **kursiv**\n3. Der Link verliert seine **Unterstreichung**\n4. **Alle** Absätze bekommen `line-height: 1.5`",
+      "task": "Gestalte die Fanpage:\n\n1. Die `h1` wird **zentriert**\n2. Der Absatz mit der Klasse `zitat` wird **kursiv**\n3. Der Link verliert seine **Unterstreichung**\n4. **Alle** Absätze bekommen `line-height: 1.5`",
       "starter": {
-        "html": "<h1>Mein Lieblingszitat</h1>\n<p class=\"zitat\">Man muss die Dinge so einfach wie möglich machen. Aber nicht einfacher.</p>\n<p>Dieses Zitat wird oft Albert Einstein zugeschrieben – ganz sicher ist das aber nicht.</p>\n<a href=\"https://example.com\">Wer hat das gesagt?</a>\n",
+        "html": "<h1>Fanpage Südkurve</h1>\n<p class=\"zitat\">Lieber Zweiter mit Herz als Erster ohne.</p>\n<p>Dieses Motto steht seit Jahren auf unserem Banner in der Kurve.</p>\n<a href=\"https://example.com\">Alle Fangesänge</a>\n",
         "css": "/* Deine Regeln hier */\n"
       },
       "editable": ["css"],

@@ -4,16 +4,21 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Fließtext gehört in **Absätze**: `<p>...</p>` – p wie „paragraph“. Jeder Absatz bekommt vom Browser automatisch etwas Abstand nach oben und unten, damit der Text lesbar bleibt.\n\n**Überraschung:** Zeilenumbrüche, die du im Code mit der Enter-Taste machst, **ignoriert der Browser komplett**. Auch fünf Leerzeichen hintereinander presst er zu einem einzigen zusammen.\n\nDer Browser richtet sich nur nach den **Tags** – nicht danach, wie hübsch dein Code formatiert ist."
+      "text": "Fließtext gehört in **Absätze**: `<p>...</p>` – p wie „paragraph“. Jeder Absatz bekommt vom Browser automatisch etwas Abstand nach oben und unten.\n\n**Überraschung:** Zeilenumbrüche, die du im Code mit der Enter-Taste machst, **ignoriert der Browser komplett**. Auch fünf Leerzeichen hintereinander presst er zu einem zusammen.\n\nDer Browser richtet sich nur nach den **Tags** – nicht danach, wie dein Code formatiert ist."
     },
     {
       "type": "explain",
-      "text": "Und wenn du **innerhalb** eines Absatzes eine neue Zeile brauchst – etwa bei einer Adresse? Dafür gibt es `<br>` („break“ = Umbruch):\n\n```html\n<p>Musterstraße 12<br>74072 Heilbronn</p>\n```\n\n`<br>` steht **allein** – ein `</br>` gibt es nicht. Solche Tags ohne Inhalt und ohne schließenden Tag heißen **leere Elemente**. Eines kennst du schon: `<meta charset=\"utf-8\">`.\n\nAber Vorsicht: `<br>` ist nur für Umbrüche **mitten im Text** gedacht – Adressen, Gedichte, Liedzeilen. Für einen neuen Gedanken beginnst du einen neuen Absatz, statt viele `<br>` aneinanderzureihen."
+      "text": "Und wenn du **innerhalb** eines Absatzes eine neue Zeile brauchst – etwa beim Spielplan? Dafür gibt es `<br>` („break“ = Umbruch):\n\n```html\n<p>Freitag: Heimspiel<br>Samstag: Training</p>\n```\n\n`<br>` steht **allein** – ein `</br>` gibt es nicht. Solche Tags ohne Inhalt und ohne schließenden Tag heißen **leere Elemente**. Eines kennst du schon: `<meta charset=\"utf-8\">`.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><defs><marker id=\"pf8\" markerWidth=\"8\" markerHeight=\"8\" refX=\"7\" refY=\"4\" orient=\"auto\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#5b6b7c\"/></marker></defs><text x=\"73\" y=\"20\" text-anchor=\"middle\" fill=\"#2f6fdb\" font-weight=\"bold\">Code</text><text x=\"247\" y=\"20\" text-anchor=\"middle\" fill=\"#1a9e5c\" font-weight=\"bold\">Browser</text><rect x=\"8\" y=\"30\" width=\"130\" height=\"50\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"16\" y=\"50\" fill=\"#1d2733\"><tspan x=\"16\">Zeile 1 (Enter)</tspan><tspan x=\"16\" dy=\"18\">Zeile 2</tspan></text><line x1=\"144\" y1=\"55\" x2=\"176\" y2=\"55\" stroke=\"#5b6b7c\" stroke-width=\"2\" marker-end=\"url(#pf8)\"/><rect x=\"182\" y=\"30\" width=\"130\" height=\"50\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"190\" y=\"59\" fill=\"#1d2733\">Zeile 1 Zeile 2</text><rect x=\"8\" y=\"96\" width=\"130\" height=\"50\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"16\" y=\"116\" fill=\"#1d2733\"><tspan x=\"16\">Zeile 1</tspan><tspan fill=\"#e0632e\" font-weight=\"bold\">&lt;br&gt;</tspan><tspan x=\"16\" dy=\"18\">Zeile 2</tspan></text><line x1=\"144\" y1=\"121\" x2=\"176\" y2=\"121\" stroke=\"#5b6b7c\" stroke-width=\"2\" marker-end=\"url(#pf8)\"/><rect x=\"182\" y=\"96\" width=\"130\" height=\"50\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"190\" y=\"116\" fill=\"#1d2733\"><tspan x=\"190\">Zeile 1</tspan><tspan x=\"190\" dy=\"18\">Zeile 2</tspan></text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Aber Vorsicht: `<br>` ist nur für Umbrüche **mitten im Text** gedacht – Adressen, Songtexte, Spielpläne.\n\nFür einen neuen Gedanken beginnst du einen neuen Absatz, statt viele `<br>` aneinanderzureihen."
     },
     {
       "type": "example",
-      "text": "Schau genau hin: Im ersten Absatz steht der Text im Code auf **drei Zeilen** – der Browser macht trotzdem eine einzige daraus. Im zweiten Absatz erzwingt `<br>` die Umbrüche.\n\nProbier aus: Lösche eines der `<br>` und beobachte die Adresse.",
-      "html": "<p>Diese Zeile\nund diese Zeile\nund auch diese werden zu einer einzigen.</p>\n\n<p>Musterstraße 12<br>74072 Heilbronn<br>Deutschland</p>\n"
+      "text": "Schau genau hin: Im ersten Absatz steht der Text im Code auf **drei Zeilen** – der Browser macht trotzdem eine einzige daraus. Im zweiten Absatz erzwingt `<br>` die Umbrüche.\n\nProbier aus: Lösche eines der `<br>` und beobachte den Spielplan.",
+      "html": "<p>Diese Zeile\nund diese Zeile\nund auch diese werden zu einer einzigen.</p>\n\n<p>Freitag: Heimspiel<br>Samstag: Training<br>Sonntag: frei</p>\n"
     },
     {
       "type": "fill",
@@ -25,7 +30,7 @@
     },
     {
       "type": "explain",
-      "text": "Noch ein leeres Element: `<hr>` („horizontal rule“) zeichnet eine **Trennlinie** quer über die Seite.\n\n```html\n<p>Hier endet das erste Thema.</p>\n<hr>\n<p>Und hier beginnt etwas Neues.</p>\n```\n\nDie Linie markiert einen **Themenwechsel** – zum Beispiel zwischen einem Artikel und den Kommentaren darunter. `<hr>` steht deshalb **zwischen** Absätzen, nie mitten im Text.\n\nMerkhilfe: `<br>` bricht die Zeile (unsichtbarer Umbruch), `<hr>` zieht eine sichtbare Linie."
+      "text": "Noch ein leeres Element: `<hr>` („horizontal rule“) zeichnet eine **Trennlinie** quer über die Seite.\n\n```html\n<p>Hier enden die Patchnotes.</p>\n<hr>\n<p>Und hier beginnen die Kommentare.</p>\n```\n\nDie Linie markiert einen **Themenwechsel**. `<hr>` steht deshalb **zwischen** Absätzen, nie mitten im Text.\n\nMerkhilfe: `<br>` bricht die Zeile (unsichtbar), `<hr>` zieht eine sichtbare Linie."
     },
     {
       "type": "quiz",
@@ -47,10 +52,10 @@
       "hints": [
         "Ein Absatz = <p>Dein Text</p>. Die Trennlinie und der Umbruch sind leere Elemente – sie stehen allein, ohne schließenden Tag.",
         "Die Reihenfolge unter der Überschrift: <p>…</p>, dann <hr>, dann <p>… <br> …</p>.",
-        "```html\n<h1>Mein Lieblingsessen</h1>\n<p>Am liebsten esse ich Linsen mit Spätzle.</p>\n<hr>\n<p>Es schmeckt super<br>und erinnert mich an zu Hause.</p>\n```"
+        "```html\n<h1>Mein Lieblingsessen</h1>\n<p>Am liebsten esse ich Döner mit allem.</p>\n<hr>\n<p>Schmeckt einfach immer<br>und ist nach der Schule direkt um die Ecke.</p>\n```"
       ],
       "solution": {
-        "html": "<h1>Mein Lieblingsessen</h1>\n<p>Am liebsten esse ich Linsen mit Spätzle.</p>\n<hr>\n<p>Es schmeckt super<br>und erinnert mich an zu Hause.</p>\n"
+        "html": "<h1>Mein Lieblingsessen</h1>\n<p>Am liebsten esse ich Döner mit allem.</p>\n<hr>\n<p>Schmeckt einfach immer<br>und ist nach der Schule direkt um die Ecke.</p>\n"
       },
       "tests": [
         { "type": "selector", "selector": "p", "min": 2, "label": "Es gibt mindestens zwei Absätze" },

@@ -4,12 +4,13 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Normalerweise stapelt der Browser Boxen **untereinander**. Sollen sie **nebeneinander** stehen – wie die Buttons einer Menüleiste – nutzt du **Flexbox**:\n\n```css\n.leiste {\n  display: flex;\n  gap: 16px;\n}\n```\n\n**Wichtig:** `display: flex;` kommt auf den **Container** (das Eltern-Element) – seine **Kinder** ordnen sich dann automatisch nebeneinander an:\n\n```\n┌─ Container (display: flex) ───────────┐\n│  [Kind 1]   [Kind 2]   [Kind 3]       │\n└───────────────────────────────────────┘\n```\n\n`gap` legt den **Abstand zwischen** den Kindern fest – ohne dass du an jedem Kind einzeln margin setzen musst."
+      "text": "Normalerweise stapelt der Browser Boxen **untereinander**. Sollen sie **nebeneinander** stehen – wie die Menüleiste einer Gaming-Seite – nutzt du **Flexbox**:\n\n```css\n.leiste {\n  display: flex;\n  gap: 16px;\n}\n```\n\n**Wichtig:** `display: flex;` kommt auf den **Container** (das Eltern-Element). Seine **Kinder** stellen sich dann automatisch nebeneinander. `gap` legt den **Abstand zwischen** den Kindern fest.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><text x=\"12\" y=\"30\" fill=\"#2f6fdb\">Container: display: flex</text><rect x=\"10\" y=\"40\" width=\"300\" height=\"66\" fill=\"none\" stroke=\"#2f6fdb\" stroke-width=\"2\" stroke-dasharray=\"6 4\"/><rect x=\"24\" y=\"54\" width=\"76\" height=\"38\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"62\" y=\"78\" text-anchor=\"middle\" fill=\"#1d2733\">Start</text><rect x=\"122\" y=\"54\" width=\"76\" height=\"38\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"160\" y=\"78\" text-anchor=\"middle\" fill=\"#1d2733\">Teams</text><rect x=\"220\" y=\"54\" width=\"76\" height=\"38\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"258\" y=\"78\" text-anchor=\"middle\" fill=\"#1d2733\">Turniere</text><line x1=\"100\" y1=\"120\" x2=\"122\" y2=\"120\" stroke=\"#e0632e\" stroke-width=\"3\"/><text x=\"111\" y=\"142\" text-anchor=\"middle\" fill=\"#e0632e\">gap: 16px</text><text x=\"236\" y=\"142\" text-anchor=\"middle\" fill=\"#5b6b7c\">Kinder nebeneinander</text></svg>"
     },
     {
       "type": "example",
-      "text": "Lösche `display: flex;` testweise – die Boxen stapeln sich wieder untereinander. Spiele auch mit dem `gap`!",
-      "html": "<div class=\"leiste\">\n  <div class=\"kachel\">Eins</div>\n  <div class=\"kachel\">Zwei</div>\n  <div class=\"kachel\">Drei</div>\n</div>\n",
+      "text": "Lösche `display: flex;` testweise – die Menü-Kacheln stapeln sich wieder untereinander. Spiele auch mit dem `gap`!",
+      "html": "<div class=\"leiste\">\n  <div class=\"kachel\">Start</div>\n  <div class=\"kachel\">Teams</div>\n  <div class=\"kachel\">Turniere</div>\n</div>\n",
       "css": ".leiste {\n  display: flex;\n  gap: 16px;\n}\n.kachel {\n  background-color: #cde8ff;\n  padding: 16px;\n  border-radius: 8px;\n}\n"
     },
     {
@@ -25,12 +26,12 @@
     },
     {
       "type": "explain",
-      "text": "**Zugabe:** Die Richtung kannst du umdrehen! Mit `flex-direction` bestimmst du, in welche Richtung die Kinder fließen:\n\n```css\n.leiste {\n  display: flex;\n  flex-direction: column;\n}\n```\n\n- `row` – nebeneinander (das ist die Standard-Einstellung)\n- `column` – untereinander, **aber** mit allen Flex-Vorteilen: `gap` wirkt weiter, und auch das Ausrichten aus der nächsten Lektion funktioniert.\n\nMerke: Flexbox heißt nicht automatisch „nebeneinander“ – es heißt „ich habe die Kontrolle über die Anordnung“."
+      "text": "**Zugabe:** Mit `flex-direction` bestimmst du, in welche Richtung die Kinder fließen:\n\n```css\n.leiste {\n  display: flex;\n  flex-direction: column;\n}\n```\n\n- `row` – nebeneinander (Standard)\n- `column` – untereinander, **aber** mit allen Flex-Vorteilen: `gap` wirkt weiter, das Ausrichten aus der nächsten Lektion auch.\n\nMerke: Flexbox heißt nicht „nebeneinander“, sondern „ich habe die Kontrolle über die Anordnung“."
     },
     {
       "type": "example",
-      "text": "Dieselbe Leiste mit `flex-direction: column;` – die Kacheln stapeln sich, der `gap` hält trotzdem sauber Abstand. Stelle `column` auf `row` um und beobachte den Unterschied.",
-      "html": "<div class=\"leiste\">\n  <div class=\"kachel\">Eins</div>\n  <div class=\"kachel\">Zwei</div>\n  <div class=\"kachel\">Drei</div>\n</div>\n",
+      "text": "Dieselbe Leiste mit `flex-direction: column;` – die Kacheln stapeln sich, der `gap` hält trotzdem Abstand. Stelle `column` auf `row` um.",
+      "html": "<div class=\"leiste\">\n  <div class=\"kachel\">Start</div>\n  <div class=\"kachel\">Teams</div>\n  <div class=\"kachel\">Turniere</div>\n</div>\n",
       "css": ".leiste {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n}\n.kachel {\n  background-color: #cde8ff;\n  padding: 16px;\n  border-radius: 8px;\n}\n"
     },
     {
@@ -43,9 +44,9 @@
     },
     {
       "type": "code",
-      "task": "Die Navigations-Links stehen noch untereinander. Mache aus `.menue` eine Flex-Leiste:\n\n1. `display: flex;`\n2. `gap: 16px;`",
+      "task": "Die Menü-Links deiner Clan-Seite stehen noch untereinander. Mache aus `.menue` eine Flex-Leiste:\n\n1. `display: flex;`\n2. `gap: 16px;`",
       "starter": {
-        "html": "<nav class=\"menue\">\n  <a href=\"https://example.com\">Start</a>\n  <a href=\"https://example.com\">Galerie</a>\n  <a href=\"https://example.com\">Kontakt</a>\n</nav>\n",
+        "html": "<nav class=\"menue\">\n  <a href=\"https://example.com\">Start</a>\n  <a href=\"https://example.com\">Teams</a>\n  <a href=\"https://example.com\">Turniere</a>\n</nav>\n",
         "css": ".menue {\n  background-color: #eef3fa;\n  padding: 12px;\n  /* Mach mich zur Flex-Leiste! */\n}\n.menue a {\n  display: block;\n  text-decoration: none;\n  color: #1f66c2;\n  font-weight: bold;\n}\n"
       },
       "editable": ["css"],

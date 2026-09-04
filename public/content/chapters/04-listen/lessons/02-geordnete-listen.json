@@ -4,20 +4,21 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Wenn die **Reihenfolge wichtig** ist – wie bei einer Anleitung – nimmst du eine **geordnete Liste**: `<ol>` (ordered list = geordnete Liste).\n\n```html\n<ol>\n  <li>Wasser aufkochen</li>\n  <li>Nudeln hineingeben</li>\n  <li>10 Minuten warten</li>\n</ol>\n```\n\nDie Einträge heißen wieder `<li>`. Das Beste: Die **Nummern macht der Browser automatisch** – du musst keine 1., 2., 3. tippen! Löschst du einen Schritt oder schiebst einen dazwischen, stimmt die Nummerierung trotzdem immer."
+      "text": "Wenn die **Reihenfolge wichtig** ist – wie beim Moped-Check vor der Fahrt – nimmst du eine **geordnete Liste**: `<ol>` (ordered list).\n\n```html\n<ol>\n  <li>Helm aufsetzen</li>\n  <li>Licht prüfen</li>\n  <li>Losfahren</li>\n</ol>\n```\n\nDie Einträge heißen wieder `<li>`. Die **Nummern macht der Browser** – du tippst keine 1., 2., 3.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect x=\"8\" y=\"14\" width=\"140\" height=\"104\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"18\" y=\"36\" fill=\"#1d2733\">&lt;ol&gt;</text><text x=\"30\" y=\"56\" fill=\"#1d2733\">&lt;li&gt;Helm&lt;/li&gt;</text><text x=\"30\" y=\"76\" fill=\"#1d2733\">&lt;li&gt;Licht&lt;/li&gt;</text><text x=\"30\" y=\"96\" fill=\"#1d2733\">&lt;li&gt;Fahren&lt;/li&gt;</text><text x=\"18\" y=\"114\" fill=\"#1d2733\">&lt;/ol&gt;</text><line x1=\"152\" y1=\"66\" x2=\"184\" y2=\"66\" stroke=\"#e0632e\" stroke-width=\"3\"/><polygon points=\"184,58 198,66 184,74\" fill=\"#e0632e\"/><rect x=\"204\" y=\"14\" width=\"108\" height=\"104\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"216\" y=\"50\" fill=\"#1d2733\">1. Helm</text><text x=\"216\" y=\"72\" fill=\"#1d2733\">2. Licht</text><text x=\"216\" y=\"94\" fill=\"#1d2733\">3. Fahren</text><text x=\"160\" y=\"146\" text-anchor=\"middle\" fill=\"#5b6b7c\">Die Nummern zählt der Browser</text></svg>"
     },
     {
       "type": "example",
       "text": "Probier aus: Füge in der Mitte einen neuen Schritt ein – die Nummerierung passt sich von selbst an.",
-      "html": "<h2>Passwort ändern</h2>\n<ol>\n  <li>Einstellungen öffnen</li>\n  <li>Auf „Konto“ klicken</li>\n  <li>Neues Passwort eingeben</li>\n  <li>Speichern</li>\n</ol>\n"
+      "html": "<h2>Vor dem Ranked-Match</h2>\n<ol>\n  <li>Headset aufsetzen</li>\n  <li>Team einladen</li>\n  <li>Warm-up spielen</li>\n  <li>Match starten</li>\n</ol>\n"
     },
     {
       "type": "explain",
-      "text": "**Welche Liste nehme ich?** Stell dir eine einfache Frage: *Ändert es die Bedeutung, wenn ich die Einträge vertausche?*\n\n- **Ja** → `<ol>` (Anleitung, Rangliste, Wegbeschreibung)\n- **Nein** → `<ul>` (Einkaufsliste, Zutaten, Hobbys)\n\nPraktisch: Beide Listen benutzen dieselben `<li>`-Einträge. Willst du eine Punkte-Liste in eine nummerierte verwandeln, tauschst du **nur** `<ul>`/`</ul>` gegen `<ol>`/`</ol>` – die Einträge bleiben, wie sie sind."
+      "text": "**Welche Liste nehme ich?** Frag dich: *Ändert es die Bedeutung, wenn ich die Einträge vertausche?*\n\n- **Ja** → `<ol>` (Anleitung, Rangliste, Wegbeschreibung)\n- **Nein** → `<ul>` (Einkaufsliste, Setup, Hobbys)\n\nBeide nutzen dieselben `<li>`. Zum Umwandeln tauschst du **nur** `<ul>`/`</ul>` gegen `<ol>`/`</ol>`."
     },
     {
       "type": "quiz",
-      "question": "Du willst die **Top 3 deiner Lieblingsfilme** als Rangliste zeigen (Platz 1, 2, 3). Welche Liste passt?",
+      "question": "Du willst die **Top 3 deiner Lieblingsserien** als Rangliste zeigen (Platz 1, 2, 3). Welche Liste passt?",
       "options": [
         "`<ul>` – die Punkte-Liste",
         "`<ol>` – die nummerierte Liste"
@@ -28,28 +29,28 @@
     {
       "type": "fill",
       "text": "Diese Morgenroutine soll **nummeriert** erscheinen. Setze den passenden öffnenden Tag ein.",
-      "template": "<___>\n  <li>Wecker ausschalten</li>\n  <li>Aufstehen</li>\n  <li>Zähne putzen</li>\n</ol>",
+      "template": "<___>\n  <li>Wecker ausschalten</li>\n  <li>Aufstehen</li>\n  <li>Bus erwischen</li>\n</ol>",
       "solution": "ol",
       "accept": ["ol"],
       "hint": "Der schließende Tag verrät es: Die nummerierte Liste heißt `<ol>` – ordered list."
     },
     {
       "type": "code",
-      "task": "Schreibe eine nummerierte Anleitung **Spaghetti kochen** mit mindestens drei Schritten.\n\n1. Die Überschrift `<h2>` ist schon da – dir fehlt nur noch die Liste.\n2. Achte auf eine sinnvolle Reihenfolge der Schritte!",
+      "task": "Schreibe einen nummerierten **Trainingsplan** mit mindestens drei Schritten.\n\n1. Die Überschrift `<h2>` ist schon da – dir fehlt nur die Liste.\n2. Achte auf eine sinnvolle Reihenfolge der Schritte!",
       "starter": {
-        "html": "<h2>Spaghetti kochen</h2>\n<!-- Deine Anleitung hier -->\n"
+        "html": "<h2>Mein Trainingsplan</h2>\n<!-- Dein Plan hier -->\n"
       },
       "hints": [
         "Eine nummerierte Liste beginnt mit <ol> und endet mit </ol>.",
         "Jeder Schritt ist ein <li>...</li> – die Nummern kommen automatisch.",
-        "```html\n<h2>Spaghetti kochen</h2>\n<ol>\n  <li>Wasser salzen und aufkochen</li>\n  <li>Spaghetti 9 Minuten kochen</li>\n  <li>Abgießen und servieren</li>\n</ol>\n```"
+        "```html\n<h2>Mein Trainingsplan</h2>\n<ol>\n  <li>5 Minuten aufwärmen</li>\n  <li>3 Sätze Kniebeugen</li>\n  <li>3 Sätze Liegestütze</li>\n  <li>Dehnen</li>\n</ol>\n```"
       ],
       "solution": {
-        "html": "<h2>Spaghetti kochen</h2>\n<ol>\n  <li>Wasser salzen und aufkochen</li>\n  <li>Spaghetti 9 Minuten kochen</li>\n  <li>Abgießen und servieren</li>\n</ol>\n"
+        "html": "<h2>Mein Trainingsplan</h2>\n<ol>\n  <li>5 Minuten aufwärmen</li>\n  <li>3 Sätze Kniebeugen</li>\n  <li>3 Sätze Liegestütze</li>\n  <li>Dehnen</li>\n</ol>\n"
       },
       "tests": [
         { "type": "selector", "selector": "ol", "min": 1, "label": "Es gibt eine <ol>-Liste" },
-        { "type": "selector", "selector": "ol li", "min": 3, "label": "Die Anleitung hat mindestens drei Schritte" }
+        { "type": "selector", "selector": "ol li", "min": 3, "label": "Der Trainingsplan hat mindestens drei Schritte" }
       ]
     }
   ]

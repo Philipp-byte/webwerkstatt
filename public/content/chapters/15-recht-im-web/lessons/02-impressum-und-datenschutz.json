@@ -4,13 +4,13 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Stell dir vor, eine Webseite verkauft Handyhüllen, liefert aber nie. An wen wendest du dich? Genau dafür gibt es das **Impressum**: eine Seite, auf der steht, **wer** hinter einer Webseite steckt.\n\nIn Deutschland ist das Impressum **gesetzlich vorgeschrieben** – heute geregelt im Digitale-Dienste-Gesetz (kurz **DDG**; früher hieß das Gesetz Telemediengesetz). Die Pflicht gilt praktisch für alle Webseiten, die nicht rein privat sind: Firmen, Vereine, Schülerfirmen, Blogs mit Werbung.\n\n**Wichtig:** Diese Lektion erklärt die Grundidee **vereinfacht** (Stand 2026) und ist **keine Rechtsberatung**. Wer eine echte Webseite veröffentlicht, lässt Impressum und Datenschutzerklärung im Zweifel von einer Fachperson prüfen."
+      "text": "Ein Online-Shop verkauft Sneaker, liefert aber nie. An wen wendest du dich? Genau dafür gibt es das **Impressum**: eine Seite, auf der steht, **wer** hinter einer Webseite steckt.\n\nIn Deutschland ist es **gesetzlich vorgeschrieben** – geregelt im Digitale-Dienste-Gesetz (kurz **DDG**, früher Telemediengesetz). Die Pflicht gilt für praktisch alle Seiten, die nicht rein privat sind: Firmen, Vereine, Schülerfirmen, Blogs mit Werbung – und auch eine Clan-Seite mit Sponsor-Logo."
     },
     {
       "type": "quiz",
       "question": "Warum verlangt der Gesetzgeber ein Impressum auf Webseiten?",
       "options": [
-        "Damit Besucher wissen, wer hinter der Seite steckt und wen sie kontaktieren können",
+        "Damit Besucher wissen, wer hinter der Seite steckt",
         "Damit die Seite in Suchmaschinen weiter oben landet",
         "Als kostenlose Werbefläche für den Betreiber"
       ],
@@ -19,7 +19,8 @@
     },
     {
       "type": "explain",
-      "text": "Was gehört mindestens ins Impressum?\n\n- **Name** des Betreibers (bei Firmen: Firmenname plus eine verantwortliche Person)\n- **Anschrift** – eine echte Post-Adresse (ein Postfach reicht nicht)\n- **Kontakt**, zum Beispiel eine E-Mail-Adresse\n\nUnd genauso wichtig: Das Impressum muss **leicht zu finden** sein. Üblich ist ein Link mit dem Namen „Impressum“ unten auf **jeder** Seite – im Footer. Zwei Klicks von jeder Stelle der Website, mehr darf es nicht sein."
+      "text": "Was gehört mindestens ins Impressum?\n\n- **Name** des Betreibers (bei Firmen: Firmenname plus verantwortliche Person)\n- **Anschrift** – eine echte Post-Adresse (ein Postfach reicht nicht)\n- **Kontakt**, zum Beispiel eine E-Mail-Adresse\n\nUnd: Das Impressum muss **leicht zu finden** sein. Üblich ist ein Link „Impressum“ im Footer auf **jeder** Seite – auch auf deiner Clan-Seite.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><text x=\"10\" y=\"18\" fill=\"#1d2733\" font-size=\"13\">Impressum – die Bausteine</text><rect x=\"10\" y=\"30\" width=\"180\" height=\"30\" rx=\"4\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"20\" y=\"49\" fill=\"#1d2733\">1  Name des Betreibers</text><rect x=\"10\" y=\"66\" width=\"180\" height=\"30\" rx=\"4\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"20\" y=\"85\" fill=\"#1d2733\">2  Anschrift (echte Adresse)</text><rect x=\"10\" y=\"102\" width=\"180\" height=\"30\" rx=\"4\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"20\" y=\"121\" fill=\"#1d2733\">3  Kontakt (E-Mail)</text><rect x=\"212\" y=\"30\" width=\"98\" height=\"102\" fill=\"none\" stroke=\"#5b6b7c\"/><text x=\"261\" y=\"60\" text-anchor=\"middle\" fill=\"#5b6b7c\">jede Seite</text><rect x=\"212\" y=\"108\" width=\"98\" height=\"24\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><text x=\"261\" y=\"124\" text-anchor=\"middle\" fill=\"#2f6fdb\" text-decoration=\"underline\">Impressum</text><text x=\"261\" y=\"150\" text-anchor=\"middle\" fill=\"#5b6b7c\">Link im Footer</text></svg>"
     },
     {
       "type": "fill",
@@ -30,19 +31,44 @@
       "hint": "Gemeint ist die echte Post-Adresse – ein Postfach reicht nicht."
     },
     {
+      "type": "code",
+      "task": "Der Footer deiner Clan-Seite hat noch keinen Impressum-Link. Ergänze im `<footer>` einen Link:\n\n1. Linktext: `Impressum`\n2. Ziel: `impressum.html`",
+      "starter": {
+        "html": "<header>\n  <h1>Clan Nordlicht</h1>\n</header>\n<main>\n  <p>Wir spielen jeden Freitag ab 19 Uhr – neue Mitglieder willkommen!</p>\n</main>\n<footer>\n  <p>Clan Nordlicht · Kontakt: team@nordlicht-beispiel.de</p>\n  <!-- Impressum-Link hier -->\n</footer>\n"
+      },
+      "editable": ["html"],
+      "hints": [
+        "Ein Link ist ein <a>-Element mit href-Attribut – das kennst du aus Kapitel 5.",
+        "So sieht die Zeile aus: <a href=\"impressum.html\">Impressum</a> – sie kommt in den <footer>.",
+        "```html\n<header>\n  <h1>Clan Nordlicht</h1>\n</header>\n<main>\n  <p>Wir spielen jeden Freitag ab 19 Uhr – neue Mitglieder willkommen!</p>\n</main>\n<footer>\n  <p>Clan Nordlicht · Kontakt: team@nordlicht-beispiel.de</p>\n  <a href=\"impressum.html\">Impressum</a>\n</footer>\n```"
+      ],
+      "solution": {
+        "html": "<header>\n  <h1>Clan Nordlicht</h1>\n</header>\n<main>\n  <p>Wir spielen jeden Freitag ab 19 Uhr – neue Mitglieder willkommen!</p>\n</main>\n<footer>\n  <p>Clan Nordlicht · Kontakt: team@nordlicht-beispiel.de</p>\n  <a href=\"impressum.html\">Impressum</a>\n</footer>\n"
+      },
+      "tests": [
+        { "type": "selector", "selector": "footer a", "count": 1, "label": "Im Footer steht genau ein Link" },
+        { "type": "attr", "selector": "footer a", "attr": "href", "expected": "impressum.html", "label": "Der Link führt zu impressum.html" },
+        { "type": "text", "selector": "footer a", "expected": "Impressum", "label": "Der Linktext lautet „Impressum“" }
+      ]
+    },
+    {
       "type": "explain",
-      "text": "Der zweite Pflichttext: die **Datenschutzerklärung**. Grundlage ist die **DSGVO**, die europäische Datenschutz-Grundverordnung.\n\nSobald eine Webseite **personenbezogene Daten** verarbeitet – Namen, E-Mail-Adressen, auch IP-Adressen –, müssen die Besucher erfahren: **Welche** Daten werden gesammelt? **Wofür**? **Wie lange** gespeichert? Genau das steht in der Datenschutzerklärung.\n\nUnd das trifft schneller zu, als du denkst: Schon ein **Kontaktformular** verarbeitet Namen und E-Mail-Adressen, Statistik-Tools sammeln Besucherdaten. Praktisch braucht deshalb fast jede Webseite eine Datenschutzerklärung.\n\nVielleicht kennst du auch den **Disclaimer** („Für Inhalte externer Links übernehmen wir keine Haftung …“): ein Haftungshinweis, den viele Seiten zusätzlich aufnehmen. Er kann sinnvoll sein, **ersetzt aber weder Impressum noch Datenschutzerklärung**."
+      "text": "Der zweite Pflichttext: die **Datenschutzerklärung**. Grundlage ist die **DSGVO**, die europäische Datenschutz-Grundverordnung.\n\nSobald eine Seite **personenbezogene Daten** verarbeitet – Namen, E-Mail-Adressen, auch IP-Adressen –, müssen Besucher erfahren: **Welche** Daten? **Wofür**? **Wie lange** gespeichert?\n\nDas trifft schnell zu: Schon ein **Kontaktformular** oder die Turnier-Anmeldung deiner Clan-Seite verarbeitet solche Daten. Praktisch braucht fast jede Webseite eine Datenschutzerklärung."
     },
     {
       "type": "quiz",
-      "question": "Eure Schülerfirmen-Webseite hat ein Kontaktformular für Bestellungen. Braucht sie eine Datenschutzerklärung?",
+      "question": "Deine Clan-Seite hat ein Anmeldeformular fürs Turnier (Name, E-Mail). Braucht sie eine Datenschutzerklärung?",
       "options": [
-        "Ja – das Formular verarbeitet personenbezogene Daten wie Name und E-Mail-Adresse",
-        "Nein – Schülerfirmen sind von allen Regeln befreit",
+        "Ja – das Formular verarbeitet personenbezogene Daten",
+        "Nein – Gaming-Seiten sind von allen Regeln befreit",
         "Nur, wenn mehr als 1000 Personen die Seite besuchen"
       ],
       "correct": 0,
-      "explanation": "Sobald personenbezogene Daten verarbeitet werden, greift die DSGVO – egal wie groß die Seite ist. Ein Kontaktformular reicht dafür schon aus."
+      "explanation": "Sobald personenbezogene Daten verarbeitet werden, greift die DSGVO – egal wie groß die Seite ist. Ein Formular reicht dafür schon aus."
+    },
+    {
+      "type": "explain",
+      "text": "Vielleicht kennst du den **Disclaimer** („Für Inhalte externer Links übernehmen wir keine Haftung …“): ein Haftungshinweis, den viele Seiten zusätzlich aufnehmen. Er kann sinnvoll sein, **ersetzt aber weder Impressum noch Datenschutzerklärung**.\n\n**Wichtig:** Diese Lektion erklärt die Grundidee **vereinfacht** (Stand 2026) und ist **keine Rechtsberatung**. Wer eine echte Seite veröffentlicht, lässt die Texte im Zweifel von einer Fachperson prüfen."
     },
     {
       "type": "fill",

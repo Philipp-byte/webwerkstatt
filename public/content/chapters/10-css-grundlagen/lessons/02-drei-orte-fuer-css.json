@@ -4,38 +4,47 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Bisher hast du CSS immer in den CSS-Tab geschrieben. Aber wo steht CSS eigentlich in einem **echten Webprojekt**? Es gibt genau **drei Orte** – und alle drei lernst du heute kennen.\n\n**Ort 1: direkt am Element – der Inline-Style.**\n\nDafür nutzt du das **style-Attribut**. Attribute kennst du schon (`href` bei Links, `src` bei Bildern) – sie stehen im öffnenden Tag:\n\n```html\n<p style=\"color: red;\">Dieser eine Absatz ist rot.</p>\n```\n\nFällt dir auf, was fehlt? **Kein Selektor, keine geschweiften Klammern!** Beides ist unnötig, denn das CSS steht ja direkt am Element – es gilt **genau für dieses eine Element** und für kein anderes.\n\nMehrere Deklarationen trennst du wie gewohnt mit Semikolon, alles zusammen steht in **einem** Paar Anführungszeichen:\n\n```html\n<h1 style=\"color: white; background-color: darkblue;\">Titel</h1>\n```"
+      "text": "Bisher stand dein CSS immer im CSS-Tab. Aber wo steht CSS in einem **echten Webprojekt**? Es gibt genau **drei Orte** – alle drei lernst du heute kennen.\n\n**Ort 1: direkt am Element – der Inline-Style.** Dafür nutzt du das **style-Attribut** im öffnenden Tag (Attribute kennst du von `href` und `src`):\n\n```html\n<p style=\"color: red;\">Dieser eine Absatz ist rot.</p>\n```",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\"><rect x=\"8\" y=\"24\" width=\"96\" height=\"96\" rx=\"8\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"56\" y=\"48\" font-size=\"14\" font-weight=\"bold\" fill=\"#e0632e\" text-anchor=\"middle\">1 Inline</text><text x=\"56\" y=\"74\" font-size=\"12\" fill=\"#1d2733\" text-anchor=\"middle\">style=\"…\"</text><text x=\"56\" y=\"92\" font-size=\"12\" fill=\"#5b6b7c\" text-anchor=\"middle\">am Element</text><text x=\"56\" y=\"110\" font-size=\"12\" fill=\"#5b6b7c\" text-anchor=\"middle\">gilt: 1 Element</text><rect x=\"112\" y=\"24\" width=\"96\" height=\"96\" rx=\"8\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"160\" y=\"48\" font-size=\"14\" font-weight=\"bold\" fill=\"#1a9e5c\" text-anchor=\"middle\">2 Intern</text><text x=\"160\" y=\"74\" font-size=\"12\" fill=\"#1d2733\" text-anchor=\"middle\">&lt;style&gt;</text><text x=\"160\" y=\"92\" font-size=\"12\" fill=\"#5b6b7c\" text-anchor=\"middle\">im &lt;head&gt;</text><text x=\"160\" y=\"110\" font-size=\"12\" fill=\"#5b6b7c\" text-anchor=\"middle\">gilt: 1 Seite</text><rect x=\"216\" y=\"24\" width=\"96\" height=\"96\" rx=\"8\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"264\" y=\"48\" font-size=\"14\" font-weight=\"bold\" fill=\"#2f6fdb\" text-anchor=\"middle\">3 Extern</text><text x=\"264\" y=\"74\" font-size=\"12\" fill=\"#1d2733\" text-anchor=\"middle\">style.css</text><text x=\"264\" y=\"92\" font-size=\"12\" fill=\"#5b6b7c\" text-anchor=\"middle\">per &lt;link&gt;</text><text x=\"264\" y=\"110\" font-size=\"12\" fill=\"#5b6b7c\" text-anchor=\"middle\">gilt: alle Seiten</text><text x=\"160\" y=\"146\" font-size=\"12\" fill=\"#5b6b7c\" text-anchor=\"middle\">Reichweite wächst von links nach rechts →</text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Fällt dir auf, was fehlt? **Kein Selektor, keine geschweiften Klammern!** Das CSS steht ja direkt am Element – es gilt **genau für dieses eine Element** und für kein anderes.\n\nMehrere Deklarationen trennst du wie gewohnt mit Semikolon, alles zusammen steht in **einem** Paar Anführungszeichen:\n\n```html\n<h1 style=\"color: white; background-color: darkblue;\">Titel</h1>\n```"
     },
     {
       "type": "example",
       "text": "Hier gibt es keinen CSS-Tab – alles CSS steckt als Inline-Style im HTML. Ändere die Farben, füge einem anderen Element ein style-Attribut hinzu!",
-      "html": "<h1 style=\"color: darkblue;\">Fundbüro der Schule</h1>\n<p>Abzuholen im Sekretariat:</p>\n<p style=\"color: green;\">1 grüner Regenschirm</p>\n<p style=\"color: orange; background-color: lightyellow;\">1 orangefarbene Trinkflasche</p>\n",
+      "html": "<h1 style=\"color: darkblue;\">Mein Gaming-Setup</h1>\n<p>Das steht auf meinem Schreibtisch:</p>\n<p style=\"color: green;\">1 Headset mit grünem Licht</p>\n<p style=\"color: orange; background-color: lightyellow;\">1 orangefarbene Tastatur</p>\n",
       "editable": ["html"]
     },
     {
       "type": "explain",
-      "text": "**Ort 2: das interne Stylesheet.**\n\nStatt jedes Element einzeln zu stylen, kannst du CSS-Regeln **gesammelt in den `<head>`** der HTML-Datei schreiben – in ein `<style>`-Element:\n\n```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Meine Seite</title>\n    <style>\n      h1 {\n        color: darkblue;\n      }\n      p {\n        color: green;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Überschrift</h1>\n    <p>Absatz</p>\n  </body>\n</html>\n```\n\nHier schreibst du **normale CSS-Regeln mit Selektoren** – genau wie im CSS-Tab. Die Regeln gelten für die **ganze Seite**: `p { color: green; }` färbt alle Absätze, egal wie viele es sind.\n\nVerwechsle die beiden nicht: Das **style-Attribut** (Ort 1) steht an einem Element im `<body>`, das **`<style>`-Element** (Ort 2) steht im `<head>` und sammelt Regeln."
+      "text": "**Ort 2: das interne Stylesheet.** CSS-Regeln **gesammelt im `<head>`**, in einem `<style>`-Element:\n\n```html\n<head>\n  <title>Meine Seite</title>\n  <style>\n    h1 { color: darkblue; }\n    p { color: green; }\n  </style>\n</head>\n```\n\nHier schreibst du **normale Regeln mit Selektoren** – wie im CSS-Tab. Sie gelten für die **ganze Seite**.\n\nNicht verwechseln: Das **style-Attribut** steht an einem Element im `<body>`, das **`<style>`-Element** steht im `<head>`."
     },
     {
       "type": "example",
       "text": "Eine komplette HTML-Datei mit internem Stylesheet. Ändere die Farben **oben im `<style>`-Bereich** – und ergänze eine eigene Regel für `h2`!",
-      "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Schulgarten-AG</title>\n    <style>\n      h1 {\n        color: darkgreen;\n      }\n      p {\n        color: #444444;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Schulgarten-AG</h1>\n    <h2>Was wir machen</h2>\n    <p>Wir pflanzen Tomaten, Kräuter und Blumen.</p>\n  </body>\n</html>\n",
+      "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>E-Sport-AG</title>\n    <style>\n      h1 {\n        color: darkgreen;\n      }\n      p {\n        color: #444444;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>E-Sport-AG</h1>\n    <h2>Was wir machen</h2>\n    <p>Wir trainieren dienstags und spielen Schulturniere.</p>\n  </body>\n</html>\n",
       "editable": ["html"]
     },
     {
       "type": "explain",
-      "text": "**Ort 3: die externe CSS-Datei.**\n\nDie Profi-Lösung: Alle CSS-Regeln wandern in eine **eigene Datei**, z. B. `style.css`. Darin steht **nur CSS** – kein einziges HTML-Tag. Die HTML-Datei bindet sie im `<head>` ein:\n\n```html\n<link rel=\"stylesheet\" href=\"style.css\">\n```\n\n`<link>` steht allein, ohne schließenden Tag (wie `<img>`). `rel=\"stylesheet\"` sagt dem Browser, **was** die Datei ist; `href` kennst du von Links – hier zeigt es auf die CSS-Datei.\n\nWarum machen das die Profis so?\n\n- **Trennung von Inhalt und Design:** HTML kümmert sich um den Inhalt, CSS ums Aussehen. Jede Datei hat einen Job.\n- **Eine Datei für viele Seiten:** 20 Unterseiten können dieselbe `style.css` einbinden. Änderst du dort eine Farbe, ändert sie sich **überall**.\n\nUnd wann nimmt man was? **Extern** ist der Normalfall für jede echte Website. **Intern** lohnt sich höchstens für eine schnelle Einzelseite. **Inline** nutzt man selten – etwa zum schnellen Ausprobieren; bei vielen Elementen wird es unübersichtlich, und du kannst nichts zentral ändern.\n\n💡 Übrigens: Der **CSS-Tab der WebWerkstatt** ist genau diese externe Datei `style.css` – die Werkstatt bindet sie automatisch per `<link>` ein. Du arbeitest also längst wie ein Profi!"
+      "text": "**Ort 3: die externe CSS-Datei.** Die Profi-Lösung: Alle Regeln wandern in eine **eigene Datei**, z. B. `style.css`. Darin steht **nur CSS** – kein HTML-Tag. Die HTML-Datei bindet sie im `<head>` ein:\n\n```html\n<link rel=\"stylesheet\" href=\"style.css\">\n```\n\n`<link>` steht allein, ohne schließenden Tag (wie `<img>`). `rel=\"stylesheet\"` sagt dem Browser, **was** die Datei ist; `href` zeigt auf die CSS-Datei.\n\n💡 Der **CSS-Tab der WebWerkstatt** ist genau diese `style.css` – automatisch per `<link>` eingebunden."
+    },
+    {
+      "type": "explain",
+      "text": "Warum machen das die Profis so?\n\n- **Trennung von Inhalt und Design:** HTML kümmert sich um den Inhalt, CSS ums Aussehen.\n- **Eine Datei für viele Seiten:** Änderst du in `style.css` eine Farbe, ändert sie sich auf **allen** Seiten deiner Clan-Website.\n\nFaustregel: **Extern** ist der Normalfall. **Intern** höchstens für eine schnelle Einzelseite. **Inline** selten – zum Ausprobieren; zentral ändern geht damit nicht."
     },
     {
       "type": "quiz",
-      "question": "Eure Schülerfirma baut eine Website mit **fünf Unterseiten** – alle sollen dasselbe Design bekommen. Welcher CSS-Ort ist die beste Wahl?",
+      "question": "Euer Clan baut eine Website mit **fünf Unterseiten** – alle sollen dasselbe Design bekommen. Welcher CSS-Ort ist die beste Wahl?",
       "options": [
         "Inline-Styles an jedem einzelnen Element",
-        "Ein internes Stylesheet, in jede der fünf Dateien kopiert",
-        "Eine externe Datei `style.css`, die alle fünf Seiten einbinden"
+        "Ein internes Stylesheet, in jede Datei kopiert",
+        "Eine externe `style.css`, die alle Seiten einbinden"
       ],
       "correct": 2,
-      "explanation": "Mit einer externen Datei pflegst du das Design an **einer** Stelle – alle Seiten ändern sich mit. Kopierte interne Stylesheets laufen auseinander, und Inline-Styles müsstest du hundertfach anfassen."
+      "explanation": "Mit einer externen Datei pflegst du das Design an **einer** Stelle – alle Seiten ändern sich mit. Kopierte interne Stylesheets laufen auseinander, Inline-Styles müsstest du hundertfach anfassen."
     },
     {
       "type": "fill",
@@ -47,18 +56,18 @@
     },
     {
       "type": "code",
-      "task": "Heute arbeitest du **nur im HTML** – ganz ohne CSS-Tab, mit Inline-Styles:\n\n1. Gib der `<h1>` per **style-Attribut** die Textfarbe `darkblue`\n2. Gib **nur** dem mittleren Absatz („Wichtig: …“) per **style-Attribut** die Textfarbe `red` – die anderen beiden Absätze bleiben schwarz!",
+      "task": "Heute arbeitest du **nur im HTML** – ohne CSS-Tab, mit Inline-Styles:\n\n1. Gib der `<h1>` per **style-Attribut** die Textfarbe `darkblue`\n2. Gib **nur** dem mittleren Absatz („Wichtig: …“) per **style-Attribut** die Textfarbe `red` – die anderen beiden Absätze bleiben schwarz!",
       "starter": {
-        "html": "<h1>Infozettel Sporttag</h1>\n<p>Treffpunkt ist um 8 Uhr in der Halle.</p>\n<p>Wichtig: Hallenschuhe nicht vergessen!</p>\n<p>Ende ist gegen 13 Uhr.</p>\n"
+        "html": "<h1>Infozettel Turnierabend</h1>\n<p>Treffpunkt ist um 18 Uhr in Raum 012.</p>\n<p>Wichtig: Eigene Kopfhörer mitbringen!</p>\n<p>Ende ist gegen 22 Uhr.</p>\n"
       },
       "editable": ["html"],
       "hints": [
         "Das style-Attribut kommt in den öffnenden Tag: <p style=\"...\">. Darin steht eigenschaft: wert; – ohne Selektor und ohne geschweifte Klammern.",
-        "Für die Überschrift: <h1 style=\"color: darkblue;\">. Beim mittleren Absatz genauso, nur mit red – und die anderen Absätze lässt du unverändert.",
-        "```html\n<h1 style=\"color: darkblue;\">Infozettel Sporttag</h1>\n<p>Treffpunkt ist um 8 Uhr in der Halle.</p>\n<p style=\"color: red;\">Wichtig: Hallenschuhe nicht vergessen!</p>\n<p>Ende ist gegen 13 Uhr.</p>\n```"
+        "Für die Überschrift: <h1 style=\"color: darkblue;\">. Beim mittleren Absatz genauso, nur mit red – die anderen Absätze lässt du unverändert.",
+        "```html\n<h1 style=\"color: darkblue;\">Infozettel Turnierabend</h1>\n<p>Treffpunkt ist um 18 Uhr in Raum 012.</p>\n<p style=\"color: red;\">Wichtig: Eigene Kopfhörer mitbringen!</p>\n<p>Ende ist gegen 22 Uhr.</p>\n```"
       ],
       "solution": {
-        "html": "<h1 style=\"color: darkblue;\">Infozettel Sporttag</h1>\n<p>Treffpunkt ist um 8 Uhr in der Halle.</p>\n<p style=\"color: red;\">Wichtig: Hallenschuhe nicht vergessen!</p>\n<p>Ende ist gegen 13 Uhr.</p>\n"
+        "html": "<h1 style=\"color: darkblue;\">Infozettel Turnierabend</h1>\n<p>Treffpunkt ist um 18 Uhr in Raum 012.</p>\n<p style=\"color: red;\">Wichtig: Eigene Kopfhörer mitbringen!</p>\n<p>Ende ist gegen 22 Uhr.</p>\n"
       },
       "tests": [
         { "type": "source", "file": "html", "matches": "<h1[^>]*style\\s*=", "label": "Die Überschrift hat ein style-Attribut" },

@@ -4,11 +4,11 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Heute bekommt das **Café Pause**, was jede veröffentlichte Webseite braucht: eine eigene **Impressum-Seite** mit Datenschutzerklärung. Damit wendest du das Wissen der letzten beiden Lektionen direkt an – und die Café-Website wächst um ihre fünfte Seite.\n\nZur Erinnerung: Das Café Pause ist ein **fiktiver Betrieb für Übungszwecke** – Adresse und E-Mail sind ausgedacht. Genau dieser Hinweis kommt auch **deutlich sichtbar** aufs Impressum, damit niemand die Übungsseite für echt hält. (Und wie immer gilt: vereinfachtes Übungs-Impressum, keine Rechtsberatung.)"
+      "text": "Heute bekommt das **Café Pause**, was jede veröffentlichte Webseite braucht: eine eigene **Impressum-Seite** mit Datenschutzerklärung – die fünfte Seite der Café-Website.\n\nZur Erinnerung: Das Café Pause ist ein **fiktiver Betrieb für Übungszwecke** – Adresse und E-Mail sind ausgedacht. Dieser Hinweis kommt **deutlich sichtbar** aufs Impressum, damit niemand die Übungsseite für echt hält. (Vereinfachtes Übungs-Impressum, keine Rechtsberatung.)"
     },
     {
       "type": "code",
-      "task": "Baue die Impressum-Seite auf – das Grundgerüst steht schon, alles kommt in den `<body>`:\n\n1. `<h1>Impressum</h1>`\n2. Ein Absatz mit dem Betreiber: `Betreiber: Schülerfirma Café Pause`\n3. Ein Absatz mit der Anschrift: `Musterstraße 12, 74072 Heilbronn`\n4. Ein Absatz mit dem Kontakt: `E-Mail: hallo@cafe-pause-beispiel.de`\n5. Darunter `<h2>Datenschutzerklärung</h2>` mit diesem Absatz: `Diese Übungsseite verarbeitet keine personenbezogenen Daten. Bei Fragen erreichst du uns per E-Mail.`\n6. Ganz unten ein Absatz, dessen Text in `<strong>` steckt: `Fiktiver Betrieb für Übungszwecke – alle Angaben sind ausgedacht.`\n7. Zum Schluss ein Zurück-Link: `<a href=\"index.html\">Zurück zur Startseite</a>`",
+      "task": "In den `<body>` kommen:\n\n1. `<h1>Impressum</h1>`\n2. `<p>Betreiber: Schülerfirma Café Pause</p>`\n3. `<p>Musterstraße 12, 74072 Heilbronn</p>`\n4. `<p>E-Mail: hallo@cafe-pause-beispiel.de</p>`\n5. `<h2>Datenschutzerklärung</h2>`, dann `<p>Diese Übungsseite verarbeitet keine personenbezogenen Daten. Bei Fragen erreichst du uns per E-Mail.</p>`\n6. `<p><strong>Fiktiver Betrieb für Übungszwecke – alle Angaben sind ausgedacht.</strong></p>`\n7. `<a href=\"index.html\">Zurück zur Startseite</a>`",
       "starter": {
         "html": "<!DOCTYPE html>\n<html lang=\"de\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Impressum – Café Pause</title>\n</head>\n<body>\n  <!-- Hier entsteht das Impressum -->\n</body>\n</html>\n"
       },

@@ -4,13 +4,14 @@
   "steps": [
     {
       "type": "explain",
-      "text": "**Attribute** kennst du schon: `href` bei Links, `src` und `alt` bei Bildern, `colspan` bei Tabellenzellen. Sie stehen immer im **öffnenden Tag** nach dem Muster `name=\"wert\"`.\n\nZwei Attribute kann **jedes** Element bekommen:\n\n`class` – ein **Gruppen-Name**. Viele Elemente dürfen dieselbe class haben.\n\n`id` – ein **einmaliger Name**. Jede id darf auf der Seite nur **ein einziges Mal** vorkommen.\n\n```html\n<p class=\"hinweis\">Ich gehöre zur Gruppe „hinweis“.</p>\n<p id=\"fazit\">Mich gibt es nur einmal.</p>\n```\n\nWozu das gut ist? Mit class und id kann man Elemente später **gezielt gestalten** (CSS) und **ansteuern** (JavaScript)."
+      "text": "**Attribute** kennst du: `href`, `src`, `alt`, `colspan`. Sie stehen im **öffnenden Tag** als `name=\"wert\"`.\n\nZwei Attribute darf **jedes** Element tragen:\n\n`class` – ein **Gruppen-Name**, viele Elemente dürfen ihn teilen.\n\n`id` – ein **einmaliger Name**, nur **einmal** pro Seite.\n\n```html\n<p class=\"spieler\">Ich gehöre zum Team.</p>\n<p id=\"captain\">Mich gibt es nur einmal.</p>\n```\n\nWozu? Mit class und id kannst du Elemente später **gezielt gestalten** (CSS) und **ansteuern** (JavaScript).",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><text x=\"20\" y=\"24\" fill=\"#2f6fdb\" font-weight=\"bold\">class = Gruppe</text><rect x=\"20\" y=\"36\" width=\"40\" height=\"40\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><rect x=\"70\" y=\"36\" width=\"40\" height=\"40\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><rect x=\"120\" y=\"36\" width=\"40\" height=\"40\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"20\" y=\"98\" fill=\"#1d2733\">class=\"spieler\"</text><text x=\"20\" y=\"116\" fill=\"#5b6b7c\">beliebig oft</text><line x1=\"178\" y1=\"14\" x2=\"178\" y2=\"140\" stroke=\"#5b6b7c\" stroke-dasharray=\"4 4\"/><text x=\"192\" y=\"24\" fill=\"#e0632e\" font-weight=\"bold\">id = Einzelstück</text><rect x=\"192\" y=\"36\" width=\"40\" height=\"40\" rx=\"6\" fill=\"#e0632e\" fill-opacity=\"0.25\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"192\" y=\"98\" fill=\"#1d2733\">id=\"captain\"</text><text x=\"192\" y=\"116\" fill=\"#5b6b7c\">nur 1× pro Seite</text></svg>"
     },
     {
       "type": "example",
-      "text": "Im CSS-Tab 🔒 stehen schon Gestaltungsregeln für die Gruppe `wichtig` und die id `fazit`. Beobachte, was passiert, wenn du einem weiteren Absatz `class=\"wichtig\"` gibst!",
-      "html": "<p>Ein ganz normaler Absatz.</p>\n<p class=\"wichtig\">Dieser Absatz gehört zur Gruppe „wichtig“.</p>\n<p>Noch ein normaler Absatz.</p>\n<p id=\"fazit\">Und das hier ist das einmalige Fazit.</p>\n",
-      "css": ".wichtig { color: #c0392b; font-weight: bold; }\n#fazit { background-color: #fff3b0; padding: 6px; }\n",
+      "text": "Der CSS-Tab 🔒 gestaltet die Gruppe `spieler` und die id `captain`.\n\nProbiere: Gib dem Neuzugang ebenfalls `class=\"spieler\"` – und beobachte, was passiert!",
+      "html": "<h2>Team Blitz</h2>\n<p class=\"spieler\">Nova – Support</p>\n<p class=\"spieler\">Rex – Sniper</p>\n<p>Luca – Neuzugang</p>\n<p id=\"captain\">Captain: Mia</p>\n",
+      "css": ".spieler { color: #1d6fb8; font-weight: bold; }\n#captain { background-color: #fff3b0; padding: 6px; }\n",
       "editable": ["html"]
     },
     {
@@ -18,7 +19,7 @@
       "question": "Was ist der wichtigste Unterschied zwischen `class` und `id`?",
       "options": [
         "class ist für Texte, id für Bilder",
-        "Eine class dürfen viele Elemente haben, eine id nur ein einziges Element",
+        "class dürfen viele Elemente haben, id nur ein einziges",
         "id ist die englische Abkürzung für class"
       ],
       "correct": 1,
@@ -26,23 +27,23 @@
     },
     {
       "type": "explain",
-      "text": "Drei Praxis-Regeln für gute Namen:\n\n1. **Klein schreiben, keine Leerzeichen, keine Umlaute** – statt `Große Schrift` lieber `gross`.\n2. **Sprechende Namen** wählen: `hinweis` sagt mehr aus als `rot`. (Soll der Hinweis später blau werden, lügt der Name `rot` plötzlich.)\n3. Ein Element darf **mehrere Klassen** gleichzeitig tragen – getrennt durch Leerzeichen:\n\n```html\n<p class=\"hinweis wichtig\">Morgen fällt die 6. Stunde aus.</p>\n```\n\nUnd ein Bonus, den du schon kennst: Eine **id** ist zugleich ein **Sprungziel**! Ein Link mit `href=\"#fazit\"` springt genau zu dem Element mit `id=\"fazit\"` – das waren die Sprungmarken aus Kapitel 5."
+      "text": "Drei Regeln für gute Namen:\n\n1. **Klein schreiben, keine Leerzeichen, keine Umlaute** – statt `Große Schrift` lieber `gross`.\n2. **Sprechende Namen:** `hinweis` sagt mehr als `rot` – wird der Hinweis später blau, lügt `rot`.\n3. Ein Element darf **mehrere Klassen** tragen, getrennt durch Leerzeichen:\n\n```html\n<p class=\"hinweis wichtig\">Turnier am Freitag – seid pünktlich!</p>\n```\n\nBonus: Eine **id** ist zugleich **Sprungziel** – `href=\"#fazit\"` springt zu `id=\"fazit\"` (Kapitel 5)."
     },
     {
       "type": "code",
-      "task": "Der CSS-Tab 🔒 ist schon vorbereitet. Baue drei Absätze:\n\n1. **Zwei** Absätze mit `class=\"wichtig\"`\n2. **Einen** Absatz mit `id=\"fazit\"`\n\nIn der Vorschau siehst du sofort, ob die Gestaltung greift!",
+      "task": "Der CSS-Tab 🔒 ist vorbereitet. Baue drei Absätze mit Clan-Regeln:\n\n1. **Zwei** Absätze mit `class=\"wichtig\"`\n2. **Einen** Absatz mit `id=\"fazit\"`\n\nIn der Vorschau siehst du sofort, ob die Gestaltung greift!",
       "starter": {
-        "html": "<h2>Sicherheitsregeln</h2>\n<!-- Deine drei Absätze hier -->\n",
+        "html": "<h2>Regeln im Clan</h2>\n<!-- Deine drei Absätze hier -->\n",
         "css": ".wichtig { color: #c0392b; font-weight: bold; }\n#fazit { background-color: #fff3b0; padding: 6px; }\n"
       },
       "editable": ["html"],
       "hints": [
         "Das Attribut kommt in den öffnenden Tag: <p class=\"wichtig\">.",
         "Für das Fazit: <p id=\"fazit\">...</p> – nur einmal!",
-        "```html\n<h2>Sicherheitsregeln</h2>\n<p class=\"wichtig\">Niemals Passwörter weitergeben.</p>\n<p class=\"wichtig\">Immer abmelden am Schulrechner.</p>\n<p id=\"fazit\">Sicherheit geht vor.</p>\n```"
+        "```html\n<h2>Regeln im Clan</h2>\n<p class=\"wichtig\">Kein Rage-Quit mitten im Match.</p>\n<p class=\"wichtig\">Im Voice-Chat bleiben alle respektvoll.</p>\n<p id=\"fazit\">Zusammen gewinnen wir.</p>\n```"
       ],
       "solution": {
-        "html": "<h2>Sicherheitsregeln</h2>\n<p class=\"wichtig\">Niemals Passwörter weitergeben.</p>\n<p class=\"wichtig\">Immer abmelden am Schulrechner.</p>\n<p id=\"fazit\">Sicherheit geht vor.</p>\n"
+        "html": "<h2>Regeln im Clan</h2>\n<p class=\"wichtig\">Kein Rage-Quit mitten im Match.</p>\n<p class=\"wichtig\">Im Voice-Chat bleiben alle respektvoll.</p>\n<p id=\"fazit\">Zusammen gewinnen wir.</p>\n"
       },
       "tests": [
         { "type": "selector", "selector": "p.wichtig", "min": 2, "label": "Zwei Absätze haben die class „wichtig“" },
@@ -52,26 +53,26 @@
     {
       "type": "fill",
       "text": "Dieser Absatz soll zu **beiden** Gruppen gehören: `hinweis` und `wichtig`. Setze den fehlenden Attributwert ein.",
-      "template": "<p class=\"___\">Morgen Ausflug – Sportsachen mitbringen!</p>",
+      "template": "<p class=\"___\">Turnier am Samstag – seid um 18 Uhr online!</p>",
       "solution": "hinweis wichtig",
       "accept": ["hinweis wichtig", "wichtig hinweis"],
       "hint": "Beide Namen in dieselben Anführungszeichen, getrennt durch ein Leerzeichen."
     },
     {
       "type": "code",
-      "task": "Fehlersuche! In diesem Code kommt die id `regel` **zweimal** vor – das ist verboten. Repariere die Seite:\n\n1. Ändere bei **beiden** Regel-Absätzen `id=\"regel\"` zu `class=\"regel\"` – als Gruppe ist der doppelte Name erlaubt\n2. Gib dem letzten Absatz die id `hilfe`\n\nDer CSS-Tab 🔒 gestaltet die Gruppe und die id schon – du siehst also sofort, ob es klappt.",
+      "task": "Fehlersuche! Die id `regel` kommt **zweimal** vor – verboten. Repariere:\n\n1. Ändere bei **beiden** Regel-Absätzen `id=\"regel\"` zu `class=\"regel\"` – als Gruppe ist der Name mehrfach erlaubt\n2. Gib dem letzten Absatz die id `hilfe`\n\nDer CSS-Tab 🔒 zeigt dir sofort, ob es klappt.",
       "starter": {
-        "html": "<h2>Unsere Klassenregeln</h2>\n<p id=\"regel\">Handys bleiben im Unterricht in der Tasche.</p>\n<p id=\"regel\">Wir lassen einander ausreden.</p>\n<p>Fragen? Sprich einfach die Klassensprecherin an.</p>\n",
+        "html": "<h2>Regeln im Voice-Chat</h2>\n<p id=\"regel\">Mikro stumm, wenn du nicht redest.</p>\n<p id=\"regel\">Keine Musik im Hintergrund.</p>\n<p>Fragen? Schreib dem Clan-Leader.</p>\n",
         "css": ".regel { color: #1d6fb8; font-weight: bold; }\n#hilfe { background-color: #e8f7e8; padding: 6px; }\n"
       },
       "editable": ["html"],
       "hints": [
         "Aus id wird class: Ersetze in beiden Regel-Absätzen das Wort id durch class.",
         "Der letzte Absatz bekommt zusätzlich ein Attribut in den öffnenden Tag: <p id=\"hilfe\">.",
-        "```html\n<h2>Unsere Klassenregeln</h2>\n<p class=\"regel\">Handys bleiben im Unterricht in der Tasche.</p>\n<p class=\"regel\">Wir lassen einander ausreden.</p>\n<p id=\"hilfe\">Fragen? Sprich einfach die Klassensprecherin an.</p>\n```"
+        "```html\n<h2>Regeln im Voice-Chat</h2>\n<p class=\"regel\">Mikro stumm, wenn du nicht redest.</p>\n<p class=\"regel\">Keine Musik im Hintergrund.</p>\n<p id=\"hilfe\">Fragen? Schreib dem Clan-Leader.</p>\n```"
       ],
       "solution": {
-        "html": "<h2>Unsere Klassenregeln</h2>\n<p class=\"regel\">Handys bleiben im Unterricht in der Tasche.</p>\n<p class=\"regel\">Wir lassen einander ausreden.</p>\n<p id=\"hilfe\">Fragen? Sprich einfach die Klassensprecherin an.</p>\n"
+        "html": "<h2>Regeln im Voice-Chat</h2>\n<p class=\"regel\">Mikro stumm, wenn du nicht redest.</p>\n<p class=\"regel\">Keine Musik im Hintergrund.</p>\n<p id=\"hilfe\">Fragen? Schreib dem Clan-Leader.</p>\n"
       },
       "tests": [
         { "type": "selector", "selector": "p.regel", "min": 2, "label": "Beide Regeln gehören jetzt zur Gruppe „regel“" },

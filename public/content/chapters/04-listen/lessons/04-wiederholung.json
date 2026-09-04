@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Kurze Wiederholungsrunde! Wissen bleibt viel besser hängen, wenn du es **aktiv aus dem Gedächtnis abrufst**, statt es nur noch einmal zu lesen. Genau das machst du jetzt.\n\nHeute dran: das **Grundgerüst**, Überschriften, Absätze mit `<br>` und `<hr>`, Hervorhebungen mit `<strong>` und `<em>` sowie **Kommentare** – verpackt in die Planung eines Filmabends."
+      "text": "Kurze Wiederholungsrunde – aktives Abrufen aus dem Gedächtnis wirkt besser als jedes Nochmal-Lesen. Heute dran: **Grundgerüst**, Überschriften, Absätze mit `<br>` und `<hr>`, `<strong>`/`<em>` und **Kommentare** – verpackt in die Planung eines Filmabends."
     },
     {
       "type": "quiz",
@@ -27,7 +27,7 @@
     },
     {
       "type": "code",
-      "task": "Baue die Einladung zum Filmabend:\n\n1. Eine `<h1>` mit dem Text **Filmabend**\n2. Ein Absatz mit dem Termin – das Wort **Freitag** ist darin mit `<strong>` markiert\n3. Eine Trennlinie `<hr>`\n4. Ein Absatz mit der Adresse: **Musterweg 5**, dann ein `<br>`, dann **74072 Heilbronn**\n5. Ein HTML-Kommentar als Notiz an dich selbst, in dem das Wort **Snacks** vorkommt",
+      "task": "Baue die Einladung zum Filmabend:\n\n1. `<h1>` mit dem Text **Filmabend**\n2. Absatz mit dem Termin – das Wort **Freitag** steht in `<strong>`\n3. Trennlinie `<hr>`\n4. Absatz mit Adresse: **Musterweg 5**, `<br>`, **74072 Heilbronn**\n5. Ein Kommentar, in dem das Wort **Snacks** vorkommt",
       "starter": {
         "html": "<!-- Deine Einladung entsteht hier -->\n"
       },
@@ -60,7 +60,7 @@
     },
     {
       "type": "code",
-      "task": "Zum Abschluss: Schreibe das **komplette Grundgerüst** aus dem Gedächtnis – ohne zurückzublättern!\n\n1. `<!DOCTYPE html>`, `<html>`, `<head>` und `<body>`\n2. Im `<head>`: ein `<title>` mit dem Text **Filmabend bei mir**\n3. Im `<body>`: eine `<h1>` mit dem Text **Programm** und darunter ein Absatz mit einem Satz deiner Wahl",
+      "task": "Zum Abschluss: das **komplette Grundgerüst** aus dem Gedächtnis – ohne zurückzublättern!\n\n1. `<!DOCTYPE html>`, `<html>`, `<head>` und `<body>`\n2. Im `<head>`: ein `<title>` mit dem Text **Filmabend bei mir**\n3. Im `<body>`: eine `<h1>` **Programm** und darunter ein Absatz deiner Wahl",
       "starter": {
         "html": "<!-- Lösche diese Zeile und schreibe das komplette Grundgerüst -->\n"
       },

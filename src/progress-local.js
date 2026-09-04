@@ -48,6 +48,7 @@ export function isChapterLocked() {
 /* ---------- Sichern & Wiederherstellen als JSON-Datei (wie PyQuest) ---------- */
 
 import { getProjektAll, setProjektAll } from './projekt.js';
+import { getAlleLoesungen, setAlleLoesungen } from './loesungen.js';
 
 export function exportAll() {
   return {
@@ -56,6 +57,7 @@ export function exportAll() {
     exportedAt: new Date().toISOString(),
     fortschritt: load(),
     projekt: getProjektAll(),
+    loesungen: getAlleLoesungen(),
   };
 }
 
@@ -65,4 +67,5 @@ export function importAll(daten) {
   }
   save(daten.fortschritt || {});
   if (daten.projekt) setProjektAll(daten.projekt);
+  if (daten.loesungen) setAlleLoesungen(daten.loesungen);
 }

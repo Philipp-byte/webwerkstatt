@@ -4,11 +4,16 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Um Webseiten zu bauen, brauchst du genau zwei Werkzeuge – und beide hast du schon:\n\nEinen **Editor**: ein Programm, mit dem man reine Textdateien schreibt – zum Beispiel der Windows-Editor oder Visual Studio Code. In der WebWerkstatt übernimmt das die eingebaute **Werkbank**: links schreibst du den Code.\n\nEinen **Browser**: Er öffnet die Datei und macht daraus die sichtbare Seite. In der Werkbank siehst du das rechts in der **Vorschau**.\n\nMehr ist es nicht – eine Webseite ist am Ende eine **Textdatei**, die der Browser darstellt. Word ist dafür übrigens ungeeignet: Es speichert keine reinen Textdateien, sondern packt unsichtbare Formatierungen dazu, die den Browser verwirren."
+      "text": "Um Webseiten zu bauen, brauchst du genau zwei Werkzeuge – und beide hast du schon:\n\nEinen **Editor**: ein Programm für reine Textdateien, zum Beispiel der Windows-Editor oder Visual Studio Code. In der WebWerkstatt übernimmt das die eingebaute **Werkbank**: links schreibst du den Code.\n\nEinen **Browser**: Er öffnet die Datei und macht daraus die sichtbare Seite. In der Werkbank siehst du das rechts in der **Vorschau**.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><defs><marker id=\"pf3\" markerWidth=\"8\" markerHeight=\"8\" refX=\"7\" refY=\"4\" orient=\"auto\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#5b6b7c\"/></marker></defs><text x=\"160\" y=\"24\" text-anchor=\"middle\" fill=\"#1d2733\" font-weight=\"bold\">Zwei Werkzeuge – eine Textdatei</text><rect x=\"6\" y=\"44\" width=\"84\" height=\"72\" rx=\"8\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"48\" y=\"70\" text-anchor=\"middle\" fill=\"#2f6fdb\" font-weight=\"bold\">Editor</text><text x=\"48\" y=\"90\" text-anchor=\"middle\" fill=\"#1d2733\">du schreibst</text><text x=\"48\" y=\"106\" text-anchor=\"middle\" fill=\"#1d2733\">den Code</text><rect x=\"118\" y=\"52\" width=\"84\" height=\"56\" rx=\"8\" fill=\"#eef2f8\" stroke=\"#5b6b7c\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/><text x=\"160\" y=\"76\" text-anchor=\"middle\" fill=\"#1d2733\" font-weight=\"bold\">seite.html</text><text x=\"160\" y=\"96\" text-anchor=\"middle\" fill=\"#5b6b7c\">Textdatei</text><rect x=\"230\" y=\"44\" width=\"84\" height=\"72\" rx=\"8\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"272\" y=\"70\" text-anchor=\"middle\" fill=\"#1a9e5c\" font-weight=\"bold\">Browser</text><text x=\"272\" y=\"90\" text-anchor=\"middle\" fill=\"#1d2733\">zeigt die</text><text x=\"272\" y=\"106\" text-anchor=\"middle\" fill=\"#1d2733\">Seite an</text><line x1=\"94\" y1=\"80\" x2=\"114\" y2=\"80\" stroke=\"#5b6b7c\" stroke-width=\"2\" marker-end=\"url(#pf3)\"/><line x1=\"206\" y1=\"80\" x2=\"226\" y2=\"80\" stroke=\"#5b6b7c\" stroke-width=\"2\" marker-end=\"url(#pf3)\"/></svg>"
     },
     {
       "type": "explain",
-      "text": "Das Beste am Web: Jede echte Webseite zeigt dir freiwillig ihren Code!\n\nKlicke auf einer beliebigen Webseite mit der **rechten Maustaste** und wähle **„Seitenquelltext anzeigen“** – oder drücke einfach **Strg + U**. Du siehst dann den **Quelltext**: die HTML-Datei, die der Server geliefert hat.\n\nProbiere das heute mal bei deiner Lieblingsseite aus. Noch sieht der Code kryptisch aus – aber schon nach den nächsten Kapiteln kannst du vieles davon lesen. So haben übrigens viele Profis angefangen: bei fremden Seiten nachgeschaut, wie etwas gemacht ist."
+      "text": "Mehr ist es nicht – eine Webseite ist am Ende eine **Textdatei**, die der Browser darstellt.\n\nWord ist dafür übrigens ungeeignet: Es speichert keine reinen Textdateien, sondern packt unsichtbare Formatierungen dazu, die den Browser verwirren."
+    },
+    {
+      "type": "explain",
+      "text": "Das Beste am Web: Jede echte Webseite zeigt dir freiwillig ihren Code!\n\nKlicke auf einer Webseite mit der **rechten Maustaste** und wähle **„Seitenquelltext anzeigen“** – oder drücke **Strg + U**. Du siehst dann den **Quelltext**: die HTML-Datei, die der Server geliefert hat.\n\nProbier das heute bei deiner Lieblings-Gaming-Seite aus. Noch sieht der Code kryptisch aus – nach den nächsten Kapiteln kannst du vieles davon lesen."
     },
     {
       "type": "example",
@@ -25,22 +30,26 @@
     },
     {
       "type": "explain",
-      "text": "Es gibt viele verschiedene Browser: Chrome, Firefox, Safari, Edge … Und jede Webseite soll in **allen** gleich funktionieren.\n\nDas klappt nur, wenn sich alle an gemeinsame Regeln halten: **Standards**. Ein Standard legt genau fest, was zum Beispiel ein Überschriften-Tag bedeutet und wie ein Browser ihn darstellen soll – so wie sich alle im Straßenverkehr auf „Rot heißt Stopp“ geeinigt haben.\n\nOhne Standards müsstest du jede Seite mehrfach bauen – für jeden Browser einzeln. Genau so war es in den 1990er-Jahren: Damals stand auf Webseiten ernsthaft „Diese Seite funktioniert am besten im Browser XY“."
+      "text": "Es gibt viele verschiedene Browser – und jede Webseite soll in **allen** gleich funktionieren.\n\nDas klappt nur, wenn sich alle an gemeinsame Regeln halten: **Standards**. Ein Standard legt genau fest, was ein Überschriften-Tag bedeutet und wie ein Browser ihn darstellt – so wie im Straßenverkehr überall gilt: „Rot heißt Stopp“."
+    },
+    {
+      "type": "explain",
+      "text": "Ohne Standards müsstest du jede Seite mehrfach bauen – für jeden Browser einzeln.\n\nGenau so war es in den 1990er-Jahren: Damals stand auf Webseiten ernsthaft „Diese Seite funktioniert am besten im Browser XY“."
     },
     {
       "type": "quiz",
       "question": "Warum braucht das Web **Standards**?",
       "options": [
-        "Damit jede Webseite von allen Browsern gleich verstanden und dargestellt wird",
+        "Damit alle Browser eine Webseite gleich verstehen und darstellen",
         "Damit Webseiten automatisch schöner aussehen",
         "Damit nur ausgebildete Profis Webseiten bauen dürfen"
       ],
       "correct": 0,
-      "explanation": "Standards sind gemeinsame Regeln für alle Browser-Hersteller und Webseiten-Bauer. Nur so funktioniert dieselbe HTML-Datei überall – egal ob in Chrome, Firefox oder Safari."
+      "explanation": "Standards sind gemeinsame Regeln für alle Browser-Hersteller und Webseiten-Bauer. Nur so funktioniert dieselbe HTML-Datei überall – egal in welchem Browser."
     },
     {
       "type": "explain",
-      "text": "Und wer legt diese Standards fest? Das **W3C** – das **World Wide Web Consortium**. In dieser internationalen Organisation entwickeln Browser-Hersteller, Firmen und Fachleute gemeinsam die Regeln des Webs und veröffentlichen sie für alle.\n\nGegründet wurde das W3C 1994 von **Tim Berners-Lee** – dem Erfinder des World Wide Web.\n\nAuch HTML und CSS, die du in der WebWerkstatt lernst, sind solche Standards. Deshalb kannst du sicher sein: Dein Code funktioniert nachher in jedem Browser."
+      "text": "Und wer legt diese Standards fest? Das **W3C** – das **World Wide Web Consortium**. Dort entwickeln Browser-Hersteller, Firmen und Fachleute gemeinsam die Regeln des Webs und veröffentlichen sie für alle.\n\nGegründet wurde das W3C 1994 von **Tim Berners-Lee** – dem Erfinder des World Wide Web.\n\nAuch HTML und CSS sind solche Standards. Deshalb funktioniert dein Code nachher in jedem Browser."
     },
     {
       "type": "quiz",

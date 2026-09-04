@@ -31,9 +31,17 @@ npm run build      # statischer Build in dist/
 
 Ein kleiner Flask-Server speichert den Fortschritt zentral (SQLite): Schüler-Logins mit Pseudonymen, Klassenverwaltung, Fortschrittsübersicht, Kapitel-Freischaltung. Anleitung: [server/README.md](server/README.md). Die App erkennt den Server automatisch — ohne ihn läuft sie im Demo-Modus.
 
+## Lernen mit der App
+
+- **Blättern statt scrollen:** Jede Lektion zeigt einen Schritt pro Seite — kurz, mit Grafik, auf einen Blick. Weiter geht es per Button, Wischen nach links oder Pfeiltaste, sobald der Schritt gelöst ist; zurück jederzeit.
+- **Schülernahe Beispiele:** Gaming, Handy, Sneaker, Fußball, Streaming, Schulalltag — kein Büro-Deutsch.
+
 ## Arbeitsblätter
 
-`arbeitsblaetter/build_worksheet.py` erzeugt zu jedem Kapitel ein druckfertiges **Informations- & Aufgabenblatt** (A4-PDF) aus denselben Lektionsdaten — Inhalte und Blätter können nicht auseinanderlaufen.
+Zwei Wege, beide im JJWS-Design:
+
+1. **Mit den eigenen Lösungen (in der App):** In jeder Kapitelansicht gibt es „Arbeitsblatt mit deinen Lösungen“ — ein PDF, das die Aufgaben des Kapitels enthält und dazu den Code, den die Lernenden selbst geschrieben haben (nur bestandene Lösungen). Entsteht komplett im Browser (jsPDF), nichts verlässt das Gerät.
+2. **Leer zum Ausdrucken:** `arbeitsblaetter/build_worksheet.py` erzeugt zu jedem Kapitel ein druckfertiges **Informations- & Aufgabenblatt** (A4-PDF, Layout der Arbeitsblatt-Skill-Familie) aus denselben Lektionsdaten — Inhalte und Blätter können nicht auseinanderlaufen. Die PDFs liegen unter `public/worksheets/` und sind aus der App verlinkt.
 
 ```
 python arbeitsblaetter/build_worksheet.py --all

@@ -4,13 +4,14 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Manchmal willst du mehrere Elemente zu einem **Bereich** zusammenfassen – zum Beispiel, um sie später gemeinsam zu gestalten. Dafür gibt es zwei neutrale **Container**:\n\n`<div>` – ein **Block**-Container: Er beginnt in einer **neuen Zeile** und nimmt die ganze Breite ein – wie ein Kasten, der von Rand zu Rand reicht.\n\n`<span>` – ein **Inline**-Container: Er fließt **mitten im Text** mit, ohne eine neue Zeile zu beginnen – wie ein Textmarker über ein paar Wörtern.\n\n```html\n<div class=\"angebot\">\n  <h2>Tagesangebot</h2>\n  <p>Heute: Muffin für <span class=\"preis\">1,00 €</span>!</p>\n</div>\n```\n\nBeide Tags sind für sich **unsichtbar** – sie ordnen nur. Erst zusammen mit class oder id (und später CSS) werden sie nützlich."
+      "text": "Manchmal willst du mehrere Elemente zu einem **Bereich** zusammenfassen – etwa um sie später gemeinsam zu gestalten. Dafür gibt es zwei neutrale **Container**:\n\n`<div>` – ein **Block**-Container: beginnt in einer **neuen Zeile** und reicht von Rand zu Rand.\n\n`<span>` – ein **Inline**-Container: fließt **mitten im Text** mit, wie ein Textmarker über ein paar Wörtern.\n\n```html\n<div class=\"match\">\n  <h2>Nächstes Match</h2>\n  <p>Freitag gegen <span class=\"gegner\">Team Nova</span>!</p>\n</div>\n```\n\nBeide sind **unsichtbar** – sie ordnen nur.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect x=\"20\" y=\"14\" width=\"280\" height=\"132\" rx=\"4\" fill=\"none\" stroke=\"#5b6b7c\"/><rect x=\"30\" y=\"24\" width=\"260\" height=\"34\" fill=\"#2f6fdb\" fill-opacity=\"0.2\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"38\" y=\"46\" fill=\"#2f6fdb\" font-weight=\"bold\">&lt;div&gt; – Block: ganze Zeile</text><line x1=\"30\" y1=\"88\" x2=\"130\" y2=\"88\" stroke=\"#5b6b7c\" stroke-width=\"3\"/><rect x=\"134\" y=\"77\" width=\"90\" height=\"22\" fill=\"#e0632e\" fill-opacity=\"0.25\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"142\" y=\"93\" fill=\"#e0632e\" font-weight=\"bold\">&lt;span&gt;</text><line x1=\"228\" y1=\"88\" x2=\"290\" y2=\"88\" stroke=\"#5b6b7c\" stroke-width=\"3\"/><line x1=\"30\" y1=\"110\" x2=\"200\" y2=\"110\" stroke=\"#5b6b7c\" stroke-width=\"3\"/><text x=\"30\" y=\"136\" fill=\"#1d2733\">Inline: fließt im Text mit, keine neue Zeile</text></svg>"
     },
     {
       "type": "example",
-      "text": "Der CSS-Tab 🔒 macht die Container sichtbar: `div.angebot` bekommt einen Rahmen, `span.preis` wird orange.\n\nProbiere: Setze den `<span class=\"preis\">` um ein anderes Wort – der Text fließt einfach weiter, keine neue Zeile. Füge dann einen zweiten `<div class=\"angebot\">` mit eigenem Inhalt hinzu – ein neuer Kasten entsteht.",
-      "html": "<div class=\"angebot\">\n  <h2>Tagesangebot</h2>\n  <p>Heute: Muffin für <span class=\"preis\">1,00 €</span>!</p>\n</div>\n<div class=\"angebot\">\n  <h2>Wochenangebot</h2>\n  <p>Kakao und Brezel zusammen für <span class=\"preis\">2,00 €</span>.</p>\n</div>\n",
-      "css": ".angebot { border: 2px solid #a3612c; padding: 10px; margin-bottom: 10px; background-color: #fdf6ec; }\n.preis { color: #e08a2e; font-weight: bold; }\n",
+      "text": "Der CSS-Tab 🔒 macht die Container sichtbar: `div.match` bekommt einen Rahmen, `span.gegner` wird orange.\n\nProbiere: Setze den `<span class=\"gegner\">` um ein anderes Wort – der Text fließt weiter, keine neue Zeile. Füge dann einen dritten `<div class=\"match\">` hinzu – ein neuer Kasten.",
+      "html": "<div class=\"match\">\n  <h2>Nächstes Match</h2>\n  <p>Freitag, 19 Uhr gegen <span class=\"gegner\">Team Nova</span>!</p>\n</div>\n<div class=\"match\">\n  <h2>Danach</h2>\n  <p>Sonntag gegen <span class=\"gegner\">Pixel Legends</span> – das Finale.</p>\n</div>\n",
+      "css": ".match { border: 2px solid #2f6fdb; padding: 10px; margin-bottom: 10px; background-color: #eef2f8; }\n.gegner { color: #e08a2e; font-weight: bold; }\n",
       "editable": ["html"]
     },
     {
@@ -26,44 +27,45 @@
     },
     {
       "type": "explain",
-      "text": "Ganze Webseiten bestehen aus solchen Kästen. Aber ein `<div>` hat ein Problem: Sein Name verrät **nicht, was drinsteckt**. Eine Seite aus zwanzig divs ist wie ein Umzug mit zwanzig unbeschrifteten Kartons.\n\nDeshalb hat HTML Ordnungs-Tags mit **sprechenden Namen** – die **semantischen** Elemente (Semantik = Bedeutung):\n\n`<header>` – der Kopfbereich (Logo, Seitentitel)\n\n`<nav>` – die Navigation (die Link-Leiste)\n\n`<main>` – der Hauptinhalt (gibt es nur **einmal** pro Seite!)\n\n`<footer>` – der Fußbereich (Adresse, Impressum)\n\nSie verhalten sich genau wie `<div>` (Block-Kästen) – aber ihr Name sagt Suchmaschinen, Vorlese-Programmen und dir selbst sofort, was drinsteckt."
+      "text": "Ganze Webseiten bestehen aus solchen Kästen. Aber ein `<div>` verrät **nicht, was drinsteckt** – zwanzig divs sind wie zwanzig unbeschriftete Umzugskartons.\n\nDeshalb gibt es Ordnungs-Tags mit **sprechenden Namen**, die **semantischen** Elemente (Semantik = Bedeutung):\n\n`<header>` – Kopfbereich (Logo, Titel)\n\n`<nav>` – Navigation (Link-Leiste)\n\n`<main>` – Hauptinhalt (nur **einmal** pro Seite!)\n\n`<footer>` – Fußbereich (Adresse, Impressum)",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect x=\"60\" y=\"8\" width=\"200\" height=\"144\" fill=\"none\" stroke=\"#5b6b7c\"/><rect x=\"66\" y=\"14\" width=\"188\" height=\"26\" fill=\"#e0632e\" fill-opacity=\"0.25\" stroke=\"#e0632e\"/><text x=\"72\" y=\"32\" fill=\"#1d2733\" font-weight=\"bold\">&lt;header&gt; Titel</text><rect x=\"66\" y=\"44\" width=\"188\" height=\"22\" fill=\"#2f6fdb\" fill-opacity=\"0.25\" stroke=\"#2f6fdb\"/><text x=\"72\" y=\"60\" fill=\"#1d2733\" font-weight=\"bold\">&lt;nav&gt; Links</text><rect x=\"66\" y=\"70\" width=\"188\" height=\"50\" fill=\"#1a9e5c\" fill-opacity=\"0.2\" stroke=\"#1a9e5c\"/><text x=\"72\" y=\"90\" fill=\"#1d2733\" font-weight=\"bold\">&lt;main&gt; Hauptinhalt</text><text x=\"72\" y=\"110\" fill=\"#5b6b7c\">nur einmal pro Seite</text><rect x=\"66\" y=\"124\" width=\"188\" height=\"22\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><text x=\"72\" y=\"140\" fill=\"#1d2733\" font-weight=\"bold\">&lt;footer&gt; Adresse</text></svg>"
     },
     {
       "type": "example",
-      "text": "Damit du die Bereiche sehen kannst, färbt der CSS-Tab 🔒 sie ein. Ohne CSS wären sie unsichtbare Ordnungs-Boxen.\n\nProbiere: Füge in die `<nav>` einen dritten Link ein – er landet automatisch im blauen Navigations-Band.",
-      "html": "<header>\n  <h1>Pizzeria Bella Napoli</h1>\n</header>\n<nav>\n  <a href=\"https://www.example.com\">Speisekarte</a>\n  <a href=\"https://www.example.com\">Kontakt</a>\n</nav>\n<main>\n  <p>Willkommen! Bei uns gibt es die beste Pizza der Stadt.</p>\n</main>\n<footer>\n  <p>Bella Napoli · Musterstraße 1 · Heilbronn</p>\n</footer>\n",
+      "text": "Die Bereiche verhalten sich wie `<div>` – aber ihr Name sagt Suchmaschinen, Vorlese-Programmen und dir sofort, was drinsteckt. Der CSS-Tab 🔒 färbt sie ein, damit du sie siehst.\n\nProbiere: Füge in die `<nav>` einen dritten Link ein – er landet im blauen Band.",
+      "html": "<header>\n  <h1>Fanpage FC Nordstadt</h1>\n</header>\n<nav>\n  <a href=\"https://www.example.com\">Spielplan</a>\n  <a href=\"https://www.example.com\">Kader</a>\n</nav>\n<main>\n  <p>Willkommen auf der Fanpage! Hier findest du alle Infos zum nächsten Heimspiel.</p>\n</main>\n<footer>\n  <p>Fanclub Nordkurve · Musterstraße 1 · Heilbronn</p>\n</footer>\n",
       "css": "header { background-color: #ffe0b3; padding: 10px; }\nnav { background-color: #cde8ff; padding: 10px; }\nmain { background-color: #e8f7e8; padding: 10px; min-height: 60px; }\nfooter { background-color: #e6e6e6; padding: 10px; font-size: 14px; }\n",
       "editable": ["html"]
     },
     {
       "type": "fill",
-      "text": "Die Link-Leiste braucht noch ihren sprechenden Bereichs-Tag. Setze den öffnenden Tag ein (der schließende steht schon da).",
-      "template": "<header>\n  <h1>Sportverein</h1>\n</header>\n<___>\n  <a href=\"training.html\">Training</a>\n  <a href=\"kontakt.html\">Kontakt</a>\n</nav>",
+      "text": "Die Link-Leiste der Clan-Seite braucht noch ihren sprechenden Bereichs-Tag. Setze den öffnenden Tag ein (der schließende steht schon da).",
+      "template": "<header>\n  <h1>Team Blitz</h1>\n</header>\n<___>\n  <a href=\"turniere.html\">Turniere</a>\n  <a href=\"mitspielen.html\">Mitspielen</a>\n</nav>",
       "solution": "nav",
       "accept": ["nav"],
       "hint": "Der Bereich für die Navigation heißt `<nav>` – schau auf den schließenden Tag."
     },
     {
       "type": "code",
-      "task": "Baue die Grundstruktur einer Seite für den **Schulkiosk** – mit allem aus dieser Lektion:\n\n1. `<header>` mit einer `<h1>` (z. B. **Schulkiosk**)\n2. `<nav>` mit **zwei Links** (Ziele frei wählbar, `https://...`)\n3. `<main>` mit einem Absatz – markiere darin den Preis mit `<span class=\"preis\">…</span>`\n4. `<footer>` mit einem Absatz",
+      "task": "Baue die Grundstruktur der Seite für den Gaming-Clan **Team Blitz**:\n\n1. `<header>` mit einer `<h1>` (z. B. **Team Blitz**)\n2. `<nav>` mit **zwei Links** (Ziele frei, `https://...`)\n3. `<main>` mit einem Absatz – markiere darin den Termin mit `<span class=\"termin\">…</span>`\n4. `<footer>` mit einem Absatz",
       "starter": {
         "html": "<!-- header, nav, main und footer hier -->\n",
-        "css": "header { background-color: #ffe0b3; padding: 10px; }\nnav { background-color: #cde8ff; padding: 10px; }\nmain { background-color: #e8f7e8; padding: 10px; min-height: 60px; }\nfooter { background-color: #e6e6e6; padding: 10px; font-size: 14px; }\n.preis { color: #e08a2e; font-weight: bold; }\n"
+        "css": "header { background-color: #ffe0b3; padding: 10px; }\nnav { background-color: #cde8ff; padding: 10px; }\nmain { background-color: #e8f7e8; padding: 10px; min-height: 60px; }\nfooter { background-color: #e6e6e6; padding: 10px; font-size: 14px; }\n.termin { color: #e08a2e; font-weight: bold; }\n"
       },
       "editable": ["html"],
       "hints": [
         "Die vier Bereiche stehen untereinander, jeder mit öffnendem und schließendem Tag.",
-        "Im <main>-Absatz kommt der span mitten in den Satz: <p>Brezel für <span class=\"preis\">1,00 €</span></p>.",
-        "```html\n<header>\n  <h1>Schulkiosk</h1>\n</header>\n<nav>\n  <a href=\"https://www.example.com\">Angebot</a>\n  <a href=\"https://www.example.com\">Preise</a>\n</nav>\n<main>\n  <p>Frische Brezeln gibt es heute für <span class=\"preis\">1,00 €</span>.</p>\n</main>\n<footer>\n  <p>Den Kiosk findest du in Raum 012.</p>\n</footer>\n```"
+        "Im <main>-Absatz kommt der span mitten in den Satz: <p>Nächstes Match: <span class=\"termin\">Freitag, 19 Uhr</span></p>.",
+        "```html\n<header>\n  <h1>Team Blitz</h1>\n</header>\n<nav>\n  <a href=\"https://www.example.com\">Turniere</a>\n  <a href=\"https://www.example.com\">Mitspielen</a>\n</nav>\n<main>\n  <p>Nächstes Match: <span class=\"termin\">Freitag, 19 Uhr</span> – seid pünktlich!</p>\n</main>\n<footer>\n  <p>Team Blitz · gegründet 2024 · Heilbronn</p>\n</footer>\n```"
       ],
       "solution": {
-        "html": "<header>\n  <h1>Schulkiosk</h1>\n</header>\n<nav>\n  <a href=\"https://www.example.com\">Angebot</a>\n  <a href=\"https://www.example.com\">Preise</a>\n</nav>\n<main>\n  <p>Frische Brezeln gibt es heute für <span class=\"preis\">1,00 €</span>.</p>\n</main>\n<footer>\n  <p>Den Kiosk findest du in Raum 012.</p>\n</footer>\n"
+        "html": "<header>\n  <h1>Team Blitz</h1>\n</header>\n<nav>\n  <a href=\"https://www.example.com\">Turniere</a>\n  <a href=\"https://www.example.com\">Mitspielen</a>\n</nav>\n<main>\n  <p>Nächstes Match: <span class=\"termin\">Freitag, 19 Uhr</span> – seid pünktlich!</p>\n</main>\n<footer>\n  <p>Team Blitz · gegründet 2024 · Heilbronn</p>\n</footer>\n"
       },
       "tests": [
         { "type": "selector", "selector": "header h1", "min": 1, "label": "Im <header> steht eine <h1>" },
         { "type": "selector", "selector": "nav a", "min": 2, "label": "Die <nav> enthält zwei Links" },
         { "type": "selector", "selector": "main p", "min": 1, "label": "Im <main> steht ein Absatz" },
-        { "type": "selector", "selector": "main p span.preis", "min": 1, "label": "Der Preis ist mit <span class=\"preis\"> markiert" },
+        { "type": "selector", "selector": "main p span.termin", "min": 1, "label": "Der Termin ist mit <span class=\"termin\"> markiert" },
         { "type": "selector", "selector": "footer p", "min": 1, "label": "Im <footer> steht ein Absatz" }
       ]
     }

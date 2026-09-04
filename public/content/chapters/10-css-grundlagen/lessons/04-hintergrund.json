@@ -4,7 +4,8 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Neben der Textfarbe (`color`) kann jedes Element eine **Hintergrundfarbe** bekommen – mit `background-color`:\n\n```css\nh1 {\n  background-color: #004466;\n  color: white;\n}\n```\n\nDer Hintergrund füllt die ganze Fläche des Elements – bei einer Überschrift also einen Balken über die volle Breite.\n\nGibst du dem `body` eine Hintergrundfarbe, färbst du die **ganze Seite**:\n\n```css\nbody {\n  background-color: #fdf3e3;\n}\n```\n\nAlle Farbschreibweisen aus der letzten Lektion funktionieren auch hier: Farbnamen, Hex-Codes und `rgb()`."
+      "text": "Neben der Textfarbe (`color`) kann jedes Element eine **Hintergrundfarbe** bekommen – mit `background-color`:\n\n```css\nh1 {\n  background-color: #004466;\n  color: white;\n}\n```\n\nDer Hintergrund füllt die **ganze Fläche** des Elements – bei einer Überschrift also einen Balken über die volle Breite.\n\nGibst du dem `body` eine Hintergrundfarbe, färbst du die **ganze Seite**. Alle Farbschreibweisen funktionieren auch hier.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\"><rect x=\"12\" y=\"12\" width=\"156\" height=\"136\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><rect x=\"24\" y=\"26\" width=\"132\" height=\"36\" fill=\"#2f6fdb\"/><text x=\"34\" y=\"50\" font-size=\"16\" font-weight=\"bold\" fill=\"#eef2f8\">Clan-Turnier</text><text x=\"34\" y=\"88\" font-size=\"12\" fill=\"#1d2733\">Start: Samstag, 18 Uhr</text><text x=\"34\" y=\"106\" font-size=\"12\" fill=\"#1d2733\">Anmeldung bis Freitag</text><line x1=\"156\" y1=\"44\" x2=\"184\" y2=\"44\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"188\" y=\"40\" font-size=\"12\" font-weight=\"bold\" fill=\"#2f6fdb\">h1-Hintergrund</text><text x=\"188\" y=\"56\" font-size=\"12\" fill=\"#1d2733\">= nur der Balken</text><line x1=\"168\" y1=\"124\" x2=\"184\" y2=\"124\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"188\" y=\"120\" font-size=\"12\" font-weight=\"bold\" fill=\"#5b6b7c\">body-Hintergrund</text><text x=\"188\" y=\"136\" font-size=\"12\" fill=\"#1d2733\">= die ganze Seite</text></svg>"
     },
     {
       "type": "example",
@@ -15,7 +16,11 @@
     },
     {
       "type": "explain",
-      "text": "Sobald du Text- **und** Hintergrundfarbe wählst, bist du für die **Lesbarkeit** verantwortlich. Die wichtigste Regel: **Der Kontrast muss groß sein** – dunkler Text auf hellem Grund oder heller Text auf dunklem Grund. Ton in Ton (grau auf grau, gelb auf weiß) ist tabu.\n\nWarum ist das so wichtig?\n\n- **Nicht jeder sieht wie du.** Viele Menschen haben eine Sehschwäche – für sie wird schwacher Kontrast schnell unlesbar.\n- Etwa **jeder zwölfte Mann** hat eine Rot-Grün-Farbfehlsichtigkeit. Wichtige Unterschiede solltest du deshalb **nie nur über die Farbe** zeigen.\n- **Auch Situationen zählen:** Auf einem spiegelnden Handydisplay in der Sonne überlebt nur kräftiger Kontrast.\n\nProfis verlassen sich dabei nicht auf ihr Gefühl: Es gibt offizielle Mindest-Kontrastwerte für Websites, und Werkzeuge wie ein **Contrast-Checker** prüfen jede Farbkombination automatisch. Merk dir fürs Erste die Faustregel: **Im Zweifel dunkler Text, heller Hintergrund.**"
+      "text": "Sobald du Text- **und** Hintergrundfarbe wählst, bist du für die **Lesbarkeit** verantwortlich. Die wichtigste Regel: **großer Kontrast** – dunkler Text auf hellem Grund oder heller Text auf dunklem Grund. Ton in Ton (grau auf grau, gelb auf weiß) ist tabu.\n\nFaustregel fürs Erste: **Im Zweifel dunkler Text, heller Hintergrund.**"
+    },
+    {
+      "type": "explain",
+      "text": "Warum ist Kontrast so wichtig?\n\n- **Nicht jeder sieht wie du.** Für Menschen mit Sehschwäche wird schwacher Kontrast schnell unlesbar.\n- Etwa **jeder zwölfte Mann** hat eine Rot-Grün-Schwäche. Wichtige Unterschiede deshalb **nie nur über die Farbe** zeigen.\n- **Handy in der Sonne:** Auf einem spiegelnden Display überlebt nur kräftiger Kontrast.\n\nProfis prüfen Farbkombinationen mit einem **Contrast-Checker**, statt sich aufs Gefühl zu verlassen."
     },
     {
       "type": "quiz",
@@ -38,9 +43,9 @@
     },
     {
       "type": "code",
-      "task": "Gestalte die Seite – mit gutem Kontrast:\n\n1. Der `body` bekommt die Hintergrundfarbe `#e6f2ff`\n2. Die `h1` bekommt die Hintergrundfarbe `#004466`\n3. Die `h1` bekommt zusätzlich die Textfarbe `white` – sonst wäre sie auf dem dunklen Balken kaum lesbar",
+      "task": "Gestalte die Turnier-Seite – mit gutem Kontrast:\n\n1. Der `body` bekommt die Hintergrundfarbe `#e6f2ff`\n2. Die `h1` bekommt die Hintergrundfarbe `#004466`\n3. Die `h1` bekommt zusätzlich die Textfarbe `white` – sonst wäre sie auf dem dunklen Balken kaum lesbar",
       "starter": {
-        "html": "<h1>Schwimmbad Heilbronn</h1>\n<p>Öffnungszeiten: täglich 9 bis 20 Uhr.</p>\n",
+        "html": "<h1>Clan-Turnier</h1>\n<p>Start: Samstag, 18 Uhr – Anmeldung bis Freitag.</p>\n",
         "css": "/* Deine Regeln hier */\n"
       },
       "editable": ["css"],

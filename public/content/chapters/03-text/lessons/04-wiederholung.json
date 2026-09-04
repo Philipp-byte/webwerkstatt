@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Kurze Verschnaufpause vom Neuen! Dein Gehirn behält Wissen am besten, wenn es aktiv **abgerufen** wird – nicht durch nochmaliges Lesen, sondern durch Erinnern. Genau deshalb kommen jetzt ein paar gemischte Aufgaben zu den Kapiteln 1 und 2.\n\nAlles schon mal dagewesen – mal sehen, was hängen geblieben ist. Und wenn etwas nicht mehr da ist: kein Problem, dafür gibt es die Tipps."
+      "text": "Kurze Verschnaufpause vom Neuen! Dein Gehirn behält Wissen am besten, wenn es aktiv **abgerufen** wird – deshalb kommen jetzt gemischte Aufgaben zu den Kapiteln 1 und 2.\n\nAlles schon mal dagewesen – und wenn etwas nicht mehr da ist: kein Problem, dafür gibt es die Tipps."
     },
     {
       "type": "quiz",
@@ -27,14 +27,14 @@
     },
     {
       "type": "quiz",
-      "question": "In der URL `https://www.schule-beispiel.de/kurse.html` – was ist `https`?",
+      "question": "In der URL `https://www.esport-beispiel.de/turnier.html` – was ist `https`?",
       "options": [
         "Das Schema (Protokoll) – hier mit Verschlüsselung",
         "Die Domain – der Name des Servers",
         "Der Pfad – die Datei auf dem Server"
       ],
       "correct": 0,
-      "explanation": "`https` ist das Schema und legt fest, wie Browser und Server sprechen – das s steht für „secure“. Die Domain ist `www.schule-beispiel.de`, der Pfad `/kurse.html`."
+      "explanation": "`https` ist das Schema und legt fest, wie Browser und Server sprechen – das s steht für „secure“. Die Domain ist `www.esport-beispiel.de`, der Pfad `/turnier.html`."
     },
     {
       "type": "code",

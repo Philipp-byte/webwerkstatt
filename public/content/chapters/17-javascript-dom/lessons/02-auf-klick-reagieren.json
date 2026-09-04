@@ -4,14 +4,21 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Für klickbare Knöpfe gibt es in HTML das `<button>`-Element:\n\n```html\n<button id=\"knopf\">Klick mich</button>\n```\n\nMit JavaScript legst du fest, **was beim Klick passiert** – mit einem **Event-Listener**:\n\n```js\nlet knopf = document.getElementById(\"knopf\");\nknopf.addEventListener(\"click\", function () {\n  console.log(\"Geklickt!\");\n});\n```\n\nLies es so: „Knopf, **horche** auf `click` – und wenn es passiert, **führe diese Funktion aus**.“ Der Code zwischen den geschweiften Klammern läuft bei **jedem** Klick neu."
+      "text": "Für klickbare Knöpfe gibt es in HTML das `<button>`-Element:\n\n```html\n<button id=\"knopf\">Like</button>\n```\n\nMit JavaScript legst du fest, **was beim Klick passiert** – mit einem **Event-Listener** („Ereignis-Horcher“). Stell ihn dir wie eine Klingel vor: Jemand drückt, und eine Funktion läuft los.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"13\"><text x=\"160\" y=\"20\" text-anchor=\"middle\" fill=\"#5b6b7c\" font-size=\"12\">addEventListener = Klingel am Knopf</text><rect x=\"10\" y=\"60\" width=\"80\" height=\"40\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"50\" y=\"85\" text-anchor=\"middle\" fill=\"#1d2733\">Like</text><path d=\"M92 80 L118 80 M111 74 L118 80 L111 86\" fill=\"none\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"105\" y=\"66\" text-anchor=\"middle\" fill=\"#e0632e\" font-size=\"12\">Klick</text><rect x=\"122\" y=\"52\" width=\"82\" height=\"56\" rx=\"28\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"163\" y=\"76\" text-anchor=\"middle\" fill=\"#e0632e\" font-size=\"12\">horcht auf</text><text x=\"163\" y=\"94\" text-anchor=\"middle\" fill=\"#1d2733\" font-size=\"12\">\"click\"</text><path d=\"M206 80 L232 80 M225 74 L232 80 L225 86\" fill=\"none\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><rect x=\"236\" y=\"52\" width=\"76\" height=\"56\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"274\" y=\"76\" text-anchor=\"middle\" fill=\"#2f6fdb\" font-size=\"12\">Funktion</text><text x=\"274\" y=\"94\" text-anchor=\"middle\" fill=\"#1d2733\" font-size=\"12\">läuft los</text><text x=\"160\" y=\"140\" text-anchor=\"middle\" fill=\"#5b6b7c\" font-size=\"12\">bei jedem Klick wieder von vorn</text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "So sieht der Event-Listener aus:\n\n```js\nlet knopf = document.getElementById(\"knopf\");\nknopf.addEventListener(\"click\", function () {\n  console.log(\"Geklickt!\");\n});\n```\n\nLies es so: „Knopf, **horche** auf `click` – und wenn es passiert, **führe diese Funktion aus**.“ Der Code zwischen den geschweiften Klammern läuft bei **jedem** Klick neu."
     },
     {
       "type": "example",
-      "text": "Klicke den Button in der Vorschau! Bei jedem Klick tauscht die Funktion den Text aus. Ändere den Text und probiere es erneut.",
-      "html": "<button id=\"knopf\">Klick mich</button>\n<p id=\"ausgabe\">Noch nichts passiert.</p>\n",
-      "js": "let knopf = document.getElementById(\"knopf\");\nlet ausgabe = document.getElementById(\"ausgabe\");\n\nknopf.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Du hast geklickt!\";\n});\n",
-      "editable": ["js"]
+      "text": "Klicke den Like-Button in der Vorschau! Bei jedem Klick tauscht die Funktion den Text aus. Ändere den Text und probiere es erneut.",
+      "html": "<button id=\"knopf\">Like</button>\n<p id=\"ausgabe\">Noch kein Like.</p>\n",
+      "js": "let knopf = document.getElementById(\"knopf\");\nlet ausgabe = document.getElementById(\"ausgabe\");\n\nknopf.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Danke für dein Like!\";\n});\n",
+      "editable": [
+        "js"
+      ]
     },
     {
       "type": "quiz",
@@ -26,36 +33,55 @@
     },
     {
       "type": "explain",
-      "text": "Nimm den neuen Befehl einmal auseinander – er bekommt **zwei Angaben**, getrennt durch ein Komma:\n\n```js\nknopf.addEventListener(\"click\", function () {\n  // dieser Code läuft bei jedem Klick\n});\n```\n\n**Erstens** den Namen des Ereignisses: `\"click\"` – **mit** Anführungszeichen, denn der Ereignisname ist ein Text.\n\n**Zweitens** eine **Funktion**: ein Päckchen Code zwischen den geschweiften Klammern `{ }`. Es läuft **nicht sofort**, sondern erst, wenn das Ereignis eintritt.\n\nGanz am Ende steht `);` – die runde Klammer schließt den `addEventListener`-Aufruf, das Semikolon beendet die Anweisung. Diese zwei Zeichen werden am häufigsten vergessen!"
+      "text": "Der Befehl bekommt **zwei Angaben**, getrennt durch ein Komma:\n\n```js\nknopf.addEventListener(\"click\", function () {\n  // läuft bei jedem Klick\n});\n```\n\n**Erstens** den Ereignisnamen `\"click\"` – **mit** Anführungszeichen, denn er ist ein Text.\n\n**Zweitens** eine **Funktion**: ein Päckchen Code in geschweiften Klammern `{ }`. Ganz am Ende steht `);` – diese zwei Zeichen werden am häufigsten vergessen!"
     },
     {
       "type": "fill",
       "text": "Der Knopf soll auf Klicks horchen. Setze den fehlenden Ereignisnamen ein – mit Anführungszeichen!",
       "template": "knopf.addEventListener(___, function () { ... });",
       "solution": "\"click\"",
-      "accept": ["\"click\"", "'click'"],
+      "accept": [
+        "\"click\"",
+        "'click'"
+      ],
       "hint": "Das Ereignis heißt `click` und steht als Text in Anführungszeichen."
     },
     {
       "type": "code",
-      "task": "Das HTML 🔒 hat einen Button `id=\"knopf\"` und einen Absatz `id=\"ausgabe\"`.\n\nSchreibe das JavaScript: Beim Klick auf den Button soll der Absatz **Geschafft!** anzeigen.\n\nTeste deinen Button zuerst selbst in der Vorschau – dann klicke auf Prüfen (der Test klickt für dich!).",
+      "task": "Das HTML 🔒 hat einen Button `id=\"knopf\"` und einen Absatz `id=\"ausgabe\"`.\n\nBeim Klick auf **Bin ich fit für den Führerschein?** soll der Absatz **Ja, ab zur Fahrschule!** anzeigen.\n\nProbiere den Button selbst aus – dann klicke auf Prüfen (der Test klickt für dich).",
       "starter": {
-        "html": "<button id=\"knopf\">Los geht's</button>\n<p id=\"ausgabe\">Noch nichts passiert.</p>\n",
+        "html": "<button id=\"knopf\">Bin ich fit für den Führerschein?</button>\n<p id=\"ausgabe\">Noch nicht geklickt.</p>\n",
         "js": "// Finde den Button und den Absatz, dann horche auf den Klick\n"
       },
-      "editable": ["js"],
+      "editable": [
+        "js"
+      ],
       "hints": [
         "Erst beide Elemente mit getElementById holen.",
         "Dann: knopf.addEventListener(\"click\", function () { ... }); – im Inneren den textContent setzen.",
-        "```js\nlet knopf = document.getElementById(\"knopf\");\nlet ausgabe = document.getElementById(\"ausgabe\");\n\nknopf.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Geschafft!\";\n});\n```"
+        "```js\nlet knopf = document.getElementById(\"knopf\");\nlet ausgabe = document.getElementById(\"ausgabe\");\n\nknopf.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Ja, ab zur Fahrschule!\";\n});\n```"
       ],
       "solution": {
-        "js": "let knopf = document.getElementById(\"knopf\");\nlet ausgabe = document.getElementById(\"ausgabe\");\n\nknopf.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Geschafft!\";\n});\n"
+        "js": "let knopf = document.getElementById(\"knopf\");\nlet ausgabe = document.getElementById(\"ausgabe\");\n\nknopf.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Ja, ab zur Fahrschule!\";\n});\n"
       },
       "tests": [
-        { "type": "text", "selector": "#ausgabe", "expected": "Noch nichts passiert.", "label": "Vor dem Klick steht der Ausgangstext da" },
-        { "type": "action", "action": "click", "selector": "#knopf" },
-        { "type": "text", "selector": "#ausgabe", "expected": "Geschafft!", "label": "Nach dem Klick steht „Geschafft!“ da" }
+        {
+          "type": "text",
+          "selector": "#ausgabe",
+          "expected": "Noch nicht geklickt.",
+          "label": "Vor dem Klick steht der Ausgangstext da"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#knopf"
+        },
+        {
+          "type": "text",
+          "selector": "#ausgabe",
+          "expected": "Ja, ab zur Fahrschule!",
+          "label": "Nach dem Klick steht „Ja, ab zur Fahrschule!“ da"
+        }
       ]
     },
     {
@@ -64,33 +90,58 @@
       "options": [
         "Der Browser meldet sofort einen Fehler",
         "Nichts – der Knopf horcht auf ein Ereignis, das nie eintritt",
-        "Der Browser erkennt den Tippfehler und korrigiert ihn"
+        "Der Browser korrigiert den Tippfehler"
       ],
       "correct": 1,
       "explanation": "Ein falscher Ereignisname ist kein verbotener Code, nur ein sinnloser: „clik“ passiert nie, also läuft die Funktion nie. Solche stillen Fehler findest du nur durch genaues Lesen."
     },
     {
       "type": "code",
-      "task": "Das HTML 🔒 hat **zwei** Buttons (`id=\"tag\"`, `id=\"nacht\"`) und einen Absatz `id=\"ausgabe\"`.\n\nSchreibe für **jeden** Button einen eigenen Event-Listener:\n\n1. Klick auf **Tag** → der Absatz zeigt **Guten Tag!**\n2. Klick auf **Nacht** → der Absatz zeigt **Gute Nacht!**",
+      "task": "Ticket-Wahl fürs Konzert: Das HTML 🔒 hat zwei Buttons (`id=\"steh\"`, `id=\"sitz\"`) und einen Absatz `id=\"ausgabe\"`.\n\nSchreibe für **jeden** Button einen eigenen Event-Listener:\n\n1. Klick auf **Stehplatz** → **Stehplatz: 45 Euro**\n2. Klick auf **Sitzplatz** → **Sitzplatz: 60 Euro**",
       "starter": {
-        "html": "<button id=\"tag\">Tag</button>\n<button id=\"nacht\">Nacht</button>\n<p id=\"ausgabe\">Klick einen Button!</p>\n",
+        "html": "<button id=\"steh\">Stehplatz</button>\n<button id=\"sitz\">Sitzplatz</button>\n<p id=\"ausgabe\">Wähle deinen Platz!</p>\n",
         "js": "// Drei Elemente holen, zwei Event-Listener schreiben\n"
       },
-      "editable": ["js"],
+      "editable": [
+        "js"
+      ],
       "hints": [
         "Hole alle drei Elemente mit getElementById – dann brauchst du zwei addEventListener, einen pro Button.",
-        "tag.addEventListener(\"click\", function () { ausgabe.textContent = \"Guten Tag!\"; }); – und dasselbe Muster für nacht.",
-        "```js\nlet tag = document.getElementById(\"tag\");\nlet nacht = document.getElementById(\"nacht\");\nlet ausgabe = document.getElementById(\"ausgabe\");\n\ntag.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Guten Tag!\";\n});\n\nnacht.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Gute Nacht!\";\n});\n```"
+        "steh.addEventListener(\"click\", function () { ausgabe.textContent = \"Stehplatz: 45 Euro\"; }); – und dasselbe Muster für sitz.",
+        "```js\nlet steh = document.getElementById(\"steh\");\nlet sitz = document.getElementById(\"sitz\");\nlet ausgabe = document.getElementById(\"ausgabe\");\n\nsteh.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Stehplatz: 45 Euro\";\n});\n\nsitz.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Sitzplatz: 60 Euro\";\n});\n```"
       ],
       "solution": {
-        "js": "let tag = document.getElementById(\"tag\");\nlet nacht = document.getElementById(\"nacht\");\nlet ausgabe = document.getElementById(\"ausgabe\");\n\ntag.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Guten Tag!\";\n});\n\nnacht.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Gute Nacht!\";\n});\n"
+        "js": "let steh = document.getElementById(\"steh\");\nlet sitz = document.getElementById(\"sitz\");\nlet ausgabe = document.getElementById(\"ausgabe\");\n\nsteh.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Stehplatz: 45 Euro\";\n});\n\nsitz.addEventListener(\"click\", function () {\n  ausgabe.textContent = \"Sitzplatz: 60 Euro\";\n});\n"
       },
       "tests": [
-        { "type": "text", "selector": "#ausgabe", "expected": "Klick einen Button!", "label": "Vor dem Klick steht der Ausgangstext da" },
-        { "type": "action", "action": "click", "selector": "#tag" },
-        { "type": "text", "selector": "#ausgabe", "expected": "Guten Tag!", "label": "Nach Klick auf Tag steht „Guten Tag!“ da" },
-        { "type": "action", "action": "click", "selector": "#nacht" },
-        { "type": "text", "selector": "#ausgabe", "expected": "Gute Nacht!", "label": "Nach Klick auf Nacht steht „Gute Nacht!“ da" }
+        {
+          "type": "text",
+          "selector": "#ausgabe",
+          "expected": "Wähle deinen Platz!",
+          "label": "Vor dem Klick steht der Ausgangstext da"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#steh"
+        },
+        {
+          "type": "text",
+          "selector": "#ausgabe",
+          "expected": "Stehplatz: 45 Euro",
+          "label": "Nach Klick auf Stehplatz steht „Stehplatz: 45 Euro“ da"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#sitz"
+        },
+        {
+          "type": "text",
+          "selector": "#ausgabe",
+          "expected": "Sitzplatz: 60 Euro",
+          "label": "Nach Klick auf Sitzplatz steht „Sitzplatz: 60 Euro“ da"
+        }
       ]
     }
   ]

@@ -4,37 +4,39 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Nicht immer soll man frei tippen – oft ist eine **feste Auswahl** besser. Dafür gibt es die Klappliste `<select>` mit ihren Einträgen `<option>`:\n\n```html\n<label for=\"getraenk\">Dein Getränk:</label>\n<select id=\"getraenk\">\n  <option>Kakao</option>\n  <option>Tee</option>\n  <option>Apfelschorle</option>\n</select>\n```\n\nDas `<select>` bekommt die `id` (für die Label-Verbindung, wie gewohnt). Jede Auswahlmöglichkeit ist eine eigene `<option>` – mit öffnendem und schließendem Tag. Der erste Eintrag wird zu Beginn angezeigt."
+      "text": "Nicht immer soll man frei tippen – oft ist eine **feste Auswahl** besser. Dafür gibt es die Klappliste `<select>` mit ihren Einträgen `<option>`:\n\n```html\n<label for=\"snack\">Dein Snack:</label>\n<select id=\"snack\">\n  <option>Brezel</option>\n  <option>Pizza-Ecke</option>\n  <option>Käsebrötchen</option>\n</select>\n```\n\nDas `<select>` bekommt die `id` (für die Label-Verbindung). Jede Auswahl ist eine eigene `<option>` – mit öffnendem und schließendem Tag. Der erste Eintrag wird zu Beginn angezeigt.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><text x=\"20\" y=\"24\" fill=\"#1d2733\" font-weight=\"bold\">zugeklappt</text><rect x=\"20\" y=\"34\" width=\"120\" height=\"26\" rx=\"4\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"28\" y=\"52\" fill=\"#1d2733\">Brezel</text><path d=\"M118 43 L126 51 L134 43\" fill=\"none\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"20\" y=\"90\" fill=\"#5b6b7c\">zeigt die erste</text><text x=\"20\" y=\"106\" fill=\"#5b6b7c\">&lt;option&gt;</text><text x=\"180\" y=\"24\" fill=\"#1d2733\" font-weight=\"bold\">aufgeklappt</text><rect x=\"180\" y=\"34\" width=\"120\" height=\"26\" rx=\"4\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"188\" y=\"52\" fill=\"#1d2733\">Brezel</text><rect x=\"180\" y=\"60\" width=\"120\" height=\"72\" fill=\"none\" stroke=\"#5b6b7c\"/><text x=\"188\" y=\"78\" fill=\"#2f6fdb\">Brezel</text><text x=\"188\" y=\"102\" fill=\"#1d2733\">Pizza-Ecke</text><text x=\"188\" y=\"126\" fill=\"#1d2733\">Käsebrötchen</text><text x=\"20\" y=\"152\" fill=\"#e0632e\">&lt;select&gt; = Liste · &lt;option&gt; = Eintrag</text></svg>"
     },
     {
       "type": "example",
-      "text": "Klappe die Liste in der Vorschau auf und wähle etwas aus!\n\nFüge dann eine vierte `<option>` hinzu – und stelle deinen Lieblingseintrag an die erste Stelle. Beobachte, was sich in der zugeklappten Liste ändert.",
-      "html": "<form>\n  <label for=\"getraenk\">Dein Getränk:</label>\n  <select id=\"getraenk\">\n    <option>Kakao</option>\n    <option>Tee</option>\n    <option>Apfelschorle</option>\n  </select>\n</form>\n"
+      "text": "Kiosk-Bestellung: Klappe die Liste auf und wähle etwas aus!\n\nFüge dann eine vierte `<option>` hinzu – und stelle deinen Lieblingssnack an die erste Stelle. Was ändert sich in der zugeklappten Liste?",
+      "html": "<form>\n  <label for=\"snack\">Dein Snack:</label>\n  <select id=\"snack\">\n    <option>Brezel</option>\n    <option>Pizza-Ecke</option>\n    <option>Käsebrötchen</option>\n  </select>\n</form>\n"
     },
     {
       "type": "fill",
-      "text": "In der Klappliste fehlt der öffnende Tag für den zweiten Eintrag. Setze ihn ein.",
-      "template": "<select id=\"snack\">\n  <option>Brezel</option>\n  <___>Muffin</option>\n</select>",
+      "text": "In der Getränke-Liste fehlt der öffnende Tag für den zweiten Eintrag. Setze ihn ein.",
+      "template": "<select id=\"getraenk\">\n  <option>Eistee</option>\n  <___>Apfelschorle</option>\n</select>",
       "solution": "option",
       "accept": ["option"],
       "hint": "Jeder Eintrag einer Klappliste ist eine `<option>`."
     },
     {
       "type": "explain",
-      "text": "Zwei Bausteine fehlen noch für ein komplettes Formular:\n\n`<textarea>` – ein **mehrzeiliges** Textfeld für Nachrichten und Kommentare. Anders als `<input>` hat es einen öffnenden **und** einen schließenden Tag:\n\n```html\n<textarea id=\"nachricht\"></textarea>\n```\n\nAchtung: Zwischen die beiden Tags kommt **nichts** – was dort steht, erscheint als vorgetippter Text im Feld!\n\n`<button>` – der Knopf. Sein Text steht zwischen den Tags:\n\n```html\n<button>Absenden</button>\n```\n\nIn einem `<form>` löst der Button das **Absenden** aus – das unsere Vorschau ja abfängt, du erinnerst dich."
+      "text": "Zwei Bausteine fehlen noch:\n\n`<textarea>` – ein **mehrzeiliges** Textfeld für Nachrichten. Anders als `<input>` hat es einen öffnenden **und** einen schließenden Tag:\n\n```html\n<textarea id=\"wunsch\"></textarea>\n```\n\nAchtung: Zwischen die Tags kommt **nichts** – was dort steht, erscheint als vorgetippter Text im Feld!\n\n`<button>` – der Knopf, sein Text steht zwischen den Tags:\n\n```html\n<button>Bestellen</button>\n```\n\nIm `<form>` löst der Button das **Absenden** aus – das unsere Vorschau abfängt."
     },
     {
       "type": "example",
-      "text": "Tippe eine mehrzeilige Nachricht in das große Feld (Enter macht einen Zeilenumbruch). Klicke dann auf **Absenden** – nichts geht verloren, die Vorschau fängt es ab.\n\nProbiere außerdem: Schreib ein Wort **zwischen** die beiden textarea-Tags und schau, was im Feld passiert.",
-      "html": "<form>\n  <label for=\"nachricht\">Deine Nachricht:</label>\n  <br>\n  <textarea id=\"nachricht\"></textarea>\n  <br>\n  <button>Absenden</button>\n</form>\n"
+      "text": "Tippe einen mehrzeiligen Sonderwunsch ins große Feld (Enter macht einen Zeilenumbruch). Klicke dann auf **Bestellen** – nichts geht verloren, die Vorschau fängt es ab.\n\nProbiere außerdem: Schreib ein Wort **zwischen** die beiden textarea-Tags und schau, was im Feld passiert.",
+      "html": "<form>\n  <label for=\"wunsch\">Sonderwunsch:</label>\n  <br>\n  <textarea id=\"wunsch\"></textarea>\n  <br>\n  <button>Bestellen</button>\n</form>\n"
     },
     {
       "type": "explain",
-      "text": "Zum Schluss zwei Spezial-Eingaben, kurz vorgestellt:\n\n`type=\"radio\"` – Ankreuzfelder, bei denen genau **eine** Wahl möglich ist (entweder–oder). Alle zusammengehörigen Radio-Knöpfe brauchen dasselbe `name`-Attribut – dann schaltet der Browser automatisch um.\n\n`type=\"checkbox\"` – Häkchen-Felder, **mehrere** gleichzeitig erlaubt.\n\n```html\n<label><input type=\"radio\" name=\"groesse\"> klein</label>\n<label><input type=\"radio\" name=\"groesse\"> groß</label>\n<label><input type=\"checkbox\"> Schokostreusel dazu</label>\n```\n\nHier steckt das Feld einfach **im** Label – auch das verbindet die beiden, ganz ohne for und id."
+      "text": "Zwei Spezial-Eingaben, kurz vorgestellt:\n\n`type=\"radio\"` – Ankreuzfelder, bei denen genau **eine** Wahl möglich ist (entweder–oder). Zusammengehörige Radio-Knöpfe brauchen dasselbe `name` – dann schaltet der Browser automatisch um.\n\n`type=\"checkbox\"` – Häkchen, **mehrere** gleichzeitig erlaubt.\n\n```html\n<label><input type=\"radio\" name=\"groesse\"> klein</label>\n<label><input type=\"radio\" name=\"groesse\"> groß</label>\n<label><input type=\"checkbox\"> Extra Soße</label>\n```\n\nHier steckt das Feld **im** Label – das verbindet beide auch ohne for und id.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><text x=\"20\" y=\"24\" fill=\"#2f6fdb\" font-weight=\"bold\">radio: genau eine Wahl</text><circle cx=\"30\" cy=\"48\" r=\"7\" fill=\"none\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><circle cx=\"30\" cy=\"48\" r=\"3.5\" fill=\"#2f6fdb\"/><text x=\"44\" y=\"52\" fill=\"#1d2733\">klein</text><circle cx=\"30\" cy=\"74\" r=\"7\" fill=\"none\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"44\" y=\"78\" fill=\"#1d2733\">groß</text><text x=\"20\" y=\"106\" fill=\"#5b6b7c\">gleiches name</text><line x1=\"175\" y1=\"14\" x2=\"175\" y2=\"140\" stroke=\"#5b6b7c\" stroke-dasharray=\"4 4\"/><text x=\"186\" y=\"24\" fill=\"#1a9e5c\" font-weight=\"bold\">checkbox: mehrere</text><rect x=\"186\" y=\"41\" width=\"14\" height=\"14\" rx=\"2\" fill=\"#1a9e5c\"/><text x=\"208\" y=\"52\" fill=\"#1d2733\">Extra Soße</text><rect x=\"186\" y=\"67\" width=\"14\" height=\"14\" rx=\"2\" fill=\"#1a9e5c\"/><text x=\"208\" y=\"78\" fill=\"#1d2733\">Extra Käse</text><rect x=\"186\" y=\"93\" width=\"14\" height=\"14\" rx=\"2\" fill=\"none\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"208\" y=\"104\" fill=\"#1d2733\">Scharf</text></svg>"
     },
     {
       "type": "quiz",
-      "question": "Im Café-Formular soll man **mehrere** Lieblings-Snacks gleichzeitig ankreuzen können. Welcher Feldtyp passt?",
+      "question": "Am Kiosk soll man **mehrere** Extras gleichzeitig ankreuzen können. Welcher Feldtyp passt?",
       "options": [
         "`type=\"radio\"`",
         "`type=\"checkbox\"`",
@@ -45,23 +47,23 @@
     },
     {
       "type": "code",
-      "task": "Baue ein Feedback-Formular für die Schule:\n\n1. Ein `<form>`-Element als Container\n2. `<label for=\"pause\">Lieblingspause:</label>` und eine Klappliste mit `id=\"pause\"` und mindestens **drei** `<option>`-Einträgen – der erste lautet **Große Pause**\n3. `<label for=\"kommentar\">Dein Kommentar:</label>` und ein mehrzeiliges Textfeld mit `id=\"kommentar\"`\n4. Ein `<button>` mit dem Text **Abschicken**",
+      "task": "Baue ein Feedback-Formular zum Praktikum:\n\n1. Ein `<form>` als Container\n2. `<label for=\"bewertung\">Wie war's?</label>` und eine Klappliste mit `id=\"bewertung\"` und mindestens **drei** `<option>` – die erste lautet **Super**\n3. `<label for=\"kommentar\">Dein Kommentar:</label>` und ein mehrzeiliges Feld mit `id=\"kommentar\"`\n4. Ein `<button>` mit dem Text **Abschicken**",
       "starter": {
-        "html": "<h2>Pausen-Feedback</h2>\n<!-- Dein Formular hier -->\n"
+        "html": "<h2>Feedback zum Praktikum</h2>\n<!-- Dein Formular hier -->\n"
       },
       "hints": [
         "Der Reihe nach: Label + <select> mit drei <option>, dann Label + <textarea>, zum Schluss der <button>.",
-        "Denk an die Paare: for=\"pause\" gehört zu id=\"pause\", for=\"kommentar\" zu id=\"kommentar\". Die textarea bleibt innen leer!",
-        "```html\n<h2>Pausen-Feedback</h2>\n<form>\n  <label for=\"pause\">Lieblingspause:</label>\n  <select id=\"pause\">\n    <option>Große Pause</option>\n    <option>Mittagspause</option>\n    <option>Fünf-Minuten-Pause</option>\n  </select>\n  <br>\n  <label for=\"kommentar\">Dein Kommentar:</label>\n  <br>\n  <textarea id=\"kommentar\"></textarea>\n  <br>\n  <button>Abschicken</button>\n</form>\n```"
+        "Denk an die Paare: for=\"bewertung\" gehört zu id=\"bewertung\", for=\"kommentar\" zu id=\"kommentar\". Die textarea bleibt innen leer!",
+        "```html\n<h2>Feedback zum Praktikum</h2>\n<form>\n  <label for=\"bewertung\">Wie war's?</label>\n  <select id=\"bewertung\">\n    <option>Super</option>\n    <option>Ganz okay</option>\n    <option>Eher nicht</option>\n  </select>\n  <br>\n  <label for=\"kommentar\">Dein Kommentar:</label>\n  <br>\n  <textarea id=\"kommentar\"></textarea>\n  <br>\n  <button>Abschicken</button>\n</form>\n```"
       ],
       "solution": {
-        "html": "<h2>Pausen-Feedback</h2>\n<form>\n  <label for=\"pause\">Lieblingspause:</label>\n  <select id=\"pause\">\n    <option>Große Pause</option>\n    <option>Mittagspause</option>\n    <option>Fünf-Minuten-Pause</option>\n  </select>\n  <br>\n  <label for=\"kommentar\">Dein Kommentar:</label>\n  <br>\n  <textarea id=\"kommentar\"></textarea>\n  <br>\n  <button>Abschicken</button>\n</form>\n"
+        "html": "<h2>Feedback zum Praktikum</h2>\n<form>\n  <label for=\"bewertung\">Wie war's?</label>\n  <select id=\"bewertung\">\n    <option>Super</option>\n    <option>Ganz okay</option>\n    <option>Eher nicht</option>\n  </select>\n  <br>\n  <label for=\"kommentar\">Dein Kommentar:</label>\n  <br>\n  <textarea id=\"kommentar\"></textarea>\n  <br>\n  <button>Abschicken</button>\n</form>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "form select#pause", "count": 1, "label": "Im Formular steht eine Klappliste mit der id „pause“" },
-        { "type": "selector", "selector": "select#pause option", "min": 3, "label": "Die Klappliste hat mindestens drei Einträge" },
-        { "type": "text", "selector": "select#pause option", "expected": "Große Pause", "label": "Der erste Eintrag lautet „Große Pause“" },
-        { "type": "selector", "selector": "label[for='pause']", "min": 1, "label": "Die Klappliste hat ein verbundenes Label" },
+        { "type": "selector", "selector": "form select#bewertung", "count": 1, "label": "Im Formular steht eine Klappliste mit der id „bewertung“" },
+        { "type": "selector", "selector": "select#bewertung option", "min": 3, "label": "Die Klappliste hat mindestens drei Einträge" },
+        { "type": "text", "selector": "select#bewertung option", "expected": "Super", "label": "Der erste Eintrag lautet „Super“" },
+        { "type": "selector", "selector": "label[for='bewertung']", "min": 1, "label": "Die Klappliste hat ein verbundenes Label" },
         { "type": "selector", "selector": "form textarea#kommentar", "count": 1, "label": "Es gibt ein mehrzeiliges Feld mit der id „kommentar“" },
         { "type": "selector", "selector": "label[for='kommentar']", "min": 1, "label": "Das Kommentarfeld hat ein verbundenes Label" },
         { "type": "text", "selector": "form button", "expected": "Abschicken", "label": "Der Knopf trägt den Text „Abschicken“" }

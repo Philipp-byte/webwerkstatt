@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Zeit zum Festigen! Beim **aktiven Abrufen** merkt dein Gehirn: Das wird gebraucht – und speichert es dauerhaft.\n\nHeute dran: **Listen** (auch verschachtelte) und **Links** – extern, relativ und mit Sprungmarke. Das Ganze rund um die Planung eines Schulfests."
+      "text": "Zeit zum Festigen – beim **aktiven Abrufen** merkt dein Gehirn: Das wird gebraucht, und speichert es dauerhaft. Heute dran: **Listen** (auch verschachtelte) und **Links** – extern, relativ und mit Sprungmarke – rund um die Planung eines Schulfests."
     },
     {
       "type": "quiz",
@@ -27,7 +27,7 @@
     },
     {
       "type": "code",
-      "task": "Baue eine Linksammlung für die Schulfest-Orga:\n\n1. Eine `<h2>` mit dem Text **Meine Lieblingsseiten**\n2. Darunter eine `<ul>` mit mindestens **drei** Einträgen\n3. In **jedem** `<li>` steht ein Link zu einer echten Webseite – Adresse mit `https://` und einem Linktext, der das Ziel beschreibt",
+      "task": "Baue eine Linksammlung für die Schulfest-Orga:\n\n1. `<h2>` mit dem Text **Meine Lieblingsseiten**\n2. Darunter eine `<ul>` mit mindestens **drei** Einträgen\n3. In **jedem** `<li>` ein Link zu einer echten Webseite – Adresse mit `https://`, Linktext beschreibt das Ziel",
       "starter": {
         "html": "<!-- Deine Linksammlung hier -->\n"
       },
@@ -58,7 +58,7 @@
     },
     {
       "type": "code",
-      "task": "Die große Schulfest-Seite – alles auf einmal:\n\n1. Eine `<h1>` mit dem Text **Schulfest**\n2. Direkt darunter ein Absatz mit zwei Sprungmarken-Links: **Zum Programm** (Ziel `#programm`) und **Zum Essen** (Ziel `#essen`)\n3. Eine `<h2>` **Programm** mit `id=\"programm\"` – darunter eine `<ol>` mit mindestens drei Programmpunkten\n4. Eine `<h2>` **Essen** mit `id=\"essen\"` – darunter eine **verschachtelte** `<ul>`: zwei Rubriken **Herzhaft** und **Süß**, jede mit innerer `<ul>` und mindestens zwei Angeboten",
+      "task": "Die große Schulfest-Seite – alles auf einmal:\n\n1. `<h1>` **Schulfest**\n2. Darunter ein Absatz mit zwei Sprungmarken-Links: **Zum Programm** (`#programm`) und **Zum Essen** (`#essen`)\n3. `<h2>` **Programm** mit `id=\"programm\"`, darunter eine `<ol>` mit drei Punkten\n4. `<h2>` **Essen** mit `id=\"essen\"`, darunter eine **verschachtelte `<ul>`**: Rubriken **Herzhaft** und **Süß**, je zwei Angebote",
       "starter": {
         "html": "<!-- Baue hier die Schulfest-Seite -->\n"
       },

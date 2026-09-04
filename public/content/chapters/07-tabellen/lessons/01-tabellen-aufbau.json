@@ -4,30 +4,31 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Stundenplan, Preisliste, Spieltabelle – alles, was in **Zeilen und Spalten** passt, gehört in eine Tabelle. HTML baut Tabellen aus drei Bausteinen – **von außen nach innen**:\n\n`<table>` – die Tabelle selbst\n\n`<tr>` – eine **Zeile** (table row)\n\n`<td>` – eine **Zelle** in der Zeile (table data)\n\n```html\n<table>\n  <tr>\n    <td>Deutsch</td>\n    <td>Raum 101</td>\n  </tr>\n</table>\n```\n\nMerke: **Zellen stehen in Zeilen, Zeilen stehen in der Tabelle.** Die Spalten musst du nirgends extra anlegen – sie entstehen von selbst, weil die Zellen jeder Zeile untereinander ausgerichtet werden."
+      "text": "Stundenplan, Trainingsplan, Liga-Tabelle – alles, was in **Zeilen und Spalten** passt, gehört in eine Tabelle. HTML baut sie aus drei Bausteinen, **von außen nach innen**:\n\n`<table>` – die Tabelle selbst\n\n`<tr>` – eine **Zeile** (table row)\n\n`<td>` – eine **Zelle** in der Zeile (table data)\n\n```html\n<table>\n  <tr>\n    <td>Mo</td>\n    <td>Deutsch</td>\n    <td>101</td>\n  </tr>\n</table>\n```\n\nMerke: **Zellen stehen in Zeilen, Zeilen in der Tabelle.** Spalten legst du nie an – sie entstehen von selbst.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><text x=\"14\" y=\"24\" fill=\"#2f6fdb\" font-weight=\"bold\">&lt;table&gt; – die ganze Tabelle</text><rect x=\"14\" y=\"34\" width=\"200\" height=\"106\" rx=\"4\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><rect x=\"24\" y=\"44\" width=\"180\" height=\"43\" fill=\"none\" stroke=\"#e0632e\" stroke-width=\"2\"/><rect x=\"24\" y=\"87\" width=\"180\" height=\"43\" fill=\"none\" stroke=\"#5b6b7c\"/><rect x=\"144\" y=\"87\" width=\"60\" height=\"43\" fill=\"#1a9e5c\" fill-opacity=\"0.3\"/><line x1=\"84\" y1=\"44\" x2=\"84\" y2=\"130\" stroke=\"#5b6b7c\"/><line x1=\"144\" y1=\"44\" x2=\"144\" y2=\"130\" stroke=\"#5b6b7c\"/><text x=\"32\" y=\"70\" fill=\"#1d2733\">Mo</text><text x=\"90\" y=\"70\" fill=\"#1d2733\">Deutsch</text><text x=\"156\" y=\"70\" fill=\"#1d2733\">101</text><text x=\"222\" y=\"70\" fill=\"#e0632e\" font-weight=\"bold\">&lt;tr&gt; = Zeile</text><text x=\"222\" y=\"113\" fill=\"#1a9e5c\" font-weight=\"bold\">&lt;td&gt; = Zelle</text><text x=\"14\" y=\"156\" fill=\"#5b6b7c\">Spalten entstehen von selbst</text></svg>"
     },
     {
       "type": "example",
-      "text": "Eine kleine Tabelle mit zwei Zeilen und zwei Spalten. Die Linien kommen übrigens aus dem **CSS-Tab** 🔒 – was es damit auf sich hat, lernst du im CSS-Teil.\n\nFüge eine dritte Zeile hinzu!",
-      "html": "<table>\n  <tr>\n    <td>Deutsch</td>\n    <td>Raum 101</td>\n  </tr>\n  <tr>\n    <td>Mathe</td>\n    <td>Raum 204</td>\n  </tr>\n</table>\n",
+      "text": "Eine Liga-Tabelle mit zwei Zeilen und drei Spalten. Die Linien kommen aus dem **CSS-Tab** 🔒 – dazu später mehr.\n\nFüge eine dritte Zeile für Platz 3 hinzu!",
+      "html": "<table>\n  <tr>\n    <td>1</td>\n    <td>FC Nordstadt</td>\n    <td>21</td>\n  </tr>\n  <tr>\n    <td>2</td>\n    <td>SV Südpark</td>\n    <td>19</td>\n  </tr>\n</table>\n",
       "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\n",
       "editable": ["html"]
     },
     {
       "type": "explain",
-      "text": "So liest der Browser deine Tabelle:\n\n1. Er geht die Zeilen (`<tr>`) **von oben nach unten** durch.\n2. In jeder Zeile setzt er die Zellen (`<td>`) **von links nach rechts**.\n\nDaraus folgt die wichtigste Tabellen-Regel: **Jede Zeile braucht gleich viele Zellen.** Hat eine Zeile weniger Zellen als die anderen, bleibt rechts eine Lücke – die Tabelle sieht „ausgefranst“ aus.\n\nUnd noch etwas: Inhalt gehört immer **in eine Zelle**, nie direkt zwischen `<tr>` oder `<table>`. Text, der dort steht, wird vom Browser kurzerhand **vor** die Tabelle geschoben – er landet also an einer ganz anderen Stelle, als du denkst."
+      "text": "So liest der Browser deine Tabelle:\n\n1. Zeilen (`<tr>`) **von oben nach unten**\n2. In jeder Zeile die Zellen (`<td>`) **von links nach rechts**\n\nDaraus folgt die wichtigste Regel: **Jede Zeile braucht gleich viele Zellen.** Sonst bleibt rechts eine Lücke – die Tabelle sieht ausgefranst aus.\n\nUnd: Inhalt gehört immer **in eine Zelle**. Text direkt zwischen `<tr>` oder `<table>` schiebt der Browser kurzerhand **vor** die Tabelle."
     },
     {
       "type": "fill",
-      "text": "Hier fehlt der öffnende Tag für die zweite **Zeile**. Setze ihn ein.",
-      "template": "<table>\n  <tr>\n    <td>Deutsch</td>\n  </tr>\n  <___>\n    <td>Mathe</td>\n  </tr>\n</table>",
+      "text": "Im Stundenplan fehlt der öffnende Tag für die zweite **Zeile**. Setze ihn ein.",
+      "template": "<table>\n  <tr>\n    <td>Mo</td>\n    <td>Deutsch</td>\n  </tr>\n  <___>\n    <td>Di</td>\n    <td>IT</td>\n  </tr>\n</table>",
       "solution": "tr",
       "accept": ["tr"],
       "hint": "Eine Zeile beginnt mit `<tr>` – table row."
     },
     {
       "type": "code",
-      "task": "Baue eine Tabelle mit **zwei Zeilen und zwei Spalten**:\n\nZeile 1: **Deutsch** und **Raum 101**\nZeile 2: **IT** und **Raum 204**",
+      "task": "Baue deinen Mini-Stundenplan mit **zwei Zeilen und zwei Spalten**:\n\nZeile 1: **Deutsch** und **Raum 101**\nZeile 2: **IT** und **Raum 204**",
       "starter": {
         "html": "<!-- Deine Tabelle hier -->\n",
         "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\n"
@@ -61,25 +62,25 @@
     },
     {
       "type": "code",
-      "task": "Jetzt eine Nummer größer – ein Raumplan mit **drei Zeilen und drei Spalten**:\n\nZeile 1: **Deutsch**, **Raum 101**, **Frau Sommer**\nZeile 2: **IT**, **Raum 204**, **Herr Alvarez**\nZeile 3: **Sport**, **Sporthalle**, **Frau Krause**\n\nProfi-Tipp: Bau erst **eine** Zeile fertig, kopiere sie zweimal und tausche dann nur die Inhalte aus.",
+      "task": "Eine Nummer größer – ein Trainingsplan mit **drei Zeilen und drei Spalten**:\n\nZeile 1: **Montag**, **Beine**, **45 min**\nZeile 2: **Mittwoch**, **Oberkörper**, **60 min**\nZeile 3: **Freitag**, **Ausdauer**, **30 min**\n\nTipp: Bau **eine** Zeile fertig, kopiere sie zweimal, tausche die Inhalte.",
       "starter": {
-        "html": "<h2>Unser Raumplan</h2>\n<!-- Deine Tabelle hier -->\n",
+        "html": "<h2>Mein Trainingsplan</h2>\n<!-- Deine Tabelle hier -->\n",
         "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\n"
       },
       "editable": ["html"],
       "hints": [
         "Wie eben: <table> außen, drei <tr> – aber diesmal stecken in jedem <tr> drei <td>.",
-        "Zeile 1 sieht so aus: <tr><td>Deutsch</td><td>Raum 101</td><td>Frau Sommer</td></tr>",
-        "```html\n<h2>Unser Raumplan</h2>\n<table>\n  <tr>\n    <td>Deutsch</td>\n    <td>Raum 101</td>\n    <td>Frau Sommer</td>\n  </tr>\n  <tr>\n    <td>IT</td>\n    <td>Raum 204</td>\n    <td>Herr Alvarez</td>\n  </tr>\n  <tr>\n    <td>Sport</td>\n    <td>Sporthalle</td>\n    <td>Frau Krause</td>\n  </tr>\n</table>\n```"
+        "Zeile 1 sieht so aus: <tr><td>Montag</td><td>Beine</td><td>45 min</td></tr>",
+        "```html\n<h2>Mein Trainingsplan</h2>\n<table>\n  <tr>\n    <td>Montag</td>\n    <td>Beine</td>\n    <td>45 min</td>\n  </tr>\n  <tr>\n    <td>Mittwoch</td>\n    <td>Oberkörper</td>\n    <td>60 min</td>\n  </tr>\n  <tr>\n    <td>Freitag</td>\n    <td>Ausdauer</td>\n    <td>30 min</td>\n  </tr>\n</table>\n```"
       ],
       "solution": {
-        "html": "<h2>Unser Raumplan</h2>\n<table>\n  <tr>\n    <td>Deutsch</td>\n    <td>Raum 101</td>\n    <td>Frau Sommer</td>\n  </tr>\n  <tr>\n    <td>IT</td>\n    <td>Raum 204</td>\n    <td>Herr Alvarez</td>\n  </tr>\n  <tr>\n    <td>Sport</td>\n    <td>Sporthalle</td>\n    <td>Frau Krause</td>\n  </tr>\n</table>\n"
+        "html": "<h2>Mein Trainingsplan</h2>\n<table>\n  <tr>\n    <td>Montag</td>\n    <td>Beine</td>\n    <td>45 min</td>\n  </tr>\n  <tr>\n    <td>Mittwoch</td>\n    <td>Oberkörper</td>\n    <td>60 min</td>\n  </tr>\n  <tr>\n    <td>Freitag</td>\n    <td>Ausdauer</td>\n    <td>30 min</td>\n  </tr>\n</table>\n"
       },
       "tests": [
         { "type": "selector", "selector": "tr", "min": 3, "label": "Die Tabelle hat drei Zeilen" },
         { "type": "selector", "selector": "td", "min": 9, "label": "Es gibt neun Zellen (3 × 3)" },
-        { "type": "text", "selector": "td", "expected": "Deutsch", "label": "Die erste Zelle enthält „Deutsch“" },
-        { "type": "text", "selector": "tr:nth-child(3) td", "expected": "Sport", "label": "Die dritte Zeile beginnt mit „Sport“" }
+        { "type": "text", "selector": "td", "expected": "Montag", "label": "Die erste Zelle enthält „Montag“" },
+        { "type": "text", "selector": "tr:nth-child(3) td", "expected": "Freitag", "label": "Die dritte Zeile beginnt mit „Freitag“" }
       ]
     }
   ]

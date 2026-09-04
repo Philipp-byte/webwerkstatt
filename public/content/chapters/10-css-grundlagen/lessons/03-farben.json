@@ -4,18 +4,23 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Für Farbwerte gibt es in CSS mehrere Schreibweisen. Die zwei wichtigsten:\n\n**1. Farbnamen** (englisch): `red`, `blue`, `green`, `orange`, `hotpink`, `black`, `white` … Schnell getippt, aber es gibt nur eine begrenzte Auswahl.\n\n**2. Hex-Codes**: eine Raute `#` gefolgt von **sechs Zeichen** (Ziffern `0–9` und Buchstaben `a–f`). Je **zwei Zeichen** stehen für den **R**ot-, **G**rün- und **B**lau-Anteil des Lichts: `00` heißt „gar nicht“, `ff` heißt „volle Stärke“.\n\n```css\nh1 { color: #ff6600; }  /* volles Rot + etwas Grün = Orange */\np { color: green; }\n```\n\nEin paar Klassiker: `#000000` = Schwarz (alles aus), `#ffffff` = Weiß (alles an), `#ff0000` = reines Rot.\n\nMit Hex-Codes triffst du **jede** der über 16 Millionen Bildschirmfarben exakt – deshalb nutzen Profis fast nur sie."
+      "text": "Farben in CSS haben mehrere Schreibweisen. Die zwei wichtigsten:\n\n**1. Farbnamen** (englisch): `red`, `blue`, `green`, `orange`, `hotpink`, `black`, `white` … Schnell getippt, aber die Auswahl ist begrenzt – die exakte Trikotfarbe deines Vereins ist meist nicht dabei.\n\n**2. Hex-Codes**: eine Raute `#` und **sechs Zeichen** (Ziffern `0–9`, Buchstaben `a–f`):\n\n```css\nh1 { color: #e0632e; }\n```"
+    },
+    {
+      "type": "explain",
+      "text": "Je **zwei Zeichen** stehen für den **R**ot-, **G**rün- und **B**lau-Anteil des Lichts: `00` heißt „aus“, `ff` heißt „volle Stärke“.\n\n`#e0632e` = viel Rot, etwas Grün, wenig Blau → Orange.\n\nKlassiker: `#000000` = Schwarz (alles aus), `#ffffff` = Weiß (alles an), `#ff0000` = reines Rot.\n\nMit Hex-Codes triffst du **jede** der 16 Millionen Bildschirmfarben – Profis nutzen fast nur sie.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\"><text x=\"16\" y=\"26\" font-size=\"12\" fill=\"#5b6b7c\">viel Rot + etwas Grün + wenig Blau = Orange</text><text x=\"24\" y=\"80\" font-size=\"32\" fill=\"#1d2733\">#</text><text x=\"50\" y=\"80\" font-size=\"32\" fill=\"#e0632e\">e0</text><text x=\"110\" y=\"80\" font-size=\"32\" fill=\"#1a9e5c\">63</text><text x=\"170\" y=\"80\" font-size=\"32\" fill=\"#2f6fdb\">2e</text><text x=\"68\" y=\"106\" font-size=\"13\" fill=\"#e0632e\" text-anchor=\"middle\">Rot</text><text x=\"128\" y=\"106\" font-size=\"13\" fill=\"#1a9e5c\" text-anchor=\"middle\">Grün</text><text x=\"188\" y=\"106\" font-size=\"13\" fill=\"#2f6fdb\" text-anchor=\"middle\">Blau</text><text x=\"214\" y=\"74\" font-size=\"20\" fill=\"#1d2733\">=</text><rect x=\"232\" y=\"46\" width=\"72\" height=\"44\" rx=\"8\" fill=\"#e0632e\"/><text x=\"268\" y=\"110\" font-size=\"13\" fill=\"#1d2733\" text-anchor=\"middle\">Orange</text><text x=\"160\" y=\"146\" font-size=\"12\" fill=\"#5b6b7c\" text-anchor=\"middle\">00 = aus · ff = volle Stärke</text></svg>"
     },
     {
       "type": "example",
-      "text": "Ein kleiner Farb-Spielplatz. Probiere eigene Hex-Codes aus – z. B. `#ff0000`, `#00ff00`, `#123456`. Was passiert bei `#000000` und `#ffffff`?",
-      "html": "<h1>Farblabor</h1>\n<p>Die Preise sind <strong>heiß</strong>, die Auswahl ist <em>riesig</em>.</p>\n<p>Nur heute: Alles zum halben Preis!</p>\n",
+      "text": "Der Trikot-Designer: Probiere eigene Hex-Codes aus – z. B. `#ff0000`, `#00ff00`, `#123456`. Was passiert bei `#000000` und `#ffffff`?",
+      "html": "<h1>Unser Clan-Trikot</h1>\n<p>Heimtrikot in <strong>Grün</strong>, Auswärtstrikot in <em>Lila</em>.</p>\n<p>Abstimmung läuft bis Freitag im Team-Chat!</p>\n",
       "css": "h1 {\n  color: crimson;\n}\nstrong {\n  color: #1a9e5c;\n}\nem {\n  color: #7a3fbf;\n}\n",
       "editable": ["css"]
     },
     {
       "type": "explain",
-      "text": "Eine dritte Schreibweise wirst du oft in Vorlagen und Werkzeugen sehen: **`rgb()`**. Auch sie mischt Rot, Grün und Blau – aber mit Zahlen von **0 bis 255** statt mit Hex-Zeichen. `rgb(255, 102, 0)` ist exakt dieselbe Farbe wie `#ff6600`, nur anders geschrieben:\n\n```css\nh1 { color: rgb(255, 102, 0); }\n```\n\nDer Browser versteht alle drei Schreibweisen gleich gut – du darfst sie sogar mischen. Wichtig ist nur: erkennen und lesen können solltest du alle."
+      "text": "Eine dritte Schreibweise siehst du oft in Vorlagen und Werkzeugen: **`rgb()`**. Auch sie mischt Rot, Grün und Blau – mit Zahlen von **0 bis 255** statt Hex-Zeichen. `rgb(255, 102, 0)` ist exakt dieselbe Farbe wie `#ff6600`:\n\n```css\nh1 { color: rgb(255, 102, 0); }\n```\n\nDer Browser versteht alle drei Schreibweisen gleich gut – du darfst sie sogar mischen. Erkennen und lesen können solltest du alle."
     },
     {
       "type": "quiz",
@@ -38,9 +43,9 @@
     },
     {
       "type": "code",
-      "task": "Färbe die Smoothie-Karte – mit allen drei Schreibweisen:\n\n1. Die `h1` bekommt den **Hex-Code** `#ff6600`\n2. Alle `p` bekommen den **Farbnamen** `green`\n3. Alle `strong`-Elemente bekommen die **rgb-Farbe** `rgb(90, 62, 43)`",
+      "task": "Färbe den Merch-Shop deines Clans – mit allen drei Schreibweisen:\n\n1. Die `h1` bekommt den **Hex-Code** `#ff6600`\n2. Alle `p` bekommen den **Farbnamen** `green`\n3. Alle `strong`-Elemente bekommen die **rgb-Farbe** `rgb(90, 62, 43)`",
       "starter": {
-        "html": "<h1>Unsere Smoothies</h1>\n<p>Mango-Maracuja – <strong>3,50 €</strong></p>\n<p>Erdbeer-Banane – <strong>3,00 €</strong></p>\n",
+        "html": "<h1>Clan-Merch</h1>\n<p>Heimtrikot – <strong>25 €</strong></p>\n<p>Cap mit Clan-Logo – <strong>12 €</strong></p>\n",
         "css": "/* Deine drei Regeln hier */\n"
       },
       "editable": ["css"],

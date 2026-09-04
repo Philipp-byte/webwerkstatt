@@ -704,6 +704,203 @@ body {
   border-left: 6px solid var(--fehler);
 }
 
+/* ---------- Pager: ein Schritt pro Seite ---------- */
+
+.lektion-kopf {
+  margin-bottom: 0.9rem;
+}
+
+.lektion-kopf .lektion-ueberschrift {
+  margin: 0 0 0.5rem;
+}
+
+.pager-fortschritt {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.pager-zaehler {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gedaempft);
+  white-space: nowrap;
+}
+
+.pager-dots {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.pager-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--linie);
+  background: var(--karte);
+  cursor: default;
+}
+
+.pager-dot.erreichbar {
+  cursor: pointer;
+}
+
+.pager-dot.erledigt {
+  background: var(--ok);
+  border-color: var(--ok);
+}
+
+.pager-dot.aktiv {
+  background: var(--akzent);
+  border-color: var(--akzent);
+  transform: scale(1.25);
+}
+
+.pager {
+  overflow: hidden;
+}
+
+.pager-seite {
+  animation: none;
+}
+
+.pager-seite.slide-vor {
+  animation: slide-vor 0.28s ease;
+}
+
+.pager-seite.slide-zurueck {
+  animation: slide-zurueck 0.28s ease;
+}
+
+@keyframes slide-vor {
+  from { opacity: 0; transform: translateX(48px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes slide-zurueck {
+  from { opacity: 0; transform: translateX(-48px); }
+  to { opacity: 1; transform: none; }
+}
+
+.pager-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  position: sticky;
+  bottom: 0.6rem;
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.8rem;
+  box-shadow: var(--schatten);
+}
+
+.pager-hinweis {
+  flex: 1;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--gedaempft);
+}
+
+.pager-weiter-bereit {
+  animation: pulsieren 1.2s ease-in-out 2;
+}
+
+@keyframes pulsieren {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(47, 111, 219, 0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(47, 111, 219, 0); }
+}
+
+/* Grafiken in Schritten */
+
+.schritt-grafik {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 0.9rem;
+}
+
+.schritt-grafik svg {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  max-height: 240px;
+}
+
+/* ---------- Arbeitsblatt-Ansicht ---------- */
+
+.arbeitsblatt-seite .karte {
+  margin-bottom: 0.9rem;
+}
+
+.ab-felder {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+}
+
+.ab-felder label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gedaempft);
+}
+
+.ab-felder input {
+  font: inherit;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--linie);
+  border-radius: 8px;
+  min-width: 14rem;
+}
+
+.ab-buttons {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.ab-hinweis {
+  font-size: 0.82rem;
+  color: var(--gedaempft);
+  margin: 0.7rem 0 0;
+}
+
+.ab-untertitel {
+  font-size: 1.05rem;
+  margin: 0 0 0.6rem;
+}
+
+.ab-zeile {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0;
+  border-top: 1px solid var(--linie);
+  font-size: 0.92rem;
+}
+
+.ab-zeile-stand {
+  color: var(--gedaempft);
+  white-space: nowrap;
+}
+
+.ab-komplett {
+  color: var(--ok);
+  font-weight: 600;
+}
+
+.kapitel-extras {
+  margin-top: 1.2rem;
+}
+
 /* ---------- Startseiten-Zusatzkarten ---------- */
 
 .extra-karten {

@@ -4,70 +4,96 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Eine **Variable** ist wie eine beschriftete Kiste, in der ein Wert liegt. Du legst sie mit `let` an:\n\n```js\nlet name = \"Mia\";\nlet alter = 16;\n```\n\n**Text** (ein „String“) steht in Anführungszeichen – **Zahlen** stehen ohne.\n\nGibst du die Variable aus, schreibst du sie **ohne** Anführungszeichen:\n\n```js\nconsole.log(name);\n```\n\nDas zeigt den **Inhalt** der Kiste: `Mia`. Mit Anführungszeichen (`console.log(\"name\")`) käme nur das Wort „name“."
-    },
-    {
-      "type": "example",
-      "text": "Ändere den Wert von `stadt` und führe den Code neu aus – die Ausgabe ändert sich mit. Genau das ist der Trick: **Einmal schreiben, überall wirkt es.**",
-      "js": "let stadt = \"Heilbronn\";\nlet einwohner = 130000;\n\nconsole.log(stadt);\nconsole.log(einwohner);\n"
-    },
-    {
-      "type": "fill",
-      "text": "Die Variable soll den **Text** Berlin enthalten. Setze den Wert richtig ein – denk an die Anführungszeichen!",
-      "template": "let stadt = ___;",
-      "solution": "\"Berlin\"",
-      "accept": ["\"Berlin\"", "'Berlin'"],
-      "hint": "Text braucht Anführungszeichen: `\"Berlin\"`"
+      "text": "Eine **Variable** ist eine beschriftete Kiste, in der ein Wert liegt. Du legst sie mit `let` an:\n\n```js\nlet spieler = \"Mia\";\nlet highscore = 4200;\n```\n\n**Text** (ein „String“) steht in Anführungszeichen – **Zahlen** stehen ohne. Der Name vor dem `=` ist die Beschriftung der Kiste.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"13\"><text x=\"160\" y=\"20\" text-anchor=\"middle\" fill=\"#5b6b7c\" font-size=\"12\">Variable = beschriftete Kiste mit Wert</text><rect x=\"30\" y=\"50\" width=\"120\" height=\"76\" rx=\"8\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><rect x=\"50\" y=\"40\" width=\"80\" height=\"20\" rx=\"4\" fill=\"#2f6fdb\"/><text x=\"90\" y=\"54\" text-anchor=\"middle\" fill=\"#eef2f8\" font-size=\"12\">highscore</text><text x=\"90\" y=\"102\" text-anchor=\"middle\" fill=\"#1d2733\" font-size=\"22\" font-weight=\"bold\">4200</text><rect x=\"170\" y=\"50\" width=\"120\" height=\"76\" rx=\"8\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><rect x=\"195\" y=\"40\" width=\"70\" height=\"20\" rx=\"4\" fill=\"#e0632e\"/><text x=\"230\" y=\"54\" text-anchor=\"middle\" fill=\"#eef2f8\" font-size=\"12\">spieler</text><text x=\"230\" y=\"102\" text-anchor=\"middle\" fill=\"#1d2733\" font-size=\"22\" font-weight=\"bold\">\"Mia\"</text><text x=\"160\" y=\"150\" text-anchor=\"middle\" fill=\"#5b6b7c\" font-size=\"12\">Zahl ohne, Text mit Anführungszeichen</text></svg>"
     },
     {
       "type": "explain",
-      "text": "Eine Variable heißt Variable, weil ihr Wert **variabel** ist – er darf sich ändern. Dafür weist du einfach einen neuen Wert zu, diesmal **ohne** `let`:\n\n```js\nlet punkte = 10;\npunkte = 12;\nconsole.log(punkte);\n```\n\nAusgabe: `12`. Die zweite Zeile legt keine neue Kiste an – sie tauscht nur den **Inhalt** der vorhandenen Kiste aus.\n\nMerke: `let` schreibst du nur beim **allerersten** Anlegen der Variable."
+      "text": "Gibst du die Variable aus, schreibst du sie **ohne** Anführungszeichen:\n\n```js\nconsole.log(highscore);\n```\n\nDas zeigt den **Inhalt** der Kiste: `4200`.\n\nMit Anführungszeichen (`console.log(\"highscore\")`) käme nur das Wort „highscore“ – JavaScript würde den Text ausgeben, nicht den Wert."
+    },
+    {
+      "type": "example",
+      "text": "Ändere den Wert von `follower` und führe den Code neu aus – die Ausgabe ändert sich mit. Das ist der Trick: **Einmal ändern, überall wirkt es.**",
+      "js": "let spiel = \"Kart-Rennen\";\nlet follower = 1280;\n\nconsole.log(spiel);\nconsole.log(follower);\n"
+    },
+    {
+      "type": "fill",
+      "text": "Die Variable soll den **Text** Pizza enthalten. Setze den Wert richtig ein – denk an die Anführungszeichen!",
+      "template": "let lieblingsessen = ___;",
+      "solution": "\"Pizza\"",
+      "accept": [
+        "\"Pizza\"",
+        "'Pizza'"
+      ],
+      "hint": "Text braucht Anführungszeichen: `\"Pizza\"`"
+    },
+    {
+      "type": "explain",
+      "text": "Eine Variable heißt so, weil ihr Wert **variabel** ist – er darf sich ändern. Du weist einfach einen neuen Wert zu, diesmal **ohne** `let`:\n\n```js\nlet kontostand = 250;\nkontostand = 300;\nconsole.log(kontostand);\n```\n\nAusgabe: `300`. Die zweite Zeile legt keine neue Kiste an – sie tauscht nur den **Inhalt** aus. Merke: `let` nur beim **allerersten** Anlegen."
     },
     {
       "type": "quiz",
-      "question": "Was gibt dieser Code aus?\n\n```js\nlet stand = 5;\nstand = 8;\nconsole.log(stand);\n```",
+      "question": "Was gibt dieser Code aus?\n\n```js\nlet level = 5;\nlevel = 8;\nconsole.log(level);\n```",
       "options": [
         "`5`",
         "`8`",
         "`5 8`"
       ],
       "correct": 1,
-      "explanation": "Die zweite Zeile überschreibt den alten Wert: In der Kiste liegt jetzt 8. Der alte Wert 5 ist weg."
+      "explanation": "Die zweite Zeile überschreibt den alten Wert: In der Kiste liegt jetzt 8. Die 5 ist weg."
     },
     {
       "type": "explain",
-      "text": "Manche Werte sollen sich **nie** ändern – zum Beispiel ein Steuersatz oder der Name deines Cafés. Dafür gibt es `const` (von **Konstante**):\n\n```js\nconst mwst = 19;\n```\n\nVersuchst du später `mwst = 7;`, stoppt JavaScript mit einer Fehlermeldung – `const`-Kisten sind sozusagen zugeklebt.\n\n**Faustregel:** Nimm `const`, wenn der Wert fest steht. Nimm `let` nur, wenn sich der Wert wirklich ändern soll – wie ein Punktestand. Profis schreiben deshalb meistens `const`."
+      "text": "Manche Werte ändern sich **nie** – dein Geburtsjahr oder die Höchstgeschwindigkeit deines Mopeds. Dafür gibt es `const` (von **Konstante**):\n\n```js\nconst maxTempo = 45;\n```\n\nVersuchst du später `maxTempo = 60;`, stoppt JavaScript mit einer Fehlermeldung – `const`-Kisten sind zugeklebt.\n\n**Faustregel:** `const`, wenn der Wert fest steht. `let` nur, wenn er sich ändern soll – wie ein Highscore."
     },
     {
       "type": "quiz",
       "question": "Für welchen Wert passt `const` am besten?",
       "options": [
-        "Für den Punktestand in einem Spiel, der ständig steigt",
-        "Für den Namen des Cafés, der sich nie ändert",
+        "Für den Highscore, der ständig steigt",
+        "Für dein Geburtsjahr, das sich nie ändert",
         "Egal – `const` und `let` sind austauschbar"
       ],
       "correct": 1,
-      "explanation": "Der Name steht fest → const. Der Punktestand ändert sich dauernd → let. Der Unterschied schützt dich vor versehentlichem Überschreiben."
+      "explanation": "Das Geburtsjahr steht fest → const. Der Highscore ändert sich dauernd → let. Der Unterschied schützt vor versehentlichem Überschreiben."
     },
     {
       "type": "code",
-      "task": "1. Lege eine **Konstante** `cafe` mit dem Text **Café Pause** an.\n2. Lege eine **Variable** `alter` mit dem Zahlenwert **16** an.\n3. Gib beide mit `console.log` aus – erst `cafe`, dann `alter`.",
+      "task": "1. Lege eine **Konstante** `spiel` mit dem Text **Kart-Rennen** an.\n2. Lege eine **Variable** `highscore` mit dem Zahlenwert **4200** an.\n3. Gib beide mit `console.log` aus – erst `spiel`, dann `highscore`.",
       "starter": {
         "js": "// Konstante, Variable und zwei Ausgaben\n"
       },
       "hints": [
         "Feste Werte legst du mit const an, veränderliche mit let.",
-        "const cafe = \"Café Pause\"; – der Text braucht Anführungszeichen, die Zahl bei alter nicht.",
-        "```js\nconst cafe = \"Café Pause\";\nlet alter = 16;\n\nconsole.log(cafe);\nconsole.log(alter);\n```"
+        "const spiel = \"Kart-Rennen\"; – der Text braucht Anführungszeichen, die Zahl bei highscore nicht.",
+        "```js\nconst spiel = \"Kart-Rennen\";\nlet highscore = 4200;\n\nconsole.log(spiel);\nconsole.log(highscore);\n```"
       ],
       "solution": {
-        "js": "const cafe = \"Café Pause\";\nlet alter = 16;\n\nconsole.log(cafe);\nconsole.log(alter);\n"
+        "js": "const spiel = \"Kart-Rennen\";\nlet highscore = 4200;\n\nconsole.log(spiel);\nconsole.log(highscore);\n"
       },
       "tests": [
-        { "type": "source", "file": "js", "matches": "const\\s+cafe\\s*=", "label": "cafe wird mit const angelegt" },
-        { "type": "source", "file": "js", "matches": "let\\s+alter\\s*=\\s*16", "label": "alter wird mit let angelegt und hat den Wert 16" },
-        { "type": "console", "expected": "Café Pause", "label": "Die Konsole zeigt Café Pause" },
-        { "type": "console", "expected": "16", "label": "Die Konsole zeigt 16" }
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "const\\s+spiel\\s*=",
+          "label": "spiel wird mit const angelegt"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "let\\s+highscore\\s*=\\s*4200",
+          "label": "highscore wird mit let angelegt und hat den Wert 4200"
+        },
+        {
+          "type": "console",
+          "expected": "Kart-Rennen",
+          "label": "Die Konsole zeigt Kart-Rennen"
+        },
+        {
+          "type": "console",
+          "expected": "4200",
+          "label": "Die Konsole zeigt 4200"
+        }
       ]
     }
   ]

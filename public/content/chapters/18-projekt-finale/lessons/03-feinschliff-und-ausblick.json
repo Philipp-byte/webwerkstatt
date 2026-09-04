@@ -4,13 +4,17 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Nimm dir einen Moment: Du hast in diesem Kurs eine **komplette Website** gebaut – Struktur mit HTML, Gestaltung mit CSS, Verhalten mit JavaScript.\n\nProfis lassen ihre Arbeit am Ende gegenprüfen. Für HTML gibt es dafür den kostenlosen **W3C-Validator** unter `validator.w3.org`: Du fügst dort deinen HTML-Code ein, und er listet **formale Fehler** auf – vergessene schließende Tags, falsch verschachtelte Elemente, doppelte ids. Das **W3C** ist das Gremium, das die Web-Standards festlegt – der Validator prüft also direkt gegen die offiziellen Regeln.\n\nBeheben musst du die gefundenen Fehler selbst – aber genau das kannst du ja jetzt."
+      "text": "Nimm dir einen Moment: Du hast eine **komplette Website** gebaut – Struktur mit HTML, Gestaltung mit CSS, Verhalten mit JavaScript.\n\nProfis lassen ihre Arbeit am Ende gegenprüfen. Für HTML gibt es den kostenlosen **W3C-Validator** unter `validator.w3.org`: Code einfügen, und er listet **formale Fehler** auf – vergessene schließende Tags, falsch verschachtelte Elemente, doppelte ids."
+    },
+    {
+      "type": "explain",
+      "text": "Das **W3C** ist das Gremium, das die Web-Standards festlegt – der Validator prüft also direkt gegen die offiziellen Regeln.\n\nBeheben musst du die gefundenen Fehler selbst. Aber genau das kannst du ja jetzt: Fehlermeldung lesen, Stelle finden, verbessern."
     },
     {
       "type": "quiz",
       "question": "Was macht der W3C-Validator (`validator.w3.org`)?",
       "options": [
-        "Er prüft HTML auf formale Fehler wie vergessene schließende Tags",
+        "Er prüft HTML auf formale Fehler wie vergessene Tags",
         "Er macht die Seite automatisch schöner",
         "Er lädt die Seite ins Internet hoch"
       ],
@@ -19,11 +23,16 @@
     },
     {
       "type": "explain",
-      "text": "**Und wie kommt so eine Seite echt ins Netz?** In drei Sätzen: Du mietest bei einem **Webhoster** Speicherplatz auf einem Server, der Tag und Nacht am Internet hängt. Dorthin lädst du deine Dateien hoch – die HTML-Seiten, das Stylesheet, Bilder und Skripte. Dann verbindest du eine **Domain** (etwa `cafe-pause.de`) mit diesem Server – und jeder Browser der Welt kann deine Seite anfragen.\n\nDenk dabei an Kapitel 15: Sobald eine Seite **öffentlich** ist, gilt die **Impressumspflicht** – Betreiber, Anschrift und Kontakt gehören auf die Seite. Gut, dass dein Café-Projekt seine Impressum-Seite schon hat."
+      "text": "**Und wie kommt die Seite echt ins Netz?** Du mietest bei einem **Webhoster** Speicherplatz auf einem Server, der Tag und Nacht am Internet hängt. Dorthin lädst du deine Dateien hoch – HTML, Stylesheet, Bilder, Skripte.\n\nDann verbindest du eine **Domain** (etwa `cafe-pause.de`) mit diesem Server – und jeder Browser der Welt kann deine Seite anfragen.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"13\"><rect x=\"8\" y=\"56\" width=\"90\" height=\"48\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"53\" y=\"76\" text-anchor=\"middle\" fill=\"#1d2733\" font-size=\"12\">Deine Dateien</text><text x=\"53\" y=\"94\" text-anchor=\"middle\" fill=\"#5b6b7c\" font-size=\"12\">HTML, CSS, JS</text><path d=\"M100 80 L128 80 M121 74 L128 80 L121 86\" fill=\"none\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"114\" y=\"66\" text-anchor=\"middle\" fill=\"#e0632e\" font-size=\"12\">hochladen</text><rect x=\"132\" y=\"48\" width=\"96\" height=\"64\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"180\" y=\"72\" text-anchor=\"middle\" fill=\"#2f6fdb\" font-size=\"12\">Server beim</text><text x=\"180\" y=\"90\" text-anchor=\"middle\" fill=\"#2f6fdb\" font-size=\"12\">Webhoster</text><text x=\"180\" y=\"34\" text-anchor=\"middle\" fill=\"#1a9e5c\" font-size=\"12\">Domain: cafe-pause.de</text><path d=\"M260 80 L232 80 M239 74 L232 80 L239 86\" fill=\"none\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"246\" y=\"66\" text-anchor=\"middle\" fill=\"#1a9e5c\" font-size=\"12\">anfragen</text><rect x=\"262\" y=\"56\" width=\"52\" height=\"48\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#5b6b7c\" stroke-width=\"2\"/><text x=\"288\" y=\"84\" text-anchor=\"middle\" fill=\"#1d2733\" font-size=\"12\">Browser</text><text x=\"160\" y=\"142\" text-anchor=\"middle\" fill=\"#5b6b7c\" font-size=\"12\">immer erreichbar – für jeden Browser der Welt</text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Denk dabei an Kapitel 15: Sobald eine Seite **öffentlich** ist, gilt die **Impressumspflicht** – Betreiber, Anschrift und Kontakt gehören auf die Seite.\n\nGut, dass dein Café-Projekt seine Impressum-Seite schon hat."
     },
     {
       "type": "quiz",
-      "question": "Deine Seite läuft bisher nur bei dir. Was brauchst du, damit **andere** sie über das Internet aufrufen können?",
+      "question": "Deine Seite läuft bisher nur bei dir. Was brauchst du, damit **andere** sie im Internet aufrufen können?",
       "options": [
         "Einen besseren Editor",
         "Speicherplatz bei einem Webhoster und eine Domain",
@@ -34,17 +43,24 @@
     },
     {
       "type": "explain",
-      "text": "Für deinen letzten Handgriff lernst du noch ein Ordnungs-Tag kennen: `<section>` fasst einen **inhaltlichen Abschnitt** der Seite zusammen – ein semantisches Element wie `header` und `footer`, nur für frei wählbare Themen-Blöcke **innerhalb** der Seite. Typisch beginnt eine section mit einer Überschrift:\n\n```html\n<section>\n  <h2>Unser Team</h2>\n  <p>Wir sind zwölf Schülerinnen und Schüler …</p>\n</section>\n```\n\nUnd jetzt du: Die Startseite bekommt eine Sektion mit **deiner eigenen Idee**."
+      "text": "Für den letzten Handgriff noch ein Ordnungs-Tag: `<section>` fasst einen **inhaltlichen Abschnitt** zusammen – semantisch wie `header` und `footer`, nur für frei wählbare Themen-Blöcke **innerhalb** der Seite. Typisch beginnt sie mit einer Überschrift:\n\n```html\n<section>\n  <h2>Unser Team</h2>\n  <p>Wir sind zwölf Schülerinnen und Schüler …</p>\n</section>\n```\n\nJetzt du: Die Startseite bekommt eine Sektion mit **deiner Idee**."
     },
     {
       "type": "code",
-      "task": "**Deine Website, deine Idee!** Denk dir einen letzten Bereich für die Startseite aus – ein Wochenangebot, ein Team-Bereich, Veranstaltungen, Stammkunden-Witze … du entscheidest.\n\n1. Ergänze im `<main>` eine `<section>`\n2. Darin: eine `<h2>` mit einer Überschrift deiner Wahl\n3. Und mindestens **eine Liste, eine Tabelle oder ein Bild** (Übungsbilder: `cafe-theke.svg`, `cafe-kuchen.svg`, `cafe-raum.svg` – denk beim Bild an den alt-Text)\n\nTexte, Länge und Reihenfolge sind frei – nur die Struktur wird geprüft.",
+      "task": "**Deine Website, deine Idee!** Ein letzter Bereich für die Startseite – Wochenangebot, Team, Veranstaltungen … du entscheidest.\n\n1. Ergänze im `<main>` eine `<section>`\n2. Darin eine `<h2>` deiner Wahl\n3. Und mindestens **eine Liste, eine Tabelle oder ein Bild** (`cafe-theke.svg`, `cafe-kuchen.svg`, `cafe-raum.svg` – mit alt-Text)",
       "starter": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Café Pause</h1>\n      <p>Willkommen im Café Pause – deinem Schülercafé für die große Pause!</p>\n    </header>\n    <nav>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"https://www.example.com\">Unsere Stadt</a>\n    </nav>\n    <main>\n      <button id=\"status-knopf\">Haben wir gerade offen?</button>\n      <p id=\"status\"></p>\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alle Snacks sind <em>frisch zubereitet</em>.</p>\n      <hr>\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezeln</li>\n            <li>Muffins</li>\n          </ul>\n        </li>\n      </ul>\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>Stell dich an der Theke an.</li>\n        <li>Sag uns deinen Wunsch.</li>\n        <li>Bezahlen, hinsetzen, Pause genießen.</li>\n      </ol>\n    </main>\n    <footer>\n      <p>Café Pause · Musterstraße 12 · 74072 Heilbronn</p>\n      <p>E-Mail: hallo@cafe-pause-beispiel.de</p>\n      <p id=\"oeffnungszeiten\">Öffnungszeiten: Montag bis Freitag, 9:00 bis 15:00 Uhr</p>\n      <p class=\"hinweis\">Fiktiver Betrieb für Übungszwecke.</p>\n    </footer>\n  </body>\n</html>\n",
         "css": "body {\n  background-color: #f7f1e3;\n  color: #2c2016;\n  font-family: 'Segoe UI', Arial, sans-serif;\n}\n\nh1 {\n  color: #5a3e2b;\n  text-align: center;\n}\n\na {\n  color: #e08a2e;\n}\n\nnav {\n  display: flex;\n  gap: 16px;\n}\n\nheader {\n  background-color: #5a3e2b;\n  color: white;\n  padding: 16px;\n}\n\nheader h1 {\n  color: white;\n}\n"
       },
-      "editable": ["html"],
-      "project": { "page": "index", "save": ["html"] },
+      "editable": [
+        "html"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
       "hints": [
         "Die section ist ein Container wie header oder footer: öffnen, h2 hinein, dein Inhalt, schließen. Am besten ans Ende des main, vor </main>.",
         "Zum Beispiel: <section> <h2>Unser Wochenangebot</h2> <ul> <li>Montag: Marmorkuchen</li> ... </ul> </section>",
@@ -54,14 +70,33 @@
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Café Pause</h1>\n      <p>Willkommen im Café Pause – deinem Schülercafé für die große Pause!</p>\n    </header>\n    <nav>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"https://www.example.com\">Unsere Stadt</a>\n    </nav>\n    <main>\n      <button id=\"status-knopf\">Haben wir gerade offen?</button>\n      <p id=\"status\"></p>\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alle Snacks sind <em>frisch zubereitet</em>.</p>\n      <hr>\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezeln</li>\n            <li>Muffins</li>\n          </ul>\n        </li>\n      </ul>\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>Stell dich an der Theke an.</li>\n        <li>Sag uns deinen Wunsch.</li>\n        <li>Bezahlen, hinsetzen, Pause genießen.</li>\n      </ol>\n      <section>\n        <h2>Unser Wochenangebot</h2>\n        <ul>\n          <li>Montag: Marmorkuchen</li>\n          <li>Mittwoch: Waffeltag</li>\n          <li>Freitag: Obstsalat</li>\n        </ul>\n      </section>\n    </main>\n    <footer>\n      <p>Café Pause · Musterstraße 12 · 74072 Heilbronn</p>\n      <p>E-Mail: hallo@cafe-pause-beispiel.de</p>\n      <p id=\"oeffnungszeiten\">Öffnungszeiten: Montag bis Freitag, 9:00 bis 15:00 Uhr</p>\n      <p class=\"hinweis\">Fiktiver Betrieb für Übungszwecke.</p>\n    </footer>\n  </body>\n</html>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "section", "min": 1, "label": "Es gibt eine <section>" },
-        { "type": "selector", "selector": "section h2", "min": 1, "label": "Die Sektion hat eine <h2>-Überschrift" },
-        { "type": "selector", "selector": "section ul, section ol, section table, section img", "min": 1, "label": "Die Sektion enthält eine Liste, eine Tabelle oder ein Bild" }
+        {
+          "type": "selector",
+          "selector": "section",
+          "min": 1,
+          "label": "Es gibt eine <section>"
+        },
+        {
+          "type": "selector",
+          "selector": "section h2",
+          "min": 1,
+          "label": "Die Sektion hat eine <h2>-Überschrift"
+        },
+        {
+          "type": "selector",
+          "selector": "section ul, section ol, section table, section img",
+          "min": 1,
+          "label": "Die Sektion enthält eine Liste, eine Tabelle oder ein Bild"
+        }
       ]
     },
     {
       "type": "explain",
-      "text": "**Du hast eine komplette Website gebaut.** Von der ersten Zeile HTML über Farben, Boxen und Flexbox bis zum klickbaren JavaScript – jede Seite deines Café-Projekts stammt aus deiner Hand. Genau mit diesem Handwerk entstehen echte Websites.\n\nWenn du weitermachen willst: In JavaScript warten **Verzweigungen** (`if`) und **Schleifen** darauf, deine Programme schlauer zu machen. In CSS lohnt sich **responsives Design**, damit Seiten auch auf dem Handy gut aussehen. Und irgendwann helfen dir Frameworks und Werkzeuge, die auf genau dem aufbauen, was du jetzt kannst. Das Fundament steht.\n\n🎉 Herzlichen Glückwunsch – und danke für deinen Besuch im Café Pause!"
+      "text": "**Du hast eine komplette Website gebaut.** Von der ersten Zeile HTML über Farben, Boxen und Flexbox bis zum klickbaren JavaScript – jede Seite deines Café-Projekts stammt aus deiner Hand. Genau mit diesem Handwerk entstehen echte Websites."
+    },
+    {
+      "type": "explain",
+      "text": "Wenn du weitermachen willst: In JavaScript warten **Verzweigungen** (`if`) und **Schleifen** darauf, deine Programme schlauer zu machen. In CSS lohnt sich **responsives Design**, damit Seiten auch auf dem Handy gut aussehen. Das Fundament steht.\n\n🎉 Herzlichen Glückwunsch – und danke für deinen Besuch im Café Pause!"
     }
   ]
 }

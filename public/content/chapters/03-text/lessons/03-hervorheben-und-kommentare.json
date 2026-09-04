@@ -4,12 +4,17 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Wichtige Wörter kannst du in HTML hervorheben:\n\n`<strong>` bedeutet **wichtig** – der Browser zeigt den Text **fett**.\n\n`<em>` bedeutet **betont** (von „emphasis“) – der Browser zeigt den Text kursiv, also schräg gestellt.\n\n```html\n<p>Das ist <strong>sehr wichtig</strong> und das <em>betont</em>.</p>\n```\n\nBeide Tags stehen **innerhalb** eines Absatzes, mitten im Text. Und beide beschreiben eine **Bedeutung**, nicht nur ein Aussehen: Ein Vorlese-Programm spricht ein `<strong>` zum Beispiel nachdrücklicher aus. Wie etwas am Ende aussieht, bestimmst du später mit CSS."
+      "text": "Wichtige Wörter kannst du in HTML hervorheben:\n\n`<strong>` bedeutet **wichtig** – der Browser zeigt den Text **fett**.\n\n`<em>` bedeutet **betont** (von „emphasis“) – der Browser zeigt den Text kursiv, also schräg gestellt.\n\n```html\n<p>Helm ist <strong>Pflicht</strong> – und das <em>wirklich</em>.</p>\n```",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><defs><marker id=\"pf9\" markerWidth=\"8\" markerHeight=\"8\" refX=\"7\" refY=\"4\" orient=\"auto\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#5b6b7c\"/></marker></defs><text x=\"96\" y=\"22\" text-anchor=\"middle\" fill=\"#2f6fdb\" font-weight=\"bold\">Code</text><text x=\"266\" y=\"22\" text-anchor=\"middle\" fill=\"#1a9e5c\" font-weight=\"bold\">Browser</text><rect x=\"6\" y=\"34\" width=\"180\" height=\"44\" rx=\"6\" fill=\"#eef2f8\"/><text x=\"14\" y=\"61\" font-size=\"13\"><tspan fill=\"#e0632e\">&lt;strong&gt;</tspan><tspan fill=\"#1d2733\">Pflicht</tspan><tspan fill=\"#e0632e\">&lt;/strong&gt;</tspan></text><line x1=\"192\" y1=\"56\" x2=\"216\" y2=\"56\" stroke=\"#5b6b7c\" stroke-width=\"2\" marker-end=\"url(#pf9)\"/><text x=\"266\" y=\"61\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"bold\" fill=\"#1d2733\">Pflicht</text><text x=\"266\" y=\"78\" text-anchor=\"middle\" fill=\"#5b6b7c\">wichtig → fett</text><rect x=\"6\" y=\"96\" width=\"180\" height=\"44\" rx=\"6\" fill=\"#eef2f8\"/><text x=\"14\" y=\"123\" font-size=\"13\"><tspan fill=\"#e0632e\">&lt;em&gt;</tspan><tspan fill=\"#1d2733\">wirklich</tspan><tspan fill=\"#e0632e\">&lt;/em&gt;</tspan></text><line x1=\"192\" y1=\"118\" x2=\"216\" y2=\"118\" stroke=\"#5b6b7c\" stroke-width=\"2\" marker-end=\"url(#pf9)\"/><text x=\"266\" y=\"123\" text-anchor=\"middle\" font-size=\"15\" font-style=\"italic\" fill=\"#1d2733\">wirklich</text><text x=\"266\" y=\"140\" text-anchor=\"middle\" fill=\"#5b6b7c\">betont → kursiv</text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Beide Tags stehen **innerhalb** eines Absatzes, mitten im Text.\n\nUnd beide beschreiben eine **Bedeutung**, nicht nur ein Aussehen: Ein Vorlese-Programm spricht ein `<strong>` zum Beispiel nachdrücklicher aus. Wie etwas am Ende aussieht, bestimmst du später mit CSS."
     },
     {
       "type": "example",
       "text": "Probiere es aus: Markiere weitere Wörter mit `<strong>` oder `<em>` – und denk an die schließenden Tags!",
-      "html": "<p>Bitte den Herd <strong>niemals</strong> unbeaufsichtigt lassen.</p>\n<p>Das Rezept ist <em>wirklich</em> einfach.</p>\n"
+      "html": "<p>Auf dem Moped <strong>immer</strong> den Helm tragen.</p>\n<p>Die Theorieprüfung war <em>wirklich</em> machbar.</p>\n"
     },
     {
       "type": "quiz",
@@ -24,7 +29,11 @@
     },
     {
       "type": "explain",
-      "text": "Manchmal willst du dir **Notizen im Code** machen, die auf der Seite unsichtbar bleiben. Dafür gibt es **Kommentare**:\n\n```html\n<!-- Das hier zeigt der Browser nicht an -->\n<p>Das hier schon.</p>\n```\n\nEin Kommentar beginnt mit `<!--` und endet mit `-->`. Alles dazwischen überspringt der Browser komplett.\n\nWofür Kommentare gut sind:\n\n1. **Notizen an dich selbst:** `<!-- TODO: Öffnungszeiten ergänzen -->`\n2. **Abschnitte beschriften:** `<!-- Ab hier: Speisekarte -->`\n3. **Code testweise ausschalten**, ohne ihn zu löschen.\n\nAber Achtung: Kommentare sind nicht geheim! Mit Strg + U (kennst du aus Kapitel 1) kann jeder sie im Quelltext lesen – also keine Passwörter oder Lästereien hineinschreiben."
+      "text": "Manchmal willst du dir **Notizen im Code** machen, die auf der Seite unsichtbar bleiben. Dafür gibt es **Kommentare**:\n\n```html\n<!-- Das hier zeigt der Browser nicht an -->\n<p>Das hier schon.</p>\n```\n\nEin Kommentar beginnt mit `<!--` und endet mit `-->`. Alles dazwischen überspringt der Browser komplett."
+    },
+    {
+      "type": "explain",
+      "text": "Wofür Kommentare gut sind:\n\n1. **Notizen an dich selbst:** `<!-- TODO: Trainingszeiten ergänzen -->`\n2. **Abschnitte beschriften:** `<!-- Ab hier: Spielplan -->`\n3. **Code testweise ausschalten**, ohne ihn zu löschen.\n\nAber Achtung: Kommentare sind nicht geheim! Mit Strg + U kann jeder sie im Quelltext lesen – also keine Passwörter oder Lästereien hineinschreiben."
     },
     {
       "type": "example",
@@ -44,17 +53,17 @@
     },
     {
       "type": "code",
-      "task": "Schreibe einen Absatz über deinen Lernstand – mit allem aus dieser Lektion:\n\n1. Schreibe **über** den Absatz einen Kommentar mit einer kurzen Notiz an dich selbst.\n2. Baue im Absatz das Wort **HTML** ein und markiere es mit `<strong>`.\n3. Baue außerdem das Wort **super** ein und markiere es mit `<em>`.",
+      "task": "Schreibe einen Absatz über dein Praktikum – mit allem aus dieser Lektion:\n\n1. Schreibe **über** den Absatz einen Kommentar mit einer kurzen Notiz an dich.\n2. Baue im Absatz das Wort **HTML** ein und markiere es mit `<strong>`.\n3. Baue das Wort **super** ein und markiere es mit `<em>`.",
       "starter": {
         "html": "<p>Schreibe hier deinen Satz.</p>\n"
       },
       "hints": [
         "Der Kommentar steht in einer eigenen Zeile über dem <p>. Die Hervorhebungs-Tags stehen mitten im Satz, direkt um das jeweilige Wort herum.",
         "Ein Kommentar sieht so aus: <!-- meine Notiz -->. Und so wird ein Wort fett markiert: <strong>HTML</strong>.",
-        "```html\n<!-- Diesen Satz habe ich selbst geschrieben. -->\n<p>Ich lerne gerade <strong>HTML</strong> und finde es <em>super</em>.</p>\n```"
+        "```html\n<!-- Diesen Satz habe ich selbst geschrieben. -->\n<p>Im Praktikum lerne ich gerade <strong>HTML</strong> und finde es <em>super</em>.</p>\n```"
       ],
       "solution": {
-        "html": "<!-- Diesen Satz habe ich selbst geschrieben. -->\n<p>Ich lerne gerade <strong>HTML</strong> und finde es <em>super</em>.</p>\n"
+        "html": "<!-- Diesen Satz habe ich selbst geschrieben. -->\n<p>Im Praktikum lerne ich gerade <strong>HTML</strong> und finde es <em>super</em>.</p>\n"
       },
       "tests": [
         { "type": "source", "file": "html", "matches": "<!--[\\s\\S]*?-->", "label": "Im Code steht ein Kommentar" },

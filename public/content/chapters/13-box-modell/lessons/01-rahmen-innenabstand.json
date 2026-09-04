@@ -4,21 +4,22 @@
   "steps": [
     {
       "type": "explain",
-      "text": "In CSS ist **jedes Element eine rechteckige Box** – jede Überschrift, jeder Absatz, jedes Bild. Und jede Box besteht aus **Schichten**, von innen nach außen:\n\n```\n┌── margin ─ Außenabstand (unsichtbar) ──┐\n│  ┌── border ─ der Rahmen ───────────┐  │\n│  │  ┌── padding ─ Innenabstand ──┐  │  │\n│  │  │     Inhalt (Text, Bild)    │  │  │\n│  │  └────────────────────────────┘  │  │\n│  └──────────────────────────────────┘  │\n└────────────────────────────────────────┘\n```\n\n**Eselsbrücke – das Paket-Bild:** Der Inhalt ist das Geschenk, das `padding` die Luftpolsterfolie, der `border` der Karton – und `margin` der Abstand zum nächsten Paket im Regal.\n\nHeute geht es um die zwei inneren Schichten: **Rahmen** und **Innenabstand**. Der Außenabstand kommt in der nächsten Lektion."
+      "text": "In CSS ist **jedes Element eine rechteckige Box** – jede Überschrift, jeder Absatz, jedes Bild. Jede Box hat **Schichten**, von innen nach außen: Inhalt, `padding`, `border`, `margin`.\n\n**Eselsbrücke – der Sneaker-Karton:** Der Schuh ist der Inhalt, das Seidenpapier drumherum das `padding`, der Karton der `border` – und `margin` ist der Abstand zum nächsten Karton im Regal.\n\nHeute geht es um die zwei inneren Schichten: **Rahmen** und **Innenabstand**.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect x=\"8\" y=\"8\" width=\"304\" height=\"144\" fill=\"none\" stroke=\"#5b6b7c\" stroke-dasharray=\"5 4\"/><text x=\"16\" y=\"25\" fill=\"#5b6b7c\">margin – Außenabstand</text><rect x=\"40\" y=\"34\" width=\"240\" height=\"98\" fill=\"none\" stroke=\"#e0632e\" stroke-width=\"4\"/><text x=\"50\" y=\"51\" fill=\"#e0632e\">border – Rahmen</text><rect x=\"72\" y=\"58\" width=\"176\" height=\"56\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-dasharray=\"5 4\"/><text x=\"80\" y=\"74\" fill=\"#1a9e5c\">padding – Innenabstand</text><rect x=\"104\" y=\"82\" width=\"112\" height=\"24\" fill=\"none\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"160\" y=\"99\" text-anchor=\"middle\" fill=\"#1d2733\" font-size=\"13\">Inhalt</text></svg>"
     },
     {
       "type": "explain",
-      "text": "`border` – der **Rahmen**. Er braucht drei Angaben in einer Zeile, immer in dieser Reihenfolge: **Dicke, Linienart, Farbe**.\n\n```css\n.karte {\n  border: 3px solid #2f6fdb;\n}\n```\n\nFür die **Linienart** gibt es mehrere Wörter:\n\n- `solid` – durchgezogen (der Klassiker)\n- `dashed` – gestrichelt\n- `dotted` – gepunktet\n- `double` – doppelte Linie\n\nFehlt eine der drei Angaben (z. B. die Linienart), zeichnet der Browser **gar keinen** Rahmen – ein sehr häufiger Anfängerfehler!"
+      "text": "`border` – der **Rahmen**. Er braucht drei Angaben in einer Zeile, immer in dieser Reihenfolge: **Dicke, Linienart, Farbe**.\n\n```css\n.spieler {\n  border: 3px solid #2f6fdb;\n}\n```\n\nLinienarten: `solid` (durchgezogen), `dashed` (gestrichelt), `dotted` (gepunktet), `double` (doppelte Linie).\n\nFehlt eine der drei Angaben, zeichnet der Browser **gar keinen** Rahmen – ein sehr häufiger Anfängerfehler!"
     },
     {
       "type": "example",
-      "text": "Vier Boxen, vier Linienarten. Ändere die Dicke (z. B. `6px`) und die Farben – und tausche testweise mal eine Linienart gegen eine andere.",
-      "html": "<p class=\"a\">solid – durchgezogen</p>\n<p class=\"b\">dashed – gestrichelt</p>\n<p class=\"c\">dotted – gepunktet</p>\n<p class=\"d\">double – doppelt</p>\n",
+      "text": "Vier Positionen, vier Linienarten. Ändere die Dicke (z. B. `6px`) und die Farben – und tausche testweise eine Linienart gegen eine andere.",
+      "html": "<p class=\"a\">Torwart – solid</p>\n<p class=\"b\">Verteidigung – dashed</p>\n<p class=\"c\">Mittelfeld – dotted</p>\n<p class=\"d\">Sturm – double</p>\n",
       "css": "p {\n  padding: 10px;\n}\n.a { border: 3px solid #2f6fdb; }\n.b { border: 3px dashed #1a9e5c; }\n.c { border: 3px dotted #d97706; }\n.d { border: 3px double #b13f3f; }\n"
     },
     {
       "type": "fill",
-      "text": "Die Box soll einen 4px dicken, **gestrichelten**, blauen Rahmen bekommen. Welche Linienart fehlt?",
+      "text": "Die Spieler-Karte soll einen 4px dicken, **gestrichelten**, blauen Rahmen bekommen. Welche Linienart fehlt?",
       "template": "border: 4px ___ #2f6fdb;",
       "solution": "dashed",
       "accept": ["dashed"],
@@ -26,13 +27,13 @@
     },
     {
       "type": "explain",
-      "text": "`padding` – der **Innenabstand**: der Platz zwischen Inhalt und Rahmen.\n\n```css\n.karte {\n  padding: 20px;\n}\n```\n\nOhne padding klebt der Text direkt am Rahmen – das sieht gequetscht aus und liest sich schlecht.\n\n**Eselsbrücke:** **P**adding = **P**olster. Im Paket-Bild ist padding die Luftpolsterfolie zwischen Geschenk und Karton."
+      "text": "`padding` – der **Innenabstand**: der Platz zwischen Inhalt und Rahmen.\n\n```css\n.spieler {\n  padding: 20px;\n}\n```\n\nOhne padding klebt der Text direkt am Rahmen – das sieht gequetscht aus und liest sich schlecht.\n\n**Eselsbrücke:** **P**adding = **P**olster. Im Sneaker-Karton ist padding das Seidenpapier zwischen Schuh und Karton."
     },
     {
       "type": "example",
-      "text": "Stelle das `padding` einmal auf `0` – siehst du, wie der Text am Rahmen klebt? Und mit `40px` bekommt die Box richtig viel Luft.",
-      "html": "<div class=\"karte\">\n  <h2>Infobox</h2>\n  <p>Ich bin eine Box mit Rahmen und Innenabstand.</p>\n</div>\n",
-      "css": ".karte {\n  border: 3px solid #2f6fdb;\n  padding: 20px;\n}\n"
+      "text": "Stelle das `padding` auf `0` – der Text klebt am Rahmen. Mit `40px` bekommt die Spieler-Karte richtig viel Luft.",
+      "html": "<div class=\"spieler\">\n  <h2>Nr. 10 · Lena K.</h2>\n  <p>Mittelfeld · 12 Tore · 8 Vorlagen</p>\n</div>\n",
+      "css": ".spieler {\n  border: 3px solid #2f6fdb;\n  padding: 20px;\n}\n"
     },
     {
       "type": "quiz",
@@ -47,9 +48,9 @@
     },
     {
       "type": "code",
-      "task": "Gestalte die Hinweis-Karte:\n\n1. `border: 3px solid #2f6fdb;`\n2. `padding: 20px;`",
+      "task": "Gestalte die Spieler-Karte:\n\n1. `border: 3px solid #2f6fdb;`\n2. `padding: 20px;`",
       "starter": {
-        "html": "<div class=\"karte\">\n  <h2>Wichtiger Hinweis</h2>\n  <p>Morgen beginnt der Unterricht erst zur 2. Stunde.</p>\n</div>\n",
+        "html": "<div class=\"karte\">\n  <h2>Nr. 7 · Samir</h2>\n  <p>Sturm · 9 Tore · 4 Vorlagen</p>\n</div>\n",
         "css": ".karte {\n  /* Rahmen und Innenabstand hier */\n}\n"
       },
       "editable": ["css"],

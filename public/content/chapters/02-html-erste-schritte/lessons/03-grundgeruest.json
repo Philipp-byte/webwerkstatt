@@ -4,20 +4,25 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Bisher hast du HTML-Schnipsel geschrieben. Eine **echte HTML-Datei** hat aber immer denselben festen Rahmen – das **Grundgerüst**:\n\n```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Seitentitel</title>\n  </head>\n  <body>\n    Sichtbarer Inhalt\n  </body>\n</html>\n```\n\nGanz oben steht `<!DOCTYPE html>` – die Ansage an den Browser: „Das hier ist modernes HTML.“ Diese Zeile ist ein Sonderfall: kein normales Element, kein schließender Tag.\n\nDanach umschließt `<html lang=\"de\">` die gesamte Seite – mit dem Attribut `lang` aus der letzten Lektion: Der Inhalt ist auf Deutsch."
+      "text": "Bisher hast du HTML-Schnipsel geschrieben. Eine **echte HTML-Datei** hat aber immer denselben festen Rahmen – das **Grundgerüst**:\n\n```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Seitentitel</title>\n  </head>\n  <body>\n    Sichtbarer Inhalt\n  </body>\n</html>\n```\n\nGanz oben steht `<!DOCTYPE html>` – die Ansage: „Das hier ist modernes HTML.“ Ein Sonderfall: kein normales Element, kein schließender Tag.\n\nDanach umschließt `<html lang=\"de\">` die gesamte Seite.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><text x=\"10\" y=\"18\" fill=\"#5b6b7c\">&lt;!DOCTYPE html&gt;</text><rect x=\"10\" y=\"28\" width=\"300\" height=\"124\" rx=\"8\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"18\" y=\"44\" fill=\"#2f6fdb\" font-weight=\"bold\">&lt;html&gt;</text><text x=\"302\" y=\"146\" text-anchor=\"end\" fill=\"#2f6fdb\" font-weight=\"bold\">&lt;/html&gt;</text><rect x=\"24\" y=\"52\" width=\"130\" height=\"80\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"30\" y=\"68\" fill=\"#e0632e\" font-weight=\"bold\">&lt;head&gt;</text><text x=\"89\" y=\"96\" text-anchor=\"middle\" fill=\"#1d2733\">&lt;title&gt;, &lt;meta&gt;</text><text x=\"89\" y=\"118\" text-anchor=\"middle\" fill=\"#5b6b7c\">unsichtbar</text><rect x=\"166\" y=\"52\" width=\"130\" height=\"80\" rx=\"6\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"172\" y=\"68\" fill=\"#1a9e5c\" font-weight=\"bold\">&lt;body&gt;</text><text x=\"231\" y=\"96\" text-anchor=\"middle\" fill=\"#1d2733\">&lt;h1&gt;, &lt;p&gt; …</text><text x=\"231\" y=\"118\" text-anchor=\"middle\" fill=\"#5b6b7c\">sichtbar</text></svg>"
     },
     {
       "type": "explain",
-      "text": "Im `<html>`-Element stecken genau zwei Bereiche:\n\n`<head>` – der „Kopf“: **unsichtbare Informationen über die Seite**. Hier steht zum Beispiel der `<title>`. Er erscheint nicht auf der Seite selbst, sondern oben im **Browser-Tab** – und als Titel in Suchmaschinen-Ergebnissen.\n\n`<body>` – der „Körper“: **alles, was auf der Seite sichtbar ist** – Überschriften, Absätze, später auch Bilder und Links.\n\nMerksatz: Was im Kopf ist, sieht man nicht. Was im Körper ist, sieht man."
+      "text": "Im `<html>`-Element stecken genau zwei Bereiche:\n\n`<head>` – der „Kopf“: **unsichtbare Infos über die Seite**. Hier steht der `<title>`. Er erscheint nicht auf der Seite, sondern oben im **Browser-Tab** – und in Suchmaschinen-Ergebnissen.\n\n`<body>` – der „Körper“: **alles, was auf der Seite sichtbar ist** – Überschriften, Absätze, später Bilder und Links.\n\nMerksatz: Was im Kopf ist, sieht man nicht. Was im Körper ist, sieht man."
     },
     {
       "type": "explain",
-      "text": "Eine Zeile im head ist für uns besonders wichtig:\n\n```html\n<meta charset=\"utf-8\">\n```\n\nSie legt die **Zeichenkodierung** fest – die Übersetzungstabelle, mit der der Browser die gespeicherten Daten wieder in Buchstaben verwandelt. `utf-8` ist der weltweite Standard und kennt alle Zeichen: ä, ö, ü, ß, é und sogar Emojis.\n\nFehlt die Angabe, muss der Browser raten – und dann wird aus „Schöne Grüße“ schnell Zeichensalat wie „SchÃ¶ne GrÃ¼ÃŸe“. Wenn dir irgendwo kaputte Umlaute begegnen, weißt du jetzt: Das ist fast immer ein charset-Problem.\n\n`<meta ...>` steht übrigens wie `<!DOCTYPE html>` allein – ohne schließenden Tag."
+      "text": "Eine Zeile im head ist besonders wichtig:\n\n```html\n<meta charset=\"utf-8\">\n```\n\nSie legt die **Zeichenkodierung** fest – die Übersetzungstabelle, mit der der Browser gespeicherte Daten wieder in Buchstaben verwandelt. `utf-8` ist der weltweite Standard und kennt alle Zeichen: ä, ö, ü, ß, é und sogar Emojis."
+    },
+    {
+      "type": "explain",
+      "text": "Fehlt die charset-Angabe, muss der Browser raten – und aus „Schöne Grüße“ wird Zeichensalat wie „SchÃ¶ne GrÃ¼ÃŸe“.\n\nWenn dir irgendwo kaputte Umlaute begegnen, weißt du jetzt: Das ist fast immer ein charset-Problem.\n\n`<meta ...>` steht übrigens wie `<!DOCTYPE html>` allein – ohne schließenden Tag."
     },
     {
       "type": "example",
       "text": "Ein komplettes Grundgerüst zum Ausprobieren.\n\nÄndere zuerst den Text im `<title>` – in der Vorschau ändert sich **nichts**, denn der head ist unsichtbar (im echten Browser stünde der Titel oben im Tab). Ändere dann den Text im `<body>` – das siehst du sofort.",
-      "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Werkstatt-Demo</title>\n  </head>\n  <body>\n    <h1>Nur der Body ist sichtbar</h1>\n    <p>Alles im head bleibt unsichtbar – auch der Titel.</p>\n  </body>\n</html>\n"
+      "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Meine Playlist</title>\n  </head>\n  <body>\n    <h1>Nur der Body ist sichtbar</h1>\n    <p>Alles im head bleibt unsichtbar – auch der Titel.</p>\n  </body>\n</html>\n"
     },
     {
       "type": "quiz",
@@ -40,7 +45,7 @@
     },
     {
       "type": "quiz",
-      "question": "Auf einer Webseite steht statt „Grüße“ plötzlich „GrÃ¼ÃŸe“. Was ist die wahrscheinlichste Ursache?",
+      "question": "Im Chat einer Gaming-Seite steht statt „Grüße“ plötzlich „GrÃ¼ÃŸe“. Was ist die wahrscheinlichste Ursache?",
       "options": [
         "Im head fehlt die Zeile `<meta charset=\"utf-8\">`",
         "Der Server ist abgestürzt",
@@ -51,24 +56,24 @@
     },
     {
       "type": "code",
-      "task": "Vervollständige das Grundgerüst:\n\n1. Gib dem `<html>`-Tag das Attribut `lang=\"de\"`.\n2. Ergänze im head über dem Titel die Zeile `<meta charset=\"utf-8\">`.\n3. Trage als `<title>` den Text **Meine Seite** ein.\n4. Schreibe in den `<body>` eine `<h1>`-Überschrift mit dem Text **Schön, dass du da bist!**",
+      "task": "Vervollständige das Grundgerüst:\n\n1. Gib dem `<html>`-Tag das Attribut `lang=\"de\"`.\n2. Ergänze im head über dem Titel die Zeile `<meta charset=\"utf-8\">`.\n3. Trage als `<title>` den Text **Mein Handy** ein.\n4. Schreibe in den `<body>` eine `<h1>` mit dem Text **Meine Lieblings-Apps**",
       "starter": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title></title>\n  </head>\n  <body>\n\n  </body>\n</html>\n"
       },
       "hints": [
         "Arbeite die Punkte von oben nach unten ab: erst das lang-Attribut in den öffnenden <html>-Tag, dann die meta-Zeile in den head.",
         "Die beiden neuen Teile sehen so aus: <html lang=\"de\"> und <meta charset=\"utf-8\">. Titel und Überschrift kommen jeweils zwischen öffnenden und schließenden Tag.",
-        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Meine Seite</title>\n  </head>\n  <body>\n    <h1>Schön, dass du da bist!</h1>\n  </body>\n</html>\n```"
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Mein Handy</title>\n  </head>\n  <body>\n    <h1>Meine Lieblings-Apps</h1>\n  </body>\n</html>\n```"
       ],
       "solution": {
-        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Meine Seite</title>\n  </head>\n  <body>\n    <h1>Schön, dass du da bist!</h1>\n  </body>\n</html>\n"
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Mein Handy</title>\n  </head>\n  <body>\n    <h1>Meine Lieblings-Apps</h1>\n  </body>\n</html>\n"
       },
       "tests": [
         { "type": "source", "file": "html", "matches": "<!doctype\\s+html>", "label": "Der DOCTYPE steht am Anfang" },
         { "type": "source", "file": "html", "matches": "<html[^>]*lang=[\"']?de", "label": "Das <html>-Tag hat das Attribut lang=\"de\"" },
         { "type": "source", "file": "html", "matches": "<meta[^>]*charset=[\"']?utf-8", "label": "Im head steht <meta charset=\"utf-8\">" },
-        { "type": "text", "selector": "title", "expected": "Meine Seite", "label": "Der Seitentitel lautet „Meine Seite“" },
-        { "type": "text", "selector": "body h1", "expected": "Schön, dass du da bist!", "label": "Die Überschrift lautet „Schön, dass du da bist!“" }
+        { "type": "text", "selector": "title", "expected": "Mein Handy", "label": "Der Seitentitel lautet „Mein Handy“" },
+        { "type": "text", "selector": "body h1", "expected": "Meine Lieblings-Apps", "label": "Die Überschrift lautet „Meine Lieblings-Apps“" }
       ]
     }
   ]
