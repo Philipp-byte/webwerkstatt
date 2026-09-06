@@ -28,7 +28,7 @@
     },
     {
       "type": "code",
-      "task": "Baue deinen Mini-Stundenplan mit **zwei Zeilen und zwei Spalten**:\n\nZeile 1: **Deutsch** und **Raum 101**\nZeile 2: **IT** und **Raum 204**",
+      "task": "Erstelle deinen Mini-Stundenplan als Tabelle mit **zwei Zeilen und zwei Spalten**:\n\nZeile 1: **Deutsch** und **Raum 101**\nZeile 2: **IT** und **Raum 204**",
       "starter": {
         "html": "<!-- Deine Tabelle hier -->\n",
         "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\n"
@@ -62,7 +62,7 @@
     },
     {
       "type": "code",
-      "task": "Eine Nummer größer – ein Trainingsplan mit **drei Zeilen und drei Spalten**:\n\nZeile 1: **Montag**, **Beine**, **45 min**\nZeile 2: **Mittwoch**, **Oberkörper**, **60 min**\nZeile 3: **Freitag**, **Ausdauer**, **30 min**\n\nTipp: Bau **eine** Zeile fertig, kopiere sie zweimal, tausche die Inhalte.",
+      "task": "Erstelle einen Trainingsplan als Tabelle mit **drei Zeilen und drei Spalten**:\n\nZeile 1: **Montag**, **Beine**, **45 min**\nZeile 2: **Mittwoch**, **Oberkörper**, **60 min**\nZeile 3: **Freitag**, **Ausdauer**, **30 min**\n\nTipp: Baue **eine** Zeile fertig, kopiere sie zweimal und tausche die Inhalte.",
       "starter": {
         "html": "<h2>Mein Trainingsplan</h2>\n<!-- Deine Tabelle hier -->\n",
         "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\n"
@@ -81,6 +81,36 @@
         { "type": "selector", "selector": "td", "min": 9, "label": "Es gibt neun Zellen (3 × 3)" },
         { "type": "text", "selector": "td", "expected": "Montag", "label": "Die erste Zelle enthält „Montag“" },
         { "type": "text", "selector": "tr:nth-child(3) td", "expected": "Freitag", "label": "Die dritte Zeile beginnt mit „Freitag“" }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Auf der Café-Startseite sollen die **Öffnungszeiten** als Tabelle stehen – mit einer **Kopfzeile**, die die Spalten benennt.\n\nDafür gibt es einen eigenen Zellen-Tag: `<th>` (table header) statt `<td>`. Der Browser zeigt ihn automatisch **fett**:\n\n```html\n<tr>\n  <th>Tag</th>\n  <th>Zeit</th>\n</tr>\n```\n\nDie Datenzeilen darunter bleiben normale `<td>`-Zellen. Mehr zu Kopfzeilen lernst du in der nächsten Lektion."
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Erweitere die Startseite zwischen dem Tipp-Absatz und „Mehr über uns“: Ergänze die Überschrift zweiter Stufe **Öffnungszeiten** und darunter eine Tabelle mit der Kopfzeile **Tag** / **Zeit** und einer Datenzeile **Montag bis Freitag** / **9:00 bis 15:00 Uhr**.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1 id=\"oben\">Café Pause</h1>\n    <p>\n      <a href=\"speisekarte.html\">Speisekarte</a> ·\n      <a href=\"galerie.html\">Galerie</a> ·\n      <a href=\"kontakt.html\">Kontakt</a>\n    </p>\n    <p><a href=\"#angebote\">Direkt zu den Angeboten</a></p>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2 id=\"angebote\">Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <p><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n    <h2>Mehr über uns</h2>\n    <ul>\n      <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n      <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n    </ul>\n    <p><a href=\"#oben\">Nach oben</a></p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "project": { "page": "index", "save": ["html"] },
+      "hints": [
+        "Der neue Block kommt nach dem Tipp-Absatz und vor die Überschrift „Mehr über uns“. Die Tabelle hat zwei Zeilen: Kopfzeile mit zwei <th>, Datenzeile mit zwei <td>.",
+        "So sieht die Tabelle aus:\n```html\n<table>\n  <tr>\n    <th>Tag</th>\n    <th>Zeit</th>\n  </tr>\n  <tr>\n    <td>Montag bis Freitag</td>\n    <td>9:00 bis 15:00 Uhr</td>\n  </tr>\n</table>\n```",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1 id=\"oben\">Café Pause</h1>\n    <p>\n      <a href=\"speisekarte.html\">Speisekarte</a> ·\n      <a href=\"galerie.html\">Galerie</a> ·\n      <a href=\"kontakt.html\">Kontakt</a>\n    </p>\n    <p><a href=\"#angebote\">Direkt zu den Angeboten</a></p>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2 id=\"angebote\">Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <p><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n    <h2>Öffnungszeiten</h2>\n    <table>\n      <tr>\n        <th>Tag</th>\n        <th>Zeit</th>\n      </tr>\n      <tr>\n        <td>Montag bis Freitag</td>\n        <td>9:00 bis 15:00 Uhr</td>\n      </tr>\n    </table>\n\n    <h2>Mehr über uns</h2>\n    <ul>\n      <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n      <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n    </ul>\n    <p><a href=\"#oben\">Nach oben</a></p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1 id=\"oben\">Café Pause</h1>\n    <p>\n      <a href=\"speisekarte.html\">Speisekarte</a> ·\n      <a href=\"galerie.html\">Galerie</a> ·\n      <a href=\"kontakt.html\">Kontakt</a>\n    </p>\n    <p><a href=\"#angebote\">Direkt zu den Angeboten</a></p>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2 id=\"angebote\">Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <p><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n    <h2>Öffnungszeiten</h2>\n    <table>\n      <tr>\n        <th>Tag</th>\n        <th>Zeit</th>\n      </tr>\n      <tr>\n        <td>Montag bis Freitag</td>\n        <td>9:00 bis 15:00 Uhr</td>\n      </tr>\n    </table>\n\n    <h2>Mehr über uns</h2>\n    <ul>\n      <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n      <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n    </ul>\n    <p><a href=\"#oben\">Nach oben</a></p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "h2:nth-of-type(5)", "expected": "Öffnungszeiten", "label": "Nach der Bestell-Anleitung folgt die Überschrift „Öffnungszeiten“" },
+        { "type": "text", "selector": "table tr:first-child th:first-child", "expected": "Tag", "label": "Die Kopfzeile beginnt mit „Tag“" },
+        { "type": "text", "selector": "table tr:first-child th:nth-child(2)", "expected": "Zeit", "label": "Die zweite Kopfzelle lautet „Zeit“" },
+        { "type": "text", "selector": "table tr:nth-child(2) td:first-child", "expected": "Montag bis Freitag", "label": "Die Datenzeile beginnt mit „Montag bis Freitag“" },
+        { "type": "text", "selector": "table tr:nth-child(2) td:nth-child(2)", "expected": "9:00 bis 15:00 Uhr", "label": "Die Zeit lautet „9:00 bis 15:00 Uhr“" },
+        { "type": "source", "file": "html", "matches": "</table>\\s*<h2>\\s*Mehr über uns", "label": "Direkt nach der Tabelle folgt „Mehr über uns“" },
+        { "type": "text", "selector": "a[href='#oben']", "expected": "Nach oben", "label": "Der Link „Nach oben“ ist noch da" },
+        { "type": "attr", "selector": "img[src='cafe-theke.svg']", "attr": "alt", "expected": "Die Theke vom Café Pause", "label": "Das Theken-Bild ist noch da" }
       ]
     }
   ]

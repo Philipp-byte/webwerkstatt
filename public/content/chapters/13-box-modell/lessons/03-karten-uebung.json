@@ -30,12 +30,14 @@
     },
     {
       "type": "code",
-      "task": "Gestalte die Profil-Karte:\n\n1. Hintergrundfarbe **#eaf2ff**\n2. `border-radius: 12px;`\n3. `padding: 20px;`\n4. `width: 300px;`",
+      "task": "**Gestalte** die Profil-Karte (Klasse `karte`): Hintergrundfarbe `#eaf2ff`, Ecken mit 12 Pixel abgerundet, rundum 20 Pixel Innenabstand und 300 Pixel breit.",
       "starter": {
         "html": "<div class=\"karte\">\n  <h2>Alex M.</h2>\n  <p>Level 42 · Team Nordlicht</p>\n  <p>Lieblingsspiel: Rennspiele</p>\n</div>\n",
         "css": ".karte {\n  /* Deine vier Eigenschaften hier */\n}\n"
       },
-      "editable": ["css"],
+      "editable": [
+        "css"
+      ],
       "hints": [
         "Alle vier Eigenschaften kommen in die .karte-Regel – der Spickzettel oben hilft.",
         "Für den Hintergrund: background-color: #eaf2ff;",
@@ -45,10 +47,93 @@
         "css": ".karte {\n  background-color: #eaf2ff;\n  border-radius: 12px;\n  padding: 20px;\n  width: 300px;\n}\n"
       },
       "tests": [
-        { "type": "style", "selector": ".karte", "prop": "background-color", "expected": "#eaf2ff", "label": "Die Karte hat den Hintergrund #eaf2ff" },
-        { "type": "style", "selector": ".karte", "prop": "border-top-left-radius", "expected": "12px", "label": "Die Ecken sind mit 12px abgerundet" },
-        { "type": "style", "selector": ".karte", "prop": "padding-top", "expected": "20px", "label": "Der Innenabstand beträgt 20px" },
-        { "type": "style", "selector": ".karte", "prop": "width", "expected": "300px", "label": "Die Karte ist 300px breit" }
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "background-color",
+          "expected": "#eaf2ff",
+          "label": "Die Karte hat den Hintergrund #eaf2ff"
+        },
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "border-top-left-radius",
+          "expected": "12px",
+          "label": "Die Ecken sind mit 12px abgerundet"
+        },
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "padding-top",
+          "expected": "20px",
+          "label": "Der Innenabstand beträgt 20px"
+        },
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "width",
+          "expected": "300px",
+          "label": "Die Karte ist 300px breit"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Zwei Feinschliffe für alle Seiten: Die Bilder (Theke, Kuchen, Gastraum) bekommen runde Ecken, und die Tabellen bekommen etwas Innenabstand, damit der Inhalt nicht am weißen Rand klebt.\n\nCSS-Tab: dein Stylesheet. HTML gesperrt 🔒."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Stylesheet:\n\n1. Eine neue Regel am Ende für alle Bilder (`img`): Ecken mit 12 Pixel abgerundet\n2. In der bestehenden `table`-Regel: rundum 8 Pixel Innenabstand\n\nDer weiße Tabellen-Hintergrund bleibt.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "css"
+        ]
+      },
+      "hints": [
+        "Runde Ecken: border-radius. Die img-Regel kommt ganz unten, das padding als neue Zeile in die table-Regel.",
+        "img mit border-radius 12px; in table zusätzlich padding mit 8px – nach background-color.",
+        "```css\nbody {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n  padding: 8px;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n}\n\nimg {\n  border-radius: 12px;\n}\n```"
+      ],
+      "solution": {
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n  padding: 8px;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n}\n\nimg {\n  border-radius: 12px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "img",
+          "prop": "border-top-left-radius",
+          "expected": "12px",
+          "label": "Die Bilder haben mit 12px abgerundete Ecken"
+        },
+        {
+          "type": "style",
+          "selector": "table",
+          "prop": "padding-top",
+          "expected": "8px",
+          "label": "Die Tabellen haben 8px Innenabstand"
+        },
+        {
+          "type": "style",
+          "selector": "table",
+          "prop": "background-color",
+          "expected": "white",
+          "label": "Der weiße Tabellen-Hintergrund ist noch da"
+        },
+        {
+          "type": "style",
+          "selector": ".hinweis",
+          "prop": "width",
+          "expected": "400px",
+          "label": "Die Hinweis-Box ist weiterhin 400px breit"
+        }
       ]
     }
   ]

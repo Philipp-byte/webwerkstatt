@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Bevor Flexbox ins Café-Projekt kommt, eine kurze Abruf-Runde zu **Schrift & Text** und dem **Box-Modell**. Was du selbst aus dem Gedächtnis holst, bleibt am längsten hängen!"
+      "text": "Bevor Flexbox das Café-Layout vollendet, eine kurze Abruf-Runde zu **Schrift & Text** und dem **Box-Modell**. Was du selbst aus dem Gedächtnis holst, bleibt am längsten hängen!\n\nZum Schluss eine Café-Etappe, die beides im Footer verbindet."
     },
     {
       "type": "quiz",
@@ -22,7 +22,9 @@
       "text": "Die Box soll einen 2px dicken, **gepunkteten** Rahmen in Kaffeebraun bekommen. Welche Linienart fehlt?",
       "template": "border: 2px ___ #5a3e2b;",
       "solution": "dotted",
-      "accept": ["dotted"],
+      "accept": [
+        "dotted"
+      ],
       "hint": "Gepunktet heißt dotted – gestrichelt wäre dashed."
     },
     {
@@ -41,35 +43,160 @@
       "text": "Die Karte soll **runde Ecken** mit 12px Radius bekommen. Vervollständige den Eigenschaftsnamen:",
       "template": "border-___: 12px;",
       "solution": "radius",
-      "accept": ["radius"],
+      "accept": [
+        "radius"
+      ],
       "hint": "Radius wie beim Kreis – zusammen mit border ergibt das die runden Ecken."
     },
     {
       "type": "code",
-      "task": "Gestalte die Ankündigungs-Karte – alles Wiederholung:\n\n1. Der `body` bekommt `font-family: Arial, sans-serif;`\n2. Die `h2` wird **zentriert**\n3. `.karte` bekommt: `border: 3px solid #4a90d9;`, `padding: 16px;`, `width: 300px;` und `border-radius: 12px;`\n4. Der Absatz mit der Klasse `wichtig` wird **kursiv**",
+      "task": "**Gestalte** die Ankündigungs-Karte – alles Wiederholung:\n\n1. Der `body` nutzt Arial, ersatzweise eine serifenlose Schrift\n2. Die `h2` steht zentriert\n3. Die Klasse `karte`: 3 Pixel dicker, durchgezogener Rahmen in `#4a90d9`, 16 Pixel Innenabstand, 300 Pixel breit, Ecken mit 12 Pixel gerundet\n4. Der Absatz der Klasse `wichtig` wird kursiv",
       "starter": {
         "html": "<div class=\"karte\">\n  <h2>Kino-Abend</h2>\n  <p>Freitag, 19 Uhr im Musiksaal.</p>\n  <p class=\"wichtig\">Eintritt frei – Popcorn gibt es vor Ort!</p>\n</div>\n",
         "css": "/* Deine Regeln hier */\n"
       },
-      "editable": ["css"],
+      "editable": [
+        "css"
+      ],
       "hints": [
-        "Du brauchst vier Regeln: body, h2, .karte und .wichtig.",
-        "Zentrieren: text-align: center; – kursiv: font-style: italic; – die Klasse sprichst du mit .wichtig an.",
+        "Du brauchst vier Regeln: body, h2, .karte und .wichtig. Rahmen = border (Dicke, Art, Farbe), runde Ecken = border-radius.",
+        "Zentrieren: text-align: center; – kursiv: font-style: italic; – die Karte bekommt border: 3px solid #4a90d9; padding: 16px; width: 300px; border-radius: 12px;",
         "```css\nbody {\n  font-family: Arial, sans-serif;\n}\nh2 {\n  text-align: center;\n}\n.karte {\n  border: 3px solid #4a90d9;\n  padding: 16px;\n  width: 300px;\n  border-radius: 12px;\n}\n.wichtig {\n  font-style: italic;\n}\n```"
       ],
       "solution": {
         "css": "body {\n  font-family: Arial, sans-serif;\n}\nh2 {\n  text-align: center;\n}\n.karte {\n  border: 3px solid #4a90d9;\n  padding: 16px;\n  width: 300px;\n  border-radius: 12px;\n}\n.wichtig {\n  font-style: italic;\n}\n"
       },
       "tests": [
-        { "type": "style", "selector": "body", "prop": "font-family", "expected": "Arial", "contains": true, "label": "Die Seite nutzt Arial" },
-        { "type": "style", "selector": "h2", "prop": "text-align", "expected": "center", "label": "Die Überschrift ist zentriert" },
-        { "type": "style", "selector": ".karte", "prop": "border-top-width", "expected": "3px", "label": "Der Rahmen ist 3px dick" },
-        { "type": "style", "selector": ".karte", "prop": "border-top-style", "expected": "solid", "label": "Der Rahmen ist durchgezogen" },
-        { "type": "style", "selector": ".karte", "prop": "border-top-color", "expected": "#4a90d9", "label": "Der Rahmen hat die Farbe #4a90d9" },
-        { "type": "style", "selector": ".karte", "prop": "padding-top", "expected": "16px", "label": "Der Innenabstand beträgt 16px" },
-        { "type": "style", "selector": ".karte", "prop": "width", "expected": "300px", "label": "Die Karte ist 300px breit" },
-        { "type": "style", "selector": ".karte", "prop": "border-top-left-radius", "expected": "12px", "label": "Die Ecken sind mit 12px abgerundet" },
-        { "type": "style", "selector": ".wichtig", "prop": "font-style", "expected": "italic", "label": "Der wichtige Hinweis ist kursiv" }
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "font-family",
+          "expected": "Arial",
+          "contains": true,
+          "label": "Die Seite nutzt Arial"
+        },
+        {
+          "type": "style",
+          "selector": "h2",
+          "prop": "text-align",
+          "expected": "center",
+          "label": "Die Überschrift ist zentriert"
+        },
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "border-top-width",
+          "expected": "3px",
+          "label": "Der Rahmen ist 3px dick"
+        },
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "border-top-style",
+          "expected": "solid",
+          "label": "Der Rahmen ist durchgezogen"
+        },
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "border-top-color",
+          "expected": "#4a90d9",
+          "label": "Der Rahmen hat die Farbe #4a90d9"
+        },
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "padding-top",
+          "expected": "16px",
+          "label": "Der Innenabstand beträgt 16px"
+        },
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "width",
+          "expected": "300px",
+          "label": "Die Karte ist 300px breit"
+        },
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "border-top-left-radius",
+          "expected": "12px",
+          "label": "Die Ecken sind mit 12px abgerundet"
+        },
+        {
+          "type": "style",
+          "selector": ".wichtig",
+          "prop": "font-style",
+          "expected": "italic",
+          "label": "Der wichtige Hinweis ist kursiv"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Der Footer der Startseite hat schon seinen hellen Hintergrund – aber die Adresse klebt am Rand und steht links. Heute bekommt er Luft (Box-Modell) und eine mittig gesetzte Adresse (Text).\n\nCSS-Tab: dein Stylesheet. HTML gesperrt 🔒. Du erweiterst nur die bestehende Regel für `footer`."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** die bestehende Regel für `footer`: rundum 16 Pixel Innenabstand, und der Text im Footer steht in der Mitte. Beide Zeilen kommen ans Ende der Regel – der helle Hintergrund bleibt.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n  padding: 8px;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n  display: flex;\n  gap: 16px;\n  justify-content: center;\n}\n\nimg {\n  border-radius: 12px;\n}\n\nth, td {\n  padding: 6px;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "css"
+        ]
+      },
+      "hints": [
+        "Innenabstand ist padding, die Textausrichtung text-align – beides in die footer-Regel, nach background-color.",
+        "padding: 16px; und text-align: center; – nichts an der Hintergrundfarbe ändern.",
+        "```css\nbody {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n  padding: 16px;\n  text-align: center;\n}\n\ntable {\n  background-color: white;\n  padding: 8px;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n  display: flex;\n  gap: 16px;\n  justify-content: center;\n}\n\nimg {\n  border-radius: 12px;\n}\n\nth, td {\n  padding: 6px;\n}\n```"
+      ],
+      "solution": {
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n  padding: 16px;\n  text-align: center;\n}\n\ntable {\n  background-color: white;\n  padding: 8px;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n  display: flex;\n  gap: 16px;\n  justify-content: center;\n}\n\nimg {\n  border-radius: 12px;\n}\n\nth, td {\n  padding: 6px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "footer",
+          "prop": "padding-top",
+          "expected": "16px",
+          "label": "Der Footer hat 16px Innenabstand"
+        },
+        {
+          "type": "style",
+          "selector": "footer",
+          "prop": "text-align",
+          "expected": "center",
+          "label": "Der Text im Footer ist zentriert"
+        },
+        {
+          "type": "style",
+          "selector": "footer",
+          "prop": "background-color",
+          "expected": "#efe6d4",
+          "label": "Der helle Footer-Hintergrund ist noch da"
+        },
+        {
+          "type": "style",
+          "selector": "footer p",
+          "prop": "color",
+          "expected": "#5b6b7c",
+          "label": "Die graue Adress-Schrift aus Kapitel 11 ist noch da"
+        },
+        {
+          "type": "style",
+          "selector": "nav",
+          "prop": "justify-content",
+          "expected": "center",
+          "label": "Die zentrierte Navigation ist noch da"
+        }
       ]
     }
   ]

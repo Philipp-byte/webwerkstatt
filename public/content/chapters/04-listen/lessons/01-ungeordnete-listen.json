@@ -36,12 +36,14 @@
       "text": "Ein Eintrag ist kaputt: Setze den fehlenden **öffnenden Tag** ein.",
       "template": "<ul>\n  <li>Pizza</li>\n  <___>Döner</li>\n</ul>",
       "solution": "li",
-      "accept": ["li"],
+      "accept": [
+        "li"
+      ],
       "hint": "Jeder Listeneintrag beginnt mit `<li>`."
     },
     {
       "type": "code",
-      "task": "Erstelle eine ungeordnete Liste mit **mindestens drei** Teilen deines Gaming- oder Handy-Setups.\n\n1. Öffne unter der Überschrift eine `<ul>`.\n2. Schreibe jedes Teil in ein eigenes `<li>`.\n3. Vergiss die schließenden Tags nicht!",
+      "task": "Erstelle unter der Überschrift eine ungeordnete Liste mit **mindestens drei** Teilen deines Gaming- oder Handy-Setups – jedes Teil als eigener Eintrag.",
       "starter": {
         "html": "<h2>Mein Setup</h2>\n<!-- Deine Liste hier -->\n"
       },
@@ -54,8 +56,81 @@
         "html": "<h2>Mein Setup</h2>\n<ul>\n  <li>Monitor</li>\n  <li>Headset</li>\n  <li>Controller</li>\n</ul>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "ul", "min": 1, "label": "Es gibt eine <ul>-Liste" },
-        { "type": "selector", "selector": "ul li", "min": 3, "label": "Die Liste hat mindestens drei Einträge" }
+        {
+          "type": "selector",
+          "selector": "ul",
+          "min": 1,
+          "label": "Es gibt eine <ul>-Liste"
+        },
+        {
+          "type": "selector",
+          "selector": "ul li",
+          "min": 3,
+          "label": "Die Liste hat mindestens drei Einträge"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Gäste wollen wissen, was es gibt. Die Startseite bekommt vor der Trennlinie einen neuen Abschnitt „Das gibt es bei uns“ mit einer ersten, noch flachen Liste: Getränke und Snacks. Die Unterpunkte folgen in Lektion 3."
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Ergänze zwischen dem Team-Absatz und der Trennlinie einen Abschnitt: eine Überschrift zweiter Stufe **Das gibt es bei uns** und darunter eine Aufzählung mit genau zwei Einträgen: **Getränke** und **Snacks**.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Der neue Abschnitt steht zwischen dem Team-Absatz und der <hr>: erst die h2, dann die Liste mit zwei Einträgen.",
+        "Die Liste: <ul>, darin <li>Getränke</li> und <li>Snacks</li>, dann </ul>. Jeder Eintrag in einer eigenen Zeile, zwei Leerzeichen eingerückt.",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke</li>\n      <li>Snacks</li>\n    </ul>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke</li>\n      <li>Snacks</li>\n    </ul>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "h2:nth-of-type(3)",
+          "expected": "Das gibt es bei uns",
+          "label": "Die dritte Abschnitts-Überschrift lautet „Das gibt es bei uns“"
+        },
+        {
+          "type": "selector",
+          "selector": "ul > li",
+          "count": 2,
+          "label": "Die Aufzählung hat genau zwei Einträge"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:first-child",
+          "expected": "Getränke",
+          "label": "Der erste Eintrag lautet „Getränke“"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:last-child",
+          "expected": "Snacks",
+          "label": "Der zweite Eintrag lautet „Snacks“"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "</ul>\\s*<hr",
+          "label": "Die Liste steht direkt über der Trennlinie"
+        },
+        {
+          "type": "text",
+          "selector": "h2:nth-of-type(2)",
+          "expected": "Unser Team",
+          "label": "Der Abschnitt „Unser Team“ ist noch da"
+        }
       ]
     }
   ]

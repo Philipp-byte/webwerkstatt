@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Wiederholungsrunde – aktives Abrufen aus dem Gedächtnis wirkt besser als jedes Nochmal-Lesen. Heute dran: **Text** (Überschriften, Absätze, `<hr>`, `<strong>`, `<em>`) und **Listen** bis zur verschachtelten Packliste – Thema: dein Traumurlaub."
+      "text": "Wiederholungsrunde – aktives Abrufen aus dem Gedächtnis wirkt besser als jedes Nochmal-Lesen. Heute dran: **Text** (Überschriften, Absätze, `<hr>`, `<strong>`, `<em>`) und **Listen** bis zur verschachtelten Packliste – Thema: dein Traumurlaub. Zum Schluss verbindest du im Café-Projekt **Liste und Links**."
     },
     {
       "type": "quiz",
@@ -26,7 +26,7 @@
     },
     {
       "type": "code",
-      "task": "Baue die Startseite deiner Urlaubsplanung:\n\n1. `<h1>` mit dem Text **Mein Traumurlaub**\n2. Ein Absatz über den Urlaub – mindestens ein Wort darin mit `<em>` betont\n3. Trennlinie `<hr>`\n4. `<h2>` mit dem Text **Meine Top-3-Ziele**\n5. Darunter eine **nummerierte Liste** mit deinen drei Wunschzielen",
+      "task": "Erstelle die Startseite deiner Urlaubsplanung:\n\n1. Hauptüberschrift **Mein Traumurlaub**\n2. Ein Absatz über den Urlaub – mindestens ein Wort darin **betont** (wie in Kapitel 3 gelernt)\n3. Eine Trennlinie\n4. Überschrift zweiter Stufe **Meine Top-3-Ziele**\n5. Darunter eine nummerierte Liste mit deinen drei Wunschzielen",
       "starter": {
         "html": "<!-- Deine Urlaubsseite entsteht hier -->\n"
       },
@@ -59,7 +59,7 @@
     },
     {
       "type": "code",
-      "task": "Jetzt die große Packliste – **verschachtelt**:\n\n1. Unter der Überschrift eine `<ul>` mit zwei Einträgen: **Kleidung** und **Strandsachen**\n2. Beide bekommen eine **innere `<ul>`** mit mindestens zwei Dingen\n3. Markiere ein besonders wichtiges Teil (z. B. Sonnencreme) mit `<strong>`",
+      "task": "Erweitere die Packliste – **verschachtelt**:\n\n1. Erstelle unter der Überschrift eine Punkte-Liste mit zwei Einträgen: **Kleidung** und **Strandsachen**\n2. Ergänze in beiden Einträgen eine innere Punkte-Liste mit mindestens zwei Dingen\n3. Kennzeichne ein besonders wichtiges Teil (z. B. Sonnencreme) als **wichtig** – es soll fett erscheinen",
       "starter": {
         "html": "<h2>Packliste</h2>\n<!-- Deine verschachtelte Liste hier -->\n"
       },
@@ -76,6 +76,31 @@
         { "type": "selector", "selector": "ul li ul li", "min": 4, "label": "Die inneren Listen haben zusammen mindestens vier Dinge" },
         { "type": "selector", "selector": "li strong", "min": 1, "label": "Ein besonders wichtiges Teil ist mit <strong> markiert" },
         { "type": "source", "file": "html", "matches": "<ul>\\s*<ul", "absent": true, "label": "Keine Liste steht direkt in einer Liste – die innere Liste wohnt im <li>" }
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Ersetze den Absatz mit dem Schul-Link durch einen neuen Abschnitt: Überschrift zweiter Stufe **Mehr über uns**, darunter eine Punkte-Liste mit zwei Links – **Unsere Schule** (https://www.example.com) und **Fotos aus dem Café** (galerie.html). Die Trennlinie bleibt direkt darunter.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>\n      <a href=\"speisekarte.html\">Speisekarte</a> ·\n      <a href=\"galerie.html\">Galerie</a> ·\n      <a href=\"kontakt.html\">Kontakt</a>\n    </p>\n    <p><a href=\"#angebote\">Direkt zu den Angeboten</a></p>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2 id=\"angebote\">Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <p><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n    <p><a href=\"https://www.example.com\">Unsere Schule</a></p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "project": { "page": "index", "save": ["html"] },
+      "hints": [
+        "Lösche den Absatz mit dem Schul-Link. An seine Stelle kommen eine <h2> und eine <ul> – jeder Listeneintrag enthält genau einen Link.",
+        "Ein Listeneintrag mit Link sieht so aus: <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>. Der Schul-Link wandert genauso in ein <li>.",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>\n      <a href=\"speisekarte.html\">Speisekarte</a> ·\n      <a href=\"galerie.html\">Galerie</a> ·\n      <a href=\"kontakt.html\">Kontakt</a>\n    </p>\n    <p><a href=\"#angebote\">Direkt zu den Angeboten</a></p>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2 id=\"angebote\">Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <p><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n    <h2>Mehr über uns</h2>\n    <ul>\n      <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n      <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n    </ul>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>\n      <a href=\"speisekarte.html\">Speisekarte</a> ·\n      <a href=\"galerie.html\">Galerie</a> ·\n      <a href=\"kontakt.html\">Kontakt</a>\n    </p>\n    <p><a href=\"#angebote\">Direkt zu den Angeboten</a></p>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2 id=\"angebote\">Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <p><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n    <h2>Mehr über uns</h2>\n    <ul>\n      <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n      <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n    </ul>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "h2:last-of-type", "expected": "Mehr über uns", "label": "Die letzte Überschrift zweiter Stufe lautet „Mehr über uns“" },
+        { "type": "text", "selector": "ul li a[href^='https://www.example.com']", "expected": "Unsere Schule", "label": "In der Liste steht der Link „Unsere Schule“" },
+        { "type": "text", "selector": "ul li a[href='galerie.html']", "expected": "Fotos aus dem Café", "label": "In der Liste steht der Link „Fotos aus dem Café“ zu galerie.html" },
+        { "type": "source", "file": "html", "matches": "<p>\\s*<a[^>]*example\\.com[^>]*>\\s*Unsere Schule\\s*</a>\\s*</p>", "absent": true, "label": "Der alte Link-Absatz ist verschwunden" },
+        { "type": "source", "file": "html", "matches": "</ul>\\s*<hr", "label": "Die Trennlinie folgt direkt auf die neue Liste" },
+        { "type": "text", "selector": "a[href='#angebote']", "expected": "Direkt zu den Angeboten", "label": "Der Sprungmarken-Link zu den Angeboten ist noch da" },
+        { "type": "text", "selector": "h1", "expected": "Café Pause", "label": "Die Überschrift „Café Pause“ ist noch da" }
       ]
     }
   ]

@@ -16,6 +16,32 @@ Schülerinnen und Schüler an beruflichen Schulen (1BK1T und TG, 16–19 Jahre),
 6. **Abwechslung:** nicht zweimal dasselbe Aufgabenformat direkt hintereinander.
 7. **Beispiele zum Anfassen:** example-Steps laden zum Verändern ein („Ändere X und beobachte Y“).
 
+## Aufgabenstellung: Ziel statt Code (Pflicht seit 05.09.2026)
+
+**Eine Aufgabe verrät niemals die Lösung.** Sie beschreibt, was am Ende zu sehen sein soll – nicht, welche Zeichen zu tippen sind.
+
+- **Operator am Satzanfang**, aus der offiziellen Liste (bezeichnen, nennen, beschreiben, vervollständigen, erklären, anwenden, erstellen, ergänzen = „erweitern“, übertragen, überprüfen, entwickeln, beurteilen …). Formulierungsgerüst: `<Operator> <Gegenstand>, <Bedingung>.` Genau ein Operator pro Aufgabe; mehrere Leistungen → nummerierte Teilschritte, jeder mit eigenem Operator.
+- **Verboten im task-Text:** CSS-Deklarationen (`padding: 20px;`), vollständige Tags mit Attributen (`<a href="…">`), fertige Zeilen aus der Lösung, nummerierte „Tipp-das-hier“-Listen. Der Validator meldet jeden Code-Span, der wörtlich in `solution` vorkommt, als FEHLER.
+- **Erlaubt:** Fachbegriffe und Elementnamen als Begriff (eine `<h2>`-Überschrift, die Eigenschaft `padding`, das Attribut `alt`), **Zielwerte** (Farbe `#5a3e2b`, 20 Pixel, Text „Café Pause“), weil die Tests exakte Werte brauchen – aber nie die Syntax, in der sie stehen.
+
+| schlecht (verrät) | gut (beschreibt das Ziel) |
+|---|---|
+| Ergänze `border: 3px solid #2f6fdb;` und `padding: 20px;` | **Gestalte** die Spieler-Karte: ein 3 Pixel dicker, durchgezogener Rahmen in `#2f6fdb` und rundum 20 Pixel Innenabstand. |
+| Schreibe `<a href="speisekarte.html">Speisekarte</a>` | **Erstelle** einen Link mit dem Text „Speisekarte“, der zur Datei speisekarte.html führt. |
+| Füge `<meta charset="utf-8">` in den head ein | **Vervollständige** den Kopfbereich um die Zeichensatz-Angabe, damit Umlaute richtig erscheinen. |
+
+Die gestuften Tipps bleiben (Tipp 1 Denkanstoß … letzter Tipp Komplettlösung) – sie sind freiwillig und liegen hinter einem Klick.
+
+## Jede Lektion endet mit einer Website-Etappe (Pflicht seit 05.09.2026)
+
+Der **letzte Schritt jeder Lektion** (Ausnahme: Kapitel 01, dort gibt es noch keinen Code) ist ein `code`-Step mit `project`, der das Gelernte in die Café-Pause-Website einbaut. Der Validator erzwingt das.
+
+- **Lernlektion:** baut genau das, was diese Lektion vermittelt hat, an der in der Projekt-Bibel festgelegten Stelle ein (kleine Etappe, 1–3 Änderungen).
+- **Wiederholungslektion:** die Etappe **verbindet mindestens zwei frühere Themen** miteinander (z. B. Liste + Links, Tabelle + Bild, class + CSS-Regel).
+- **Projekt-Lektion = Meilenstein:** größere Etappe, die Neues und Altes zusammenführt; am Ende ein Hinweis auf „Mein Café-Projekt“ (`#/projekt`).
+- **Etappen-Kette:** `starter` ist exakt der Vorzustand der Seite laut Projekt-Bibel, `solution` = Vorzustand + Ergänzung (nichts anderes umbauen!). Tests prüfen das **Neue** präzise plus 1–2 **Erhaltungstests** (etwas Altes muss noch da sein). So kann auch die Gegenprobe nicht fälschlich bestehen.
+- `project.save` darf `"html"`, `"css"` und `"js"` enthalten. Beim Öffnen ersetzt der gespeicherte Projektstand den Starter; Quereinsteiger bekommen den Bibel-Starter.
+
 ## Umfang & Textmenge (Regel seit 03.09.2026: die App BLÄTTERT)
 
 Die App zeigt **einen Schritt pro Seite** (Weiterblättern/Wischen statt Scrollen). Jeder Schritt muss **ohne Scrollen auf einen Blick** erfassbar sein:
@@ -90,7 +116,7 @@ Genau eine Lücke `___`. accept = alle akzeptierten Schreibweisen (exakter Vergl
 | `text` | selector, expected (String/Array), contains?, label | textContent, whitespace-normalisiert, exakt (mit contains: Teilstring) |
 | `attr` | selector, attr, expected ODER matches (Regex, case-insensitive), label | Attributwert |
 | `style` | selector, prop, expected (String/Array), contains?, label | getComputedStyle-Wert |
-| `console` | expected ODER matches ODER lines, label | console.log-Ausgaben |
+| `console` | expected (String/Array) ODER matches ODER lines, label | console.log-Ausgaben (Array = mehrere akzeptierte Schreibweisen, z. B. Gedankenstrich/Bindestrich) |
 | `source` | file (html/css/js), matches (Regex), absent?, label | Quelltext |
 | `action` | action: "click", selector | führt Klick aus (kein label) |
 

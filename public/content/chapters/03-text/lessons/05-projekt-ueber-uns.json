@@ -4,30 +4,59 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Weiter geht es mit dem **Café Pause**! In Etappe 1 hast du die Startseite gebaut: Grundgerüst, Titel, Überschrift und Willkommensabsatz. Dein gespeicherter Stand ist schon in der Werkbank geladen.\n\nHeute bekommt die Startseite einen Bereich **„Über uns“** – mit allem aus diesem Kapitel: `<h2>`, `<strong>` und `<em>`, einer `<hr>`-Trennlinie und der Adresse mit `<br>`."
+      "text": "**Meilenstein!** Die Startseite vom **Café Pause** hat jetzt zwei Abschnitte: „Über uns“ mit Hervorhebungen und „Unser Team“. Heute kontrollierst du die Reihenfolge der ganzen Seite – und der Team-Absatz bekommt noch eine Betonung.\n\nDanach schau in **Mein Café-Projekt** (`#/projekt`): Dort siehst du deine Website als Ganzes."
     },
     {
       "type": "code",
-      "task": "**Etappe 2: Über uns.**\n\nErgänze im `<body>` unter dem Willkommensabsatz:\n\n1. `<h2>` mit dem Text **Über uns**.\n2. Zwei Absätze über das Café – einer mit `<strong>`, einer mit `<em>`.\n3. Eine Trennlinie `<hr>`.\n4. Die Adresse als Absatz mit `<br>`: **Musterstraße 12** / **74072 Heilbronn**.\n\nAlles Vorhandene bleibt stehen!",
+      "task": "**Meilenstein.** Zwei Schritte:\n\n1. Überprüfe die Reihenfolge: Hauptüberschrift → zwei Absätze → „Über uns“ → „Unser Team“ → Trennlinie → Adresse.\n2. Gestalte den Team-Absatz so, dass **jeden Tag** betont ist – danach findest du die Seite unter „Mein Café-Projekt“ (#/projekt)",
       "starter": {
-        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen in unserem Schülercafé! Bei uns kannst du jede Pause genießen.</p>\n  </body>\n</html>\n"
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen jeden Tag hinter der Theke.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
       },
-      "project": { "page": "index", "save": ["html"] },
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
       "hints": [
-        "Alles Neue kommt in den body, unter den vorhandenen Willkommensabsatz – genau in der Reihenfolge aus der Aufgabe: h2, zwei Absätze, hr, Adress-Absatz.",
-        "Die Adresse ist EIN Absatz mit einem <br> mittendrin: <p>Musterstraße 12<br>74072 Heilbronn</p>. Und denk an je eine Hervorhebung in den beiden Über-uns-Absätzen: <strong>…</strong> im ersten, <em>…</em> im zweiten.",
-        "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen in unserem Schülercafé! Bei uns kannst du jede Pause genießen.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von Schülerinnen und Schülern <strong>selbst organisiert</strong>.</p>\n    <p>Alle Einnahmen fließen <em>direkt</em> in neue Projekte unserer Schule.</p>\n\n    <hr>\n    <p>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n```"
+        "Nur der Team-Absatz ändert sich: Die beiden Wörter „jeden Tag“ bekommen ein Betonungs-Element drumherum. Alles andere bleibt, wie es ist.",
+        "Der Team-Absatz lautet danach: <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n```"
       ],
       "solution": {
-        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen in unserem Schülercafé! Bei uns kannst du jede Pause genießen.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von Schülerinnen und Schülern <strong>selbst organisiert</strong>.</p>\n    <p>Alle Einnahmen fließen <em>direkt</em> in neue Projekte unserer Schule.</p>\n\n    <hr>\n    <p>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
       },
       "tests": [
-        { "type": "text", "selector": "h2", "expected": "Über uns", "label": "Die Zwischenüberschrift lautet „Über uns“" },
-        { "type": "selector", "selector": "body p", "min": 4, "label": "Die Seite hat mindestens vier Absätze (Willkommen, zwei über das Café, Adresse)" },
-        { "type": "selector", "selector": "p strong", "min": 1, "label": "In einem Über-uns-Absatz ist etwas mit <strong> hervorgehoben" },
-        { "type": "selector", "selector": "p em", "min": 1, "label": "In einem Über-uns-Absatz ist etwas mit <em> betont" },
-        { "type": "selector", "selector": "hr", "min": 1, "label": "Eine <hr>-Trennlinie trennt die Adresse ab" },
-        { "type": "source", "file": "html", "matches": "Musterstraße\\s*12\\s*<br\\s*/?>\\s*74072\\s+Heilbronn", "label": "Die Adresse steht mit <br> getrennt in einem Absatz" }
+        {
+          "type": "text",
+          "selector": "h2:nth-of-type(2) + p em",
+          "expected": "jeden Tag",
+          "label": "Im Team-Absatz ist „jeden Tag“ betont"
+        },
+        {
+          "type": "selector",
+          "selector": "em",
+          "count": 2,
+          "label": "Die Seite hat genau zwei Betonungen"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<h1>[\\s\\S]*?</p>\\s*<p>[\\s\\S]*?<h2>Über uns</h2>[\\s\\S]*?<h2>Unser Team</h2>[\\s\\S]*?<hr\\s*/?>\\s*<p>Café Pause",
+          "label": "Die Reihenfolge stimmt: h1, Absätze, Über uns, Unser Team, Trennlinie, Adresse"
+        },
+        {
+          "type": "text",
+          "selector": "em",
+          "expected": "selbst gemacht",
+          "label": "Die Betonung „selbst gemacht“ ist noch da"
+        },
+        {
+          "type": "text",
+          "selector": "strong",
+          "expected": "Schülerinnen und Schülern",
+          "label": "Die Hervorhebung „Schülerinnen und Schülern“ ist noch da"
+        }
       ]
     }
   ]

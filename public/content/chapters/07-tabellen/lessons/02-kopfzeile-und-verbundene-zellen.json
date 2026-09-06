@@ -51,7 +51,7 @@
     },
     {
       "type": "code",
-      "task": "Baue einen Tarif-Vergleich mit Titelzeile:\n\n1. Erste Zeile: **eine** `<th>` mit `colspan=\"3\"` und dem Text **Handy-Tarife**\n2. Kopfzeile mit drei `<th>`: **Tarif**, **Daten**, **Preis**\n3. Zwei Datenzeilen mit je drei `<td>` – die erste beginnt mit **Tarif S** (Daten und Preis denkst du dir aus)",
+      "task": "Erstelle einen Tarif-Vergleich als Tabelle:\n\n1. Erste Zeile: eine **einzige** Kopfzelle, die über alle drei Spalten reicht, mit dem Text **Handy-Tarife**\n2. Kopfzeile mit drei Kopfzellen: **Tarif**, **Daten**, **Preis**\n3. Zwei Datenzeilen mit je drei Zellen – die erste beginnt mit **Tarif S** (Daten und Preis denkst du dir aus)",
       "starter": {
         "html": "<!-- Dein Tarif-Vergleich hier -->\n",
         "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\nth { background-color: #f0e6d6; }\n"
@@ -72,6 +72,36 @@
         { "type": "selector", "selector": "tr", "min": 4, "label": "Titelzeile, Kopfzeile und zwei Datenzeilen sind da" },
         { "type": "selector", "selector": "td", "min": 6, "label": "Die Datenzeilen haben je drei Zellen" },
         { "type": "text", "selector": "td", "expected": "Tarif S", "label": "Die erste Datenzeile beginnt mit „Tarif S“" }
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Erstelle die Seite speisekarte.html: Grundgerüst mit Titel **Speisekarte – Café Pause**, Hauptüberschrift **Speisekarte**, Absatz mit Link **Zurück zur Startseite** (index.html). Ergänze die Überschrift zweiter Stufe **Getränke** mit Tabelle: Kopfzeile Getränk, Größe, Preis – Zeilen Kakao (0,3 l, 1,50 €), Tee (0,3 l, 1,00 €), Apfelschorle (0,5 l, 1,80 €).",
+      "starter": {
+        "html": "<!-- speisekarte.html – hier entsteht die Speisekarte vom Café Pause -->\n"
+      },
+      "project": { "page": "speisekarte", "save": ["html"] },
+      "hints": [
+        "Grundgerüst wie bei der Galerie (DOCTYPE, html mit lang, head mit charset und title, body). Die Tabelle hat vier Zeilen: eine Kopfzeile mit <th>, drei Datenzeilen mit je drei <td>.",
+        "Kopfzeile und erste Datenzeile:\n```html\n<tr>\n  <th>Getränk</th>\n  <th>Größe</th>\n  <th>Preis</th>\n</tr>\n<tr>\n  <td>Kakao</td>\n  <td>0,3 l</td>\n  <td>1,50 €</td>\n</tr>\n```\nTee und Apfelschorle folgen nach demselben Muster.",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Speisekarte – Café Pause</title>\n  </head>\n  <body>\n    <h1>Speisekarte</h1>\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n\n    <h2>Getränke</h2>\n    <table>\n      <tr>\n        <th>Getränk</th>\n        <th>Größe</th>\n        <th>Preis</th>\n      </tr>\n      <tr>\n        <td>Kakao</td>\n        <td>0,3 l</td>\n        <td>1,50 €</td>\n      </tr>\n      <tr>\n        <td>Tee</td>\n        <td>0,3 l</td>\n        <td>1,00 €</td>\n      </tr>\n      <tr>\n        <td>Apfelschorle</td>\n        <td>0,5 l</td>\n        <td>1,80 €</td>\n      </tr>\n    </table>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Speisekarte – Café Pause</title>\n  </head>\n  <body>\n    <h1>Speisekarte</h1>\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n\n    <h2>Getränke</h2>\n    <table>\n      <tr>\n        <th>Getränk</th>\n        <th>Größe</th>\n        <th>Preis</th>\n      </tr>\n      <tr>\n        <td>Kakao</td>\n        <td>0,3 l</td>\n        <td>1,50 €</td>\n      </tr>\n      <tr>\n        <td>Tee</td>\n        <td>0,3 l</td>\n        <td>1,00 €</td>\n      </tr>\n      <tr>\n        <td>Apfelschorle</td>\n        <td>0,5 l</td>\n        <td>1,80 €</td>\n      </tr>\n    </table>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        { "type": "source", "file": "html", "matches": "<!doctype\\s+html>", "label": "Der DOCTYPE steht am Anfang" },
+        { "type": "attr", "selector": "html", "attr": "lang", "expected": "de", "label": "Die Seite ist als deutsch gekennzeichnet" },
+        { "type": "source", "file": "html", "matches": "<meta\\s+charset=[\"']?utf-8", "label": "Die Zeichensatz-Angabe utf-8 steht im Kopfbereich" },
+        { "type": "text", "selector": "title", "expected": "Speisekarte – Café Pause", "label": "Der Seitentitel lautet „Speisekarte – Café Pause“" },
+        { "type": "text", "selector": "body h1", "expected": "Speisekarte", "label": "Die Hauptüberschrift lautet „Speisekarte“" },
+        { "type": "text", "selector": "h1 + p a[href='index.html']", "expected": "Zurück zur Startseite", "label": "Direkt unter der Hauptüberschrift führt „Zurück zur Startseite“ zu index.html" },
+        { "type": "text", "selector": "h2", "expected": "Getränke", "label": "Die Überschrift zweiter Stufe lautet „Getränke“" },
+        { "type": "selector", "selector": "table tr:first-child th", "count": 3, "label": "Die Kopfzeile hat drei Kopfzellen" },
+        { "type": "text", "selector": "table tr:first-child th:nth-child(2)", "expected": "Größe", "label": "Die mittlere Kopfzelle lautet „Größe“" },
+        { "type": "selector", "selector": "table tr", "count": 4, "label": "Die Tabelle hat eine Kopfzeile und drei Datenzeilen" },
+        { "type": "text", "selector": "table tr:nth-child(2) td:first-child", "expected": "Kakao", "label": "Die erste Datenzeile beginnt mit „Kakao“" },
+        { "type": "text", "selector": "table tr:nth-child(4) td:nth-child(3)", "expected": "1,80 €", "label": "Die Apfelschorle kostet „1,80 €“" }
       ]
     }
   ]

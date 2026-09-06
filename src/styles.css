@@ -580,6 +580,20 @@ body {
   color: #93a3ba;
 }
 
+/* CodeMirror-Editoren */
+
+.editor-wrap .cm-editor {
+  border: 1px solid #2a3750;
+}
+
+.editor-wrap.editor-gesperrt .cm-editor {
+  opacity: 0.8;
+}
+
+.editor-wrap.editor-gesperrt .cm-content {
+  cursor: not-allowed;
+}
+
 .werkbank-buttons {
   display: flex;
   align-items: center;

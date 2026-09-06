@@ -42,6 +42,7 @@ export async function renderProjekt(app) {
     iframe.srcdoc = buildSrcdoc({
       html: html ?? platzhalter(seite),
       css: html != null ? projekt.css ?? '' : '',
+      js: html != null && seite.page === 'index' ? projekt.js ?? '' : '',
     });
     navEl.querySelectorAll('button').forEach((b) => {
       b.classList.toggle('aktiv', b.dataset.page === seite.page);

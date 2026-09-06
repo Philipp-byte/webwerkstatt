@@ -16,7 +16,9 @@
       "text": "In der WebWerkstatt hat CSS seinen **eigenen Tab** – wie im echten Projekt eine eigene Datei `style.css`. Ändere `red` in `blue`, `green` oder `hotpink` und beobachte die Vorschau!",
       "html": "<h1>Clan Nordlicht</h1>\n<p>Unser Motto: Erst denken, dann klicken.</p>\n",
       "css": "h1 {\n  color: red;\n}\n",
-      "editable": ["css"]
+      "editable": [
+        "css"
+      ]
     },
     {
       "type": "explain",
@@ -31,7 +33,9 @@
       "text": "Hier ist absichtlich beides kaputt: In der `h1`-Regel steckt ein **Tippfehler** (`colr`), beim Absatz **fehlt ein Semikolon** – dadurch funktioniert auch die Zeile danach nicht. Repariere beide Stellen!",
       "html": "<h1>Fehlersuche</h1>\n<p>Ich sollte grün auf hellgelbem Grund sein.</p>\n",
       "css": "h1 {\n  colr: red;\n}\np {\n  color: green\n  background-color: lightyellow;\n}\n",
-      "editable": ["css"]
+      "editable": [
+        "css"
+      ]
     },
     {
       "type": "quiz",
@@ -49,17 +53,21 @@
       "text": "Ein Zeichen fehlt: Setze das **Satzzeichen** ein, das zwischen Eigenschaft und Wert gehört.",
       "template": "h1 { color___ red; }",
       "solution": ":",
-      "accept": [":"],
+      "accept": [
+        ":"
+      ],
       "hint": "Zwischen Eigenschaft und Wert steht immer ein **Doppelpunkt** – das Semikolon kommt erst ganz ans Ende."
     },
     {
       "type": "code",
-      "task": "Der HTML-Tab ist gesperrt 🔒 – du arbeitest nur im **CSS-Tab**.\n\nSchreibe zwei Regeln für die Turnier-Ankündigung:\n\n1. **Alle Absätze** (`p`) werden **blau** (`blue`)\n2. Die **Überschrift** (`h1`) wird **grün** (`green`)\n\nDenk an Doppelpunkt, Semikolon und geschweifte Klammern!",
+      "task": "**Erstelle** zwei Regeln für die Turnier-Ankündigung (der HTML-Tab ist gesperrt 🔒):\n\n1. Alle Absätze werden blau (`blue`)\n2. Die Hauptüberschrift wird grün (`green`)\n\nDenk an Doppelpunkt, Semikolon und geschweifte Klammern!",
       "starter": {
         "html": "<h1>Clan-Turnier am Samstag</h1>\n<p>Anmeldung bis Freitag im Team-Chat.</p>\n<p>Start ist um 18 Uhr, Finale gegen 22 Uhr.</p>\n",
         "css": "/* Deine Regeln hier */\n"
       },
-      "editable": ["css"],
+      "editable": [
+        "css"
+      ],
       "hints": [
         "Die Selektoren für Absätze und Überschriften sind einfach p und h1 – ohne spitze Klammern.",
         "Die Eigenschaft für Textfarbe heißt color. Du brauchst zwei getrennte Regeln, jede mit eigenen geschweiften Klammern.",
@@ -69,8 +77,85 @@
         "css": "p {\n  color: blue;\n}\nh1 {\n  color: green;\n}\n"
       },
       "tests": [
-        { "type": "style", "selector": "p", "prop": "color", "expected": "blue", "label": "Absätze sind blau" },
-        { "type": "style", "selector": "h1", "prop": "color", "expected": "green", "label": "Die Überschrift ist grün" }
+        {
+          "type": "style",
+          "selector": "p",
+          "prop": "color",
+          "expected": "blue",
+          "label": "Absätze sind blau"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "color",
+          "expected": "green",
+          "label": "Die Überschrift ist grün"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Ab jetzt bekommt das Café sein **gemeinsames Stylesheet** `style.css` – der CSS-Tab ist genau diese Datei. Sie wächst in jeder Lektion, und ab Kapitel 11 gestaltest du damit alle Seiten.\n\nDer HTML-Tab zeigt die gegliederte Startseite als Vorschau und ist gesperrt 🔒. Heute: die erste Regel. Farbschema: Kaffeebraun `#5a3e2b` für Überschriften."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** die erste Regel im Café-Stylesheet (HTML 🔒): Die Hauptüberschrift „Café Pause“ erscheint in Kaffeebraun `#5a3e2b`. Ersetze dabei den Kommentar – das Stylesheet beginnt direkt mit deiner Regel.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "/* style.css – hier entsteht das gemeinsame Stylesheet vom Café Pause */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "css"
+        ]
+      },
+      "hints": [
+        "Der Selektor ist h1 – ohne spitze Klammern. Die Eigenschaft für die Textfarbe heißt color.",
+        "Eine Regel mit einer Deklaration: Selektor, geschweifte Klammern, darin color mit dem Hex-Code und Semikolon. Den Kommentar löschst du.",
+        "```css\nh1 {\n  color: #5a3e2b;\n}\n```"
+      ],
+      "solution": {
+        "css": "h1 {\n  color: #5a3e2b;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "color",
+          "expected": "#5a3e2b",
+          "label": "Die Überschrift „Café Pause“ ist kaffeebraun (#5a3e2b)"
+        },
+        {
+          "type": "style",
+          "selector": "h2",
+          "prop": "color",
+          "expected": "black",
+          "label": "Die Überschriften zweiter Stufe bleiben schwarz – nur h1 ist angesprochen"
+        },
+        {
+          "type": "style",
+          "selector": "main p",
+          "prop": "color",
+          "expected": "black",
+          "label": "Die Absätze bleiben schwarz"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "/\\*",
+          "absent": true,
+          "label": "Der Platzhalter-Kommentar ist ersetzt"
+        },
+        {
+          "type": "text",
+          "selector": "header h1",
+          "expected": "Café Pause",
+          "label": "Die Startseite zeigt weiterhin „Café Pause“"
+        }
       ]
     }
   ]

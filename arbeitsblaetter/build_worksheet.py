@@ -1,17 +1,25 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Arbeitsblatt-Generator der WebWerkstatt.
+"""Arbeitsblatt-Generator der WebWerkstatt (Version 2).
 
 Baut aus den Lektions-JSONs eines Kapitels ein Informations- & Aufgabenblatt
-im Layout der Arbeitsblatt-Skill-Familie (Akzentband, Kopfzeile Klasse|Fach|Logo,
-Ausgangssituation, Infokästen, Selbstkontrolle, genau eine Figur) und rendert
-es über build_pdf.py des layout-arbeitsblatt-Skills (Playwright) nach A4-PDF.
+im Layout der Arbeitsblatt-Skill-Familie und rendert es über build_pdf.py des
+layout-arbeitsblatt-Skills (Playwright) nach A4-PDF.
+
+Bausteine der Familie, die hier genutzt werden:
+  sheet-title, situation (Ausgangssituation mit Frage), info / info merke,
+  figur (die Grafiken der Lektionen, Farben auf var(--brand)/var(--accent)),
+  task mit task-title + task-meta (AFB/Zeit), teilaufgaben, answer, kasten,
+  hilfe (nur der erste, weiche Tipp – nie die Lösung), maskottchen, selbstcheck.
+
+Grundsatz: Das Blatt sagt NIE die Lösung vor. Es zeigt Aufgaben mit Operator,
+Antwortraum und einer Hilfe auf Abruf.
 
 Aufruf:
     python build_worksheet.py 03-text
     python build_worksheet.py --all
-    python build_worksheet.py --all --no-pdf     (nur HTML)
-    python build_worksheet.py 03-text --png      (zusätzlich Vorschau-PNGs)
+    python build_worksheet.py --all --no-pdf
+    python build_worksheet.py 03-text --png
 """
 
 import html
@@ -31,8 +39,8 @@ BUILD_PDF = Path.home() / ".claude" / "skills" / "layout-arbeitsblatt" / "script
 KLASSE = "BK1T / TG"
 FACH = "Informationstechnik"
 
-# Ausgangssituation je Kapitel – Pflichtbaustein der Skill-Familie:
-# wirft eine Frage auf, die das Blatt mit den erarbeiteten Ergebnissen beantwortet.
+# Ausgangssituation je Kapitel – Pflichtbaustein: wirft eine Frage auf,
+# die das Blatt mit den erarbeiteten Ergebnissen beantwortet.
 SITUATIONEN = {
     "01-wie-das-web-funktioniert": (
         "Lea tippt <b>cafe-pause.de</b> in ihr Handy und einen Wimpernschlag später ist die Seite da – "
@@ -106,7 +114,7 @@ SITUATIONEN = {
     ),
     "15-recht-im-web": (
         "Das Café Pause will online gehen. Ein Mitschüler warnt: „Ohne Impressum kannst du abgemahnt werden. "
-        "Und das Kuchenfoto aus Google darfst du sowieso nicht nehmen.“ Stimmt das?",
+        "Und das Kuchenfoto aus der Bildersuche darfst du sowieso nicht nehmen.“ Stimmt das?",
         "Welche Regeln gelten für Bilder, Impressum und Datenschutz auf echten Webseiten?",
     ),
     "16-javascript-start": (
@@ -151,9 +159,17 @@ ROBOTER_SVG = """<svg class="figur-svg" viewBox="0 0 80 96" xmlns="http://www.w3
   <rect x="44" y="87" width="10" height="9" rx="3" fill="var(--brand)"/>
 </svg>"""
 
+# Lektionsgrafiken nutzen feste App-Farben; die Familie verlangt Markenfarben.
+FARB_MAP = {
+    "#2f6fdb": "var(--brand)",
+    "#1a9e5c": "var(--brand)",
+    "#e0632e": "var(--accent)",
+    "#5b6b7c": "var(--muted)",
+    "#eef2f8": "var(--fill-2)",
+}
+
 
 def md_inline(text):
-    """**fett** und `code` innerhalb einer Zeile, Rest escaped."""
     out = html.escape(text)
     out = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", out)
     out = re.sub(r"`([^`]+)`", r"<code>\1</code>", out)
@@ -161,12 +177,11 @@ def md_inline(text):
 
 
 def md_block(text, max_absaetze=None):
-    """Mini-Markdown der Lektionen -> Bausteine der Blatt-Familie."""
     teile = str(text or "").split("```")
     st = []
     absatz_zahl = 0
     for i, teil in enumerate(teile):
-        if i % 2 == 1:  # Codeblock
+        if i % 2 == 1:
             code = re.sub(r"^[a-z]*\n", "", teil).rstrip("\n")
             st.append('<pre class="code">' + html.escape(code) + "</pre>")
             continue
@@ -181,13 +196,46 @@ def md_block(text, max_absaetze=None):
     return "".join(st)
 
 
+def aufgabe_mit_teilaufgaben(task):
+    """Aufgabentext in Leitsatz + nummerierte Teilaufgaben (ol.teilaufgaben) zerlegen."""
+    zeilen = [z.rstrip() for z in str(task or "").split("\n")]
+    leit, teile = [], []
+    for z in zeilen:
+        m = re.match(r"^\s*(\d+)[.)]\s+(.*)$", z)
+        if m:
+            teile.append(m.group(2).strip())
+        elif z.strip():
+            leit.append(z.strip())
+    out = "<p>" + md_inline(" ".join(leit)) + "</p>" if leit else ""
+    if teile:
+        out += '<ol class="teilaufgaben">' + "".join(f"<li>{md_inline(t)}</li>" for t in teile) + "</ol>"
+    return out
+
+
+def figur_html(svg, beschriftung):
+    svg = str(svg)
+    for hexcode, var in FARB_MAP.items():
+        svg = svg.replace(hexcode, var)
+    return f'<figure class="figur">{svg}<figcaption>{html.escape(beschriftung)}</figcaption></figure>'
+
+
 def code_kasten_hoehe(step):
-    """Höhe der Code-Freifläche aus dem Umfang der Musterlösung ableiten."""
     loesung = ""
     if isinstance(step.get("solution"), dict):
         loesung = "\n".join(v for v in step["solution"].values() if v)
     zeilen = max(4, loesung.count("\n") + 1)
     return min(80, 22 + zeilen * 4)
+
+
+def hilfe_html(step):
+    """Nur der erste, weiche Tipp – nie die Lösung."""
+    hints = step.get("hints") or []
+    if not hints:
+        return ""
+    tipp = str(hints[0])
+    if "```" in tipp:  # Codeblock wäre schon zu konkret
+        return ""
+    return f'<div class="hilfe"><b>Hilfe auf Abruf:</b> {md_inline(tipp)}</div>'
 
 
 def lade(pfad):
@@ -204,10 +252,7 @@ def baue_blatt(chapter_id, kapitel_nr):
         else:
             print(f"  WARNUNG: {chapter_id}/{lid}.json fehlt – wird übersprungen")
 
-    situation, frage = SITUATIONEN.get(
-        chapter_id,
-        (kapitel["description"], "Was steckt dahinter?"),
-    )
+    situation, frage = SITUATIONEN.get(chapter_id, (kapitel["description"], "Was steckt dahinter?"))
 
     st = []
     st.append(
@@ -222,6 +267,7 @@ def baue_blatt(chapter_id, kapitel_nr):
 
     aufgabe_nr = 0
     figur_gesetzt = False
+    grafik_gesetzt = False
 
     for index, lektion in enumerate(lektionen):
         ist_wiederholung = "wiederholung" in lektion["id"]
@@ -229,41 +275,49 @@ def baue_blatt(chapter_id, kapitel_nr):
         steps = lektion.get("steps", [])
         kurz = html.escape(lektion["title"])
 
-        # 1) Wissen: erster explain als Infokasten (max. 3 Absätze, Codeblock erlaubt)
+        # Wissen: erster explain als Infokasten; die erste Lektionsgrafik des Blatts als Figur
         if not ist_wiederholung:
             expl = next((s for s in steps if s["type"] == "explain"), None)
             if expl:
                 badge = "info merke" if ist_projekt else "info"
-                # Puffer-Wrapper: das Badge ragt 3,5 mm über den Kasten hinaus und
-                # würde am Seitenanfang von der Kopfzeile abgeschnitten – Padding
-                # bleibt (anders als Margin) auch nach einem Seitenumbruch erhalten.
                 st.append(
                     f'<div class="info-puffer"><aside class="{badge}"><h3>{kurz}</h3>'
                     + md_block(expl["text"], max_absaetze=3)
                     + "</aside></div>"
                 )
+            if not grafik_gesetzt:
+                mit_grafik = next((s for s in steps if s.get("figure")), None)
+                if mit_grafik:
+                    st.append(figur_html(mit_grafik["figure"], f"Abbildung: {lektion['title']}"))
+                    grafik_gesetzt = True
 
-        # 2) Aufgaben: erstes Quiz ODER erste Lücke, danach die letzte Code-Aufgabe
+        # Aufgaben: erstes Quiz ODER erste Lücke, dann die Etappe (letzter Code-Step);
+        # Wiederholungen: zwei Aufgaben; Projekt-Lektionen: nur die Etappe.
         quiz = next((s for s in steps if s["type"] == "quiz"), None)
         fill = next((s for s in steps if s["type"] == "fill"), None)
         codes = [s for s in steps if s["type"] == "code"]
+        etappe = codes[-1] if codes else None
         auswahl = []
-        if quiz:
-            auswahl.append(quiz)
-        elif fill:
-            auswahl.append(fill)
-        if codes:
-            auswahl.append(codes[-1])
-        if ist_wiederholung:  # Wiederholungen: zwei Aufgaben, kein Infokasten
-            auswahl = [s for s in (quiz, fill, codes[-1] if codes else None) if s][:2]
+        if ist_projekt:
+            auswahl = [etappe] if etappe else []
+        elif ist_wiederholung:
+            auswahl = [s for s in (quiz, fill, etappe) if s][:2]
+        else:
+            if quiz:
+                auswahl.append(quiz)
+            elif fill:
+                auswahl.append(fill)
+            if etappe:
+                auswahl.append(etappe)
 
         for step in auswahl:
             aufgabe_nr += 1
+            ist_etappe = step.get("project") is not None
             klasse = "task"
             if ist_wiederholung:
-                titel_zusatz = f"Wiederholung: {kurz.replace('Wiederholung', '').strip(' :–-') or 'früherer Stoff'}"
-            elif ist_projekt:
-                titel_zusatz = "Projekt Café Pause"
+                titel_zusatz = "Wiederholung"
+            elif ist_etappe:
+                titel_zusatz = "Website-Etappe: Café Pause"
             else:
                 titel_zusatz = kurz
             if step["type"] == "quiz":
@@ -279,19 +333,11 @@ def baue_blatt(chapter_id, kapitel_nr):
                     + '<pre class="code">' + html.escape(step["template"]) + "</pre>"
                     + '<div class="answer" style="--lines:1"></div>'
                 )
-            else:  # code
-                meta = ("AFB III · 15 min" if ist_projekt else "AFB II · 8 min")
-                starter = step.get("starter", {})
-                starter_datei = next((starter[k] for k in ("html", "css", "js") if starter.get(k)), "")
-                starter_html = ""
-                zeilen = [z for z in starter_datei.splitlines() if z.strip()]
-                if zeilen and len(zeilen) <= 14:
-                    starter_html = '<pre class="code">' + html.escape("\n".join(zeilen)) + "</pre>"
-                inhalt = (
-                    md_block(step["task"])
-                    + starter_html
-                    + f'<div class="kasten" style="--h:{code_kasten_hoehe(step)}mm"></div>'
-                )
+            else:
+                meta = "AFB III · 15 min" if ist_etappe else "AFB II · 8 min"
+                inhalt = aufgabe_mit_teilaufgaben(step["task"])
+                inhalt += f'<div class="kasten" style="--h:{code_kasten_hoehe(step)}mm"></div>'
+                inhalt += hilfe_html(step)
             st.append(
                 f'<article class="{klasse}">'
                 f'<h2 class="task-title">Aufgabe {aufgabe_nr} — {titel_zusatz}'
@@ -300,7 +346,6 @@ def baue_blatt(chapter_id, kapitel_nr):
                 + "</article>"
             )
 
-        # Figur einmalig nach der ersten Lektion
         if not figur_gesetzt and index == 0:
             spruch = SPRUECHE[(kapitel_nr - 1) % len(SPRUECHE)]
             st.append(
@@ -309,7 +354,6 @@ def baue_blatt(chapter_id, kapitel_nr):
             )
             figur_gesetzt = True
 
-    # Selbstkontrolle aus den Lernlektionen
     checks = "".join(
         f'<p><span class="chk"></span> Ich kann: {html.escape(l["title"])}</p>'
         for l in lektionen
@@ -318,19 +362,18 @@ def baue_blatt(chapter_id, kapitel_nr):
     st.append(
         '<section class="selbstcheck"><h2>Selbstkontrolle</h2>'
         + checks
-        + "<p>Alle Aufgaben kannst du in der WebWerkstatt-App selbst prüfen – dort gibt es zu jeder Aufgabe gestufte Tipps.</p></section>"
+        + "<p>Jede Aufgabe kannst du in der WebWerkstatt-App selbst prüfen – dort gibt es gestufte Tipps, "
+        "und deine Website wächst mit jeder Etappe.</p></section>"
     )
 
+    home = str(Path.home()).replace("\\", "/")
     kopf = (
         "<!doctype html>\n<html lang=\"de\">\n<head>\n<meta charset=\"utf-8\">\n"
         f"<title>WebWerkstatt Kapitel {kapitel_nr}</title>\n"
-        "<link rel=\"stylesheet\" href=\"file:///"
-        + str(Path.home()).replace("\\", "/")
-        + "/.claude/skills/layout-arbeitsblatt/assets/opensans.css\">\n"
-        "<link rel=\"stylesheet\" href=\"file:///"
-        + str(Path.home()).replace("\\", "/")
-        + "/.claude/skills/layout-arbeitsblatt/assets/arbeitsblatt.css\">\n"
-        "<style>.opt-zeile{margin:1mm 0;} .info-puffer{padding-top:3.5mm;break-inside:avoid;page-break-inside:avoid;} .info-puffer aside.info{margin-top:0;}</style>\n"
+        f"<link rel=\"stylesheet\" href=\"file:///{home}/.claude/skills/layout-arbeitsblatt/assets/opensans.css\">\n"
+        f"<link rel=\"stylesheet\" href=\"file:///{home}/.claude/skills/layout-arbeitsblatt/assets/arbeitsblatt.css\">\n"
+        "<style>.opt-zeile{margin:1mm 0;} .info-puffer{padding-top:3.5mm;break-inside:avoid;page-break-inside:avoid;}"
+        " .info-puffer aside.info{margin-top:0;} figure.figur svg{max-height:52mm;}</style>\n"
         "</head>\n"
         f'<body data-schule="JJWS" data-klasse="{KLASSE}" data-fach="{FACH}" data-lehrkraft="Riegert">\n'
     )
@@ -338,7 +381,7 @@ def baue_blatt(chapter_id, kapitel_nr):
 
 
 def main():
-    args = [a for a in sys.argv[1:]]
+    args = list(sys.argv[1:])
     png = "--png" in args
     no_pdf = "--no-pdf" in args
     args = [a for a in args if not a.startswith("--")]
@@ -352,9 +395,8 @@ def main():
 
     for chapter_id in ziele:
         nr = alle.index(chapter_id) + 1
-        blatt_html = baue_blatt(chapter_id, nr)
         html_pfad = AUSGABE / f"Kapitel_{nr:02d}_{chapter_id}.html"
-        html_pfad.write_text(blatt_html, encoding="utf-8")
+        html_pfad.write_text(baue_blatt(chapter_id, nr), encoding="utf-8")
         print(f"HTML: {html_pfad.name}")
         if no_pdf:
             continue
@@ -365,9 +407,8 @@ def main():
         if ergebnis.returncode != 0:
             print(f"  PDF-FEHLER: {ergebnis.stderr.strip()[:400]}")
             sys.exit(1)
-        pdf_pfad = html_pfad.with_suffix(".pdf")
-        shutil.copy2(pdf_pfad, WORKSHEETS / f"{chapter_id}.pdf")
-        print(f"  PDF: {pdf_pfad.name}  (+ public/worksheets/{chapter_id}.pdf)")
+        shutil.copy2(html_pfad.with_suffix(".pdf"), WORKSHEETS / f"{chapter_id}.pdf")
+        print(f"  PDF: {html_pfad.with_suffix('.pdf').name}  (+ public/worksheets/{chapter_id}.pdf)")
 
 
 if __name__ == "__main__":

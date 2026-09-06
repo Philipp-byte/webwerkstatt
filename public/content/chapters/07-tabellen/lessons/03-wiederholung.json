@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Kurze Pause von den Tabellen! Wissen bleibt am besten hängen, wenn du es **aktiv aus dem Gedächtnis holst** – nicht durch bloßes Nachlesen.\n\nHeute dran: **Links und Sprungmarken** (Kapitel 5) sowie **Bilder, alt-Texte und Audio** (Kapitel 6). Los geht's!"
+      "text": "Kurze Pause von den Tabellen! Wissen bleibt am besten hängen, wenn du es **aktiv aus dem Gedächtnis holst** – nicht durch bloßes Nachlesen.\n\nHeute dran: **Links und Sprungmarken** (Kapitel 5) sowie **Bilder, alt-Texte und Audio** (Kapitel 6). Zum Schluss verbindest du auf der Speisekarte **Tabelle, Bild und Überschrift**."
     },
     {
       "type": "quiz",
@@ -27,7 +27,7 @@
     },
     {
       "type": "code",
-      "task": "Ein Mini-Beitrag zur Klassenfahrt:\n\n1. Binde das Übungsbild **strand.svg** ein – mit einem alt-Text, in dem **Strand** vorkommt\n2. Darunter ein Link zu `https://www.example.com` mit dem Linktext **Mehr Reisetipps**",
+      "task": "Erstelle einen Mini-Beitrag zur Klassenfahrt:\n\n1. Ergänze das Übungsbild strand.svg mit einer Bildbeschreibung, in der **Strand** vorkommt\n2. Ergänze darunter einen Link zur Adresse https://www.example.com mit dem Linktext **Mehr Reisetipps**",
       "starter": {
         "html": "<h2>Klassenfahrt ans Meer</h2>\n<p>Drei Tage Strand, Sonne und null Hausaufgaben!</p>\n<!-- Bild und Link hier -->\n"
       },
@@ -60,7 +60,7 @@
     },
     {
       "type": "code",
-      "task": "Baue eine Clan-Seite mit Sprungmarke:\n\n1. Unter der `<h1>` ein Sprungmarken-Link mit Ziel `#musik` und dem Text **Direkt zur Musik**\n2. Unten eine `<h2>` mit dem Text **Musik** und der id `musik`\n3. Darunter ein Audio-Element mit Bedienknöpfen für **cafe-jingle.wav**\n\nKlicke danach auf deinen Link – es scrollt!",
+      "task": "Erstelle die Clan-Seite mit Sprungmarke:\n\n1. Ergänze unter der Hauptüberschrift einen Sprungmarken-Link mit dem Text **Direkt zur Musik**, der zum Musik-Abschnitt springt\n2. Ergänze unten die Überschrift zweiter Stufe **Musik** als Sprungziel **musik**\n3. Ergänze darunter einen Audio-Player mit Bedienknöpfen für cafe-jingle.wav\n\nKlicke danach auf deinen Link – es scrollt!",
       "starter": {
         "html": "<h1>Team Blitz</h1>\n<!-- 1. Sprungmarken-Link hier -->\n\n<p>Hier kommt später unser Clan-Intro …</p>\n<p>… und die Spielerliste …</p>\n\n<!-- 2. Überschrift und 3. Audio hier -->\n"
       },
@@ -78,6 +78,33 @@
         { "type": "selector", "selector": "h2#musik", "count": 1, "label": "Die Überschrift hat die id „musik“" },
         { "type": "attr", "selector": "audio", "attr": "src", "expected": "cafe-jingle.wav", "label": "Das Audio-Element spielt cafe-jingle.wav" },
         { "type": "source", "file": "html", "matches": "<audio[^>]*controls", "label": "Der Player zeigt Bedienknöpfe (controls)" }
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Erweitere die Speisekarte unter der Getränke-Tabelle:\n\n1. Ergänze die Überschrift zweiter Stufe **Snacks** mit einer Tabelle: Kopfzeile **Snack** / **Preis**, Zeilen **Brezel** / **1,00 €** und **Muffin** / **1,50 €**\n2. Ergänze direkt unter dieser Tabelle das Bild cafe-kuchen.svg mit der Bildbeschreibung **Ein Stück Kuchen mit Kirsche**",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Speisekarte – Café Pause</title>\n  </head>\n  <body>\n    <h1>Speisekarte</h1>\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n\n    <h2>Getränke</h2>\n    <table>\n      <tr>\n        <th>Getränk</th>\n        <th>Größe</th>\n        <th>Preis</th>\n      </tr>\n      <tr>\n        <td>Kakao</td>\n        <td>0,3 l</td>\n        <td>1,50 €</td>\n      </tr>\n      <tr>\n        <td>Tee</td>\n        <td>0,3 l</td>\n        <td>1,00 €</td>\n      </tr>\n      <tr>\n        <td>Apfelschorle</td>\n        <td>0,5 l</td>\n        <td>1,80 €</td>\n      </tr>\n    </table>\n  </body>\n</html>\n"
+      },
+      "project": { "page": "speisekarte", "save": ["html"] },
+      "hints": [
+        "Der neue Block kommt nach </table> der Getränke und vor </body>: h2, dann eine zweite <table> mit Kopfzeile (zwei <th>) und zwei Datenzeilen (je zwei <td>), dann das Bild.",
+        "Die Snack-Tabelle:\n```html\n<table>\n  <tr>\n    <th>Snack</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Brezel</td>\n    <td>1,00 €</td>\n  </tr>\n  <tr>\n    <td>Muffin</td>\n    <td>1,50 €</td>\n  </tr>\n</table>\n```\nDas Bild danach: <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Speisekarte – Café Pause</title>\n  </head>\n  <body>\n    <h1>Speisekarte</h1>\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n\n    <h2>Getränke</h2>\n    <table>\n      <tr>\n        <th>Getränk</th>\n        <th>Größe</th>\n        <th>Preis</th>\n      </tr>\n      <tr>\n        <td>Kakao</td>\n        <td>0,3 l</td>\n        <td>1,50 €</td>\n      </tr>\n      <tr>\n        <td>Tee</td>\n        <td>0,3 l</td>\n        <td>1,00 €</td>\n      </tr>\n      <tr>\n        <td>Apfelschorle</td>\n        <td>0,5 l</td>\n        <td>1,80 €</td>\n      </tr>\n    </table>\n\n    <h2>Snacks</h2>\n    <table>\n      <tr>\n        <th>Snack</th>\n        <th>Preis</th>\n      </tr>\n      <tr>\n        <td>Brezel</td>\n        <td>1,00 €</td>\n      </tr>\n      <tr>\n        <td>Muffin</td>\n        <td>1,50 €</td>\n      </tr>\n    </table>\n    <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Speisekarte – Café Pause</title>\n  </head>\n  <body>\n    <h1>Speisekarte</h1>\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n\n    <h2>Getränke</h2>\n    <table>\n      <tr>\n        <th>Getränk</th>\n        <th>Größe</th>\n        <th>Preis</th>\n      </tr>\n      <tr>\n        <td>Kakao</td>\n        <td>0,3 l</td>\n        <td>1,50 €</td>\n      </tr>\n      <tr>\n        <td>Tee</td>\n        <td>0,3 l</td>\n        <td>1,00 €</td>\n      </tr>\n      <tr>\n        <td>Apfelschorle</td>\n        <td>0,5 l</td>\n        <td>1,80 €</td>\n      </tr>\n    </table>\n\n    <h2>Snacks</h2>\n    <table>\n      <tr>\n        <th>Snack</th>\n        <th>Preis</th>\n      </tr>\n      <tr>\n        <td>Brezel</td>\n        <td>1,00 €</td>\n      </tr>\n      <tr>\n        <td>Muffin</td>\n        <td>1,50 €</td>\n      </tr>\n    </table>\n    <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n  </body>\n</html>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "h2:nth-of-type(2)", "expected": "Snacks", "label": "Die zweite Überschrift zweiter Stufe lautet „Snacks“" },
+        { "type": "selector", "selector": "table", "count": 2, "label": "Es gibt jetzt zwei Tabellen" },
+        { "type": "text", "selector": "table:nth-of-type(2) tr:first-child th:first-child", "expected": "Snack", "label": "Die Snack-Tabelle hat die Kopfzelle „Snack“" },
+        { "type": "text", "selector": "table:nth-of-type(2) tr:nth-child(2) td:first-child", "expected": "Brezel", "label": "Die erste Snack-Zeile beginnt mit „Brezel“" },
+        { "type": "text", "selector": "table:nth-of-type(2) tr:nth-child(3) td:nth-child(2)", "expected": "1,50 €", "label": "Der Muffin kostet „1,50 €“" },
+        { "type": "attr", "selector": "img[src='cafe-kuchen.svg']", "attr": "alt", "expected": "Ein Stück Kuchen mit Kirsche", "label": "Das Bild cafe-kuchen.svg hat die Beschreibung „Ein Stück Kuchen mit Kirsche“" },
+        { "type": "source", "file": "html", "matches": "</table>\\s*<img[^>]*cafe-kuchen\\.svg", "label": "Das Bild steht direkt unter der Snack-Tabelle" },
+        { "type": "text", "selector": "table:first-of-type tr:nth-child(2) td", "expected": "Kakao", "label": "Die Getränke-Tabelle ist noch da" },
+        { "type": "text", "selector": "a[href='index.html']", "expected": "Zurück zur Startseite", "label": "Der Rück-Link zur Startseite ist noch da" }
       ]
     }
   ]

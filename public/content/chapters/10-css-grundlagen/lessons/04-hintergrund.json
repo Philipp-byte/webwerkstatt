@@ -12,7 +12,9 @@
       "text": "Achte auf den Kontrast: Stelle die `color` der Überschrift mal auf `#004466` – gleiche Farbe wie der Hintergrund, plötzlich ist sie unsichtbar! Und gib dem `body` testweise `background-color: #333333;`.",
       "html": "<h1>Kontrast zählt</h1>\n<p>Heller Hintergrund, dunkler Text – gut lesbar.</p>\n",
       "css": "body {\n  background-color: #fdf3e3;\n}\nh1 {\n  background-color: #004466;\n  color: white;\n}\n",
-      "editable": ["css"]
+      "editable": [
+        "css"
+      ]
     },
     {
       "type": "explain",
@@ -38,17 +40,21 @@
       "text": "Die ganze Seite soll cremefarben werden. Setze die fehlende **Eigenschaft** ein.",
       "template": "body { ___: #fdf3e3; }",
       "solution": "background-color",
-      "accept": ["background-color"],
+      "accept": [
+        "background-color"
+      ],
       "hint": "Die Eigenschaft für die Hintergrundfarbe heißt `background-color` – mit Bindestrich."
     },
     {
       "type": "code",
-      "task": "Gestalte die Turnier-Seite – mit gutem Kontrast:\n\n1. Der `body` bekommt die Hintergrundfarbe `#e6f2ff`\n2. Die `h1` bekommt die Hintergrundfarbe `#004466`\n3. Die `h1` bekommt zusätzlich die Textfarbe `white` – sonst wäre sie auf dem dunklen Balken kaum lesbar",
+      "task": "**Gestalte** die Turnier-Seite – mit gutem Kontrast:\n\n1. Der `body` bekommt die Hintergrundfarbe `#e6f2ff`\n2. Die `h1` bekommt die Hintergrundfarbe `#004466`\n3. Die `h1` bekommt zusätzlich die Textfarbe `white` – sonst wäre sie auf dem dunklen Balken kaum lesbar",
       "starter": {
         "html": "<h1>Clan-Turnier</h1>\n<p>Start: Samstag, 18 Uhr – Anmeldung bis Freitag.</p>\n",
         "css": "/* Deine Regeln hier */\n"
       },
-      "editable": ["css"],
+      "editable": [
+        "css"
+      ],
       "hints": [
         "Zwei Regeln: eine für body, eine für h1.",
         "In der h1-Regel stehen zwei Deklarationen: background-color und color – jede mit Semikolon.",
@@ -58,9 +64,105 @@
         "css": "body {\n  background-color: #e6f2ff;\n}\nh1 {\n  background-color: #004466;\n  color: white;\n}\n"
       },
       "tests": [
-        { "type": "style", "selector": "body", "prop": "background-color", "expected": "#e6f2ff", "label": "Die Seite hat den Hintergrund #e6f2ff" },
-        { "type": "style", "selector": "h1", "prop": "background-color", "expected": "#004466", "label": "Die Überschrift hat den Hintergrund #004466" },
-        { "type": "style", "selector": "h1", "prop": "color", "expected": "white", "label": "Der Überschriften-Text ist weiß" }
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "background-color",
+          "expected": "#e6f2ff",
+          "label": "Die Seite hat den Hintergrund #e6f2ff"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "background-color",
+          "expected": "#004466",
+          "label": "Die Überschrift hat den Hintergrund #004466"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "color",
+          "expected": "white",
+          "label": "Der Überschriften-Text ist weiß"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Schluss mit Weiß: Die Seite bekommt den Creme-Hintergrund `#f7f1e3`, der Fußbereich ein etwas dunkleres Beige `#efe6d4` – so hebt er sich sanft ab. Dunkler Text auf hellem Grund: Der Kontrast passt.\n\nDie body-Regel gibt es schon – sie bekommt einfach eine **zweite Deklaration**. Für den Fußbereich brauchst du eine neue Regel (HTML 🔒)."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Café-Stylesheet (HTML 🔒):\n\n1. Die vorhandene body-Regel bekommt eine zweite Deklaration: Die ganze Seite erhält den Creme-Hintergrund `#f7f1e3`\n2. Neue Regel ganz unten: Der Fußbereich (Selektor `footer`) erhält den Hintergrund `#efe6d4`",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n}\n\nh1 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "css"
+        ]
+      },
+      "hints": [
+        "Die Eigenschaft für Hintergrundfarbe heißt background-color. In der body-Regel kommt sie als neue Zeile unter color – mit Semikolon.",
+        "Die footer-Regel kommt nach der a-Regel:\n```css\nfooter {\n  background-color: #efe6d4;\n}\n```",
+        "```css\nbody {\n  color: #2c2016;\n  background-color: #f7f1e3;\n}\n\nh1 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n```"
+      ],
+      "solution": {
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n}\n\nh1 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "background-color",
+          "expected": "#f7f1e3",
+          "label": "Die Seite hat den Creme-Hintergrund #f7f1e3"
+        },
+        {
+          "type": "style",
+          "selector": "footer",
+          "prop": "background-color",
+          "expected": "#efe6d4",
+          "label": "Der Fußbereich hat den Hintergrund #efe6d4"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "body\\s*\\{[^}]*color:\\s*#2c2016;[^}]*background-color:\\s*#f7f1e3;[^}]*\\}",
+          "label": "Beide Deklarationen stehen in der body-Regel"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "footer\\s*\\{[^}]*\\}\\s*$",
+          "label": "Die footer-Regel steht ganz unten"
+        },
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "color",
+          "expected": "#2c2016",
+          "label": "Der Seitentext bleibt dunkelbraun"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "color",
+          "expected": "#5a3e2b",
+          "label": "Die Überschrift „Café Pause“ bleibt kaffeebraun"
+        },
+        {
+          "type": "style",
+          "selector": "nav a",
+          "prop": "color",
+          "expected": "#e08a2e",
+          "label": "Die Links bleiben orange"
+        }
       ]
     }
   ]

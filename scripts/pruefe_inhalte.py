@@ -25,6 +25,12 @@ from playwright.sync_api import sync_playwright
 
 PROJEKT = Path(__file__).resolve().parent.parent
 
+# Windows-Konsole (cp1252) kann Sonderzeichen aus Testdetails nicht ausgeben
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+except AttributeError:
+    pass
+
 
 def main():
     url = sys.argv[1] if len(sys.argv) > 1 else None

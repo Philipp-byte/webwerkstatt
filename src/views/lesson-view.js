@@ -10,7 +10,7 @@ import { md } from '../markdown.js';
 import { createWorkbench } from '../workbench.js';
 import { runTests } from '../checker.js';
 import { updateProgressBadge } from '../router.js';
-import { getProjektSeite, getProjektCss, setProjektSeite, setProjektCss } from '../projekt.js';
+import { getProjektSeite, getProjektCss, setProjektSeite, setProjektCss, getProjektJs, setProjektJs } from '../projekt.js';
 import { merkeLoesung } from '../loesungen.js';
 
 export async function renderLesson(app, chapterId, lessonId) {
@@ -347,6 +347,10 @@ function renderCode(karte, step, fertig, ctx) {
       const css = getProjektCss();
       if (css != null) files.css = css;
     }
+    if (files.js != null) {
+      const js = getProjektJs();
+      if (js != null) files.js = js;
+    }
   }
 
   const werkbank = createWorkbench(karte, files, { editable: step.editable });
@@ -426,6 +430,9 @@ function renderCode(karte, step, fertig, ctx) {
         }
         if (step.project.save.includes('css') && stand.css != null) {
           setProjektCss(stand.css);
+        }
+        if (step.project.save.includes('js') && stand.js != null) {
+          setProjektJs(stand.js);
         }
         ok.innerHTML += ' <a href="#/projekt">Im Café-Projekt gespeichert →</a>';
       }

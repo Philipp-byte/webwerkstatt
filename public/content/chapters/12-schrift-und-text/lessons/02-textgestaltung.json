@@ -16,7 +16,9 @@
       "text": "Beobachte den Link: Mit `text-decoration: none;` verliert er die Unterstreichung. Stelle testweise `center` auf `right` um – und lösche die `a`-Regel, um die Unterstreichung zurückzuholen.",
       "html": "<h1>Song des Tages</h1>\n<p class=\"zitat\">Lauter, als die Nachbarn erlauben.</p>\n<a href=\"https://example.com\">Zur ganzen Playlist</a>\n",
       "css": "h1 {\n  text-align: center;\n}\n.zitat {\n  font-style: italic;\n}\na {\n  text-decoration: none;\n  color: #e08a2e;\n}\n",
-      "editable": ["css"]
+      "editable": [
+        "css"
+      ]
     },
     {
       "type": "explain",
@@ -31,7 +33,67 @@
       "text": "Zweimal derselbe Text: oben mit `line-height: 1`, unten mit `1.6`. Welcher liest sich besser? Probiere auch extreme Werte wie `0.8` oder `3`!",
       "html": "<p class=\"eng\">Unser Clan trainiert jeden Dienstag ab 19 Uhr. Auf dem Plan stehen das Schulturnier, die neue Clan-Seite und die Bestellung der Trikots für die Finalrunde.</p>\n<hr>\n<p class=\"luftig\">Unser Clan trainiert jeden Dienstag ab 19 Uhr. Auf dem Plan stehen das Schulturnier, die neue Clan-Seite und die Bestellung der Trikots für die Finalrunde.</p>\n",
       "css": ".eng {\n  line-height: 1;\n}\n.luftig {\n  line-height: 1.6;\n}\n",
-      "editable": ["css"]
+      "editable": [
+        "css"
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "Die Absätze sollen **anderthalbfachen** Zeilenabstand bekommen. Setze den Wert ein.",
+      "template": "p { line-height: ___; }",
+      "solution": "1.5",
+      "accept": [
+        "1.5"
+      ],
+      "hint": "Anderthalbfach = Faktor `1.5` – mit Punkt geschrieben, ohne Einheit."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Fanpage:\n\n1. Die `h1` wird zentriert\n2. Der Absatz mit der Klasse `zitat` wird kursiv\n3. Der Link verliert seine Unterstreichung\n4. Alle Absätze bekommen anderthalbfachen Zeilenabstand (Faktor 1.5)",
+      "starter": {
+        "html": "<h1>Fanpage Südkurve</h1>\n<p class=\"zitat\">Lieber Zweiter mit Herz als Erster ohne.</p>\n<p>Dieses Motto steht seit Jahren auf unserem Banner in der Kurve.</p>\n<a href=\"https://example.com\">Alle Fangesänge</a>\n",
+        "css": "/* Deine Regeln hier */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Für die Klasse brauchst du den Punkt-Selektor: .zitat – für den Zeilenabstand eine Regel für alle p.",
+        "Beim Link heißt es text-decoration: none; – und line-height: 1.5 schreibst du mit Punkt.",
+        "```css\nh1 {\n  text-align: center;\n}\n.zitat {\n  font-style: italic;\n}\na {\n  text-decoration: none;\n}\np {\n  line-height: 1.5;\n}\n```"
+      ],
+      "solution": {
+        "css": "h1 {\n  text-align: center;\n}\n.zitat {\n  font-style: italic;\n}\na {\n  text-decoration: none;\n}\np {\n  line-height: 1.5;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "text-align",
+          "expected": "center",
+          "label": "Die Überschrift ist zentriert"
+        },
+        {
+          "type": "style",
+          "selector": ".zitat",
+          "prop": "font-style",
+          "expected": "italic",
+          "label": "Das Zitat ist kursiv"
+        },
+        {
+          "type": "style",
+          "selector": "a",
+          "prop": "text-decoration-line",
+          "expected": "none",
+          "label": "Der Link ist nicht mehr unterstrichen"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "line-height\\s*:\\s*1\\.5",
+          "label": "Die Absätze haben line-height 1.5"
+        }
+      ]
     },
     {
       "type": "quiz",
@@ -45,34 +107,64 @@
       "explanation": "`text-align` steuert die Ausrichtung – `left`, `center` oder `right`. `font-style` macht kursiv, `text-decoration` unterstreicht."
     },
     {
-      "type": "fill",
-      "text": "Die Absätze sollen **anderthalbfachen** Zeilenabstand bekommen. Setze den Wert ein.",
-      "template": "p { line-height: ___; }",
-      "solution": "1.5",
-      "accept": ["1.5"],
-      "hint": "Anderthalbfach = Faktor `1.5` – mit Punkt geschrieben, ohne Einheit."
-    },
-    {
       "type": "code",
-      "task": "Gestalte die Fanpage:\n\n1. Die `h1` wird **zentriert**\n2. Der Absatz mit der Klasse `zitat` wird **kursiv**\n3. Der Link verliert seine **Unterstreichung**\n4. **Alle** Absätze bekommen `line-height: 1.5`",
+      "task": "**Erweitere** drei bestehende Regeln im Café-Stylesheet (HTML 🔒):\n\n1. `h1`: Die Überschrift „Café Pause“ wird zentriert\n2. `nav a`: Die Navigations-Links verlieren ihre Unterstreichung\n3. `body`: anderthalbfacher Zeilenabstand (Faktor 1.5) für die ganze Seite\n\nNeue Zeilen jeweils ans Ende der Regel.",
       "starter": {
-        "html": "<h1>Fanpage Südkurve</h1>\n<p class=\"zitat\">Lieber Zweiter mit Herz als Erster ohne.</p>\n<p>Dieses Motto steht seit Jahren auf unserem Banner in der Kurve.</p>\n<a href=\"https://example.com\">Alle Fangesänge</a>\n",
-        "css": "/* Deine Regeln hier */\n"
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n}\n\nh2 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n"
       },
-      "editable": ["css"],
+      "editable": [
+        "css"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "css"
+        ]
+      },
       "hints": [
-        "Für die Klasse brauchst du den Punkt-Selektor: .zitat – für den Zeilenabstand eine Regel für alle p.",
-        "Beim Link heißt es text-decoration: none; – und line-height: 1.5 schreibst du mit Punkt.",
-        "```css\nh1 {\n  text-align: center;\n}\n.zitat {\n  font-style: italic;\n}\na {\n  text-decoration: none;\n}\np {\n  line-height: 1.5;\n}\n```"
+        "Drei bestehende Regeln, je eine neue Zeile: Ausrichtung in h1, Unterstreichung in nav a, Zeilenabstand in body.",
+        "text-align mit center, text-decoration mit none, line-height mit 1.5 (Punkt, keine Einheit).",
+        "```css\nbody {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n```"
       ],
       "solution": {
-        "css": "h1 {\n  text-align: center;\n}\n.zitat {\n  font-style: italic;\n}\na {\n  text-decoration: none;\n}\np {\n  line-height: 1.5;\n}\n"
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n"
       },
       "tests": [
-        { "type": "style", "selector": "h1", "prop": "text-align", "expected": "center", "label": "Die Überschrift ist zentriert" },
-        { "type": "style", "selector": ".zitat", "prop": "font-style", "expected": "italic", "label": "Das Zitat ist kursiv" },
-        { "type": "style", "selector": "a", "prop": "text-decoration-line", "expected": "none", "label": "Der Link ist nicht mehr unterstrichen" },
-        { "type": "source", "file": "css", "matches": "line-height\\s*:\\s*1\\.5", "label": "Die Absätze haben line-height 1.5" }
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "text-align",
+          "expected": "center",
+          "label": "Die Überschrift „Café Pause“ ist zentriert"
+        },
+        {
+          "type": "style",
+          "selector": "nav a",
+          "prop": "text-decoration-line",
+          "expected": "none",
+          "label": "Die Navigations-Links sind nicht mehr unterstrichen"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "line-height\\s*:\\s*1\\.5",
+          "label": "Die Seite hat anderthalbfachen Zeilenabstand (1.5)"
+        },
+        {
+          "type": "style",
+          "selector": "main a",
+          "prop": "text-decoration-line",
+          "expected": "underline",
+          "label": "Die Links im Hauptbereich bleiben unterstrichen"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "font-size",
+          "expected": "40px",
+          "label": "Die Überschrift ist weiterhin 40px groß"
+        }
       ]
     }
   ]

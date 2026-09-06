@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Kurzer Boxenstopp: Bevor das Café-Projekt weitergeht, rufst du die letzten beiden Kapitel noch einmal aktiv ab – CSS-Grundlagen und Selektoren. Dieses **Wieder-Hervorholen** macht Wissen dauerhaft, nicht das erneute Durchlesen.\n\n5 Aufgaben, kein neuer Stoff."
+      "text": "Kurzer Boxenstopp: Bevor das Café-Projekt weitergeht, rufst du die letzten beiden Kapitel noch einmal aktiv ab – CSS-Grundlagen und Selektoren. Dieses **Wieder-Hervorholen** macht Wissen dauerhaft, nicht das erneute Durchlesen.\n\n5 Aufgaben, kein neuer Stoff – und zum Schluss eine Café-Etappe, die Selektor und Textgestaltung verbindet."
     },
     {
       "type": "quiz",
@@ -19,12 +19,14 @@
     },
     {
       "type": "code",
-      "task": "**Aufgabe 2 – Farben in allen Schreibweisen.** Gestalte den Aushang:\n\n1. Der `body` bekommt die Hintergrundfarbe `#eef7ee` (Hex-Code)\n2. Die `h1` bekommt die Textfarbe `darkgreen` (Farbname)\n3. Alle `p` bekommen die Textfarbe `rgb(60, 60, 60)`",
+      "task": "**Aufgabe 2 – Farben in allen Schreibweisen.** Gestalte den Aushang:\n\n1. Der `body` bekommt die Hintergrundfarbe `#eef7ee` (Hex-Code)\n2. Die `h1` bekommt die Textfarbe `darkgreen` (Farbname)\n3. Alle `p` bekommen eine Textfarbe in RGB-Schreibweise mit den Werten 60, 60, 60",
       "starter": {
         "html": "<h1>Die E-Sport-AG sucht Verstärkung</h1>\n<p>Wir trainieren jeden Mittwoch in der 7. Stunde.</p>\n<p>Anmeldung bei der Schülervertretung.</p>\n",
         "css": "/* Deine drei Regeln hier */\n"
       },
-      "editable": ["css"],
+      "editable": [
+        "css"
+      ],
       "hints": [
         "Drei Regeln: body (background-color), h1 (color) und p (color).",
         "Hex mit Raute (#eef7ee), Farbname pur (darkgreen), rgb mit Klammern: rgb(60, 60, 60).",
@@ -34,9 +36,27 @@
         "css": "body {\n  background-color: #eef7ee;\n}\nh1 {\n  color: darkgreen;\n}\np {\n  color: rgb(60, 60, 60);\n}\n"
       },
       "tests": [
-        { "type": "style", "selector": "body", "prop": "background-color", "expected": "#eef7ee", "label": "Die Seite hat den Hintergrund #eef7ee" },
-        { "type": "style", "selector": "h1", "prop": "color", "expected": "darkgreen", "label": "Die Überschrift ist dunkelgrün" },
-        { "type": "style", "selector": "p", "prop": "color", "expected": "rgb(60, 60, 60)", "label": "Die Absätze haben die Farbe rgb(60, 60, 60)" }
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "background-color",
+          "expected": "#eef7ee",
+          "label": "Die Seite hat den Hintergrund #eef7ee"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "color",
+          "expected": "darkgreen",
+          "label": "Die Überschrift ist dunkelgrün"
+        },
+        {
+          "type": "style",
+          "selector": "p",
+          "prop": "color",
+          "expected": "rgb(60, 60, 60)",
+          "label": "Die Absätze haben die Farbe rgb(60, 60, 60)"
+        }
       ]
     },
     {
@@ -44,7 +64,9 @@
       "text": "**Aufgabe 3.** Nur die Links **in der Navigation** sollen weiß werden. Vervollständige den Nachfahren-Selektor.",
       "template": "nav ___ { color: white; }",
       "solution": "a",
-      "accept": ["a"],
+      "accept": [
+        "a"
+      ],
       "hint": "Nach dem Leerzeichen folgt das innere Element – Links schreibst du als `a`."
     },
     {
@@ -54,7 +76,9 @@
         "html": "<nav>\n  <a href=\"index.html\">Start</a>\n  <a href=\"kontakt.html\">Kontakt</a>\n</nav>\n<main>\n  <h2>Projektwoche</h2>\n  <p>Die Projektwoche startet am Montag.</p>\n  <p class=\"hinweis\">Anmeldung bis Freitag im Sekretariat!</p>\n  <p id=\"fazit\">Es sind noch Plätze frei.</p>\n</main>\n",
         "css": "/* Deine drei Regeln hier */\n"
       },
-      "editable": ["css"],
+      "editable": [
+        "css"
+      ],
       "hints": [
         "Punkt für die Klasse (.hinweis), Raute für die id (#fazit), Leerzeichen für „darin“ (nav a).",
         "Wenn du p statt .hinweis nimmst, wird auch der erste Absatz rot – das lässt der Test nicht durch!",
@@ -64,10 +88,34 @@
         "css": ".hinweis {\n  color: red;\n}\n#fazit {\n  background-color: #fff3b0;\n}\nnav a {\n  color: #2f6fdb;\n}\n"
       },
       "tests": [
-        { "type": "style", "selector": ".hinweis", "prop": "color", "expected": "red", "label": "Der Hinweis-Absatz ist rot" },
-        { "type": "style", "selector": "#fazit", "prop": "background-color", "expected": "#fff3b0", "label": "Das Fazit ist gelb hinterlegt" },
-        { "type": "style", "selector": "nav a", "prop": "color", "expected": "#2f6fdb", "label": "Die Navigations-Links sind blau (#2f6fdb)" },
-        { "type": "style", "selector": "main p:nth-of-type(1)", "prop": "color", "expected": "black", "label": "Der erste Absatz bleibt schwarz" }
+        {
+          "type": "style",
+          "selector": ".hinweis",
+          "prop": "color",
+          "expected": "red",
+          "label": "Der Hinweis-Absatz ist rot"
+        },
+        {
+          "type": "style",
+          "selector": "#fazit",
+          "prop": "background-color",
+          "expected": "#fff3b0",
+          "label": "Das Fazit ist gelb hinterlegt"
+        },
+        {
+          "type": "style",
+          "selector": "nav a",
+          "prop": "color",
+          "expected": "#2f6fdb",
+          "label": "Die Navigations-Links sind blau (#2f6fdb)"
+        },
+        {
+          "type": "style",
+          "selector": "main p:nth-of-type(1)",
+          "prop": "color",
+          "expected": "black",
+          "label": "Der erste Absatz bleibt schwarz"
+        }
       ]
     },
     {
@@ -80,6 +128,62 @@
       ],
       "correct": 2,
       "explanation": "Hellgelb auf Weiß hat kaum Kontrast – auf einem spiegelnden Display oder mit Sehschwäche wird das unlesbar. Die anderen beiden Kombinationen haben starken Kontrast."
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Erweitere das Stylesheet um eine neue Regel am Ende für alle Tabellen-Kopfzellen (`th`): Der Text wird linksbündig ausgerichtet und erscheint in Kaffeebraun `#5a3e2b`. So passen die Tabellen auf jeder Seite zu den Überschriften.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "css"
+        ]
+      },
+      "hints": [
+        "Der Element-Selektor für Kopfzellen ist th – ohne Punkt und ohne Raute. Zwei Deklarationen: Ausrichtung und Farbe.",
+        "text-align mit dem Wert left, color mit dem Kaffeebraun. Die Regel kommt unter die .angebot-Regel.",
+        "```css\nbody {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n```"
+      ],
+      "solution": {
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "th",
+          "prop": "text-align",
+          "expected": "left",
+          "label": "Die Kopfzellen sind linksbündig"
+        },
+        {
+          "type": "style",
+          "selector": "th",
+          "prop": "color",
+          "expected": "#5a3e2b",
+          "label": "Die Kopfzellen sind kaffeebraun (#5a3e2b)"
+        },
+        {
+          "type": "style",
+          "selector": "table",
+          "prop": "background-color",
+          "expected": "white",
+          "label": "Der weiße Tabellen-Hintergrund ist noch da"
+        },
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "font-family",
+          "expected": "Segoe UI",
+          "label": "Die Hausschrift Segoe UI ist noch da",
+          "contains": true
+        }
+      ]
     }
   ]
 }

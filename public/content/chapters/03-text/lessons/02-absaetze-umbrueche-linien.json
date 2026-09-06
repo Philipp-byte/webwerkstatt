@@ -25,7 +25,11 @@
       "text": "Setze den Tag ein, der einen **Zeilenumbruch** erzwingt.",
       "template": "<p>Erste Zeile<___>Zweite Zeile</p>",
       "solution": "br",
-      "accept": ["br", "br/", "br /"],
+      "accept": [
+        "br",
+        "br/",
+        "br /"
+      ],
       "hint": "Der Tag heißt `br` – kurz für „break“ (Umbruch)."
     },
     {
@@ -45,7 +49,7 @@
     },
     {
       "type": "code",
-      "task": "Schreibe eine kleine Seite über dein **Lieblingsessen**:\n\n1. Ein Absatz `<p>`: Was ist dein Lieblingsessen?\n2. Danach eine Trennlinie `<hr>`.\n3. Danach ein zweiter Absatz: Warum magst du es? Baue in diesen Absatz mindestens einen Zeilenumbruch mit `<br>` ein.",
+      "task": "Erstelle eine kleine Seite über dein **Lieblingsessen** unter der vorhandenen Überschrift:\n\n1. Ein Absatz: Was ist dein Lieblingsessen?\n2. Darunter eine Trennlinie.\n3. Darunter ein zweiter Absatz: Warum magst du es? – mit mindestens einem erzwungenen Zeilenumbruch mitten im Text.",
       "starter": {
         "html": "<h1>Mein Lieblingsessen</h1>\n"
       },
@@ -58,9 +62,81 @@
         "html": "<h1>Mein Lieblingsessen</h1>\n<p>Am liebsten esse ich Döner mit allem.</p>\n<hr>\n<p>Schmeckt einfach immer<br>und ist nach der Schule direkt um die Ecke.</p>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "p", "min": 2, "label": "Es gibt mindestens zwei Absätze" },
-        { "type": "selector", "selector": "hr", "min": 1, "label": "Zwischen den Absätzen ist eine <hr>-Trennlinie" },
-        { "type": "source", "file": "html", "matches": "<br\\s*/?>", "label": "Im zweiten Absatz sorgt ein <br> für einen Zeilenumbruch" }
+        {
+          "type": "selector",
+          "selector": "p",
+          "min": 2,
+          "label": "Es gibt mindestens zwei Absätze"
+        },
+        {
+          "type": "selector",
+          "selector": "hr",
+          "min": 1,
+          "label": "Zwischen den Absätzen ist eine <hr>-Trennlinie"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<br\\s*/?>",
+          "label": "Im zweiten Absatz sorgt ein <br> für einen Zeilenumbruch"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Unter „Über uns“ fehlt noch der Text – zwei Absätze. Und ganz unten bekommt die Seite ihre Adresse: durch eine Trennlinie abgesetzt, mit Zeilenumbrüchen wie auf einem Briefumschlag."
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Ergänze unter „Über uns“:\n\n1. Zwei Absätze mit den Texten **Das Café Pause wird von Schülerinnen und Schülern geführt.** und **Alles, was wir verkaufen, ist selbst gemacht.**\n2. Darunter eine Trennlinie.\n3. Darunter die Adresse als ein Absatz mit Zeilenumbrüchen: **Café Pause** / **Musterstraße 12** / **74072 Heilbronn**",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n  </body>\n</html>\n"
+      },
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Reihenfolge unter der h2: Absatz, Absatz, Trennlinie, Adress-Absatz. Trennlinie und Zeilenumbruch sind leere Elemente ohne schließenden Tag.",
+        "Die Adresse ist EIN Absatz mit zwei <br> darin: <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>. Davor steht die <hr>.",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von Schülerinnen und Schülern geführt.</p>\n    <p>Alles, was wir verkaufen, ist selbst gemacht.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von Schülerinnen und Schülern geführt.</p>\n    <p>Alles, was wir verkaufen, ist selbst gemacht.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "h2 + p",
+          "expected": "Das Café Pause wird von Schülerinnen und Schülern geführt.",
+          "label": "Der erste Über-uns-Absatz hat den richtigen Text"
+        },
+        {
+          "type": "text",
+          "selector": "h2 + p + p",
+          "expected": "Alles, was wir verkaufen, ist selbst gemacht.",
+          "label": "Der zweite Über-uns-Absatz hat den richtigen Text"
+        },
+        {
+          "type": "selector",
+          "selector": "hr",
+          "count": 1,
+          "label": "Eine Trennlinie trennt die Adresse ab"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<hr\\s*/?>\\s*<p>\\s*Café Pause\\s*<br\\s*/?>\\s*Musterstraße 12\\s*<br\\s*/?>\\s*74072 Heilbronn",
+          "label": "Unter der Trennlinie steht die Adresse in einem Absatz mit zwei Zeilenumbrüchen"
+        },
+        {
+          "type": "text",
+          "selector": "h2",
+          "expected": "Über uns",
+          "label": "Die Überschrift „Über uns“ ist noch da"
+        }
       ]
     }
   ]

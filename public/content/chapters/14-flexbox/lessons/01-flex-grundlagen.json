@@ -39,28 +39,110 @@
       "text": "Zwischen den Kindern eines Flex-Containers sollen 24px Platz sein. Welche Eigenschaft fehlt?",
       "template": "___: 24px;",
       "solution": "gap",
-      "accept": ["gap"],
+      "accept": [
+        "gap"
+      ],
       "hint": "Die Eigenschaft heißt wie „Lücke“ auf Englisch – ein kurzes Wort."
     },
     {
       "type": "code",
-      "task": "Die Menü-Links deiner Clan-Seite stehen noch untereinander. Mache aus `.menue` eine Flex-Leiste:\n\n1. `display: flex;`\n2. `gap: 16px;`",
+      "task": "**Gestalte** die Menüleiste deiner Clan-Seite (Klasse `menue`): Die drei Links stehen nebeneinander in einer Reihe, mit 16 Pixel Abstand zwischen ihnen. Die Hintergrundfarbe und der Innenabstand der Leiste bleiben.",
       "starter": {
         "html": "<nav class=\"menue\">\n  <a href=\"https://example.com\">Start</a>\n  <a href=\"https://example.com\">Teams</a>\n  <a href=\"https://example.com\">Turniere</a>\n</nav>\n",
         "css": ".menue {\n  background-color: #eef3fa;\n  padding: 12px;\n  /* Mach mich zur Flex-Leiste! */\n}\n.menue a {\n  display: block;\n  text-decoration: none;\n  color: #1f66c2;\n  font-weight: bold;\n}\n"
       },
-      "editable": ["css"],
+      "editable": [
+        "css"
+      ],
       "hints": [
-        "Beide Eigenschaften gehören in die .menue-Regel – das ist der Container der Links.",
-        "display: flex; stellt nebeneinander, gap: 16px; sorgt für Abstand.",
+        "Beide neuen Deklarationen gehören in die .menue-Regel – das ist der Container der Links, nicht die Links selbst.",
+        "display: flex; stellt die Kinder nebeneinander, gap: 16px; sorgt für den Abstand dazwischen.",
         "```css\n.menue {\n  background-color: #eef3fa;\n  padding: 12px;\n  display: flex;\n  gap: 16px;\n}\n.menue a {\n  display: block;\n  text-decoration: none;\n  color: #1f66c2;\n  font-weight: bold;\n}\n```"
       ],
       "solution": {
         "css": ".menue {\n  background-color: #eef3fa;\n  padding: 12px;\n  display: flex;\n  gap: 16px;\n}\n.menue a {\n  display: block;\n  text-decoration: none;\n  color: #1f66c2;\n  font-weight: bold;\n}\n"
       },
       "tests": [
-        { "type": "style", "selector": ".menue", "prop": "display", "expected": "flex", "label": "Die Leiste ist ein Flex-Container" },
-        { "type": "style", "selector": ".menue", "prop": "column-gap", "expected": "16px", "label": "Zwischen den Links sind 16px Abstand" }
+        {
+          "type": "style",
+          "selector": ".menue",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Die Leiste ist ein Flex-Container"
+        },
+        {
+          "type": "style",
+          "selector": ".menue",
+          "prop": "column-gap",
+          "expected": "16px",
+          "label": "Zwischen den Links sind 16px Abstand"
+        },
+        {
+          "type": "style",
+          "selector": ".menue",
+          "prop": "padding-top",
+          "expected": "12px",
+          "label": "Der Innenabstand der Leiste ist noch da"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Die Navigation der Startseite ist eine Zeile aus vier Links – der Browser setzt sie einfach hintereinander, ohne festen Abstand. Heute wird sie eine echte **Flex-Leiste**.\n\nCSS-Tab: dein Stylesheet aus Kapitel 13. HTML gesperrt 🔒. Du erweiterst nur die bestehende Regel für `nav` (zwischen `th` und `img`)."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** die bestehende Regel für `nav`: Die Navigation wird ein Flex-Container, die vier Links stehen nebeneinander mit 16 Pixel Abstand zwischen ihnen. Die neuen Zeilen kommen ans Ende der Regel – die vorhandene Zentrierung bleibt stehen.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n  padding: 8px;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n}\n\nimg {\n  border-radius: 12px;\n}\n\nth, td {\n  padding: 6px;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "css"
+        ]
+      },
+      "hints": [
+        "Beide Deklarationen kommen in die nav-Regel – nach text-align, vor die schließende Klammer.",
+        "display: flex; macht die nav zum Container, gap: 16px; legt den Abstand zwischen den Links fest.",
+        "```css\nbody {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n  padding: 8px;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n  display: flex;\n  gap: 16px;\n}\n\nimg {\n  border-radius: 12px;\n}\n\nth, td {\n  padding: 6px;\n}\n```"
+      ],
+      "solution": {
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n  padding: 8px;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n  display: flex;\n  gap: 16px;\n}\n\nimg {\n  border-radius: 12px;\n}\n\nth, td {\n  padding: 6px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "nav",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Die Navigation ist ein Flex-Container"
+        },
+        {
+          "type": "style",
+          "selector": "nav",
+          "prop": "column-gap",
+          "expected": "16px",
+          "label": "Zwischen den Menü-Links sind 16px Abstand"
+        },
+        {
+          "type": "style",
+          "selector": "nav a",
+          "prop": "text-decoration-line",
+          "expected": "none",
+          "label": "Die Menü-Links sind weiterhin nicht unterstrichen"
+        },
+        {
+          "type": "style",
+          "selector": "td",
+          "prop": "padding-top",
+          "expected": "6px",
+          "label": "Der Zellen-Innenabstand aus Kapitel 13 ist noch da"
+        }
       ]
     }
   ]

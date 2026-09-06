@@ -12,7 +12,9 @@
       "text": "Der CSS-Tab 🔒 macht die Container sichtbar: `div.match` bekommt einen Rahmen, `span.gegner` wird orange.\n\nProbiere: Setze den `<span class=\"gegner\">` um ein anderes Wort – der Text fließt weiter, keine neue Zeile. Füge dann einen dritten `<div class=\"match\">` hinzu – ein neuer Kasten.",
       "html": "<div class=\"match\">\n  <h2>Nächstes Match</h2>\n  <p>Freitag, 19 Uhr gegen <span class=\"gegner\">Team Nova</span>!</p>\n</div>\n<div class=\"match\">\n  <h2>Danach</h2>\n  <p>Sonntag gegen <span class=\"gegner\">Pixel Legends</span> – das Finale.</p>\n</div>\n",
       "css": ".match { border: 2px solid #2f6fdb; padding: 10px; margin-bottom: 10px; background-color: #eef2f8; }\n.gegner { color: #e08a2e; font-weight: bold; }\n",
-      "editable": ["html"]
+      "editable": [
+        "html"
+      ]
     },
     {
       "type": "quiz",
@@ -35,24 +37,30 @@
       "text": "Die Bereiche verhalten sich wie `<div>` – aber ihr Name sagt Suchmaschinen, Vorlese-Programmen und dir sofort, was drinsteckt. Der CSS-Tab 🔒 färbt sie ein, damit du sie siehst.\n\nProbiere: Füge in die `<nav>` einen dritten Link ein – er landet im blauen Band.",
       "html": "<header>\n  <h1>Fanpage FC Nordstadt</h1>\n</header>\n<nav>\n  <a href=\"https://www.example.com\">Spielplan</a>\n  <a href=\"https://www.example.com\">Kader</a>\n</nav>\n<main>\n  <p>Willkommen auf der Fanpage! Hier findest du alle Infos zum nächsten Heimspiel.</p>\n</main>\n<footer>\n  <p>Fanclub Nordkurve · Musterstraße 1 · Heilbronn</p>\n</footer>\n",
       "css": "header { background-color: #ffe0b3; padding: 10px; }\nnav { background-color: #cde8ff; padding: 10px; }\nmain { background-color: #e8f7e8; padding: 10px; min-height: 60px; }\nfooter { background-color: #e6e6e6; padding: 10px; font-size: 14px; }\n",
-      "editable": ["html"]
+      "editable": [
+        "html"
+      ]
     },
     {
       "type": "fill",
       "text": "Die Link-Leiste der Clan-Seite braucht noch ihren sprechenden Bereichs-Tag. Setze den öffnenden Tag ein (der schließende steht schon da).",
       "template": "<header>\n  <h1>Team Blitz</h1>\n</header>\n<___>\n  <a href=\"turniere.html\">Turniere</a>\n  <a href=\"mitspielen.html\">Mitspielen</a>\n</nav>",
       "solution": "nav",
-      "accept": ["nav"],
+      "accept": [
+        "nav"
+      ],
       "hint": "Der Bereich für die Navigation heißt `<nav>` – schau auf den schließenden Tag."
     },
     {
       "type": "code",
-      "task": "Baue die Grundstruktur der Seite für den Gaming-Clan **Team Blitz**:\n\n1. `<header>` mit einer `<h1>` (z. B. **Team Blitz**)\n2. `<nav>` mit **zwei Links** (Ziele frei, `https://...`)\n3. `<main>` mit einem Absatz – markiere darin den Termin mit `<span class=\"termin\">…</span>`\n4. `<footer>` mit einem Absatz",
+      "task": "**Erstelle** die Grundstruktur der Clan-Seite „Team Blitz“:\n\n1. Ein Kopfbereich mit der Hauptüberschrift „Team Blitz“\n2. Eine Navigation mit **zwei** Links (Ziele frei wählbar)\n3. Ein Hauptbereich mit einem Absatz – der Termin darin ist als Inline-Container der Gruppe „termin“ markiert\n4. Ein Fußbereich mit einem Absatz",
       "starter": {
         "html": "<!-- header, nav, main und footer hier -->\n",
         "css": "header { background-color: #ffe0b3; padding: 10px; }\nnav { background-color: #cde8ff; padding: 10px; }\nmain { background-color: #e8f7e8; padding: 10px; min-height: 60px; }\nfooter { background-color: #e6e6e6; padding: 10px; font-size: 14px; }\n.termin { color: #e08a2e; font-weight: bold; }\n"
       },
-      "editable": ["html"],
+      "editable": [
+        "html"
+      ],
       "hints": [
         "Die vier Bereiche stehen untereinander, jeder mit öffnendem und schließendem Tag.",
         "Im <main>-Absatz kommt der span mitten in den Satz: <p>Nächstes Match: <span class=\"termin\">Freitag, 19 Uhr</span></p>.",
@@ -62,11 +70,151 @@
         "html": "<header>\n  <h1>Team Blitz</h1>\n</header>\n<nav>\n  <a href=\"https://www.example.com\">Turniere</a>\n  <a href=\"https://www.example.com\">Mitspielen</a>\n</nav>\n<main>\n  <p>Nächstes Match: <span class=\"termin\">Freitag, 19 Uhr</span> – seid pünktlich!</p>\n</main>\n<footer>\n  <p>Team Blitz · gegründet 2024 · Heilbronn</p>\n</footer>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "header h1", "min": 1, "label": "Im <header> steht eine <h1>" },
-        { "type": "selector", "selector": "nav a", "min": 2, "label": "Die <nav> enthält zwei Links" },
-        { "type": "selector", "selector": "main p", "min": 1, "label": "Im <main> steht ein Absatz" },
-        { "type": "selector", "selector": "main p span.termin", "min": 1, "label": "Der Termin ist mit <span class=\"termin\"> markiert" },
-        { "type": "selector", "selector": "footer p", "min": 1, "label": "Im <footer> steht ein Absatz" }
+        {
+          "type": "selector",
+          "selector": "header h1",
+          "min": 1,
+          "label": "Im <header> steht eine <h1>"
+        },
+        {
+          "type": "selector",
+          "selector": "nav a",
+          "min": 2,
+          "label": "Die <nav> enthält zwei Links"
+        },
+        {
+          "type": "selector",
+          "selector": "main p",
+          "min": 1,
+          "label": "Im <main> steht ein Absatz"
+        },
+        {
+          "type": "selector",
+          "selector": "main p span.termin",
+          "min": 1,
+          "label": "Der Termin ist mit <span class=\"termin\"> markiert"
+        },
+        {
+          "type": "selector",
+          "selector": "footer p",
+          "min": 1,
+          "label": "Im <footer> steht ein Absatz"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Die Startseite hat viel Inhalt – aber alles liegt lose im `<body>`. Heute bekommt sie dieselbe Ordnung wie Team Blitz: Kopfbereich, Navigation, Hauptbereich, Fußbereich.\n\nDie beiden Link-Absätze unter der Überschrift werden dabei zur Navigation – nur noch die vier Links, ohne Absätze und Punkte. Die Trennlinie vor der Adresse wird überflüssig."
+    },
+    {
+      "type": "code",
+      "task": "**Gliedere** die Startseite in vier Bereiche:\n\n1. Kopfbereich mit Hauptüberschrift, Willkommens-Absatz und Theken-Bild\n2. Navigation mit den vier Links – ohne Absätze und Punkte\n3. Hauptbereich mit allem Übrigen, vom Öffnungszeiten-Satz bis „Nach oben“\n4. Fußbereich mit dem Adress-Absatz – die Trennlinie davor entfällt",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1 id=\"oben\">Café Pause</h1>\n    <p>\n      <a href=\"speisekarte.html\">Speisekarte</a> ·\n      <a href=\"galerie.html\">Galerie</a> ·\n      <a href=\"kontakt.html\">Kontakt</a>\n    </p>\n    <p><a href=\"#angebote\">Direkt zu den Angeboten</a></p>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2 id=\"angebote\">Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n    <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n    <table>\n      <tr>\n        <th>Tag</th>\n        <th>Zeit</th>\n      </tr>\n      <tr>\n        <td>Montag bis Freitag</td>\n        <td>9:00 bis 15:00 Uhr</td>\n      </tr>\n    </table>\n\n    <h2>Mehr über uns</h2>\n    <ul>\n      <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n      <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n    </ul>\n    <p><a href=\"#oben\">Nach oben</a></p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Arbeite von oben nach unten: header um h1, Willkommens-Absatz und Bild – die Links wandern darunter in die nav. Dann main vom Öffnungszeiten-Satz bis zum Link „Nach oben“, zum Schluss footer mit der Adresse. Der Inhalt jeder Zeile bleibt gleich.",
+        "Die Navigation sieht so aus:\n```html\n<nav>\n  <a href=\"speisekarte.html\">Speisekarte</a>\n  <a href=\"galerie.html\">Galerie</a>\n  <a href=\"kontakt.html\">Kontakt</a>\n  <a href=\"#angebote\">Direkt zu den Angeboten</a>\n</nav>\n```\nDie <hr> vor der Adresse löschst du.",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "header h1#oben",
+          "count": 1,
+          "label": "Die Hauptüberschrift steht im Kopfbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "header img[src='cafe-theke.svg']",
+          "count": 1,
+          "label": "Das Theken-Bild steht im Kopfbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "nav a",
+          "count": 4,
+          "label": "Die Navigation enthält genau vier Links"
+        },
+        {
+          "type": "selector",
+          "selector": "nav p",
+          "count": 0,
+          "label": "In der Navigation stehen keine Absätze mehr"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<nav>[\\s\\S]*·[\\s\\S]*</nav>",
+          "absent": true,
+          "label": "Die Punkte zwischen den Links sind weg"
+        },
+        {
+          "type": "attr",
+          "selector": "nav a:nth-child(4)",
+          "attr": "href",
+          "expected": "#angebote",
+          "label": "Der vierte Link führt zu den Angeboten"
+        },
+        {
+          "type": "selector",
+          "selector": "main",
+          "count": 1,
+          "label": "Es gibt genau einen Hauptbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "main h2#angebote",
+          "count": 1,
+          "label": "Die Angebote stehen im Hauptbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "main h2#oeffnungszeiten",
+          "count": 1,
+          "label": "Die Öffnungszeiten stehen im Hauptbereich"
+        },
+        {
+          "type": "text",
+          "selector": "footer p",
+          "expected": "Musterstraße 12",
+          "contains": true,
+          "label": "Die Adresse steht im Fußbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "hr",
+          "count": 0,
+          "label": "Die Trennlinie ist verschwunden"
+        },
+        {
+          "type": "selector",
+          "selector": "body > p",
+          "count": 0,
+          "label": "Kein Absatz liegt mehr lose im body"
+        },
+        {
+          "type": "text",
+          "selector": "p.hinweis",
+          "expected": "Tipp:",
+          "contains": true,
+          "label": "Der Tipp-Absatz mit der Gruppe „hinweis“ ist noch da"
+        },
+        {
+          "type": "text",
+          "selector": "a[href='#oben']",
+          "expected": "Nach oben",
+          "label": "Der Link „Nach oben“ ist noch da"
+        }
       ]
     }
   ]

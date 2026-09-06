@@ -40,23 +40,14 @@
       "text": "Wie endet der Dateiname einer HTML-Datei? Setze die Endung ein.",
       "template": "index.___",
       "solution": "html",
-      "accept": ["html"],
+      "accept": [
+        "html"
+      ],
       "hint": "Die Endung verrät, in welcher Sprache die Datei geschrieben ist."
     },
     {
-      "type": "quiz",
-      "question": "Du rufst die Seite eines Streamingdienstes auf. Was liefert der Server als Antwort?",
-      "options": [
-        "Eine HTML-Datei, aus der dein Browser die sichtbare Seite baut",
-        "Ein fertiges Bild der Webseite",
-        "Den Browser, mit dem man die Seite ansieht"
-      ],
-      "correct": 0,
-      "explanation": "Das ist das Client-Server-Prinzip aus Kapitel 1: Der Server antwortet mit einer Textdatei – und die ist in HTML geschrieben. Das Rendern übernimmt dein Browser."
-    },
-    {
       "type": "code",
-      "task": "Deine erste eigene Änderung! In der Werkbank steht schon eine kleine Seite.\n\n1. Ändere den Text der Überschrift in **Hallo Welt!**\n2. Ändere den Text des Absatzes in **Das ist meine erste Änderung.**\n\nDie spitzen Klammern samt Tag-Namen bleiben stehen – du änderst nur den Text dazwischen.",
+      "task": "Gestalte die kleine Seite in der Werkbank so, dass die Überschrift **Hallo Welt!** und der Absatz **Das ist meine erste Änderung.** lautet.\n\nDie spitzen Klammern samt Tag-Namen bleiben stehen – du änderst nur den Text dazwischen.",
       "starter": {
         "html": "<h1>Meine Sneaker-Sammlung</h1>\n<p>Drei Paar bis jetzt – und die Liste wird länger.</p>\n"
       },
@@ -69,8 +60,63 @@
         "html": "<h1>Hallo Welt!</h1>\n<p>Das ist meine erste Änderung.</p>\n"
       },
       "tests": [
-        { "type": "text", "selector": "h1", "expected": "Hallo Welt!", "label": "Die Überschrift lautet „Hallo Welt!“" },
-        { "type": "text", "selector": "p", "expected": "Das ist meine erste Änderung.", "label": "Der Absatz lautet „Das ist meine erste Änderung.“" }
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "Hallo Welt!",
+          "label": "Die Überschrift lautet „Hallo Welt!“"
+        },
+        {
+          "type": "text",
+          "selector": "p",
+          "expected": "Das ist meine erste Änderung.",
+          "label": "Der Absatz lautet „Das ist meine erste Änderung.“"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab heute baust du nebenbei ein echtes Projekt:** die Website vom **Café Pause**, einem ausgedachten Schülercafé in Heilbronn. In fast jedem Kapitel wächst sie ein Stück – bis hin zu Speisekarte, Galerie und Kontaktformular. Dein Stand wird gespeichert und in der nächsten Etappe weiter ausgebaut.\n\nHeute beginnt die Startseite mit dem Namen des Cafés als Überschrift. Die Notiz-Zeile in der Werkbank zeigt der Browser nicht an – sie bleibt stehen."
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Erstelle unter der Notiz-Zeile die Hauptüberschrift der Startseite mit dem Text **Café Pause**. Die Notiz-Zeile bleibt stehen.",
+      "starter": {
+        "html": "<!-- Hier entsteht die Startseite vom Café Pause -->\n"
+      },
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Die Hauptüberschrift ist ein h1-Element wie in der Aufgabe davor: öffnender Tag, Text, schließender Tag.",
+        "Schreibe unter die Notiz-Zeile eine neue Zeile: erst <h1>, dann Café Pause, dann </h1>.",
+        "```html\n<!-- Hier entsteht die Startseite vom Café Pause -->\n<h1>Café Pause</h1>\n```"
+      ],
+      "solution": {
+        "html": "<!-- Hier entsteht die Startseite vom Café Pause -->\n<h1>Café Pause</h1>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "Café Pause",
+          "label": "Die Hauptüberschrift lautet „Café Pause“"
+        },
+        {
+          "type": "selector",
+          "selector": "h1",
+          "count": 1,
+          "label": "Es gibt genau eine Hauptüberschrift"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<!--[^>]*Hier entsteht die Startseite",
+          "label": "Die Notiz-Zeile ist noch da"
+        }
       ]
     }
   ]

@@ -59,7 +59,7 @@
     },
     {
       "type": "code",
-      "task": "1. Lege eine **Konstante** `spiel` mit dem Text **Kart-Rennen** an.\n2. Lege eine **Variable** `highscore` mit dem Zahlenwert **4200** an.\n3. Gib beide mit `console.log` aus – erst `spiel`, dann `highscore`.",
+      "task": "**Erstelle** die Daten für ein Spielprofil:\n\n1. Eine Konstante `spiel` mit dem Text „Kart-Rennen“\n2. Eine Variable `highscore` mit dem Zahlenwert 4200\n3. Je eine Ausgabe pro Wert – erst das Spiel, dann der Highscore",
       "starter": {
         "js": "// Konstante, Variable und zwei Ausgaben\n"
       },
@@ -93,6 +93,63 @@
           "type": "console",
           "expected": "4200",
           "label": "Die Konsole zeigt 4200"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Dein Skript merkt sich jetzt zwei Dinge: den **Namen des Cafés** – der ändert sich nie – und die **Zahl der Besucher**, die später hochgezählt werden soll. Zur Kontrolle gibst du den Namen aus.\n\nHTML und CSS bleiben gesperrt 🔒. Die Ausgabe aus der letzten Etappe bleibt stehen, das Neue kommt darunter."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Skript unter der bisherigen Ausgabe:\n\n1. Eine Konstante `cafeName` mit dem Text „Café Pause“\n2. Eine Variable `besucher` mit dem Startwert 0\n3. Eine Ausgabe, die den Inhalt von `cafeName` zeigt",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p><a href=\"impressum.html\">Impressum</a> · <a href=\"kontakt.html\">Kontakt</a></p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n  padding: 16px;\n  text-align: center;\n}\n\ntable {\n  background-color: white;\n  padding: 8px;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n  display: flex;\n  gap: 16px;\n  justify-content: center;\n}\n\nimg {\n  border-radius: 12px;\n}\n\nth, td {\n  padding: 6px;\n}\n\nheader {\n  background-color: #5a3e2b;\n  padding: 16px;\n}\n\nheader h1, header p {\n  color: white;\n}\n",
+        "js": "// Skript der Startseite\nconsole.log(\"Café Pause – Startseite geladen\");\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "js"
+        ]
+      },
+      "hints": [
+        "Feste Werte mit const, veränderliche mit let – und die Ausgabe zeigt die Konstante ohne Anführungszeichen.",
+        "const cafeName = \"Café Pause\"; dann let besucher = 0; – zum Schluss console.log(cafeName);",
+        "```js\n// Skript der Startseite\nconsole.log(\"Café Pause – Startseite geladen\");\n\nconst cafeName = \"Café Pause\";\nlet besucher = 0;\nconsole.log(cafeName);\n```"
+      ],
+      "solution": {
+        "js": "// Skript der Startseite\nconsole.log(\"Café Pause – Startseite geladen\");\n\nconst cafeName = \"Café Pause\";\nlet besucher = 0;\nconsole.log(cafeName);\n"
+      },
+      "tests": [
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "const\\s+cafeName\\s*=\\s*\"Café Pause\"",
+          "label": "cafeName ist eine Konstante mit dem Text Café Pause"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "let\\s+besucher\\s*=\\s*0",
+          "label": "besucher ist eine Variable mit dem Startwert 0"
+        },
+        {
+          "type": "console",
+          "expected": "Café Pause",
+          "label": "Die Konsole zeigt „Café Pause“ – den Inhalt von cafeName"
+        },
+        {
+          "type": "console",
+          "expected": [
+            "Café Pause – Startseite geladen",
+            "Café Pause - Startseite geladen"
+          ],
+          "label": "Die Meldung „Café Pause – Startseite geladen“ ist noch da"
         }
       ]
     }

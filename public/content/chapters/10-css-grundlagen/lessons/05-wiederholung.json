@@ -4,15 +4,17 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Bevor es tief ins CSS geht, holst du noch einmal **alles HTML** aus deinem Kopf: Grundgerüst, Listen, Links, Bilder, Tabellen, Formulare. Dein Gehirn behält Dinge, die es **aktiv abrufen** muss – und CSS gestaltet immer HTML.\n\n6 gemischte Aufgaben, kein neuer Stoff. Los geht's!"
+      "text": "Bevor es tief ins CSS geht, holst du noch einmal **alles HTML** aus deinem Kopf: Grundgerüst, Listen, Links, Bilder, Tabellen, Formulare. Dein Gehirn behält Dinge, die es **aktiv abrufen** muss – und CSS gestaltet immer HTML.\n\n6 gemischte Aufgaben, kein neuer Stoff – und zum Schluss eine Café-Etappe auf der Speisekarte. Los geht's!"
     },
     {
       "type": "code",
-      "task": "**Aufgabe 1 – das Grundgerüst.** Baue eine komplette HTML-Datei von Hand:\n\n1. `<!DOCTYPE html>`, `<html>`, `<head>` und `<body>`\n2. Im `<head>`: ein `<title>` mit dem Text **Mein Steckbrief**\n3. Im `<body>`: eine `<h1>` mit dem Text **Steckbrief** und ein Absatz mit einem Satz über dich",
+      "task": "**Aufgabe 1 – das Grundgerüst.** Erstelle eine komplette HTML-Datei von Hand:\n\n1. Die DOCTYPE-Angabe, dann `<html>`, `<head>` und `<body>`\n2. Im `<head>`: ein Seitentitel „Mein Steckbrief“\n3. Im `<body>`: eine Hauptüberschrift „Steckbrief“ und ein Absatz mit einem Satz über dich",
       "starter": {
         "html": "<!-- Baue hier das komplette Grundgerüst -->\n"
       },
-      "editable": ["html"],
+      "editable": [
+        "html"
+      ],
       "hints": [
         "Die Reihenfolge: DOCTYPE, dann <html>, darin <head> und <body>.",
         "Der <title> gehört in den <head>, die <h1> und der <p> in den <body>.",
@@ -22,10 +24,30 @@
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Mein Steckbrief</title>\n  </head>\n  <body>\n    <h1>Steckbrief</h1>\n    <p>Ich lerne gerade HTML und CSS.</p>\n  </body>\n</html>\n"
       },
       "tests": [
-        { "type": "source", "file": "html", "matches": "<!doctype\\s+html>", "label": "Der DOCTYPE steht am Anfang" },
-        { "type": "text", "selector": "title", "expected": "Mein Steckbrief", "label": "Der Seitentitel lautet „Mein Steckbrief“" },
-        { "type": "text", "selector": "h1", "expected": "Steckbrief", "label": "Die Überschrift lautet „Steckbrief“" },
-        { "type": "selector", "selector": "body p", "min": 1, "label": "Im Body steht ein Absatz" }
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<!doctype\\s+html>",
+          "label": "Der DOCTYPE steht am Anfang"
+        },
+        {
+          "type": "text",
+          "selector": "title",
+          "expected": "Mein Steckbrief",
+          "label": "Der Seitentitel lautet „Mein Steckbrief“"
+        },
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "Steckbrief",
+          "label": "Die Überschrift lautet „Steckbrief“"
+        },
+        {
+          "type": "selector",
+          "selector": "body p",
+          "min": 1,
+          "label": "Im Body steht ein Absatz"
+        }
       ]
     },
     {
@@ -33,16 +55,20 @@
       "text": "**Aufgabe 2 – Listen.** Bubble Tea hat eine feste Reihenfolge. Setze den passenden **öffnenden Tag** für die Liste ein.",
       "template": "<___>\n  <li>Tee kochen und abkühlen</li>\n  <li>Tapioka-Perlen dazu</li>\n  <li>Schütteln und genießen</li>\n</ol>",
       "solution": "ol",
-      "accept": ["ol"],
+      "accept": [
+        "ol"
+      ],
       "hint": "Feste Reihenfolge = **geordnete** Liste. Sie heißt `<ol>` (ordered list) – schau auch auf den schließenden Tag unten."
     },
     {
       "type": "code",
-      "task": "**Aufgabe 3 – Links und Bilder.**\n\n1. Binde das Übungsbild `strand.svg` ein – mit einem alt-Text, in dem das Wort **Strand** vorkommt\n2. Erstelle darunter einen Link zu `https://www.example.com` mit dem Linktext **Mehr Reisetipps**",
+      "task": "**Aufgabe 3 – Links und Bilder.** Erstelle einen Mini-Beitrag zum Traumurlaub:\n\n1. Das Übungsbild strand.svg mit einer Bildbeschreibung, in der das Wort „Strand“ vorkommt\n2. Darunter ein Link zur Adresse https://www.example.com mit dem Linktext „Mehr Reisetipps“",
       "starter": {
         "html": "<h2>Mein Traumurlaub</h2>\n<!-- Bild und Link hier -->\n"
       },
-      "editable": ["html"],
+      "editable": [
+        "html"
+      ],
       "hints": [
         "Das Bild braucht zwei Attribute: src für die Datei, alt für die Beschreibung.",
         "Der Link: <a href=\"https://www.example.com\">…</a> – der Text zwischen den Tags ist der Linktext.",
@@ -52,10 +78,36 @@
         "html": "<h2>Mein Traumurlaub</h2>\n<img src=\"strand.svg\" alt=\"Ein Strand mit Palme und Meer\">\n<a href=\"https://www.example.com\">Mehr Reisetipps</a>\n"
       },
       "tests": [
-        { "type": "attr", "selector": "img", "attr": "src", "expected": "strand.svg", "label": "Das Bild ist strand.svg" },
-        { "type": "attr", "selector": "img", "attr": "alt", "matches": "strand", "label": "Der alt-Text enthält das Wort „Strand“" },
-        { "type": "attr", "selector": "a", "attr": "href", "expected": ["https://www.example.com", "https://www.example.com/"], "label": "Das Linkziel ist https://www.example.com" },
-        { "type": "text", "selector": "a", "expected": "Mehr Reisetipps", "label": "Der Linktext lautet „Mehr Reisetipps“" }
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "src",
+          "expected": "strand.svg",
+          "label": "Das Bild ist strand.svg"
+        },
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "alt",
+          "matches": "strand",
+          "label": "Der alt-Text enthält das Wort „Strand“"
+        },
+        {
+          "type": "attr",
+          "selector": "a",
+          "attr": "href",
+          "expected": [
+            "https://www.example.com",
+            "https://www.example.com/"
+          ],
+          "label": "Das Linkziel ist https://www.example.com"
+        },
+        {
+          "type": "text",
+          "selector": "a",
+          "expected": "Mehr Reisetipps",
+          "label": "Der Linktext lautet „Mehr Reisetipps“"
+        }
       ]
     },
     {
@@ -71,12 +123,14 @@
     },
     {
       "type": "code",
-      "task": "**Aufgabe 5 – Tabellen.** Baue die Preisliste des Schulkiosks:\n\n1. Eine **Kopfzeile** mit den `<th>`-Zellen **Snack** und **Preis**\n2. Darunter **zwei Datenzeilen** mit `<td>`-Zellen (z. B. Brezel – 1,00 € und Muffin – 1,50 €)",
+      "task": "**Aufgabe 5 – Tabellen.** Erstelle die Preisliste des Schulkiosks:\n\n1. Eine **Kopfzeile** mit den Kopfzellen „Snack“ und „Preis“\n2. Darunter **zwei Datenzeilen** (z. B. Brezel – 1,00 € und Muffin – 1,50 €)",
       "starter": {
         "html": "<h2>Preisliste</h2>\n<!-- Deine Tabelle hier -->\n",
         "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\n"
       },
-      "editable": ["html"],
+      "editable": [
+        "html"
+      ],
       "hints": [
         "Alles steht in <table>…</table>. Jede Zeile ist ein <tr>.",
         "Die erste <tr> bekommt <th>-Zellen (Kopf), die anderen <td>-Zellen (Daten).",
@@ -86,10 +140,30 @@
         "html": "<h2>Preisliste</h2>\n<table>\n  <tr>\n    <th>Snack</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Brezel</td>\n    <td>1,00 €</td>\n  </tr>\n  <tr>\n    <td>Muffin</td>\n    <td>1,50 €</td>\n  </tr>\n</table>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "th", "min": 2, "label": "Die Kopfzeile hat mindestens zwei <th>-Zellen" },
-        { "type": "text", "selector": "th", "expected": "Snack", "label": "Die erste Kopf-Zelle lautet „Snack“" },
-        { "type": "selector", "selector": "tr", "min": 3, "label": "Es gibt mindestens drei Zeilen (Kopf + 2 Daten)" },
-        { "type": "selector", "selector": "td", "min": 4, "label": "Es gibt mindestens vier Daten-Zellen" }
+        {
+          "type": "selector",
+          "selector": "th",
+          "min": 2,
+          "label": "Die Kopfzeile hat mindestens zwei <th>-Zellen"
+        },
+        {
+          "type": "text",
+          "selector": "th",
+          "expected": "Snack",
+          "label": "Die erste Kopf-Zelle lautet „Snack“"
+        },
+        {
+          "type": "selector",
+          "selector": "tr",
+          "min": 3,
+          "label": "Es gibt mindestens drei Zeilen (Kopf + 2 Daten)"
+        },
+        {
+          "type": "selector",
+          "selector": "td",
+          "min": 4,
+          "label": "Es gibt mindestens vier Daten-Zellen"
+        }
       ]
     },
     {
@@ -97,8 +171,91 @@
       "text": "**Aufgabe 6 – Formulare.** Das Eingabefeld soll E-Mail-Adressen abfragen und prüfen. Setze das fehlende **Attribut** ein.",
       "template": "<input ___=\"email\" id=\"email\">",
       "solution": "type",
-      "accept": ["type"],
+      "accept": [
+        "type"
+      ],
       "hint": "Das Attribut bestimmt die **Art** des Eingabefelds: `type=\"text\"`, `type=\"email\"` …"
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Erweitere die Speisekarte (CSS 🔒):\n\n1. Die Getränke-Tabelle bekommt eine vierte Datenzeile: „Wasser“ / „0,5 l“ / „0,80 €“\n2. Im Fußbereich unter der Adresse: ein Absatz mit dem Link „Zur Startseite“ zur Datei index.html",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Speisekarte – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Speisekarte</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <h2>Getränke</h2>\n      <table>\n        <tr>\n          <th>Getränk</th>\n          <th>Größe</th>\n          <th>Preis</th>\n        </tr>\n        <tr>\n          <td>Kakao</td>\n          <td>0,3 l</td>\n          <td>1,50 €</td>\n        </tr>\n        <tr>\n          <td>Tee</td>\n          <td>0,3 l</td>\n          <td>1,00 €</td>\n        </tr>\n        <tr>\n          <td>Apfelschorle</td>\n          <td>0,5 l</td>\n          <td>1,80 €</td>\n        </tr>\n      </table>\n\n      <h2>Snacks</h2>\n      <table>\n        <tr>\n          <th>Snack</th>\n          <th>Preis</th>\n        </tr>\n        <tr>\n          <td>Brezel</td>\n          <td>1,00 €</td>\n        </tr>\n        <tr>\n          <td>Muffin</td>\n          <td>1,50 €</td>\n        </tr>\n      </table>\n      <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n\n      <h2>Angebot der Woche</h2>\n      <table>\n        <tr>\n          <th colspan=\"2\">Kombi-Angebot</th>\n        </tr>\n        <tr>\n          <td>Kakao + Muffin</td>\n          <td>2,50 €</td>\n        </tr>\n      </table>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n}\n\nh1 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "project": {
+        "page": "speisekarte",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Die neue Zeile kommt nach der Apfelschorle-Zeile, vor </table>: ein tr mit drei td. Der neue Absatz kommt nach dem Adress-Absatz, vor </footer>.",
+        "Die Wasser-Zeile:\n```html\n<tr>\n  <td>Wasser</td>\n  <td>0,5 l</td>\n  <td>0,80 €</td>\n</tr>\n```\nDer Link im Fußbereich: <p><a href=\"index.html\">Zur Startseite</a></p>",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Speisekarte – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Speisekarte</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <h2>Getränke</h2>\n      <table>\n        <tr>\n          <th>Getränk</th>\n          <th>Größe</th>\n          <th>Preis</th>\n        </tr>\n        <tr>\n          <td>Kakao</td>\n          <td>0,3 l</td>\n          <td>1,50 €</td>\n        </tr>\n        <tr>\n          <td>Tee</td>\n          <td>0,3 l</td>\n          <td>1,00 €</td>\n        </tr>\n        <tr>\n          <td>Apfelschorle</td>\n          <td>0,5 l</td>\n          <td>1,80 €</td>\n        </tr>\n        <tr>\n          <td>Wasser</td>\n          <td>0,5 l</td>\n          <td>0,80 €</td>\n        </tr>\n      </table>\n\n      <h2>Snacks</h2>\n      <table>\n        <tr>\n          <th>Snack</th>\n          <th>Preis</th>\n        </tr>\n        <tr>\n          <td>Brezel</td>\n          <td>1,00 €</td>\n        </tr>\n        <tr>\n          <td>Muffin</td>\n          <td>1,50 €</td>\n        </tr>\n      </table>\n      <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n\n      <h2>Angebot der Woche</h2>\n      <table>\n        <tr>\n          <th colspan=\"2\">Kombi-Angebot</th>\n        </tr>\n        <tr>\n          <td>Kakao + Muffin</td>\n          <td>2,50 €</td>\n        </tr>\n      </table>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p><a href=\"index.html\">Zur Startseite</a></p>\n    </footer>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Speisekarte – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Speisekarte</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <h2>Getränke</h2>\n      <table>\n        <tr>\n          <th>Getränk</th>\n          <th>Größe</th>\n          <th>Preis</th>\n        </tr>\n        <tr>\n          <td>Kakao</td>\n          <td>0,3 l</td>\n          <td>1,50 €</td>\n        </tr>\n        <tr>\n          <td>Tee</td>\n          <td>0,3 l</td>\n          <td>1,00 €</td>\n        </tr>\n        <tr>\n          <td>Apfelschorle</td>\n          <td>0,5 l</td>\n          <td>1,80 €</td>\n        </tr>\n        <tr>\n          <td>Wasser</td>\n          <td>0,5 l</td>\n          <td>0,80 €</td>\n        </tr>\n      </table>\n\n      <h2>Snacks</h2>\n      <table>\n        <tr>\n          <th>Snack</th>\n          <th>Preis</th>\n        </tr>\n        <tr>\n          <td>Brezel</td>\n          <td>1,00 €</td>\n        </tr>\n        <tr>\n          <td>Muffin</td>\n          <td>1,50 €</td>\n        </tr>\n      </table>\n      <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n\n      <h2>Angebot der Woche</h2>\n      <table>\n        <tr>\n          <th colspan=\"2\">Kombi-Angebot</th>\n        </tr>\n        <tr>\n          <td>Kakao + Muffin</td>\n          <td>2,50 €</td>\n        </tr>\n      </table>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p><a href=\"index.html\">Zur Startseite</a></p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "table:first-of-type tr",
+          "count": 5,
+          "label": "Die Getränke-Tabelle hat jetzt vier Datenzeilen"
+        },
+        {
+          "type": "text",
+          "selector": "table:first-of-type tr:nth-child(5) td:first-child",
+          "expected": "Wasser",
+          "label": "Die neue Zeile beginnt mit „Wasser“"
+        },
+        {
+          "type": "text",
+          "selector": "table:first-of-type tr:nth-child(5) td:nth-child(2)",
+          "expected": "0,5 l",
+          "label": "Wasser gibt es in „0,5 l“"
+        },
+        {
+          "type": "text",
+          "selector": "table:first-of-type tr:nth-child(5) td:nth-child(3)",
+          "expected": "0,80 €",
+          "label": "Wasser kostet „0,80 €“"
+        },
+        {
+          "type": "text",
+          "selector": "footer a[href='index.html']",
+          "expected": "Zur Startseite",
+          "label": "Im Fußbereich führt „Zur Startseite“ zu index.html"
+        },
+        {
+          "type": "selector",
+          "selector": "footer p",
+          "count": 2,
+          "label": "Im Fußbereich stehen zwei Absätze"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "Heilbronn</p>\\s*<p>\\s*<a[^>]*index\\.html[^>]*>\\s*Zur Startseite\\s*</a>\\s*</p>\\s*</footer>",
+          "label": "Der Link steht als eigener Absatz unter der Adresse"
+        },
+        {
+          "type": "text",
+          "selector": "th[colspan='2']",
+          "expected": "Kombi-Angebot",
+          "label": "Die Kopfzelle „Kombi-Angebot“ ist noch da"
+        },
+        {
+          "type": "text",
+          "selector": "header a[href='index.html']",
+          "expected": "Zurück zur Startseite",
+          "label": "Der Rück-Link im Kopfbereich ist noch da"
+        }
+      ]
     }
   ]
 }

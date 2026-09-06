@@ -16,7 +16,9 @@
       "text": "Schreibe den **Selektor**, der genau das Element mit `id=\"hinweis\"` trifft.",
       "template": "___ { background-color: yellow; }",
       "solution": "#hinweis",
-      "accept": ["#hinweis"],
+      "accept": [
+        "#hinweis"
+      ],
       "hint": "Raute plus id-Name: `#hinweis`"
     },
     {
@@ -32,7 +34,9 @@
       "text": "Eine Regel für `h1` **und** `h2` gemeinsam, eine für die id `#hinweis`. Füge der Gruppe testweise `p` hinzu: `h1, h2, p { … }` – und nimm das Komma probeweise raus. Was passiert?",
       "html": "<h1>Turnierabend</h1>\n<h2>Ablauf</h2>\n<p>Um 18 Uhr geht es los mit der Gruppenphase.</p>\n<p id=\"hinweis\">Bitte eigene Kopfhörer mitbringen!</p>\n",
       "css": "h1, h2 {\n  color: #7a3fbf;\n}\n#hinweis {\n  background-color: #fff3b0;\n}\n",
-      "editable": ["css"]
+      "editable": [
+        "css"
+      ]
     },
     {
       "type": "quiz",
@@ -47,12 +51,14 @@
     },
     {
       "type": "code",
-      "task": "Gestalte den Match-Bericht:\n\n1. **Eine gemeinsame Regel** für `h1` und `h2` (mit Komma!): Farbe `#2f6fdb`\n2. Eine Regel für die id `fazit`: Hintergrundfarbe `#fff3b0`",
+      "task": "**Gestalte** den Match-Bericht:\n\n1. Eine gemeinsame Regel für `h1` und `h2` (mit Komma): Textfarbe `#2f6fdb`\n2. Eine Regel für das Element mit der id `fazit`: Hintergrundfarbe `#fff3b0`",
       "starter": {
         "html": "<h1>Finale gegen Team Nordlicht</h1>\n<h2>Die Highlights</h2>\n<p>In Runde 3 hat unser Support das Spiel gedreht.</p>\n<p id=\"fazit\">Fazit: Nächste Saison holen wir den Pokal.</p>\n",
         "css": "/* Deine zwei Regeln hier */\n"
       },
-      "editable": ["css"],
+      "editable": [
+        "css"
+      ],
       "hints": [
         "Die Gruppe schreibst du als h1, h2 { ... } – ein Komma, eine Regel.",
         "Die id sprichst du mit #fazit an – mit Raute, nicht mit Punkt.",
@@ -62,10 +68,98 @@
         "css": "h1, h2 {\n  color: #2f6fdb;\n}\n#fazit {\n  background-color: #fff3b0;\n}\n"
       },
       "tests": [
-        { "type": "source", "file": "css", "matches": "h1\\s*,\\s*h2|h2\\s*,\\s*h1", "label": "h1 und h2 stehen als Gruppe in einer Regel" },
-        { "type": "style", "selector": "h1", "prop": "color", "expected": "#2f6fdb", "label": "Die h1 hat die Farbe #2f6fdb" },
-        { "type": "style", "selector": "h2", "prop": "color", "expected": "#2f6fdb", "label": "Die h2 hat die Farbe #2f6fdb" },
-        { "type": "style", "selector": "#fazit", "prop": "background-color", "expected": "#fff3b0", "label": "Das Fazit ist gelb hinterlegt" }
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "h1\\s*,\\s*h2|h2\\s*,\\s*h1",
+          "label": "h1 und h2 stehen als Gruppe in einer Regel"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "color",
+          "expected": "#2f6fdb",
+          "label": "Die h1 hat die Farbe #2f6fdb"
+        },
+        {
+          "type": "style",
+          "selector": "h2",
+          "prop": "color",
+          "expected": "#2f6fdb",
+          "label": "Die h2 hat die Farbe #2f6fdb"
+        },
+        {
+          "type": "style",
+          "selector": "#fazit",
+          "prop": "background-color",
+          "expected": "#fff3b0",
+          "label": "Das Fazit ist gelb hinterlegt"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Zwei Überschriften der Startseite tragen eine id: „Das gibt es bei uns“ (angebote) und „Öffnungszeiten“ (oeffnungszeiten). Beide sollen in Akzent-Orange leuchten – mit **einer** gemeinsamen Regel.\n\nIm CSS-Tab liegt dein Stylesheet mit der neuen Hinweis-Regel. HTML gesperrt 🔒."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Stylesheet um eine neue Regel am Ende: Die beiden Überschriften mit den ids „angebote“ und „oeffnungszeiten“ bekommen gemeinsam die Textfarbe `#e08a2e`. Verbinde beide Selektoren mit einem Komma – die übrigen Überschriften bleiben kaffeebraun.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n}\n\nh1 {\n  color: #5a3e2b;\n}\n\nh2 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "css"
+        ]
+      },
+      "hints": [
+        "ids sprichst du mit der Raute an. Zwei Selektoren mit Komma dazwischen bilden eine Gruppe – eine Regel für beide.",
+        "Die Regel beginnt mit #angebote, dann Komma, dann #oeffnungszeiten – darin nur eine Deklaration: color.",
+        "```css\nbody {\n  color: #2c2016;\n  background-color: #f7f1e3;\n}\n\nh1 {\n  color: #5a3e2b;\n}\n\nh2 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n```"
+      ],
+      "solution": {
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n}\n\nh1 {\n  color: #5a3e2b;\n}\n\nh2 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "#angebote",
+          "prop": "color",
+          "expected": "#e08a2e",
+          "label": "Die Überschrift „Das gibt es bei uns“ ist orange (#e08a2e)"
+        },
+        {
+          "type": "style",
+          "selector": "#oeffnungszeiten",
+          "prop": "color",
+          "expected": "#e08a2e",
+          "label": "Die Überschrift „Öffnungszeiten“ ist orange (#e08a2e)"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "#angebote\\s*,\\s*#oeffnungszeiten|#oeffnungszeiten\\s*,\\s*#angebote",
+          "label": "Beide ids stehen als Gruppe in einer Regel"
+        },
+        {
+          "type": "style",
+          "selector": "main h2:first-of-type",
+          "prop": "color",
+          "expected": "#5a3e2b",
+          "label": "Die Überschrift „Über uns“ bleibt kaffeebraun"
+        },
+        {
+          "type": "style",
+          "selector": ".hinweis",
+          "prop": "color",
+          "expected": "#b8860b",
+          "label": "Die Goldfarbe des Tipp-Absatzes ist noch da"
+        }
       ]
     }
   ]

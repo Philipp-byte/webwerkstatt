@@ -47,7 +47,7 @@
     },
     {
       "type": "code",
-      "task": "Das HTML 🔒 hat eine Überschrift `id=\"titel\"` und einen Absatz `id=\"info\"`.\n\nÄndere per JavaScript:\n\n1. Die Überschrift zeigt **Mein Highscore**\n2. Der Absatz zeigt **Neuer Rekord: 12500 Punkte**",
+      "task": "**Verändere** die Seite per JavaScript – das HTML 🔒 hat eine Überschrift mit der id „titel“ und einen Absatz mit der id „info“:\n\n1. Die Überschrift zeigt „Mein Highscore“\n2. Der Absatz zeigt „Neuer Rekord: 12500 Punkte“",
       "starter": {
         "html": "<h1 id=\"titel\">Platzhalter</h1>\n<p id=\"info\">Hier steht noch nichts.</p>\n",
         "js": "// Finde die Elemente und ändere ihren textContent\n"
@@ -88,6 +88,79 @@
       ],
       "correct": 1,
       "explanation": "„Likes“ und „likes“ sind für JavaScript zwei verschiedene Namen. Die Folge: null – und beim nächsten Zugriff die Fehlermeldung aus dieser Lektion."
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Zum ersten Mal sind HTML- **und** JS-Tab offen – beide werden gespeichert. Die Startseite bekommt ganz oben im Hauptbereich einen **Status-Absatz**: Im HTML steht ein Platzhalter, JavaScript tauscht ihn beim Laden aus.\n\nDein Skript aus Kapitel 16 bleibt oben stehen, das Neue kommt darunter."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** die Startseite:\n\n1. HTML: ganz oben im Hauptbereich ein Absatz mit der id „status“ und dem Text „Status wird geladen …“\n2. JS: das Element in der Konstante `statusAbsatz` merken und seinen Text auf „Heute geöffnet!“ setzen",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p><a href=\"impressum.html\">Impressum</a> · <a href=\"kontakt.html\">Kontakt</a></p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n  padding: 16px;\n  text-align: center;\n}\n\ntable {\n  background-color: white;\n  padding: 8px;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n  display: flex;\n  gap: 16px;\n  justify-content: center;\n}\n\nimg {\n  border-radius: 12px;\n}\n\nth, td {\n  padding: 6px;\n}\n\nheader {\n  background-color: #5a3e2b;\n  padding: 16px;\n}\n\nheader h1, header p {\n  color: white;\n}\n",
+        "js": "// Skript der Startseite\nconsole.log(\"Café Pause – Startseite geladen\");\n\nconst cafeName = \"Café Pause\";\nlet besucher = 0;\nconsole.log(cafeName);\n\nconst preisKakao = 1.5;\nconst anzahl = 3;\nconsole.log(\"Summe: \" + preisKakao * anzahl);\n\nconst oeffnungszeit = \"9:00 bis 15:00 Uhr\";\nconsole.log(cafeName + \" – geöffnet \" + oeffnungszeit);\n"
+      },
+      "editable": [
+        "html",
+        "js"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "html",
+          "js"
+        ]
+      },
+      "hints": [
+        "Erst das HTML: ein neuer Absatz direkt nach dem öffnenden main-Tag. Dann im JS: Element holen, textContent setzen.",
+        "HTML: <p id=\"status\">Status wird geladen …</p> – JS: const statusAbsatz = document.getElementById(\"status\"); und danach statusAbsatz.textContent = \"Heute geöffnet!\";",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p id=\"status\">Status wird geladen …</p>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p><a href=\"impressum.html\">Impressum</a> · <a href=\"kontakt.html\">Kontakt</a></p>\n    </footer>\n  </body>\n</html>\n```\n\nUnd im JS-Tab:\n\n```js\n// Skript der Startseite\nconsole.log(\"Café Pause – Startseite geladen\");\n\nconst cafeName = \"Café Pause\";\nlet besucher = 0;\nconsole.log(cafeName);\n\nconst preisKakao = 1.5;\nconst anzahl = 3;\nconsole.log(\"Summe: \" + preisKakao * anzahl);\n\nconst oeffnungszeit = \"9:00 bis 15:00 Uhr\";\nconsole.log(cafeName + \" – geöffnet \" + oeffnungszeit);\n\nconst statusAbsatz = document.getElementById(\"status\");\nstatusAbsatz.textContent = \"Heute geöffnet!\";\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p id=\"status\">Status wird geladen …</p>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p><a href=\"impressum.html\">Impressum</a> · <a href=\"kontakt.html\">Kontakt</a></p>\n    </footer>\n  </body>\n</html>\n",
+        "js": "// Skript der Startseite\nconsole.log(\"Café Pause – Startseite geladen\");\n\nconst cafeName = \"Café Pause\";\nlet besucher = 0;\nconsole.log(cafeName);\n\nconst preisKakao = 1.5;\nconst anzahl = 3;\nconsole.log(\"Summe: \" + preisKakao * anzahl);\n\nconst oeffnungszeit = \"9:00 bis 15:00 Uhr\";\nconsole.log(cafeName + \" – geöffnet \" + oeffnungszeit);\n\nconst statusAbsatz = document.getElementById(\"status\");\nstatusAbsatz.textContent = \"Heute geöffnet!\";\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "main > p#status:first-child",
+          "label": "Ganz oben im Hauptbereich steht ein Absatz mit der id status",
+          "min": 1
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "id=\"status\"[^>]*>\\s*Status wird geladen",
+          "label": "Im HTML steht der Platzhalter „Status wird geladen …“"
+        },
+        {
+          "type": "text",
+          "selector": "#status",
+          "expected": "Heute geöffnet!",
+          "label": "JavaScript hat den Text auf „Heute geöffnet!“ gesetzt"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "const\\s+statusAbsatz\\s*=\\s*document\\.getElementById\\(\\s*\"status\"\\s*\\)",
+          "label": "statusAbsatz merkt sich das Element mit der id status"
+        },
+        {
+          "type": "console",
+          "expected": [
+            "Café Pause – Startseite geladen",
+            "Café Pause - Startseite geladen"
+          ],
+          "label": "Die Meldung „Café Pause – Startseite geladen“ ist noch da"
+        },
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "Café Pause",
+          "label": "Die Überschrift „Café Pause“ ist noch da"
+        }
+      ]
     }
   ]
 }

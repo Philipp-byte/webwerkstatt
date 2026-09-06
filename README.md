@@ -35,6 +35,9 @@ Ein kleiner Flask-Server speichert den Fortschritt zentral (SQLite): Schüler-Lo
 
 - **Blättern statt scrollen:** Jede Lektion zeigt einen Schritt pro Seite — kurz, mit Grafik, auf einen Blick. Weiter geht es per Button, Wischen nach links oder Pfeiltaste, sobald der Schritt gelöst ist; zurück jederzeit.
 - **Schülernahe Beispiele:** Gaming, Handy, Sneaker, Fußball, Streaming, Schulalltag — kein Büro-Deutsch.
+- **Aufgaben verraten nie die Lösung:** Sie beschreiben das Ziel mit einem Operator (erstelle, ergänze, gestalte …); die Tipps sind gestuft und freiwillig. Ein Validator meldet jeden Code-Span, der aus der Lösung stammt.
+- **Jede Lektion baut an der Website:** Der letzte Schritt jeder Lektion ist eine Etappe am Café-Pause-Projekt — Wiederholungslektionen verbinden dabei mehrere frühere Themen, Projekt-Lektionen sind Meilensteine.
+- **Editor mit Syntax-Highlighting** (CodeMirror 6) für HTML, CSS und JavaScript.
 
 ## Arbeitsblätter
 

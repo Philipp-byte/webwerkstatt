@@ -31,12 +31,14 @@
       "text": "Diese Morgenroutine soll **nummeriert** erscheinen. Setze den passenden öffnenden Tag ein.",
       "template": "<___>\n  <li>Wecker ausschalten</li>\n  <li>Aufstehen</li>\n  <li>Bus erwischen</li>\n</ol>",
       "solution": "ol",
-      "accept": ["ol"],
+      "accept": [
+        "ol"
+      ],
       "hint": "Der schließende Tag verrät es: Die nummerierte Liste heißt `<ol>` – ordered list."
     },
     {
       "type": "code",
-      "task": "Schreibe einen nummerierten **Trainingsplan** mit mindestens drei Schritten.\n\n1. Die Überschrift `<h2>` ist schon da – dir fehlt nur die Liste.\n2. Achte auf eine sinnvolle Reihenfolge der Schritte!",
+      "task": "Erstelle unter der Überschrift einen nummerierten **Trainingsplan** mit mindestens drei Schritten in sinnvoller Reihenfolge.",
       "starter": {
         "html": "<h2>Mein Trainingsplan</h2>\n<!-- Dein Plan hier -->\n"
       },
@@ -49,8 +51,87 @@
         "html": "<h2>Mein Trainingsplan</h2>\n<ol>\n  <li>5 Minuten aufwärmen</li>\n  <li>3 Sätze Kniebeugen</li>\n  <li>3 Sätze Liegestütze</li>\n  <li>Dehnen</li>\n</ol>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "ol", "min": 1, "label": "Es gibt eine <ol>-Liste" },
-        { "type": "selector", "selector": "ol li", "min": 3, "label": "Der Trainingsplan hat mindestens drei Schritte" }
+        {
+          "type": "selector",
+          "selector": "ol",
+          "min": 1,
+          "label": "Es gibt eine <ol>-Liste"
+        },
+        {
+          "type": "selector",
+          "selector": "ol li",
+          "min": 3,
+          "label": "Der Trainingsplan hat mindestens drei Schritte"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Wie bestellt man eigentlich? Drei Schritte, deren Reihenfolge zählt – ein klarer Fall für eine nummerierte Liste. Sie kommt als neuer Abschnitt unter die Angebote, vor die Trennlinie."
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Ergänze zwischen der Angebotsliste und der Trennlinie einen Abschnitt: eine Überschrift zweiter Stufe **So bestellst du** und darunter eine nummerierte Liste mit den Schritten **An der Theke anstellen**, **Bestellung sagen**, **Bezahlen und genießen**.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke</li>\n      <li>Snacks</li>\n    </ul>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Der neue Abschnitt kommt nach </ul> und vor die <hr>: erst die h2, dann die nummerierte Liste mit drei Einträgen.",
+        "Die Liste beginnt mit <ol> und endet mit </ol>; jeder Schritt ist ein <li>…</li> – die Nummern macht der Browser.",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke</li>\n      <li>Snacks</li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke</li>\n      <li>Snacks</li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "h2:nth-of-type(4)",
+          "expected": "So bestellst du",
+          "label": "Die vierte Abschnitts-Überschrift lautet „So bestellst du“"
+        },
+        {
+          "type": "selector",
+          "selector": "ol > li",
+          "count": 3,
+          "label": "Die nummerierte Liste hat genau drei Schritte"
+        },
+        {
+          "type": "text",
+          "selector": "ol > li:nth-child(1)",
+          "expected": "An der Theke anstellen",
+          "label": "Schritt 1 lautet „An der Theke anstellen“"
+        },
+        {
+          "type": "text",
+          "selector": "ol > li:nth-child(2)",
+          "expected": "Bestellung sagen",
+          "label": "Schritt 2 lautet „Bestellung sagen“"
+        },
+        {
+          "type": "text",
+          "selector": "ol > li:nth-child(3)",
+          "expected": "Bezahlen und genießen",
+          "label": "Schritt 3 lautet „Bezahlen und genießen“"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "</ol>\\s*<hr",
+          "label": "Die nummerierte Liste steht direkt über der Trennlinie"
+        },
+        {
+          "type": "selector",
+          "selector": "ul > li",
+          "count": 2,
+          "label": "Die Angebotsliste mit zwei Einträgen ist noch da"
+        }
       ]
     }
   ]

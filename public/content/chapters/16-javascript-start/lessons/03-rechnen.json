@@ -29,7 +29,7 @@
     },
     {
       "type": "code",
-      "task": "Wie viele Stunden zockst du pro Woche?\n\n1. Lege eine Variable `stunden` an und lass JavaScript darin **2 * 7** rechnen (nicht selbst ausrechnen!).\n2. Gib genau **Spielstunden pro Woche: 14** aus – verbinde Text und Variable mit `+`.",
+      "task": "**Berechne** deine Spielstunden pro Woche:\n\n1. Eine Variable `stunden`, in der JavaScript 2 mal 7 rechnet (nicht selbst ausrechnen!)\n2. Eine Ausgabe, die genau „Spielstunden pro Woche: 14“ zeigt – Text und Variable verbunden",
       "starter": {
         "js": "// Erst rechnen, dann ausgeben\n"
       },
@@ -72,7 +72,7 @@
     },
     {
       "type": "code",
-      "task": "Bubble Tea für die ganze Clique:\n\n1. Lege eine **Konstante** `preis` mit dem Wert **4.5** an (ein Becher kostet 4,50 €).\n2. Lege eine Variable `anzahl` mit dem Wert **3** an.\n3. Lass JavaScript in `gesamt` **preis mal anzahl** rechnen.\n4. Gib genau **Gesamt: 13.5 Euro** aus.",
+      "task": "**Entwickle** die Kasse für Bubble Tea:\n\n1. Eine Konstante `preis` mit dem Wert 4.5 (ein Becher kostet 4,50 €)\n2. Eine Variable `anzahl` mit dem Wert 3\n3. Eine Variable `gesamt`, in der JavaScript preis mal anzahl rechnet\n4. Eine Ausgabe, die genau „Gesamt: 13.5 Euro“ zeigt",
       "starter": {
         "js": "// Kasse: preis, anzahl, gesamt – dann die Ausgabe\n"
       },
@@ -101,6 +101,66 @@
           "type": "console",
           "expected": "Gesamt: 13.5 Euro",
           "label": "Die Konsole zeigt „Gesamt: 13.5 Euro“"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Die Kasse rechnet mit: Ein Kakao kostet 1,50 €, drei Stück sind bestellt. JavaScript soll die Summe ausrechnen und mit Text ausgeben.\n\nDenk an die Reihenfolge: `*` wird zuerst gerechnet, dann hängt `+` das Ergebnis an den Text. Kommazahlen mit **Punkt**! HTML und CSS gesperrt 🔒."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Skript unter den bisherigen Zeilen:\n\n1. Eine Konstante `preisKakao` mit dem Wert 1.5\n2. Eine Konstante `anzahl` mit dem Wert 3\n3. Eine Ausgabe, die genau „Summe: 4.5“ zeigt – JavaScript rechnet preisKakao mal anzahl",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p><a href=\"impressum.html\">Impressum</a> · <a href=\"kontakt.html\">Kontakt</a></p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n  padding: 16px;\n  text-align: center;\n}\n\ntable {\n  background-color: white;\n  padding: 8px;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n  display: flex;\n  gap: 16px;\n  justify-content: center;\n}\n\nimg {\n  border-radius: 12px;\n}\n\nth, td {\n  padding: 6px;\n}\n\nheader {\n  background-color: #5a3e2b;\n  padding: 16px;\n}\n\nheader h1, header p {\n  color: white;\n}\n",
+        "js": "// Skript der Startseite\nconsole.log(\"Café Pause – Startseite geladen\");\n\nconst cafeName = \"Café Pause\";\nlet besucher = 0;\nconsole.log(cafeName);\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "js"
+        ]
+      },
+      "hints": [
+        "Zwei Konstanten, dann eine Ausgabe: Text plus Rechnung – wie beim Döner-Rechner.",
+        "console.log(\"Summe: \" + preisKakao * anzahl); – das Mal wird vor dem Verbinden gerechnet.",
+        "```js\n// Skript der Startseite\nconsole.log(\"Café Pause – Startseite geladen\");\n\nconst cafeName = \"Café Pause\";\nlet besucher = 0;\nconsole.log(cafeName);\n\nconst preisKakao = 1.5;\nconst anzahl = 3;\nconsole.log(\"Summe: \" + preisKakao * anzahl);\n```"
+      ],
+      "solution": {
+        "js": "// Skript der Startseite\nconsole.log(\"Café Pause – Startseite geladen\");\n\nconst cafeName = \"Café Pause\";\nlet besucher = 0;\nconsole.log(cafeName);\n\nconst preisKakao = 1.5;\nconst anzahl = 3;\nconsole.log(\"Summe: \" + preisKakao * anzahl);\n"
+      },
+      "tests": [
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "const\\s+preisKakao\\s*=\\s*1\\.5",
+          "label": "preisKakao ist eine Konstante mit dem Wert 1.5"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "const\\s+anzahl\\s*=\\s*3",
+          "label": "anzahl ist eine Konstante mit dem Wert 3"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "preisKakao\\s*\\*\\s*anzahl|anzahl\\s*\\*\\s*preisKakao",
+          "label": "Die Summe wird aus preisKakao mal anzahl berechnet"
+        },
+        {
+          "type": "console",
+          "expected": "Summe: 4.5",
+          "label": "Die Konsole zeigt „Summe: 4.5“"
+        },
+        {
+          "type": "console",
+          "expected": "Café Pause",
+          "label": "Die Ausgabe von cafeName ist noch da"
         }
       ]
     }

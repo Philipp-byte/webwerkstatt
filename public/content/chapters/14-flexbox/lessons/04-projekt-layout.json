@@ -4,36 +4,85 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Weiter geht es am **Café Pause**! Zuletzt hat die Website ihre Typografie bekommen. Heute bekommt sie ihr **Layout**:\n\n1. Die Navigation wird mit **Flexbox** zu einer echten Menüleiste – Links nebeneinander statt untereinander.\n2. Der **Header** bekommt einen kaffeebraunen Hintergrund mit weißer Schrift und Innenabstand – wie ein richtiges Website-Banner.\n\nGenau dafür hast du Flexbox und das Box-Modell gelernt!"
+      "text": "**Meilenstein!** Die Startseite vom **Café Pause** hat jetzt eine Flex-Navigation und einen luftigen Footer. Heute bekommt der **Kopfbereich** sein Banner: kaffeebrauner Hintergrund, Innenabstand – und weiße Schrift, damit Überschrift und Willkommens-Text auf Braun lesbar bleiben.\n\nDanach schau in **Mein Café-Projekt** (`#/projekt`): Die Startseite sieht zum ersten Mal wie eine richtige Website aus."
     },
     {
       "type": "explain",
-      "text": "Ein Handgriff fehlt noch: Im braunen Header steht die `h1` – aber die ist seit Kapitel 10 selbst kaffeebraun. Braun auf Braun wäre unsichtbar!\n\nDafür gibt es den **Verschachtelungs-Selektor**: zwei Selektoren, getrennt durch ein **Leerzeichen**. Er trifft nur Elemente **innerhalb** eines anderen:\n\n```css\nheader h1 {\n  color: white;\n}\n```\n\nGelesen: „Jede `h1`, die in einem `header` steckt.“ Überschriften ohne header drumherum bleiben braun – nur die im Header wird weiß."
+      "text": "Zwei Werkzeuge aus Kapitel 11 brauchst du dafür. Der **Verschachtelungs-Selektor** (Leerzeichen) trifft nur Elemente **innerhalb** eines anderen: `header h1` ist nur die Überschrift im Kopfbereich – die `h2` im main bleiben braun. Der **Gruppen-Selektor** (Komma) lässt eine Regel für mehrere Selektoren gelten:\n\n```css\nnav a, footer a {\n  color: white;\n}\n```\n\nCSS-Tab: dein Stylesheet. HTML gesperrt 🔒. Zwei neue Regeln kommen ans Ende."
     },
     {
       "type": "code",
-      "task": "Baue das Layout der Startseite (das HTML ist gesperrt – heute wächst nur das Stylesheet):\n\n1. Eine Regel für `nav`: `display: flex;` und `gap: 16px;`\n2. Eine Regel für `header`: `background-color: #5a3e2b;`, `color: white;` und `padding: 16px;`\n3. Eine Regel für `header h1` (Verschachtelungs-Selektor!): `color: white;`",
+      "task": "**Gestalte** den Kopfbereich als Banner – zwei neue Regeln am Ende des Stylesheets:\n\n1. Der `header` bekommt den kaffeebraunen Hintergrund `#5a3e2b` und rundum 16 Pixel Innenabstand\n2. Eine gemeinsame Regel (Komma) für die `h1` und den Absatz **im header**: Schriftfarbe weiß\n\nDanach: „Mein Café-Projekt“ ansehen!",
       "starter": {
-        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Café Pause</title>\n</head>\n<body>\n  <header>\n    <h1>Café Pause</h1>\n    <p>Willkommen in unserem Schülercafé – schön, dass du da bist!</p>\n  </header>\n  <nav>\n    <a href=\"speisekarte.html\">Speisekarte</a>\n    <a href=\"galerie.html\">Galerie</a>\n    <a href=\"kontakt.html\">Kontakt</a>\n    <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    <a href=\"https://www.example.com\">Unsere Region</a>\n  </nav>\n  <main>\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von einer <strong>Schülerfirma</strong> betrieben.</p>\n    <p><em>Jede Pause wird bei uns zur besten Stunde des Tages.</em></p>\n    <hr>\n    <p>Musterstraße 12<br>74072 Heilbronn</p>\n    <h2 id=\"angebote\">Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Laugenbrezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>Stell dich an der Theke an.</li>\n      <li>Sag uns deine Bestellung.</li>\n      <li>Bezahlen, abholen, genießen!</li>\n    </ol>\n  </main>\n  <footer>\n    <p>Café Pause · Musterstraße 12 · 74072 Heilbronn</p>\n    <p id=\"oeffnungszeiten\">Geöffnet: Montag bis Freitag, 9:00 bis 15:00 Uhr</p>\n    <p class=\"hinweis\">Fiktiver Betrieb für Übungszwecke.</p>\n  </footer>\n</body>\n</html>\n",
-        "css": "body {\n  background-color: #f7f1e3;\n  color: #2c2016;\n  font-family: 'Segoe UI', Arial, sans-serif;\n}\n\nh1 {\n  color: #5a3e2b;\n  text-align: center;\n}\n\na {\n  color: #e08a2e;\n}\n"
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n  padding: 16px;\n  text-align: center;\n}\n\ntable {\n  background-color: white;\n  padding: 8px;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n  display: flex;\n  gap: 16px;\n  justify-content: center;\n}\n\nimg {\n  border-radius: 12px;\n}\n\nth, td {\n  padding: 6px;\n}\n"
       },
-      "editable": ["css"],
-      "project": { "page": "index", "save": ["css"] },
+      "editable": [
+        "css"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "css"
+        ]
+      },
       "hints": [
-        "Drei neue Regeln kommen unten ans Stylesheet: nav { ... }, header { ... } und header h1 { ... }. Die bestehenden Regeln bleiben unverändert stehen.",
-        "Die nav-Regel bekommt display: flex; und gap: 16px; – die header-Regel background-color: #5a3e2b;, color: white; und padding: 16px;. Beim Verschachtelungs-Selektor trennt NUR ein Leerzeichen: header h1 { color: white; }",
-        "```css\nbody {\n  background-color: #f7f1e3;\n  color: #2c2016;\n  font-family: 'Segoe UI', Arial, sans-serif;\n}\n\nh1 {\n  color: #5a3e2b;\n  text-align: center;\n}\n\na {\n  color: #e08a2e;\n}\n\nnav {\n  display: flex;\n  gap: 16px;\n}\n\nheader {\n  background-color: #5a3e2b;\n  color: white;\n  padding: 16px;\n}\n\nheader h1 {\n  color: white;\n}\n```"
+        "Erste Regel: Selektor header mit background-color und padding. Zweite Regel: zwei Verschachtelungs-Selektoren (header + Leerzeichen + Element), durch Komma verbunden, mit color.",
+        "header { background-color: #5a3e2b; padding: 16px; } und darunter header h1, header p { color: white; } – beide unter die th, td-Regel.",
+        "```css\nbody {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n  padding: 16px;\n  text-align: center;\n}\n\ntable {\n  background-color: white;\n  padding: 8px;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n  display: flex;\n  gap: 16px;\n  justify-content: center;\n}\n\nimg {\n  border-radius: 12px;\n}\n\nth, td {\n  padding: 6px;\n}\n\nheader {\n  background-color: #5a3e2b;\n  padding: 16px;\n}\n\nheader h1, header p {\n  color: white;\n}\n```"
       ],
       "solution": {
-        "css": "body {\n  background-color: #f7f1e3;\n  color: #2c2016;\n  font-family: 'Segoe UI', Arial, sans-serif;\n}\n\nh1 {\n  color: #5a3e2b;\n  text-align: center;\n}\n\na {\n  color: #e08a2e;\n}\n\nnav {\n  display: flex;\n  gap: 16px;\n}\n\nheader {\n  background-color: #5a3e2b;\n  color: white;\n  padding: 16px;\n}\n\nheader h1 {\n  color: white;\n}\n"
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n  padding: 16px;\n  text-align: center;\n}\n\ntable {\n  background-color: white;\n  padding: 8px;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n  display: flex;\n  gap: 16px;\n  justify-content: center;\n}\n\nimg {\n  border-radius: 12px;\n}\n\nth, td {\n  padding: 6px;\n}\n\nheader {\n  background-color: #5a3e2b;\n  padding: 16px;\n}\n\nheader h1, header p {\n  color: white;\n}\n"
       },
       "tests": [
-        { "type": "style", "selector": "nav", "prop": "display", "expected": "flex", "label": "Die Navigation ist ein Flex-Container" },
-        { "type": "style", "selector": "nav", "prop": "column-gap", "expected": "16px", "label": "Zwischen den Menü-Links sind 16px Abstand" },
-        { "type": "style", "selector": "header", "prop": "background-color", "expected": "#5a3e2b", "label": "Der Header ist kaffeebraun (#5a3e2b)" },
-        { "type": "style", "selector": "header", "prop": "color", "expected": "white", "label": "Die Schrift im Header ist weiß" },
-        { "type": "style", "selector": "header", "prop": "padding-top", "expected": "16px", "label": "Der Header hat 16px Innenabstand" },
-        { "type": "style", "selector": "header h1", "prop": "color", "expected": "white", "label": "Die Überschrift im Header ist weiß" }
+        {
+          "type": "style",
+          "selector": "header",
+          "prop": "background-color",
+          "expected": "#5a3e2b",
+          "label": "Der Kopfbereich ist kaffeebraun (#5a3e2b)"
+        },
+        {
+          "type": "style",
+          "selector": "header",
+          "prop": "padding-top",
+          "expected": "16px",
+          "label": "Der Kopfbereich hat 16px Innenabstand"
+        },
+        {
+          "type": "style",
+          "selector": "header h1",
+          "prop": "color",
+          "expected": "white",
+          "label": "Die Überschrift „Café Pause“ im Kopfbereich ist weiß"
+        },
+        {
+          "type": "style",
+          "selector": "header p",
+          "prop": "color",
+          "expected": "white",
+          "label": "Der Willkommens-Absatz im Kopfbereich ist weiß"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "header\\s+h1\\s*,\\s*header\\s+p|header\\s+p\\s*,\\s*header\\s+h1",
+          "label": "Überschrift und Absatz im header stehen als Gruppe in einer Regel"
+        },
+        {
+          "type": "style",
+          "selector": "main h2",
+          "prop": "color",
+          "expected": "#5a3e2b",
+          "label": "Die Überschriften im main bleiben braun"
+        },
+        {
+          "type": "style",
+          "selector": "nav",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Die Flex-Navigation ist noch da"
+        }
       ]
     }
   ]

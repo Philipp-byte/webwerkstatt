@@ -12,7 +12,9 @@
       "text": "Der CSS-Tab 🔒 gestaltet die Gruppe `spieler` und die id `captain`.\n\nProbiere: Gib dem Neuzugang ebenfalls `class=\"spieler\"` – und beobachte, was passiert!",
       "html": "<h2>Team Blitz</h2>\n<p class=\"spieler\">Nova – Support</p>\n<p class=\"spieler\">Rex – Sniper</p>\n<p>Luca – Neuzugang</p>\n<p id=\"captain\">Captain: Mia</p>\n",
       "css": ".spieler { color: #1d6fb8; font-weight: bold; }\n#captain { background-color: #fff3b0; padding: 6px; }\n",
-      "editable": ["html"]
+      "editable": [
+        "html"
+      ]
     },
     {
       "type": "quiz",
@@ -31,12 +33,14 @@
     },
     {
       "type": "code",
-      "task": "Der CSS-Tab 🔒 ist vorbereitet. Baue drei Absätze mit Clan-Regeln:\n\n1. **Zwei** Absätze mit `class=\"wichtig\"`\n2. **Einen** Absatz mit `id=\"fazit\"`\n\nIn der Vorschau siehst du sofort, ob die Gestaltung greift!",
+      "task": "**Erstelle** drei Absätze mit Clan-Regeln (der CSS-Tab 🔒 ist vorbereitet):\n\n1. **Zwei** Absätze gehören zur Gruppe „wichtig“\n2. **Ein** Absatz trägt den einmaligen Namen „fazit“\n\nIn der Vorschau siehst du sofort, ob die Gestaltung greift!",
       "starter": {
         "html": "<h2>Regeln im Clan</h2>\n<!-- Deine drei Absätze hier -->\n",
         "css": ".wichtig { color: #c0392b; font-weight: bold; }\n#fazit { background-color: #fff3b0; padding: 6px; }\n"
       },
-      "editable": ["html"],
+      "editable": [
+        "html"
+      ],
       "hints": [
         "Das Attribut kommt in den öffnenden Tag: <p class=\"wichtig\">.",
         "Für das Fazit: <p id=\"fazit\">...</p> – nur einmal!",
@@ -46,8 +50,18 @@
         "html": "<h2>Regeln im Clan</h2>\n<p class=\"wichtig\">Kein Rage-Quit mitten im Match.</p>\n<p class=\"wichtig\">Im Voice-Chat bleiben alle respektvoll.</p>\n<p id=\"fazit\">Zusammen gewinnen wir.</p>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "p.wichtig", "min": 2, "label": "Zwei Absätze haben die class „wichtig“" },
-        { "type": "selector", "selector": "p#fazit", "count": 1, "label": "Genau ein Absatz hat die id „fazit“" }
+        {
+          "type": "selector",
+          "selector": "p.wichtig",
+          "min": 2,
+          "label": "Zwei Absätze haben die class „wichtig“"
+        },
+        {
+          "type": "selector",
+          "selector": "p#fazit",
+          "count": 1,
+          "label": "Genau ein Absatz hat die id „fazit“"
+        }
       ]
     },
     {
@@ -55,17 +69,22 @@
       "text": "Dieser Absatz soll zu **beiden** Gruppen gehören: `hinweis` und `wichtig`. Setze den fehlenden Attributwert ein.",
       "template": "<p class=\"___\">Turnier am Samstag – seid um 18 Uhr online!</p>",
       "solution": "hinweis wichtig",
-      "accept": ["hinweis wichtig", "wichtig hinweis"],
+      "accept": [
+        "hinweis wichtig",
+        "wichtig hinweis"
+      ],
       "hint": "Beide Namen in dieselben Anführungszeichen, getrennt durch ein Leerzeichen."
     },
     {
       "type": "code",
-      "task": "Fehlersuche! Die id `regel` kommt **zweimal** vor – verboten. Repariere:\n\n1. Ändere bei **beiden** Regel-Absätzen `id=\"regel\"` zu `class=\"regel\"` – als Gruppe ist der Name mehrfach erlaubt\n2. Gib dem letzten Absatz die id `hilfe`\n\nDer CSS-Tab 🔒 zeigt dir sofort, ob es klappt.",
+      "task": "**Überprüfe** die Voice-Chat-Regeln und behebe den Fehler: Der einmalige Name „regel“ kommt **zweimal** vor – verboten.\n\n1. Mache aus dem einmaligen Namen bei **beiden** Regel-Absätzen einen Gruppen-Namen „regel“\n2. Gib dem letzten Absatz den einmaligen Namen „hilfe“\n\nDer CSS-Tab 🔒 zeigt dir sofort, ob es klappt.",
       "starter": {
         "html": "<h2>Regeln im Voice-Chat</h2>\n<p id=\"regel\">Mikro stumm, wenn du nicht redest.</p>\n<p id=\"regel\">Keine Musik im Hintergrund.</p>\n<p>Fragen? Schreib dem Clan-Leader.</p>\n",
         "css": ".regel { color: #1d6fb8; font-weight: bold; }\n#hilfe { background-color: #e8f7e8; padding: 6px; }\n"
       },
-      "editable": ["html"],
+      "editable": [
+        "html"
+      ],
       "hints": [
         "Aus id wird class: Ersetze in beiden Regel-Absätzen das Wort id durch class.",
         "Der letzte Absatz bekommt zusätzlich ein Attribut in den öffnenden Tag: <p id=\"hilfe\">.",
@@ -75,9 +94,96 @@
         "html": "<h2>Regeln im Voice-Chat</h2>\n<p class=\"regel\">Mikro stumm, wenn du nicht redest.</p>\n<p class=\"regel\">Keine Musik im Hintergrund.</p>\n<p id=\"hilfe\">Fragen? Schreib dem Clan-Leader.</p>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "p.regel", "min": 2, "label": "Beide Regeln gehören jetzt zur Gruppe „regel“" },
-        { "type": "source", "file": "html", "matches": "id=[\"']regel[\"']", "absent": true, "label": "Die doppelte id „regel“ ist verschwunden" },
-        { "type": "selector", "selector": "p#hilfe", "count": 1, "label": "Genau ein Absatz hat die id „hilfe“" }
+        {
+          "type": "selector",
+          "selector": "p.regel",
+          "min": 2,
+          "label": "Beide Regeln gehören jetzt zur Gruppe „regel“"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "id=[\"']regel[\"']",
+          "absent": true,
+          "label": "Die doppelte id „regel“ ist verschwunden"
+        },
+        {
+          "type": "selector",
+          "selector": "p#hilfe",
+          "count": 1,
+          "label": "Genau ein Absatz hat die id „hilfe“"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Auf der Startseite bekommen zwei Elemente jetzt Namen – noch ohne sichtbare Wirkung. Ab Kapitel 10 sprichst du sie damit im CSS gezielt an: den Tipp-Absatz als Gruppe `hinweis`, die Überschrift „Öffnungszeiten“ als einmaliges Sprungziel.\n\nDer Editor zeigt deinen Stand der Startseite aus Kapitel 7."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** die Startseite um zwei Namen: Der Tipp-Absatz („Tipp: In der großen Pause …“) gehört zur Gruppe „hinweis“, die Überschrift „Öffnungszeiten“ bekommt den einmaligen Namen „oeffnungszeiten“. Alles andere bleibt unverändert.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1 id=\"oben\">Café Pause</h1>\n    <p>\n      <a href=\"speisekarte.html\">Speisekarte</a> ·\n      <a href=\"galerie.html\">Galerie</a> ·\n      <a href=\"kontakt.html\">Kontakt</a>\n    </p>\n    <p><a href=\"#angebote\">Direkt zu den Angeboten</a></p>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2 id=\"angebote\">Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <p><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n    <h2>Öffnungszeiten</h2>\n    <table>\n      <tr>\n        <th>Tag</th>\n        <th>Zeit</th>\n      </tr>\n      <tr>\n        <td>Montag bis Freitag</td>\n        <td>9:00 bis 15:00 Uhr</td>\n      </tr>\n    </table>\n\n    <h2>Mehr über uns</h2>\n    <ul>\n      <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n      <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n    </ul>\n    <p><a href=\"#oben\">Nach oben</a></p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Beide Namen kommen als Attribut in den öffnenden Tag – der Gruppen-Name mit class, der einmalige Name mit id. Der Text der Elemente bleibt gleich.",
+        "Der Tipp-Absatz beginnt dann mit <p class=\"hinweis\">, die Überschrift mit <h2 id=\"oeffnungszeiten\">.",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1 id=\"oben\">Café Pause</h1>\n    <p>\n      <a href=\"speisekarte.html\">Speisekarte</a> ·\n      <a href=\"galerie.html\">Galerie</a> ·\n      <a href=\"kontakt.html\">Kontakt</a>\n    </p>\n    <p><a href=\"#angebote\">Direkt zu den Angeboten</a></p>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2 id=\"angebote\">Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n    <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n    <table>\n      <tr>\n        <th>Tag</th>\n        <th>Zeit</th>\n      </tr>\n      <tr>\n        <td>Montag bis Freitag</td>\n        <td>9:00 bis 15:00 Uhr</td>\n      </tr>\n    </table>\n\n    <h2>Mehr über uns</h2>\n    <ul>\n      <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n      <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n    </ul>\n    <p><a href=\"#oben\">Nach oben</a></p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1 id=\"oben\">Café Pause</h1>\n    <p>\n      <a href=\"speisekarte.html\">Speisekarte</a> ·\n      <a href=\"galerie.html\">Galerie</a> ·\n      <a href=\"kontakt.html\">Kontakt</a>\n    </p>\n    <p><a href=\"#angebote\">Direkt zu den Angeboten</a></p>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2 id=\"angebote\">Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n    <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n    <table>\n      <tr>\n        <th>Tag</th>\n        <th>Zeit</th>\n      </tr>\n      <tr>\n        <td>Montag bis Freitag</td>\n        <td>9:00 bis 15:00 Uhr</td>\n      </tr>\n    </table>\n\n    <h2>Mehr über uns</h2>\n    <ul>\n      <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n      <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n    </ul>\n    <p><a href=\"#oben\">Nach oben</a></p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "p.hinweis",
+          "count": 1,
+          "label": "Genau ein Absatz gehört zur Gruppe „hinweis“"
+        },
+        {
+          "type": "text",
+          "selector": "p.hinweis",
+          "expected": "Tipp:",
+          "contains": true,
+          "label": "Der Absatz mit der Gruppe „hinweis“ ist der Tipp-Absatz"
+        },
+        {
+          "type": "selector",
+          "selector": "h2#oeffnungszeiten",
+          "count": 1,
+          "label": "Die Überschrift hat den einmaligen Namen „oeffnungszeiten“"
+        },
+        {
+          "type": "text",
+          "selector": "#oeffnungszeiten",
+          "expected": "Öffnungszeiten",
+          "label": "Das Element mit der id ist die Überschrift „Öffnungszeiten“"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "id=[\"']hinweis[\"']",
+          "absent": true,
+          "label": "„hinweis“ ist ein Gruppen-Name (class), keine id"
+        },
+        {
+          "type": "text",
+          "selector": "#oeffnungszeiten + table tr:nth-child(2) td:first-child",
+          "expected": "Montag bis Freitag",
+          "label": "Die Öffnungszeiten-Tabelle folgt weiterhin direkt auf die Überschrift"
+        },
+        {
+          "type": "text",
+          "selector": "a[href='#oben']",
+          "expected": "Nach oben",
+          "label": "Der Link „Nach oben“ ist noch da"
+        }
       ]
     }
   ]

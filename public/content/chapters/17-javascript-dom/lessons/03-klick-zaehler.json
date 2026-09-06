@@ -30,7 +30,7 @@
     },
     {
       "type": "code",
-      "task": "Baue den Like-Zähler selbst – das JS-Feld ist **leer**:\n\n1. Variable `likes` mit dem Wert **0** anlegen\n2. Button (`id=\"knopf\"`) und Anzeige (`id=\"anzeige\"`) holen\n3. Bei jedem Klick: `likes` um 1 erhöhen und anzeigen\n\nDer Test klickt dreimal – danach muss die Anzeige **3** zeigen.",
+      "task": "**Entwickle** den Like-Zähler – das JS-Feld ist leer:\n\n1. Eine Variable `likes` mit dem Wert 0\n2. Button (id „knopf“) und Anzeige (id „anzeige“) holen\n3. Bei jedem Klick: `likes` um 1 erhöhen und anzeigen\n\nDer Test klickt dreimal – danach zeigt die Anzeige 3.",
       "starter": {
         "html": "<h1>Like-Zähler</h1>\n<button id=\"knopf\">Like</button>\n<p id=\"anzeige\">0</p>\n",
         "css": "#anzeige { font-size: 40px; font-weight: bold; }\nbutton { font-size: 20px; padding: 8px 20px; }\n",
@@ -89,7 +89,7 @@
     },
     {
       "type": "code",
-      "task": "Baue den Komfort-Zähler:\n\n1. Variable `likes` mit **0** anlegen\n2. Drei Elemente holen: `id=\"knopf\"`, `id=\"reset\"`, `id=\"anzeige\"`\n3. Klick auf **Like**: `likes` um 1 erhöhen, Anzeige zeigt **Likes:** und den Stand\n4. Klick auf **Zurücksetzen**: `likes` auf 0, Anzeige zeigt **Likes: 0**",
+      "task": "**Entwickle** den Komfort-Zähler:\n\n1. Eine Variable `likes` mit dem Wert 0\n2. Drei Elemente holen: ids „knopf“, „reset“, „anzeige“\n3. Klick auf Like: `likes` um 1 erhöhen, Anzeige zeigt „Likes:“ und den Stand\n4. Klick auf Zurücksetzen: `likes` auf 0, Anzeige zeigt „Likes: 0“",
       "starter": {
         "html": "<h1>Like-Zähler</h1>\n<button id=\"knopf\">Like</button>\n<button id=\"reset\">Zurücksetzen</button>\n<p id=\"anzeige\">Likes: 0</p>\n",
         "css": "#anzeige { font-size: 40px; font-weight: bold; }\nbutton { font-size: 20px; padding: 8px 20px; }\n",
@@ -139,6 +139,101 @@
           "selector": "#anzeige",
           "expected": "Likes: 0",
           "label": "Nach dem Zurücksetzen zeigt die Anzeige „Likes: 0“"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Unter dem Team-Absatz bekommt die Startseite einen **Like-Knopf mit Zähler**: ein Absatz mit dem Knopf „Gefällt mir“ und daneben ein `<span>` mit der Startzahl 0.\n\nIm JS kommt der Zähler unter den Status-Code: Variable `likes`, zwei Elemente holen, Event-Listener – genau wie im Mini-Projekt."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** die Startseite:\n\n1. HTML: unter dem Team-Absatz ein neuer Absatz mit einem Button (id „like-knopf“, Text „Gefällt mir“) und dahinter einem span (id „likes“) mit dem Inhalt 0\n2. JS: Variable `likes` ab 0 – jeder Klick erhöht sie und zeigt sie im span",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <button id=\"status-knopf\">Haben wir gerade offen?</button>\n      <p id=\"status\"></p>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p><a href=\"impressum.html\">Impressum</a> · <a href=\"kontakt.html\">Kontakt</a></p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n  padding: 16px;\n  text-align: center;\n}\n\ntable {\n  background-color: white;\n  padding: 8px;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n  display: flex;\n  gap: 16px;\n  justify-content: center;\n}\n\nimg {\n  border-radius: 12px;\n}\n\nth, td {\n  padding: 6px;\n}\n\nheader {\n  background-color: #5a3e2b;\n  padding: 16px;\n}\n\nheader h1, header p {\n  color: white;\n}\n",
+        "js": "// Skript der Startseite\nconsole.log(\"Café Pause – Startseite geladen\");\n\nconst cafeName = \"Café Pause\";\nlet besucher = 0;\nconsole.log(cafeName);\n\nconst preisKakao = 1.5;\nconst anzahl = 3;\nconsole.log(\"Summe: \" + preisKakao * anzahl);\n\nconst oeffnungszeit = \"9:00 bis 15:00 Uhr\";\nconsole.log(cafeName + \" – geöffnet \" + oeffnungszeit);\n\nconst statusAbsatz = document.getElementById(\"status\");\nconst statusKnopf = document.getElementById(\"status-knopf\");\nstatusKnopf.addEventListener(\"click\", function () {\n  statusAbsatz.textContent = \"Mo–Fr 9–15 Uhr – schau einfach vorbei!\";\n});\n"
+      },
+      "editable": [
+        "html",
+        "js"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "html",
+          "js"
+        ]
+      },
+      "hints": [
+        "HTML: ein p direkt nach dem Team-Absatz, darin button und span mit ihren ids. JS: let likes = 0; dann die Konstanten likeKnopf und likeAnzeige holen.",
+        "likeKnopf.addEventListener(\"click\", function () { likes = likes + 1; likeAnzeige.textContent = likes; });",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <button id=\"status-knopf\">Haben wir gerade offen?</button>\n      <p id=\"status\"></p>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n      <p><button id=\"like-knopf\">Gefällt mir</button> <span id=\"likes\">0</span></p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p><a href=\"impressum.html\">Impressum</a> · <a href=\"kontakt.html\">Kontakt</a></p>\n    </footer>\n  </body>\n</html>\n```\n\nUnd im JS-Tab:\n\n```js\n// Skript der Startseite\nconsole.log(\"Café Pause – Startseite geladen\");\n\nconst cafeName = \"Café Pause\";\nlet besucher = 0;\nconsole.log(cafeName);\n\nconst preisKakao = 1.5;\nconst anzahl = 3;\nconsole.log(\"Summe: \" + preisKakao * anzahl);\n\nconst oeffnungszeit = \"9:00 bis 15:00 Uhr\";\nconsole.log(cafeName + \" – geöffnet \" + oeffnungszeit);\n\nconst statusAbsatz = document.getElementById(\"status\");\nconst statusKnopf = document.getElementById(\"status-knopf\");\nstatusKnopf.addEventListener(\"click\", function () {\n  statusAbsatz.textContent = \"Mo–Fr 9–15 Uhr – schau einfach vorbei!\";\n});\n\nlet likes = 0;\nconst likeKnopf = document.getElementById(\"like-knopf\");\nconst likeAnzeige = document.getElementById(\"likes\");\nlikeKnopf.addEventListener(\"click\", function () {\n  likes = likes + 1;\n  likeAnzeige.textContent = likes;\n});\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <button id=\"status-knopf\">Haben wir gerade offen?</button>\n      <p id=\"status\"></p>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n      <p><button id=\"like-knopf\">Gefällt mir</button> <span id=\"likes\">0</span></p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p><a href=\"impressum.html\">Impressum</a> · <a href=\"kontakt.html\">Kontakt</a></p>\n    </footer>\n  </body>\n</html>\n",
+        "js": "// Skript der Startseite\nconsole.log(\"Café Pause – Startseite geladen\");\n\nconst cafeName = \"Café Pause\";\nlet besucher = 0;\nconsole.log(cafeName);\n\nconst preisKakao = 1.5;\nconst anzahl = 3;\nconsole.log(\"Summe: \" + preisKakao * anzahl);\n\nconst oeffnungszeit = \"9:00 bis 15:00 Uhr\";\nconsole.log(cafeName + \" – geöffnet \" + oeffnungszeit);\n\nconst statusAbsatz = document.getElementById(\"status\");\nconst statusKnopf = document.getElementById(\"status-knopf\");\nstatusKnopf.addEventListener(\"click\", function () {\n  statusAbsatz.textContent = \"Mo–Fr 9–15 Uhr – schau einfach vorbei!\";\n});\n\nlet likes = 0;\nconst likeKnopf = document.getElementById(\"like-knopf\");\nconst likeAnzeige = document.getElementById(\"likes\");\nlikeKnopf.addEventListener(\"click\", function () {\n  likes = likes + 1;\n  likeAnzeige.textContent = likes;\n});\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "p > button#like-knopf + span#likes",
+          "label": "Knopf und Zähler stehen zusammen in einem Absatz",
+          "min": 1
+        },
+        {
+          "type": "selector",
+          "selector": "h2 + p + p > button#like-knopf",
+          "label": "Der Like-Absatz steht direkt unter dem Team-Absatz",
+          "min": 1
+        },
+        {
+          "type": "text",
+          "selector": "#like-knopf",
+          "expected": "Gefällt mir",
+          "label": "Der Knopf zeigt „Gefällt mir“"
+        },
+        {
+          "type": "text",
+          "selector": "#likes",
+          "expected": "0",
+          "label": "Vor dem Klicken zeigt der Zähler 0"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#like-knopf"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#like-knopf"
+        },
+        {
+          "type": "text",
+          "selector": "#likes",
+          "expected": "2",
+          "label": "Nach zwei Klicks zeigt der Zähler 2"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "let\\s+likes\\s*=\\s*0",
+          "label": "Eine Variable likes startet bei 0"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#status-knopf"
+        },
+        {
+          "type": "text",
+          "selector": "#status",
+          "expected": [
+            "Mo–Fr 9–15 Uhr – schau einfach vorbei!",
+            "Mo-Fr 9-15 Uhr - schau einfach vorbei!"
+          ],
+          "label": "Der Status-Knopf funktioniert weiterhin"
         }
       ]
     }

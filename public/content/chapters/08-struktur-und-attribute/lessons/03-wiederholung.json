@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Zeit für eine Wiederholungsrunde! Dein Gehirn behält Stoff am besten, wenn es ihn **selbst wieder hervorholen** muss – genau deshalb gibt es diese Lektionen.\n\nHeute dran: **Bilder und Audio** (Kapitel 6) und **Tabellen mit Kopfzeilen und colspan** (Kapitel 7). Am Ende kombinieren wir beides!"
+      "text": "Zeit für eine Wiederholungsrunde! Dein Gehirn behält Stoff am besten, wenn es ihn **selbst wieder hervorholen** muss – genau deshalb gibt es diese Lektionen.\n\nHeute dran: **Bilder und Audio** (Kapitel 6) und **Tabellen mit Kopfzeilen und colspan** (Kapitel 7). Zum Schluss gliederst du die Speisekarte – **Bereiche, Tabellen und Bild** zusammen."
     },
     {
       "type": "quiz",
@@ -22,17 +22,21 @@
       "text": "Die Titel-Zelle soll über **beide** Spalten der Tabelle reichen. Setze das fehlende Attribut ein.",
       "template": "<tr>\n  <th ___=\"2\">Trainingszeiten</th>\n</tr>",
       "solution": "colspan",
-      "accept": ["colspan"],
+      "accept": [
+        "colspan"
+      ],
       "hint": "Das Attribut zum Verbinden von Zellen **nach rechts** heißt `colspan`."
     },
     {
       "type": "code",
-      "task": "Baue eine Galerie-Tabelle fürs Café:\n\n1. Kopfzeile mit den `<th>`-Zellen **Bild** und **Beschreibung**\n2. Datenzeile 1: eine Zelle mit dem Bild **cafe-theke.svg** (alt-Text nicht vergessen!) und eine Zelle mit kurzer Beschreibung\n3. Datenzeile 2: genauso mit **cafe-kuchen.svg**",
+      "task": "**Erstelle** eine Galerie-Tabelle fürs Café:\n\n1. Kopfzeile mit den Kopfzellen „Bild“ und „Beschreibung“\n2. Datenzeile 1: eine Zelle mit dem Bild cafe-theke.svg (Bildbeschreibung nicht vergessen!) und eine Zelle mit kurzer Beschreibung\n3. Datenzeile 2: genauso mit cafe-kuchen.svg",
       "starter": {
         "html": "<h2>Einblicke ins Café</h2>\n<!-- Deine Galerie-Tabelle hier -->\n",
         "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\nth { background-color: #f0e6d6; }\n"
       },
-      "editable": ["html"],
+      "editable": [
+        "html"
+      ],
       "hints": [
         "Ein Bild in einer Zelle sieht so aus: <td><img src=\"...\" alt=\"...\"></td>.",
         "Drei Zeilen insgesamt: die Kopfzeile mit zwei <th>, dann zwei Datenzeilen mit je einem Bild und einer Beschreibung.",
@@ -42,14 +46,57 @@
         "html": "<h2>Einblicke ins Café</h2>\n<table>\n  <tr>\n    <th>Bild</th>\n    <th>Beschreibung</th>\n  </tr>\n  <tr>\n    <td><img src=\"cafe-theke.svg\" alt=\"Die Theke des Café Pause\"></td>\n    <td>Unsere Theke – hier bestellst du.</td>\n  </tr>\n  <tr>\n    <td><img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen auf einem Teller\"></td>\n    <td>Frischer Kuchen, jeden Tag.</td>\n  </tr>\n</table>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "table", "min": 1, "label": "Es gibt eine Tabelle" },
-        { "type": "text", "selector": "th", "expected": "Bild", "label": "Die erste Kopf-Zelle lautet „Bild“" },
-        { "type": "selector", "selector": "th", "min": 2, "label": "Die Kopfzeile hat zwei <th>-Zellen" },
-        { "type": "selector", "selector": "td img", "min": 2, "label": "In den Zellen stecken zwei Bilder" },
-        { "type": "attr", "selector": "td img", "attr": "src", "expected": "cafe-theke.svg", "label": "Das erste Bild ist cafe-theke.svg" },
-        { "type": "attr", "selector": "td img", "attr": "alt", "matches": "\\S", "label": "Das erste Bild hat einen alt-Text" },
-        { "type": "source", "file": "html", "matches": "cafe-kuchen\\.svg", "label": "Das zweite Bild ist cafe-kuchen.svg" },
-        { "type": "attr", "selector": "tr:nth-child(3) img", "attr": "alt", "matches": "\\S", "label": "Auch das zweite Bild hat einen alt-Text" }
+        {
+          "type": "selector",
+          "selector": "table",
+          "min": 1,
+          "label": "Es gibt eine Tabelle"
+        },
+        {
+          "type": "text",
+          "selector": "th",
+          "expected": "Bild",
+          "label": "Die erste Kopf-Zelle lautet „Bild“"
+        },
+        {
+          "type": "selector",
+          "selector": "th",
+          "min": 2,
+          "label": "Die Kopfzeile hat zwei <th>-Zellen"
+        },
+        {
+          "type": "selector",
+          "selector": "td img",
+          "min": 2,
+          "label": "In den Zellen stecken zwei Bilder"
+        },
+        {
+          "type": "attr",
+          "selector": "td img",
+          "attr": "src",
+          "expected": "cafe-theke.svg",
+          "label": "Das erste Bild ist cafe-theke.svg"
+        },
+        {
+          "type": "attr",
+          "selector": "td img",
+          "attr": "alt",
+          "matches": "\\S",
+          "label": "Das erste Bild hat einen alt-Text"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "cafe-kuchen\\.svg",
+          "label": "Das zweite Bild ist cafe-kuchen.svg"
+        },
+        {
+          "type": "attr",
+          "selector": "tr:nth-child(3) img",
+          "attr": "alt",
+          "matches": "\\S",
+          "label": "Auch das zweite Bild hat einen alt-Text"
+        }
       ]
     },
     {
@@ -65,12 +112,14 @@
     },
     {
       "type": "code",
-      "task": "Baue eine Tabelle mit verbundener Titel-Zelle:\n\n1. Erste Zeile: **eine** `<th>` mit `colspan=\"2\"` und dem Text **Trainingszeiten**\n2. Datenzeile 1: **Montag** und **18 bis 20 Uhr** (je eine `<td>`)\n3. Datenzeile 2: **Samstag** und **10 bis 12 Uhr**",
+      "task": "**Erstelle** eine Tabelle mit verbundener Titel-Zelle:\n\n1. Erste Zeile: eine **einzige** Kopfzelle „Trainingszeiten“, die über beide Spalten reicht\n2. Datenzeile 1: „Montag“ und „18 bis 20 Uhr“\n3. Datenzeile 2: „Samstag“ und „10 bis 12 Uhr“",
       "starter": {
         "html": "<!-- Deine Tabelle hier -->\n",
         "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\nth { background-color: #f0e6d6; }\n"
       },
-      "editable": ["html"],
+      "editable": [
+        "html"
+      ],
       "hints": [
         "Die Titelzeile hat nur eine Zelle – dank colspan=\"2\" ist sie trotzdem so breit wie die zwei Zellen darunter.",
         "Titelzeile: <tr><th colspan=\"2\">Trainingszeiten</th></tr> – danach zwei Zeilen mit je zwei <td>.",
@@ -80,11 +129,125 @@
         "html": "<table>\n  <tr>\n    <th colspan=\"2\">Trainingszeiten</th>\n  </tr>\n  <tr>\n    <td>Montag</td>\n    <td>18 bis 20 Uhr</td>\n  </tr>\n  <tr>\n    <td>Samstag</td>\n    <td>10 bis 12 Uhr</td>\n  </tr>\n</table>\n"
       },
       "tests": [
-        { "type": "attr", "selector": "th[colspan]", "attr": "colspan", "expected": "2", "label": "Die Titel-Zelle reicht über beide Spalten (colspan=\"2\")" },
-        { "type": "text", "selector": "th[colspan='2']", "expected": "Trainingszeiten", "label": "Die Titel-Zelle enthält „Trainingszeiten“" },
-        { "type": "selector", "selector": "tr", "min": 3, "label": "Es gibt die Titelzeile und zwei Datenzeilen" },
-        { "type": "selector", "selector": "td", "min": 4, "label": "Die Datenzeilen haben je zwei Zellen" },
-        { "type": "text", "selector": "td", "expected": "Montag", "label": "Die erste Datenzeile beginnt mit „Montag“" }
+        {
+          "type": "attr",
+          "selector": "th[colspan]",
+          "attr": "colspan",
+          "expected": "2",
+          "label": "Die Titel-Zelle reicht über beide Spalten (colspan=\"2\")"
+        },
+        {
+          "type": "text",
+          "selector": "th[colspan='2']",
+          "expected": "Trainingszeiten",
+          "label": "Die Titel-Zelle enthält „Trainingszeiten“"
+        },
+        {
+          "type": "selector",
+          "selector": "tr",
+          "min": 3,
+          "label": "Es gibt die Titelzeile und zwei Datenzeilen"
+        },
+        {
+          "type": "selector",
+          "selector": "td",
+          "min": 4,
+          "label": "Die Datenzeilen haben je zwei Zellen"
+        },
+        {
+          "type": "text",
+          "selector": "td",
+          "expected": "Montag",
+          "label": "Die erste Datenzeile beginnt mit „Montag“"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Café-Etappe.** Die Speisekarte hat drei Tabellen und ein Bild – aber noch keine Bereiche. Gib ihr dieselbe Gliederung wie der Startseite: Kopfbereich, Hauptbereich, Fußbereich. Eine Navigation braucht sie nicht, der Rück-Link reicht.\n\nNeu dazu kommt der Adress-Absatz im Fußbereich – wie auf der Startseite."
+    },
+    {
+      "type": "code",
+      "task": "**Gliedere** die Speisekarte in drei Bereiche: Kopfbereich mit Hauptüberschrift und Rück-Link, Hauptbereich mit allem von „Getränke“ bis zur Angebots-Tabelle, Fußbereich mit einem neuen Adress-Absatz: Café Pause, Musterstraße 12, 74072 Heilbronn – drei Zeilen durch Zeilenumbrüche.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Speisekarte – Café Pause</title>\n  </head>\n  <body>\n    <h1>Speisekarte</h1>\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n\n    <h2>Getränke</h2>\n    <table>\n      <tr>\n        <th>Getränk</th>\n        <th>Größe</th>\n        <th>Preis</th>\n      </tr>\n      <tr>\n        <td>Kakao</td>\n        <td>0,3 l</td>\n        <td>1,50 €</td>\n      </tr>\n      <tr>\n        <td>Tee</td>\n        <td>0,3 l</td>\n        <td>1,00 €</td>\n      </tr>\n      <tr>\n        <td>Apfelschorle</td>\n        <td>0,5 l</td>\n        <td>1,80 €</td>\n      </tr>\n    </table>\n\n    <h2>Snacks</h2>\n    <table>\n      <tr>\n        <th>Snack</th>\n        <th>Preis</th>\n      </tr>\n      <tr>\n        <td>Brezel</td>\n        <td>1,00 €</td>\n      </tr>\n      <tr>\n        <td>Muffin</td>\n        <td>1,50 €</td>\n      </tr>\n    </table>\n    <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n\n    <h2>Angebot der Woche</h2>\n    <table>\n      <tr>\n        <th colspan=\"2\">Kombi-Angebot</th>\n      </tr>\n      <tr>\n        <td>Kakao + Muffin</td>\n        <td>2,50 €</td>\n      </tr>\n    </table>\n  </body>\n</html>\n"
+      },
+      "project": {
+        "page": "speisekarte",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Drei Bereiche untereinander: header (h1 + Rück-Link-Absatz), main (alle drei Überschriften mit Tabellen und dem Bild), footer (neuer Absatz). Der Inhalt bleibt in seiner Reihenfolge.",
+        "Der Fußbereich sieht so aus:\n```html\n<footer>\n  <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n</footer>\n```",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Speisekarte – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Speisekarte</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <h2>Getränke</h2>\n      <table>\n        <tr>\n          <th>Getränk</th>\n          <th>Größe</th>\n          <th>Preis</th>\n        </tr>\n        <tr>\n          <td>Kakao</td>\n          <td>0,3 l</td>\n          <td>1,50 €</td>\n        </tr>\n        <tr>\n          <td>Tee</td>\n          <td>0,3 l</td>\n          <td>1,00 €</td>\n        </tr>\n        <tr>\n          <td>Apfelschorle</td>\n          <td>0,5 l</td>\n          <td>1,80 €</td>\n        </tr>\n      </table>\n\n      <h2>Snacks</h2>\n      <table>\n        <tr>\n          <th>Snack</th>\n          <th>Preis</th>\n        </tr>\n        <tr>\n          <td>Brezel</td>\n          <td>1,00 €</td>\n        </tr>\n        <tr>\n          <td>Muffin</td>\n          <td>1,50 €</td>\n        </tr>\n      </table>\n      <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n\n      <h2>Angebot der Woche</h2>\n      <table>\n        <tr>\n          <th colspan=\"2\">Kombi-Angebot</th>\n        </tr>\n        <tr>\n          <td>Kakao + Muffin</td>\n          <td>2,50 €</td>\n        </tr>\n      </table>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Speisekarte – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Speisekarte</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <h2>Getränke</h2>\n      <table>\n        <tr>\n          <th>Getränk</th>\n          <th>Größe</th>\n          <th>Preis</th>\n        </tr>\n        <tr>\n          <td>Kakao</td>\n          <td>0,3 l</td>\n          <td>1,50 €</td>\n        </tr>\n        <tr>\n          <td>Tee</td>\n          <td>0,3 l</td>\n          <td>1,00 €</td>\n        </tr>\n        <tr>\n          <td>Apfelschorle</td>\n          <td>0,5 l</td>\n          <td>1,80 €</td>\n        </tr>\n      </table>\n\n      <h2>Snacks</h2>\n      <table>\n        <tr>\n          <th>Snack</th>\n          <th>Preis</th>\n        </tr>\n        <tr>\n          <td>Brezel</td>\n          <td>1,00 €</td>\n        </tr>\n        <tr>\n          <td>Muffin</td>\n          <td>1,50 €</td>\n        </tr>\n      </table>\n      <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n\n      <h2>Angebot der Woche</h2>\n      <table>\n        <tr>\n          <th colspan=\"2\">Kombi-Angebot</th>\n        </tr>\n        <tr>\n          <td>Kakao + Muffin</td>\n          <td>2,50 €</td>\n        </tr>\n      </table>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "header h1",
+          "expected": "Speisekarte",
+          "label": "Die Hauptüberschrift steht im Kopfbereich"
+        },
+        {
+          "type": "text",
+          "selector": "header a[href='index.html']",
+          "expected": "Zurück zur Startseite",
+          "label": "Der Rück-Link steht im Kopfbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "main h2",
+          "count": 3,
+          "label": "Alle drei Überschriften zweiter Stufe stehen im Hauptbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "main table",
+          "count": 3,
+          "label": "Alle drei Tabellen stehen im Hauptbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "main img[src='cafe-kuchen.svg']",
+          "count": 1,
+          "label": "Das Kuchen-Bild steht im Hauptbereich"
+        },
+        {
+          "type": "text",
+          "selector": "footer p",
+          "expected": "Musterstraße 12",
+          "contains": true,
+          "label": "Die Adresse steht im Fußbereich"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<footer>\\s*<p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\\s*</footer>",
+          "label": "Die Adresse steht dreizeilig (mit Umbrüchen) im Fußbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "body > h2",
+          "count": 0,
+          "label": "Keine Überschrift liegt mehr lose im body"
+        },
+        {
+          "type": "text",
+          "selector": "th[colspan='2']",
+          "expected": "Kombi-Angebot",
+          "label": "Die Kopfzelle „Kombi-Angebot“ ist noch da"
+        },
+        {
+          "type": "text",
+          "selector": "title",
+          "expected": "Speisekarte – Café Pause",
+          "label": "Der Seitentitel ist unverändert"
+        }
       ]
     }
   ]

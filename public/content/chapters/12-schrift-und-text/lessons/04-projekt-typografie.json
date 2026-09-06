@@ -4,31 +4,68 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Weiter geht's im **Café Pause**! In Etappe 9 hat die Website ihr Farbschema bekommen. Heute kümmert sich das gemeinsame Stylesheet um die **Typografie**:\n\n- eine serifenlose **Schrift** für alle Seiten,\n- eine **zentrierte** Überschrift,\n- **Links** in Akzent-Orange.\n\nIm CSS-Tab wartet dein Stylesheet aus Etappe 9 – du **ergänzt** es. Denk dran: `Segoe UI` enthält ein Leerzeichen und braucht Anführungszeichen. Der HTML-Tab bleibt gesperrt 🔒."
+      "text": "**Meilenstein im Café Pause!** Deine Website hat jetzt Farben, Klassen-Regeln und eine Hausschrift. Heute rundest du die Typografie ab: Die Zwischenüberschriften bekommen eine passende Größe, und die Navigation rückt in die Mitte – genau wie die Überschrift „Café Pause“ darüber.\n\nCSS-Tab: dein Stylesheet mit allen bisherigen Regeln. HTML gesperrt 🔒."
     },
     {
       "type": "code",
-      "task": "**Etappe 10: Das Café bekommt seine Schrift.** Ergänze das Stylesheet:\n\n1. In der `body`-Regel: `font-family: 'Segoe UI', Arial, sans-serif;`\n2. In der `h1`-Regel: `text-align: center;`\n3. Eine **neue** Regel für `a`: Textfarbe `#e08a2e`\n\nDie Farben aus Etappe 9 bleiben – lösche nichts!",
+      "task": "**Erweitere** das Stylesheet:\n\n1. In der bestehenden `h2`-Regel: Schriftgröße 26 Pixel\n2. Eine neue Regel am Ende für `nav`: Der Inhalt der Navigation wird zentriert\n\nBesteht die Prüfung, kannst du den Stand unter „Mein Café-Projekt“ ansehen.",
       "starter": {
-        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Café Pause</h1>\n      <p>Willkommen in unserem Schülercafé – schön, dass du da bist!</p>\n    </header>\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n    <main>\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> unserer Schule geführt.</p>\n      <p>Bei uns wird jede Pause zu einer <em>kleinen Auszeit</em>.</p>\n      <hr>\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Laugenbrezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>Such dir etwas an der Theke aus.</li>\n        <li>Bezahle an der Kasse.</li>\n        <li>Genieße deine Pause!</li>\n      </ol>\n      <p>Mehr über Schülerfirmen findest du auf <a href=\"https://www.example.com\">dieser Beispielseite</a>.</p>\n    </main>\n    <footer>\n      <p>Café Pause · Musterstraße 12<br>74072 Heilbronn</p>\n      <p id=\"oeffnungszeiten\">Öffnungszeiten: Montag bis Freitag, 9:00 bis 15:00 Uhr</p>\n      <p class=\"hinweis\">Fiktiver Betrieb für Übungszwecke – hier gibt es nichts Echtes zu kaufen.</p>\n    </footer>\n  </body>\n</html>\n",
-        "css": "/* style.css – das gemeinsame Stylesheet des Café Pause */\nbody {\n  background-color: #f7f1e3;\n  color: #2c2016;\n}\nh1 {\n  color: #5a3e2b;\n}\n"
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n"
       },
-      "editable": ["css"],
-      "project": { "page": "index", "save": ["css"] },
+      "editable": [
+        "css"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "css"
+        ]
+      },
       "hints": [
-        "Die neuen Deklarationen kommen einfach als zusätzliche Zeilen in die bestehenden Regeln – vor die schließende Klammer. Nur für a brauchst du eine neue Regel.",
-        "In der body-Regel steht dann zusätzlich: font-family: 'Segoe UI', Arial, sans-serif; – mit Anführungszeichen um Segoe UI. In der h1-Regel: text-align: center;",
-        "```css\n/* style.css – das gemeinsame Stylesheet des Café Pause */\nbody {\n  background-color: #f7f1e3;\n  color: #2c2016;\n  font-family: 'Segoe UI', Arial, sans-serif;\n}\nh1 {\n  color: #5a3e2b;\n  text-align: center;\n}\na {\n  color: #e08a2e;\n}\n```"
+        "Die Größe kommt als neue Zeile in die h2-Regel. Für nav brauchst du eine eigene, neue Regel ganz unten.",
+        "font-size mit 26px in h2; in der nav-Regel text-align mit center – so wie bei der h1.",
+        "```css\nbody {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n}\n```"
       ],
       "solution": {
-        "css": "/* style.css – das gemeinsame Stylesheet des Café Pause */\nbody {\n  background-color: #f7f1e3;\n  color: #2c2016;\n  font-family: 'Segoe UI', Arial, sans-serif;\n}\nh1 {\n  color: #5a3e2b;\n  text-align: center;\n}\na {\n  color: #e08a2e;\n}\n"
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n}\n"
       },
       "tests": [
-        { "type": "style", "selector": "body", "prop": "font-family", "expected": "Segoe UI", "contains": true, "label": "Die Seite nutzt die Schrift Segoe UI" },
-        { "type": "style", "selector": "h1", "prop": "text-align", "expected": "center", "label": "Die Überschrift „Café Pause“ ist zentriert" },
-        { "type": "style", "selector": "a", "prop": "color", "expected": "#e08a2e", "label": "Die Links sind orange (#e08a2e)" },
-        { "type": "style", "selector": "body", "prop": "background-color", "expected": "#f7f1e3", "label": "Der Creme-Hintergrund aus Etappe 9 ist noch da" },
-        { "type": "style", "selector": "h1", "prop": "color", "expected": "#5a3e2b", "label": "Das Kaffeebraun der Überschrift ist noch da" }
+        {
+          "type": "style",
+          "selector": "h2",
+          "prop": "font-size",
+          "expected": "26px",
+          "label": "Die Zwischenüberschriften sind 26px groß"
+        },
+        {
+          "type": "style",
+          "selector": "nav",
+          "prop": "text-align",
+          "expected": "center",
+          "label": "Die Navigation ist zentriert"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "text-align",
+          "expected": "center",
+          "label": "Die Überschrift „Café Pause“ bleibt zentriert"
+        },
+        {
+          "type": "style",
+          "selector": "th",
+          "prop": "text-align",
+          "expected": "left",
+          "label": "Die linksbündigen Kopfzellen sind noch da"
+        },
+        {
+          "type": "style",
+          "selector": "nav a",
+          "prop": "text-decoration-line",
+          "expected": "none",
+          "label": "Die Navigations-Links bleiben ohne Unterstreichung"
+        }
       ]
     }
   ]

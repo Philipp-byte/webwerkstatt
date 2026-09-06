@@ -15,7 +15,9 @@
       "type": "example",
       "text": "Hier gibt es keinen CSS-Tab – alles CSS steckt als Inline-Style im HTML. Ändere die Farben, füge einem anderen Element ein style-Attribut hinzu!",
       "html": "<h1 style=\"color: darkblue;\">Mein Gaming-Setup</h1>\n<p>Das steht auf meinem Schreibtisch:</p>\n<p style=\"color: green;\">1 Headset mit grünem Licht</p>\n<p style=\"color: orange; background-color: lightyellow;\">1 orangefarbene Tastatur</p>\n",
-      "editable": ["html"]
+      "editable": [
+        "html"
+      ]
     },
     {
       "type": "explain",
@@ -25,7 +27,9 @@
       "type": "example",
       "text": "Eine komplette HTML-Datei mit internem Stylesheet. Ändere die Farben **oben im `<style>`-Bereich** – und ergänze eine eigene Regel für `h2`!",
       "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>E-Sport-AG</title>\n    <style>\n      h1 {\n        color: darkgreen;\n      }\n      p {\n        color: #444444;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>E-Sport-AG</h1>\n    <h2>Was wir machen</h2>\n    <p>Wir trainieren dienstags und spielen Schulturniere.</p>\n  </body>\n</html>\n",
-      "editable": ["html"]
+      "editable": [
+        "html"
+      ]
     },
     {
       "type": "explain",
@@ -47,20 +51,14 @@
       "explanation": "Mit einer externen Datei pflegst du das Design an **einer** Stelle – alle Seiten ändern sich mit. Kopierte interne Stylesheets laufen auseinander, Inline-Styles müsstest du hundertfach anfassen."
     },
     {
-      "type": "fill",
-      "text": "Binde die externe CSS-Datei `style.css` ein: Setze den fehlenden **Dateinamen** ein.",
-      "template": "<link rel=\"stylesheet\" href=\"___\">",
-      "solution": "style.css",
-      "accept": ["style.css"],
-      "hint": "In `href` steht der Name der CSS-Datei – sie heißt hier `style.css`."
-    },
-    {
       "type": "code",
-      "task": "Heute arbeitest du **nur im HTML** – ohne CSS-Tab, mit Inline-Styles:\n\n1. Gib der `<h1>` per **style-Attribut** die Textfarbe `darkblue`\n2. Gib **nur** dem mittleren Absatz („Wichtig: …“) per **style-Attribut** die Textfarbe `red` – die anderen beiden Absätze bleiben schwarz!",
+      "task": "**Gestalte** den Infozettel nur im HTML – mit Inline-Styles:\n\n1. Die Hauptüberschrift erhält per style-Attribut die Textfarbe `darkblue`\n2. **Nur** der mittlere Absatz („Wichtig: …“) erhält per style-Attribut die Textfarbe `red` – die anderen beiden Absätze bleiben schwarz!",
       "starter": {
         "html": "<h1>Infozettel Turnierabend</h1>\n<p>Treffpunkt ist um 18 Uhr in Raum 012.</p>\n<p>Wichtig: Eigene Kopfhörer mitbringen!</p>\n<p>Ende ist gegen 22 Uhr.</p>\n"
       },
-      "editable": ["html"],
+      "editable": [
+        "html"
+      ],
       "hints": [
         "Das style-Attribut kommt in den öffnenden Tag: <p style=\"...\">. Darin steht eigenschaft: wert; – ohne Selektor und ohne geschweifte Klammern.",
         "Für die Überschrift: <h1 style=\"color: darkblue;\">. Beim mittleren Absatz genauso, nur mit red – die anderen Absätze lässt du unverändert.",
@@ -70,12 +68,125 @@
         "html": "<h1 style=\"color: darkblue;\">Infozettel Turnierabend</h1>\n<p>Treffpunkt ist um 18 Uhr in Raum 012.</p>\n<p style=\"color: red;\">Wichtig: Eigene Kopfhörer mitbringen!</p>\n<p>Ende ist gegen 22 Uhr.</p>\n"
       },
       "tests": [
-        { "type": "source", "file": "html", "matches": "<h1[^>]*style\\s*=", "label": "Die Überschrift hat ein style-Attribut" },
-        { "type": "style", "selector": "h1", "prop": "color", "expected": "darkblue", "label": "Die Überschrift ist dunkelblau" },
-        { "type": "source", "file": "html", "matches": "<p[^>]*style\\s*=", "label": "Ein Absatz hat ein style-Attribut" },
-        { "type": "style", "selector": "p:nth-of-type(2)", "prop": "color", "expected": "red", "label": "Der mittlere Absatz („Wichtig …“) ist rot" },
-        { "type": "style", "selector": "p:nth-of-type(1)", "prop": "color", "expected": "black", "label": "Der erste Absatz bleibt schwarz" },
-        { "type": "style", "selector": "p:nth-of-type(3)", "prop": "color", "expected": "black", "label": "Der letzte Absatz bleibt schwarz" }
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<h1[^>]*style\\s*=",
+          "label": "Die Überschrift hat ein style-Attribut"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "color",
+          "expected": "darkblue",
+          "label": "Die Überschrift ist dunkelblau"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<p[^>]*style\\s*=",
+          "label": "Ein Absatz hat ein style-Attribut"
+        },
+        {
+          "type": "style",
+          "selector": "p:nth-of-type(2)",
+          "prop": "color",
+          "expected": "red",
+          "label": "Der mittlere Absatz („Wichtig …“) ist rot"
+        },
+        {
+          "type": "style",
+          "selector": "p:nth-of-type(1)",
+          "prop": "color",
+          "expected": "black",
+          "label": "Der erste Absatz bleibt schwarz"
+        },
+        {
+          "type": "style",
+          "selector": "p:nth-of-type(3)",
+          "prop": "color",
+          "expected": "black",
+          "label": "Der letzte Absatz bleibt schwarz"
+        }
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "Binde die externe CSS-Datei `style.css` ein: Setze den fehlenden **Dateinamen** ein. Gleich brauchst du genau das fürs Café.",
+      "template": "<link rel=\"stylesheet\" href=\"___\">",
+      "solution": "style.css",
+      "accept": [
+        "style.css"
+      ],
+      "hint": "In `href` steht der Name der CSS-Datei – sie heißt hier `style.css`."
+    },
+    {
+      "type": "code",
+      "task": "**Vervollständige** den Kopfbereich der Startseite (CSS 🔒): Direkt nach dem Seitentitel wird die externe Datei style.css als Stylesheet eingebunden. So gilt dein Café-Stylesheet auch außerhalb der Werkstatt für die Seite.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "h1 {\n  color: #5a3e2b;\n}\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Die neue Zeile gehört in den <head>, direkt unter <title>. Das Element heißt <link> und steht allein – ohne schließenden Tag.",
+        "Zwei Attribute: rel mit dem Wert stylesheet und href mit dem Dateinamen style.css.",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<title>Café Pause</title>\\s*<link[^>]*>",
+          "label": "Direkt nach dem Titel folgt das link-Element"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<head>[\\s\\S]*<link[\\s\\S]*</head>",
+          "label": "Das link-Element steht im Kopfbereich"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<link[^>]*rel=[\"']stylesheet[\"']",
+          "label": "Das link-Element ist als Stylesheet gekennzeichnet (rel)"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<link[^>]*href=[\"']style\\.css[\"']",
+          "label": "Das link-Element zeigt auf style.css (href)"
+        },
+        {
+          "type": "selector",
+          "selector": "link[rel='stylesheet'][href='style.css']",
+          "min": 1,
+          "label": "Der Browser findet das eingebundene Stylesheet"
+        },
+        {
+          "type": "selector",
+          "selector": "nav a",
+          "count": 4,
+          "label": "Die vier Navigations-Links sind noch da"
+        },
+        {
+          "type": "text",
+          "selector": "header h1",
+          "expected": "Café Pause",
+          "label": "Die Hauptüberschrift „Café Pause“ ist noch da"
+        }
       ]
     }
   ]

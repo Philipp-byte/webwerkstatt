@@ -44,8 +44,27 @@ function pruefeCodeStep(step, wo) {
       if (step.solution[k] == null) melde('FEHLER', wo, `solution fehlt für editierbare Datei "${k}"`);
     }
   }
+  // Lösungs-Leck: Die Aufgabe darf den Code, der geschrieben werden soll, nicht vorsagen.
+  if (step.task && step.solution) {
+    const loesungsText = Object.values(step.solution).join(' ').replace(/\s+/g, ' ');
+    const codeSpans = [...String(step.task).matchAll(/`([^`]+)`/g)].map((m) => m[1].trim());
+    for (const span of codeSpans) {
+      const kompakt = span.replace(/\s+/g, ' ');
+      const istDeklaration = /^[a-z-]+\s*:\s*[^;]+;?$/i.test(kompakt);
+      const istTagMitAttribut = /^<[a-z][a-z0-9]*\s+[a-z-]+=/i.test(kompakt);
+      if ((istDeklaration || istTagMitAttribut || kompakt.length >= 14) && loesungsText.includes(kompakt)) {
+        melde('FEHLER', wo, `Aufgabe verrät die Lösung: „${span}“ steht wörtlich in solution – Ziel beschreiben, nicht den Code`);
+      }
+    }
+    if (/[a-z-]+\s*:\s*[^;`\r\n]+;/i.test(String(step.task).replace(/`[^`]*`/g, ''))) {
+      melde('FEHLER', wo, 'Aufgabe enthält eine CSS-Deklaration im Klartext – Ziel beschreiben, nicht den Code');
+    }
+  }
   if (step.project) {
     if (!Array.isArray(step.project.save)) melde('FEHLER', wo, 'project ohne save-Liste');
+    if (step.project.save && step.project.save.some((k) => !DATEI_KEYS.includes(k))) {
+      melde('FEHLER', wo, 'project.save darf nur html/css/js enthalten');
+    }
     if (step.project.save?.includes('html') && !step.project.page) {
       melde('FEHLER', wo, 'project speichert html, aber page fehlt');
     }
@@ -128,6 +147,10 @@ function pruefeLektion(chId, lessonId) {
   const codeAnzahl = lektion.steps.filter((s) => s.type === 'code').length;
   if (!codeAnzahl && !lessonId.includes('wiederholung') && !chId.startsWith('01-')) {
     melde('WARNUNG', wo, 'Lektion ohne Code-Aufgabe');
+  }
+  const letzter = lektion.steps[lektion.steps.length - 1];
+  if (!chId.startsWith('01-') && !(letzter.type === 'code' && letzter.project)) {
+    melde('FEHLER', wo, 'Letzter Schritt muss eine Projekt-Etappe sein (code-Step mit project)');
   }
   const istLernlektion = !lessonId.includes('wiederholung') && !lessonId.includes('projekt');
   if (istLernlektion && !lektion.steps.some((s) => s.figure)) {

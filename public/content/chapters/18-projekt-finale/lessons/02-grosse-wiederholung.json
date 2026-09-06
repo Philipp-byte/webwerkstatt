@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "**Die große Wiederholung** – einmal quer durch alle 17 Kapitel: Wissen selbst aus dem Kopf holen macht die Gedächtnisspur dicker als jedes Nachlesen. Neun kleine Aufgaben, kein neuer Stoff – zurückblättern ist erlaubt."
+      "text": "**Die große Wiederholung** – einmal quer durch alle 17 Kapitel: Wissen selbst aus dem Kopf holen macht die Gedächtnisspur dicker als jedes Nachlesen. Neun kleine Aufgaben, kein neuer Stoff – zurückblättern ist erlaubt.\n\nZum Schluss eine Café-Etappe, die Grundgerüst, Links und Semantik verbindet."
     },
     {
       "type": "quiz",
@@ -29,7 +29,7 @@
     },
     {
       "type": "code",
-      "task": "HTML-Handwerk: eine Mini-Seite für den Pausen-Kiosk.\n\n1. Eine `<h2>` mit dem Text **Pausen-Kiosk**\n2. Eine **ungeordnete Liste** mit mindestens **3** Angeboten\n3. Ein Link zu `https://www.example.com` mit dem Linktext **Mehr erfahren**",
+      "task": "**Erstelle** eine Mini-Seite für den Pausen-Kiosk:\n\n1. Eine `<h2>` mit dem Text „Pausen-Kiosk“\n2. Eine ungeordnete Liste mit mindestens 3 Angeboten\n3. Ein Link zur Adresse „https://www.example.com“ mit dem Linktext „Mehr erfahren“",
       "starter": {
         "html": "<!-- Überschrift, Liste und Link hier -->\n"
       },
@@ -85,7 +85,7 @@
     },
     {
       "type": "code",
-      "task": "Die Getränke-Tabelle aus dem Kopf:\n\n1. Eine **Kopfzeile** mit den `<th>`-Zellen **Getränk** und **Preis**\n2. Darunter **zwei Datenzeilen** mit `<td>`-Zellen (Inhalt frei wählbar)",
+      "task": "**Erstelle** die Getränke-Tabelle aus dem Kopf:\n\n1. Eine Kopfzeile mit den Kopfzellen „Getränk“ und „Preis“\n2. Darunter zwei Datenzeilen mit je zwei Datenzellen (Inhalt frei wählbar)",
       "starter": {
         "html": "<!-- Deine Tabelle mit Kopfzeile hier -->\n",
         "css": "table { border-collapse: collapse; }\ntd, th { border: 1px solid #888; padding: 6px 12px; }\n"
@@ -140,7 +140,7 @@
     },
     {
       "type": "code",
-      "task": "CSS-Layout: Drei Angebots-Karten nebeneinander.\n\n1. `.leiste` wird Flex-Container: `display: flex;` und `gap: 16px;`\n2. Jede `.karte` bekommt `border: 2px solid #5a3e2b;` und `padding: 16px;`",
+      "task": "**Gestalte** drei Angebots-Karten nebeneinander:\n\n1. `.leiste` wird ein Flex-Container mit 16 Pixel Abstand zwischen den Karten\n2. Jede `.karte` bekommt einen 2 Pixel dicken, durchgezogenen Rahmen in Kaffeebraun `#5a3e2b` und rundum 16 Pixel Innenabstand",
       "starter": {
         "html": "<div class=\"leiste\">\n  <div class=\"karte\">Kakao 2,50 €</div>\n  <div class=\"karte\">Brezel 1,50 €</div>\n  <div class=\"karte\">Muffin 2,00 €</div>\n</div>\n",
         "css": "/* Zwei Regeln: .leiste und .karte */\n"
@@ -214,7 +214,7 @@
     },
     {
       "type": "code",
-      "task": "Zum Schluss JavaScript: Das HTML 🔒 hat einen Button `id=\"knopf\"` und einen leeren Absatz `id=\"ausgabe\"`.\n\nBeim Klick soll der Absatz genau **Bis bald im Café Pause!** anzeigen.",
+      "task": "**Entwickle** die Verabschiedung – das HTML 🔒 hat einen Button (id „knopf“) und einen leeren Absatz (id „ausgabe“): Nach dem Klick zeigt der Absatz genau „Bis bald im Café Pause!“.",
       "starter": {
         "html": "<button id=\"knopf\">Verabschieden</button>\n<p id=\"ausgabe\"></p>\n",
         "js": "// Elemente holen, Event-Listener schreiben\n"
@@ -247,6 +247,86 @@
           "selector": "#ausgabe",
           "expected": "Bis bald im Café Pause!",
           "label": "Nach dem Klick steht „Bis bald im Café Pause!“ da"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Die Kontaktseite hinkt hinterher: Sie kennt das **Stylesheet** noch nicht und hat keine **Navigation**. Beides holst du nach – die Stylesheet-Zeile im Kopfbereich wie auf der Startseite (Kapitel 10) und ein Navigationsbereich unter dem header mit drei Links.\n\nHTML-Tab offen, CSS gesperrt 🔒."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** die Kontaktseite:\n\n1. Im Kopfbereich nach dem Titel die Zeile, die das Stylesheet „style.css“ einbindet\n2. Direkt unter dem header ein Navigationsbereich mit drei Links: „Startseite“ → index.html, „Speisekarte“ → speisekarte.html, „Galerie“ → galerie.html",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Kontakt – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Kontakt</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <p>Schreib uns – wir antworten in der nächsten Pause.</p>\n\n      <h2>Wann wir da sind</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <form>\n        <label for=\"name\">Dein Name</label>\n        <input type=\"text\" id=\"name\" placeholder=\"Vorname Nachname\">\n\n        <label for=\"email\">Deine E-Mail</label>\n        <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n\n        <label for=\"anlass\">Worum geht es?</label>\n        <select id=\"anlass\">\n          <option>Lob</option>\n          <option>Kritik</option>\n          <option>Frage</option>\n        </select>\n\n        <label for=\"nachricht\">Deine Nachricht</label>\n        <textarea id=\"nachricht\"></textarea>\n\n        <p>Sollen wir zurückrufen?</p>\n        <label><input type=\"radio\" name=\"rueckruf\" value=\"ja\"> Ja</label>\n        <label><input type=\"radio\" name=\"rueckruf\" value=\"nein\"> Nein</label>\n\n        <label><input type=\"checkbox\" id=\"datenschutz\"> Ich habe die Datenschutzhinweise gelesen.</label>\n\n        <button>Absenden</button>\n      </form>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n  padding: 16px;\n  text-align: center;\n}\n\ntable {\n  background-color: white;\n  padding: 8px;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n  margin-top: 16px;\n  width: 400px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n  display: flex;\n  gap: 16px;\n  justify-content: center;\n}\n\nimg {\n  border-radius: 12px;\n}\n\nth, td {\n  padding: 6px;\n}\n\nheader {\n  background-color: #5a3e2b;\n  padding: 16px;\n}\n\nheader h1, header p {\n  color: white;\n}\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "project": {
+        "page": "kontakt",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Die Stylesheet-Zeile ist ein link-Tag mit rel und href – wie in Kapitel 10. Die Navigation ist ein nav-Element mit drei a-Tags darin.",
+        "<link rel=\"stylesheet\" href=\"style.css\"> nach dem title; darunter im body: <nav> mit <a href=\"index.html\">Startseite</a> und den zwei anderen Links.",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Kontakt – Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <header>\n      <h1>Kontakt</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <nav>\n      <a href=\"index.html\">Startseite</a>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n    </nav>\n\n    <main>\n      <p>Schreib uns – wir antworten in der nächsten Pause.</p>\n\n      <h2>Wann wir da sind</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <form>\n        <label for=\"name\">Dein Name</label>\n        <input type=\"text\" id=\"name\" placeholder=\"Vorname Nachname\">\n\n        <label for=\"email\">Deine E-Mail</label>\n        <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n\n        <label for=\"anlass\">Worum geht es?</label>\n        <select id=\"anlass\">\n          <option>Lob</option>\n          <option>Kritik</option>\n          <option>Frage</option>\n        </select>\n\n        <label for=\"nachricht\">Deine Nachricht</label>\n        <textarea id=\"nachricht\"></textarea>\n\n        <p>Sollen wir zurückrufen?</p>\n        <label><input type=\"radio\" name=\"rueckruf\" value=\"ja\"> Ja</label>\n        <label><input type=\"radio\" name=\"rueckruf\" value=\"nein\"> Nein</label>\n\n        <label><input type=\"checkbox\" id=\"datenschutz\"> Ich habe die Datenschutzhinweise gelesen.</label>\n\n        <button>Absenden</button>\n      </form>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Kontakt – Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <header>\n      <h1>Kontakt</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <nav>\n      <a href=\"index.html\">Startseite</a>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n    </nav>\n\n    <main>\n      <p>Schreib uns – wir antworten in der nächsten Pause.</p>\n\n      <h2>Wann wir da sind</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <form>\n        <label for=\"name\">Dein Name</label>\n        <input type=\"text\" id=\"name\" placeholder=\"Vorname Nachname\">\n\n        <label for=\"email\">Deine E-Mail</label>\n        <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n\n        <label for=\"anlass\">Worum geht es?</label>\n        <select id=\"anlass\">\n          <option>Lob</option>\n          <option>Kritik</option>\n          <option>Frage</option>\n        </select>\n\n        <label for=\"nachricht\">Deine Nachricht</label>\n        <textarea id=\"nachricht\"></textarea>\n\n        <p>Sollen wir zurückrufen?</p>\n        <label><input type=\"radio\" name=\"rueckruf\" value=\"ja\"> Ja</label>\n        <label><input type=\"radio\" name=\"rueckruf\" value=\"nein\"> Nein</label>\n\n        <label><input type=\"checkbox\" id=\"datenschutz\"> Ich habe die Datenschutzhinweise gelesen.</label>\n\n        <button>Absenden</button>\n      </form>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "link[rel=\"stylesheet\"]",
+          "attr": "href",
+          "expected": "style.css",
+          "label": "Das Stylesheet style.css ist eingebunden"
+        },
+        {
+          "type": "selector",
+          "selector": "header + nav",
+          "label": "Der Navigationsbereich folgt direkt auf den header",
+          "min": 1
+        },
+        {
+          "type": "selector",
+          "selector": "nav a",
+          "label": "Die Navigation hat genau drei Links",
+          "count": 3
+        },
+        {
+          "type": "text",
+          "selector": "nav a[href=\"index.html\"]",
+          "expected": "Startseite",
+          "label": "Der Link „Startseite“ führt zu index.html"
+        },
+        {
+          "type": "text",
+          "selector": "nav a[href=\"speisekarte.html\"]",
+          "expected": "Speisekarte",
+          "label": "Der Link „Speisekarte“ führt zu speisekarte.html"
+        },
+        {
+          "type": "text",
+          "selector": "nav a[href=\"galerie.html\"]",
+          "expected": "Galerie",
+          "label": "Der Link „Galerie“ führt zu galerie.html"
+        },
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "Kontakt",
+          "label": "Die Überschrift „Kontakt“ ist noch da"
+        },
+        {
+          "type": "text",
+          "selector": "form button",
+          "expected": "Absenden",
+          "label": "Der Absenden-Knopf des Formulars ist noch da"
         }
       ]
     }

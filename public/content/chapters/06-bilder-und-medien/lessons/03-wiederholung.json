@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Zeit zum Festigen – beim **aktiven Abrufen** merkt dein Gehirn: Das wird gebraucht, und speichert es dauerhaft. Heute dran: **Listen** (auch verschachtelte) und **Links** – extern, relativ und mit Sprungmarke – rund um die Planung eines Schulfests."
+      "text": "Zeit zum Festigen – beim **aktiven Abrufen** merkt dein Gehirn: Das wird gebraucht, und speichert es dauerhaft. Heute dran: **Listen** (auch verschachtelte) und **Links** – extern, relativ und mit Sprungmarke – rund um die Planung eines Schulfests. Zum Schluss wächst die Galerie im Café-Projekt um **Bilder, Link und Überschrift**."
     },
     {
       "type": "quiz",
@@ -27,7 +27,7 @@
     },
     {
       "type": "code",
-      "task": "Baue eine Linksammlung für die Schulfest-Orga:\n\n1. `<h2>` mit dem Text **Meine Lieblingsseiten**\n2. Darunter eine `<ul>` mit mindestens **drei** Einträgen\n3. In **jedem** `<li>` ein Link zu einer echten Webseite – Adresse mit `https://`, Linktext beschreibt das Ziel",
+      "task": "Erstelle eine Linksammlung für die Schulfest-Orga:\n\n1. Überschrift zweiter Stufe **Meine Lieblingsseiten**\n2. Darunter eine Punkte-Liste mit mindestens **drei** Einträgen\n3. In **jedem** Eintrag ein Link zu einer echten Webseite – vollständige Adresse mit https, der Linktext beschreibt das Ziel",
       "starter": {
         "html": "<!-- Deine Linksammlung hier -->\n"
       },
@@ -58,7 +58,7 @@
     },
     {
       "type": "code",
-      "task": "Die große Schulfest-Seite – alles auf einmal:\n\n1. `<h1>` **Schulfest**\n2. Darunter ein Absatz mit zwei Sprungmarken-Links: **Zum Programm** (`#programm`) und **Zum Essen** (`#essen`)\n3. `<h2>` **Programm** mit `id=\"programm\"`, darunter eine `<ol>` mit drei Punkten\n4. `<h2>` **Essen** mit `id=\"essen\"`, darunter eine **verschachtelte `<ul>`**: Rubriken **Herzhaft** und **Süß**, je zwei Angebote",
+      "task": "Erstelle die große Schulfest-Seite:\n\n1. Hauptüberschrift **Schulfest**\n2. Darunter ein Absatz mit zwei Sprungmarken-Links: **Zum Programm** und **Zum Essen**\n3. Überschrift **Programm** als Sprungziel **programm**, darunter eine nummerierte Liste mit drei Punkten\n4. Überschrift **Essen** als Sprungziel **essen**, darunter eine verschachtelte Punkte-Liste: Rubriken **Herzhaft** und **Süß**, je zwei Angebote",
       "starter": {
         "html": "<!-- Baue hier die Schulfest-Seite -->\n"
       },
@@ -80,6 +80,32 @@
         { "type": "selector", "selector": "ul li ul", "min": 2, "label": "Beide Essens-Rubriken enthalten eine innere Liste" },
         { "type": "selector", "selector": "ul li ul li", "min": 4, "label": "Die inneren Listen haben zusammen mindestens vier Angebote" },
         { "type": "source", "file": "html", "matches": "<ul>\\s*<ul", "absent": true, "label": "Keine Liste steht direkt in einer Liste – die innere Liste wohnt im <li>" }
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Erweitere die Galerie:\n\n1. Ergänze direkt unter der Hauptüberschrift einen Absatz mit dem Link **Zurück zur Startseite** (index.html)\n2. Ergänze vor dem Jingle-Block die Überschrift zweiter Stufe **Unser Café** mit drei Bildern und ihren Bildbeschreibungen: cafe-theke.svg (Die Theke vom Café Pause), cafe-kuchen.svg (Ein Stück Kuchen mit Kirsche), cafe-raum.svg (Der Gastraum mit Tischen und Fenster)",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <h1>Galerie</h1>\n\n    <h2>Unser Jingle</h2>\n    <audio controls src=\"cafe-jingle.wav\"></audio>\n  </body>\n</html>\n"
+      },
+      "project": { "page": "galerie", "save": ["html"] },
+      "hints": [
+        "Der Rück-Link ist ein relativer Link in einem Absatz. Die drei Bilder stehen als eigene Zeilen unter der neuen h2 – und der ganze Block kommt VOR „Unser Jingle“.",
+        "Der Rück-Link: <p><a href=\"index.html\">Zurück zur Startseite</a></p>. Ein Bild: <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\"> – die anderen beiden nach demselben Muster.",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <h1>Galerie</h1>\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n\n    <h2>Unser Café</h2>\n    <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n    <img src=\"cafe-raum.svg\" alt=\"Der Gastraum mit Tischen und Fenster\">\n\n    <h2>Unser Jingle</h2>\n    <audio controls src=\"cafe-jingle.wav\"></audio>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <h1>Galerie</h1>\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n\n    <h2>Unser Café</h2>\n    <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n    <img src=\"cafe-raum.svg\" alt=\"Der Gastraum mit Tischen und Fenster\">\n\n    <h2>Unser Jingle</h2>\n    <audio controls src=\"cafe-jingle.wav\"></audio>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        { "type": "text", "selector": "h1 + p a[href='index.html']", "expected": "Zurück zur Startseite", "label": "Direkt unter der Hauptüberschrift führt „Zurück zur Startseite“ zu index.html" },
+        { "type": "text", "selector": "h2:first-of-type", "expected": "Unser Café", "label": "Die erste Überschrift zweiter Stufe lautet „Unser Café“" },
+        { "type": "attr", "selector": "img[src='cafe-theke.svg']", "attr": "alt", "expected": "Die Theke vom Café Pause", "label": "cafe-theke.svg hat die Beschreibung „Die Theke vom Café Pause“" },
+        { "type": "attr", "selector": "img[src='cafe-kuchen.svg']", "attr": "alt", "expected": "Ein Stück Kuchen mit Kirsche", "label": "cafe-kuchen.svg hat die Beschreibung „Ein Stück Kuchen mit Kirsche“" },
+        { "type": "attr", "selector": "img[src='cafe-raum.svg']", "attr": "alt", "expected": "Der Gastraum mit Tischen und Fenster", "label": "cafe-raum.svg hat die Beschreibung „Der Gastraum mit Tischen und Fenster“" },
+        { "type": "source", "file": "html", "matches": "cafe-raum\\.svg[^>]*>\\s*<h2>\\s*Unser Jingle", "label": "Die Bilder stehen vor dem Jingle-Block" },
+        { "type": "attr", "selector": "audio", "attr": "src", "expected": "cafe-jingle.wav", "label": "Der Jingle-Player ist noch da" },
+        { "type": "text", "selector": "title", "expected": "Galerie – Café Pause", "label": "Der Seitentitel ist unverändert" }
       ]
     }
   ]

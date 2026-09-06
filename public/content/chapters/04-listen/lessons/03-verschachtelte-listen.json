@@ -36,12 +36,14 @@
       "text": "Der Eintrag „Serien“ soll eine innere Liste bekommen. Setze den fehlenden **öffnenden Tag** ein, in dem die innere Liste wohnt.",
       "template": "<ul>\n  <___>Serien\n    <ul>\n      <li>Krimi</li>\n      <li>Comedy</li>\n    </ul>\n  </li>\n</ul>",
       "solution": "li",
-      "accept": ["li"],
+      "accept": [
+        "li"
+      ],
       "hint": "„Serien“ ist ein ganz normaler Listeneintrag – die innere Liste steht **in** ihm, vor seinem `</li>`."
     },
     {
       "type": "code",
-      "task": "Die Packliste für die Klassenfahrt ist zu grob. Mach daraus eine **verschachtelte Liste**:\n\n1. **Kleidung** bekommt eine innere `<ul>` mit mindestens zwei Dingen (z. B. T-Shirts, Regenjacke).\n2. **Technik** bekommt eine innere `<ul>` mit mindestens zwei Dingen (z. B. Ladekabel, Kopfhörer).\n3. Merksatz: Die innere Liste wohnt im `<li>`!",
+      "task": "Gestalte die Packliste für die Klassenfahrt als **verschachtelte Liste**:\n\n1. **Kleidung** bekommt eine innere Aufzählung mit mindestens zwei Dingen (z. B. T-Shirts, Regenjacke).\n2. **Technik** bekommt eine innere Aufzählung mit mindestens zwei Dingen (z. B. Ladekabel, Kopfhörer).\n\nMerksatz: Die innere Liste wohnt im Eintrag!",
       "starter": {
         "html": "<h2>Packliste Klassenfahrt</h2>\n<ul>\n  <li>Kleidung</li>\n  <li>Technik</li>\n</ul>\n"
       },
@@ -54,10 +56,101 @@
         "html": "<h2>Packliste Klassenfahrt</h2>\n<ul>\n  <li>Kleidung\n    <ul>\n      <li>T-Shirts</li>\n      <li>Regenjacke</li>\n    </ul>\n  </li>\n  <li>Technik\n    <ul>\n      <li>Ladekabel</li>\n      <li>Kopfhörer</li>\n    </ul>\n  </li>\n</ul>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "ul li ul", "min": 2, "label": "Beide Einträge enthalten eine innere Liste" },
-        { "type": "selector", "selector": "ul > li:first-of-type ul li", "min": 2, "label": "Unter „Kleidung“ stehen mindestens zwei Dinge" },
-        { "type": "selector", "selector": "ul > li:nth-of-type(2) ul li", "min": 2, "label": "Unter „Technik“ stehen mindestens zwei Dinge" },
-        { "type": "source", "file": "html", "matches": "<ul>\\s*<ul", "absent": true, "label": "Keine Liste steht direkt in einer Liste – die innere Liste wohnt im <li>" }
+        {
+          "type": "selector",
+          "selector": "ul li ul",
+          "min": 2,
+          "label": "Beide Einträge enthalten eine innere Liste"
+        },
+        {
+          "type": "selector",
+          "selector": "ul > li:first-of-type ul li",
+          "min": 2,
+          "label": "Unter „Kleidung“ stehen mindestens zwei Dinge"
+        },
+        {
+          "type": "selector",
+          "selector": "ul > li:nth-of-type(2) ul li",
+          "min": 2,
+          "label": "Unter „Technik“ stehen mindestens zwei Dinge"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<ul>\\s*<ul",
+          "absent": true,
+          "label": "Keine Liste steht direkt in einer Liste – die innere Liste wohnt im <li>"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** „Getränke“ und „Snacks“ sind bisher nur Rubriken – jetzt kommen die konkreten Angebote als Unterpunkte dazu. Denk an den Merksatz: Die innere Liste wohnt im Eintrag, vor dessen schließendem Tag."
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Gestalte die Angebotsliste als verschachtelte Liste: **Getränke** bekommt die Unterpunkte **Kakao** und **Tee**, **Snacks** die Unterpunkte **Brezel** und **Muffin**. Die Bestell-Anleitung bleibt unverändert.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke</li>\n      <li>Snacks</li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Öffne <li>Getränke – schließe es aber erst NACH der inneren Liste mit </li>. Genauso bei Snacks.",
+        "Muster für einen Eintrag:\n```html\n<li>Getränke\n  <ul>\n    <li>Kakao</li>\n    <li>Tee</li>\n  </ul>\n</li>\n```",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "ul ul",
+          "count": 2,
+          "label": "Beide Rubriken enthalten eine innere Liste"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:first-child > ul > li:first-child",
+          "expected": "Kakao",
+          "label": "Unter „Getränke“ steht zuerst „Kakao“"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:first-child > ul > li:last-child",
+          "expected": "Tee",
+          "label": "Unter „Getränke“ steht danach „Tee“"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:nth-child(2) > ul > li:first-child",
+          "expected": "Brezel",
+          "label": "Unter „Snacks“ steht zuerst „Brezel“"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:nth-child(2) > ul > li:last-child",
+          "expected": "Muffin",
+          "label": "Unter „Snacks“ steht danach „Muffin“"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<ul>\\s*<ul",
+          "absent": true,
+          "label": "Keine Liste steht direkt in einer Liste – die innere Liste wohnt im Eintrag"
+        },
+        {
+          "type": "selector",
+          "selector": "ol > li",
+          "count": 3,
+          "label": "Die Bestell-Anleitung hat weiterhin drei Schritte"
+        }
       ]
     }
   ]

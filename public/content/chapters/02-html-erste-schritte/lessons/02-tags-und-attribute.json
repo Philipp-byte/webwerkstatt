@@ -17,16 +17,14 @@
       "text": "Vervollständige den **schließenden Tag** des Absatzes.",
       "template": "<p>Hallo!</___>",
       "solution": "p",
-      "accept": ["p"],
+      "accept": [
+        "p"
+      ],
       "hint": "Der schließende Tag enthält denselben Namen wie der öffnende – hier also `p`."
     },
     {
       "type": "explain",
-      "text": "Der häufigste HTML-Fehler überhaupt: der **vergessene schließende Tag**.\n\n```html\n<h1>Spielbericht\n<p>Und hier der Text.</p>\n```\n\nHier fehlt `</h1>` – der Browser weiß nicht, wo die Überschrift aufhört, und stellt womöglich alles Folgende riesig dar."
-    },
-    {
-      "type": "explain",
-      "text": "Das Tückische: Der Browser zeigt **keine Fehlermeldung**. Er rät einfach, wie es gemeint sein könnte – und rät oft falsch.\n\nWenn deine Seite seltsam aussieht, prüfe deshalb zuerst: Hat jedes Element seinen schließenden Tag? Und stimmt der Name – `<p>` schließt mit `</p>`, nicht mit `</h1>`?"
+      "text": "Der häufigste HTML-Fehler überhaupt: der **vergessene schließende Tag**.\n\n```html\n<h1>Spielbericht\n<p>Und hier der Text.</p>\n```\n\nHier fehlt `</h1>` – der Browser stellt womöglich alles Folgende riesig dar. Das Tückische: Er zeigt **keine Fehlermeldung**, sondern rät, wie es gemeint sein könnte.\n\nSieht deine Seite seltsam aus, prüfe zuerst: Hat jedes Element seinen schließenden Tag – mit dem richtigen Namen? `<p>` schließt mit `</p>`, nicht mit `</h1>`."
     },
     {
       "type": "explain",
@@ -37,27 +35,18 @@
       "text": "Die Regeln für Attribute:\n\n1. Nur im **öffnenden** Tag – nie im schließenden.\n2. Nach dem Tag-Namen kommt ein **Leerzeichen**, dann das Attribut.\n3. Zwischen Name und Wert steht ein **Gleichheitszeichen** `=`.\n4. Der Wert steht in **Anführungszeichen** `\"...\"`.\n\nAusblick: Bald benutzt du Attribute ständig – bei Links gibt `href` das Ziel an, bei Bildern nennt `src` die Bilddatei."
     },
     {
-      "type": "quiz",
-      "question": "Wo darf ein Attribut wie `lang=\"de\"` stehen?",
-      "options": [
-        "Nur im öffnenden Tag",
-        "Nur im schließenden Tag",
-        "Hinter dem Element, in eigenen Klammern"
-      ],
-      "correct": 0,
-      "explanation": "Attribute stehen immer im öffnenden Tag, z. B. `<html lang=\"de\">`. Der schließende Tag besteht nur aus Schrägstrich und Tag-Name: `</html>`."
-    },
-    {
       "type": "fill",
       "text": "Diese Seite ist auf Deutsch. Setze den **Namen des Attributs** ein.",
       "template": "<html ___=\"de\">",
       "solution": "lang",
-      "accept": ["lang"],
+      "accept": [
+        "lang"
+      ],
       "hint": "Das Attribut gibt die Sprache an – Englisch „language“, abgekürzt mit vier Buchstaben."
     },
     {
       "type": "code",
-      "task": "In der Werkbank stehen zwei Absätze – der zweite ist auf Englisch.\n\n1. Gib dem zweiten Absatz das Attribut `lang=\"en\"`, damit klar ist: Dieser Satz ist Englisch.\n2. Ergänze **darunter** einen dritten Absatz mit genau dem Text **Ich lerne HTML!**",
+      "task": "Vervollständige die beiden Absätze in der Werkbank:\n\n1. Kennzeichne den zweiten Absatz mit dem Sprach-Attribut als englischen Text (Sprachkürzel **en**).\n2. Ergänze darunter einen dritten Absatz mit genau dem Text **Ich lerne HTML!**",
       "starter": {
         "html": "<p>Mein Lieblingsspiel hat ein neues Update.</p>\n<p>Game on, let's go!</p>\n"
       },
@@ -70,9 +59,78 @@
         "html": "<p>Mein Lieblingsspiel hat ein neues Update.</p>\n<p lang=\"en\">Game on, let's go!</p>\n<p>Ich lerne HTML!</p>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "p", "min": 3, "label": "Es gibt drei Absätze" },
-        { "type": "attr", "selector": "p[lang]", "attr": "lang", "expected": "en", "label": "Der englische Absatz hat das Attribut lang=\"en\"" },
-        { "type": "text", "selector": "p:last-of-type", "expected": "Ich lerne HTML!", "label": "Der neue dritte Absatz lautet „Ich lerne HTML!“" }
+        {
+          "type": "selector",
+          "selector": "p",
+          "min": 3,
+          "label": "Es gibt drei Absätze"
+        },
+        {
+          "type": "attr",
+          "selector": "p[lang]",
+          "attr": "lang",
+          "expected": "en",
+          "label": "Der englische Absatz hat das Attribut lang=\"en\""
+        },
+        {
+          "type": "text",
+          "selector": "p:last-of-type",
+          "expected": "Ich lerne HTML!",
+          "label": "Der neue dritte Absatz lautet „Ich lerne HTML!“"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Die Startseite hat bisher nur die Überschrift. Jetzt bekommt sie ihren ersten Absatz – ein Element mit öffnendem und schließendem Tag, genau wie du es eben geübt hast.\n\nTipp: Den Gedankenstrich „–“ darfst du auch als normalen Bindestrich „-“ tippen."
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Ergänze unter der Überschrift einen Absatz mit dem Text **Willkommen im Café Pause – dem Schülercafé an unserer Schule.**",
+      "starter": {
+        "html": "<!-- Hier entsteht die Startseite vom Café Pause -->\n<h1>Café Pause</h1>\n"
+      },
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Ein Absatz ist ein p-Element – öffnender Tag, Text, schließender Tag – in einer neuen Zeile unter der Überschrift.",
+        "Die neue Zeile beginnt mit <p> und endet mit </p>; dazwischen steht der Willkommenstext aus der Aufgabe.",
+        "```html\n<!-- Hier entsteht die Startseite vom Café Pause -->\n<h1>Café Pause</h1>\n<p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n```"
+      ],
+      "solution": {
+        "html": "<!-- Hier entsteht die Startseite vom Café Pause -->\n<h1>Café Pause</h1>\n<p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "p",
+          "expected": "Willkommen im Café Pause",
+          "contains": true,
+          "label": "Der Absatz beginnt mit „Willkommen im Café Pause“"
+        },
+        {
+          "type": "text",
+          "selector": "p",
+          "expected": "Schülercafé an unserer Schule",
+          "contains": true,
+          "label": "Der Absatz nennt das „Schülercafé an unserer Schule“"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "</h1>\\s*<p",
+          "label": "Der Absatz steht direkt unter der Überschrift"
+        },
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "Café Pause",
+          "label": "Die Überschrift „Café Pause“ ist noch da"
+        }
       ]
     }
   ]

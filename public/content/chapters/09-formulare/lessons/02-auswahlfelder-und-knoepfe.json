@@ -17,7 +17,9 @@
       "text": "In der Getränke-Liste fehlt der öffnende Tag für den zweiten Eintrag. Setze ihn ein.",
       "template": "<select id=\"getraenk\">\n  <option>Eistee</option>\n  <___>Apfelschorle</option>\n</select>",
       "solution": "option",
-      "accept": ["option"],
+      "accept": [
+        "option"
+      ],
       "hint": "Jeder Eintrag einer Klappliste ist eine `<option>`."
     },
     {
@@ -47,7 +49,7 @@
     },
     {
       "type": "code",
-      "task": "Baue ein Feedback-Formular zum Praktikum:\n\n1. Ein `<form>` als Container\n2. `<label for=\"bewertung\">Wie war's?</label>` und eine Klappliste mit `id=\"bewertung\"` und mindestens **drei** `<option>` – die erste lautet **Super**\n3. `<label for=\"kommentar\">Dein Kommentar:</label>` und ein mehrzeiliges Feld mit `id=\"kommentar\"`\n4. Ein `<button>` mit dem Text **Abschicken**",
+      "task": "**Erstelle** ein Feedback-Formular zum Praktikum:\n\n1. Ein Formular als Container\n2. Eine Klappliste „bewertung“ mit verbundener Beschriftung „Wie war's?“ und mindestens **drei** Einträgen – der erste lautet „Super“\n3. Ein mehrzeiliges Feld „kommentar“ mit verbundener Beschriftung „Dein Kommentar:“\n4. Ein Knopf mit dem Text „Abschicken“",
       "starter": {
         "html": "<h2>Feedback zum Praktikum</h2>\n<!-- Dein Formular hier -->\n"
       },
@@ -60,13 +62,148 @@
         "html": "<h2>Feedback zum Praktikum</h2>\n<form>\n  <label for=\"bewertung\">Wie war's?</label>\n  <select id=\"bewertung\">\n    <option>Super</option>\n    <option>Ganz okay</option>\n    <option>Eher nicht</option>\n  </select>\n  <br>\n  <label for=\"kommentar\">Dein Kommentar:</label>\n  <br>\n  <textarea id=\"kommentar\"></textarea>\n  <br>\n  <button>Abschicken</button>\n</form>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "form select#bewertung", "count": 1, "label": "Im Formular steht eine Klappliste mit der id „bewertung“" },
-        { "type": "selector", "selector": "select#bewertung option", "min": 3, "label": "Die Klappliste hat mindestens drei Einträge" },
-        { "type": "text", "selector": "select#bewertung option", "expected": "Super", "label": "Der erste Eintrag lautet „Super“" },
-        { "type": "selector", "selector": "label[for='bewertung']", "min": 1, "label": "Die Klappliste hat ein verbundenes Label" },
-        { "type": "selector", "selector": "form textarea#kommentar", "count": 1, "label": "Es gibt ein mehrzeiliges Feld mit der id „kommentar“" },
-        { "type": "selector", "selector": "label[for='kommentar']", "min": 1, "label": "Das Kommentarfeld hat ein verbundenes Label" },
-        { "type": "text", "selector": "form button", "expected": "Abschicken", "label": "Der Knopf trägt den Text „Abschicken“" }
+        {
+          "type": "selector",
+          "selector": "form select#bewertung",
+          "count": 1,
+          "label": "Im Formular steht eine Klappliste mit der id „bewertung“"
+        },
+        {
+          "type": "selector",
+          "selector": "select#bewertung option",
+          "min": 3,
+          "label": "Die Klappliste hat mindestens drei Einträge"
+        },
+        {
+          "type": "text",
+          "selector": "select#bewertung option",
+          "expected": "Super",
+          "label": "Der erste Eintrag lautet „Super“"
+        },
+        {
+          "type": "selector",
+          "selector": "label[for='bewertung']",
+          "min": 1,
+          "label": "Die Klappliste hat ein verbundenes Label"
+        },
+        {
+          "type": "selector",
+          "selector": "form textarea#kommentar",
+          "count": 1,
+          "label": "Es gibt ein mehrzeiliges Feld mit der id „kommentar“"
+        },
+        {
+          "type": "selector",
+          "selector": "label[for='kommentar']",
+          "min": 1,
+          "label": "Das Kommentarfeld hat ein verbundenes Label"
+        },
+        {
+          "type": "text",
+          "selector": "form button",
+          "expected": "Abschicken",
+          "label": "Der Knopf trägt den Text „Abschicken“"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Das Kontaktformular hat Name und E-Mail. Jetzt kommt dazu, worum es geht: eine Klappliste mit dem Anlass, ein mehrzeiliges Feld für die Nachricht und der Absende-Knopf.\n\nDer Editor zeigt deinen Stand der Kontaktseite. Alles Neue kommt **unter das E-Mail-Feld**, innerhalb des Formulars."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Kontaktformular unter dem E-Mail-Feld:\n\n1. Eine Klappliste „anlass“ mit Beschriftung „Worum geht es?“ und den Einträgen Lob, Kritik, Frage\n2. Ein mehrzeiliges Feld „nachricht“ mit Beschriftung „Deine Nachricht“\n3. Zum Schluss ein Knopf mit dem Text „Absenden“",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Kontakt – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Kontakt</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <p>Schreib uns – wir antworten in der nächsten Pause.</p>\n\n      <form>\n        <label for=\"name\">Dein Name</label>\n        <input type=\"text\" id=\"name\" placeholder=\"Vorname Nachname\">\n\n        <label for=\"email\">Deine E-Mail</label>\n        <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n      </form>\n    </main>\n  </body>\n</html>\n"
+      },
+      "project": {
+        "page": "kontakt",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Drei Blöcke nacheinander, alle vor </form>: Label + select mit drei option, Label + textarea (innen leer), zum Schluss der button. Denk an for = id.",
+        "Die Klappliste:\n```html\n<label for=\"anlass\">Worum geht es?</label>\n<select id=\"anlass\">\n  <option>Lob</option>\n  <option>Kritik</option>\n  <option>Frage</option>\n</select>\n```\nDanach <label for=\"nachricht\">Deine Nachricht</label> mit <textarea id=\"nachricht\"></textarea> und <button>Absenden</button>.",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Kontakt – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Kontakt</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <p>Schreib uns – wir antworten in der nächsten Pause.</p>\n\n      <form>\n        <label for=\"name\">Dein Name</label>\n        <input type=\"text\" id=\"name\" placeholder=\"Vorname Nachname\">\n\n        <label for=\"email\">Deine E-Mail</label>\n        <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n\n        <label for=\"anlass\">Worum geht es?</label>\n        <select id=\"anlass\">\n          <option>Lob</option>\n          <option>Kritik</option>\n          <option>Frage</option>\n        </select>\n\n        <label for=\"nachricht\">Deine Nachricht</label>\n        <textarea id=\"nachricht\"></textarea>\n\n        <button>Absenden</button>\n      </form>\n    </main>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Kontakt – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Kontakt</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <p>Schreib uns – wir antworten in der nächsten Pause.</p>\n\n      <form>\n        <label for=\"name\">Dein Name</label>\n        <input type=\"text\" id=\"name\" placeholder=\"Vorname Nachname\">\n\n        <label for=\"email\">Deine E-Mail</label>\n        <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n\n        <label for=\"anlass\">Worum geht es?</label>\n        <select id=\"anlass\">\n          <option>Lob</option>\n          <option>Kritik</option>\n          <option>Frage</option>\n        </select>\n\n        <label for=\"nachricht\">Deine Nachricht</label>\n        <textarea id=\"nachricht\"></textarea>\n\n        <button>Absenden</button>\n      </form>\n    </main>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "form select#anlass",
+          "count": 1,
+          "label": "Im Formular steht die Klappliste „anlass“"
+        },
+        {
+          "type": "selector",
+          "selector": "select#anlass option",
+          "count": 3,
+          "label": "Die Klappliste hat genau drei Einträge"
+        },
+        {
+          "type": "text",
+          "selector": "select#anlass option",
+          "expected": "Lob",
+          "label": "Der erste Eintrag lautet „Lob“"
+        },
+        {
+          "type": "text",
+          "selector": "select#anlass option:nth-child(3)",
+          "expected": "Frage",
+          "label": "Der dritte Eintrag lautet „Frage“"
+        },
+        {
+          "type": "text",
+          "selector": "label[for='anlass']",
+          "expected": "Worum geht es?",
+          "label": "Die Beschriftung „Worum geht es?“ ist mit der Klappliste verbunden"
+        },
+        {
+          "type": "selector",
+          "selector": "form textarea#nachricht",
+          "count": 1,
+          "label": "Im Formular steht das mehrzeilige Feld „nachricht“"
+        },
+        {
+          "type": "text",
+          "selector": "textarea#nachricht",
+          "expected": "",
+          "label": "Das Nachrichtenfeld ist innen leer"
+        },
+        {
+          "type": "text",
+          "selector": "label[for='nachricht']",
+          "expected": "Deine Nachricht",
+          "label": "Die Beschriftung „Deine Nachricht“ ist mit dem Feld verbunden"
+        },
+        {
+          "type": "text",
+          "selector": "form button",
+          "expected": "Absenden",
+          "label": "Der Knopf trägt den Text „Absenden“"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "</textarea>[\\s\\S]*<button>",
+          "label": "Der Knopf steht nach dem Nachrichtenfeld"
+        },
+        {
+          "type": "attr",
+          "selector": "form input#email",
+          "attr": "type",
+          "expected": "email",
+          "label": "Das E-Mail-Feld ist noch da"
+        },
+        {
+          "type": "text",
+          "selector": "header h1",
+          "expected": "Kontakt",
+          "label": "Die Hauptüberschrift „Kontakt“ ist noch da"
+        }
       ]
     }
   ]

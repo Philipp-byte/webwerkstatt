@@ -4,33 +4,65 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Weiter geht es mit dem **Café Pause**! Deine Startseite hat schon Grundgerüst, Begrüßung und „Über uns“ mit Adresse.\n\nHeute kommt das **Angebot** dazu – als verschachtelte Liste mit Getränken und Snacks – plus eine nummerierte **Bestell-Anleitung**.\n\nDein gespeicherter Projektstand wird automatisch geladen. Neueinsteiger starten mit dem Stand der letzten Etappe."
+      "text": "**Meilenstein!** Die Startseite vom **Café Pause** zeigt jetzt die Angebote als verschachtelte Liste, die Bestell-Anleitung und einen Tipp. Heute kontrollierst du beide Listen – und das Getränke-Angebot wächst um die Apfelschorle.\n\nDanach schau in **Mein Café-Projekt** (`#/projekt`): Dort siehst du deine Website als Ganzes."
     },
     {
       "type": "code",
-      "task": "Erweitere die Startseite **vor der `<hr>`**, damit die Adresse unten bleibt:\n\n1. `<h2>` mit dem Text **Das gibt es bei uns**\n2. Darunter eine `<ul>` mit genau zwei Einträgen: **Getränke**, **Snacks**\n3. Beide mit **innerer `<ul>`** und mindestens zwei Angeboten\n4. `<h2>` mit dem Text **So bestellst du**\n5. Darunter eine `<ol>` mit mindestens drei Schritten",
+      "task": "**Meilenstein.** Zwei Schritte:\n\n1. Überprüfe beide Listen: „Getränke“ und „Snacks“ haben je zwei Unterpunkte, die Bestell-Anleitung drei nummerierte Schritte.\n2. Ergänze unter **Getränke** als dritten Unterpunkt **Apfelschorle** – danach findest du die Seite unter „Mein Café-Projekt“ (#/projekt)",
       "starter": {
-        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen in unserem Schülercafé! Bei uns kannst du jede Pause genießen.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von Schülerinnen und Schülern <strong>selbst organisiert</strong>.</p>\n    <p>Alle Einnahmen fließen <em>direkt</em> in neue Projekte unserer Schule.</p>\n\n    <hr>\n    <p>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <p><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
       },
-      "project": { "page": "index", "save": ["html"] },
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
       "hints": [
-        "Das Muster kennst du aus Lektion 3: Die innere <ul> wohnt im <li> – nach dem Rubriknamen, vor dem </li>. Als Angebote passen z. B. Kakao, Apfelschorle, Brezeln, Muffins.",
-        "So sieht eine fertige Rubrik aus:\n```html\n<li>Getränke\n  <ul>\n    <li>Kakao</li>\n    <li>Apfelschorle</li>\n  </ul>\n</li>\n```\nDanach kommt die zweite Rubrik nach demselben Muster – und unter „So bestellst du“ eine ganz normale <ol>.",
-        "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen in unserem Schülercafé! Bei uns kannst du jede Pause genießen.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von Schülerinnen und Schülern <strong>selbst organisiert</strong>.</p>\n    <p>Alle Einnahmen fließen <em>direkt</em> in neue Projekte unserer Schule.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezeln</li>\n          <li>Muffins</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>Stell dich an der Theke an.</li>\n      <li>Sag uns deinen Wunsch und bezahle.</li>\n      <li>Hol deine Bestellung ab.</li>\n    </ol>\n\n    <hr>\n    <p>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n```"
+        "Die Apfelschorle ist ein weiteres <li> in der inneren Liste unter Getränke – nach Tee, vor dem </ul> der inneren Liste.",
+        "Die innere Getränke-Liste hat danach drei Einträge: <li>Kakao</li>, <li>Tee</li>, <li>Apfelschorle</li>.",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <p><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n```"
       ],
       "solution": {
-        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen in unserem Schülercafé! Bei uns kannst du jede Pause genießen.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von Schülerinnen und Schülern <strong>selbst organisiert</strong>.</p>\n    <p>Alle Einnahmen fließen <em>direkt</em> in neue Projekte unserer Schule.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezeln</li>\n          <li>Muffins</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>Stell dich an der Theke an.</li>\n      <li>Sag uns deinen Wunsch und bezahle.</li>\n      <li>Hol deine Bestellung ab.</li>\n    </ol>\n\n    <hr>\n    <p>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <p><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
       },
       "tests": [
-        { "type": "text", "selector": "h2:nth-of-type(2)", "expected": "Das gibt es bei uns", "label": "Die zweite <h2> lautet „Das gibt es bei uns“" },
-        { "type": "source", "file": "html", "matches": "Getränke", "label": "Die Rubrik „Getränke“ ist da" },
-        { "type": "source", "file": "html", "matches": "Snacks", "label": "Die Rubrik „Snacks“ ist da" },
-        { "type": "selector", "selector": "ul li ul", "min": 2, "label": "Beide Rubriken enthalten eine innere Liste" },
-        { "type": "selector", "selector": "ul > li:first-of-type ul li", "min": 2, "label": "Die erste Rubrik hat mindestens zwei Angebote" },
-        { "type": "selector", "selector": "ul > li:nth-of-type(2) ul li", "min": 2, "label": "Die zweite Rubrik hat mindestens zwei Angebote" },
-        { "type": "source", "file": "html", "matches": "<ul>\\s*<ul", "absent": true, "label": "Keine Liste steht direkt in einer Liste – die innere Liste wohnt im <li>" },
-        { "type": "text", "selector": "h2:nth-of-type(3)", "expected": "So bestellst du", "label": "Die dritte <h2> lautet „So bestellst du“" },
-        { "type": "selector", "selector": "ol li", "min": 3, "label": "Die Bestell-Anleitung hat mindestens drei Schritte" }
+        {
+          "type": "selector",
+          "selector": "ul > li:first-child > ul > li",
+          "count": 3,
+          "label": "Unter „Getränke“ stehen drei Unterpunkte"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:first-child > ul > li:last-child",
+          "expected": "Apfelschorle",
+          "label": "Der dritte Unterpunkt lautet „Apfelschorle“"
+        },
+        {
+          "type": "selector",
+          "selector": "ul > li:nth-child(2) > ul > li",
+          "count": 2,
+          "label": "Unter „Snacks“ stehen weiterhin zwei Unterpunkte"
+        },
+        {
+          "type": "selector",
+          "selector": "ol > li",
+          "count": 3,
+          "label": "Die Bestell-Anleitung hat weiterhin drei Schritte"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:first-child > ul > li:first-child",
+          "expected": "Kakao",
+          "label": "Der Unterpunkt „Kakao“ ist noch da"
+        },
+        {
+          "type": "text",
+          "selector": "ol + p strong",
+          "expected": "Tipp:",
+          "label": "Der Tipp-Absatz ist noch da"
+        }
       ]
     }
   ]

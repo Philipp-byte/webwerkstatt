@@ -79,7 +79,9 @@ function checkOne(t, ctx) {
       } else if (t.matches) {
         pass = logs.some((l) => new RegExp(t.matches).test(l));
       } else {
-        pass = logs.some((l) => norm(l) === norm(t.expected));
+        // expected darf eine Liste akzeptierter Schreibweisen sein (z. B. Gedankenstrich/Bindestrich)
+        const varianten = asList(t.expected).map(norm);
+        pass = logs.some((l) => varianten.includes(norm(l)));
       }
       return { label, pass, detail: pass ? '' : `Konsole: ${logs.length ? logs.join(' ⏎ ') : '(keine Ausgabe)'}` };
     }

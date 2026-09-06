@@ -50,7 +50,7 @@
     },
     {
       "type": "code",
-      "task": "Baue deine Medien-Ecke:\n\n1. Unter **Intro-Sound**: ein `<audio>` mit `controls` und der Datei `cafe-jingle.wav` – teste es gleich mit Play!\n2. Unter **Strand-Clip**: ein `<video>` mit `controls`, der Datei `strand.mp4` (bringst du im Unterricht mit) und dem Übungsbild `strand.svg` als `poster`",
+      "task": "Erstelle deine Medien-Ecke:\n\n1. Ergänze unter **Intro-Sound** einen Audio-Player mit Bedienelementen für die Datei cafe-jingle.wav – teste ihn gleich mit Play!\n2. Ergänze unter **Strand-Clip** ein Video mit Bedienelementen für die Datei strand.mp4 (bringst du im Unterricht mit) und dem Übungsbild strand.svg als Vorschaubild",
       "starter": {
         "html": "<h2>Intro-Sound</h2>\n<!-- Dein Audio-Player hier -->\n\n<h2>Strand-Clip</h2>\n<!-- Dein Video hier -->\n"
       },
@@ -70,6 +70,32 @@
         { "type": "attr", "selector": "video", "attr": "src", "expected": "strand.mp4", "label": "Das Video verweist auf strand.mp4" },
         { "type": "attr", "selector": "video", "attr": "controls", "expected": ["", "controls"], "label": "Das Video zeigt Bedienelemente (controls)" },
         { "type": "attr", "selector": "video", "attr": "poster", "expected": "strand.svg", "label": "Das Vorschaubild ist strand.svg" }
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Erstelle die neue Seite galerie.html:\n\n1. Erstelle das vollständige Grundgerüst (Sprache Deutsch, Zeichensatz, Titel **Galerie – Café Pause**)\n2. Ergänze im Body die Hauptüberschrift **Galerie**\n3. Ergänze darunter die Überschrift zweiter Stufe **Unser Jingle** und einen Audio-Player mit Bedienelementen für cafe-jingle.wav",
+      "starter": {
+        "html": "<!-- galerie.html – hier entsteht die Galerie vom Café Pause -->\n"
+      },
+      "project": { "page": "galerie", "save": ["html"] },
+      "hints": [
+        "Das Grundgerüst kennst du von der Startseite: DOCTYPE, html mit Sprachangabe, head mit Zeichensatz und Titel, dann der body. Der Audio-Player kommt unter die h2.",
+        "So sieht der Kopfbereich aus:\n```html\n<head>\n  <meta charset=\"utf-8\">\n  <title>Galerie – Café Pause</title>\n</head>\n```\nDer Player im body: <audio controls src=\"cafe-jingle.wav\"></audio>",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <h1>Galerie</h1>\n\n    <h2>Unser Jingle</h2>\n    <audio controls src=\"cafe-jingle.wav\"></audio>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <h1>Galerie</h1>\n\n    <h2>Unser Jingle</h2>\n    <audio controls src=\"cafe-jingle.wav\"></audio>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        { "type": "source", "file": "html", "matches": "<!doctype\\s+html>", "label": "Der DOCTYPE steht am Anfang" },
+        { "type": "attr", "selector": "html", "attr": "lang", "expected": "de", "label": "Die Seite ist als deutsch gekennzeichnet" },
+        { "type": "source", "file": "html", "matches": "<meta\\s+charset=[\"']?utf-8", "label": "Die Zeichensatz-Angabe utf-8 steht im Kopfbereich" },
+        { "type": "text", "selector": "title", "expected": "Galerie – Café Pause", "label": "Der Seitentitel lautet „Galerie – Café Pause“" },
+        { "type": "text", "selector": "body h1", "expected": "Galerie", "label": "Die Hauptüberschrift lautet „Galerie“" },
+        { "type": "text", "selector": "h2", "expected": "Unser Jingle", "label": "Die Überschrift zweiter Stufe lautet „Unser Jingle“" },
+        { "type": "attr", "selector": "audio", "attr": "src", "expected": "cafe-jingle.wav", "label": "Der Audio-Player spielt cafe-jingle.wav" },
+        { "type": "attr", "selector": "audio", "attr": "controls", "expected": ["", "controls"], "label": "Der Audio-Player zeigt Bedienelemente" }
       ]
     }
   ]

@@ -4,31 +4,34 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Auf der Startseite des **Café Pause** gibt es schon den Link zur Galerie – nur die Seite dahinter fehlt. Heute entsteht **galerie.html** als eigene Projektseite.\n\nBereit liegen `cafe-theke.svg`, `cafe-kuchen.svg`, `cafe-raum.svg` und der Jingle `cafe-jingle.wav`.\n\nWeil es eine **neue Seite** ist, startest du mit einem frischen Grundgerüst. Bestehen die Tests, wird sie als Seite „galerie“ gespeichert."
+      "text": "**Meilenstein!** Die Galerie vom **Café Pause** hat Grundgerüst, Rück-Link, drei Bilder und den Jingle. Heute kommt ein **Rundgang** als nummerierte Liste dazu – und du kontrollierst alle Bildbeschreibungen.\n\nDanach schau in **Mein Café-Projekt** (`#/projekt`): Der Galerie-Link der Startseite führt jetzt wirklich hierher."
     },
     {
       "type": "code",
-      "task": "Baue die Galerie-Seite des Café Pause:\n\n1. Im `<body>` eine `<h1>` mit dem Text **Galerie**\n2. Darunter die drei Bilder `cafe-theke.svg`, `cafe-kuchen.svg`, `cafe-raum.svg` – **jedes** mit sinnvollem `alt`-Text\n3. Ein `<audio>` mit `controls` und `cafe-jingle.wav`\n4. Ganz unten ein Absatz mit Zurück-Link zu `index.html` – Linktext **Zurück zur Startseite**",
+      "task": "**Meilenstein.** Erweitere die Galerie ganz unten:\n\n1. Ergänze nach dem Jingle die Überschrift zweiter Stufe **Rundgang** mit einer nummerierten Liste: **Theke**, **Gastraum**, **Kuchen-Vitrine**\n2. Überprüfe, ob alle drei Bilder ihre Bildbeschreibung haben – danach geht es zu „Mein Café-Projekt“ (#/projekt)",
       "starter": {
-        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <!-- Überschrift, Bilder, Audio und Zurück-Link hier -->\n  </body>\n</html>\n"
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <h1>Galerie</h1>\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n\n    <h2>Unser Café</h2>\n    <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n    <img src=\"cafe-raum.svg\" alt=\"Der Gastraum mit Tischen und Fenster\">\n\n    <h2>Unser Jingle</h2>\n    <audio controls src=\"cafe-jingle.wav\"></audio>\n  </body>\n</html>\n"
       },
       "project": { "page": "galerie", "save": ["html"] },
       "hints": [
-        "Alles Sichtbare kommt in den <body>. Jedes Bild ist ein <img> mit src und alt – der alt-Text beschreibt, was auf dem Bild zu sehen ist.",
-        "Der Audio-Player: <audio controls src=\"cafe-jingle.wav\"></audio>. Der Zurück-Link ist ein relativer Link: <a href=\"index.html\">Zurück zur Startseite</a>.",
-        "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <h1>Galerie</h1>\n    <p>So sieht es bei uns aus – schau dich um und hör rein!</p>\n\n    <img src=\"cafe-theke.svg\" alt=\"Unsere Theke mit Kasse und frischen Brezeln\">\n    <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen auf einem Teller\">\n    <img src=\"cafe-raum.svg\" alt=\"Der Gastraum mit Tischen und Stühlen\">\n\n    <p>Unser Café-Jingle:</p>\n    <audio controls src=\"cafe-jingle.wav\"></audio>\n\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n  </body>\n</html>\n```"
+        "Der neue Block kommt nach dem Audio-Player, vor </body>. Eine nummerierte Liste ist eine <ol> mit drei <li>.",
+        "So sieht der Rundgang aus:\n```html\n<h2>Rundgang</h2>\n<ol>\n  <li>Theke</li>\n  <li>Gastraum</li>\n  <li>Kuchen-Vitrine</li>\n</ol>\n```",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <h1>Galerie</h1>\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n\n    <h2>Unser Café</h2>\n    <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n    <img src=\"cafe-raum.svg\" alt=\"Der Gastraum mit Tischen und Fenster\">\n\n    <h2>Unser Jingle</h2>\n    <audio controls src=\"cafe-jingle.wav\"></audio>\n\n    <h2>Rundgang</h2>\n    <ol>\n      <li>Theke</li>\n      <li>Gastraum</li>\n      <li>Kuchen-Vitrine</li>\n    </ol>\n  </body>\n</html>\n```"
       ],
       "solution": {
-        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <h1>Galerie</h1>\n    <p>So sieht es bei uns aus – schau dich um und hör rein!</p>\n\n    <img src=\"cafe-theke.svg\" alt=\"Unsere Theke mit Kasse und frischen Brezeln\">\n    <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen auf einem Teller\">\n    <img src=\"cafe-raum.svg\" alt=\"Der Gastraum mit Tischen und Stühlen\">\n\n    <p>Unser Café-Jingle:</p>\n    <audio controls src=\"cafe-jingle.wav\"></audio>\n\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n  </body>\n</html>\n"
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <h1>Galerie</h1>\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n\n    <h2>Unser Café</h2>\n    <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n    <img src=\"cafe-raum.svg\" alt=\"Der Gastraum mit Tischen und Fenster\">\n\n    <h2>Unser Jingle</h2>\n    <audio controls src=\"cafe-jingle.wav\"></audio>\n\n    <h2>Rundgang</h2>\n    <ol>\n      <li>Theke</li>\n      <li>Gastraum</li>\n      <li>Kuchen-Vitrine</li>\n    </ol>\n  </body>\n</html>\n"
       },
       "tests": [
-        { "type": "text", "selector": "h1", "expected": "Galerie", "label": "Die <h1> lautet „Galerie“" },
-        { "type": "attr", "selector": "img[src='cafe-theke.svg']", "attr": "alt", "matches": "\\S", "label": "cafe-theke.svg ist da und hat einen alt-Text" },
-        { "type": "attr", "selector": "img[src='cafe-kuchen.svg']", "attr": "alt", "matches": "\\S", "label": "cafe-kuchen.svg ist da und hat einen alt-Text" },
-        { "type": "attr", "selector": "img[src='cafe-raum.svg']", "attr": "alt", "matches": "\\S", "label": "cafe-raum.svg ist da und hat einen alt-Text" },
-        { "type": "attr", "selector": "audio", "attr": "src", "expected": "cafe-jingle.wav", "label": "Der Audio-Player spielt cafe-jingle.wav" },
-        { "type": "attr", "selector": "audio", "attr": "controls", "expected": ["", "controls"], "label": "Der Audio-Player zeigt Bedienelemente (controls)" },
-        { "type": "text", "selector": "a[href='index.html']", "expected": "Zurück zur Startseite", "label": "Der Zurück-Link führt zu index.html" }
+        { "type": "text", "selector": "h2:last-of-type", "expected": "Rundgang", "label": "Die letzte Überschrift zweiter Stufe lautet „Rundgang“" },
+        { "type": "selector", "selector": "ol li", "count": 3, "label": "Der Rundgang hat genau drei Stationen" },
+        { "type": "text", "selector": "ol li:nth-child(1)", "expected": "Theke", "label": "Station 1 ist „Theke“" },
+        { "type": "text", "selector": "ol li:nth-child(2)", "expected": "Gastraum", "label": "Station 2 ist „Gastraum“" },
+        { "type": "text", "selector": "ol li:nth-child(3)", "expected": "Kuchen-Vitrine", "label": "Station 3 ist „Kuchen-Vitrine“" },
+        { "type": "source", "file": "html", "matches": "</audio>\\s*<h2>\\s*Rundgang", "label": "Der Rundgang folgt direkt auf den Jingle" },
+        { "type": "attr", "selector": "img[src='cafe-theke.svg']", "attr": "alt", "matches": "\\S", "label": "Kontrolle: cafe-theke.svg hat eine Bildbeschreibung" },
+        { "type": "attr", "selector": "img[src='cafe-kuchen.svg']", "attr": "alt", "matches": "\\S", "label": "Kontrolle: cafe-kuchen.svg hat eine Bildbeschreibung" },
+        { "type": "attr", "selector": "img[src='cafe-raum.svg']", "attr": "alt", "matches": "\\S", "label": "Kontrolle: cafe-raum.svg hat eine Bildbeschreibung" },
+        { "type": "text", "selector": "a[href='index.html']", "expected": "Zurück zur Startseite", "label": "Kontrolle: Der Rück-Link zur Startseite ist da" }
       ]
     }
   ]

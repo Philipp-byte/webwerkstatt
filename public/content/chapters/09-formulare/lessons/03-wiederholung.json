@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Bevor das Kontaktformular ans Café geht: eine Wiederholungsrunde. Jedes Mal, wenn du Wissen **selbst aus dem Kopf holst**, verankerst du es tiefer – Nachschlagen allein schafft das nicht.\n\nHeute dran: **Tabellen** (Kapitel 7) sowie **class, id, div, span und die semantischen Bereiche** (Kapitel 8)."
+      "text": "Bevor das Kontaktformular fertig wird: eine Wiederholungsrunde. Jedes Mal, wenn du Wissen **selbst aus dem Kopf holst**, verankerst du es tiefer – Nachschlagen allein schafft das nicht.\n\nHeute dran: **Tabellen** (Kapitel 7) sowie **class, id, div, span und die semantischen Bereiche** (Kapitel 8). Zum Schluss verbindest du auf der Kontaktseite **Bereiche, Tabelle und Formular**."
     },
     {
       "type": "quiz",
@@ -22,17 +22,21 @@
       "text": "Die Adresse steht im Fußbereich der Seite. Setze den passenden öffnenden Bereichs-Tag ein (der schließende steht schon da).",
       "template": "<main>\n  <p>Hier steht der Hauptinhalt.</p>\n</main>\n<___>\n  <p>Musterstraße 12, 74072 Heilbronn</p>\n</footer>",
       "solution": "footer",
-      "accept": ["footer"],
+      "accept": [
+        "footer"
+      ],
       "hint": "Der Fußbereich einer Seite heißt `<footer>` – schau auf den schließenden Tag."
     },
     {
       "type": "code",
-      "task": "Baue eine Preistabelle für den Schulkiosk:\n\n1. Kopfzeile: `<th>`-Zellen **Getränk** und **Preis**\n2. Mindestens **zwei** Datenzeilen mit je zwei `<td>`\n3. Die Tabelle bekommt `class=\"preise\"` – der CSS-Tab 🔒 gestaltet sie dann automatisch",
+      "task": "**Erstelle** eine Preistabelle für den Schulkiosk:\n\n1. Kopfzeile mit den Kopfzellen „Getränk“ und „Preis“\n2. Mindestens **zwei** Datenzeilen mit je zwei Zellen\n3. Die Tabelle gehört zur Gruppe „preise“ – der CSS-Tab 🔒 gestaltet sie dann automatisch",
       "starter": {
         "html": "<h2>Kiosk-Preise</h2>\n<!-- Deine Tabelle hier -->\n",
         "css": "table.preise { border-collapse: collapse; }\n.preise td, .preise th { border: 1px solid #888; padding: 6px 12px; }\n.preise th { background-color: #f0e6d6; }\n"
       },
-      "editable": ["html"],
+      "editable": [
+        "html"
+      ],
       "hints": [
         "Die class kommt in den öffnenden Tag der Tabelle: <table class=\"preise\">.",
         "Danach wie gewohnt: Kopfzeile mit zwei <th>, dann zwei Zeilen mit je zwei <td>. Sobald die class stimmt, erscheinen die Linien!",
@@ -42,11 +46,36 @@
         "html": "<h2>Kiosk-Preise</h2>\n<table class=\"preise\">\n  <tr>\n    <th>Getränk</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Eistee</td>\n    <td>1,00 €</td>\n  </tr>\n  <tr>\n    <td>Apfelschorle</td>\n    <td>0,80 €</td>\n  </tr>\n</table>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "table.preise", "count": 1, "label": "Die Tabelle trägt die class „preise“ (die Linien erscheinen!)" },
-        { "type": "selector", "selector": "table.preise th", "min": 2, "label": "Die Kopfzeile hat zwei <th>-Zellen" },
-        { "type": "text", "selector": "th", "expected": "Getränk", "label": "Die erste Kopf-Zelle lautet „Getränk“" },
-        { "type": "selector", "selector": "tr", "min": 3, "label": "Es gibt die Kopfzeile und mindestens zwei Datenzeilen" },
-        { "type": "selector", "selector": "td", "min": 4, "label": "Die Datenzeilen haben je zwei Zellen" }
+        {
+          "type": "selector",
+          "selector": "table.preise",
+          "count": 1,
+          "label": "Die Tabelle trägt die class „preise“ (die Linien erscheinen!)"
+        },
+        {
+          "type": "selector",
+          "selector": "table.preise th",
+          "min": 2,
+          "label": "Die Kopfzeile hat zwei <th>-Zellen"
+        },
+        {
+          "type": "text",
+          "selector": "th",
+          "expected": "Getränk",
+          "label": "Die erste Kopf-Zelle lautet „Getränk“"
+        },
+        {
+          "type": "selector",
+          "selector": "tr",
+          "min": 3,
+          "label": "Es gibt die Kopfzeile und mindestens zwei Datenzeilen"
+        },
+        {
+          "type": "selector",
+          "selector": "td",
+          "min": 4,
+          "label": "Die Datenzeilen haben je zwei Zellen"
+        }
       ]
     },
     {
@@ -62,12 +91,14 @@
     },
     {
       "type": "code",
-      "task": "Baue die Grundstruktur einer Seite für ein **Jugendzentrum**:\n\n1. `<header>` mit `<h1>Jugendzentrum</h1>`\n2. `<nav>` mit **zwei** Links (Ziele frei wählbar, `https://...`)\n3. `<main>` mit **zwei** Absätzen – der zweite bekommt `class=\"wichtig\"` (z. B. eine dringende Info)\n4. `<footer>` mit einem Absatz",
+      "task": "**Erstelle** die Grundstruktur einer Seite für ein Jugendzentrum:\n\n1. Kopfbereich mit der Hauptüberschrift „Jugendzentrum“\n2. Navigation mit **zwei** Links (Ziele frei wählbar)\n3. Hauptbereich mit **zwei** Absätzen – der zweite gehört zur Gruppe „wichtig“ (z. B. eine dringende Info)\n4. Fußbereich mit einem Absatz",
       "starter": {
         "html": "<!-- header, nav, main und footer hier -->\n",
         "css": "header { background-color: #ffe0b3; padding: 10px; }\nnav { background-color: #cde8ff; padding: 10px; }\nmain { background-color: #e8f7e8; padding: 10px; min-height: 60px; }\nfooter { background-color: #e6e6e6; padding: 10px; font-size: 14px; }\n.wichtig { color: #c0392b; font-weight: bold; }\n"
       },
-      "editable": ["html"],
+      "editable": [
+        "html"
+      ],
       "hints": [
         "Die vier Bereiche stehen untereinander – wie bei Team Blitz aus Kapitel 8.",
         "Der zweite Absatz im <main> bekommt das Attribut in den öffnenden Tag: <p class=\"wichtig\">…</p>.",
@@ -77,11 +108,124 @@
         "html": "<header>\n  <h1>Jugendzentrum</h1>\n</header>\n<nav>\n  <a href=\"https://www.example.com\">Programm</a>\n  <a href=\"https://www.example.com\">Anfahrt</a>\n</nav>\n<main>\n  <p>Bei uns kannst du kickern, Musik machen und Freunde treffen.</p>\n  <p class=\"wichtig\">Am Freitag bleibt das Jugendzentrum geschlossen!</p>\n</main>\n<footer>\n  <p>Jugendzentrum · Musterstraße 5 · Heilbronn</p>\n</footer>\n"
       },
       "tests": [
-        { "type": "text", "selector": "header h1", "expected": "Jugendzentrum", "label": "Im <header> steht die <h1> „Jugendzentrum“" },
-        { "type": "selector", "selector": "nav a", "min": 2, "label": "Die <nav> enthält zwei Links" },
-        { "type": "selector", "selector": "main p", "min": 2, "label": "Im <main> stehen zwei Absätze" },
-        { "type": "selector", "selector": "main p.wichtig", "min": 1, "label": "Ein Absatz im <main> hat die class „wichtig“" },
-        { "type": "selector", "selector": "footer p", "min": 1, "label": "Im <footer> steht ein Absatz" }
+        {
+          "type": "text",
+          "selector": "header h1",
+          "expected": "Jugendzentrum",
+          "label": "Im <header> steht die <h1> „Jugendzentrum“"
+        },
+        {
+          "type": "selector",
+          "selector": "nav a",
+          "min": 2,
+          "label": "Die <nav> enthält zwei Links"
+        },
+        {
+          "type": "selector",
+          "selector": "main p",
+          "min": 2,
+          "label": "Im <main> stehen zwei Absätze"
+        },
+        {
+          "type": "selector",
+          "selector": "main p.wichtig",
+          "min": 1,
+          "label": "Ein Absatz im <main> hat die class „wichtig“"
+        },
+        {
+          "type": "selector",
+          "selector": "footer p",
+          "min": 1,
+          "label": "Im <footer> steht ein Absatz"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Café-Etappe.** Die Kontaktseite hat Kopf- und Hauptbereich, aber noch keinen Fußbereich. Außerdem sollen Gäste vor dem Schreiben sehen, **wann** jemand da ist – die Öffnungszeiten-Tabelle kennst du von der Startseite.\n\nZwei Ergänzungen also: Tabelle mit Überschrift **vor** dem Formular, Fußbereich mit Adresse **nach** dem Hauptbereich."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** die Kontaktseite an zwei Stellen:\n\n1. Im Hauptbereich vor dem Formular: Überschrift zweiter Stufe „Wann wir da sind“ mit der Öffnungszeiten-Tabelle (Kopfzeile „Tag“ / „Zeit“, Datenzeile „Montag bis Freitag“ / „9:00 bis 15:00 Uhr“)\n2. Ein Fußbereich mit dem Adress-Absatz: Café Pause, Musterstraße 12, 74072 Heilbronn (drei Zeilen)",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Kontakt – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Kontakt</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <p>Schreib uns – wir antworten in der nächsten Pause.</p>\n\n      <form>\n        <label for=\"name\">Dein Name</label>\n        <input type=\"text\" id=\"name\" placeholder=\"Vorname Nachname\">\n\n        <label for=\"email\">Deine E-Mail</label>\n        <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n\n        <label for=\"anlass\">Worum geht es?</label>\n        <select id=\"anlass\">\n          <option>Lob</option>\n          <option>Kritik</option>\n          <option>Frage</option>\n        </select>\n\n        <label for=\"nachricht\">Deine Nachricht</label>\n        <textarea id=\"nachricht\"></textarea>\n\n        <button>Absenden</button>\n      </form>\n    </main>\n  </body>\n</html>\n"
+      },
+      "project": {
+        "page": "kontakt",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Überschrift und Tabelle kommen zwischen den Einleitungs-Absatz und <form>. Der footer kommt nach </main>, vor </body>.",
+        "Tabelle und Fußbereich:\n```html\n<h2>Wann wir da sind</h2>\n<table>\n  <tr>\n    <th>Tag</th>\n    <th>Zeit</th>\n  </tr>\n  <tr>\n    <td>Montag bis Freitag</td>\n    <td>9:00 bis 15:00 Uhr</td>\n  </tr>\n</table>\n```\n```html\n<footer>\n  <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n</footer>\n```",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Kontakt – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Kontakt</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <p>Schreib uns – wir antworten in der nächsten Pause.</p>\n\n      <h2>Wann wir da sind</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <form>\n        <label for=\"name\">Dein Name</label>\n        <input type=\"text\" id=\"name\" placeholder=\"Vorname Nachname\">\n\n        <label for=\"email\">Deine E-Mail</label>\n        <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n\n        <label for=\"anlass\">Worum geht es?</label>\n        <select id=\"anlass\">\n          <option>Lob</option>\n          <option>Kritik</option>\n          <option>Frage</option>\n        </select>\n\n        <label for=\"nachricht\">Deine Nachricht</label>\n        <textarea id=\"nachricht\"></textarea>\n\n        <button>Absenden</button>\n      </form>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Kontakt – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Kontakt</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <p>Schreib uns – wir antworten in der nächsten Pause.</p>\n\n      <h2>Wann wir da sind</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <form>\n        <label for=\"name\">Dein Name</label>\n        <input type=\"text\" id=\"name\" placeholder=\"Vorname Nachname\">\n\n        <label for=\"email\">Deine E-Mail</label>\n        <input type=\"email\" id=\"email\" placeholder=\"name@beispiel.de\">\n\n        <label for=\"anlass\">Worum geht es?</label>\n        <select id=\"anlass\">\n          <option>Lob</option>\n          <option>Kritik</option>\n          <option>Frage</option>\n        </select>\n\n        <label for=\"nachricht\">Deine Nachricht</label>\n        <textarea id=\"nachricht\"></textarea>\n\n        <button>Absenden</button>\n      </form>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "main h2",
+          "expected": "Wann wir da sind",
+          "label": "Im Hauptbereich steht die Überschrift „Wann wir da sind“"
+        },
+        {
+          "type": "text",
+          "selector": "main table tr:first-child th:first-child",
+          "expected": "Tag",
+          "label": "Die Kopfzeile beginnt mit „Tag“"
+        },
+        {
+          "type": "text",
+          "selector": "main table tr:nth-child(2) td:first-child",
+          "expected": "Montag bis Freitag",
+          "label": "Die Datenzeile beginnt mit „Montag bis Freitag“"
+        },
+        {
+          "type": "text",
+          "selector": "main table tr:nth-child(2) td:nth-child(2)",
+          "expected": "9:00 bis 15:00 Uhr",
+          "label": "Die Zeit lautet „9:00 bis 15:00 Uhr“"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "</table>\\s*<form>",
+          "label": "Die Tabelle steht direkt vor dem Formular"
+        },
+        {
+          "type": "text",
+          "selector": "footer p",
+          "expected": "Musterstraße 12",
+          "contains": true,
+          "label": "Die Adresse steht im Fußbereich"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<footer>\\s*<p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\\s*</footer>",
+          "label": "Die Adresse steht dreizeilig (mit Umbrüchen) im Fußbereich"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "</main>\\s*<footer>",
+          "label": "Der Fußbereich folgt direkt auf den Hauptbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "form select#anlass",
+          "count": 1,
+          "label": "Die Klappliste „anlass“ ist noch da"
+        },
+        {
+          "type": "text",
+          "selector": "form button",
+          "expected": "Absenden",
+          "label": "Der Absende-Knopf ist noch da"
+        }
       ]
     }
   ]

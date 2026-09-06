@@ -36,7 +36,9 @@
       "text": "Welche Stufe ist für die **großen Abschnitte** einer Seite zuständig? Setze den Tag-Namen ein.",
       "template": "Titel der Seite:   <h1>\nGroße Abschnitte:  <___>\nUnterabschnitte:   <h3>",
       "solution": "h2",
-      "accept": ["h2"],
+      "accept": [
+        "h2"
+      ],
       "hint": "Die Stufen gehen der Reihe nach: 1, 2, 3 … – keine überspringen!"
     },
     {
@@ -52,7 +54,7 @@
     },
     {
       "type": "code",
-      "task": "Baue eine gegliederte Seite über dein Lieblingsspiel:\n\n1. Eine `<h1>` mit dem Text **Mein Lieblingsspiel**\n2. Darunter eine `<h2>` mit dem Text **Darum macht es Spaß**\n3. Darunter eine zweite `<h2>` mit dem Text **So habe ich angefangen**",
+      "task": "Erstelle eine gegliederte Seite über dein Lieblingsspiel:\n\n1. Hauptüberschrift mit dem Text **Mein Lieblingsspiel**\n2. Darunter eine Überschrift zweiter Stufe mit dem Text **Darum macht es Spaß**\n3. Darunter eine zweite Überschrift zweiter Stufe mit dem Text **So habe ich angefangen**",
       "starter": {
         "html": "<!-- Deine Überschriften hier -->\n"
       },
@@ -65,11 +67,93 @@
         "html": "<h1>Mein Lieblingsspiel</h1>\n<h2>Darum macht es Spaß</h2>\n<h2>So habe ich angefangen</h2>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "h1", "count": 1, "label": "Es gibt genau eine <h1> auf der Seite" },
-        { "type": "text", "selector": "h1", "expected": "Mein Lieblingsspiel", "label": "Die <h1> lautet „Mein Lieblingsspiel“" },
-        { "type": "selector", "selector": "h2", "min": 2, "label": "Es gibt zwei <h2>-Überschriften" },
-        { "type": "text", "selector": "h2:first-of-type", "expected": "Darum macht es Spaß", "label": "Die erste <h2> lautet „Darum macht es Spaß“" },
-        { "type": "text", "selector": "h2:last-of-type", "expected": "So habe ich angefangen", "label": "Die zweite <h2> lautet „So habe ich angefangen“" }
+        {
+          "type": "selector",
+          "selector": "h1",
+          "count": 1,
+          "label": "Es gibt genau eine <h1> auf der Seite"
+        },
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "Mein Lieblingsspiel",
+          "label": "Die <h1> lautet „Mein Lieblingsspiel“"
+        },
+        {
+          "type": "selector",
+          "selector": "h2",
+          "min": 2,
+          "label": "Es gibt zwei <h2>-Überschriften"
+        },
+        {
+          "type": "text",
+          "selector": "h2:first-of-type",
+          "expected": "Darum macht es Spaß",
+          "label": "Die erste <h2> lautet „Darum macht es Spaß“"
+        },
+        {
+          "type": "text",
+          "selector": "h2:last-of-type",
+          "expected": "So habe ich angefangen",
+          "label": "Die zweite <h2> lautet „So habe ich angefangen“"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Die Startseite hat eine Hauptüberschrift und zwei Absätze. Jetzt bekommt sie ihren ersten **Abschnitt**: „Über uns“ – und ein Abschnitt beginnt mit einer Überschrift zweiter Stufe. Der Text dazu folgt in der nächsten Lektion."
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Ergänze unter den beiden Absätzen eine Überschrift zweiter Stufe mit dem Text **Über uns**. Die Hauptüberschrift bleibt die einzige ihrer Stufe.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n  </body>\n</html>\n"
+      },
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Große Abschnitte bekommen die zweite Stufe – h2. Die neue Zeile kommt nach dem Öffnungszeiten-Absatz, vor dem schließenden body-Tag.",
+        "So sieht die neue Zeile aus: <h2>Über uns</h2> – am besten mit einer Leerzeile davor, damit der Abschnitt im Code gut erkennbar ist.",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "h2",
+          "expected": "Über uns",
+          "label": "Die Abschnitts-Überschrift lautet „Über uns“"
+        },
+        {
+          "type": "selector",
+          "selector": "h2",
+          "count": 1,
+          "label": "Es gibt genau eine Überschrift zweiter Stufe"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "geöffnet\\.</p>\\s*<h2",
+          "label": "Die neue Überschrift steht unter dem Öffnungszeiten-Absatz"
+        },
+        {
+          "type": "selector",
+          "selector": "h1",
+          "count": 1,
+          "label": "Die Hauptüberschrift ist weiterhin die einzige h1"
+        },
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "Café Pause",
+          "label": "Die Überschrift „Café Pause“ ist noch da"
+        }
       ]
     }
   ]

@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Zeit zum Festigen! Wissen bleibt hängen, wenn du es **aus dem Kopf abrufst**, statt es nur wiederzuerkennen.\n\n6 Aufgaben zu CSS-Grundlagen und deinen neuen Selektoren – plus eine Prise `class` und `id` aus dem HTML-Kapitel. Kein neuer Stoff, versprochen."
+      "text": "Zeit zum Festigen! Wissen bleibt hängen, wenn du es **aus dem Kopf abrufst**, statt es nur wiederzuerkennen.\n\n5 Aufgaben zu CSS-Grundlagen und deinen neuen Selektoren – und zum Schluss eine Café-Etappe, bei der du HTML **und** CSS anfasst. Kein neuer Stoff, versprochen."
     },
     {
       "type": "quiz",
@@ -19,12 +19,14 @@
     },
     {
       "type": "code",
-      "task": "**Aufgabe 2 – Farben und Hintergrund.** Gestalte das LAN-Party-Plakat:\n\n1. Der `body` bekommt die Hintergrundfarbe `#fff4e6`\n2. Die `h1` bekommt die Textfarbe `#b45309`\n3. Alle `p` bekommen die Textfarbe `rgb(60, 50, 40)`",
+      "task": "**Aufgabe 2 – Farben und Hintergrund.** Gestalte das LAN-Party-Plakat:\n\n1. Der `body` bekommt die Hintergrundfarbe `#fff4e6`\n2. Die `h1` bekommt die Textfarbe `#b45309`\n3. Alle `p` bekommen eine Textfarbe in RGB-Schreibweise mit den Werten 60, 50, 40",
       "starter": {
         "html": "<h1>LAN-Party der Schule</h1>\n<p>Am Freitag ab 17 Uhr in der Aula.</p>\n<p>Mit Turnier, Pizza und Preisen.</p>\n",
         "css": "/* Deine drei Regeln hier */\n"
       },
-      "editable": ["css"],
+      "editable": [
+        "css"
+      ],
       "hints": [
         "Drei Regeln: body, h1 und p. Für den Hintergrund brauchst du background-color, für Textfarben color.",
         "Die rgb-Schreibweise: color: rgb(60, 50, 40); – drei Zahlen, mit Kommas getrennt.",
@@ -34,47 +36,32 @@
         "css": "body {\n  background-color: #fff4e6;\n}\nh1 {\n  color: #b45309;\n}\np {\n  color: rgb(60, 50, 40);\n}\n"
       },
       "tests": [
-        { "type": "style", "selector": "body", "prop": "background-color", "expected": "#fff4e6", "label": "Die Seite hat den Hintergrund #fff4e6" },
-        { "type": "style", "selector": "h1", "prop": "color", "expected": "#b45309", "label": "Die Überschrift hat die Farbe #b45309" },
-        { "type": "style", "selector": "p", "prop": "color", "expected": "rgb(60, 50, 40)", "label": "Die Absätze haben die Farbe rgb(60, 50, 40)" }
-      ]
-    },
-    {
-      "type": "fill",
-      "text": "**Aufgabe 3.** Genau dieser eine Absatz soll rot werden – direkt im HTML, ohne CSS-Tab. Setze das fehlende **Attribut** ein.",
-      "template": "<p ___=\"color: red;\">Achtung, Änderung!</p>",
-      "solution": "style",
-      "accept": ["style"],
-      "hint": "Der Inline-Style nutzt das `style`-Attribut im öffnenden Tag."
-    },
-    {
-      "type": "code",
-      "task": "**Aufgabe 4 – class und id.** Diesmal sind **beide Tabs** offen!\n\nIm HTML:\n\n1. Gib den beiden Absätzen mit Ausrufezeichen `class=\"achtung\"`\n2. Gib dem letzten Absatz (Entschuldigung) `id=\"orga\"`\n\nIm CSS:\n\n3. `.achtung`: Textfarbe `red` und `font-weight: bold`\n4. `#orga`: Hintergrundfarbe `#fff3b0`",
-      "starter": {
-        "html": "<h2>Klassenfahrt</h2>\n<p>Wir treffen uns um 8 Uhr am Bahnhof.</p>\n<p>Handy-Ladekabel nicht vergessen!</p>\n<p>Wer zu spät kommt, fährt nicht mit!</p>\n<p>Wer fehlt, braucht eine Entschuldigung.</p>\n",
-        "css": "/* Deine Regeln für .achtung und #orga */\n"
-      },
-      "editable": ["html", "css"],
-      "hints": [
-        "Im HTML kommen die Attribute in die öffnenden Tags: <p class=\"achtung\"> bzw. <p id=\"orga\"> – ohne Punkt und ohne Raute.",
-        "Im CSS ist es umgekehrt: Der Punkt (.achtung) und die Raute (#orga) gehören in die Selektoren.",
-        "```html\n<h2>Klassenfahrt</h2>\n<p>Wir treffen uns um 8 Uhr am Bahnhof.</p>\n<p class=\"achtung\">Handy-Ladekabel nicht vergessen!</p>\n<p class=\"achtung\">Wer zu spät kommt, fährt nicht mit!</p>\n<p id=\"orga\">Wer fehlt, braucht eine Entschuldigung.</p>\n```\n\n```css\n.achtung {\n  color: red;\n  font-weight: bold;\n}\n#orga {\n  background-color: #fff3b0;\n}\n```"
-      ],
-      "solution": {
-        "html": "<h2>Klassenfahrt</h2>\n<p>Wir treffen uns um 8 Uhr am Bahnhof.</p>\n<p class=\"achtung\">Handy-Ladekabel nicht vergessen!</p>\n<p class=\"achtung\">Wer zu spät kommt, fährt nicht mit!</p>\n<p id=\"orga\">Wer fehlt, braucht eine Entschuldigung.</p>\n",
-        "css": ".achtung {\n  color: red;\n  font-weight: bold;\n}\n#orga {\n  background-color: #fff3b0;\n}\n"
-      },
-      "tests": [
-        { "type": "selector", "selector": "p.achtung", "min": 2, "label": "Zwei Absätze haben die class „achtung“" },
-        { "type": "selector", "selector": "p#orga", "count": 1, "label": "Genau ein Absatz hat die id „orga“" },
-        { "type": "style", "selector": ".achtung", "prop": "color", "expected": "red", "label": "Die Achtung-Absätze sind rot" },
-        { "type": "style", "selector": ".achtung", "prop": "font-weight", "expected": ["700", "bold"], "label": "Die Achtung-Absätze sind fett" },
-        { "type": "style", "selector": "#orga", "prop": "background-color", "expected": "#fff3b0", "label": "Der Orga-Absatz ist gelb hinterlegt" }
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "background-color",
+          "expected": "#fff4e6",
+          "label": "Die Seite hat den Hintergrund #fff4e6"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "color",
+          "expected": "#b45309",
+          "label": "Die Überschrift hat die Farbe #b45309"
+        },
+        {
+          "type": "style",
+          "selector": "p",
+          "prop": "color",
+          "expected": "rgb(60, 50, 40)",
+          "label": "Die Absätze haben die Farbe rgb(60, 50, 40)"
+        }
       ]
     },
     {
       "type": "quiz",
-      "question": "**Aufgabe 5.** Was ist der Unterschied zwischen `footer p` und `footer, p`?",
+      "question": "**Aufgabe 3.** Was ist der Unterschied zwischen `footer p` und `footer, p`?",
       "options": [
         "Keiner – das Komma ist nur ein Schreibstil",
         "`footer p`: nur Absätze **im** footer; `footer, p`: footer **und** alle Absätze",
@@ -85,12 +72,14 @@
     },
     {
       "type": "code",
-      "task": "**Aufgabe 6 – alles zusammen.** Gestalte die Kiosk-Seite (HTML 🔒):\n\n1. Der `body` bekommt die Hintergrundfarbe `#f7f1e3`\n2. **Nur** die Links in der Navigation bekommen die Farbe `#e08a2e`\n3. Die Preise (`class=\"preis\"`) bekommen die Farbe `#1a9e5c`",
+      "task": "**Aufgabe 4 – alles zusammen.** Gestalte die Kiosk-Seite (HTML 🔒):\n\n1. Der `body` bekommt die Hintergrundfarbe `#f7f1e3`\n2. **Nur** die Links in der Navigation bekommen die Farbe `#e08a2e`\n3. Die Preise (Klasse `preis`) bekommen die Farbe `#1a9e5c`",
       "starter": {
         "html": "<nav>\n  <a href=\"index.html\">Start</a>\n  <a href=\"angebot.html\">Angebot</a>\n</nav>\n<main>\n  <h2>Snacks der Woche</h2>\n  <p>Heiße Schokolade <strong class=\"preis\">2,00 €</strong></p>\n  <p>Frischer Muffin <strong class=\"preis\">1,50 €</strong></p>\n</main>\n",
         "css": "/* Deine drei Regeln hier */\n"
       },
-      "editable": ["css"],
+      "editable": [
+        "css"
+      ],
       "hints": [
         "Drei Regeln: eine für body, eine mit dem Nachfahren-Selektor für die Navigations-Links, eine mit dem Punkt-Selektor für die Preise.",
         "„Nur die Links in der Navigation“ heißt: nav a { ... } – mit Leerzeichen, ohne Komma.",
@@ -100,9 +89,109 @@
         "css": "body {\n  background-color: #f7f1e3;\n}\nnav a {\n  color: #e08a2e;\n}\n.preis {\n  color: #1a9e5c;\n}\n"
       },
       "tests": [
-        { "type": "style", "selector": "body", "prop": "background-color", "expected": "#f7f1e3", "label": "Die Seite hat den Hintergrund #f7f1e3" },
-        { "type": "style", "selector": "nav a", "prop": "color", "expected": "#e08a2e", "label": "Die Navigations-Links sind orange (#e08a2e)" },
-        { "type": "style", "selector": ".preis", "prop": "color", "expected": "#1a9e5c", "label": "Die Preise sind grün (#1a9e5c)" }
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "background-color",
+          "expected": "#f7f1e3",
+          "label": "Die Seite hat den Hintergrund #f7f1e3"
+        },
+        {
+          "type": "style",
+          "selector": "nav a",
+          "prop": "color",
+          "expected": "#e08a2e",
+          "label": "Die Navigations-Links sind orange (#e08a2e)"
+        },
+        {
+          "type": "style",
+          "selector": ".preis",
+          "prop": "color",
+          "expected": "#1a9e5c",
+          "label": "Die Preise sind grün (#1a9e5c)"
+        }
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "**Aufgabe 5.** Genau dieser eine Absatz soll rot werden – direkt im HTML, ohne CSS-Tab. Setze das fehlende **Attribut** ein.",
+      "template": "<p ___=\"color: red;\">Achtung, Änderung!</p>",
+      "solution": "style",
+      "accept": [
+        "style"
+      ],
+      "hint": "Der Inline-Style nutzt das `style`-Attribut im öffnenden Tag."
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe – beide Tabs offen.** Erweitere die Speisekarte:\n\n1. Im HTML: Die Zelle „Kakao + Muffin“ im Kombi-Angebot bekommt die Klasse `angebot`\n2. Im CSS: Diese Klasse erscheint in Grün `#1a9e5c` und fett\n\nAlles andere bleibt, wie es ist.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Speisekarte – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Speisekarte</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <h2>Getränke</h2>\n      <table>\n        <tr>\n          <th>Getränk</th>\n          <th>Größe</th>\n          <th>Preis</th>\n        </tr>\n        <tr>\n          <td>Kakao</td>\n          <td>0,3 l</td>\n          <td>1,50 €</td>\n        </tr>\n        <tr>\n          <td>Tee</td>\n          <td>0,3 l</td>\n          <td>1,00 €</td>\n        </tr>\n        <tr>\n          <td>Apfelschorle</td>\n          <td>0,5 l</td>\n          <td>1,80 €</td>\n        </tr>\n        <tr>\n          <td>Wasser</td>\n          <td>0,5 l</td>\n          <td>0,80 €</td>\n        </tr>\n      </table>\n\n      <h2>Snacks</h2>\n      <table>\n        <tr>\n          <th>Snack</th>\n          <th>Preis</th>\n        </tr>\n        <tr>\n          <td>Brezel</td>\n          <td>1,00 €</td>\n        </tr>\n        <tr>\n          <td>Muffin</td>\n          <td>1,50 €</td>\n        </tr>\n      </table>\n      <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n\n      <h2>Angebot der Woche</h2>\n      <table>\n        <tr>\n          <th colspan=\"2\">Kombi-Angebot</th>\n        </tr>\n        <tr>\n          <td>Kakao + Muffin</td>\n          <td>2,50 €</td>\n        </tr>\n      </table>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p><a href=\"index.html\">Zur Startseite</a></p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n}\n\nh1 {\n  color: #5a3e2b;\n}\n\nh2 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n"
+      },
+      "editable": [
+        "html",
+        "css"
+      ],
+      "project": {
+        "page": "speisekarte",
+        "save": [
+          "html",
+          "css"
+        ]
+      },
+      "hints": [
+        "Im HTML kommt das class-Attribut in den öffnenden td-Tag der Zelle – ohne Punkt. Im CSS steht der Punkt vor dem Klassennamen.",
+        "Die neue CSS-Regel kommt ans Ende des Stylesheets: Selektor .angebot mit color und font-weight (Wert bold).",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Speisekarte – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Speisekarte</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <h2>Getränke</h2>\n      <table>\n        <tr>\n          <th>Getränk</th>\n          <th>Größe</th>\n          <th>Preis</th>\n        </tr>\n        <tr>\n          <td>Kakao</td>\n          <td>0,3 l</td>\n          <td>1,50 €</td>\n        </tr>\n        <tr>\n          <td>Tee</td>\n          <td>0,3 l</td>\n          <td>1,00 €</td>\n        </tr>\n        <tr>\n          <td>Apfelschorle</td>\n          <td>0,5 l</td>\n          <td>1,80 €</td>\n        </tr>\n        <tr>\n          <td>Wasser</td>\n          <td>0,5 l</td>\n          <td>0,80 €</td>\n        </tr>\n      </table>\n\n      <h2>Snacks</h2>\n      <table>\n        <tr>\n          <th>Snack</th>\n          <th>Preis</th>\n        </tr>\n        <tr>\n          <td>Brezel</td>\n          <td>1,00 €</td>\n        </tr>\n        <tr>\n          <td>Muffin</td>\n          <td>1,50 €</td>\n        </tr>\n      </table>\n      <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n\n      <h2>Angebot der Woche</h2>\n      <table>\n        <tr>\n          <th colspan=\"2\">Kombi-Angebot</th>\n        </tr>\n        <tr>\n          <td class=\"angebot\">Kakao + Muffin</td>\n          <td>2,50 €</td>\n        </tr>\n      </table>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p><a href=\"index.html\">Zur Startseite</a></p>\n    </footer>\n  </body>\n</html>\n```\n\n```css\nbody {\n  color: #2c2016;\n  background-color: #f7f1e3;\n}\n\nh1 {\n  color: #5a3e2b;\n}\n\nh2 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Speisekarte – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Speisekarte</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <h2>Getränke</h2>\n      <table>\n        <tr>\n          <th>Getränk</th>\n          <th>Größe</th>\n          <th>Preis</th>\n        </tr>\n        <tr>\n          <td>Kakao</td>\n          <td>0,3 l</td>\n          <td>1,50 €</td>\n        </tr>\n        <tr>\n          <td>Tee</td>\n          <td>0,3 l</td>\n          <td>1,00 €</td>\n        </tr>\n        <tr>\n          <td>Apfelschorle</td>\n          <td>0,5 l</td>\n          <td>1,80 €</td>\n        </tr>\n        <tr>\n          <td>Wasser</td>\n          <td>0,5 l</td>\n          <td>0,80 €</td>\n        </tr>\n      </table>\n\n      <h2>Snacks</h2>\n      <table>\n        <tr>\n          <th>Snack</th>\n          <th>Preis</th>\n        </tr>\n        <tr>\n          <td>Brezel</td>\n          <td>1,00 €</td>\n        </tr>\n        <tr>\n          <td>Muffin</td>\n          <td>1,50 €</td>\n        </tr>\n      </table>\n      <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n\n      <h2>Angebot der Woche</h2>\n      <table>\n        <tr>\n          <th colspan=\"2\">Kombi-Angebot</th>\n        </tr>\n        <tr>\n          <td class=\"angebot\">Kakao + Muffin</td>\n          <td>2,50 €</td>\n        </tr>\n      </table>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p><a href=\"index.html\">Zur Startseite</a></p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n}\n\nh1 {\n  color: #5a3e2b;\n}\n\nh2 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "td.angebot",
+          "count": 1,
+          "label": "Genau eine Zelle trägt die Klasse „angebot“"
+        },
+        {
+          "type": "text",
+          "selector": "td.angebot",
+          "expected": "Kakao + Muffin",
+          "label": "Die Zelle mit der Klasse ist „Kakao + Muffin“"
+        },
+        {
+          "type": "style",
+          "selector": ".angebot",
+          "prop": "color",
+          "expected": "#1a9e5c",
+          "label": "Das Kombi-Angebot ist grün (#1a9e5c)"
+        },
+        {
+          "type": "style",
+          "selector": ".angebot",
+          "prop": "font-weight",
+          "expected": [
+            "700",
+            "bold"
+          ],
+          "label": "Das Kombi-Angebot ist fett"
+        },
+        {
+          "type": "selector",
+          "selector": "th[colspan=\"2\"]",
+          "count": 1,
+          "label": "Die Kopfzelle „Kombi-Angebot“ über zwei Spalten ist noch da"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "color",
+          "expected": "#5a3e2b",
+          "label": "Die Überschrift „Speisekarte“ bleibt kaffeebraun"
+        }
       ]
     }
   ]

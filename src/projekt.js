@@ -13,9 +13,9 @@ export const PROJEKT_SEITEN = [
 
 function load() {
   try {
-    return JSON.parse(localStorage.getItem(KEY)) || { pages: {}, css: null };
+    return JSON.parse(localStorage.getItem(KEY)) || { pages: {}, css: null, js: null };
   } catch {
-    return { pages: {}, css: null };
+    return { pages: {}, css: null, js: null };
   }
 }
 
@@ -44,6 +44,16 @@ export function getProjektCss() {
 export function setProjektCss(css) {
   const data = load();
   data.css = css;
+  save(data);
+}
+
+export function getProjektJs() {
+  return load().js ?? null;
+}
+
+export function setProjektJs(js) {
+  const data = load();
+  data.js = js;
   save(data);
 }
 

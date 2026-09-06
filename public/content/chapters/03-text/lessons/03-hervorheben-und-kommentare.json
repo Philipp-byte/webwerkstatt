@@ -41,19 +41,8 @@
       "html": "<!-- Notiz an mich: Diesen Text sieht niemand. -->\n<p>Diesen Absatz zeigt der Browser an.</p>\n<!-- <p>Diesen Absatz hat jemand ausgeschaltet.</p> -->\n"
     },
     {
-      "type": "quiz",
-      "question": "Wie beginnt ein HTML-Kommentar?",
-      "options": [
-        "`<!--`",
-        "`//`",
-        "`(*`"
-      ],
-      "correct": 0,
-      "explanation": "`<!--` öffnet den Kommentar, `-->` schließt ihn. `//` leitet in anderen Sprachen (z. B. JavaScript) Kommentare ein – in HTML funktioniert das nicht."
-    },
-    {
       "type": "code",
-      "task": "Schreibe einen Absatz über dein Praktikum – mit allem aus dieser Lektion:\n\n1. Schreibe **über** den Absatz einen Kommentar mit einer kurzen Notiz an dich.\n2. Baue im Absatz das Wort **HTML** ein und markiere es mit `<strong>`.\n3. Baue das Wort **super** ein und markiere es mit `<em>`.",
+      "task": "Erstelle einen Absatz über dein Praktikum – mit allem aus dieser Lektion:\n\n1. Ergänze über dem Absatz einen Kommentar mit einer kurzen Notiz an dich.\n2. Gestalte den Absatz so, dass das Wort **HTML** als wichtig hervorgehoben und das Wort **super** betont ist.",
       "starter": {
         "html": "<p>Schreibe hier deinen Satz.</p>\n"
       },
@@ -66,10 +55,87 @@
         "html": "<!-- Diesen Satz habe ich selbst geschrieben. -->\n<p>Im Praktikum lerne ich gerade <strong>HTML</strong> und finde es <em>super</em>.</p>\n"
       },
       "tests": [
-        { "type": "source", "file": "html", "matches": "<!--[\\s\\S]*?-->", "label": "Im Code steht ein Kommentar" },
-        { "type": "selector", "selector": "p", "min": 1, "label": "Es gibt einen Absatz" },
-        { "type": "text", "selector": "strong", "expected": "HTML", "label": "Das Wort „HTML“ ist mit <strong> markiert" },
-        { "type": "text", "selector": "em", "expected": "super", "label": "Das Wort „super“ ist mit <em> markiert" }
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<!--[\\s\\S]*?-->",
+          "label": "Im Code steht ein Kommentar"
+        },
+        {
+          "type": "selector",
+          "selector": "p",
+          "min": 1,
+          "label": "Es gibt einen Absatz"
+        },
+        {
+          "type": "text",
+          "selector": "strong",
+          "expected": "HTML",
+          "label": "Das Wort „HTML“ ist mit <strong> markiert"
+        },
+        {
+          "type": "text",
+          "selector": "em",
+          "expected": "super",
+          "label": "Das Wort „super“ ist mit <em> markiert"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Die Über-uns-Absätze bekommen Hervorhebungen – und ganz am Anfang des body eine Notiz für dich, die kein Gast sieht."
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Erweitere die Startseite:\n\n1. Gestalte den ersten Über-uns-Absatz so, dass **Schülerinnen und Schülern** als wichtig hervorgehoben ist.\n2. Gestalte den zweiten so, dass **selbst gemacht** betont ist.\n3. Ergänze als erste Zeile im body einen Kommentar mit dem Text **Startseite vom Café Pause**.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von Schülerinnen und Schülern geführt.</p>\n    <p>Alles, was wir verkaufen, ist selbst gemacht.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Die Hervorhebungs-Tags stehen mitten im Satz, direkt um die Wörter herum. Der Kommentar kommt in eine eigene Zeile direkt nach <body>.",
+        "So sieht der Kommentar aus: <!-- Startseite vom Café Pause -->. Und so die Hervorhebungen: <strong>Schülerinnen und Schülern</strong> bzw. <em>selbst gemacht</em>.",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "strong",
+          "expected": "Schülerinnen und Schülern",
+          "label": "„Schülerinnen und Schülern“ ist als wichtig hervorgehoben"
+        },
+        {
+          "type": "text",
+          "selector": "em",
+          "expected": "selbst gemacht",
+          "label": "„selbst gemacht“ ist betont"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<body>\\s*<!--\\s*Startseite vom Café Pause\\s*-->",
+          "label": "Direkt nach dem body-Start steht der Kommentar „Startseite vom Café Pause“"
+        },
+        {
+          "type": "text",
+          "selector": "h2 + p",
+          "expected": "Das Café Pause wird von Schülerinnen und Schülern geführt.",
+          "label": "Der Text des ersten Über-uns-Absatzes ist unverändert"
+        },
+        {
+          "type": "selector",
+          "selector": "hr",
+          "count": 1,
+          "label": "Die Trennlinie ist noch da"
+        }
       ]
     }
   ]

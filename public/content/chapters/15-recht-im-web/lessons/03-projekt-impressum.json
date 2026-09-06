@@ -4,34 +4,101 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Heute bekommt das **Café Pause**, was jede veröffentlichte Webseite braucht: eine eigene **Impressum-Seite** mit Datenschutzerklärung – die fünfte Seite der Café-Website.\n\nZur Erinnerung: Das Café Pause ist ein **fiktiver Betrieb für Übungszwecke** – Adresse und E-Mail sind ausgedacht. Dieser Hinweis kommt **deutlich sichtbar** aufs Impressum, damit niemand die Übungsseite für echt hält. (Vereinfachtes Übungs-Impressum, keine Rechtsberatung.)"
+      "text": "**Meilenstein!** Die Impressum-Seite ist fertig – aber noch findet sie niemand. Du weißt: Der Impressum-Link gehört in den Footer **jeder** Seite. Heute bekommt die Startseite im Footer eine Link-Zeile: „Impressum“ und „Kontakt“, getrennt durch einen Mittelpunkt (·).\n\nHTML-Tab: die Startseite. Danach schau in **Mein Café-Projekt** (`#/projekt`): fünf Seiten, alle miteinander verlinkt."
+    },
+    {
+      "type": "quiz",
+      "question": "Warum steht der Impressum-Link üblicherweise im Footer und nicht irgendwo im Text?",
+      "options": [
+        "Damit er auf jeder Seite an derselben Stelle leicht zu finden ist",
+        "Weil Links im Hauptbereich verboten sind",
+        "Weil der Footer sonst leer bliebe"
+      ],
+      "correct": 0,
+      "explanation": "Das Impressum muss **leicht erreichbar** sein. Ein fester Platz im Footer jeder Seite ist die Lösung, die alle Besucher kennen."
     },
     {
       "type": "code",
-      "task": "In den `<body>` kommen:\n\n1. `<h1>Impressum</h1>`\n2. `<p>Betreiber: Schülerfirma Café Pause</p>`\n3. `<p>Musterstraße 12, 74072 Heilbronn</p>`\n4. `<p>E-Mail: hallo@cafe-pause-beispiel.de</p>`\n5. `<h2>Datenschutzerklärung</h2>`, dann `<p>Diese Übungsseite verarbeitet keine personenbezogenen Daten. Bei Fragen erreichst du uns per E-Mail.</p>`\n6. `<p><strong>Fiktiver Betrieb für Übungszwecke – alle Angaben sind ausgedacht.</strong></p>`\n7. `<a href=\"index.html\">Zurück zur Startseite</a>`",
+      "task": "**Erweitere** den `footer` der Startseite um einen zweiten Absatz unter der Adresse: ein Link „Impressum“ zur Datei impressum.html, dann ein Mittelpunkt (·), dann ein Link „Kontakt“ zur Datei kontakt.html. Alles andere bleibt. Danach: „Mein Café-Projekt“ ansehen!",
       "starter": {
-        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Impressum – Café Pause</title>\n</head>\n<body>\n  <!-- Hier entsteht das Impressum -->\n</body>\n</html>\n"
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n"
       },
-      "editable": ["html"],
-      "project": { "page": "impressum", "save": ["html"] },
+      "editable": [
+        "html"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
       "hints": [
-        "Arbeite die Liste von oben nach unten ab – jeder Punkt ist eine Zeile zwischen <body> und </body>. Die Absätze sind ganz normale <p>-Elemente.",
-        "So sehen zwei der Zeilen aus:\n\n```html\n<p>Betreiber: Schülerfirma Café Pause</p>\n<p><strong>Fiktiver Betrieb für Übungszwecke – alle Angaben sind ausgedacht.</strong></p>\n```",
-        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Impressum – Café Pause</title>\n</head>\n<body>\n  <h1>Impressum</h1>\n  <p>Betreiber: Schülerfirma Café Pause</p>\n  <p>Musterstraße 12, 74072 Heilbronn</p>\n  <p>E-Mail: hallo@cafe-pause-beispiel.de</p>\n  <h2>Datenschutzerklärung</h2>\n  <p>Diese Übungsseite verarbeitet keine personenbezogenen Daten. Bei Fragen erreichst du uns per E-Mail.</p>\n  <p><strong>Fiktiver Betrieb für Übungszwecke – alle Angaben sind ausgedacht.</strong></p>\n  <a href=\"index.html\">Zurück zur Startseite</a>\n</body>\n</html>\n```"
+        "Ein neuer p-Absatz direkt unter dem Adress-Absatz im footer, darin zwei a-Elemente mit href. Der Mittelpunkt · steht als normaler Text dazwischen.",
+        "So sieht die Zeile aus: <p><a href=\"impressum.html\">Impressum</a> · <a href=\"kontakt.html\">Kontakt</a></p>",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p><a href=\"impressum.html\">Impressum</a> · <a href=\"kontakt.html\">Kontakt</a></p>\n    </footer>\n  </body>\n</html>\n```"
       ],
       "solution": {
-        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Impressum – Café Pause</title>\n</head>\n<body>\n  <h1>Impressum</h1>\n  <p>Betreiber: Schülerfirma Café Pause</p>\n  <p>Musterstraße 12, 74072 Heilbronn</p>\n  <p>E-Mail: hallo@cafe-pause-beispiel.de</p>\n  <h2>Datenschutzerklärung</h2>\n  <p>Diese Übungsseite verarbeitet keine personenbezogenen Daten. Bei Fragen erreichst du uns per E-Mail.</p>\n  <p><strong>Fiktiver Betrieb für Übungszwecke – alle Angaben sind ausgedacht.</strong></p>\n  <a href=\"index.html\">Zurück zur Startseite</a>\n</body>\n</html>\n"
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p><a href=\"impressum.html\">Impressum</a> · <a href=\"kontakt.html\">Kontakt</a></p>\n    </footer>\n  </body>\n</html>\n"
       },
       "tests": [
-        { "type": "text", "selector": "h1", "expected": "Impressum", "label": "Die Hauptüberschrift lautet „Impressum“" },
-        { "type": "text", "selector": "body", "expected": "Schülerfirma Café Pause", "contains": true, "label": "Der Betreiber „Schülerfirma Café Pause“ ist genannt" },
-        { "type": "text", "selector": "body", "expected": "Musterstraße 12", "contains": true, "label": "Die Anschrift enthält „Musterstraße 12“" },
-        { "type": "text", "selector": "body", "expected": "74072 Heilbronn", "contains": true, "label": "Die Anschrift enthält „74072 Heilbronn“" },
-        { "type": "text", "selector": "body", "expected": "hallo@cafe-pause-beispiel.de", "contains": true, "label": "Die Kontakt-E-Mail-Adresse ist angegeben" },
-        { "type": "text", "selector": "h2", "expected": "Datenschutzerklärung", "label": "Es gibt die Zwischenüberschrift „Datenschutzerklärung“" },
-        { "type": "selector", "selector": "p", "min": 4, "label": "Die Angaben stehen in Absätzen (mindestens 4)" },
-        { "type": "text", "selector": "strong", "expected": "Fiktiver Betrieb für Übungszwecke", "contains": true, "label": "Der Fiktiv-Hinweis ist deutlich hervorgehoben (strong)" },
-        { "type": "attr", "selector": "a", "attr": "href", "expected": "index.html", "label": "Der Zurück-Link führt zur Startseite" }
+        {
+          "type": "selector",
+          "selector": "footer p",
+          "count": 2,
+          "label": "Der Footer hat zwei Absätze"
+        },
+        {
+          "type": "text",
+          "selector": "footer p:nth-of-type(2) a:nth-of-type(1)",
+          "expected": "Impressum",
+          "label": "Der erste Link im neuen Absatz heißt „Impressum“"
+        },
+        {
+          "type": "attr",
+          "selector": "footer p:nth-of-type(2) a:nth-of-type(1)",
+          "attr": "href",
+          "expected": "impressum.html",
+          "label": "Der Impressum-Link führt zu impressum.html"
+        },
+        {
+          "type": "text",
+          "selector": "footer p:nth-of-type(2) a:nth-of-type(2)",
+          "expected": "Kontakt",
+          "label": "Der zweite Link heißt „Kontakt“"
+        },
+        {
+          "type": "attr",
+          "selector": "footer p:nth-of-type(2) a:nth-of-type(2)",
+          "attr": "href",
+          "expected": "kontakt.html",
+          "label": "Der Kontakt-Link führt zu kontakt.html"
+        },
+        {
+          "type": "text",
+          "selector": "footer p:nth-of-type(2)",
+          "expected": "·",
+          "contains": true,
+          "label": "Zwischen den Links steht ein Mittelpunkt"
+        },
+        {
+          "type": "text",
+          "selector": "footer p",
+          "expected": "Musterstraße 12",
+          "contains": true,
+          "label": "Der Adress-Absatz steht weiterhin zuerst im Footer"
+        },
+        {
+          "type": "selector",
+          "selector": "nav a",
+          "count": 4,
+          "label": "Die vier Navigations-Links sind noch da"
+        },
+        {
+          "type": "text",
+          "selector": "header h1",
+          "expected": "Café Pause",
+          "label": "Die Überschrift „Café Pause“ ist noch da"
+        }
       ]
     }
   ]

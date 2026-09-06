@@ -55,13 +55,15 @@
     },
     {
       "type": "code",
-      "task": "Dein Klassenfahrt-Bericht zeigt ein Bild – noch ohne Quellenangabe. Baue sie ein:\n\n1. Umschließe das `<img>` mit einem `<figure>`-Element\n2. Ergänze darin **nach** dem Bild ein `<figcaption>` mit genau diesem Text: `Grafik: WebWerkstatt, eigene Zeichnung`",
+      "task": "**Erweitere** den Klassenfahrt-Bericht um eine Quellenangabe: Das Bild steht in einem `figure`-Element, direkt danach (noch im selben Element) eine Bildunterschrift mit dem Text „Grafik: WebWerkstatt, eigene Zeichnung“. Überschrift und Absatz bleiben.",
       "starter": {
         "html": "<h1>Klassenfahrt: Tag am Meer</h1>\n<p>Morgens waren wir die Ersten am Strand.</p>\n<img src=\"strand.svg\" alt=\"Strand mit Palme und Sonne\">\n"
       },
-      "editable": ["html"],
+      "editable": [
+        "html"
+      ],
       "hints": [
-        "figure ist ein Container: <figure> davor, </figure> dahinter – das img wandert komplett hinein.",
+        "figure ist ein Container: <figure> davor, </figure> dahinter – das img wandert komplett hinein. Die Unterschrift ist ein figcaption-Element.",
         "Direkt nach der img-Zeile kommt: <figcaption>Grafik: WebWerkstatt, eigene Zeichnung</figcaption>",
         "```html\n<h1>Klassenfahrt: Tag am Meer</h1>\n<p>Morgens waren wir die Ersten am Strand.</p>\n<figure>\n  <img src=\"strand.svg\" alt=\"Strand mit Palme und Sonne\">\n  <figcaption>Grafik: WebWerkstatt, eigene Zeichnung</figcaption>\n</figure>\n```"
       ],
@@ -69,10 +71,108 @@
         "html": "<h1>Klassenfahrt: Tag am Meer</h1>\n<p>Morgens waren wir die Ersten am Strand.</p>\n<figure>\n  <img src=\"strand.svg\" alt=\"Strand mit Palme und Sonne\">\n  <figcaption>Grafik: WebWerkstatt, eigene Zeichnung</figcaption>\n</figure>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "figure", "count": 1, "label": "Es gibt genau ein figure-Element" },
-        { "type": "selector", "selector": "figure > img", "count": 1, "label": "Das Bild steckt im figure" },
-        { "type": "selector", "selector": "figure > figcaption", "count": 1, "label": "Im figure steht eine Bildunterschrift (figcaption)" },
-        { "type": "text", "selector": "figcaption", "expected": "Grafik: WebWerkstatt, eigene Zeichnung", "label": "Die Quellenangabe lautet „Grafik: WebWerkstatt, eigene Zeichnung“" }
+        {
+          "type": "selector",
+          "selector": "figure",
+          "count": 1,
+          "label": "Es gibt genau ein figure-Element"
+        },
+        {
+          "type": "selector",
+          "selector": "figure > img",
+          "count": 1,
+          "label": "Das Bild steckt im figure"
+        },
+        {
+          "type": "selector",
+          "selector": "figure > figcaption",
+          "count": 1,
+          "label": "Im figure steht eine Bildunterschrift (figcaption)"
+        },
+        {
+          "type": "text",
+          "selector": "figcaption",
+          "expected": "Grafik: WebWerkstatt, eigene Zeichnung",
+          "label": "Die Quellenangabe lautet „Grafik: WebWerkstatt, eigene Zeichnung“"
+        },
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "Klassenfahrt: Tag am Meer",
+          "label": "Die Überschrift ist noch da"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Die Galerie zeigt drei Bilder – aber nirgends steht, von wem sie sind. Das erste Bild (die Theke) bekommt heute eine Bildunterschrift mit der Quelle: Die Fotos hat die Schülerfirma selbst gemacht.\n\nHTML-Tab: die Galerie aus Kapitel 8. Du änderst nur das erste Bild im Bereich „Unser Café“ – die beiden anderen bleiben, wie sie sind."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** die Galerie: Das Theken-Bild steht in einem `figure`-Element, direkt danach (noch im selben Element) die Bildunterschrift „Foto: Schülerfirma Café Pause“. Die beiden anderen Bilder und der Rest der Seite bleiben unverändert.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Galerie</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <h2>Unser Café</h2>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n      <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n      <img src=\"cafe-raum.svg\" alt=\"Der Gastraum mit Tischen und Fenster\">\n\n      <h2>Unser Jingle</h2>\n      <audio controls src=\"cafe-jingle.wav\"></audio>\n\n      <h2>Rundgang</h2>\n      <ol>\n        <li>Theke</li>\n        <li>Gastraum</li>\n        <li>Kuchen-Vitrine</li>\n      </ol>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "project": {
+        "page": "galerie",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Nur das erste img im main wandert in einen figure-Container. Die Bildunterschrift ist ein figcaption direkt nach dem img.",
+        "So sieht der Block aus:\n\n```html\n<figure>\n  <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n  <figcaption>Foto: Schülerfirma Café Pause</figcaption>\n</figure>\n```",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Galerie</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <h2>Unser Café</h2>\n      <figure>\n        <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n        <figcaption>Foto: Schülerfirma Café Pause</figcaption>\n      </figure>\n      <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n      <img src=\"cafe-raum.svg\" alt=\"Der Gastraum mit Tischen und Fenster\">\n\n      <h2>Unser Jingle</h2>\n      <audio controls src=\"cafe-jingle.wav\"></audio>\n\n      <h2>Rundgang</h2>\n      <ol>\n        <li>Theke</li>\n        <li>Gastraum</li>\n        <li>Kuchen-Vitrine</li>\n      </ol>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Galerie</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <h2>Unser Café</h2>\n      <figure>\n        <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n        <figcaption>Foto: Schülerfirma Café Pause</figcaption>\n      </figure>\n      <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n      <img src=\"cafe-raum.svg\" alt=\"Der Gastraum mit Tischen und Fenster\">\n\n      <h2>Unser Jingle</h2>\n      <audio controls src=\"cafe-jingle.wav\"></audio>\n\n      <h2>Rundgang</h2>\n      <ol>\n        <li>Theke</li>\n        <li>Gastraum</li>\n        <li>Kuchen-Vitrine</li>\n      </ol>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "main figure",
+          "count": 1,
+          "label": "Im Hauptbereich steht genau ein figure-Element"
+        },
+        {
+          "type": "selector",
+          "selector": "figure > img[src='cafe-theke.svg']",
+          "count": 1,
+          "label": "Das Theken-Bild steckt im figure"
+        },
+        {
+          "type": "selector",
+          "selector": "figure > figcaption",
+          "count": 1,
+          "label": "Im figure steht eine Bildunterschrift (figcaption)"
+        },
+        {
+          "type": "text",
+          "selector": "figcaption",
+          "expected": "Foto: Schülerfirma Café Pause",
+          "label": "Die Quellenangabe lautet „Foto: Schülerfirma Café Pause“"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<img[^>]*cafe-theke\\.svg[^>]*>\\s*<figcaption",
+          "label": "Die Bildunterschrift folgt direkt auf das Bild"
+        },
+        {
+          "type": "selector",
+          "selector": "main img",
+          "count": 3,
+          "label": "Alle drei Bilder sind noch da"
+        },
+        {
+          "type": "text",
+          "selector": "header h1",
+          "expected": "Galerie",
+          "label": "Die Überschrift „Galerie“ ist noch da"
+        }
       ]
     }
   ]

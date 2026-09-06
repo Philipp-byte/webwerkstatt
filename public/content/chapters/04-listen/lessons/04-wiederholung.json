@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Kurze Wiederholungsrunde – aktives Abrufen aus dem Gedächtnis wirkt besser als jedes Nochmal-Lesen. Heute dran: **Grundgerüst**, Überschriften, Absätze mit `<br>` und `<hr>`, `<strong>`/`<em>` und **Kommentare** – verpackt in die Planung eines Filmabends."
+      "text": "Kurze Wiederholungsrunde – aktives Abrufen aus dem Gedächtnis wirkt besser als jedes Nochmal-Lesen. Heute dran: **Grundgerüst**, Überschriften, Absätze mit `<br>` und `<hr>`, `<strong>`/`<em>` und **Kommentare** – verpackt in die Planung eines Filmabends.\n\nZum Schluss eine Café-Etappe, die Absatz, Hervorhebung und Zeilenumbruch verbindet."
     },
     {
       "type": "quiz",
@@ -22,12 +22,14 @@
       "text": "Das Wort „pünktlich“ soll **fett** hervorgehoben werden, weil es wichtig ist. Setze den fehlenden öffnenden Tag ein.",
       "template": "<p>Der Film startet <___>pünktlich</strong> um 19 Uhr.</p>",
       "solution": "strong",
-      "accept": ["strong"],
+      "accept": [
+        "strong"
+      ],
       "hint": "Der schließende Tag steht schon da – für „wichtig“ nimmst du `<strong>`."
     },
     {
       "type": "code",
-      "task": "Baue die Einladung zum Filmabend:\n\n1. `<h1>` mit dem Text **Filmabend**\n2. Absatz mit dem Termin – das Wort **Freitag** steht in `<strong>`\n3. Trennlinie `<hr>`\n4. Absatz mit Adresse: **Musterweg 5**, `<br>`, **74072 Heilbronn**\n5. Ein Kommentar, in dem das Wort **Snacks** vorkommt",
+      "task": "Erstelle die Einladung zum Filmabend:\n\n1. Hauptüberschrift **Filmabend**\n2. Absatz mit dem Termin – das Wort **Freitag** ist als wichtig hervorgehoben\n3. Trennlinie\n4. Adress-Absatz **Musterweg 5**, Zeilenumbruch, **74072 Heilbronn**\n5. Ein Kommentar, in dem das Wort **Snacks** vorkommt",
       "starter": {
         "html": "<!-- Deine Einladung entsteht hier -->\n"
       },
@@ -40,12 +42,42 @@
         "html": "<h1>Filmabend</h1>\n<p>Wir treffen uns am <strong>Freitag</strong> um 19 Uhr.</p>\n<hr>\n<p>Musterweg 5<br>74072 Heilbronn</p>\n<!-- Snacks nicht vergessen -->\n"
       },
       "tests": [
-        { "type": "text", "selector": "h1", "expected": "Filmabend", "label": "Die <h1> lautet „Filmabend“" },
-        { "type": "text", "selector": "strong", "expected": "Freitag", "label": "Das Wort „Freitag“ ist mit <strong> markiert" },
-        { "type": "source", "file": "html", "matches": "<hr\\s*/?>", "label": "Eine Trennlinie <hr> ist eingebaut" },
-        { "type": "source", "file": "html", "matches": "Musterweg 5\\s*<br\\s*/?>", "label": "Die Adresse hat einen Zeilenumbruch mit <br>" },
-        { "type": "selector", "selector": "p", "min": 2, "label": "Es gibt mindestens zwei Absätze" },
-        { "type": "source", "file": "html", "matches": "<!--[^>]*Snacks", "label": "Ein Kommentar mit dem Wort „Snacks“ steht im Code" }
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "Filmabend",
+          "label": "Die <h1> lautet „Filmabend“"
+        },
+        {
+          "type": "text",
+          "selector": "strong",
+          "expected": "Freitag",
+          "label": "Das Wort „Freitag“ ist mit <strong> markiert"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<hr\\s*/?>",
+          "label": "Eine Trennlinie <hr> ist eingebaut"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "Musterweg 5\\s*<br\\s*/?>",
+          "label": "Die Adresse hat einen Zeilenumbruch mit <br>"
+        },
+        {
+          "type": "selector",
+          "selector": "p",
+          "min": 2,
+          "label": "Es gibt mindestens zwei Absätze"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<!--[^>]*Snacks",
+          "label": "Ein Kommentar mit dem Wort „Snacks“ steht im Code"
+        }
       ]
     },
     {
@@ -60,7 +92,7 @@
     },
     {
       "type": "code",
-      "task": "Zum Abschluss: das **komplette Grundgerüst** aus dem Gedächtnis – ohne zurückzublättern!\n\n1. `<!DOCTYPE html>`, `<html>`, `<head>` und `<body>`\n2. Im `<head>`: ein `<title>` mit dem Text **Filmabend bei mir**\n3. Im `<body>`: eine `<h1>` **Programm** und darunter ein Absatz deiner Wahl",
+      "task": "Erstelle zum Abschluss das **komplette Grundgerüst** aus dem Gedächtnis – ohne zurückzublättern:\n\n1. Die Ansage für modernes HTML ganz oben, dann Wurzelelement mit Kopf- und Körperbereich\n2. Im Kopfbereich der Seitentitel **Filmabend bei mir**\n3. Im Körperbereich eine Hauptüberschrift **Programm** und darunter ein Absatz deiner Wahl",
       "starter": {
         "html": "<!-- Lösche diese Zeile und schreibe das komplette Grundgerüst -->\n"
       },
@@ -73,10 +105,88 @@
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Filmabend bei mir</title>\n  </head>\n  <body>\n    <h1>Programm</h1>\n    <p>Erst Pizza, dann der Film, danach Nachbesprechung.</p>\n  </body>\n</html>\n"
       },
       "tests": [
-        { "type": "source", "file": "html", "matches": "<!doctype\\s+html>", "label": "Der DOCTYPE steht am Anfang" },
-        { "type": "text", "selector": "title", "expected": "Filmabend bei mir", "label": "Der Seitentitel lautet „Filmabend bei mir“" },
-        { "type": "text", "selector": "body h1", "expected": "Programm", "label": "Im Body steht die <h1> „Programm“" },
-        { "type": "selector", "selector": "body p", "min": 1, "label": "Unter der Überschrift gibt es einen Absatz" }
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<!doctype\\s+html>",
+          "label": "Der DOCTYPE steht am Anfang"
+        },
+        {
+          "type": "text",
+          "selector": "title",
+          "expected": "Filmabend bei mir",
+          "label": "Der Seitentitel lautet „Filmabend bei mir“"
+        },
+        {
+          "type": "text",
+          "selector": "body h1",
+          "expected": "Programm",
+          "label": "Im Body steht die <h1> „Programm“"
+        },
+        {
+          "type": "selector",
+          "selector": "body p",
+          "min": 1,
+          "label": "Unter der Überschrift gibt es einen Absatz"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Unter der Bestell-Anleitung fehlt noch ein Tipp für neue Gäste – ein Absatz, der drei alte Bekannte verbindet: Hervorhebung, Zeilenumbruch und Absatz."
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Ergänze direkt unter der nummerierten Bestell-Anleitung einen Tipp-Absatz: Er beginnt mit dem wichtig hervorgehobenen Wort **Tipp:**, dann folgt **In der großen Pause ist es voll –**, ein Zeilenumbruch und **komm lieber etwas früher.**",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Der Absatz kommt direkt nach </ol>, vor die <hr>. Wichtig = strong, Zeilenumbruch = br – beides mitten im Absatz.",
+        "So sieht der Absatz aus: <p><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <p><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n    <h2>Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Tee</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezel</li>\n          <li>Muffin</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>An der Theke anstellen</li>\n      <li>Bestellung sagen</li>\n      <li>Bezahlen und genießen</li>\n    </ol>\n    <p><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "ol + p strong",
+          "expected": "Tipp:",
+          "label": "Der Tipp-Absatz beginnt mit dem hervorgehobenen „Tipp:“"
+        },
+        {
+          "type": "text",
+          "selector": "ol + p",
+          "expected": "In der großen Pause ist es voll",
+          "contains": true,
+          "label": "Der Tipp-Absatz steht direkt unter der Bestell-Anleitung"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "voll\\s*[–-]?\\s*<br\\s*/?>\\s*komm lieber etwas früher\\.",
+          "label": "Nach „voll –“ folgt ein Zeilenumbruch, dann „komm lieber etwas früher.“"
+        },
+        {
+          "type": "selector",
+          "selector": "ol > li",
+          "count": 3,
+          "label": "Die Bestell-Anleitung hat weiterhin drei Schritte"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "Musterstraße 12\\s*<br",
+          "label": "Die Adresse mit Zeilenumbruch ist noch da"
+        }
       ]
     }
   ]

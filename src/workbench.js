@@ -1,13 +1,35 @@
-// Die Werkbank: Editor-Tabs (HTML/CSS/JS), Live-Vorschau und Konsole.
-// Wird von Beispiel- und Code-Schritten der Lektionen genutzt.
+// Die Werkbank: Editor-Tabs (HTML/CSS/JS) mit Syntax-Highlighting (CodeMirror 6),
+// Live-Vorschau und Konsole. Wird von Beispiel- und Code-Schritten genutzt.
 
+import { EditorView, keymap, lineNumbers, highlightActiveLine } from '@codemirror/view';
+import { EditorState } from '@codemirror/state';
+import { indentWithTab } from '@codemirror/commands';
+import { indentOnInput } from '@codemirror/language';
+import { minimalSetup } from 'codemirror';
+import { html } from '@codemirror/lang-html';
+import { css } from '@codemirror/lang-css';
+import { javascript } from '@codemirror/lang-javascript';
+import { oneDark } from '@codemirror/theme-one-dark';
 import { buildSrcdoc } from './preview.js';
 
 const DATEI_INFO = {
-  html: { label: 'HTML', klasse: 'tab-html' },
-  css: { label: 'CSS', klasse: 'tab-css' },
-  js: { label: 'JS', klasse: 'tab-js' },
+  html: { label: 'HTML', klasse: 'tab-html', sprache: () => html() },
+  css: { label: 'CSS', klasse: 'tab-css', sprache: () => css() },
+  js: { label: 'JS', klasse: 'tab-js', sprache: () => javascript() },
 };
+
+// Farben an das App-Design angleichen (oneDark bringt sonst sein eigenes Grau mit)
+const werkbankTheme = EditorView.theme(
+  {
+    '&': { backgroundColor: '#101827', borderRadius: '8px', fontSize: '0.9rem', height: '280px' },
+    '.cm-scroller': { fontFamily: "Consolas, 'Courier New', monospace", lineHeight: '1.5' },
+    '.cm-gutters': { backgroundColor: '#0c1320', borderRight: '1px solid #1f2a3d', color: '#5b6b7c' },
+    '.cm-activeLine': { backgroundColor: 'rgba(255, 255, 255, 0.04)' },
+    '.cm-activeLineGutter': { backgroundColor: 'rgba(255, 255, 255, 0.06)' },
+    '&.cm-focused': { outline: '2px solid #2f6fdb', outlineOffset: '-1px' },
+  },
+  { dark: true }
+);
 
 export function createWorkbench(container, files, options = {}) {
   const keys = ['html', 'css', 'js'].filter((k) => files[k] != null);
@@ -46,7 +68,6 @@ export function createWorkbench(container, files, options = {}) {
   const zeigeKonsole = keys.includes('js');
   if (zeigeKonsole) konsoleEl.hidden = false;
 
-  // Reine JS-Aufgaben brauchen keine große Vorschau
   if (keys.length === 1 && keys[0] === 'js') {
     iframe.classList.add('vorschau-mini');
     vorschauKopf.textContent = 'Vorschau (bei reinen JavaScript-Aufgaben zählt die Konsole)';
@@ -56,7 +77,14 @@ export function createWorkbench(container, files, options = {}) {
   let startIndex = keys.findIndex((k) => editable.includes(k));
   if (startIndex < 0) startIndex = 0;
 
-  const textareas = {};
+  let timer = null;
+  function geplanterLauf() {
+    clearTimeout(timer);
+    timer = setTimeout(ausfuehren, 600);
+  }
+
+  const editoren = {};
+  const wrapper = {};
   keys.forEach((k, i) => {
     const istEditierbar = editable.includes(k);
 
@@ -66,39 +94,47 @@ export function createWorkbench(container, files, options = {}) {
     tab.innerHTML = `<span class="tab-punkt"></span>${DATEI_INFO[k].label}${istEditierbar ? '' : ' 🔒'}`;
     tab.addEventListener('click', () => {
       tabsEl.querySelectorAll('.tab').forEach((t) => t.classList.remove('aktiv'));
-      Object.values(textareas).forEach((ta) => (ta.hidden = true));
+      Object.values(wrapper).forEach((w) => (w.hidden = true));
       tab.classList.add('aktiv');
-      textareas[k].hidden = false;
-      textareas[k].focus();
+      wrapper[k].hidden = false;
+      editoren[k].focus();
     });
     tabsEl.appendChild(tab);
 
-    const ta = document.createElement('textarea');
-    ta.className = 'editor';
-    ta.value = state[k];
-    ta.spellcheck = false;
-    ta.setAttribute('autocapitalize', 'off');
-    ta.setAttribute('autocomplete', 'off');
-    ta.hidden = i !== startIndex;
-    if (!istEditierbar) {
-      ta.readOnly = true;
-      ta.classList.add('editor-gesperrt');
-    }
-    ta.addEventListener('input', () => {
-      state[k] = ta.value;
-      geplanterLauf();
+    const wrap = document.createElement('div');
+    wrap.className = `editor-wrap${istEditierbar ? '' : ' editor-gesperrt'}`;
+    wrap.dataset.datei = k;
+    wrap.hidden = i !== startIndex;
+    flaechenEl.appendChild(wrap);
+    wrapper[k] = wrap;
+
+    const view = new EditorView({
+      state: EditorState.create({
+        doc: state[k],
+        extensions: [
+          minimalSetup,
+          lineNumbers(),
+          highlightActiveLine(),
+          indentOnInput(),
+          keymap.of([indentWithTab]),
+          EditorState.tabSize.of(2),
+          DATEI_INFO[k].sprache(),
+          oneDark,
+          werkbankTheme,
+          EditorState.readOnly.of(!istEditierbar),
+          EditorView.editable.of(istEditierbar),
+          EditorView.updateListener.of((update) => {
+            if (update.docChanged) {
+              state[k] = update.state.doc.toString();
+              geplanterLauf();
+            }
+          }),
+        ],
+      }),
+      parent: wrap,
     });
-    ta.addEventListener('keydown', (e) => {
-      if (e.key === 'Tab') {
-        e.preventDefault();
-        const start = ta.selectionStart;
-        ta.setRangeText('  ', start, ta.selectionEnd, 'end');
-        state[k] = ta.value;
-        geplanterLauf();
-      }
-    });
-    flaechenEl.appendChild(ta);
-    textareas[k] = ta;
+    editoren[k] = view;
+    wrap.cmView = view;
   });
 
   function renderKonsole() {
@@ -121,17 +157,17 @@ export function createWorkbench(container, files, options = {}) {
   }
   iframe.addEventListener('load', () => setTimeout(renderKonsole, 60));
 
-  let timer = null;
-  function geplanterLauf() {
-    clearTimeout(timer);
-    timer = setTimeout(ausfuehren, 600);
-  }
-
   root.querySelector('.btn-ausfuehren').addEventListener('click', ausfuehren);
   ausfuehren();
 
   return {
     getFiles: () => ({ ...state }),
     run: ausfuehren,
+    // Inhalt einer Datei programmatisch setzen (z. B. für automatische Tests)
+    setFile: (k, text) => {
+      const view = editoren[k];
+      if (!view) return;
+      view.dispatch({ changes: { from: 0, to: view.state.doc.length, insert: text } });
+    },
   };
 }

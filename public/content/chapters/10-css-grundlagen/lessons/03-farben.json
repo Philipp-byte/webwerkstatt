@@ -16,7 +16,9 @@
       "text": "Der Trikot-Designer: Probiere eigene Hex-Codes aus – z. B. `#ff0000`, `#00ff00`, `#123456`. Was passiert bei `#000000` und `#ffffff`?",
       "html": "<h1>Unser Clan-Trikot</h1>\n<p>Heimtrikot in <strong>Grün</strong>, Auswärtstrikot in <em>Lila</em>.</p>\n<p>Abstimmung läuft bis Freitag im Team-Chat!</p>\n",
       "css": "h1 {\n  color: crimson;\n}\nstrong {\n  color: #1a9e5c;\n}\nem {\n  color: #7a3fbf;\n}\n",
-      "editable": ["css"]
+      "editable": [
+        "css"
+      ]
     },
     {
       "type": "explain",
@@ -38,17 +40,21 @@
       "text": "Setze den englischen **Farbnamen** für Rot ein.",
       "template": "h1 { color: ___; }",
       "solution": "red",
-      "accept": ["red"],
+      "accept": [
+        "red"
+      ],
       "hint": "Die Farbnamen sind englisch – Rot heißt `red`."
     },
     {
       "type": "code",
-      "task": "Färbe den Merch-Shop deines Clans – mit allen drei Schreibweisen:\n\n1. Die `h1` bekommt den **Hex-Code** `#ff6600`\n2. Alle `p` bekommen den **Farbnamen** `green`\n3. Alle `strong`-Elemente bekommen die **rgb-Farbe** `rgb(90, 62, 43)`",
+      "task": "**Gestalte** den Merch-Shop deines Clans – mit allen drei Schreibweisen:\n\n1. Die Hauptüberschrift bekommt den Hex-Code `#ff6600`\n2. Alle Absätze bekommen den Farbnamen `green`\n3. Alle `strong`-Elemente bekommen die rgb-Farbe mit den Anteilen 90, 62 und 43",
       "starter": {
         "html": "<h1>Clan-Merch</h1>\n<p>Heimtrikot – <strong>25 €</strong></p>\n<p>Cap mit Clan-Logo – <strong>12 €</strong></p>\n",
         "css": "/* Deine drei Regeln hier */\n"
       },
-      "editable": ["css"],
+      "editable": [
+        "css"
+      ],
       "hints": [
         "Du brauchst drei Regeln: eine für h1, eine für p, eine für strong.",
         "Hex-Codes schreibst du mit Raute (color: #ff6600;), rgb mit Klammern und Kommas: color: rgb(90, 62, 43);",
@@ -58,9 +64,105 @@
         "css": "h1 {\n  color: #ff6600;\n}\np {\n  color: green;\n}\nstrong {\n  color: rgb(90, 62, 43);\n}\n"
       },
       "tests": [
-        { "type": "style", "selector": "h1", "prop": "color", "expected": "#ff6600", "label": "Die Überschrift hat die Farbe #ff6600" },
-        { "type": "style", "selector": "p", "prop": "color", "expected": "green", "label": "Die Absätze sind grün" },
-        { "type": "style", "selector": "strong", "prop": "color", "expected": "rgb(90, 62, 43)", "label": "Die Preise haben die Farbe rgb(90, 62, 43)" }
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "color",
+          "expected": "#ff6600",
+          "label": "Die Überschrift hat die Farbe #ff6600"
+        },
+        {
+          "type": "style",
+          "selector": "p",
+          "prop": "color",
+          "expected": "green",
+          "label": "Die Absätze sind grün"
+        },
+        {
+          "type": "style",
+          "selector": "strong",
+          "prop": "color",
+          "expected": "rgb(90, 62, 43)",
+          "label": "Die Preise haben die Farbe rgb(90, 62, 43)"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Das Farbschema des Cafés in Hex-Codes: Text in dunklem Braun `#2c2016`, Links in Akzent-Orange `#e08a2e`. Beides kommt heute ins Stylesheet.\n\nTipp: Eine Textfarbe für `body` **vererbt** sich an alle Texte der Seite – du musst nicht jeden Absatz einzeln ansprechen. Die Vorschau zeigt die Startseite (HTML 🔒)."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Café-Stylesheet um zwei Regeln (HTML 🔒):\n\n1. Ganz oben, vor der h1-Regel: Der gesamte Seitentext (Selektor `body`) erhält die Textfarbe `#2c2016`\n2. Ganz unten: Alle Links erhalten das Akzent-Orange `#e08a2e`",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "h1 {\n  color: #5a3e2b;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "css"
+        ]
+      },
+      "hints": [
+        "Zwei neue Regeln mit der Eigenschaft color: eine für body (oben), eine für a (unten). Die h1-Regel bleibt in der Mitte stehen.",
+        "Die body-Regel:\n```css\nbody {\n  color: #2c2016;\n}\n```\nDie Link-Regel nach demselben Muster mit dem Selektor a.",
+        "```css\nbody {\n  color: #2c2016;\n}\n\nh1 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n```"
+      ],
+      "solution": {
+        "css": "body {\n  color: #2c2016;\n}\n\nh1 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "color",
+          "expected": "#2c2016",
+          "label": "Der Seitentext hat die Farbe #2c2016"
+        },
+        {
+          "type": "style",
+          "selector": "main p",
+          "prop": "color",
+          "expected": "#2c2016",
+          "label": "Auch die Absätze erben die Textfarbe"
+        },
+        {
+          "type": "style",
+          "selector": "nav a",
+          "prop": "color",
+          "expected": "#e08a2e",
+          "label": "Die Navigations-Links sind orange (#e08a2e)"
+        },
+        {
+          "type": "style",
+          "selector": "a[href='#oben']",
+          "prop": "color",
+          "expected": "#e08a2e",
+          "label": "Auch der Link „Nach oben“ ist orange"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "^\\s*body\\s*\\{",
+          "label": "Die body-Regel steht ganz oben"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "\\ba\\s*\\{[^}]*\\}\\s*$",
+          "label": "Die Link-Regel steht ganz unten"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "color",
+          "expected": "#5a3e2b",
+          "label": "Die Überschrift „Café Pause“ bleibt kaffeebraun"
+        }
       ]
     }
   ]

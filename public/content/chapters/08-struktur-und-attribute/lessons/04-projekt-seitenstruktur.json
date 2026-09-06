@@ -4,37 +4,91 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Zurück zum **Café Pause**! In den letzten Etappen sind Galerie und Speisekarte entstanden – an der Startseite hast du zuletzt in Kapitel 5 gebaut (die Navigation).\n\nHeute bekommt die Startseite ihre **professionelle Gliederung**: `<header>`, `<nav>`, `<main>` und `<footer>`. Der Inhalt bleibt fast gleich, er wird nur **sinnvoll einsortiert**. Adresse und neue Öffnungszeiten ziehen in den Fußbereich."
-    },
-    {
-      "type": "explain",
-      "text": "Der **Bauplan** – die Bereiche sind erstmal unsichtbar, im CSS-Teil nutzt du genau diese Struktur zum Gestalten:\n\n```\n<header>  h1 + Willkommensabsatz\n<nav>     die vier Links\n<main>    alles Übrige (Über uns … Beispiel-Café-Link)\n<footer>  Adress-Absatz (Musterstraße …)\n          + neuer Absatz: Geöffnet: Montag bis Freitag, 9:00 bis 15:00 Uhr.\n            mit id=\"oeffnungszeiten\" und class=\"hinweis\"\n```\n\nGute Ordnung zahlt sich aus!"
+      "text": "**Meilenstein!** Startseite und Speisekarte vom **Café Pause** sind in Bereiche gegliedert – nur die **Galerie** liegt noch lose im `<body>`. Heute bekommt sie dieselbe Ordnung: Kopfbereich, Hauptbereich, Fußbereich mit Adresse.\n\nDamit haben alle Seiten den gleichen Aufbau – im CSS-Teil gestaltest du `header`, `main` und `footer` dann auf allen Seiten gleichzeitig.\n\nDanach schau in **Mein Café-Projekt** (`#/projekt`): Alle drei Seiten sind jetzt sauber gegliedert."
     },
     {
       "type": "code",
-      "task": "Gliedere die Startseite (Inhalt steht da):\n\n1. `<header>` um `<h1>` und Willkommensabsatz – ganz nach oben\n2. `<nav>` um die **vier Links**, direkt darunter\n3. `<main>` um alles Übrige\n4. `<footer>` unten: Adress-Absatz hineinschieben, dazu neuer Absatz **Geöffnet: Montag bis Freitag, 9:00 bis 15:00 Uhr.** mit `id=\"oeffnungszeiten\"` und `class=\"hinweis\"`",
+      "task": "**Meilenstein.** Gliedere die Galerie wie die Speisekarte: Kopfbereich mit Hauptüberschrift und Rück-Link, Hauptbereich mit „Unser Café“, „Unser Jingle“ und „Rundgang“, Fußbereich mit dem Adress-Absatz: Café Pause, Musterstraße 12, 74072 Heilbronn (drei Zeilen durch Zeilenumbrüche). Danach geht es zu „Mein Café-Projekt“ (#/projekt).",
       "starter": {
-        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Café Pause</title>\n</head>\n<body>\n  <a href=\"speisekarte.html\">Speisekarte</a>\n  <a href=\"galerie.html\">Galerie</a>\n  <a href=\"kontakt.html\">Kontakt</a>\n  <a href=\"#angebote\">Direkt zu den Angeboten</a>\n\n  <h1>Café Pause</h1>\n  <p>Willkommen im Café Pause – deinem Schülercafé zum Durchatmen!</p>\n\n  <h2>Über uns</h2>\n  <p>Das Café Pause wird von einer <strong>Schülerfirma</strong> betrieben.</p>\n  <p>Bei uns gibt es <em>jeden Tag</em> frische Snacks und Getränke.</p>\n  <hr>\n  <p>Musterstraße 12<br>74072 Heilbronn</p>\n\n  <h2 id=\"angebote\">Das gibt es bei uns</h2>\n  <ul>\n    <li>Getränke\n      <ul>\n        <li>Kakao</li>\n        <li>Apfelschorle</li>\n      </ul>\n    </li>\n    <li>Snacks\n      <ul>\n        <li>Brezeln</li>\n        <li>Muffins</li>\n      </ul>\n    </li>\n  </ul>\n\n  <h2>So bestellst du</h2>\n  <ol>\n    <li>Such dir am Tresen etwas aus.</li>\n    <li>Sag uns deine Bestellung.</li>\n    <li>Bezahle und genieß deine Pause!</li>\n  </ol>\n\n  <p>Schau auch bei unserem Vorbild vorbei: <a href=\"https://www.example.com\">Beispiel-Café</a></p>\n</body>\n</html>\n"
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <h1>Galerie</h1>\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n\n    <h2>Unser Café</h2>\n    <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n    <img src=\"cafe-raum.svg\" alt=\"Der Gastraum mit Tischen und Fenster\">\n\n    <h2>Unser Jingle</h2>\n    <audio controls src=\"cafe-jingle.wav\"></audio>\n\n    <h2>Rundgang</h2>\n    <ol>\n      <li>Theke</li>\n      <li>Gastraum</li>\n      <li>Kuchen-Vitrine</li>\n    </ol>\n  </body>\n</html>\n"
       },
-      "project": { "page": "index", "save": ["html"] },
+      "project": {
+        "page": "galerie",
+        "save": [
+          "html"
+        ]
+      },
       "hints": [
-        "Arbeite von oben nach unten: erst <header> um h1 und Willkommensabsatz legen, dann <nav> um die vier Links, dann <main> um den Rest – zum Schluss den <footer> bauen.",
-        "Der neue Absatz im Footer braucht beide Attribute im öffnenden Tag: <p id=\"oeffnungszeiten\" class=\"hinweis\">…</p>. Der Adress-Absatz zieht mitsamt <br> in den Footer um.",
-        "```html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>Café Pause</title>\n</head>\n<body>\n  <header>\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – deinem Schülercafé zum Durchatmen!</p>\n  </header>\n  <nav>\n    <a href=\"speisekarte.html\">Speisekarte</a>\n    <a href=\"galerie.html\">Galerie</a>\n    <a href=\"kontakt.html\">Kontakt</a>\n    <a href=\"#angebote\">Direkt zu den Angeboten</a>\n  </nav>\n  <main>\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von einer <strong>Schülerfirma</strong> betrieben.</p>\n    <p>Bei uns gibt es <em>jeden Tag</em> frische Snacks und Getränke.</p>\n    <hr>\n\n    <h2 id=\"angebote\">Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezeln</li>\n          <li>Muffins</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>Such dir am Tresen etwas aus.</li>\n      <li>Sag uns deine Bestellung.</li>\n      <li>Bezahle und genieß deine Pause!</li>\n    </ol>\n\n    <p>Schau auch bei unserem Vorbild vorbei: <a href=\"https://www.example.com\">Beispiel-Café</a></p>\n  </main>\n  <footer>\n    <p>Musterstraße 12<br>74072 Heilbronn</p>\n    <p id=\"oeffnungszeiten\" class=\"hinweis\">Geöffnet: Montag bis Freitag, 9:00 bis 15:00 Uhr.</p>\n  </footer>\n</body>\n</html>\n```"
+        "Genau wie bei der Speisekarte: header um h1 und Rück-Link-Absatz, main um die drei Abschnitte (Bilder, Jingle, Rundgang), footer mit dem neuen Adress-Absatz vor </body>.",
+        "Der Fußbereich sieht so aus:\n```html\n<footer>\n  <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n</footer>\n```",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Galerie</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <h2>Unser Café</h2>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n      <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n      <img src=\"cafe-raum.svg\" alt=\"Der Gastraum mit Tischen und Fenster\">\n\n      <h2>Unser Jingle</h2>\n      <audio controls src=\"cafe-jingle.wav\"></audio>\n\n      <h2>Rundgang</h2>\n      <ol>\n        <li>Theke</li>\n        <li>Gastraum</li>\n        <li>Kuchen-Vitrine</li>\n      </ol>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n```"
       ],
       "solution": {
-        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Café Pause</title>\n</head>\n<body>\n  <header>\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – deinem Schülercafé zum Durchatmen!</p>\n  </header>\n  <nav>\n    <a href=\"speisekarte.html\">Speisekarte</a>\n    <a href=\"galerie.html\">Galerie</a>\n    <a href=\"kontakt.html\">Kontakt</a>\n    <a href=\"#angebote\">Direkt zu den Angeboten</a>\n  </nav>\n  <main>\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von einer <strong>Schülerfirma</strong> betrieben.</p>\n    <p>Bei uns gibt es <em>jeden Tag</em> frische Snacks und Getränke.</p>\n    <hr>\n\n    <h2 id=\"angebote\">Das gibt es bei uns</h2>\n    <ul>\n      <li>Getränke\n        <ul>\n          <li>Kakao</li>\n          <li>Apfelschorle</li>\n        </ul>\n      </li>\n      <li>Snacks\n        <ul>\n          <li>Brezeln</li>\n          <li>Muffins</li>\n        </ul>\n      </li>\n    </ul>\n\n    <h2>So bestellst du</h2>\n    <ol>\n      <li>Such dir am Tresen etwas aus.</li>\n      <li>Sag uns deine Bestellung.</li>\n      <li>Bezahle und genieß deine Pause!</li>\n    </ol>\n\n    <p>Schau auch bei unserem Vorbild vorbei: <a href=\"https://www.example.com\">Beispiel-Café</a></p>\n  </main>\n  <footer>\n    <p>Musterstraße 12<br>74072 Heilbronn</p>\n    <p id=\"oeffnungszeiten\" class=\"hinweis\">Geöffnet: Montag bis Freitag, 9:00 bis 15:00 Uhr.</p>\n  </footer>\n</body>\n</html>\n"
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Galerie – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Galerie</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <h2>Unser Café</h2>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n      <img src=\"cafe-kuchen.svg\" alt=\"Ein Stück Kuchen mit Kirsche\">\n      <img src=\"cafe-raum.svg\" alt=\"Der Gastraum mit Tischen und Fenster\">\n\n      <h2>Unser Jingle</h2>\n      <audio controls src=\"cafe-jingle.wav\"></audio>\n\n      <h2>Rundgang</h2>\n      <ol>\n        <li>Theke</li>\n        <li>Gastraum</li>\n        <li>Kuchen-Vitrine</li>\n      </ol>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "header h1", "count": 1, "label": "Die <h1> steht im <header>" },
-        { "type": "text", "selector": "header p", "expected": "Willkommen", "contains": true, "label": "Der Willkommensabsatz steht im <header>" },
-        { "type": "selector", "selector": "nav a", "min": 4, "label": "Alle vier Links stehen in der <nav>" },
-        { "type": "selector", "selector": "main h2#angebote", "count": 1, "label": "Der Angebots-Bereich steht im <main>" },
-        { "type": "selector", "selector": "main ol", "min": 1, "label": "Auch die Bestell-Schritte stehen im <main>" },
-        { "type": "source", "file": "html", "matches": "<footer[\\s\\S]*Musterstraße 12[\\s\\S]*</footer>", "label": "Die Adresse steht im <footer>" },
-        { "type": "selector", "selector": "footer p#oeffnungszeiten", "count": 1, "label": "Der Öffnungszeiten-Absatz im <footer> hat die id „oeffnungszeiten“" },
-        { "type": "text", "selector": "#oeffnungszeiten", "expected": "Montag bis Freitag", "contains": true, "label": "Die Öffnungszeiten nennen „Montag bis Freitag“" },
-        { "type": "selector", "selector": "#oeffnungszeiten.hinweis", "count": 1, "label": "Der Öffnungszeiten-Absatz gehört zur Gruppe „hinweis“ (class)" }
+        {
+          "type": "text",
+          "selector": "header h1",
+          "expected": "Galerie",
+          "label": "Die Hauptüberschrift steht im Kopfbereich"
+        },
+        {
+          "type": "text",
+          "selector": "header a[href='index.html']",
+          "expected": "Zurück zur Startseite",
+          "label": "Der Rück-Link steht im Kopfbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "main img",
+          "count": 3,
+          "label": "Alle drei Bilder stehen im Hauptbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "main audio[src='cafe-jingle.wav']",
+          "count": 1,
+          "label": "Der Jingle steht im Hauptbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "main ol li",
+          "count": 3,
+          "label": "Der Rundgang mit drei Stationen steht im Hauptbereich"
+        },
+        {
+          "type": "text",
+          "selector": "footer p",
+          "expected": "Musterstraße 12",
+          "contains": true,
+          "label": "Die Adresse steht im Fußbereich"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<footer>\\s*<p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\\s*</footer>",
+          "label": "Die Adresse steht dreizeilig (mit Umbrüchen) im Fußbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "body > h2",
+          "count": 0,
+          "label": "Keine Überschrift liegt mehr lose im body"
+        },
+        {
+          "type": "attr",
+          "selector": "img[src='cafe-raum.svg']",
+          "attr": "alt",
+          "expected": "Der Gastraum mit Tischen und Fenster",
+          "label": "Kontrolle: Das Gastraum-Bild hat noch seine Beschreibung"
+        },
+        {
+          "type": "text",
+          "selector": "title",
+          "expected": "Galerie – Café Pause",
+          "label": "Kontrolle: Der Seitentitel ist unverändert"
+        }
       ]
     }
   ]

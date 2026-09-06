@@ -4,7 +4,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Kurze Verschnaufpause vom Neuen! Dein Gehirn behält Wissen am besten, wenn es aktiv **abgerufen** wird – deshalb kommen jetzt gemischte Aufgaben zu den Kapiteln 1 und 2.\n\nAlles schon mal dagewesen – und wenn etwas nicht mehr da ist: kein Problem, dafür gibt es die Tipps."
+      "text": "Kurze Verschnaufpause vom Neuen! Dein Gehirn behält Wissen am besten, wenn es aktiv **abgerufen** wird – deshalb kommen jetzt gemischte Aufgaben zu den Kapiteln 1 und 2.\n\nAlles schon mal dagewesen – und wenn etwas nicht mehr da ist: kein Problem, dafür gibt es die Tipps.\n\nZum Schluss eine Café-Etappe, die Überschrift und Absatz verbindet."
     },
     {
       "type": "quiz",
@@ -22,7 +22,9 @@
       "text": "Im Grundgerüst fehlt ein Tag-Name. Welcher?",
       "template": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <___>Meine Seite</title>\n  </head>\n  <body>\n  </body>\n</html>",
       "solution": "title",
-      "accept": ["title"],
+      "accept": [
+        "title"
+      ],
       "hint": "Gesucht ist der Tag, dessen Text oben im Browser-Tab erscheint – sein schließender Tag steht schon da."
     },
     {
@@ -38,7 +40,7 @@
     },
     {
       "type": "code",
-      "task": "Schreibe aus dem Kopf ein **komplettes Grundgerüst**:\n\n1. `<!DOCTYPE html>` und `<html lang=\"de\">`\n2. Ein `<head>` mit `<meta charset=\"utf-8\">` und dem Titel **Wiederholung**\n3. Ein `<body>` mit einer `<h1>`-Überschrift: **Geschafft!**",
+      "task": "Erstelle aus dem Kopf ein **komplettes Grundgerüst**:\n\n1. Die Seite ist als modernes HTML gekennzeichnet und deutschsprachig.\n2. Der Kopfbereich enthält die Zeichensatz-Angabe und den Seitentitel **Wiederholung**.\n3. Der sichtbare Bereich enthält eine Hauptüberschrift mit dem Text **Geschafft!**",
       "starter": {
         "html": "<!-- Alles aus dem Kopf – du schaffst das! -->\n"
       },
@@ -51,11 +53,36 @@
         "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Wiederholung</title>\n  </head>\n  <body>\n    <h1>Geschafft!</h1>\n  </body>\n</html>\n"
       },
       "tests": [
-        { "type": "source", "file": "html", "matches": "<!doctype\\s+html>", "label": "Der DOCTYPE steht am Anfang" },
-        { "type": "source", "file": "html", "matches": "<html[^>]*lang=[\"']?de", "label": "Das <html>-Tag hat das Attribut lang=\"de\"" },
-        { "type": "source", "file": "html", "matches": "<meta[^>]*charset=[\"']?utf-8", "label": "Im head steht <meta charset=\"utf-8\">" },
-        { "type": "text", "selector": "title", "expected": "Wiederholung", "label": "Der Seitentitel lautet „Wiederholung“" },
-        { "type": "text", "selector": "body h1", "expected": "Geschafft!", "label": "Die Überschrift lautet „Geschafft!“" }
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<!doctype\\s+html>",
+          "label": "Der DOCTYPE steht am Anfang"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<html[^>]*lang=[\"']?de",
+          "label": "Das <html>-Tag hat das Attribut lang=\"de\""
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<meta[^>]*charset=[\"']?utf-8",
+          "label": "Im head steht <meta charset=\"utf-8\">"
+        },
+        {
+          "type": "text",
+          "selector": "title",
+          "expected": "Wiederholung",
+          "label": "Der Seitentitel lautet „Wiederholung“"
+        },
+        {
+          "type": "text",
+          "selector": "body h1",
+          "expected": "Geschafft!",
+          "label": "Die Überschrift lautet „Geschafft!“"
+        }
       ]
     },
     {
@@ -68,6 +95,65 @@
       ],
       "correct": 0,
       "explanation": "Attribute stehen im **öffnenden** Tag und haben die Form name=\"wert\": Gleichheitszeichen dazwischen, der Wert in Anführungszeichen."
+    },
+    {
+      "type": "code",
+      "task": "**Café-Etappe.** Ergänze zwischen dem zweiten Über-uns-Absatz und der Trennlinie einen neuen Abschnitt: eine Überschrift zweiter Stufe **Unser Team** und darunter einen Absatz mit dem Text **Sechs Leute aus der Schülerfirma stehen jeden Tag hinter der Theke.**",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "project": {
+        "page": "index",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Der neue Abschnitt kommt nach dem zweiten Über-uns-Absatz und vor die <hr>: erst die h2, dann der Absatz.",
+        "Zwei neue Zeilen: <h2>Unser Team</h2> und darunter <p>Sechs Leute aus der Schülerfirma stehen jeden Tag hinter der Theke.</p>.",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen jeden Tag hinter der Theke.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <h1>Café Pause</h1>\n    <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n    <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n    <h2>Über uns</h2>\n    <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n    <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n    <h2>Unser Team</h2>\n    <p>Sechs Leute aus der Schülerfirma stehen jeden Tag hinter der Theke.</p>\n    <hr>\n    <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "h2:nth-of-type(2)",
+          "expected": "Unser Team",
+          "label": "Die zweite Abschnitts-Überschrift lautet „Unser Team“"
+        },
+        {
+          "type": "text",
+          "selector": "h2:nth-of-type(2) + p",
+          "expected": "Sechs Leute aus der Schülerfirma stehen jeden Tag hinter der Theke.",
+          "label": "Unter „Unser Team“ steht der Team-Absatz"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "hinter der Theke\\.</p>\\s*<hr",
+          "label": "Die Trennlinie folgt direkt auf den Team-Absatz"
+        },
+        {
+          "type": "selector",
+          "selector": "h2",
+          "count": 2,
+          "label": "Die Seite hat genau zwei Überschriften zweiter Stufe"
+        },
+        {
+          "type": "text",
+          "selector": "h2:first-of-type",
+          "expected": "Über uns",
+          "label": "Die Überschrift „Über uns“ ist noch da"
+        },
+        {
+          "type": "text",
+          "selector": "strong",
+          "expected": "Schülerinnen und Schülern",
+          "label": "Die Hervorhebung im Über-uns-Absatz ist noch da"
+        }
+      ]
     }
   ]
 }

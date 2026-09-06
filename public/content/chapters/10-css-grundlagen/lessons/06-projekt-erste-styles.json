@@ -4,29 +4,80 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Zurück im **Café Pause**! Deine Website hat eine gegliederte Startseite, Galerie, Speisekarte und Kontaktformular – alles noch schwarz auf weiß.\n\nHeute beginnt das **gemeinsame Stylesheet** `style.css`, das später **alle** Café-Seiten einbinden – die externe Datei aus Lektion 2. Das Farbschema:\n\n- Hintergrund: Creme `#f7f1e3`\n- Text: dunkles Braun `#2c2016`\n- Überschrift: Kaffeebraun `#5a3e2b`\n\nDer HTML-Tab zeigt die Startseite als Vorschau und ist gesperrt 🔒."
+      "text": "**Meilenstein!** Das Café-Stylesheet hat Textfarbe, Überschrift, Links und Hintergründe. Heute rundest du es ab: Die Überschriften zweiter Stufe bekommen dasselbe Kaffeebraun wie die `h1`, und die Tabellen heben sich mit **weißem Hintergrund** vom Creme ab.\n\nDer HTML-Tab zeigt die Startseite und ist gesperrt 🔒.\n\nDanach schau in **Mein Café-Projekt** (`#/projekt`): Die Startseite trägt jetzt die Café-Farben."
     },
     {
       "type": "code",
-      "task": "**Etappe 9: Das Café bekommt Farbe.** Schreibe in den CSS-Tab:\n\n1. Eine Regel für `body` mit **zwei** Deklarationen: Hintergrundfarbe `#f7f1e3` und Textfarbe `#2c2016`\n2. Eine Regel für `h1`: Textfarbe `#5a3e2b`\n\nBesteht die Prüfung, gilt dein Stylesheet ab jetzt für alle Café-Seiten.",
+      "task": "**Meilenstein.** Erweitere das Café-Stylesheet um zwei Regeln (HTML 🔒):\n\n1. Direkt nach der h1-Regel: Alle Überschriften zweiter Stufe erscheinen ebenfalls in Kaffeebraun `#5a3e2b`\n2. Ganz unten: Alle Tabellen bekommen einen weißen Hintergrund (`white`)\n\nDanach geht es zu „Mein Café-Projekt“ (#/projekt).",
       "starter": {
-        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Café Pause</h1>\n      <p>Willkommen in unserem Schülercafé – schön, dass du da bist!</p>\n    </header>\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n    <main>\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> unserer Schule geführt.</p>\n      <p>Bei uns wird jede Pause zu einer <em>kleinen Auszeit</em>.</p>\n      <hr>\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Laugenbrezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>Such dir etwas an der Theke aus.</li>\n        <li>Bezahle an der Kasse.</li>\n        <li>Genieße deine Pause!</li>\n      </ol>\n      <p>Mehr über Schülerfirmen findest du auf <a href=\"https://www.example.com\">dieser Beispielseite</a>.</p>\n    </main>\n    <footer>\n      <p>Café Pause · Musterstraße 12<br>74072 Heilbronn</p>\n      <p id=\"oeffnungszeiten\">Öffnungszeiten: Montag bis Freitag, 9:00 bis 15:00 Uhr</p>\n      <p class=\"hinweis\">Fiktiver Betrieb für Übungszwecke – hier gibt es nichts Echtes zu kaufen.</p>\n    </footer>\n  </body>\n</html>\n",
-        "css": "/* style.css – das gemeinsame Stylesheet des Café Pause */\n"
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n}\n\nh1 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n"
       },
-      "editable": ["css"],
-      "project": { "page": "index", "save": ["css"] },
+      "editable": [
+        "css"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "css"
+        ]
+      },
       "hints": [
-        "Zwei Regeln: eine für body, eine für h1. Der Selektor steht ohne spitze Klammern, dahinter geschweifte Klammern.",
-        "In der body-Regel stehen zwei Deklarationen untereinander: background-color: #f7f1e3; und color: #2c2016; – jede endet mit Semikolon.",
-        "```css\n/* style.css – das gemeinsame Stylesheet des Café Pause */\nbody {\n  background-color: #f7f1e3;\n  color: #2c2016;\n}\nh1 {\n  color: #5a3e2b;\n}\n```"
+        "Zwei neue Regeln: h2 mit color (zwischen h1 und a), table mit background-color (nach footer).",
+        "Die h2-Regel sieht aus wie die h1-Regel, nur mit dem Selektor h2. Die table-Regel:\n```css\ntable {\n  background-color: white;\n}\n```",
+        "```css\nbody {\n  color: #2c2016;\n  background-color: #f7f1e3;\n}\n\nh1 {\n  color: #5a3e2b;\n}\n\nh2 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n```"
       ],
       "solution": {
-        "css": "/* style.css – das gemeinsame Stylesheet des Café Pause */\nbody {\n  background-color: #f7f1e3;\n  color: #2c2016;\n}\nh1 {\n  color: #5a3e2b;\n}\n"
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n}\n\nh1 {\n  color: #5a3e2b;\n}\n\nh2 {\n  color: #5a3e2b;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n"
       },
       "tests": [
-        { "type": "style", "selector": "body", "prop": "background-color", "expected": "#f7f1e3", "label": "Die Seite hat den cremefarbenen Hintergrund #f7f1e3" },
-        { "type": "style", "selector": "body", "prop": "color", "expected": "#2c2016", "label": "Der Text hat die Farbe #2c2016" },
-        { "type": "style", "selector": "h1", "prop": "color", "expected": "#5a3e2b", "label": "Die Überschrift „Café Pause“ ist kaffeebraun (#5a3e2b)" }
+        {
+          "type": "style",
+          "selector": "h2",
+          "prop": "color",
+          "expected": "#5a3e2b",
+          "label": "Die Überschriften zweiter Stufe sind kaffeebraun (#5a3e2b)"
+        },
+        {
+          "type": "style",
+          "selector": "table",
+          "prop": "background-color",
+          "expected": "white",
+          "label": "Die Öffnungszeiten-Tabelle hat einen weißen Hintergrund"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "h1\\s*\\{[^}]*\\}\\s*h2\\s*\\{",
+          "label": "Die h2-Regel folgt direkt auf die h1-Regel"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "table\\s*\\{[^}]*\\}\\s*$",
+          "label": "Die table-Regel steht ganz unten"
+        },
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "background-color",
+          "expected": "#f7f1e3",
+          "label": "Kontrolle: Der Creme-Hintergrund ist noch da"
+        },
+        {
+          "type": "style",
+          "selector": "footer",
+          "prop": "background-color",
+          "expected": "#efe6d4",
+          "label": "Kontrolle: Der Fußbereich bleibt beige"
+        },
+        {
+          "type": "style",
+          "selector": "nav a",
+          "prop": "color",
+          "expected": "#e08a2e",
+          "label": "Kontrolle: Die Links bleiben orange"
+        }
       ]
     }
   ]

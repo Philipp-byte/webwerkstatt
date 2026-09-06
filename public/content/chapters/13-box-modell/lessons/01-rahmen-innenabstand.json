@@ -22,7 +22,9 @@
       "text": "Die Spieler-Karte soll einen 4px dicken, **gestrichelten**, blauen Rahmen bekommen. Welche Linienart fehlt?",
       "template": "border: 4px ___ #2f6fdb;",
       "solution": "dashed",
-      "accept": ["dashed"],
+      "accept": [
+        "dashed"
+      ],
       "hint": "Gestrichelt heißt auf Englisch dashed – gepunktet wäre dotted."
     },
     {
@@ -48,12 +50,14 @@
     },
     {
       "type": "code",
-      "task": "Gestalte die Spieler-Karte:\n\n1. `border: 3px solid #2f6fdb;`\n2. `padding: 20px;`",
+      "task": "**Gestalte** die Spieler-Karte (Klasse `karte`): ein 3 Pixel dicker, durchgezogener Rahmen in `#2f6fdb` und rundum 20 Pixel Innenabstand.",
       "starter": {
         "html": "<div class=\"karte\">\n  <h2>Nr. 7 · Samir</h2>\n  <p>Sturm · 9 Tore · 4 Vorlagen</p>\n</div>\n",
         "css": ".karte {\n  /* Rahmen und Innenabstand hier */\n}\n"
       },
-      "editable": ["css"],
+      "editable": [
+        "css"
+      ],
       "hints": [
         "border braucht drei Werte: Dicke, Art, Farbe – z. B. 3px solid #2f6fdb.",
         "padding: 20px; sorgt für Luft zwischen Text und Rahmen.",
@@ -63,10 +67,107 @@
         "css": ".karte {\n  border: 3px solid #2f6fdb;\n  padding: 20px;\n}\n"
       },
       "tests": [
-        { "type": "style", "selector": ".karte", "prop": "border-top-width", "expected": "3px", "label": "Der Rahmen ist 3px dick" },
-        { "type": "style", "selector": ".karte", "prop": "border-top-style", "expected": "solid", "label": "Der Rahmen ist eine durchgezogene Linie" },
-        { "type": "style", "selector": ".karte", "prop": "border-top-color", "expected": "#2f6fdb", "label": "Der Rahmen hat die Farbe #2f6fdb" },
-        { "type": "style", "selector": ".karte", "prop": "padding-top", "expected": "20px", "label": "Der Innenabstand beträgt 20px" }
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "border-top-width",
+          "expected": "3px",
+          "label": "Der Rahmen ist 3px dick"
+        },
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "border-top-style",
+          "expected": "solid",
+          "label": "Der Rahmen ist eine durchgezogene Linie"
+        },
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "border-top-color",
+          "expected": "#2f6fdb",
+          "label": "Der Rahmen hat die Farbe #2f6fdb"
+        },
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "padding-top",
+          "expected": "20px",
+          "label": "Der Innenabstand beträgt 20px"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Der Tipp-Absatz auf der Startseite ist schon golden und fett – jetzt wird er zur richtigen Hinweis-Box: mit orangefarbenem Rahmen und Luft zwischen Text und Rahmen.\n\nCSS-Tab: dein Stylesheet aus Kapitel 12. HTML gesperrt 🔒. Du ergänzt nur die Regel für die Klasse `hinweis`."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** die Regel für die Klasse `hinweis`: Der Tipp-Absatz bekommt einen 2 Pixel dicken, durchgezogenen Rahmen in Akzent-Orange `#e08a2e` und rundum 12 Pixel Innenabstand. Die neuen Zeilen kommen ans Ende der Regel.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Café Pause</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <!-- Startseite vom Café Pause -->\n    <header>\n      <h1 id=\"oben\">Café Pause</h1>\n      <p>Willkommen im Café Pause – dem Schülercafé an unserer Schule.</p>\n      <img src=\"cafe-theke.svg\" alt=\"Die Theke vom Café Pause\">\n    </header>\n\n    <nav>\n      <a href=\"speisekarte.html\">Speisekarte</a>\n      <a href=\"galerie.html\">Galerie</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n      <a href=\"#angebote\">Direkt zu den Angeboten</a>\n    </nav>\n\n    <main>\n      <p>Wir haben Montag bis Freitag von 9:00 bis 15:00 Uhr geöffnet.</p>\n\n      <h2>Über uns</h2>\n      <p>Das Café Pause wird von <strong>Schülerinnen und Schülern</strong> geführt.</p>\n      <p>Alles, was wir verkaufen, ist <em>selbst gemacht</em>.</p>\n\n      <h2>Unser Team</h2>\n      <p>Sechs Leute aus der Schülerfirma stehen <em>jeden Tag</em> hinter der Theke.</p>\n\n      <h2 id=\"angebote\">Das gibt es bei uns</h2>\n      <ul>\n        <li>Getränke\n          <ul>\n            <li>Kakao</li>\n            <li>Tee</li>\n            <li>Apfelschorle</li>\n          </ul>\n        </li>\n        <li>Snacks\n          <ul>\n            <li>Brezel</li>\n            <li>Muffin</li>\n          </ul>\n        </li>\n      </ul>\n\n      <h2>So bestellst du</h2>\n      <ol>\n        <li>An der Theke anstellen</li>\n        <li>Bestellung sagen</li>\n        <li>Bezahlen und genießen</li>\n      </ol>\n      <p class=\"hinweis\"><strong>Tipp:</strong> In der großen Pause ist es voll –<br>komm lieber etwas früher.</p>\n\n      <h2 id=\"oeffnungszeiten\">Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Montag bis Freitag</td>\n          <td>9:00 bis 15:00 Uhr</td>\n        </tr>\n      </table>\n\n      <h2>Mehr über uns</h2>\n      <ul>\n        <li><a href=\"https://www.example.com\">Unsere Schule</a></li>\n        <li><a href=\"galerie.html\">Fotos aus dem Café</a></li>\n      </ul>\n      <p><a href=\"#oben\">Nach oben</a></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "project": {
+        "page": "index",
+        "save": [
+          "css"
+        ]
+      },
+      "hints": [
+        "Beide Deklarationen kommen in die bestehende .hinweis-Regel – vor die schließende Klammer, nach font-weight.",
+        "border braucht drei Werte in einer Zeile: Dicke, Linienart solid, Farbe. Dann padding mit 12px.",
+        "```css\nbody {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n}\n```"
+      ],
+      "solution": {
+        "css": "body {\n  color: #2c2016;\n  background-color: #f7f1e3;\n  font-family: 'Segoe UI', Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #5a3e2b;\n  font-size: 40px;\n  text-align: center;\n}\n\nh2 {\n  color: #5a3e2b;\n  font-size: 26px;\n}\n\na {\n  color: #e08a2e;\n}\n\nfooter {\n  background-color: #efe6d4;\n}\n\ntable {\n  background-color: white;\n}\n\n.hinweis {\n  color: #b8860b;\n  font-weight: bold;\n  border: 2px solid #e08a2e;\n  padding: 12px;\n}\n\n#angebote, #oeffnungszeiten {\n  color: #e08a2e;\n}\n\nnav a {\n  color: #5a3e2b;\n  text-decoration: none;\n}\n\nfooter p {\n  color: #5b6b7c;\n}\n\n.angebot {\n  color: #1a9e5c;\n  font-weight: bold;\n}\n\nth {\n  text-align: left;\n  color: #5a3e2b;\n}\n\nnav {\n  text-align: center;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".hinweis",
+          "prop": "border-top-width",
+          "expected": "2px",
+          "label": "Der Rahmen der Hinweis-Box ist 2px dick"
+        },
+        {
+          "type": "style",
+          "selector": ".hinweis",
+          "prop": "border-top-style",
+          "expected": "solid",
+          "label": "Der Rahmen ist eine durchgezogene Linie"
+        },
+        {
+          "type": "style",
+          "selector": ".hinweis",
+          "prop": "border-top-color",
+          "expected": "#e08a2e",
+          "label": "Der Rahmen ist orange (#e08a2e)"
+        },
+        {
+          "type": "style",
+          "selector": ".hinweis",
+          "prop": "padding-top",
+          "expected": "12px",
+          "label": "Der Innenabstand beträgt 12px"
+        },
+        {
+          "type": "style",
+          "selector": "main p:not(.hinweis)",
+          "prop": "border-top-style",
+          "expected": "none",
+          "label": "Die anderen Absätze bleiben ohne Rahmen"
+        },
+        {
+          "type": "style",
+          "selector": ".hinweis",
+          "prop": "color",
+          "expected": "#b8860b",
+          "label": "Die Goldfarbe des Tipp-Absatzes ist noch da"
+        }
       ]
     }
   ]

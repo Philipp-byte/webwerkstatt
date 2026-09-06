@@ -23,32 +23,49 @@
       "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><text x=\"10\" y=\"18\" fill=\"#1d2733\" font-size=\"13\">Impressum – die Bausteine</text><rect x=\"10\" y=\"30\" width=\"180\" height=\"30\" rx=\"4\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"20\" y=\"49\" fill=\"#1d2733\">1  Name des Betreibers</text><rect x=\"10\" y=\"66\" width=\"180\" height=\"30\" rx=\"4\" fill=\"#eef2f8\" stroke=\"#e0632e\" stroke-width=\"2\"/><text x=\"20\" y=\"85\" fill=\"#1d2733\">2  Anschrift (echte Adresse)</text><rect x=\"10\" y=\"102\" width=\"180\" height=\"30\" rx=\"4\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"20\" y=\"121\" fill=\"#1d2733\">3  Kontakt (E-Mail)</text><rect x=\"212\" y=\"30\" width=\"98\" height=\"102\" fill=\"none\" stroke=\"#5b6b7c\"/><text x=\"261\" y=\"60\" text-anchor=\"middle\" fill=\"#5b6b7c\">jede Seite</text><rect x=\"212\" y=\"108\" width=\"98\" height=\"24\" fill=\"#eef2f8\" stroke=\"#5b6b7c\"/><text x=\"261\" y=\"124\" text-anchor=\"middle\" fill=\"#2f6fdb\" text-decoration=\"underline\">Impressum</text><text x=\"261\" y=\"150\" text-anchor=\"middle\" fill=\"#5b6b7c\">Link im Footer</text></svg>"
     },
     {
-      "type": "fill",
-      "text": "Vervollständige die Merkliste fürs Impressum:",
-      "template": "Ins Impressum gehören: Name, ___ und Kontakt (z. B. E-Mail) des Betreibers.",
-      "solution": "Anschrift",
-      "accept": ["Anschrift", "anschrift", "Adresse", "adresse", "Postadresse", "postadresse"],
-      "hint": "Gemeint ist die echte Post-Adresse – ein Postfach reicht nicht."
-    },
-    {
       "type": "code",
-      "task": "Der Footer deiner Clan-Seite hat noch keinen Impressum-Link. Ergänze im `<footer>` einen Link:\n\n1. Linktext: `Impressum`\n2. Ziel: `impressum.html`",
+      "task": "**Erstelle** im Footer deiner Clan-Seite einen Link mit dem Text „Impressum“, der zur Datei impressum.html führt. Der Kontakt-Absatz darüber bleibt.",
       "starter": {
         "html": "<header>\n  <h1>Clan Nordlicht</h1>\n</header>\n<main>\n  <p>Wir spielen jeden Freitag ab 19 Uhr – neue Mitglieder willkommen!</p>\n</main>\n<footer>\n  <p>Clan Nordlicht · Kontakt: team@nordlicht-beispiel.de</p>\n  <!-- Impressum-Link hier -->\n</footer>\n"
       },
-      "editable": ["html"],
+      "editable": [
+        "html"
+      ],
       "hints": [
-        "Ein Link ist ein <a>-Element mit href-Attribut – das kennst du aus Kapitel 5.",
-        "So sieht die Zeile aus: <a href=\"impressum.html\">Impressum</a> – sie kommt in den <footer>.",
+        "Ein Link ist ein a-Element mit href-Attribut – das kennst du aus Kapitel 5. Er kommt an die Stelle des Kommentars.",
+        "So sieht die Zeile aus: <a href=\"impressum.html\">Impressum</a>",
         "```html\n<header>\n  <h1>Clan Nordlicht</h1>\n</header>\n<main>\n  <p>Wir spielen jeden Freitag ab 19 Uhr – neue Mitglieder willkommen!</p>\n</main>\n<footer>\n  <p>Clan Nordlicht · Kontakt: team@nordlicht-beispiel.de</p>\n  <a href=\"impressum.html\">Impressum</a>\n</footer>\n```"
       ],
       "solution": {
         "html": "<header>\n  <h1>Clan Nordlicht</h1>\n</header>\n<main>\n  <p>Wir spielen jeden Freitag ab 19 Uhr – neue Mitglieder willkommen!</p>\n</main>\n<footer>\n  <p>Clan Nordlicht · Kontakt: team@nordlicht-beispiel.de</p>\n  <a href=\"impressum.html\">Impressum</a>\n</footer>\n"
       },
       "tests": [
-        { "type": "selector", "selector": "footer a", "count": 1, "label": "Im Footer steht genau ein Link" },
-        { "type": "attr", "selector": "footer a", "attr": "href", "expected": "impressum.html", "label": "Der Link führt zu impressum.html" },
-        { "type": "text", "selector": "footer a", "expected": "Impressum", "label": "Der Linktext lautet „Impressum“" }
+        {
+          "type": "selector",
+          "selector": "footer a",
+          "count": 1,
+          "label": "Im Footer steht genau ein Link"
+        },
+        {
+          "type": "attr",
+          "selector": "footer a",
+          "attr": "href",
+          "expected": "impressum.html",
+          "label": "Der Link führt zu impressum.html"
+        },
+        {
+          "type": "text",
+          "selector": "footer a",
+          "expected": "Impressum",
+          "label": "Der Linktext lautet „Impressum“"
+        },
+        {
+          "type": "text",
+          "selector": "footer p",
+          "expected": "Clan Nordlicht",
+          "contains": true,
+          "label": "Der Kontakt-Absatz im Footer ist noch da"
+        }
       ]
     },
     {
@@ -75,8 +92,126 @@
       "text": "Wofür steht die Abkürzung DSGVO? Vervollständige:",
       "template": "DSGVO = Datenschutz-___",
       "solution": "Grundverordnung",
-      "accept": ["Grundverordnung", "grundverordnung"],
+      "accept": [
+        "Grundverordnung",
+        "grundverordnung"
+      ],
       "hint": "Es ist die grundlegende Verordnung der EU zum Datenschutz – ein zusammengesetztes Wort mit „Grund…“."
+    },
+    {
+      "type": "explain",
+      "text": "**Ab ins Café Pause!** Die Website bekommt ihre fünfte Seite: das Impressum mit Datenschutzerklärung. Die Angaben (alle ausgedacht):\n\n- Betreiber: Schülerfirma Café Pause, Musterstraße 12, 74072 Heilbronn\n- E-Mail: hallo@cafe-pause-beispiel.de\n- Datenschutz: Daten aus dem Kontaktformular nutzen wir nur, um die Anfrage zu beantworten.\n\nGliederung wie auf den anderen Seiten: header, main, footer. Das Grundgerüst schreibst du selbst (wie in Kapitel 2)."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** die Seite impressum.html:\n\n1. Grundgerüst (Deutsch, Zeichensatz, Titel „Impressum – Café Pause“)\n2. header: Hauptüberschrift „Impressum“ und Rück-Link „Zurück zur Startseite“\n3. main: Überschrift „Angaben zum Betreiber“ mit Anschrift und E-Mail, Überschrift „Datenschutzerklärung“ mit einem Satz, dann fett „Fiktiver Betrieb für Übungszwecke.“\n4. footer mit der Adresse",
+      "starter": {
+        "html": "<!-- impressum.html – hier entsteht das Impressum vom Café Pause -->\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "project": {
+        "page": "impressum",
+        "save": [
+          "html"
+        ]
+      },
+      "hints": [
+        "Gerüst wie bei galerie.html und kontakt.html: DOCTYPE, html mit Sprachangabe, head mit Zeichensatz und Titel, body mit header, main und footer. Im main stehen zwei h2-Überschriften.",
+        "Kopf und header:\n\n```html\n<head>\n  <meta charset=\"utf-8\">\n  <title>Impressum – Café Pause</title>\n</head>\n<body>\n  <header>\n    <h1>Impressum</h1>\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n  </header>\n```\n\nDer fette Hinweis: <p><strong>Fiktiver Betrieb für Übungszwecke.</strong></p>",
+        "```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Impressum – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Impressum</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <h2>Angaben zum Betreiber</h2>\n      <p>Schülerfirma Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p>E-Mail: hallo@cafe-pause-beispiel.de</p>\n\n      <h2>Datenschutzerklärung</h2>\n      <p>Über das Kontaktformular gesendete Daten nutzen wir nur, um deine Anfrage zu beantworten.</p>\n\n      <p><strong>Fiktiver Betrieb für Übungszwecke.</strong></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n```"
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Impressum – Café Pause</title>\n  </head>\n  <body>\n    <header>\n      <h1>Impressum</h1>\n      <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n    </header>\n\n    <main>\n      <h2>Angaben zum Betreiber</h2>\n      <p>Schülerfirma Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n      <p>E-Mail: hallo@cafe-pause-beispiel.de</p>\n\n      <h2>Datenschutzerklärung</h2>\n      <p>Über das Kontaktformular gesendete Daten nutzen wir nur, um deine Anfrage zu beantworten.</p>\n\n      <p><strong>Fiktiver Betrieb für Übungszwecke.</strong></p>\n    </main>\n\n    <footer>\n      <p>Café Pause<br>Musterstraße 12<br>74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<!doctype\\s+html>",
+          "label": "Der DOCTYPE steht am Anfang"
+        },
+        {
+          "type": "attr",
+          "selector": "html",
+          "attr": "lang",
+          "expected": "de",
+          "label": "Die Seite ist als deutsch gekennzeichnet"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<meta\\s+charset=[\"']?utf-8",
+          "label": "Die Zeichensatz-Angabe utf-8 steht im Kopfbereich"
+        },
+        {
+          "type": "text",
+          "selector": "title",
+          "expected": "Impressum – Café Pause",
+          "label": "Der Seitentitel lautet „Impressum – Café Pause“"
+        },
+        {
+          "type": "text",
+          "selector": "header h1",
+          "expected": "Impressum",
+          "label": "Die Hauptüberschrift „Impressum“ steht im header"
+        },
+        {
+          "type": "attr",
+          "selector": "header a",
+          "attr": "href",
+          "expected": "index.html",
+          "label": "Der Rück-Link im header führt zur Startseite"
+        },
+        {
+          "type": "text",
+          "selector": "main h2",
+          "expected": "Angaben zum Betreiber",
+          "label": "Die erste Überschrift im main lautet „Angaben zum Betreiber“"
+        },
+        {
+          "type": "text",
+          "selector": "main",
+          "expected": "Schülerfirma Café Pause",
+          "contains": true,
+          "label": "Der Betreiber „Schülerfirma Café Pause“ ist genannt"
+        },
+        {
+          "type": "text",
+          "selector": "main",
+          "expected": "Musterstraße 12",
+          "contains": true,
+          "label": "Die Anschrift enthält „Musterstraße 12“"
+        },
+        {
+          "type": "text",
+          "selector": "main",
+          "expected": "hallo@cafe-pause-beispiel.de",
+          "contains": true,
+          "label": "Die E-Mail-Adresse ist angegeben"
+        },
+        {
+          "type": "text",
+          "selector": "main h2:nth-of-type(2)",
+          "expected": "Datenschutzerklärung",
+          "label": "Die zweite Überschrift lautet „Datenschutzerklärung“"
+        },
+        {
+          "type": "text",
+          "selector": "main strong",
+          "expected": "Fiktiver Betrieb für Übungszwecke",
+          "contains": true,
+          "label": "Der Fiktiv-Hinweis ist fett hervorgehoben"
+        },
+        {
+          "type": "text",
+          "selector": "footer p",
+          "expected": "74072 Heilbronn",
+          "contains": true,
+          "label": "Im footer steht die Adresse"
+        }
+      ]
     }
   ]
 }
