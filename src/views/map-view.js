@@ -60,7 +60,7 @@ function kulisse(fertigAnteil, bloecke) {
     <path d="M0 600 C 200 570, 400 620, 600 590 S 900 560, 1000 600 L1000 640 L0 640Z" fill="#101a2e"/>
     <path d="M0 604 C 200 574, 400 624, 600 594 S 900 564, 1000 604" fill="none" stroke="#1c2d4d" stroke-width="2"/>
     <!-- Hauptbühne (Block HTML) -->
-    <g transform="translate(410 200)" opacity="${bLicht}">
+    <g transform="translate(410 160)" opacity="${bLicht}">
       <path d="M0 40 L20 0 H220 L240 40 Z" fill="#1f2438"/>
       <rect x="0" y="40" width="240" height="70" fill="#181c2c"/>
       <rect x="18" y="52" width="204" height="46" fill="#0b0d16"/>
@@ -75,7 +75,7 @@ function kulisse(fertigAnteil, bloecke) {
       ${bloecke.css > 0 ? `<path d="M7 -6 L120 90 L60 130 Z" fill="#5fd6ff" opacity="0.12"/>` : ''}
     </g>
     <!-- Riesenrad -->
-    <g transform="translate(900 420)" opacity="${0.35 + fertigAnteil * 0.65}">
+    <g transform="translate(930 465)" opacity="${0.35 + fertigAnteil * 0.65}">
       <line x1="-30" y1="80" x2="0" y2="0" stroke="#2a3150" stroke-width="4"/><line x1="30" y1="80" x2="0" y2="0" stroke="#2a3150" stroke-width="4"/>
       <circle cx="0" cy="0" r="62" fill="none" stroke="#2f3756" stroke-width="3"/>
       ${Array.from({ length: 8 }, (_, i) => {
@@ -86,12 +86,12 @@ function kulisse(fertigAnteil, bloecke) {
       }).join('')}
     </g>
     <!-- Foodtrucks -->
-    <g transform="translate(300 420)" opacity="0.9">
+    <g transform="translate(300 385)" opacity="0.9">
       <rect x="0" y="10" width="70" height="34" rx="6" fill="#20263c"/><rect x="50" y="18" width="24" height="26" rx="4" fill="#2a3150"/>
       <circle cx="16" cy="48" r="6" fill="#0b0d16" stroke="#2f3756" stroke-width="2"/><circle cx="56" cy="48" r="6" fill="#0b0d16" stroke="#2f3756" stroke-width="2"/>
       <rect x="8" y="16" width="34" height="14" fill="#ffc857" opacity="${0.5 + dLicht * 0.5}"/>
     </g>
-    <g transform="translate(560 430)" opacity="0.9">
+    <g transform="translate(560 395)" opacity="0.9">
       <path d="M0 40 L30 0 L60 40 Z" fill="#20263c"/><path d="M8 40 L30 12 L52 40 Z" fill="#ff8a3d" opacity="${0.2 + dLicht * 0.6}"/>
     </g>
     <!-- Lichterketten -->
@@ -130,7 +130,7 @@ export async function renderMap(app) {
       const fuellung = st.abgenommen ? farbe : frei ? '#232a40' : '#151928';
       const rand = st.abgenommen ? '#fff' : frei ? farbe : '#2a3150';
       const symbol = frei ? k.icon : '🔒';
-      const oben = y < 200 || (y > 280 && y < 400);
+      const oben = y < 200 || y > 400;
       const ty = oben ? y - 34 : y + 46;
       return `<g class="station ${klasse}" data-id="${k.id}" tabindex="0" role="link" aria-label="Station ${i + 1}: ${escapeHtml(k.title)}">
         ${st.abgenommen || i === naechste ? `<circle cx="${x}" cy="${y}" r="34" fill="url(#glow-warm)"/>` : ''}
