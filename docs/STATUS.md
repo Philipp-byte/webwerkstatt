@@ -12,9 +12,11 @@ Zuletzt aktualisiert: 27.09.2026
 
 - **Kapitel 02–18:** alle geschrieben (je Kapitel `content-src/kapitel-NN.mjs`), Validator überall 0 Fehler. Gesamt: 86 Lektionen, 889 Schritte, 184 Code-Aufgaben + 82 Etappen (davon 42 Fehlerjagden), 340 Pool-Fragen, 18 Abnahmen mit 198 Aufgaben (35 Code).
 
+- **QA aller 18 Kapitel bestanden** (27.09.2026): Validator 0 Fehler; Browser-Test aller 341 Code-Aufgaben inkl. 82 Etappen (Lösung besteht, Starter fällt durch): 0 Probleme; jede der 86 Lektionen und alle 18 Abnahmen automatisch durchgespielt (3 Sterne bzw. 100 %), ohne Seitenfehler.
+
 ## In Arbeit
 
-- **QA je Kapitel** (Browser-Test aller Code-Aufgaben, Durchspielen jeder Lektion und Abnahme) läuft; Ergebnisse werden hier nachgetragen.
+- nichts – nächster Schritt ist Philipps Rückmeldung (siehe unten).
 
 ## Offen / wartet auf Philipp
 
