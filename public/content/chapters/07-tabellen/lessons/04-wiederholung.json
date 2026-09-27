@@ -1,0 +1,204 @@
+{
+  "id": "04-wiederholung",
+  "title": "Wiederholung: Timetable-Check",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Timetable-Check: Tabellen, Kopfzeilen und verbundene Zellen – dazu Bilder von der Foto-Wand, Links vom Wegweiser und Text-Elemente vom Textbanner. Am Ende bekommt die Programm-Seite den Foodcourt: Bild, Tabelle und Link in einem Abschnitt."
+    },
+    {
+      "type": "quiz",
+      "question": "Wozu dient der **Alternativtext** eines Bildes?",
+      "options": [
+        "Er wird angezeigt oder vorgelesen, wenn das Bild nicht zu sehen ist",
+        "Er steht als Bildunterschrift sichtbar unter dem Bild",
+        "Er legt fest, wie groß das Bild angezeigt wird"
+      ],
+      "correct": 0,
+      "explanation": "Der Alternativtext ersetzt das Bild, wenn es nicht lädt, und wird von Vorleseprogrammen gesprochen. Sichtbare Unterschriften sind Sache von figcaption."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter der Überschrift zuerst das Bild pizza.svg mit dem Alternativtext „Eine Pizza Margherita“ und darunter eine Tabelle: Kopfzeile Platz und Snack, dann die Zeilen 1 mit Pizza und 2 mit Waffel.",
+      "starter": {
+        "html": "<h2>Snack-Ranking</h2>\n<!-- Bild und Tabelle -->\n"
+      },
+      "hints": [
+        "Ein Bild ist ein Leerelement mit Quelle und Alternativtext; danach kommt die Tabelle mit Kopfzeile.",
+        "Bild-Muster aus einem anderen Kontext: `<img src=\"katze.svg\" alt=\"Eine schlafende Katze\">`.",
+        "Reihenfolge: Überschrift, Bild, Tabelle mit einer Kopfzeile (zwei `<th>`) und zwei Datenzeilen (je zwei `<td>`)."
+      ],
+      "solution": {
+        "html": "<h2>Snack-Ranking</h2>\n<!-- Bild und Tabelle -->\n<img src=\"pizza.svg\" alt=\"Eine Pizza Margherita\">\n<table>\n  <tr>\n    <th>Platz</th>\n    <th>Snack</th>\n  </tr>\n  <tr>\n    <td>1</td>\n    <td>Pizza</td>\n  </tr>\n  <tr>\n    <td>2</td>\n    <td>Waffel</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "src",
+          "expected": "pizza.svg",
+          "label": "Das Bild pizza.svg ist eingebunden"
+        },
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "alt",
+          "expected": "Eine Pizza Margherita",
+          "label": "Das Bild hat den Alternativtext"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr:first-child th",
+          "count": 2,
+          "label": "Die Kopfzeile hat zwei Kopfzellen"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr",
+          "count": 3,
+          "label": "Die Tabelle hat drei Zeilen"
+        },
+        {
+          "type": "text",
+          "selector": "table tr:last-child td:last-child",
+          "expected": "Waffel",
+          "label": "Platz 2 ist die Waffel"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "h2",
+            "img",
+            "table"
+          ],
+          "label": "Reihenfolge: Überschrift, Bild, Tabelle"
+        }
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige den Link zum Fahrplan: Er soll sich in einem neuen Tab öffnen.",
+      "template": "<a ___=\"https://www.example.com\" ___=\"_blank\">Fahrplan</a>",
+      "accept": [
+        [
+          "href"
+        ],
+        [
+          "target"
+        ]
+      ],
+      "hint": "Erst das Attribut mit der Adresse, dann das Attribut für den neuen Tab."
+    },
+    {
+      "type": "order",
+      "text": "Sortiere den Kiosk-Abschnitt: Überschrift, Absatz, Trennlinie, dann die Tabelle – Kopfzeile zuerst.",
+      "lines": [
+        "<h2>Kiosk</h2>",
+        "<p>Neu: <strong>Pizza &amp; Pasta</strong></p>",
+        "<hr>",
+        "<table>",
+        "<tr><th>Snack</th><th>Preis</th></tr>",
+        "<tr><td>Pizza</td><td>2,50 €</td></tr>",
+        "</table>"
+      ],
+      "explanation": "Trennlinie und Bild sind Leerelemente ohne schließenden Tag; die Tabelle beginnt mit der Kopfzeile."
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Attribute und Elemente ihrer Bedeutung zu.",
+      "pairs": [
+        [
+          "`alt`",
+          "Alternativtext eines Bildes"
+        ],
+        [
+          "`href`",
+          "Adresse, zu der ein Link führt"
+        ],
+        [
+          "`<figcaption>`",
+          "Bildunterschrift im Bild-Block"
+        ],
+        [
+          "`colspan`",
+          "verbindet Zellen über mehrere Spalten"
+        ],
+        [
+          "`mailto:`",
+          "Anfang einer E-Mail-Adresse im Link"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Korrigiere** die Highscore-Seite: Das Bild vom Controller wird nicht angezeigt, und die Kopfzeile der Tabelle sieht aus wie eine normale Zeile – nicht fett.",
+      "starter": {
+        "html": "<h2>Highscore</h2>\n<img scr=\"controller.svg\" alt=\"Ein Gamecontroller\">\n<table>\n  <tr>\n    <td>Platz</td>\n    <td>Name</td>\n    <td>Punkte</td>\n  </tr>\n  <tr>\n    <td>1</td>\n    <td>Lena</td>\n    <td>9870</td>\n  </tr>\n  <tr>\n    <td>2</td>\n    <td>Deniz</td>\n    <td>8450</td>\n  </tr>\n</table>\n"
+      },
+      "hints": [
+        "Zwei Fehler: ein vertipptes Attribut beim Bild und die falschen Zellen-Tags in der ersten Zeile.",
+        "Das Bild braucht seine Quelle im Attribut src – vergleiche Buchstabe für Buchstabe.",
+        "Kopfzellen haben einen eigenen Tag, der mit h endet – in der ersten Zeile, alle drei."
+      ],
+      "solution": {
+        "html": "<h2>Highscore</h2>\n<img src=\"controller.svg\" alt=\"Ein Gamecontroller\">\n<table>\n  <tr>\n    <th>Platz</th>\n    <th>Name</th>\n    <th>Punkte</th>\n  </tr>\n  <tr>\n    <td>1</td>\n    <td>Lena</td>\n    <td>9870</td>\n  </tr>\n  <tr>\n    <td>2</td>\n    <td>Deniz</td>\n    <td>8450</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "src",
+          "expected": "controller.svg",
+          "label": "Das Bild controller.svg wird angezeigt"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr:first-child th",
+          "count": 3,
+          "label": "Die erste Zeile besteht aus drei Kopfzellen"
+        },
+        {
+          "type": "text",
+          "selector": "table th:first-child",
+          "expected": "Platz",
+          "label": "Die erste Kopfzelle lautet „Platz“"
+        },
+        {
+          "type": "selector",
+          "selector": "table td",
+          "count": 6,
+          "label": "Die beiden Datenzeilen sind unverändert"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr",
+          "count": 3,
+          "label": "Die Tabelle hat drei Zeilen"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Ein Link soll beim Klick das E-Mail-Programm öffnen. Womit beginnt seine Adresse?",
+      "options": [
+        "`mailto:`",
+        "`https://`",
+        "`email:`"
+      ],
+      "correct": 0,
+      "explanation": "Mit `mailto:` und der Adresse dahinter öffnet der Browser das Mailprogramm – `https://` wäre eine Website."
+    },
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Foodcourt auf die Programm-Seite! Ich will das Foodtruck-Bild, darunter die drei Trucks mit ihrem Highlight als Tabelle – mit Kopfzeile – und einen Link zurück zur Startseite, wo alle Trucks stehen.\n\nAlles drei kennt ihr schon; jetzt kombiniert ihr es in einem Abschnitt ganz unten auf der Seite. Und das &-Zeichen bei Pizza & Mehr bitte so, dass es der Browser versteht."
+    },
+    {
+      "type": "code",
+      "etappe": "07-tabellen/04-wiederholung"
+    }
+  ]
+}

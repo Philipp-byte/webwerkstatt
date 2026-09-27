@@ -1,0 +1,221 @@
+{
+  "id": "03-hervorheben-und-kommentare",
+  "title": "Hervorheben & Kommentare",
+  "konzepte": [
+    "html.strong-em",
+    "html.kommentar",
+    "html.entity"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Sam: „Das Wort *kostenlos* muss knallen!“ Fett machen – aber wie?\n\nHTML markiert **Bedeutung**, nicht Aussehen. Zwei Elemente:\n\n- `<strong>` – **wichtig**. Der Browser zeigt es fett.\n- `<em>` – **betont**, wie beim Sprechen (*emphasis*). Der Browser zeigt es kursiv.\n\nWie es am Ende aussieht, bestimmt später CSS. Eine Vorlese-Software liest beide Elemente hörbar anders vor.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"22\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">HTML sagt, was es bedeutet</text><rect x=\"8\" y=\"36\" width=\"184\" height=\"30\" rx=\"6\" fill=\"#1b2135\"/><text x=\"14\" y=\"56\" fill=\"#ff7a45\" font-family=\"monospace\">&lt;strong&gt;wichtig&lt;/strong&gt;</text><path d=\"M198 51 H220\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"228\" y=\"56\" fill=\"#eef2ff\" font-weight=\"bold\" font-size=\"14\">wichtig</text><text x=\"228\" y=\"72\" fill=\"#38c7ff\">zeigt fett</text><rect x=\"8\" y=\"88\" width=\"184\" height=\"30\" rx=\"6\" fill=\"#1b2135\"/><text x=\"14\" y=\"108\" fill=\"#ff7a45\" font-family=\"monospace\">&lt;em&gt;betont&lt;/em&gt;</text><path d=\"M198 103 H220\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"228\" y=\"108\" fill=\"#eef2ff\" font-style=\"italic\" font-size=\"14\">betont</text><text x=\"228\" y=\"124\" fill=\"#38c7ff\">zeigt kursiv</text><text x=\"160\" y=\"150\" text-anchor=\"middle\" fill=\"#4ade80\">Aussehen ändert später CSS</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "**Tausche** im zweiten Absatz die beiden Elemente: „ausverkauft“ bekommt `<em>`, „fast“ bekommt `<strong>`. Beobachte, wie Fett und Kursiv wechseln – und überleg, welche Version die Bedeutung besser trifft.",
+      "html": "<h1>Sneaker-Drop am Samstag</h1>\n<p>Um 10 Uhr öffnen wir die Türen.</p>\n<p>Die Größe 42 ist <strong>ausverkauft</strong>, 43 ist <em>fast</em> weg.</p>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Auf einer Ticket-Seite steht: „Der Eintritt ist frei.“ Das Wort „frei“ ist die wichtigste Info. Welches Element?",
+      "options": [
+        "`<strong>` – es bedeutet: wichtig",
+        "`<em>` – es bedeutet: betont wie beim Sprechen",
+        "`<h6>` – die kleinste Überschrift",
+        "Keins – Großbuchstaben reichen"
+      ],
+      "correct": 0,
+      "explanation": "Wichtige Information ist `<strong>`. `<em>` betont ein Wort wie beim Sprechen, eine Überschrift ist es nicht – und GROSSBUCHSTABEN tragen für den Browser keine Bedeutung."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** den Absatz: Das Wort „kostenlos“ wird als wichtig markiert (stark betont).",
+      "starter": {
+        "html": "<h1>Fitness-Studio Neckarblick</h1>\n<p>Das Probetraining ist kostenlos – einfach vorbeikommen.</p>\n"
+      },
+      "hints": [
+        "Für wichtige Wörter gibt es ein eigenes Element – es zeigt Bedeutung, der Browser macht es fett.",
+        "Das Element wird um das Wort herumgelegt, mitten im Absatz – wie `<em>fast</em>` im Beispiel, nur mit dem Element für „wichtig“.",
+        "Öffnender Tag direkt vor dem Wort, schließender direkt dahinter – der restliche Satz bleibt, wie er ist."
+      ],
+      "solution": {
+        "html": "<h1>Fitness-Studio Neckarblick</h1>\n<p>Das Probetraining ist <strong>kostenlos</strong> – einfach vorbeikommen.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "strong",
+          "expected": "kostenlos",
+          "label": "„kostenlos“ ist stark betont"
+        },
+        {
+          "type": "text",
+          "selector": "p",
+          "expected": "Das Probetraining ist kostenlos – einfach vorbeikommen.",
+          "label": "Der Satz bleibt lesbar"
+        },
+        {
+          "type": "selector",
+          "selector": "p strong",
+          "count": 1,
+          "label": "Die Betonung liegt im Absatz"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "jonas",
+      "text": "Manchmal willst du dir im Quelltext eine Notiz machen – für dich oder das Team. Dafür gibt es **Kommentare**: Der Browser zeigt sie nicht an. Auf der FUNKEN-Startseite steht schon einer.\n\n```html\n<!-- Preise noch mit Sam abstimmen -->\n<p>Tagesticket: 12 Euro</p>\n```\n\nEin Kommentar beginnt mit `<!--` und endet mit `-->`. Vergiss das Ende nicht – sonst schluckt der Kommentar alles, was danach kommt. Du kannst damit auch Code kurz „ausschalten“, ohne ihn zu löschen."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige den Kommentar, damit der Browser die Notiz nicht anzeigt.",
+      "template": "___ Fotos kommen nach dem Festival ___\n<h2>Galerie</h2>",
+      "accept": [
+        [
+          "<!--"
+        ],
+        [
+          "-->"
+        ]
+      ],
+      "hint": "Anfang: spitze Klammer, Ausrufezeichen, zwei Striche. Ende: zwei Striche und die schließende Klammer."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** die Studio-Seite:\n\n1. Im ersten Absatz wird „jeden Tag“ leicht betont.\n2. Über dem zweiten Absatz steht ein Kommentar mit dem Text „Preise prüfen“.",
+      "starter": {
+        "html": "<h1>Fitness-Studio Neckarblick</h1>\n<p>Geöffnet jeden Tag von 6 bis 23 Uhr.</p>\n<p>Monatsbeitrag: 29 Euro, Schüler zahlen 19 Euro.</p>\n"
+      },
+      "hints": [
+        "Leichte Betonung ist das zweite Element aus dem Beispiel – nicht das für „wichtig“.",
+        "Der Kommentar ist eine eigene Zeile zwischen den Absätzen; er beginnt mit `<!--` und endet mit `-->`.",
+        "Struktur: `<em>…</em>` um die zwei Wörter, darunter `<!-- … -->` mit dem Text aus der Aufgabe."
+      ],
+      "solution": {
+        "html": "<h1>Fitness-Studio Neckarblick</h1>\n<p>Geöffnet <em>jeden Tag</em> von 6 bis 23 Uhr.</p>\n<!-- Preise prüfen -->\n<p>Monatsbeitrag: 29 Euro, Schüler zahlen 19 Euro.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "em",
+          "expected": "jeden Tag",
+          "label": "„jeden Tag“ ist leicht betont"
+        },
+        {
+          "type": "text",
+          "selector": "p",
+          "expected": "Geöffnet jeden Tag von 6 bis 23 Uhr.",
+          "label": "Der erste Absatz bleibt lesbar"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<!--[^>]*Preise prüfen[^>]*-->",
+          "label": "Es gibt einen Kommentar mit „Preise prüfen“"
+        },
+        {
+          "type": "selector",
+          "selector": "p",
+          "count": 2,
+          "label": "Beide Absätze sind noch da"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Drei Zeichen haben in HTML eine feste Aufgabe: `<` und `>` bilden Tags, `&` leitet Sonderzeichen ein. Willst du sie als **Text** zeigen, brauchst du **Entities** – Ersatzschreibweisen, die mit `&` beginnen und mit `;` enden:\n\n- `&lt;` → < (*less than*)\n- `&gt;` → > (*greater than*)\n- `&amp;` → & (*ampersand*)\n\n```html\n<p>Pizza &amp; Pasta</p>\n<p>Der Tag &lt;p&gt; macht einen Absatz.</p>\n```"
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Schreibweisen ihrer Bedeutung zu.",
+      "pairs": [
+        [
+          "`<strong>`",
+          "wichtig – der Browser zeigt es fett"
+        ],
+        [
+          "`<em>`",
+          "betont – der Browser zeigt es kursiv"
+        ],
+        [
+          "`<!-- … -->`",
+          "Kommentar – bleibt unsichtbar"
+        ],
+        [
+          "`&amp;`",
+          "zeigt das Zeichen &"
+        ],
+        [
+          "`&lt;`",
+          "zeigt das Zeichen <"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "Zwei Fehler im Spickzettel: Ab „Merke:“ ist der ganze Text fett, und im dritten Absatz fehlt das Wort `<p>` samt Rest des Satzes. **Korrigiere** beide Stellen: Nur „Merke:“ ist stark betont, und der Satz zeigt `<p>` sichtbar als Text.",
+      "starter": {
+        "html": "<h1>Mein HTML-Spickzettel</h1>\n<p><strong>Merke: Erst speichern, dann testen.</p>\n<p>Überschriften gibt es in sechs Ebenen.</p>\n<p>Der Tag <p> macht einen Absatz.</p>\n"
+      },
+      "hints": [
+        "Ein geöffnetes Element ohne schließenden Tag läuft einfach weiter – bis zum Ende. Wo muss die Betonung aufhören?",
+        "Spitze Klammern im Text liest der Browser als Tag. Zeig sie mit den Ersatzschreibweisen aus der Erklärung – wie bei `5 &lt; 10`.",
+        "Fehler 1: Direkt hinter „Merke:“ fehlt der schließende Tag der Betonung. Fehler 2: Beide Klammern um das p brauchen ihre Ersatzschreibweise."
+      ],
+      "solution": {
+        "html": "<h1>Mein HTML-Spickzettel</h1>\n<p><strong>Merke:</strong> Erst speichern, dann testen.</p>\n<p>Überschriften gibt es in sechs Ebenen.</p>\n<p>Der Tag &lt;p&gt; macht einen Absatz.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "strong",
+          "expected": "Merke:",
+          "label": "Nur „Merke:“ ist stark betont"
+        },
+        {
+          "type": "selector",
+          "selector": "strong",
+          "count": 1,
+          "label": "Es gibt genau eine starke Betonung"
+        },
+        {
+          "type": "text",
+          "selector": "p",
+          "expected": "Merke: Erst speichern, dann testen.",
+          "label": "Der erste Absatz bleibt lesbar"
+        },
+        {
+          "type": "selector",
+          "selector": "p",
+          "count": 3,
+          "label": "Es gibt drei Absätze"
+        },
+        {
+          "type": "text",
+          "selector": "p:nth-of-type(3)",
+          "expected": "Der Tag <p> macht einen Absatz.",
+          "label": "Der dritte Absatz zeigt <p> als Text"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "&lt;p",
+          "label": "Die spitze Klammer ist als Sonderzeichen geschrieben"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Ab zur FUNKEN-Website! Im Abschnitt „Das Festival“ soll auffallen, dass Schülerinnen und Schüler das Festival machen – das ist die wichtige Information. Der Zusatz „vom Line-up bis zum Ticketverkauf“ wird nur leicht betont, wie beim Sprechen.\n\nAußerdem wünscht sich Ayla vor der Trennlinie eine Notiz „Kontakt“ im Quelltext – unsichtbar für Besucher, damit das Team die Adresse später schnell findet."
+    },
+    {
+      "type": "code",
+      "etappe": "03-text/03-hervorheben-und-kommentare"
+    }
+  ]
+}

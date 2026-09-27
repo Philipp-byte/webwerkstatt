@@ -1,0 +1,185 @@
+{
+  "id": "02-absaetze-umbrueche-linien",
+  "title": "Absätze, Umbrüche & Linien",
+  "konzepte": [
+    "html.absatz",
+    "html.br-hr"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Sam schickt die Adresse – drei Zeilen. Du tippst sie ab, drückst Enter … und der Browser zeigt alles in **einer** Zeile.\n\nDer Browser ignoriert Zeilenumbrüche und mehrfache Leerzeichen im Quelltext. Ein **Absatz** `<p>` ist ein Textblock mit Abstand darüber und darunter. Für einen Umbruch *innerhalb* des Absatzes gibt es ein eigenes Tag: `<br>` (*break*).",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"78\" y=\"20\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Quelltext</text><text x=\"246\" y=\"20\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Browser</text><rect x=\"10\" y=\"30\" width=\"136\" height=\"50\" rx=\"6\" fill=\"#1b2135\"/><text x=\"16\" y=\"50\" fill=\"#ff7a45\" font-family=\"monospace\">&lt;p&gt;Pizza Luna</text><text x=\"16\" y=\"70\" fill=\"#ff7a45\" font-family=\"monospace\">Hafenweg 4&lt;/p&gt;</text><path d=\"M150 55 H172\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"178\" y=\"59\" fill=\"#eef2ff\">Pizza Luna Hafenweg 4</text><rect x=\"10\" y=\"98\" width=\"136\" height=\"50\" rx=\"6\" fill=\"#1b2135\"/><text x=\"16\" y=\"118\" fill=\"#ff7a45\" font-family=\"monospace\">&lt;p&gt;Pizza Luna<tspan fill=\"#38c7ff\">&lt;br&gt;</tspan></text><text x=\"16\" y=\"138\" fill=\"#ff7a45\" font-family=\"monospace\">Hafenweg 4&lt;/p&gt;</text><path d=\"M150 123 H172\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"178\" y=\"118\" fill=\"#eef2ff\">Pizza Luna</text><text x=\"178\" y=\"138\" fill=\"#eef2ff\">Hafenweg 4</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Beide Absätze stehen im Quelltext auf zwei Zeilen – in der Vorschau nicht. **Setze** im ersten Absatz direkt hinter „liefern“ ein `<br>` und beobachte die Vorschau. Dann lösche testweise das `<p>`-Paar um „Mindestbestellwert“: Was passiert mit dem Abstand?",
+      "html": "<h1>Pizza Luna</h1>\n<p>Wir liefern\nbis 22 Uhr.</p>\n<p>Mindestbestellwert:\n10 Euro.</p>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Im Quelltext steht ein Satz auf drei Zeilen – mit Enter getrennt. Was zeigt der Browser?",
+      "options": [
+        "Eine Zeile – Umbrüche im Quelltext zählen nicht",
+        "Drei Zeilen, genau wie im Quelltext",
+        "Drei Absätze mit Abstand dazwischen",
+        "Gar nichts, weil das ein Fehler ist"
+      ],
+      "correct": 0,
+      "explanation": "Der Browser fasst Zeilenumbrüche und Leerzeichen zu einem einzigen Leerzeichen zusammen. Einen sichtbaren Umbruch bekommst du nur mit `<br>` oder einem neuen Absatz."
+    },
+    {
+      "type": "code",
+      "task": "**Strukturiere** den Text in zwei Absätze: Der erste enthält nur den Satz über die erste Staffel, der zweite den Satz über die zweite Staffel.",
+      "starter": {
+        "html": "<h1>Serien-Tipp: Nachtwache</h1>\n<p>Die erste Staffel spielt in einem Krankenhaus in Berlin. Die zweite Staffel wechselt nach Hamburg und wird deutlich düsterer.</p>\n"
+      },
+      "hints": [
+        "Jeder Absatz ist ein eigenes Element mit öffnendem und schließendem Tag.",
+        "Schließe den ersten Absatz nach „Berlin.“ und öffne für den zweiten Satz einen neuen.",
+        "Am Ende stehen zwei Absätze untereinander: `<p>…</p>` und noch einmal `<p>…</p>`, jeweils mit einem Satz."
+      ],
+      "solution": {
+        "html": "<h1>Serien-Tipp: Nachtwache</h1>\n<p>Die erste Staffel spielt in einem Krankenhaus in Berlin.</p>\n<p>Die zweite Staffel wechselt nach Hamburg und wird deutlich düsterer.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "p",
+          "count": 2,
+          "label": "Es gibt zwei Absätze"
+        },
+        {
+          "type": "text",
+          "selector": "p",
+          "expected": "Die erste Staffel spielt in einem Krankenhaus in Berlin.",
+          "label": "Der erste Absatz enthält nur den Satz über Staffel 1"
+        },
+        {
+          "type": "text",
+          "selector": "p:nth-of-type(2)",
+          "expected": "Die zweite Staffel wechselt nach Hamburg und wird deutlich düsterer.",
+          "label": "Der zweite Absatz enthält den Satz über Staffel 2"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "`<br>` hat keinen Inhalt und darum auch **keinen schließenden Tag**. Solche Tags heißen **Leerelemente**. Ein zweites brauchst du oft: `<hr>` (*horizontal rule*) – eine Trennlinie zwischen zwei Themen.\n\n```html\n<p>Öffnungszeiten:<br>Mo–Fr 10–18 Uhr</p>\n<hr>\n<p>Sneaker-Store · Kaiserstraße 12</p>\n```\n\nWichtig: `<br>` ist nur für Umbrüche *im* Text, etwa bei Adressen. Für Abstand zwischen Textblöcken nimmst du Absätze – nie mehrere `<br>` hintereinander."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige: Lücke 1 bricht die Zeile innerhalb des Absatzes um, Lücke 2 zieht darunter eine Trennlinie.",
+      "template": "<p>Mo–Fr 10–18 Uhr<___>Sa 10–14 Uhr</p>\n<___>",
+      "accept": [
+        [
+          "br"
+        ],
+        [
+          "hr"
+        ]
+      ],
+      "hint": "Beide sind Leerelemente – nur ein Tag, kein schließender. Umbruch = break, Linie = horizontal rule."
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** unter dem Absatz die Adresse als einen einzigen Absatz mit drei Zeilen: Pizza Luna, Bahnhofstraße 4, 74072 Heilbronn.",
+      "starter": {
+        "html": "<h1>Pizza Luna – Lieferservice</h1>\n<p>Wir liefern täglich bis 22 Uhr.</p>\n"
+      },
+      "hints": [
+        "Ein Absatz, drei Zeilen: Der Umbruch innerhalb eines Absatzes braucht ein eigenes Leerelement.",
+        "Das Umbruch-Tag steht direkt am Ende der Zeile, ohne schließenden Tag – so wie bei `Öffnungszeiten:<br>Mo–Fr`.",
+        "Struktur: `<p>Zeile 1<br>Zeile 2<br>Zeile 3</p>` – mit Name, Straße und Ort aus der Aufgabe."
+      ],
+      "solution": {
+        "html": "<h1>Pizza Luna – Lieferservice</h1>\n<p>Wir liefern täglich bis 22 Uhr.</p>\n<p>Pizza Luna<br>Bahnhofstraße 4<br>74072 Heilbronn</p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "p",
+          "count": 2,
+          "label": "Es gibt zwei Absätze"
+        },
+        {
+          "type": "selector",
+          "selector": "p:nth-of-type(2) br",
+          "count": 2,
+          "label": "Der Adress-Absatz hat zwei Zeilenumbrüche"
+        },
+        {
+          "type": "text",
+          "selector": "p:nth-of-type(2)",
+          "expected": "Pizza Luna Bahnhofstraße 4 74072 Heilbronn",
+          "label": "Die Adresse ist vollständig: Name, Straße, Ort"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Ein Flyer für den Pizza-Laden. Sortiere: Überschrift, ein Absatz, dann trennt eine Linie den Text von der Adresse (Name, Straße, Ort).",
+      "lines": [
+        "<h1>Pizza Luna</h1>",
+        "<p>Wir liefern bis 22 Uhr.</p>",
+        "<hr>",
+        "<p>Pizza Luna<br>",
+        "Bahnhofstraße 4<br>",
+        "74072 Heilbronn</p>"
+      ],
+      "explanation": "Die Linie steht zwischen Text und Adresse. Die Adresse ist ein Absatz: öffnender Tag vor dem Namen, schließender Tag hinter dem Ort, dazwischen die Umbrüche."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** den Flyer: Unter dem Absatz kommt eine Trennlinie, darunter ein Absatz mit den Eckdaten in drei Zeilen: „Wann: 12. Juni“, „Wo: Sporthalle“, „Start: 14 Uhr“.",
+      "starter": {
+        "html": "<h1>Schulturnier: Fußball</h1>\n<p>Alle Klassen, ein Pokal – meldet euch bis Freitag im Sekretariat an.</p>\n"
+      },
+      "hints": [
+        "Zwei Leerelemente kommen vor: eins für die Linie, eins für die Umbrüche im Text.",
+        "Die Linie ist eine eigene Zeile zwischen den beiden Absätzen; die drei Eckdaten stehen in EINEM Absatz.",
+        "Reihenfolge: Absatz, Linie, Absatz mit zwei Umbrüchen – wie bei einer Adresse."
+      ],
+      "solution": {
+        "html": "<h1>Schulturnier: Fußball</h1>\n<p>Alle Klassen, ein Pokal – meldet euch bis Freitag im Sekretariat an.</p>\n<hr>\n<p>Wann: 12. Juni<br>Wo: Sporthalle<br>Start: 14 Uhr</p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "hr",
+          "count": 1,
+          "label": "Es gibt eine Trennlinie"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "p",
+            "hr"
+          ],
+          "label": "Die Linie steht unter dem ersten Absatz"
+        },
+        {
+          "type": "selector",
+          "selector": "hr + p br",
+          "count": 2,
+          "label": "Der Absatz nach der Linie hat zwei Zeilenumbrüche"
+        },
+        {
+          "type": "text",
+          "selector": "hr + p",
+          "expected": "Wann: 12. Juni Wo: Sporthalle Start: 14 Uhr",
+          "label": "Die Eckdaten sind vollständig"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "jonas",
+      "text": "Ab zur FUNKEN-Website. Unter „Das Festival“ fehlt noch der Text: zwei Absätze – wer FUNKEN organisiert und wohin der Erlös geht.\n\nDanach kommt der Kontakt: eine Trennlinie, damit die Adresse sichtbar vom Rest getrennt ist, und die Adresse selbst als ein Absatz mit drei Zeilen. Genau wie beim Pizza-Flyer – nur mit Sams Adresse."
+    },
+    {
+      "type": "code",
+      "etappe": "03-text/02-absaetze-umbrueche-linien"
+    }
+  ]
+}

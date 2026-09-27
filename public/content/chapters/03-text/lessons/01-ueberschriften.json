@@ -1,0 +1,217 @@
+{
+  "id": "01-ueberschriften",
+  "title": "Überschriften",
+  "konzepte": [
+    "html.ueberschrift"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Sam schickt den Text für die Startseite: ein einziger Block, keine Zwischentitel. Niemand liest das freiwillig.\n\nStruktur kommt von **Überschriften**. Die `<h1>` kennst du schon – sie hat fünf Geschwister: `<h1>` bis `<h6>`. Die Zahl ist die **Ebene**: 1 ist die wichtigste, 6 die unwichtigste. Zusammen bilden sie die Gliederung der Seite – wie das Inhaltsverzeichnis eines Buchs.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"22\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Überschriften = Gliederung der Seite</text><rect x=\"16\" y=\"36\" width=\"176\" height=\"24\" rx=\"5\" fill=\"#ff7a45\"/><text x=\"26\" y=\"53\" fill=\"#0f1320\" font-weight=\"bold\" font-family=\"monospace\" font-size=\"13\">h1 Sneaker-Blog</text><rect x=\"40\" y=\"68\" width=\"152\" height=\"22\" rx=\"5\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"50\" y=\"84\" fill=\"#eef2ff\" font-family=\"monospace\">h2 Neu im Regal</text><rect x=\"64\" y=\"98\" width=\"128\" height=\"22\" rx=\"5\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"1.5\"/><text x=\"74\" y=\"114\" fill=\"#eef2ff\" font-family=\"monospace\">h3 Laufschuhe</text><rect x=\"40\" y=\"128\" width=\"152\" height=\"22\" rx=\"5\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"50\" y=\"144\" fill=\"#eef2ff\" font-family=\"monospace\">h2 Pflege-Tipps</text><text x=\"204\" y=\"53\" fill=\"#ffd84d\">nur 1× pro Seite</text><text x=\"204\" y=\"84\" fill=\"#38c7ff\">eine Ebene tiefer</text><text x=\"204\" y=\"114\" fill=\"#38c7ff\">noch eine tiefer</text><text x=\"204\" y=\"144\" fill=\"#4ade80\">wieder Ebene 2</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Ein Trainingsplan mit drei Ebenen. **Ändere** bei „Aufwärmen“ die 3 in beiden Tags zu 6 und beobachte die Größe. Dann setz sie zurück auf 3: Die Zahl sagt, wie wichtig eine Überschrift ist – die Größe ändern wir später mit CSS.",
+      "html": "<h1>Mein Trainingsplan</h1>\n<h2>Montag</h2>\n<h3>Aufwärmen</h3>\n<p>10 Minuten lockeres Laufen.</p>\n<h3>Kraft</h3>\n<p>3 Sätze Kniebeugen, 3 Sätze Liegestütze.</p>\n<h2>Mittwoch</h2>\n<p>Ruhetag – Dehnen reicht.</p>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Was bedeutet die 2 in `<h2>`?",
+      "options": [
+        "Ebene 2 – eine Stufe unter der Hauptüberschrift",
+        "Die Überschrift ist doppelt so groß wie der Text",
+        "Es ist die zweite Überschrift auf der Seite",
+        "Die Überschrift darf höchstens zwei Wörter haben"
+      ],
+      "correct": 0,
+      "explanation": "Die Zahl ist die Ebene in der Gliederung. Wie groß die Überschrift aussieht, legt später CSS fest – und wie viele h2 es auf der Seite gibt, ist egal."
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** vor dem zweiten Absatz eine Zwischenüberschrift der Ebene 2 mit dem Text „Handhabung“.",
+      "starter": {
+        "html": "<h1>Controller-Check</h1>\n<p>Wir haben drei Controller eine Woche lang getestet.</p>\n<p>Der Griff ist gummiert, nichts rutscht – auch nach zwei Stunden nicht.</p>\n"
+      },
+      "hints": [
+        "Zwischenüberschriften stehen eine Ebene unter der Hauptüberschrift – das ist die Ebene 2.",
+        "Das Tag-Paar sieht aus wie bei der Hauptüberschrift, nur mit einer anderen Zahl – in beiden Tags dieselbe.",
+        "Eine neue Zeile zwischen den beiden Absätzen: `<h…>Text</h…>` – die Ebene als Zahl, dazwischen der Text aus der Aufgabe."
+      ],
+      "solution": {
+        "html": "<h1>Controller-Check</h1>\n<p>Wir haben drei Controller eine Woche lang getestet.</p>\n<h2>Handhabung</h2>\n<p>Der Griff ist gummiert, nichts rutscht – auch nach zwei Stunden nicht.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "h2",
+          "expected": "Handhabung",
+          "label": "Die Zwischenüberschrift lautet „Handhabung“"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "p",
+            "h2",
+            "p:nth-of-type(2)"
+          ],
+          "label": "Sie steht zwischen den beiden Absätzen"
+        },
+        {
+          "type": "selector",
+          "selector": "h1",
+          "count": 1,
+          "label": "Die Hauptüberschrift bleibt die einzige h1"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Drei Regeln für eine saubere Gliederung:\n\n- **Nur eine `<h1>`** pro Seite – sie sagt, worum es geht.\n- **Keine Ebene überspringen:** nach `<h1>` kommt `<h2>`, darunter `<h3>` – nie direkt `<h3>`.\n- **Ebene nach Bedeutung wählen**, nicht nach Größe. Groß oder klein macht später CSS.\n\n```html\n<h1>Pizza-Blog</h1>\n<h2>Teig</h2>\n<h3>Ruhezeit</h3>\n<h2>Belag</h2>\n```"
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige die Gliederung: Unter der Hauptüberschrift folgt die nächste Ebene.",
+      "template": "<h1>Sneaker-Blog</h1>\n<___>Neu im Regal</___>",
+      "accept": [
+        [
+          "h2"
+        ],
+        [
+          "h2"
+        ]
+      ],
+      "hint": "Keine Ebene überspringen – nach der 1 kommt die 2, im öffnenden und im schließenden Tag."
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** im Abschnitt „Woche 1“ zwei Unterüberschriften der Ebene 3: „Montag“ vor dem ersten Absatz und „Dienstag“ vor dem zweiten.",
+      "starter": {
+        "html": "<h1>Praktikumsbericht: Fahrradwerkstatt</h1>\n<h2>Woche 1</h2>\n<p>Werkstatt kennengelernt, Reifen geflickt, Kaffee gekocht.</p>\n<p>Zum ersten Mal Bremsen eingestellt – unter Aufsicht.</p>\n"
+      },
+      "hints": [
+        "Unter einer Überschrift der Ebene 2 kommt als Nächstes die Ebene 3.",
+        "Zwei neue Zeilen, jede direkt vor ihrem Absatz – mit derselben Zahl im öffnenden und im schließenden Tag.",
+        "Muster aus einem anderen Kontext: `<h3>Aufwärmen</h3>` vor dem passenden Absatz – hier mit den Wochentagen."
+      ],
+      "solution": {
+        "html": "<h1>Praktikumsbericht: Fahrradwerkstatt</h1>\n<h2>Woche 1</h2>\n<h3>Montag</h3>\n<p>Werkstatt kennengelernt, Reifen geflickt, Kaffee gekocht.</p>\n<h3>Dienstag</h3>\n<p>Zum ersten Mal Bremsen eingestellt – unter Aufsicht.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "h3",
+          "count": 2,
+          "label": "Es gibt zwei Unterüberschriften der Ebene 3"
+        },
+        {
+          "type": "text",
+          "selector": "h3",
+          "expected": "Montag",
+          "label": "Die erste lautet „Montag“"
+        },
+        {
+          "type": "text",
+          "selector": "h3:nth-of-type(2)",
+          "expected": "Dienstag",
+          "label": "Die zweite lautet „Dienstag“"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "h2",
+            "h3",
+            "p",
+            "h3:nth-of-type(2)",
+            "p:nth-of-type(2)"
+          ],
+          "label": "Jede Unterüberschrift steht direkt vor ihrem Absatz"
+        },
+        {
+          "type": "selector",
+          "selector": "h2",
+          "count": 1,
+          "label": "„Woche 1“ bleibt die einzige Überschrift der Ebene 2"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Ein Rezept mit Gliederung. Sortiere: Hauptüberschrift, dann jeder Arbeitsschritt als Zwischenüberschrift mit seinem Absatz – in der Reihenfolge, in der man eine Pizza macht.",
+      "lines": [
+        "<h1>Pizza selbst machen</h1>",
+        "<h2>Teig</h2>",
+        "<p>Mehl, Wasser, Hefe, Salz – eine Stunde gehen lassen.</p>",
+        "<h2>Belag</h2>",
+        "<p>Tomatensoße, Käse und was du magst.</p>",
+        "<h2>Backen</h2>",
+        "<p>Bei 250 Grad etwa zehn Minuten.</p>"
+      ],
+      "explanation": "Erst die h1, dann die Abschnitte: Jede h2 eröffnet einen Schritt, der Absatz dazu folgt direkt darunter."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "Die Watchlist hat zwei Hauptüberschriften, und unter der ersten springt die Ebene von 1 direkt auf 3. **Korrigiere** die Gliederung: „Serien“ und „Filme“ sind gleichrangige Zwischenüberschriften unter „Meine Watchlist“.",
+      "starter": {
+        "html": "<h1>Meine Watchlist</h1>\n<p>Serien und Filme für die Sommerferien.</p>\n<h3>Serien</h3>\n<p>Drei Staffeln in einer Woche – machbar.</p>\n<h1>Filme</h1>\n<p>Für Regentage, mit Popcorn.</p>\n"
+      },
+      "hints": [
+        "Eine Seite hat genau eine Hauptüberschrift. Welche der beiden ist das Thema der ganzen Seite?",
+        "Gleichrangig heißt: gleiche Ebene. Direkt unter Ebene 1 kommt Ebene 2 – für beide Abschnitte.",
+        "Zwei Tag-Paare bekommen eine neue Zahl – jeweils im öffnenden und im schließenden Tag."
+      ],
+      "solution": {
+        "html": "<h1>Meine Watchlist</h1>\n<p>Serien und Filme für die Sommerferien.</p>\n<h2>Serien</h2>\n<p>Drei Staffeln in einer Woche – machbar.</p>\n<h2>Filme</h2>\n<p>Für Regentage, mit Popcorn.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "h1",
+          "count": 1,
+          "label": "Es gibt genau eine Hauptüberschrift"
+        },
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "Meine Watchlist",
+          "label": "Die Hauptüberschrift lautet „Meine Watchlist“"
+        },
+        {
+          "type": "selector",
+          "selector": "h2",
+          "count": 2,
+          "label": "„Serien“ und „Filme“ sind Zwischenüberschriften der Ebene 2"
+        },
+        {
+          "type": "text",
+          "selector": "h2",
+          "expected": "Serien",
+          "label": "Die erste Zwischenüberschrift ist „Serien“"
+        },
+        {
+          "type": "text",
+          "selector": "h2:nth-of-type(2)",
+          "expected": "Filme",
+          "label": "Die zweite ist „Filme“"
+        },
+        {
+          "type": "selector",
+          "selector": "h3",
+          "count": 0,
+          "label": "Keine Ebene wird übersprungen"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Ab zur FUNKEN-Website! Sam wünscht sich einen Abschnitt „Das Festival“, der erklärt, wer das Ganze organisiert.\n\nEin Abschnitt beginnt mit einer Zwischenüberschrift: eine Ebene unter „FUNKEN“, denn die Hauptüberschrift bleibt die einzige auf der Seite. Die neue Überschrift kommt unter die drei Absätze – der Text dazu folgt in der nächsten Lektion."
+    },
+    {
+      "type": "code",
+      "etappe": "03-text/01-ueberschriften"
+    }
+  ]
+}

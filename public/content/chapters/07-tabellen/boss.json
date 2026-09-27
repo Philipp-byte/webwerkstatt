@@ -1,0 +1,216 @@
+{
+  "chapter": "07-tabellen",
+  "title": "Abnahme: Timetable",
+  "intro": "Der Timetable ist das Wichtigste auf der ganzen Seite! Wenn da eine Band in der falschen Spalte steht, stehen zweihundert Leute vor der falschen Bühne. Zeigt mir, dass Zeilen, Spalten und die Pause sitzen.",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "html.table",
+      "type": "quiz",
+      "question": "Eine Tabelle hat vier Zeilen mit je drei Zellen. Wie viele `<tr>` und wie viele `<td>` brauchst du?",
+      "options": [
+        "4 tr und 12 td",
+        "3 tr und 4 td",
+        "12 tr und 4 td",
+        "4 tr und 3 td"
+      ],
+      "correct": 0,
+      "explanation": "Vier Zeilen = vier tr; in jeder drei Zellen = zwölf td."
+    },
+    {
+      "konzept": "html.th",
+      "type": "fill",
+      "text": "Vervollständige die Kopfzeile der Bühnen-Tabelle.",
+      "template": "<tr>\n  <___>Zeit</___>\n  <th>Bühne</th>\n</tr>",
+      "accept": [
+        [
+          "th"
+        ],
+        [
+          "th"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter der Überschrift die Highscore-Tabelle: Kopfzeile Platz, Name, Punkte; danach die Zeilen 1 mit Lena und 9870 sowie 2 mit Deniz und 8450.",
+      "starter": {
+        "html": "<h2>Highscore</h2>\n<!-- Hier kommt die Tabelle -->\n"
+      },
+      "solution": {
+        "html": "<h2>Highscore</h2>\n<!-- Hier kommt die Tabelle -->\n<table>\n  <tr>\n    <th>Platz</th>\n    <th>Name</th>\n    <th>Punkte</th>\n  </tr>\n  <tr>\n    <td>1</td>\n    <td>Lena</td>\n    <td>9870</td>\n  </tr>\n  <tr>\n    <td>2</td>\n    <td>Deniz</td>\n    <td>8450</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "table tr:first-child th",
+          "count": 3,
+          "label": "Die Kopfzeile hat drei Kopfzellen"
+        },
+        {
+          "type": "text",
+          "selector": "table th:first-child",
+          "expected": "Platz",
+          "label": "Die erste Kopfzelle lautet „Platz“"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr",
+          "count": 3,
+          "label": "Die Tabelle hat drei Zeilen"
+        },
+        {
+          "type": "selector",
+          "selector": "table td",
+          "count": 6,
+          "label": "Es gibt sechs Datenzellen"
+        },
+        {
+          "type": "text",
+          "selector": "table tr:last-child td:last-child",
+          "expected": "8450",
+          "label": "Deniz hat 8450 Punkte"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "h2",
+            "table"
+          ],
+          "label": "Die Tabelle steht unter der Überschrift"
+        }
+      ]
+    },
+    {
+      "konzept": "html.img",
+      "type": "pair",
+      "text": "Ordne die Attribute und Elemente zu.",
+      "pairs": [
+        [
+          "`src`",
+          "Datei, aus der das Bild kommt"
+        ],
+        [
+          "`alt`",
+          "Alternativtext, falls das Bild fehlt"
+        ],
+        [
+          "`<figcaption>`",
+          "Bildunterschrift im Bild-Block"
+        ],
+        [
+          "`controls`",
+          "Bedienelemente für Audio und Video"
+        ]
+      ]
+    },
+    {
+      "konzept": "html.a-mailto",
+      "type": "quiz",
+      "question": "Welcher Link öffnet das E-Mail-Programm?",
+      "options": [
+        "`<a href=\"mailto:sam@beispiel.de\">Mail</a>`",
+        "`<a href=\"https://sam@beispiel.de\">Mail</a>`",
+        "`<a href=\"email:sam@beispiel.de\">Mail</a>`"
+      ],
+      "correct": 0,
+      "explanation": "E-Mail-Links beginnen in der Adresse mit `mailto:`."
+    },
+    {
+      "konzept": "html.colspan",
+      "type": "order",
+      "text": "Sortiere das Kinoprogramm: Kopfzeile zuerst, dann die Zeiten aufsteigend.",
+      "lines": [
+        "<table>",
+        "<tr><th>Zeit</th><th>Saal 1</th><th>Saal 2</th></tr>",
+        "<tr><td>17:00</td><td>Robo-Rennen</td><td>Nachtjagd</td></tr>",
+        "<tr><td>19:00</td><td colspan=\"2\">Pause</td></tr>",
+        "</table>"
+      ],
+      "explanation": "Die Pausen-Zeile hat zwei Zellen, weil die verbundene Zelle beide Säle abdeckt."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Korrigiere** den Bühnenplan: Der Link „Zurück zur Startseite“ (Ziel index.html) ist nicht anklickbar, und die Pause um 19:00 hängt nach unten in die Zeile 20:00, statt über beide Bühnen zu reichen.",
+      "starter": {
+        "html": "<h2>Bühnenplan</h2>\n<p><a>Zurück zur Startseite</a></p>\n<table>\n  <tr>\n    <th>Zeit</th>\n    <th>Bühne A</th>\n    <th>Bühne B</th>\n  </tr>\n  <tr>\n    <td>18:00</td>\n    <td>Sektor 7</td>\n    <td>Marla Funke</td>\n  </tr>\n  <tr>\n    <td>19:00</td>\n    <td rowspan=\"2\">Pause</td>\n  </tr>\n  <tr>\n    <td>20:00</td>\n    <td>Basslager</td>\n    <td>Neonpuls</td>\n  </tr>\n</table>\n",
+        "css": "/* Nur zum Anschauen: Linien um die Zellen.\n   CSS lernst du ab Kapitel 10 – diese Datei ist hier gesperrt. */\ntable {\n  border-collapse: collapse;\n}\ntd, th {\n  border: 1px solid #8a8fa8;\n  padding: 4px 10px;\n}\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "solution": {
+        "html": "<h2>Bühnenplan</h2>\n<p><a href=\"index.html\">Zurück zur Startseite</a></p>\n<table>\n  <tr>\n    <th>Zeit</th>\n    <th>Bühne A</th>\n    <th>Bühne B</th>\n  </tr>\n  <tr>\n    <td>18:00</td>\n    <td>Sektor 7</td>\n    <td>Marla Funke</td>\n  </tr>\n  <tr>\n    <td>19:00</td>\n    <td colspan=\"2\">Pause</td>\n  </tr>\n  <tr>\n    <td>20:00</td>\n    <td>Basslager</td>\n    <td>Neonpuls</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "a",
+          "attr": "href",
+          "expected": "index.html",
+          "label": "Der Link führt zu index.html"
+        },
+        {
+          "type": "attr",
+          "selector": "td[colspan]",
+          "attr": "colspan",
+          "expected": "2",
+          "label": "Die Pause reicht über zwei Spalten"
+        },
+        {
+          "type": "selector",
+          "selector": "td[rowspan]",
+          "count": 0,
+          "label": "Keine Zelle reicht nach unten"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr:nth-child(3) td",
+          "count": 2,
+          "label": "Die Pausen-Zeile hat zwei Zellen"
+        },
+        {
+          "type": "text",
+          "selector": "table tr:last-child td:last-child",
+          "expected": "Neonpuls",
+          "label": "Um 20:00 spielt Neonpuls auf Bühne B"
+        }
+      ]
+    },
+    {
+      "konzept": "html.strong-em",
+      "type": "quiz",
+      "question": "Welches Element betont ein Wort **leicht** – der Browser zeigt es kursiv?",
+      "options": [
+        "`<em>`",
+        "`<strong>`",
+        "`<br>`"
+      ],
+      "correct": 0,
+      "explanation": "`em` = leichte Betonung (kursiv), `strong` = starke Betonung (fett), `br` ist ein Zeilenumbruch."
+    },
+    {
+      "konzept": "html.colspan",
+      "type": "bug",
+      "text": "Die Pause soll über beide Spalten gehen, belegt aber nur eine. Welche Zeile ist falsch?",
+      "lines": [
+        "<tr>",
+        "  <td>12:00</td>",
+        "  <td colspann=\"2\">Pause</td>",
+        "</tr>"
+      ],
+      "line": 2,
+      "explanation": "Das Attribut heißt `colspan` – bei einem Tippfehler ignoriert der Browser es einfach."
+    },
+    {
+      "konzept": "html.entity",
+      "type": "fill",
+      "text": "Vervollständige die Zelle: Das &-Zeichen muss als Entity geschrieben werden.",
+      "template": "<td>Pizza ___ Pasta</td>",
+      "accept": [
+        "&amp;"
+      ]
+    }
+  ]
+}

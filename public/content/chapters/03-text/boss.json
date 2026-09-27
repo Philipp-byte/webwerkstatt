@@ -1,0 +1,211 @@
+{
+  "chapter": "03-text",
+  "title": "Abnahme: Textbanner",
+  "intro": "Okay, die Startseite liest sich jetzt wie eine echte Festival-Seite – Das Festival, Die Bühnen, Foodtrucks, unten unsere Adresse. Bevor ich das den anderen zeige: Zeigt mir, dass ihr das nicht nur einmal hingekriegt habt.",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "html.ueberschrift",
+      "type": "quiz",
+      "question": "Die Startseite hat die h1 „FUNKEN“ und die Abschnitte „Das Festival“ und „Die Bühnen“ als h2. Welche Ebene bekommt ein neuer Abschnitt „Tickets“?",
+      "options": [
+        "h2 – gleichrangig mit den anderen Abschnitten",
+        "h1 – jeder Abschnitt braucht eine Hauptüberschrift",
+        "h3 – weil es der dritte Abschnitt ist"
+      ],
+      "correct": 0,
+      "explanation": "Gleichrangige Abschnitte bekommen dieselbe Ebene. Die h1 gibt es nur einmal."
+    },
+    {
+      "konzept": "html.strong-em",
+      "type": "pair",
+      "text": "Ordne die Elemente ihrer Bedeutung zu.",
+      "pairs": [
+        [
+          "`<strong>`",
+          "wichtig – fett dargestellt"
+        ],
+        [
+          "`<em>`",
+          "betont – kursiv dargestellt"
+        ],
+        [
+          "`<br>`",
+          "Zeilenumbruch im Absatz"
+        ],
+        [
+          "`<hr>`",
+          "Trennlinie"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter dem Absatz den Abschnitt „Öffnungszeiten“: Zwischenüberschrift, darunter ein Absatz mit zwei Zeilen „Mo bis Fr: 10 bis 19 Uhr“ und „Sa: 10 bis 16 Uhr“, dann eine Trennlinie und ein Absatz „Kein Verkauf an Feiertagen.“ – das Wort „Kein“ stark betont.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Sneaker-Store Heilbronn</title>\n  </head>\n  <body>\n    <h1>Sneaker-Store Heilbronn</h1>\n    <p>Neue Drops jeden Samstag.</p>\n  </body>\n</html>\n"
+      },
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Sneaker-Store Heilbronn</title>\n  </head>\n  <body>\n    <h1>Sneaker-Store Heilbronn</h1>\n    <p>Neue Drops jeden Samstag.</p>\n    <h2>Öffnungszeiten</h2>\n    <p>Mo bis Fr: 10 bis 19 Uhr<br>Sa: 10 bis 16 Uhr</p>\n    <hr>\n    <p><strong>Kein</strong> Verkauf an Feiertagen.</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "h2",
+          "expected": "Öffnungszeiten",
+          "label": "Die Zwischenüberschrift lautet „Öffnungszeiten“"
+        },
+        {
+          "type": "selector",
+          "selector": "h2 + p br",
+          "count": 1,
+          "label": "Die Zeiten stehen in zwei Zeilen"
+        },
+        {
+          "type": "text",
+          "selector": "h2 + p",
+          "expected": "Mo bis Fr: 10 bis 19 Uhr Sa: 10 bis 16 Uhr",
+          "label": "Die Zeiten sind vollständig"
+        },
+        {
+          "type": "selector",
+          "selector": "hr",
+          "count": 1,
+          "label": "Es gibt eine Trennlinie"
+        },
+        {
+          "type": "text",
+          "selector": "hr + p",
+          "expected": "Kein Verkauf an Feiertagen.",
+          "label": "Der Hinweis steht unter der Linie"
+        },
+        {
+          "type": "text",
+          "selector": "hr + p strong",
+          "expected": "Kein",
+          "label": "„Kein“ ist stark betont"
+        },
+        {
+          "type": "selector",
+          "selector": "h1",
+          "count": 1,
+          "label": "Es bleibt bei einer Hauptüberschrift"
+        }
+      ]
+    },
+    {
+      "konzept": "html.grundgeruest",
+      "type": "fill",
+      "text": "Vervollständige die Zeichensatz-Angabe im head, damit Umlaute richtig erscheinen.",
+      "template": "<meta charset=\"___\">",
+      "accept": [
+        "utf-8"
+      ]
+    },
+    {
+      "konzept": "web.url",
+      "type": "quiz",
+      "question": "In `https://funken-festival.de/programm.html` – welcher Teil ist der Pfad?",
+      "options": [
+        "`/programm.html`",
+        "`funken-festival.de`",
+        "`https://`"
+      ],
+      "correct": 0,
+      "explanation": "Der Pfad kommt nach der Domain und zeigt auf die Datei."
+    },
+    {
+      "konzept": "html.entity",
+      "type": "bug",
+      "text": "Ein Sonderzeichen ist nicht als Ersatzschreibweise geschrieben – die Zeile bricht die Seite. Welche?",
+      "lines": [
+        "<p>Pommes &amp; Limo</p>",
+        "<p>Der Tag <p> macht einen Absatz.</p>",
+        "<p>5 &lt; 10</p>"
+      ],
+      "line": 1,
+      "explanation": "Spitze Klammern im Text müssen als `&lt;` und `&gt;` geschrieben werden – sonst liest der Browser ein Tag."
+    },
+    {
+      "konzept": "html.br-hr",
+      "type": "order",
+      "text": "Ticket-Infos für die Seite. Sortiere: Zwischenüberschrift, Absatz, Trennlinie, dann der Absatz mit drei Zeilen.",
+      "lines": [
+        "<h2>Tickets</h2>",
+        "<p>Tagesticket 12 Euro, Festivalpass 20 Euro.</p>",
+        "<hr>",
+        "<p>Vorverkauf<br>",
+        "ab 1. Mai<br>",
+        "im Sekretariat</p>"
+      ]
+    },
+    {
+      "konzept": "html.attribut",
+      "type": "quiz",
+      "question": "Wo steht ein Attribut wie `lang=\"de\"`?",
+      "options": [
+        "Im öffnenden Tag, hinter dem Tag-Namen",
+        "Im schließenden Tag",
+        "Zwischen öffnendem und schließendem Tag",
+        "In einer eigenen Zeile vor dem Element"
+      ],
+      "correct": 0,
+      "explanation": "Attribute stehen immer im öffnenden Tag: Name, Gleichheitszeichen, Wert in Anführungszeichen."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "Ab „Achtung:“ ist auf der Seite alles kursiv, und der Absatz mit den Preisen ist verschwunden. **Korrigiere** beide Fehler: Nur „Achtung:“ ist leicht betont, und der Kommentar über den Preisen ist richtig abgeschlossen.",
+      "starter": {
+        "html": "<h1>Kiosk am Sportplatz</h1>\n<p><em>Achtung: Nur Barzahlung.</p>\n<p>Geöffnet bei jedem Heimspiel.</p>\n<!-- Preise mit dem Team abstimmen\n<p>Pommes 3 Euro, Limo 2 Euro.</p>\n"
+      },
+      "solution": {
+        "html": "<h1>Kiosk am Sportplatz</h1>\n<p><em>Achtung:</em> Nur Barzahlung.</p>\n<p>Geöffnet bei jedem Heimspiel.</p>\n<!-- Preise mit dem Team abstimmen -->\n<p>Pommes 3 Euro, Limo 2 Euro.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "em",
+          "expected": "Achtung:",
+          "label": "Nur „Achtung:“ ist leicht betont"
+        },
+        {
+          "type": "selector",
+          "selector": "em",
+          "count": 1,
+          "label": "Es gibt genau eine Betonung"
+        },
+        {
+          "type": "selector",
+          "selector": "p",
+          "count": 3,
+          "label": "Alle drei Absätze sind sichtbar"
+        },
+        {
+          "type": "text",
+          "selector": "p:nth-of-type(3)",
+          "expected": "Pommes 3 Euro, Limo 2 Euro.",
+          "label": "Der Preis-Absatz ist wieder da"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<!--\\s*Preise[^>]*-->",
+          "label": "Der Kommentar ist richtig abgeschlossen"
+        }
+      ]
+    },
+    {
+      "konzept": "web.client-server",
+      "type": "quiz",
+      "question": "Der Browser schickt eine Anfrage nach der Seite. Wer antwortet?",
+      "options": [
+        "Der Server, auf dem die Seite liegt",
+        "Das WLAN",
+        "Der Editor"
+      ],
+      "correct": 0,
+      "explanation": "Client fragt, Server antwortet – die Seite liegt auf dem Server."
+    }
+  ]
+}

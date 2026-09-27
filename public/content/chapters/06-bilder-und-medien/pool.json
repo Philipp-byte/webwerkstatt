@@ -1,0 +1,282 @@
+{
+  "chapter": "06-bilder-und-medien",
+  "fragen": [
+    {
+      "id": "06-01",
+      "konzept": "html.img",
+      "type": "quiz",
+      "question": "Welches Element bringt ein Bild auf die Seite?",
+      "options": [
+        "`<img>`",
+        "`<bild>`",
+        "`<src>`"
+      ],
+      "correct": 0,
+      "explanation": "img (image) ist das Bild-Element; die Datei steht in seinem Attribut src."
+    },
+    {
+      "id": "06-02",
+      "konzept": "html.img",
+      "type": "fill",
+      "text": "Vervollständige das Bild-Element.",
+      "template": "<___ src=\"pizza.svg\" alt=\"Eine Pizza Margherita\">",
+      "accept": [
+        "img"
+      ],
+      "hint": "Drei Buchstaben, Abkürzung für image."
+    },
+    {
+      "id": "06-03",
+      "konzept": "html.img",
+      "type": "bug",
+      "text": "Das Controller-Bild wird nicht angezeigt. Welche Zeile ist falsch?",
+      "lines": [
+        "<h2>Mein Setup</h2>",
+        "<img scr=\"controller.svg\" alt=\"Mein Controller\">",
+        "<p>Seit 2024 im Einsatz.</p>"
+      ],
+      "line": 1,
+      "explanation": "Das Attribut heißt src, nicht scr – sonst findet der Browser keine Datei."
+    },
+    {
+      "id": "06-04",
+      "konzept": "html.img",
+      "type": "pair",
+      "text": "Ordne zu.",
+      "pairs": [
+        [
+          "src",
+          "Dateiname des Bildes"
+        ],
+        [
+          "alt",
+          "Ersatztext, falls das Bild fehlt"
+        ],
+        [
+          "width",
+          "Breite in Pixeln"
+        ]
+      ]
+    },
+    {
+      "id": "06-05",
+      "konzept": "html.img",
+      "type": "quiz",
+      "question": "Was stimmt über img?",
+      "options": [
+        "Es ist ein Leerelement ohne schließenden Tag",
+        "Es braucht einen schließenden Tag",
+        "Der Dateiname steht zwischen den Tags"
+      ],
+      "correct": 0,
+      "explanation": "img hat keinen Inhalt – alles steht in den Attributen src und alt."
+    },
+    {
+      "id": "06-06",
+      "konzept": "html.alt",
+      "type": "quiz",
+      "question": "Wozu dient das alt-Attribut eines Bildes?",
+      "options": [
+        "Ersatztext: für Screenreader und wenn das Bild fehlt",
+        "Es legt die Breite des Bildes fest",
+        "Es nennt die Bilddatei"
+      ],
+      "correct": 0,
+      "explanation": "alt wird vorgelesen und angezeigt, wenn das Bild nicht geladen werden kann."
+    },
+    {
+      "id": "06-07",
+      "konzept": "html.alt",
+      "type": "quiz",
+      "question": "Welcher Alternativtext ist am besten für ein Foto einer Katze auf dem Sofa?",
+      "options": [
+        "Eine graue Katze schläft auf dem Sofa",
+        "Bild",
+        "katze.jpg",
+        "Foto 1"
+      ],
+      "correct": 0,
+      "explanation": "Der Alternativtext beschreibt kurz, was zu sehen ist – kein Dateiname, kein „Bild“."
+    },
+    {
+      "id": "06-08",
+      "konzept": "html.alt",
+      "type": "bug",
+      "text": "Bei einem Bild lautet der Alternativtext nur „Eine“. Welche Zeile ist falsch?",
+      "lines": [
+        "<img src=\"buehne.svg\" alt=\"Die Hauptbühne bei Nacht\">",
+        "<img src=\"katze.svg\" alt=Eine graue Katze>",
+        "<img src=\"pizza.svg\" alt=\"Eine Pizza Margherita\">"
+      ],
+      "line": 1,
+      "explanation": "Ohne Anführungszeichen endet der Wert nach dem ersten Wort."
+    },
+    {
+      "id": "06-09",
+      "konzept": "html.alt",
+      "type": "fill",
+      "text": "Welches Attribut liefert den Alternativtext?",
+      "template": "<img src=\"ticket.svg\" ___=\"Ein gelbes Festivalticket\">",
+      "accept": [
+        "alt"
+      ],
+      "hint": "Kurz für „alternativ“."
+    },
+    {
+      "id": "06-10",
+      "konzept": "html.alt",
+      "type": "bug",
+      "text": "Einem Bild fehlt der Alternativtext. Welche Zeile?",
+      "lines": [
+        "<img src=\"buehne.svg\" alt=\"Die Bühne\">",
+        "<img src=\"crowd.svg\">",
+        "<img src=\"plakat.svg\" alt=\"Das Plakat\">"
+      ],
+      "line": 1,
+      "explanation": "Jedes Bild braucht alt – sonst hören Screenreader-Nutzer:innen nur „Bild“."
+    },
+    {
+      "id": "06-11",
+      "konzept": "html.audio-video",
+      "type": "quiz",
+      "question": "Ein audio-Element steht im Code, aber es ist kein Player zu sehen. Was fehlt?",
+      "options": [
+        "Das Attribut controls",
+        "Ein schließender Tag für img",
+        "Das Attribut width"
+      ],
+      "correct": 0,
+      "explanation": "Erst controls blendet Play, Pause und Lautstärke ein."
+    },
+    {
+      "id": "06-12",
+      "konzept": "html.audio-video",
+      "type": "fill",
+      "text": "Vervollständige den Video-Player mit Bedienelementen.",
+      "template": "<video ___ src=\"clip.webm\"></video>",
+      "accept": [
+        "controls"
+      ],
+      "hint": "Das Attribut steht allein, ohne Wert."
+    },
+    {
+      "id": "06-13",
+      "konzept": "html.audio-video",
+      "type": "bug",
+      "text": "Nach dem Player verschwindet der Rest der Seite. Welche Zeile ist falsch?",
+      "lines": [
+        "<h2>Jingle</h2>",
+        "<audio controls src=\"jingle.wav\">",
+        "<p>Jetzt anhören!</p>"
+      ],
+      "line": 1,
+      "explanation": "audio braucht einen schließenden Tag – sonst gehört alles danach zum Player und ist unsichtbar."
+    },
+    {
+      "id": "06-14",
+      "konzept": "html.audio-video",
+      "type": "pair",
+      "text": "Ordne zu.",
+      "pairs": [
+        [
+          "`<audio>`",
+          "Ton ohne Bild"
+        ],
+        [
+          "`<video>`",
+          "Film mit Bild"
+        ],
+        [
+          "controls",
+          "Play, Pause, Lautstärke"
+        ],
+        [
+          "src",
+          "Datei, die abgespielt wird"
+        ]
+      ]
+    },
+    {
+      "id": "06-15",
+      "konzept": "html.audio-video",
+      "type": "quiz",
+      "question": "Ein kurzer Film soll auf die Seite. Welches Element?",
+      "options": [
+        "video",
+        "audio",
+        "img"
+      ],
+      "correct": 0,
+      "explanation": "video zeigt Film mit Bild, audio nur Ton, img ein Standbild."
+    },
+    {
+      "id": "06-16",
+      "konzept": "html.figure",
+      "type": "order",
+      "text": "Sortiere den Bild-Block: Bild oben, Unterschrift darunter.",
+      "lines": [
+        "<figure>",
+        "  <img src=\"crowd.svg\" alt=\"Die Menge\">",
+        "  <figcaption>Die Menge vor der Bühne</figcaption>",
+        "</figure>"
+      ]
+    },
+    {
+      "id": "06-17",
+      "konzept": "html.figure",
+      "type": "quiz",
+      "question": "Welches Element enthält die sichtbare Bildunterschrift?",
+      "options": [
+        "figcaption",
+        "alt",
+        "caption",
+        "title"
+      ],
+      "correct": 0,
+      "explanation": "figcaption steht im figure-Block; alt ist nur der unsichtbare Ersatztext."
+    },
+    {
+      "id": "06-18",
+      "konzept": "html.figure",
+      "type": "bug",
+      "text": "Die Bildunterschrift ist falsch markiert. Welche Zeile?",
+      "lines": [
+        "<figure>",
+        "  <img src=\"plakat.svg\" alt=\"Das Plakat\">",
+        "  <caption>Das Plakat 2027</caption>",
+        "</figure>"
+      ],
+      "line": 2,
+      "explanation": "Die Unterschrift eines Bild-Blocks heißt figcaption."
+    },
+    {
+      "id": "06-19",
+      "konzept": "html.figure",
+      "type": "fill",
+      "text": "Vervollständige den Bild-Block.",
+      "template": "<figure>\n  <img src=\"pizza.svg\" alt=\"Eine Pizza\">\n  <___>Unsere Margherita</___>\n</figure>",
+      "accept": [
+        [
+          "figcaption"
+        ],
+        [
+          "figcaption"
+        ]
+      ],
+      "hint": "Öffnender und schließender Tag heißen gleich."
+    },
+    {
+      "id": "06-20",
+      "konzept": "html.figure",
+      "type": "quiz",
+      "question": "Wozu dient figure?",
+      "options": [
+        "Es fasst ein Bild und seine Unterschrift zu einem Block zusammen",
+        "Es macht ein Bild breiter",
+        "Es ersetzt das alt-Attribut"
+      ],
+      "correct": 0,
+      "explanation": "figure ist der Block, figcaption die Unterschrift darin – alt bleibt trotzdem Pflicht."
+    }
+  ]
+}

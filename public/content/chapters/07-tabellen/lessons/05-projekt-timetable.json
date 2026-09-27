@@ -1,0 +1,46 @@
+{
+  "id": "05-projekt-timetable",
+  "title": "Projekt: Timetable komplett",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Meilenstein! Rückblick: Die Startseite hat den Abschnitt „Auf einen Blick“, die neue Programm-Seite zwei Timetables mit Pause und den Foodcourt. Damit steht die Station Timetable fast.\n\nEine Sache fehlt noch: Die Tabelle „Auf einen Blick“ hat keine Kopfzeile – und das Ende um 23:00 Uhr fehlt auch. Das baust du jetzt ein."
+    },
+    {
+      "type": "quiz",
+      "question": "Eine bestehende Tabelle bekommt nachträglich eine Kopfzeile. Wo kommt sie hin?",
+      "options": [
+        "Als erste Zeile direkt nach dem öffnenden Tabellen-Tag",
+        "Als letzte Zeile vor dem schließenden Tabellen-Tag",
+        "Vor die Tabelle, als eigener Absatz"
+      ],
+      "correct": 0,
+      "explanation": "Die Kopfzeile beschriftet die Spalten – deshalb steht sie ganz oben in der Tabelle, als erste Zeile."
+    },
+    {
+      "type": "order",
+      "text": "Bring die Preisliste in die richtige Reihenfolge – Kopfzeile zuerst, danach die Datenzeile.",
+      "lines": [
+        "<table>",
+        "  <tr>",
+        "    <th>Snack</th>",
+        "    <th>Preis</th>",
+        "  </tr>",
+        "  <tr><td>Kakao</td><td>1,20 €</td></tr>",
+        "</table>"
+      ],
+      "explanation": "Erst die Kopfzeile mit Kopfzellen, dann die Datenzeilen – und am Ende wird die Tabelle geschlossen."
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Letzter Schliff auf der Startseite: Die Tabelle „Auf einen Blick“ bekommt oben eine Kopfzeile mit „Was“ und „Info“ und unten eine Zeile für das Ende um 23:00 Uhr.\n\nDanach lohnt sich ein Blick auf das Ergebnis: Am Ende der Lektion findest du den Knopf **FUNKEN-Website ansehen** – Startseite und Programm-Seite sind jetzt verbunden."
+    },
+    {
+      "type": "code",
+      "etappe": "07-tabellen/05-projekt-timetable"
+    }
+  ]
+}

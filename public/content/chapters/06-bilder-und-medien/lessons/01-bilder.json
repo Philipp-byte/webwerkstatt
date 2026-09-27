@@ -1,0 +1,221 @@
+{
+  "id": "01-bilder",
+  "title": "Bilder",
+  "konzepte": [
+    "html.img",
+    "html.alt"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Sam schickt das Bühnenfoto: „Das muss auf die Startseite!“ Bisher kann unsere Seite nur Text. Bilder holt das **img**-Element in die Seite.\n\n`img` ist ein **Leerelement** – wie `br` und `hr` hat es keinen schließenden Tag. Dafür braucht es zwei **Attribute**: **src** (englisch *source*, die Quelle) nennt die Bilddatei, **alt** den **Alternativtext**.\n\n```html\n<img src=\"pizza.svg\" alt=\"Eine Pizza Margherita\">\n```",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"18\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">img holt eine Bilddatei in die Seite</text><rect x=\"16\" y=\"30\" width=\"124\" height=\"112\" rx=\"8\" fill=\"#e8ecf7\"/><rect x=\"28\" y=\"42\" width=\"72\" height=\"8\" rx=\"2\" fill=\"#0f1320\"/><rect x=\"28\" y=\"56\" width=\"100\" height=\"6\" rx=\"2\" fill=\"#0f1320\" opacity=\"0.35\"/><rect x=\"28\" y=\"70\" width=\"100\" height=\"60\" rx=\"4\" fill=\"#ff7a45\"/><text x=\"78\" y=\"104\" text-anchor=\"middle\" fill=\"#0f1320\" font-weight=\"bold\">&lt;img&gt;</text><path d=\"M142 100 H196\" stroke=\"#ffd84d\" stroke-width=\"2\" marker-end=\"url(#pfeil-img)\"/><text x=\"170\" y=\"92\" text-anchor=\"middle\" fill=\"#ffd84d\">src</text><rect x=\"206\" y=\"66\" width=\"98\" height=\"68\" rx=\"8\" fill=\"#0f1320\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"255\" y=\"95\" text-anchor=\"middle\" fill=\"#eef2ff\">buehne.svg</text><text x=\"255\" y=\"115\" text-anchor=\"middle\" fill=\"#ff7a45\">Datei im Ordner</text><text x=\"160\" y=\"155\" text-anchor=\"middle\" fill=\"#4ade80\">alt = Ersatztext, falls das Bild fehlt</text><defs><marker id=\"pfeil-img\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#ffd84d\"/></marker></defs></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Links das Bild-Element, rechts das Bild. **Ändere** `sneaker.svg` in `controller.svg` – der Browser holt eine andere Datei. **Tippe** dann einen Dateinamen, den es nicht gibt (z. B. `hund.svg`): Statt des Bildes zeigt der Browser den Alternativtext.",
+      "html": "<h1>Mein Sneaker-Regal</h1>\n<p>Das neueste Paar:</p>\n<img src=\"sneaker.svg\" alt=\"Ein blauer Sneaker mit weißen Streifen\">\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Was stimmt über das img-Element?",
+      "options": [
+        "Es ist ein Leerelement – die Bilddatei steht im Attribut src",
+        "Der Dateiname steht zwischen öffnendem und schließendem Tag",
+        "Es braucht keine Attribute, der Browser findet das Bild selbst"
+      ],
+      "correct": 0,
+      "explanation": "img hat keinen schließenden Tag und keinen Inhalt. Alles steckt in Attributen: src sagt, welche Datei geladen wird, alt liefert den Ersatztext."
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** unter dem Absatz ein Bild aus der Datei pizza.svg mit dem Alternativtext „Eine Pizza Margherita“.",
+      "starter": {
+        "html": "<h1>Pizza-Abend bei Nico</h1>\n<p>Heute gibt es Margherita für alle.</p>\n"
+      },
+      "hints": [
+        "Ein Bild ist ein Leerelement: ein einzelner Tag ohne Inhalt, direkt nach dem Absatz.",
+        "Zwei Attribute: die Quelle mit dem Dateinamen und der Alternativtext – nach dem Muster `<img src=\"katze.svg\" alt=\"Eine graue Katze\">`.",
+        "Setze in das Muster `<img src=\"…\" alt=\"…\">` den Dateinamen und den Text aus der Aufgabe ein."
+      ],
+      "solution": {
+        "html": "<h1>Pizza-Abend bei Nico</h1>\n<p>Heute gibt es Margherita für alle.</p>\n<img src=\"pizza.svg\" alt=\"Eine Pizza Margherita\">\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "src",
+          "expected": "pizza.svg",
+          "label": "Das Bild lädt pizza.svg"
+        },
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "alt",
+          "expected": "Eine Pizza Margherita",
+          "label": "Der Alternativtext lautet „Eine Pizza Margherita“"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "p",
+            "img"
+          ],
+          "label": "Das Bild steht unter dem Absatz"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Der **Alternativtext** ist kein Extra, sondern Pflicht. Er hilft in drei Fällen:\n\n- **Screenreader**: Blinde Nutzer:innen bekommen den Text vorgelesen – ohne alt hören sie nur „Bild“.\n- **Bild fehlt**: Falscher Dateiname, langsames Netz – statt des Bildes erscheint der Text.\n- **Suchmaschinen** verstehen, was auf dem Bild ist.\n\nGuter alt-Text sagt kurz, was zu sehen ist: „Die Hauptbühne bei Nacht“ – nicht „Bild“ und nicht der Dateiname."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige das Bild-Element für ein Festivalticket.",
+      "template": "<___ src=\"ticket.svg\" ___=\"Ein gelbes Festivalticket\">",
+      "accept": [
+        [
+          "img"
+        ],
+        [
+          "alt"
+        ]
+      ],
+      "hint": "Erst der Name des Elements, dann das Attribut für den Alternativtext."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** die Setup-Seite: Der Controller wird nicht angezeigt, nur sein Alternativtext ist zu sehen. Und die Katze hat als Alternativtext nur noch „Eine“ statt „Eine graue Katze“. Beide Fehler stecken in den Bild-Elementen.",
+      "starter": {
+        "html": "<h1>Mein Setup</h1>\n<p>Damit zocke ich:</p>\n<img scr=\"controller.svg\" alt=\"Ein grauer Controller mit bunten Knöpfen\">\n<p>Und das ist meine Begleitung:</p>\n<img src=\"katze.svg\" alt=Eine graue Katze>\n"
+      },
+      "hints": [
+        "Ein Bild, das nicht erscheint, hat fast immer ein Problem im Attribut für die Quelle – lies den Attributnamen Buchstabe für Buchstabe.",
+        "Attributwerte mit Leerzeichen brauchen Anführungszeichen, sonst endet der Wert nach dem ersten Wort.",
+        "Muster für beide Zeilen: `<img src=\"datei.svg\" alt=\"Text mit Leerzeichen\">`."
+      ],
+      "solution": {
+        "html": "<h1>Mein Setup</h1>\n<p>Damit zocke ich:</p>\n<img src=\"controller.svg\" alt=\"Ein grauer Controller mit bunten Knöpfen\">\n<p>Und das ist meine Begleitung:</p>\n<img src=\"katze.svg\" alt=\"Eine graue Katze\">\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "src",
+          "expected": "controller.svg",
+          "label": "Der Controller wird geladen"
+        },
+        {
+          "type": "attr",
+          "selector": "img:nth-of-type(2)",
+          "attr": "alt",
+          "expected": "Eine graue Katze",
+          "label": "Der Alternativtext der Katze ist vollständig"
+        },
+        {
+          "type": "attr",
+          "selector": "img:nth-of-type(2)",
+          "attr": "src",
+          "expected": "katze.svg",
+          "label": "Das Katzenbild ist noch da"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Größe:** Mit dem Attribut `width` legst du die Breite in Pixeln fest (nur die Zahl, ohne px), die Höhe passt der Browser automatisch an.\n\n**Formate** erkennst du an der Dateiendung:\n\n- `.svg` – Grafiken, Logos, Icons: in jeder Größe scharf\n- `.png` – Grafiken mit durchsichtigem Hintergrund\n- `.jpg` – Fotos\n- `.webp` – modern und klein, für Fotos und Grafiken\n\n```html\n<img src=\"plakat.svg\" alt=\"Das Festivalplakat\" width=\"200\">\n```"
+    },
+    {
+      "type": "pair",
+      "text": "Ordne zu.",
+      "pairs": [
+        [
+          "src",
+          "Dateiname des Bildes"
+        ],
+        [
+          "alt",
+          "Ersatztext – falls das Bild fehlt oder vorgelesen wird"
+        ],
+        [
+          "width",
+          "Breite in Pixeln"
+        ],
+        [
+          ".svg",
+          "Grafik oder Logo – in jeder Größe scharf"
+        ],
+        [
+          ".jpg",
+          "Foto"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** zwei Bilder, jeweils direkt nach dem Absatz des Abschnitts: 1. „Neu im Regal“: sneaker.svg, Alternativtext „Ein blauer Sneaker mit weißen Streifen“. 2. „Immer dabei“: ticket.svg, Alternativtext „Ein gelbes Festivalticket“, 240 Pixel breit.",
+      "starter": {
+        "html": "<h1>Mein Sneaker-Regal</h1>\n<h2>Neu im Regal</h2>\n<p>Gekauft im Praktikum – vom ersten eigenen Geld.</p>\n<h2>Immer dabei</h2>\n<p>Mein Festivalticket – liegt schon im Schuh.</p>\n"
+      },
+      "hints": [
+        "Zwei Bild-Elemente, jedes direkt nach „seinem“ Absatz.",
+        "Die Breite ist ein drittes Attribut nach dem Muster `width=\"120\"` – der Wert ohne px.",
+        "Muster: `<img src=\"…\" alt=\"…\" width=\"…\">` – beim ersten Bild ohne width."
+      ],
+      "solution": {
+        "html": "<h1>Mein Sneaker-Regal</h1>\n<h2>Neu im Regal</h2>\n<p>Gekauft im Praktikum – vom ersten eigenen Geld.</p>\n<img src=\"sneaker.svg\" alt=\"Ein blauer Sneaker mit weißen Streifen\">\n<h2>Immer dabei</h2>\n<p>Mein Festivalticket – liegt schon im Schuh.</p>\n<img src=\"ticket.svg\" alt=\"Ein gelbes Festivalticket\" width=\"240\">\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "img",
+          "count": 2,
+          "label": "Es gibt genau zwei Bilder"
+        },
+        {
+          "type": "attr",
+          "selector": "img[src=\"sneaker.svg\"]",
+          "attr": "alt",
+          "expected": "Ein blauer Sneaker mit weißen Streifen",
+          "label": "Der Sneaker hat den richtigen Alternativtext"
+        },
+        {
+          "type": "attr",
+          "selector": "img[src=\"ticket.svg\"]",
+          "attr": "alt",
+          "expected": "Ein gelbes Festivalticket",
+          "label": "Das Ticket hat den richtigen Alternativtext"
+        },
+        {
+          "type": "attr",
+          "selector": "img[src=\"ticket.svg\"]",
+          "attr": "width",
+          "expected": "240",
+          "label": "Das Ticket ist 240 Pixel breit"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "h2:nth-of-type(1) + p",
+            "img[src=\"sneaker.svg\"]",
+            "h2:nth-of-type(2) + p",
+            "img[src=\"ticket.svg\"]"
+          ],
+          "label": "Jedes Bild steht nach seinem Absatz"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Jetzt kommt Sams Bühnenfoto auf die Startseite – direkt unter den Willkommens-Absatz, damit Besucher:innen sofort sehen, worum es geht.\n\nDie Datei heißt buehne.svg und liegt im selben Ordner wie die Seite, der Dateiname als Quelle reicht also. Und der Alternativtext ist Pflicht: Sam will, dass wirklich alle erfahren, was auf dem Bild ist."
+    },
+    {
+      "type": "code",
+      "etappe": "06-bilder-und-medien/01-bilder"
+    }
+  ]
+}

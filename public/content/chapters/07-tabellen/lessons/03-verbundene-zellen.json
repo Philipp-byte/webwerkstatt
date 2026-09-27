@@ -1,0 +1,238 @@
+{
+  "id": "03-verbundene-zellen",
+  "title": "Verbundene Zellen",
+  "konzepte": [
+    "html.colspan"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Im Stundenplan gibt es die Mittagspause: eine Zeile, die über beide Tage geht. Oder eine Doppelstunde Sport über zwei Zeiten. Dafür **verbindest du Zellen**.\n\n`colspan=\"2\"` (*column span*) lässt eine Zelle über zwei **Spalten** reichen. Wichtig: Die verbundene Zelle ersetzt zwei normale – die Zeile hat dann **eine Zelle weniger**.\n\n```html\n<tr>\n  <td>12:00</td>\n  <td colspan=\"2\">Mittagspause</td>\n</tr>\n```",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"22\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Zellen verbinden</text><text x=\"62\" y=\"55\" text-anchor=\"end\" fill=\"#eef2ff\">10:00</text><text x=\"62\" y=\"89\" text-anchor=\"end\" fill=\"#eef2ff\">11:00</text><text x=\"62\" y=\"123\" text-anchor=\"end\" fill=\"#eef2ff\">12:00</text><rect x=\"70\" y=\"34\" width=\"100\" height=\"34\" fill=\"#e8ecf7\" stroke=\"#0f1320\"/><text x=\"120\" y=\"55\" text-anchor=\"middle\" fill=\"#0f1320\">Mathe</text><rect x=\"170\" y=\"34\" width=\"100\" height=\"68\" fill=\"#ff7a45\" stroke=\"#0f1320\"/><text x=\"220\" y=\"62\" text-anchor=\"middle\" fill=\"#0f1320\" font-weight=\"bold\">Sport</text><text x=\"220\" y=\"82\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\">rowspan=\"2\"</text><rect x=\"70\" y=\"68\" width=\"100\" height=\"34\" fill=\"#e8ecf7\" stroke=\"#0f1320\"/><text x=\"120\" y=\"89\" text-anchor=\"middle\" fill=\"#0f1320\">Deutsch</text><rect x=\"70\" y=\"102\" width=\"200\" height=\"34\" fill=\"#ffd84d\" stroke=\"#0f1320\"/><text x=\"170\" y=\"123\" text-anchor=\"middle\" fill=\"#0f1320\" font-weight=\"bold\">Pause  ·  colspan=\"2\"</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Der Stundenplan mit Mittagspause. **Ändere** den Wert 2 in 3 – die Pause ragt rechts über die Tabelle hinaus. **Lösche** dann das Attribut ganz: Die Zeile hat plötzlich ein Loch, weil ihr eine Zelle fehlt.",
+      "html": "<h2>Stundenplan</h2>\n<table>\n  <tr>\n    <th>Zeit</th>\n    <th>Montag</th>\n    <th>Dienstag</th>\n  </tr>\n  <tr>\n    <td>11:30</td>\n    <td>Sport</td>\n    <td>Physik</td>\n  </tr>\n  <tr>\n    <td>13:00</td>\n    <td colspan=\"2\">Mittagspause</td>\n  </tr>\n  <tr>\n    <td>14:00</td>\n    <td>Englisch</td>\n    <td>Bio</td>\n  </tr>\n</table>\n",
+      "css": "/* Nur zum Anschauen: Linien um die Zellen.\n   CSS lernst du ab Kapitel 10 – diese Datei ist hier gesperrt. */\ntable {\n  border-collapse: collapse;\n}\ntd, th {\n  border: 1px solid #8a8fa8;\n  padding: 4px 10px;\n}\n",
+      "editable": [
+        "html"
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Eine Tabelle hat drei Spalten. In einer Zeile bekommt eine Zelle `colspan=\"2\"`. Wie viele Zellen stehen in dieser Zeile?",
+      "options": [
+        "2 – die verbundene Zelle zählt für zwei",
+        "3 – wie in jeder anderen Zeile",
+        "4 – eine zusätzliche für die Verbindung",
+        "1 – nur die verbundene Zelle"
+      ],
+      "correct": 0,
+      "explanation": "Die verbundene Zelle belegt zwei Spalten, dazu kommt eine normale Zelle: Zwei Zellen füllen drei Spalten."
+    },
+    {
+      "type": "code",
+      "task": "**Verbinde** in der Zeile 9:30 die beiden Pause-Zellen zu einer einzigen Zelle „Pause“, die über beide Klassen-Spalten reicht.",
+      "starter": {
+        "html": "<h2>Vertretungsplan</h2>\n<table>\n  <tr>\n    <th>Zeit</th>\n    <th>11a</th>\n    <th>11b</th>\n  </tr>\n  <tr>\n    <td>8:00</td>\n    <td>Mathe</td>\n    <td>Englisch</td>\n  </tr>\n  <tr>\n    <td>9:30</td>\n    <td>Pause</td>\n    <td>Pause</td>\n  </tr>\n  <tr>\n    <td>9:50</td>\n    <td>Deutsch</td>\n    <td>Physik</td>\n  </tr>\n</table>\n",
+        "css": "/* Nur zum Anschauen: Linien um die Zellen.\n   CSS lernst du ab Kapitel 10 – diese Datei ist hier gesperrt. */\ntable {\n  border-collapse: collapse;\n}\ntd, th {\n  border: 1px solid #8a8fa8;\n  padding: 4px 10px;\n}\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "hints": [
+        "Eine Zelle über zwei Spalten: Das Attribut mit dem Wert 2 kommt in den öffnenden Tag der Zelle – die zweite Pause-Zelle fällt weg.",
+        "Muster aus einem anderen Plan: `<td colspan=\"2\">Mittagspause</td>`.",
+        "Die Zeile 9:30 hat danach nur zwei Zellen: die Uhrzeit und die verbundene Pause."
+      ],
+      "solution": {
+        "html": "<h2>Vertretungsplan</h2>\n<table>\n  <tr>\n    <th>Zeit</th>\n    <th>11a</th>\n    <th>11b</th>\n  </tr>\n  <tr>\n    <td>8:00</td>\n    <td>Mathe</td>\n    <td>Englisch</td>\n  </tr>\n  <tr>\n    <td>9:30</td>\n    <td colspan=\"2\">Pause</td>\n  </tr>\n  <tr>\n    <td>9:50</td>\n    <td>Deutsch</td>\n    <td>Physik</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "table tr:nth-child(3) td[colspan]",
+          "attr": "colspan",
+          "expected": "2",
+          "label": "Die Pause-Zelle reicht über zwei Spalten"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr:nth-child(3) td",
+          "count": 2,
+          "label": "Die Zeile 9:30 hat nur noch zwei Zellen"
+        },
+        {
+          "type": "text",
+          "selector": "table tr:nth-child(3) td:last-child",
+          "expected": "Pause",
+          "label": "Die verbundene Zelle heißt „Pause“"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr",
+          "count": 4,
+          "label": "Die Tabelle hat weiterhin vier Zeilen"
+        },
+        {
+          "type": "selector",
+          "selector": "table th",
+          "count": 3,
+          "label": "Die Kopfzeile ist unverändert"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Das Gegenstück ist `rowspan=\"2\"` (*row span*): Die Zelle reicht **nach unten** über zwei Zeilen – zum Beispiel eine Doppelstunde.\n\nDie Zeile darunter hat an dieser Stelle **keine eigene Zelle** mehr, der Platz ist ja schon belegt. Also: Zeile mit rowspan ganz normal schreiben, die nächste Zeile mit einer Zelle weniger.\n\n```html\n<tr>\n  <td>10:00</td>\n  <td rowspan=\"2\">Sport</td>\n</tr>\n<tr>\n  <td>11:00</td>\n</tr>\n```"
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige den Zeitplan: Die Pause geht über zwei Spalten, der Film über zwei Zeilen.",
+      "template": "<tr>\n  <td>18:00</td>\n  <td ___=\"2\">Pause</td>\n</tr>\n<tr>\n  <td>19:00</td>\n  <td ___=\"2\">Film</td>\n  <td>Quiz</td>\n</tr>",
+      "accept": [
+        [
+          "colspan"
+        ],
+        [
+          "rowspan"
+        ]
+      ],
+      "hint": "Spalten heißen auf Englisch columns, Zeilen rows – span bedeutet überspannen."
+    },
+    {
+      "type": "code",
+      "task": "**Verbinde** die beiden Sport-Zellen zu einer Zelle „Sport“, die über die Zeilen 10:00 und 11:00 reicht. Die Zeile 11:00 behält nur ihre Uhrzeit.",
+      "starter": {
+        "html": "<h2>Freitag</h2>\n<table>\n  <tr>\n    <th>Zeit</th>\n    <th>Fach</th>\n  </tr>\n  <tr>\n    <td>9:00</td>\n    <td>Mathe</td>\n  </tr>\n  <tr>\n    <td>10:00</td>\n    <td>Sport</td>\n  </tr>\n  <tr>\n    <td>11:00</td>\n    <td>Sport</td>\n  </tr>\n</table>\n",
+        "css": "/* Nur zum Anschauen: Linien um die Zellen.\n   CSS lernst du ab Kapitel 10 – diese Datei ist hier gesperrt. */\ntable {\n  border-collapse: collapse;\n}\ntd, th {\n  border: 1px solid #8a8fa8;\n  padding: 4px 10px;\n}\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "hints": [
+        "Nach unten verbinden heißt: Zeilen überspannen – das Attribut mit rows im Namen.",
+        "Muster aus einem anderen Plan: `<td rowspan=\"2\">Projektwoche</td>` in der oberen Zeile; in der Zeile darunter fällt diese Zelle weg.",
+        "Die Zeile 10:00 bekommt die verbundene Zelle, die Zeile 11:00 hat danach nur noch eine Zelle."
+      ],
+      "solution": {
+        "html": "<h2>Freitag</h2>\n<table>\n  <tr>\n    <th>Zeit</th>\n    <th>Fach</th>\n  </tr>\n  <tr>\n    <td>9:00</td>\n    <td>Mathe</td>\n  </tr>\n  <tr>\n    <td>10:00</td>\n    <td rowspan=\"2\">Sport</td>\n  </tr>\n  <tr>\n    <td>11:00</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "td[rowspan]",
+          "attr": "rowspan",
+          "expected": "2",
+          "label": "Die Sport-Zelle reicht über zwei Zeilen"
+        },
+        {
+          "type": "text",
+          "selector": "td[rowspan]",
+          "expected": "Sport",
+          "label": "Die verbundene Zelle heißt „Sport“"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr:last-child td",
+          "count": 1,
+          "label": "Die Zeile 11:00 hat nur noch eine Zelle"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr",
+          "count": 4,
+          "label": "Die Tabelle hat weiterhin vier Zeilen"
+        },
+        {
+          "type": "selector",
+          "selector": "table td",
+          "count": 7,
+          "label": "Insgesamt gibt es sieben Datenzellen"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Sortiere den Bühnenplan: Kopfzeile zuerst, dann die Zeiten aufsteigend. Achte darauf, welche Zeile weniger Zellen hat.",
+      "lines": [
+        "<table>",
+        "<tr><th>Zeit</th><th>Bühne A</th><th>Bühne B</th></tr>",
+        "<tr><td>18:00</td><td>Sektor 7</td><td>Marla Funke</td></tr>",
+        "<tr><td>19:00</td><td colspan=\"2\">Pause</td></tr>",
+        "<tr><td>20:00</td><td>Basslager</td><td>Neonpuls</td></tr>",
+        "</table>"
+      ],
+      "explanation": "Die Pausen-Zeile hat nur zwei Zellen – die verbundene Zelle zählt für beide Bühnen."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Korrigiere** das Kinoprogramm: Um 19:00 soll eine einzige Zelle „Pause – Kasse geöffnet“ über beide Säle reichen. Stattdessen steht „Pause“ doppelt in der Zeile, und in der Zeile 20:00 rutschen beide Filme nach rechts.",
+      "starter": {
+        "html": "<h2>Kinoprogramm</h2>\n<table>\n  <tr>\n    <th>Zeit</th>\n    <th>Saal 1</th>\n    <th>Saal 2</th>\n  </tr>\n  <tr>\n    <td>17:00</td>\n    <td>Robo-Rennen</td>\n    <td>Der letzte Sommer</td>\n  </tr>\n  <tr>\n    <td>19:00</td>\n    <td rowspan=\"2\">Pause – Kasse geöffnet</td>\n    <td>Pause</td>\n  </tr>\n  <tr>\n    <td>20:00</td>\n    <td>Nachtjagd</td>\n    <td>Sternenkinder</td>\n  </tr>\n</table>\n",
+        "css": "/* Nur zum Anschauen: Linien um die Zellen.\n   CSS lernst du ab Kapitel 10 – diese Datei ist hier gesperrt. */\ntable {\n  border-collapse: collapse;\n}\ntd, th {\n  border: 1px solid #8a8fa8;\n  padding: 4px 10px;\n}\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "hints": [
+        "Zwei Fehler in der Pausen-Zeile: das falsche Attribut (Zeilen statt Spalten) und eine Zelle zu viel.",
+        "Nach rechts verbinden ist colspan, nach unten rowspan – wie bei `<td colspan=\"2\">Mittagspause</td>`.",
+        "Die Zeile 19:00 hat am Ende genau zwei Zellen: die Uhrzeit und die verbundene Pause."
+      ],
+      "solution": {
+        "html": "<h2>Kinoprogramm</h2>\n<table>\n  <tr>\n    <th>Zeit</th>\n    <th>Saal 1</th>\n    <th>Saal 2</th>\n  </tr>\n  <tr>\n    <td>17:00</td>\n    <td>Robo-Rennen</td>\n    <td>Der letzte Sommer</td>\n  </tr>\n  <tr>\n    <td>19:00</td>\n    <td colspan=\"2\">Pause – Kasse geöffnet</td>\n  </tr>\n  <tr>\n    <td>20:00</td>\n    <td>Nachtjagd</td>\n    <td>Sternenkinder</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "td[colspan]",
+          "attr": "colspan",
+          "expected": "2",
+          "label": "Die Pausen-Zelle reicht über zwei Spalten"
+        },
+        {
+          "type": "selector",
+          "selector": "td[rowspan]",
+          "count": 0,
+          "label": "Keine Zelle reicht mehr nach unten"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr:nth-child(3) td",
+          "count": 2,
+          "label": "Die Zeile 19:00 hat genau zwei Zellen"
+        },
+        {
+          "type": "text",
+          "selector": "td[colspan]",
+          "expected": "Pause – Kasse geöffnet",
+          "label": "Die verbundene Zelle heißt „Pause – Kasse geöffnet“"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr",
+          "count": 4,
+          "label": "Die Tabelle hat weiterhin vier Zeilen"
+        },
+        {
+          "type": "text",
+          "selector": "table tr:last-child td:last-child",
+          "expected": "Sternenkinder",
+          "label": "Um 20:00 läuft „Sternenkinder“ in Saal 2"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Samstag um 18:00 machen wir Pause – auf beiden Bühnen gleichzeitig, weil dann die Foodtrucks öffnen. Das soll man im Timetable sehen: eine Zeile, in der die Pause über beide Bühnen geht.\n\nDie Samstags-Tabelle kommt unter die von Freitag, mit derselben Kopfzeile. Und schreibt „Foodtrucks öffnen“ dazu, sonst denken alle, es ist was kaputt."
+    },
+    {
+      "type": "code",
+      "etappe": "07-tabellen/03-verbundene-zellen"
+    }
+  ]
+}

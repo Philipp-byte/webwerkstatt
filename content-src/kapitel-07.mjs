@@ -241,7 +241,7 @@ schreibe('lessons/02-kopfzeile.json', {
     },
     {
       type: 'code',
-      task: '**Erstelle** unter der Überschrift den Stundenplan als Tabelle: Kopfzeile Zeit, Montag, Dienstag; dann die Zeile 8:00 mit Mathe und Kunst & Design; dann die Zeile 9:45 mit Deutsch und Sport.',
+      task: '**Erstelle** unter der Überschrift den Stundenplan als Tabelle: Kopfzeile Zeit, Montag, Dienstag – dann die Zeile 8:00 mit Mathe und Kunst & Design, danach die Zeile 9:45 mit Deutsch und Sport.',
       starter: { html: '<h2>Stundenplan 11a</h2>\n<!-- Hier kommt der Stundenplan -->\n' },
       hints: [
         'Drei Spalten heißt: drei Kopfzellen oben und drei Datenzellen in jeder weiteren Zeile.',
@@ -580,7 +580,7 @@ schreibe('boss.json', {
     { konzept: 'html.th', type: 'fill', text: 'Vervollständige die Kopfzeile der Bühnen-Tabelle.', template: '<tr>\n  <___>Zeit</___>\n  <th>Bühne</th>\n</tr>', accept: [['th'], ['th']] },
     {
       type: 'code',
-      task: '**Erstelle** unter der Überschrift die Highscore-Tabelle: Kopfzeile Platz, Name, Punkte; danach die Zeilen 1 mit Lena und 9870 sowie 2 mit Deniz und 8450.',
+      task: '**Erstelle** unter der Überschrift die Highscore-Tabelle: Kopfzeile Platz, Name, Punkte – danach die Zeilen 1 mit Lena und 9870 sowie 2 mit Deniz und 8450.',
       starter: { html: '<h2>Highscore</h2>\n<!-- Hier kommt die Tabelle -->\n' },
       solution: { html: '<h2>Highscore</h2>\n<!-- Hier kommt die Tabelle -->\n<table>\n  <tr>\n    <th>Platz</th>\n    <th>Name</th>\n    <th>Punkte</th>\n  </tr>\n  <tr>\n    <td>1</td>\n    <td>Lena</td>\n    <td>9870</td>\n  </tr>\n  <tr>\n    <td>2</td>\n    <td>Deniz</td>\n    <td>8450</td>\n  </tr>\n</table>\n' },
       tests: [

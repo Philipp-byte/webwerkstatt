@@ -1,0 +1,203 @@
+{
+  "id": "04-wiederholung",
+  "title": "Wiederholung: Textbanner",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Textbanner-Check: Bevor Sam abnimmt, wiederholst du Überschriften, Absätze, Umbrüche, Betonung und Kommentare – und dazu das Grundgerüst vom Fundament und den Seitenaufruf vom Info-Point. Sieben Aufgaben, dann geht es zurück zur FUNKEN-Startseite."
+    },
+    {
+      "type": "quiz",
+      "question": "Wo steht der Text, der im Browser-Tab erscheint?",
+      "options": [
+        "Im title-Element innerhalb des head",
+        "In der h1 innerhalb des body",
+        "Im Kommentar ganz oben in der Datei",
+        "Im lang-Attribut des html-Tags"
+      ],
+      "correct": 0,
+      "explanation": "Der Tab zeigt den Titel aus dem head. Die h1 ist die sichtbare Hauptüberschrift auf der Seite selbst."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige die Adresse: Beide Lücken brauchen dasselbe Leerelement für den Zeilenumbruch.",
+      "template": "<p>Waffelwagen<___>Hafenstraße 9<___>74072 Heilbronn</p>",
+      "accept": [
+        [
+          "br"
+        ],
+        [
+          "br"
+        ]
+      ],
+      "hint": "Das Umbruch-Tag hat keinen schließenden Tag – in die Lücke kommt nur sein Name."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** die Seite unter dem Absatz:\n\n1. Eine Zwischenüberschrift „Snacks & Drinks“ – das &-Zeichen als Sonderzeichen geschrieben.\n2. Darunter ein Absatz mit zwei Zeilen: „Pommes 3 Euro“ und „Limo 2 Euro“ – das Wort „Pommes“ stark betont.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Kiosk am Sportplatz</title>\n  </head>\n  <body>\n    <h1>Kiosk am Sportplatz</h1>\n    <p>Geöffnet bei jedem Heimspiel ab 13 Uhr.</p>\n  </body>\n</html>\n"
+      },
+      "hints": [
+        "Zwischenüberschrift = Ebene 2. Das &-Zeichen hat in HTML eine eigene Aufgabe – im Text braucht es seine Ersatzschreibweise.",
+        "Zwei Zeilen in einem Absatz: dazwischen das Umbruch-Leerelement. Die starke Betonung liegt nur um das eine Wort.",
+        "Reihenfolge im body: h1, Absatz, Zwischenüberschrift, Absatz mit `…<br>…` – alles vor dem schließenden body-Tag."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Kiosk am Sportplatz</title>\n  </head>\n  <body>\n    <h1>Kiosk am Sportplatz</h1>\n    <p>Geöffnet bei jedem Heimspiel ab 13 Uhr.</p>\n    <h2>Snacks &amp; Drinks</h2>\n    <p><strong>Pommes</strong> 3 Euro<br>Limo 2 Euro</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "h2",
+          "expected": "Snacks & Drinks",
+          "label": "Die Zwischenüberschrift lautet „Snacks & Drinks“"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "&amp;",
+          "label": "Das &-Zeichen ist als Sonderzeichen geschrieben"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "body > p",
+            "h2",
+            "h2 + p"
+          ],
+          "label": "Die Überschrift steht unter dem ersten Absatz, der neue Absatz darunter"
+        },
+        {
+          "type": "selector",
+          "selector": "h2 + p br",
+          "count": 1,
+          "label": "Der Snack-Absatz hat einen Zeilenumbruch"
+        },
+        {
+          "type": "text",
+          "selector": "h2 + p",
+          "expected": "Pommes 3 Euro Limo 2 Euro",
+          "label": "Der Snack-Absatz ist vollständig"
+        },
+        {
+          "type": "text",
+          "selector": "h2 + p strong",
+          "expected": "Pommes",
+          "label": "„Pommes“ ist stark betont"
+        },
+        {
+          "type": "text",
+          "selector": "title",
+          "expected": "Kiosk am Sportplatz",
+          "label": "Der Seitentitel bleibt erhalten"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Das Grundgerüst einer Seite. Sortiere die Zeilen von oben nach unten.",
+      "lines": [
+        "<!DOCTYPE html>",
+        "<html lang=\"de\">",
+        "<head>",
+        "<title>Sneaker-Store</title>",
+        "</head>",
+        "<body>",
+        "</body>",
+        "</html>"
+      ],
+      "explanation": "Dokumenttyp, dann html – darin erst der head mit dem Titel, dann der body. Zum Schluss wird alles geschlossen."
+    },
+    {
+      "type": "pair",
+      "text": "Ordne jedes Element seiner Aufgabe zu.",
+      "pairs": [
+        [
+          "`<h1>`",
+          "Hauptüberschrift – nur einmal pro Seite"
+        ],
+        [
+          "`<p>`",
+          "Absatz – ein Textblock"
+        ],
+        [
+          "`<br>`",
+          "Zeilenumbruch innerhalb eines Absatzes"
+        ],
+        [
+          "`<hr>`",
+          "Trennlinie zwischen zwei Themen"
+        ],
+        [
+          "`<em>`",
+          "leichte Betonung – kursiv dargestellt"
+        ]
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Jemand tippt funken-festival.de ein. Wer schickt die Seite?",
+      "options": [
+        "Der Server – er antwortet auf die Anfrage des Browsers",
+        "Der Browser – er hat die Seite gespeichert",
+        "Das DNS – es schickt die Datei",
+        "Der Editor, in dem die Seite geschrieben wurde"
+      ],
+      "correct": 0,
+      "explanation": "Client fragt, Server antwortet. Das DNS liefert nur die IP-Adresse des Servers, nicht die Seite."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "Auf dem Flyer ist ab „Anfahrt“ plötzlich alles riesig, und die Adresse klebt in einer Zeile. **Korrigiere** beide Fehler: Nur „Anfahrt“ ist die Zwischenüberschrift, und die Adresse steht in drei Zeilen: Sporthalle Nord, Am Stadion 3, 74072 Heilbronn.",
+      "starter": {
+        "html": "<h1>Schulturnier: Fußball</h1>\n<p>Alle Klassen, ein Pokal.</p>\n<h2>Anfahrt\n<p>Mit der Stadtbahn bis Haltestelle Stadion.</p>\n<p>Sporthalle Nord\nAm Stadion 3\n74072 Heilbronn</p>\n"
+      },
+      "hints": [
+        "Ein Element ohne schließenden Tag hört nie auf – alles danach gehört noch dazu. Welcher Tag fehlt hinter „Anfahrt“?",
+        "Enter im Quelltext macht keinen Umbruch. Innerhalb eines Absatzes brauchst du das Umbruch-Leerelement.",
+        "Fehler 1: Die Überschrift braucht `</h…>` direkt hinter dem Wort. Fehler 2: hinter „Nord“ und hinter „3“ je ein Umbruch-Tag."
+      ],
+      "solution": {
+        "html": "<h1>Schulturnier: Fußball</h1>\n<p>Alle Klassen, ein Pokal.</p>\n<h2>Anfahrt</h2>\n<p>Mit der Stadtbahn bis Haltestelle Stadion.</p>\n<p>Sporthalle Nord<br>Am Stadion 3<br>74072 Heilbronn</p>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "h2",
+          "expected": "Anfahrt",
+          "label": "Die Zwischenüberschrift lautet nur „Anfahrt“"
+        },
+        {
+          "type": "selector",
+          "selector": "h2 p",
+          "count": 0,
+          "label": "Die Absätze stecken nicht mehr in der Überschrift"
+        },
+        {
+          "type": "selector",
+          "selector": "h2 + p + p br",
+          "count": 2,
+          "label": "Die Adresse hat zwei Zeilenumbrüche"
+        },
+        {
+          "type": "text",
+          "selector": "h2 + p + p",
+          "expected": "Sporthalle Nord Am Stadion 3 74072 Heilbronn",
+          "label": "Die Adresse ist vollständig"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Ab zur FUNKEN-Startseite. Unter „Das Festival“ kommt ein zweiter Abschnitt: „Die Bühnen“ – Zwischenüberschrift plus ein Absatz, in dem „Hauptbühne“ als wichtige Information hervorgehoben ist.\n\nDer neue Abschnitt steht vor dem Kontakt-Kommentar, damit Linie und Adresse ganz unten bleiben. Alles, was du dafür brauchst, hast du gerade wiederholt."
+    },
+    {
+      "type": "code",
+      "etappe": "03-text/04-wiederholung"
+    }
+  ]
+}

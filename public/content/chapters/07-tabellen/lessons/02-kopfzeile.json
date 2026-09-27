@@ -1,0 +1,242 @@
+{
+  "id": "02-kopfzeile",
+  "title": "Die Kopfzeile",
+  "konzepte": [
+    "html.th"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Die Tabelle der Schulliga: FC Neckarblitz, 10 Spiele, 22 Punkte. Ohne die erste Zeile weiß niemand, welche Zahl was bedeutet. Diese erste Zeile ist die **Kopfzeile** – sie beschriftet die Spalten.\n\nIhre Zellen sind **Kopfzellen**: `<th>` (*table header*) statt `<td>`. Der Browser zeigt sie **fett und zentriert**. Wichtiger ist die Bedeutung: `<th>` sagt „Das ist eine Beschriftung, kein Wert.“\n\n```html\n<tr>\n  <th>Team</th>\n  <th>Spiele</th>\n  <th>Punkte</th>\n</tr>\n```",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><rect x=\"30\" y=\"30\" width=\"130\" height=\"32\" fill=\"#ff7a45\" stroke=\"#0f1320\"/><text x=\"95\" y=\"51\" text-anchor=\"middle\" fill=\"#0f1320\" font-weight=\"bold\">Team</text><rect x=\"160\" y=\"30\" width=\"100\" height=\"32\" fill=\"#ff7a45\" stroke=\"#0f1320\"/><text x=\"210\" y=\"51\" text-anchor=\"middle\" fill=\"#0f1320\" font-weight=\"bold\">Punkte</text><rect x=\"30\" y=\"62\" width=\"130\" height=\"32\" fill=\"#e8ecf7\" stroke=\"#0f1320\"/><text x=\"40\" y=\"83\" fill=\"#0f1320\">FC Neckarblitz</text><rect x=\"160\" y=\"62\" width=\"100\" height=\"32\" fill=\"#e8ecf7\" stroke=\"#0f1320\"/><text x=\"170\" y=\"83\" fill=\"#0f1320\">22</text><rect x=\"30\" y=\"94\" width=\"130\" height=\"32\" fill=\"#e8ecf7\" stroke=\"#0f1320\"/><text x=\"40\" y=\"115\" fill=\"#0f1320\">SV Hafenkick</text><rect x=\"160\" y=\"94\" width=\"100\" height=\"32\" fill=\"#e8ecf7\" stroke=\"#0f1320\"/><text x=\"170\" y=\"115\" fill=\"#0f1320\">19</text><text x=\"268\" y=\"51\" fill=\"#ff7a45\" font-family=\"monospace\">&lt;th&gt;</text><text x=\"268\" y=\"99\" fill=\"#38c7ff\" font-family=\"monospace\">&lt;td&gt;</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Die Schulliga mit Kopfzeile. **Ändere** in der Kopfzeile ein `<th>` in ein `<td>` – was passiert mit fett und zentriert? Dann **ergänze** eine vierte Spalte „Tore“: eine Kopfzelle oben und in jeder Team-Zeile eine Datenzelle.",
+      "html": "<h2>Schulliga</h2>\n<table>\n  <tr>\n    <th>Team</th>\n    <th>Spiele</th>\n    <th>Punkte</th>\n  </tr>\n  <tr>\n    <td>FC Neckarblitz</td>\n    <td>10</td>\n    <td>22</td>\n  </tr>\n  <tr>\n    <td>SV Hafenkick</td>\n    <td>10</td>\n    <td>19</td>\n  </tr>\n  <tr>\n    <td>Kellerkinder 04</td>\n    <td>10</td>\n    <td>7</td>\n  </tr>\n</table>\n",
+      "css": "/* Nur zum Anschauen: Linien um die Zellen.\n   CSS lernst du ab Kapitel 10 – diese Datei ist hier gesperrt. */\ntable {\n  border-collapse: collapse;\n}\ntd, th {\n  border: 1px solid #8a8fa8;\n  padding: 4px 10px;\n}\n",
+      "editable": [
+        "html"
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Warum nimmst du für die Kopfzeile `<th>` – und nicht einfach `<td>` mit `<strong>` darin?",
+      "options": [
+        "`<th>` bedeutet „Beschriftung der Spalte“ – nicht nur fett, sondern Bedeutung",
+        "Weil `<strong>` in Tabellen verboten ist",
+        "Weil `<th>` die Spalte automatisch breiter macht"
+      ],
+      "correct": 0,
+      "explanation": "Fett wäre nur Aussehen. `<th>` sagt dem Browser und Vorleseprogrammen, dass diese Zelle die Spalte beschreibt."
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** ganz oben in der Tabelle eine Kopfzeile mit den Kopfzellen „Team“ und „Punkte“.",
+      "starter": {
+        "html": "<h2>Schulliga</h2>\n<table>\n  <tr>\n    <td>FC Neckarblitz</td>\n    <td>22</td>\n  </tr>\n  <tr>\n    <td>SV Hafenkick</td>\n    <td>19</td>\n  </tr>\n</table>\n"
+      },
+      "hints": [
+        "Die Kopfzeile ist eine normale Zeile – nur mit Kopfzellen statt Datenzellen.",
+        "Eine Kopfzelle sieht so aus: `<th>Snack</th>`. Du brauchst zwei davon in einer eigenen Zeile.",
+        "Direkt nach `<table>`: eine Zeile `<tr>…</tr>` mit zwei `<th>…</th>` und den Texten aus der Aufgabe."
+      ],
+      "solution": {
+        "html": "<h2>Schulliga</h2>\n<table>\n  <tr>\n    <th>Team</th>\n    <th>Punkte</th>\n  </tr>\n  <tr>\n    <td>FC Neckarblitz</td>\n    <td>22</td>\n  </tr>\n  <tr>\n    <td>SV Hafenkick</td>\n    <td>19</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "table tr:first-child th",
+          "count": 2,
+          "label": "Die erste Zeile besteht aus zwei Kopfzellen"
+        },
+        {
+          "type": "text",
+          "selector": "table th:first-child",
+          "expected": "Team",
+          "label": "Die erste Kopfzelle lautet „Team“"
+        },
+        {
+          "type": "text",
+          "selector": "table th:last-child",
+          "expected": "Punkte",
+          "label": "Die zweite Kopfzelle lautet „Punkte“"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr",
+          "count": 3,
+          "label": "Die Tabelle hat jetzt drei Zeilen"
+        },
+        {
+          "type": "selector",
+          "selector": "table td",
+          "count": 4,
+          "label": "Die Team-Zeilen sind unverändert"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Die Kopfzeile steht **ganz oben** und hat **genauso viele Zellen** wie jede Datenzeile – sonst verrutschen die Spalten.\n\nIn Zellen gelten die normalen Regeln für Text: Das &-Zeichen schreibst du als Entity `&amp;`, sonst hält der Browser es für den Anfang eines Sonderzeichens.\n\n```html\n<tr>\n  <th>Zeit</th>\n  <th>Montag</th>\n</tr>\n<tr>\n  <td>8:00</td>\n  <td>Kunst &amp; Design</td>\n</tr>\n```"
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige die Kopfzeile des Stundenplans.",
+      "template": "<___>\n  <___>Zeit</th>\n  <th>Montag</th>\n</tr>",
+      "accept": [
+        [
+          "tr"
+        ],
+        [
+          "th"
+        ]
+      ],
+      "hint": "Erst die Zeile, dann die Kopfzelle: table row, table header."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter der Überschrift eine Preisliste als Tabelle: Kopfzeile mit „Snack“ und „Preis“, darunter zwei Zeilen: Brezel mit 0,80 € und Kakao mit 1,20 €.",
+      "starter": {
+        "html": "<h2>Kiosk</h2>\n<!-- Hier kommt die Preisliste -->\n"
+      },
+      "hints": [
+        "Drei Zeilen: erst die Kopfzeile mit zwei Kopfzellen, dann zwei Datenzeilen mit je zwei Datenzellen.",
+        "Kopfzelle und Datenzelle unterscheiden sich nur im Tag: `<th>Team</th>` gegenüber `<td>FC Neckarblitz</td>`.",
+        "Gerüst: `<table>`, eine Zeile mit zwei `<th>`, zwei Zeilen mit je zwei `<td>`, dann `</table>`."
+      ],
+      "solution": {
+        "html": "<h2>Kiosk</h2>\n<!-- Hier kommt die Preisliste -->\n<table>\n  <tr>\n    <th>Snack</th>\n    <th>Preis</th>\n  </tr>\n  <tr>\n    <td>Brezel</td>\n    <td>0,80 €</td>\n  </tr>\n  <tr>\n    <td>Kakao</td>\n    <td>1,20 €</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "table tr",
+          "count": 3,
+          "label": "Die Tabelle hat drei Zeilen"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr:first-child th",
+          "count": 2,
+          "label": "Die Kopfzeile hat zwei Kopfzellen"
+        },
+        {
+          "type": "text",
+          "selector": "table th:first-child",
+          "expected": "Snack",
+          "label": "Die erste Kopfzelle lautet „Snack“"
+        },
+        {
+          "type": "selector",
+          "selector": "table td",
+          "count": 4,
+          "label": "Es gibt vier Datenzellen"
+        },
+        {
+          "type": "text",
+          "selector": "table tr:last-child td:last-child",
+          "expected": "1,20 €",
+          "label": "Der Kakao kostet 1,20 €"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "h2",
+            "table"
+          ],
+          "label": "Die Tabelle steht unter der Überschrift"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Tabellen-Elemente ihrer Bedeutung zu.",
+      "pairs": [
+        [
+          "`<table>`",
+          "die ganze Tabelle"
+        ],
+        [
+          "`<tr>`",
+          "eine Zeile"
+        ],
+        [
+          "`<th>`",
+          "Kopfzelle – beschriftet die Spalte, fett und zentriert"
+        ],
+        [
+          "`<td>`",
+          "Datenzelle – ein einzelner Wert"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter der Überschrift den Stundenplan als Tabelle: Kopfzeile Zeit, Montag, Dienstag; dann die Zeile 8:00 mit Mathe und Kunst & Design; dann die Zeile 9:45 mit Deutsch und Sport.",
+      "starter": {
+        "html": "<h2>Stundenplan 11a</h2>\n<!-- Hier kommt der Stundenplan -->\n"
+      },
+      "hints": [
+        "Drei Spalten heißt: drei Kopfzellen oben und drei Datenzellen in jeder weiteren Zeile.",
+        "Das &-Zeichen im Fach schreibst du als Entity – wie bei `Pizza &amp; Pasta`.",
+        "Gerüst: `<table>`, Kopfzeile mit drei `<th>`, zwei Zeilen mit je drei `<td>`, dann `</table>`."
+      ],
+      "solution": {
+        "html": "<h2>Stundenplan 11a</h2>\n<!-- Hier kommt der Stundenplan -->\n<table>\n  <tr>\n    <th>Zeit</th>\n    <th>Montag</th>\n    <th>Dienstag</th>\n  </tr>\n  <tr>\n    <td>8:00</td>\n    <td>Mathe</td>\n    <td>Kunst &amp; Design</td>\n  </tr>\n  <tr>\n    <td>9:45</td>\n    <td>Deutsch</td>\n    <td>Sport</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "table tr:first-child th",
+          "count": 3,
+          "label": "Die Kopfzeile hat drei Kopfzellen"
+        },
+        {
+          "type": "text",
+          "selector": "table th:nth-child(3)",
+          "expected": "Dienstag",
+          "label": "Die dritte Kopfzelle lautet „Dienstag“"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr",
+          "count": 3,
+          "label": "Die Tabelle hat drei Zeilen"
+        },
+        {
+          "type": "selector",
+          "selector": "table td",
+          "count": 6,
+          "label": "Es gibt sechs Datenzellen"
+        },
+        {
+          "type": "text",
+          "selector": "table tr:nth-child(2) td:last-child",
+          "expected": "Kunst & Design",
+          "label": "Am Dienstag um 8:00 steht „Kunst & Design“"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "&amp;",
+          "label": "Das &-Zeichen ist als Entity geschrieben"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Gleich baust du eine **neue Seite**. Neue Seite heißt: neues Grundgerüst – Dokumenttyp, `html` mit Sprache, `head` mit Zeichensatz und Titel, `body` mit dem Inhalt. So sah die Galerie-Seite am Anfang aus:\n\n```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Galerie – FUNKEN</title>\n  </head>\n  <body>\n    <h1>Galerie</h1>\n    <p><a href=\"index.html\">Zurück zur Startseite</a></p>\n  </body>\n</html>\n```"
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Jetzt der eigentliche **Timetable**: die Programm-Seite. Die Datei programm.html ist auf der Startseite längst verlinkt – sie existiert nur noch nicht.\n\nDarauf kommt für Freitag eine Tabelle mit drei Spalten: Uhrzeit, Hauptbühne, Zeltbühne – mit Kopfzeile, damit jede Spalte beschriftet ist. Vergiss den Rück-Link zur Startseite nicht, und schreib das &-Zeichen im Bandnamen so, wie es HTML braucht."
+    },
+    {
+      "type": "code",
+      "etappe": "07-tabellen/02-kopfzeile"
+    }
+  ]
+}

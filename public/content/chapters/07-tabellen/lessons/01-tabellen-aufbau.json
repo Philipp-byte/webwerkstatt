@@ -1,0 +1,241 @@
+{
+  "id": "01-tabellen-aufbau",
+  "title": "Tabellen-Aufbau: Zeilen und Zellen",
+  "konzepte": [
+    "html.table"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Dein Stundenplan hängt am Kühlschrank: Zeilen für die Stunden, Spalten für die Fächer. So ein Raster bekommst du mit Absätzen oder Listen nicht hin – dafür gibt es die **Tabelle**.\n\nDrei Elemente reichen: `<table>` ist die ganze Tabelle, `<tr>` (*table row*) eine **Zeile**, `<td>` (*table data*) eine **Zelle** in dieser Zeile.\n\n```html\n<table>\n  <tr>\n    <td>8:00</td>\n    <td>Mathe</td>\n  </tr>\n</table>\n```",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><rect x=\"30\" y=\"18\" width=\"260\" height=\"128\" rx=\"8\" fill=\"none\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"40\" y=\"36\" fill=\"#ff7a45\" font-family=\"monospace\">&lt;table&gt;</text><text x=\"181\" y=\"36\" text-anchor=\"middle\" fill=\"#ffd84d\" font-family=\"monospace\">&lt;td&gt; = Zelle</text><rect x=\"44\" y=\"48\" width=\"232\" height=\"40\" rx=\"6\" fill=\"#1b2135\" stroke=\"#38c7ff\" stroke-width=\"2\"/><text x=\"52\" y=\"72\" fill=\"#38c7ff\" font-family=\"monospace\">&lt;tr&gt;</text><rect x=\"96\" y=\"55\" width=\"80\" height=\"26\" rx=\"4\" fill=\"#e8ecf7\"/><text x=\"136\" y=\"73\" text-anchor=\"middle\" fill=\"#0f1320\">8:00</text><rect x=\"186\" y=\"55\" width=\"80\" height=\"26\" rx=\"4\" fill=\"#e8ecf7\"/><text x=\"226\" y=\"73\" text-anchor=\"middle\" fill=\"#0f1320\">Mathe</text><rect x=\"44\" y=\"96\" width=\"232\" height=\"40\" rx=\"6\" fill=\"#1b2135\" stroke=\"#38c7ff\" stroke-width=\"2\"/><text x=\"52\" y=\"120\" fill=\"#38c7ff\" font-family=\"monospace\">&lt;tr&gt;</text><rect x=\"96\" y=\"103\" width=\"80\" height=\"26\" rx=\"4\" fill=\"#e8ecf7\"/><text x=\"136\" y=\"121\" text-anchor=\"middle\" fill=\"#0f1320\">9:45</text><rect x=\"186\" y=\"103\" width=\"80\" height=\"26\" rx=\"4\" fill=\"#e8ecf7\"/><text x=\"226\" y=\"121\" text-anchor=\"middle\" fill=\"#0f1320\">Deutsch</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Der Stundenplan für Montag. **Ändere** ein Fach. Dann **kopiere** eine komplette Zeile von `<tr>` bis `</tr>` und füge sie unten ein – die Tabelle wächst nach unten. Die Linien kommen aus einer kleinen gesperrten Vorgabe in style.css, nur damit du die Zellen siehst.",
+      "html": "<h2>Montag</h2>\n<table>\n  <tr>\n    <td>8:00</td>\n    <td>Mathe</td>\n  </tr>\n  <tr>\n    <td>9:45</td>\n    <td>Deutsch</td>\n  </tr>\n  <tr>\n    <td>11:30</td>\n    <td>Sport</td>\n  </tr>\n</table>\n",
+      "css": "/* Nur zum Anschauen: Linien um die Zellen.\n   CSS lernst du ab Kapitel 10 – diese Datei ist hier gesperrt. */\ntable {\n  border-collapse: collapse;\n}\ntd, th {\n  border: 1px solid #8a8fa8;\n  padding: 4px 10px;\n}\n",
+      "editable": [
+        "html"
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Eine Tabelle soll **drei Zeilen** mit **je zwei Zellen** bekommen. Wie viele `<td>`-Elemente schreibst du?",
+      "options": [
+        "6 – in jeder der drei Zeilen zwei",
+        "3 – eins pro Zeile",
+        "2 – eins pro Spalte",
+        "5 – drei Zeilen plus zwei Spalten"
+      ],
+      "correct": 0,
+      "explanation": "Zellen gehören in Zeilen: drei Zeilen × zwei Zellen = sechs `<td>`. Die Spalten entstehen von selbst, weil jede Zeile gleich viele Zellen hat."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter der Überschrift eine Tabelle mit zwei Zeilen und je zwei Zellen: In der ersten Zeile stehen 8:00 und Mathe, in der zweiten 9:45 und Deutsch.",
+      "starter": {
+        "html": "<h2>Dienstag</h2>\n<!-- Hier kommt der Stundenplan -->\n"
+      },
+      "hints": [
+        "Erst das Tabellen-Element, darin die Zeilen, in jeder Zeile die Zellen – nie andersherum.",
+        "Eine Zeile mit zwei Zellen sieht so aus: `<tr><td>Kakao</td><td>1,20 €</td></tr>` – du brauchst zwei davon untereinander.",
+        "Gerüst: `<table>`, dann zwei Zeilen `<tr>…</tr>`, in jeder zwei `<td>…</td>` mit Uhrzeit und Fach aus der Aufgabe, zum Schluss `</table>`."
+      ],
+      "solution": {
+        "html": "<h2>Dienstag</h2>\n<!-- Hier kommt der Stundenplan -->\n<table>\n  <tr>\n    <td>8:00</td>\n    <td>Mathe</td>\n  </tr>\n  <tr>\n    <td>9:45</td>\n    <td>Deutsch</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "table",
+          "count": 1,
+          "label": "Es gibt genau eine Tabelle"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr",
+          "count": 2,
+          "label": "Die Tabelle hat zwei Zeilen"
+        },
+        {
+          "type": "selector",
+          "selector": "table td",
+          "count": 4,
+          "label": "Die Tabelle hat vier Zellen"
+        },
+        {
+          "type": "text",
+          "selector": "table tr:first-child td:first-child",
+          "expected": "8:00",
+          "label": "Die erste Zelle lautet „8:00“"
+        },
+        {
+          "type": "text",
+          "selector": "table tr:last-child td:last-child",
+          "expected": "Deutsch",
+          "label": "Die letzte Zelle lautet „Deutsch“"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "h2",
+            "table"
+          ],
+          "label": "Die Tabelle steht unter der Überschrift"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Merk dir die Reihenfolge: **erst die Zeile, dann die Zellen darin.** Eine Zelle steht nie direkt in `<table>`, und eine Zeile nie in einer Zelle.\n\nJede Zeile bekommt **gleich viele Zellen**, sonst hat die Tabelle Löcher. Und Vorsicht bei Tippfehlern: Vertippst du dich bei einem Zellen-Tag oder vergisst `</table>`, landet der Inhalt **über** der Tabelle – der Browser weiß nicht, wohin damit.\n\n```html\n<tr>\n  <td>Platz 1</td>\n  <td>Lena</td>\n  <td>9870</td>\n</tr>\n```"
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige die Preisliste vom Kiosk: Welche beiden Tags fehlen?",
+      "template": "<table>\n  <___>\n    <___>Brezel</td>\n    <td>0,80 €</td>\n  </tr>\n</table>",
+      "accept": [
+        [
+          "tr"
+        ],
+        [
+          "td"
+        ]
+      ],
+      "hint": "Zeile = table row, Zelle = table data."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** die Preisliste um zwei weitere Zeilen mit je zwei Zellen: Kakao mit 1,20 € und Apfelschorle mit 1,50 €.",
+      "starter": {
+        "html": "<h2>Kiosk – Preise</h2>\n<table>\n  <tr>\n    <td>Brezel</td>\n    <td>0,80 €</td>\n  </tr>\n</table>\n"
+      },
+      "hints": [
+        "Eine neue Zeile ist ein weiteres Zeilen-Element mit zwei Zellen – innerhalb der Tabelle.",
+        "Kopiere die vorhandene Zeile zweimal und tausche die Texte aus.",
+        "Die neuen Zeilen kommen nach dem `</tr>` der Brezel-Zeile und vor `</table>`."
+      ],
+      "solution": {
+        "html": "<h2>Kiosk – Preise</h2>\n<table>\n  <tr>\n    <td>Brezel</td>\n    <td>0,80 €</td>\n  </tr>\n  <tr>\n    <td>Kakao</td>\n    <td>1,20 €</td>\n  </tr>\n  <tr>\n    <td>Apfelschorle</td>\n    <td>1,50 €</td>\n  </tr>\n</table>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "table tr",
+          "count": 3,
+          "label": "Die Tabelle hat drei Zeilen"
+        },
+        {
+          "type": "selector",
+          "selector": "table td",
+          "count": 6,
+          "label": "Jede Zeile hat zwei Zellen – sechs insgesamt"
+        },
+        {
+          "type": "text",
+          "selector": "table tr:nth-child(2) td:first-child",
+          "expected": "Kakao",
+          "label": "Die zweite Zeile beginnt mit „Kakao“"
+        },
+        {
+          "type": "text",
+          "selector": "table tr:last-child td:last-child",
+          "expected": "1,50 €",
+          "label": "Die Apfelschorle kostet 1,50 €"
+        },
+        {
+          "type": "text",
+          "selector": "table tr:first-child td:first-child",
+          "expected": "Brezel",
+          "label": "Die Brezel-Zeile ist noch da"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Bring die Highscore-Zeile in die richtige Reihenfolge: erst der Platz, dann der Name.",
+      "lines": [
+        "<table>",
+        "  <tr>",
+        "    <td>Platz 1</td>",
+        "    <td>Lena</td>",
+        "  </tr>",
+        "</table>"
+      ],
+      "explanation": "Tabelle → Zeile → Zellen. Geschlossen wird von innen nach außen."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Korrigiere** die Highscore-Liste: Die Punktzahl 8450 steht über der Tabelle statt in der zweiten Zeile, und der Absatz „Stand: Freitag“ rutscht ebenfalls nach oben statt unter die Tabelle.",
+      "starter": {
+        "html": "<h2>Highscore</h2>\n<table>\n  <tr>\n    <td>Platz 1</td>\n    <td>Lena</td>\n    <td>9870</td>\n  </tr>\n  <tr>\n    <td>Platz 2</td>\n    <td>Deniz</td>\n    <dt>8450</dt>\n  </tr>\n<p>Stand: Freitag</p>\n"
+      },
+      "hints": [
+        "Zwei Fehler: ein vertippter Zellen-Tag und ein fehlender schließender Tag. Was über der Tabelle landet, steckt in keiner richtigen Zelle.",
+        "Vergleiche die dritte Zelle der zweiten Zeile Buchstabe für Buchstabe mit den anderen Zellen.",
+        "Wo hört die Tabelle auf? Nach der letzten Zeile muss das Tabellen-Element geschlossen werden, bevor der Absatz kommt."
+      ],
+      "solution": {
+        "html": "<h2>Highscore</h2>\n<table>\n  <tr>\n    <td>Platz 1</td>\n    <td>Lena</td>\n    <td>9870</td>\n  </tr>\n  <tr>\n    <td>Platz 2</td>\n    <td>Deniz</td>\n    <td>8450</td>\n  </tr>\n</table>\n<p>Stand: Freitag</p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "table td",
+          "count": 6,
+          "label": "Alle sechs Zellen liegen in der Tabelle"
+        },
+        {
+          "type": "text",
+          "selector": "table tr:last-child td:last-child",
+          "expected": "8450",
+          "label": "Die Punktzahl 8450 steht in der zweiten Zeile"
+        },
+        {
+          "type": "selector",
+          "selector": "dt",
+          "count": 0,
+          "label": "Kein vertippter Zellen-Tag mehr"
+        },
+        {
+          "type": "selector",
+          "selector": "table + p",
+          "count": 1,
+          "label": "Der Absatz „Stand: Freitag“ steht direkt unter der Tabelle"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr",
+          "count": 2,
+          "label": "Die Tabelle hat zwei Zeilen"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Eine Regel zum Schluss: **Tabellen sind für Daten** – für alles, was in Zeilen und Spalten gehört: Stundenpläne, Preise, Ergebnisse, Zeitpläne.\n\nFrüher wurden ganze Seiten mit Tabellen gebaut: links die Navigation, rechts der Inhalt. Mach das nicht. Für Layout gibt es CSS, das lernst du später. Browser und Vorleseprogramme erwarten in einer Tabelle **Daten**, keine Seitenaufteilung."
+    },
+    {
+      "type": "quiz",
+      "question": "Welcher Inhalt gehört in eine Tabelle?",
+      "options": [
+        "Der Stundenplan: Stunden und Fächer in Zeilen und Spalten",
+        "Ein Willkommenstext aus drei Absätzen",
+        "Das Seitenlayout: Navigation links, Inhalt rechts"
+      ],
+      "correct": 0,
+      "explanation": "Tabellen sind für Daten mit Zeilen und Spalten. Text bleibt in Absätzen, und das Layout regelt später CSS."
+    },
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Leute, keiner liest drei Absätze, um den Einlass zu finden. Ich will Wann, Wo und Einlass **auf einen Blick** – links die Frage, rechts die Antwort.\n\nBaut das als eigenen Abschnitt auf die Startseite, zwischen „Das Festival“ und „Die Bühnen“. Drei Zeilen reichen mir."
+    },
+    {
+      "type": "code",
+      "etappe": "07-tabellen/01-tabellen-aufbau"
+    }
+  ]
+}
