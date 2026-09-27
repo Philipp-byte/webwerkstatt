@@ -10,9 +10,11 @@ Zuletzt aktualisiert: 27.09.2026
 - **Kapitel 01** (Referenzkapitel, handgeschrieben): 3 Lektionen, Pool (17 Fragen), Abnahme (10 Aufgaben); E2E-Tests grün.
 - **QA-Werkzeuge:** `validiere-inhalte.mjs`, `browser-test.mjs`, `e2e-lektion.mjs`, `e2e-abnahme.mjs`, `qa-kapitel.mjs`.
 
+- **Kapitel 02–18:** alle geschrieben (je Kapitel `content-src/kapitel-NN.mjs`), Validator überall 0 Fehler. Gesamt: 86 Lektionen, 889 Schritte, 184 Code-Aufgaben + 82 Etappen (davon 42 Fehlerjagden), 340 Pool-Fragen, 18 Abnahmen mit 198 Aufgaben (35 Code).
+
 ## In Arbeit
 
-- **Kapitel 02–18:** werden nach dem Autoren-Briefing geschrieben (je Kapitel `content-src/kapitel-NN.mjs`), danach QA je Kapitel und Feinschliff.
+- **QA je Kapitel** (Browser-Test aller Code-Aufgaben, Durchspielen jeder Lektion und Abnahme) läuft; Ergebnisse werden hier nachgetragen.
 
 ## Offen / wartet auf Philipp
 

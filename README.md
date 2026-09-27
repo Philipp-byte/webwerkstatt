@@ -10,7 +10,7 @@ Sechs Wochen vor **FUNKEN**, dem Schülerfestival der Stadt, ist die Festival-We
 
 ## Was drin ist
 
-- **18 Stationen** auf dem Festivalgelände (= Kapitel), 86 Lektionen, ca. 1 000 Schritte, ca. 250 Code-Aufgaben – alle selbstkorrigierend (DOM, berechnete CSS-Werte, Konsole, Klick-Simulation).
+- **18 Stationen** auf dem Festivalgelände (= Kapitel), 86 Lektionen, 889 Schritte, 266 Code-Aufgaben (davon 82 Etappen und 42 Fehlerjagden), 340 Fragen im Wiederholungspool, 18 Abnahmen – alles selbstkorrigierend (DOM, berechnete CSS-Werte, Konsole, Klick-Simulation).
 - **Gamification:** XP, Level, Ränge, Sterne, Serien-Multiplikator, 28 Abzeichen, Abnahme (Boss-Level) pro Station, drei Backstage-Minispiele (Blitzrunde, Fehlerjagd, Bühnenaufbau).
 - **Wiederholung, die sitzt:** Soundcheck (Leitner-System) vor jeder Lektion, Wiederholungslektion in jedem Kapitel, Abnahmen mit altem und neuem Stoff, Etappen, die Altes weiterverwenden.
 - **Das Projekt:** Alle bauen dieselbe FUNKEN-Website (Start, Programm, Galerie, Tickets, Impressum, style.css, script.js) in 82 Etappen – als echte, klickbare Website mit ZIP-Download. Finale „Showtime“: eigene Website mit automatisch geprüfter Checkliste.
