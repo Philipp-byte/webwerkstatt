@@ -63,7 +63,8 @@ dbg('Browser gestartet');
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 dbg('Seite offen');
 const fehler = [];
-page.on('pageerror', (e) => fehler.push(`pageerror: ${e.message}`));
+// Fehler aus dem Vorschau-Iframe (absichtlich kaputter Starter-Code bei Fehlerjagden) zählen nicht – nur Fehler der App selbst
+page.on('pageerror', (e) => { if (/\/assets\/|\/src\//.test(e.stack || '')) fehler.push(`pageerror: ${e.message}`); });
 page.on('crash', () => { fehler.push('SEITE ABGESTÜRZT'); dbg('Seite abgestürzt'); });
 browser.on('disconnected', () => dbg('Browser getrennt'));
 page.on('close', () => dbg('Seite geschlossen'));

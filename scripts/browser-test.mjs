@@ -50,7 +50,8 @@ try {
   const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-gpu'] });
   const page = await browser.newPage({ viewport: { width: 1200, height: 800 } });
   const fehler = [];
-  page.on('pageerror', (e) => fehler.push(`pageerror: ${e.message}`));
+  // Fehler aus dem Vorschau-Iframe (absichtlich kaputter Starter-Code bei Fehlerjagden) zählen nicht – nur Fehler der App selbst
+page.on('pageerror', (e) => { if (/\/assets\/|\/src\//.test(e.stack || '')) fehler.push(`pageerror: ${e.message}`); });
   await page.goto(`${preview.base}#/pruefung${kapitel ? `/${kapitel}` : ''}`, { waitUntil: 'networkidle' });
   await page.waitForFunction(() => window.__ww_pruefung, null, { timeout: 15 * 60 * 1000 });
   const ergebnis = await page.evaluate(() => window.__ww_pruefung);

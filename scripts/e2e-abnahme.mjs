@@ -48,7 +48,8 @@ let exit = 0;
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-gpu'] });
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 const fehler = [];
-page.on('pageerror', (e) => fehler.push(`pageerror: ${e.message}`));
+// Fehler aus dem Vorschau-Iframe (absichtlich kaputter Starter-Code bei Fehlerjagden) zählen nicht – nur Fehler der App selbst
+page.on('pageerror', (e) => { if (/\/assets\/|\/src\//.test(e.stack || '')) fehler.push(`pageerror: ${e.message}`); });
 try {
   await page.goto(base, { waitUntil: 'load' });
   await page.evaluate(() => {
