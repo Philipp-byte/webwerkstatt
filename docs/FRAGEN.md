@@ -13,4 +13,5 @@ Antworten bitte einfach in den Chat – ich passe Konzept und Inhalte dann an. B
 9. **Arbeitsblätter:** Die alten PDF-Arbeitsblätter (Skill-Layout) habe ich nicht neu gebaut. Willst du sie wieder (aus den neuen Lektionen generiert), oder reicht die App plus „Spickzettel“ pro Kapitel?
 10. **Lehrkraft-Passwort:** Standard ist `Werkstatt-2026` (nur der Hash liegt im Repo). Soll ich ein anderes setzen?
 11. **Heller Modus:** Standard ist dunkel („Werkstatt bei Nacht“); ein heller Modus ist per Schalter da. Soll für den Beamer eher hell Standard sein?
-12. **Klasseninterne Rangliste:** Ohne Server geht keine echte Rangliste. Möglich wäre eine „Werkstatt-Wand“, auf der die Lehrkraft exportierte Spielstände einliest und die Klasse anonym (Pseudonym) vergleicht. Wunsch?
+12. **Lernbericht:** Es gibt einen druckbaren Lernbericht (`#/bericht`, Keycard → Lernbericht), den die Lernenden dir ausgedruckt oder als PDF geben können. Reicht das als Rückmeldung, oder brauchst du etwas anderes (z. B. Export als CSV)?
+13. **Klasseninterne Rangliste:** Ohne Server geht keine echte Rangliste. Möglich wäre eine „Werkstatt-Wand“, auf der die Lehrkraft exportierte Spielstände einliest und die Klasse anonym (Pseudonym) vergleicht. Wunsch?

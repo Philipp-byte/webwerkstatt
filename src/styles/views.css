@@ -1013,3 +1013,61 @@
     padding: 1.1rem 1.1rem;
   }
 }
+
+/* ---------- Lernbericht ---------- */
+
+.bericht-leiste {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.bericht-blatt h1 {
+  font-size: 1.5rem;
+}
+.bericht-meta {
+  color: var(--ink-2);
+}
+.bericht-tabelle {
+  margin-bottom: 1rem;
+}
+.bericht-fuss {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: 1.5rem;
+}
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .topbar,
+  .seitenfuss,
+  .buehne-hintergrund,
+  .bericht-leiste,
+  .toasts {
+    display: none !important;
+  }
+  #app {
+    max-width: none;
+    padding: 0;
+  }
+  .karte,
+  .stat-kachel {
+    background: #fff !important;
+    border-color: #999 !important;
+    box-shadow: none !important;
+    color: #000 !important;
+    backdrop-filter: none;
+  }
+  .stat-kachel small,
+  .bericht-meta,
+  .pruef-tabelle td,
+  .pruef-tabelle th {
+    color: #000 !important;
+  }
+  .pruef-tabelle td,
+  .pruef-tabelle th {
+    border-bottom: 1px solid #bbb;
+  }
+}

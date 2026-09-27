@@ -113,3 +113,4 @@ Kulissen als animierte SVG/CSS-Szenen (Skyline bei Nacht, dunkles Festivalgelän
 | `#/showtime` | Finale: eigene Website mit Checkliste |
 | `#/pruefung` | interne Prüfung aller Code-Aufgaben |
 | `#/lehrkraft` | Lehrkraft-Modus |
+| `#/bericht` | druckbarer Lernbericht (Stationen, Sterne, Abnahmen, Konzepte, Abzeichen) |

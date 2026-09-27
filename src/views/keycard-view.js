@@ -95,6 +95,7 @@ export async function renderKeycard(app) {
           <button class="btn btn-primaer" type="button" id="export">⬇ Spielstand herunterladen</button>
           <button class="btn btn-sekundaer" type="button" id="import">⬆ Spielstand laden</button>
           <input type="file" id="import-datei" accept=".json,application/json" hidden>
+          <a class="btn btn-sekundaer" href="#/bericht">🖨 Lernbericht</a>
           <button class="btn btn-geist" type="button" id="reset" style="margin-left:auto">Alles zurücksetzen</button>
         </div>
         <p style="color:var(--muted);font-size:0.8rem;margin:0.6rem 0 0">Zuletzt aktiv: ${datum(s.stats.lastActive)} · Sicherungen bisher: ${s.stats.exports}</p>

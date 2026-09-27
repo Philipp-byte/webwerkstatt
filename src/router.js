@@ -12,6 +12,7 @@ const routen = {
   showtime: () => import('./views/showtime-view.js').then((m) => m.renderShowtime),
   pruefung: () => import('./views/pruefung-view.js').then((m) => m.renderPruefung),
   lehrkraft: () => import('./views/lehrkraft-view.js').then((m) => m.renderLehrkraft),
+  bericht: () => import('./views/bericht-view.js').then((m) => m.renderBericht),
 };
 
 let aktuelleView = null;
