@@ -1,5 +1,5 @@
 // Schritt-Renderer für alle Aufgabentypen. Werden vom Lektions-Player, der
-// Abnahme, dem Soundcheck und den Backstage-Spielen gemeinsam genutzt.
+// Match (Abnahme), dem Soundcheck und den Trainingslager-Spielen gemeinsam genutzt.
 //
 // renderStep(karte, step, api) – api: { solved(info), wrong(), hint(), solutionViewed(), files?, editable?, allowSolution?, fehlversucheBisLoesung? }
 

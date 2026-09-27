@@ -37,7 +37,7 @@ async function route() {
     aktuelleView = (await render(app, ...parts.slice(1))) || null;
   } catch (e) {
     console.error(e);
-    app.innerHTML = `<div class="karte gesperrt-karte"><h2>Ups!</h2><p>Diese Seite konnte nicht geladen werden.</p><p><a class="btn btn-sekundaer" href="#/">Zurück zum Gelände</a></p></div>`;
+    app.innerHTML = `<div class="karte gesperrt-karte"><h2>Ups!</h2><p>Diese Seite konnte nicht geladen werden.</p><p><a class="btn btn-sekundaer" href="#/">Zurück zum Turnierplan</a></p></div>`;
   }
   window.scrollTo(0, 0);
 }

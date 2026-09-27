@@ -1,0 +1,571 @@
+/* Turnier-Schicht (WEBCUP): Reaktionen, Turnierplan, Gegner-Karten, Match, Spielerkarte, Trophäenwand */
+
+/* ---------- Reaktionen (Sprechblasen unten rechts) ---------- */
+
+.reaktion {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 65;
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  max-width: min(92vw, 360px);
+  background: var(--panel-solid);
+  border: 1px solid color-mix(in srgb, var(--farbe) 60%, transparent);
+  border-radius: 16px;
+  padding: 0.6rem 0.9rem;
+  box-shadow: var(--shadow), 0 0 26px color-mix(in srgb, var(--farbe) 25%, transparent);
+  transform: translateY(16px) scale(0.96);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s;
+  pointer-events: none;
+}
+.reaktion.an {
+  transform: none;
+  opacity: 1;
+}
+.reaktion-gegner {
+  transform: translateY(16px) rotate(-1.5deg);
+}
+.reaktion-gegner.an {
+  transform: rotate(-1.5deg);
+}
+.reaktion-bild {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--farbe) 22%, transparent);
+  font-size: 1.4rem;
+  overflow: hidden;
+}
+.reaktion-bild img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.reaktion-bild b {
+  color: var(--farbe);
+  font-family: var(--font-display);
+}
+.reaktion-name {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--farbe);
+}
+.reaktion-text {
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+/* ---------- Crew-Leiste ---------- */
+
+.crew-leiste {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  margin: 0 0 1rem;
+}
+.crew-leiste .crew-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--spark);
+}
+.crew-leiste .crew-motto {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+.crew-mitglied {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--ink-2);
+}
+.crew-mitglied .punkt {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--farbe);
+  box-shadow: 0 0 8px var(--farbe);
+}
+
+/* ---------- Runden-Karten (Turnierplan) ---------- */
+
+.runden-liste {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.runde-karte {
+  position: relative;
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.8rem 0.9rem;
+  border-radius: var(--radius);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.runde-karte:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--farbe) 60%, transparent);
+  box-shadow: var(--shadow-soft);
+}
+.runde-karte.gesperrt {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.runde-karte.jetzt {
+  border-color: var(--spark);
+  box-shadow: 0 0 0 1px var(--spark), 0 0 30px var(--spark-glow);
+}
+.runde-karte.gewonnen {
+  border-color: color-mix(in srgb, var(--ok) 50%, transparent);
+}
+.runde-gegner {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  background: color-mix(in srgb, var(--farbe) 20%, transparent);
+  border: 2px solid color-mix(in srgb, var(--farbe) 70%, transparent);
+}
+.runde-karte.gewonnen .runde-gegner,
+.gegner-karte.besiegt .runde-gegner {
+  filter: grayscale(1);
+  opacity: 0.6;
+}
+.runde-karte .runde-nr {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.runde-karte strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+.runde-karte small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.runde-karte .balken {
+  margin-top: 0.4rem;
+}
+.runde-karte .sterne {
+  align-self: flex-end;
+}
+
+.stempel {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  transform: rotate(-12deg);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fail);
+  border: 3px solid var(--fail);
+  border-radius: 8px;
+  padding: 0.1rem 0.45rem;
+  opacity: 0.9;
+  pointer-events: none;
+}
+.stempel.gross {
+  font-size: 1.5rem;
+  right: auto;
+  left: 50%;
+  top: 50%;
+  border-width: 5px;
+  padding: 0.2rem 0.8rem;
+  animation: stempeln 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes stempeln {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-14deg) scale(2.2);
+  }
+  to {
+    opacity: 0.92;
+    transform: translate(-50%, -50%) rotate(-14deg) scale(1);
+  }
+}
+.chip-jetzt {
+  animation: puls-chip 1.6s ease-in-out infinite;
+}
+@keyframes puls-chip {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--spark-glow);
+  }
+  50% {
+    box-shadow: 0 0 0 6px transparent;
+  }
+}
+
+/* ---------- Gegner-Karte (Kapitelseite) ---------- */
+
+.gegner-karte {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.8rem 1rem;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--farbe) 14%, var(--panel-solid)), var(--panel-solid));
+  border: 1px solid color-mix(in srgb, var(--farbe) 45%, transparent);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.gegner-karte .runde-gegner {
+  width: 72px;
+  height: 72px;
+  font-size: 2.2rem;
+}
+.gegner-karte .vs {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--farbe);
+}
+.gegner-karte h2 {
+  margin: 0.1rem 0 0.2rem;
+  font-size: 1.2rem;
+}
+.gegner-karte p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 0.92rem;
+}
+.trash-blase {
+  grid-column: 1 / -1;
+  position: relative;
+  margin: 0.3rem 0 0;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.6rem 0.9rem;
+  font-style: italic;
+  color: var(--ink-2);
+}
+.trash-blase::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 28px;
+  width: 14px;
+  height: 14px;
+  background: var(--panel-2);
+  border-left: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  transform: rotate(45deg);
+}
+.trash-blase b {
+  font-style: normal;
+  color: var(--farbe);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+/* ---------- Match (Abnahme) ---------- */
+
+.match-kopf {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  margin-bottom: 1rem;
+}
+.match-team {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+.match-team .runde-gegner {
+  width: 44px;
+  height: 44px;
+  font-size: 1.3rem;
+  position: relative;
+}
+.match-vs {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--muted);
+  letter-spacing: 0.2em;
+}
+.match-stand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: var(--spark-2);
+  min-width: 5ch;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.match-stand.tick {
+  transform: scale(1.25);
+}
+.match-jury {
+  flex-basis: 100%;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.match-ergebnis {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 0 auto 0.5rem;
+}
+.match-ergebnis .runde-gegner {
+  width: 84px;
+  height: 84px;
+  font-size: 2.6rem;
+  position: relative;
+}
+.match-ergebnis .runde-gegner.raus {
+  filter: grayscale(1);
+  opacity: 0.6;
+}
+
+/* ---------- Spielerkarte ---------- */
+
+.spielerkarte {
+  position: relative;
+  border-radius: 26px;
+  padding: 2.2rem 1.6rem 1.2rem;
+  background: linear-gradient(135deg, #2a1a0e 0%, #151827 50%, #0d1a22 100%);
+  border: 2px solid rgba(255, 138, 61, 0.65);
+  box-shadow: var(--shadow), 0 0 60px rgba(255, 138, 61, 0.14);
+  overflow: hidden;
+  color: #eef1f8;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem 1.4rem;
+  align-items: center;
+}
+.spielerkarte::before {
+  content: '';
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(from 200deg, transparent 0 40%, rgba(255, 138, 61, 0.18) 45%, rgba(56, 199, 255, 0.16) 55%, transparent 60% 100%);
+  animation: holo 12s linear infinite;
+  pointer-events: none;
+}
+.spielerkarte > * {
+  position: relative;
+}
+.spielerkarte-crew {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0.35rem 1.6rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: #ffc857;
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.spielerkarte-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+.spielerkarte-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.spielerkarte-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.spielerkarte-ovr {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.2rem;
+  line-height: 1;
+  color: #ffc857;
+  text-shadow: 0 0 20px rgba(255, 200, 87, 0.4);
+  text-align: center;
+}
+.spielerkarte-ovr small {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: #8f97ab;
+}
+.spielerkarte-mitte {
+  min-width: 0;
+}
+.spielerkarte .keycard-rang {
+  color: #ffc857;
+}
+.spielerkarte .keycard-level {
+  color: #c9cfdd;
+}
+.spielerkarte .balken {
+  margin: 0.5rem 0 0.25rem;
+  background: rgba(255, 255, 255, 0.12);
+}
+.spielerkarte-werte {
+  display: grid;
+  grid-template-columns: repeat(3, 74px);
+  gap: 0.5rem;
+}
+.wert {
+  padding: 0.5rem 0.3rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid color-mix(in srgb, var(--farbe) 60%, transparent);
+  text-align: center;
+}
+.wert small {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: var(--farbe);
+}
+.wert strong {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+.spielerkarte-runden {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #c9cfdd;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 0.7rem;
+}
+
+/* ---------- Trophäenwand ---------- */
+
+.trophaeen {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 0.5rem;
+}
+.trophaee {
+  position: relative;
+  text-align: center;
+  padding: 0.6rem 0.3rem;
+  border-radius: 12px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  font-size: 0.7rem;
+  color: var(--muted);
+  overflow: hidden;
+}
+.trophaee .icon {
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.trophaee.besiegt {
+  border-color: color-mix(in srgb, var(--farbe) 60%, transparent);
+  color: var(--ink);
+}
+.trophaee.besiegt .icon {
+  filter: grayscale(1);
+  opacity: 0.7;
+}
+.trophaee.naechste {
+  border-color: var(--spark);
+  box-shadow: 0 0 16px var(--spark-glow);
+  color: var(--ink);
+}
+.trophaee.offen {
+  opacity: 0.5;
+}
+.trophaee .stempel {
+  font-size: 0.55rem;
+  right: 4px;
+  top: 4px;
+  border-width: 2px;
+  padding: 0 0.3rem;
+}
+
+@media (max-width: 720px) {
+  .spielerkarte {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+  .spielerkarte-mitte {
+    width: 100%;
+  }
+  .gegner-karte {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+  .reaktion {
+    right: 8px;
+    left: 8px;
+    max-width: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stempel.gross,
+  .chip-jetzt,
+  .spielerkarte::before {
+    animation: none;
+  }
+}

@@ -14,10 +14,10 @@ export async function renderLehrkraft(app) {
   const an = istLehrkraft();
   app.innerHTML = `
     <div class="lektion-seite auftritt">
-      <a class="zurueck" href="#/keycard">← Zur Keycard</a>
+      <a class="zurueck" href="#/keycard">← Zur Spielerkarte</a>
       <div class="karte" style="margin-top:0.75rem">
         <h1>🔑 Lehrkraft-Modus</h1>
-        <p style="color:var(--ink-2)">Schaltet alle Stationen, Lektionen und Abnahmen frei – praktisch, um im Unterricht direkt an eine Stelle zu springen. Der Lernstand bleibt unverändert. Das ist ein Sichtschutz, keine Sicherheit: Die App läuft komplett im Browser.</p>
+        <p style="color:var(--ink-2)">Schaltet alle Runden, Lektionen und Matches frei – praktisch, um im Unterricht direkt an eine Stelle zu springen. Der Lernstand bleibt unverändert. Das ist ein Sichtschutz, keine Sicherheit: Die App läuft komplett im Browser.</p>
         ${an ? `<p><strong>Der Modus ist aktiv.</strong></p><button class="btn btn-sekundaer" type="button" id="aus">Modus beenden</button>`
           : `<form class="lehrkraft-form" id="form"><input type="password" id="pw" placeholder="Passwort" autocomplete="current-password" aria-label="Passwort"><button class="btn btn-primaer" type="submit">Freischalten</button></form>
              <p style="color:var(--muted);font-size:0.85rem;margin-top:0.75rem">Passwort ändern: <code>node scripts/lehrkraft-passwort.mjs "neues Passwort"</code> – im Repo liegt nur der Hash.</p>`}
@@ -26,7 +26,7 @@ export async function renderLehrkraft(app) {
         <h2>Werkzeuge</h2>
         <ul>
           <li><a href="#/pruefung">Interne Prüfung aller Code-Aufgaben</a> (Lösung besteht, Starter fällt durch)</li>
-          <li><a href="#/projekt">FUNKEN-Website</a> · <a href="#/showtime">Showtime</a> · <a href="#/backstage">Backstage</a></li>
+          <li><a href="#/projekt">FUNKEN-Website</a> · <a href="#/showtime">Showtime</a> · <a href="#/backstage">Trainingslager</a></li>
         </ul>
       </div>
     </div>`;

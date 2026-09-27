@@ -252,5 +252,37 @@ for (const chId of ziel) {
     if (!kapitel.lessons.includes(e.lesson)) melde('FEHLER', chId, `Etappe ${e.id} gehört zu keiner Lektion in chapter.json`);
   }
 }
+// Turnierdaten (story/crews.json): jedes Kapitel hat genau eine Gegner-Crew mit allen Feldern
+try {
+  const crews = lade(path.join(WURZEL, 'story', 'crews.json'));
+  const gesehen = new Set();
+  for (const r of crews.runden || []) {
+    const wo = `story/crews/${r.chapter || '?'}`;
+    if (!alleKapitel.includes(r.chapter)) melde('FEHLER', wo, 'Runde verweist auf unbekanntes Kapitel');
+    if (gesehen.has(r.chapter)) melde('FEHLER', wo, 'Kapitel hat mehrere Runden');
+    gesehen.add(r.chapter);
+    for (const feld of ['crew', 'captain', 'farbe', 'icon', 'schwaeche', 'niederlage']) if (!r[feld]) melde('FEHLER', wo, `Feld ${feld} fehlt`);
+    for (const liste of ['trash', 'spott']) if (!Array.isArray(r[liste]) || r[liste].length < 2) melde('FEHLER', wo, `${liste} braucht mindestens 2 Sprüche`);
+    if (r.runde !== alleKapitel.indexOf(r.chapter) + 1) melde('WARNUNG', wo, `runde ${r.runde} ≠ Position im Curriculum (${alleKapitel.indexOf(r.chapter) + 1})`);
+  }
+  for (const chId of alleKapitel) if (!gesehen.has(chId)) melde('FEHLER', 'story/crews', `keine Gegner-Crew für ${chId}`);
+  for (const liste of ['jubel', 'trost']) if (!Array.isArray(crews.crew?.[liste]) || crews.crew[liste].length < 3) melde('FEHLER', 'story/crews/crew', `${liste} braucht mindestens 3 Einträge`);
+  for (const e of [...(crews.crew?.jubel || []), ...(crews.crew?.trost || [])]) if (!crews.crew?.mitglieder?.[e.wer]) melde('FEHLER', 'story/crews/crew', `unbekanntes Mitglied ${e.wer}`);
+} catch (e) {
+  melde('FEHLER', 'story/crews', `crews.json fehlt oder ungültig: ${e.message}`);
+}
+// Vorspann (story/intro.json): Pflichtfelder und Textlänge je Szene
+try {
+  const intro = lade(path.join(WURZEL, 'story', 'intro.json'));
+  (intro.szenen || []).forEach((sz, i) => {
+    const wo = `story/intro/szene[${i + 1}]`;
+    for (const feld of ['akt', 'kulisse', 'sprecher', 'ton', 'text']) if (sz[feld] == null) melde('FEHLER', wo, `Feld ${feld} fehlt`);
+    if (woerter(sz.text || '') > 70) melde('WARNUNG', wo, `Szenentext hat ${woerter(sz.text)} Wörter (Regel: max. 70)`);
+    if (!intro.akte?.[String(sz.akt)]) melde('FEHLER', wo, `Akt ${sz.akt} ohne Titel in akte`);
+  });
+  if (!intro.szenen?.length) melde('FEHLER', 'story/intro', 'keine Szenen');
+} catch (e) {
+  melde('FEHLER', 'story/intro', `intro.json fehlt oder ungültig: ${e.message}`);
+}
 console.log(`\n${ziel.length} Kapitel, ${lektionen} Lektionen geprüft — ${fehler} Fehler, ${warnungen} Warnungen`);
 process.exit(fehler ? 1 : 0);

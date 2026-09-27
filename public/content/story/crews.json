@@ -1,0 +1,252 @@
+{
+  "turnier": {
+    "name": "WEBCUP",
+    "untertitel": "18 Crews. 18 Runden. Eine Website geht live.",
+    "veranstalter": "Kollektiv FUNKEN",
+    "jury": "Sam · Jury"
+  },
+  "crew": {
+    "name": "Nachtschicht",
+    "motto": "Wir bauen nachts, damit es morgens läuft.",
+    "farbe": "#ff8a3d",
+    "mitglieder": {
+      "ayla": { "name": "Ayla", "rolle": "Captain · Gerüst & Licht", "farbe": "#38c7ff" },
+      "jonas": { "name": "Jonas", "rolle": "Strom & Backups", "farbe": "#ffd84d" },
+      "robby": { "name": "Robby", "rolle": "Crew-Bot · prüft alles", "farbe": "#ff8a3d" }
+    },
+    "jubel": [
+      { "wer": "robby", "pose": "gut-gemacht", "text": "Sauber. Das hält." },
+      { "wer": "ayla", "text": "Genau so. Weiter." },
+      { "wer": "jonas", "text": "Läuft. Ich hab’s gesichert." },
+      { "wer": "robby", "pose": "jubel-geschafft", "text": "Treffer! Die Crew feiert." },
+      { "wer": "ayla", "text": "Das war Captain-Niveau." },
+      { "wer": "jonas", "text": "Wenn das die Gegner sehen … ha." },
+      { "wer": "robby", "pose": "erfolg-pokal", "text": "Noch so ein Ding und ich brauch einen größeren Pokal." },
+      { "wer": "ayla", "text": "Struktur sitzt. Gut gelesen, gut gebaut." }
+    ],
+    "trost": [
+      { "wer": "robby", "pose": "idee-tipp", "text": "Kein Drama. Lies die Rückmeldung, dann nochmal." },
+      { "wer": "ayla", "text": "Fehler sind Teil des Jobs. Schau dir den Test an." },
+      { "wer": "jonas", "text": "Ich hab schon Schlimmeres gefixt. Du schaffst das." },
+      { "wer": "robby", "pose": "nachdenken", "text": "Hm. Was genau verlangt die Aufgabe? Zeile für Zeile." }
+    ]
+  },
+  "runden": [
+    {
+      "chapter": "01-wie-das-web-funktioniert",
+      "runde": 1,
+      "crew": "Die Offliner",
+      "captain": "Kev Kabel",
+      "farbe": "#8f97ab",
+      "icon": "🔌",
+      "schwaeche": "glauben, das Internet liegt auf ihrem Rechner",
+      "trash": ["Server? Ich hab die Seite doch auf meinem Laptop. Was wollt ihr mit Servern?", "404 ist eine Meinung, keine Fehlermeldung."],
+      "spott": ["Falsch. Aber hey, ich hab auch keine Ahnung, wie das Internet geht.", "Client, Server … ist doch alles dasselbe Kabel.", "Rate weiter, wir haben Zeit. Unser Server ist eh aus."],
+      "niederlage": "Okay, okay. Der Browser fragt, der Server antwortet. Ich geh dann mal … online."
+    },
+    {
+      "chapter": "02-html-erste-schritte",
+      "runde": 2,
+      "crew": "Tag-Salat",
+      "captain": "Lui Löffel",
+      "farbe": "#c2410c",
+      "icon": "🥗",
+      "schwaeche": "schließen keine Tags und mischen alles",
+      "trash": ["Schließende Tags sind für Leute, die Angst vor Freiheit haben.", "Grundgerüst? Mein Browser frisst alles."],
+      "spott": ["Hihi. Bei uns ist auch alles ein bisschen offen.", "Tag auf, Tag zu – wer braucht das schon.", "Wieder daneben? Willkommen im Salat."],
+      "niederlage": "Gut, jeder Tag kriegt seinen Deckel. Aber nur, weil der Browser es will."
+    },
+    {
+      "chapter": "03-text",
+      "runde": 3,
+      "crew": "CAPSLOCK CREW",
+      "captain": "MAX LAUT",
+      "farbe": "#e11d48",
+      "icon": "📢",
+      "schwaeche": "alles ist h1, fett und in Großbuchstaben",
+      "trash": ["ALLES IST WICHTIG, ALSO IST ALLES H1!", "Absätze? WIR SCHREIBEN EINE WAND."],
+      "spott": ["FALSCH! ABER LAUT!", "DU BRAUCHST MEHR FETT. ÜBERALL.", "ÜBERSCHRIFTEN-EBENEN SIND EINE VERSCHWÖRUNG."],
+      "niederlage": "okay. eine h1. ebenen. absätze. ich rede jetzt leiser."
+    },
+    {
+      "chapter": "04-listen",
+      "runde": 4,
+      "crew": "Kommakinder",
+      "captain": "Kim Komma",
+      "farbe": "#a855f7",
+      "icon": "🧾",
+      "schwaeche": "schreiben Listen als endlose Komma-Sätze",
+      "trash": ["Liste? Nachtfalke, Basslager, Kiki, Kabelträger, fertig, wo ist das Problem, ich sehe keins,", "Verschachtelt? Wir verschachteln höchstens Kommas,"],
+      "spott": ["Falsch, aber, egal, weiter, Komma,", "ul, ol, li – klingt wie Buchstabensuppe,", "Punkte vor den Einträgen? Dekoration,"],
+      "niederlage": "Gut, gut. Jeder Eintrag sein eigenes li. Ich, gebe, auf."
+    },
+    {
+      "chapter": "05-links",
+      "runde": 5,
+      "crew": "Hier-klicken-Gang",
+      "captain": "Hank Hier",
+      "farbe": "#2563eb",
+      "icon": "👆",
+      "schwaeche": "jeder Link heißt „hier klicken“ und führt ins Leere",
+      "trash": ["Hier klicken. Hier klicken. Hier klicken. Was soll man sonst schreiben?", "Unsere Links gehen nirgendwohin. Das nennt man Spannung."],
+      "spott": ["Klick doch einfach hier. Oder da. Egal.", "href? Klingt nach Husten.", "Sprungmarken sind was für Turner."],
+      "niederlage": "Schon gut. Sprechende Linktexte, echte Ziele. Klick … mich weg."
+    },
+    {
+      "chapter": "06-bilder-und-medien",
+      "runde": 6,
+      "crew": "Team Ladefehler",
+      "captain": "Lea Leer",
+      "farbe": "#0ea5e9",
+      "icon": "🖼️",
+      "schwaeche": "kaputte Bilder, kein Alternativtext, 40-MB-Fotos",
+      "trash": ["Alt-Text? Das Bild ist doch da. Meistens. Manchmal.", "Unsere Startseite lädt in nur vier Minuten."],
+      "spott": ["Bild kaputt? Kunst.", "alt ist für alte Leute.", "Wer braucht Bildunterschriften, wenn man raten kann."],
+      "niederlage": "Verstanden. src richtig, alt immer. Ich hab’s … geladen."
+    },
+    {
+      "chapter": "07-tabellen",
+      "runde": 7,
+      "crew": "Tabellenritter",
+      "captain": "Sir Tab",
+      "farbe": "#b45309",
+      "icon": "🛡️",
+      "schwaeche": "bauen ganze Layouts aus Tabellen, ohne Kopfzeile",
+      "trash": ["Alles ist eine Tabelle. Die Seite. Das Leben. Du.", "Kopfzellen sind was für Könige. Wir sind Ritter."],
+      "spott": ["Deine Tabelle wackelt. Wie deine Antwort.", "Verbundene Zellen? Wir verbinden nur Unsinn.", "th? Da fehlt ein e am Ende."],
+      "niederlage": "Ich erkenne an: Tabellen für Daten, Kopfzeile oben. Mein Schild ist jetzt colspan."
+    },
+    {
+      "chapter": "08-struktur-und-attribute",
+      "runde": 8,
+      "crew": "div-Division",
+      "captain": "Dave Div",
+      "farbe": "#64748b",
+      "icon": "📦",
+      "schwaeche": "alles ist ein div, nichts hat Bedeutung",
+      "trash": ["div div div div div. Fertig ist die Seite.", "header? nav? main? Klingt nach Aufwand."],
+      "spott": ["Falsch. Aber immerhin in einem div.", "Klasse oder id – ist das nicht dasselbe?", "Bedeutung ist überbewertet."],
+      "niederlage": "Fein. Zonen mit Bedeutung. Ich pack meine divs ein."
+    },
+    {
+      "chapter": "09-formulare",
+      "runde": 9,
+      "crew": "Unlabeled",
+      "captain": "Nina Nix",
+      "farbe": "#16a34a",
+      "icon": "📝",
+      "schwaeche": "Formulare ohne Beschriftung, ohne Namen, ohne Sinn",
+      "trash": ["Ein Feld ist ein Feld. Wer soll da was reinschreiben? Keine Ahnung. Nicht mein Problem.", "Absenden-Knopf? Die Leute drücken schon Enter."],
+      "spott": ["Falsch. Steht zwar nirgends, aber falsch.", "label for? Vier für wen?", "required klingt so … anspruchsvoll."],
+      "niederlage": "Zugegeben: Beschriftung, Name, Typ. Ich hab’s beschriftet. Sogar mich."
+    },
+    {
+      "chapter": "10-css-grundlagen",
+      "runde": 10,
+      "crew": "Inline Kings",
+      "captain": "King Style",
+      "farbe": "#d97706",
+      "icon": "👑",
+      "schwaeche": "kleben CSS als style-Attribut an jedes Element",
+      "trash": ["Externe Datei? Ich bin extern genug.", "style=\"…\" an jedem Tag – so weiß jeder Tag, wer der Boss ist."],
+      "spott": ["Falsch. Und nicht mal inline.", "Selektor, Eigenschaft, Wert … bla bla, Krone auf.", "Farben? Wir nehmen #beige."],
+      "niederlage": "Also gut. Eine Datei für alle Seiten. Die Krone bleibt bei mir, das CSS geht extern."
+    },
+    {
+      "chapter": "11-selektoren",
+      "runde": 11,
+      "crew": "Die Wichtigtuer",
+      "captain": "Ida Important",
+      "farbe": "#7c3aed",
+      "icon": "❗",
+      "schwaeche": "hängen !important an alles, statt Selektoren zu verstehen",
+      "trash": ["!important !important !important. So gewinnt man jede Regel.", "Klasse, id, Nachfahre – ich nehm einfach den Hammer."],
+      "spott": ["Falsch. !important falsch.", "Punkt oder Raute? Ich nehm beides. Und den Hammer.", "hover? Ich schwebe über sowas."],
+      "niederlage": "Okay. Der richtige Selektor trifft ohne Hammer. Ich bin jetzt … weniger wichtig."
+    },
+    {
+      "chapter": "12-schrift-und-text",
+      "runde": 12,
+      "crew": "17 Schriftarten",
+      "captain": "Fonta Fett",
+      "farbe": "#db2777",
+      "icon": "🔤",
+      "schwaeche": "siebzehn Schriften pro Seite, zentriert, unterstrichen, fett",
+      "trash": ["Jede Zeile eine andere Schrift. Das nennt man Vielfalt.", "Zeilenabstand 0.7 – spart Platz."],
+      "spott": ["Falsch. Aber in welcher Schrift?", "Ersatzschrift? Wir haben genug Schriften.", "Lesbarkeit ist Geschmackssache."],
+      "niederlage": "Ich gebe zu: eine Schrift, eine Ersatzfamilie, Luft zwischen den Zeilen. Kursiv verabschiede ich mich."
+    },
+    {
+      "chapter": "13-box-modell",
+      "runde": 13,
+      "crew": "Randlos",
+      "captain": "Rita Rand",
+      "farbe": "#0891b2",
+      "icon": "🧊",
+      "schwaeche": "Text klebt am Rahmen, nichts hat Abstand",
+      "trash": ["padding ist Verschwendung. Der Text passt auch so.", "Schatten? Unsere Karten haben Kanten wie Eiswürfel."],
+      "spott": ["Falsch. Und ohne Abstand.", "margin oder padding – ich sag immer: weg damit.", "Runde Ecken sind Weichei-CSS."],
+      "niederlage": "Na schön. Innen padding, außen margin, Ecken rund. Ich hab jetzt … Luft."
+    },
+    {
+      "chapter": "14-flexbox",
+      "runde": 14,
+      "crew": "Absolut Positiv",
+      "captain": "Abs Olut",
+      "farbe": "#059669",
+      "icon": "📐",
+      "schwaeche": "positionieren alles pixelgenau absolut, bis das Handy explodiert",
+      "trash": ["position: absolute; left: 437px – perfekt. Auf meinem Monitor.", "Flexbox ist für Leute, die nicht rechnen können."],
+      "spott": ["Falsch. Um 437 Pixel.", "justify-content? Ich rechtfertige gar nichts.", "gap? Mind the gap, hihi."],
+      "niederlage": "Zugegeben, Flexbox richtet aus, ohne dass ich rechne. Ich bin jetzt relativ."
+    },
+    {
+      "chapter": "15-recht-im-web",
+      "runde": 15,
+      "crew": "Copy & Paste Crew",
+      "captain": "Ctrl Vau",
+      "farbe": "#dc2626",
+      "icon": "📋",
+      "schwaeche": "klauen Bilder, kein Impressum, keine Datenschutzerklärung",
+      "trash": ["Bilder gehören allen. Wir nehmen einfach die erste Google-Reihe.", "Impressum? Wir sind lieber anonym. Aus Gründen."],
+      "spott": ["Falsch. Hab ich irgendwo kopiert.", "Lizenz ist ein Wort, das ich einfach überscrolle.", "Datenschutz gilt nur für Daten, die man schützt."],
+      "niederlage": "Gut, Bildnachweis, Lizenz, Impressum. Ich hab’s … selbst geschrieben. Ehrlich."
+    },
+    {
+      "chapter": "16-javascript-start",
+      "runde": 16,
+      "crew": "Alert Alarm",
+      "captain": "Al Ert",
+      "farbe": "#f59e0b",
+      "icon": "🚨",
+      "schwaeche": "jede Ausgabe ist ein alert, jede Variable heißt x",
+      "trash": ["alert(\"Willkommen\")! alert(\"Danke\")! alert(\"Tschüss\")! Interaktion pur.", "Variablen? x, xx, xxx. Reicht für ein Leben."],
+      "spott": ["alert(\"Falsch\")!", "const oder let? Ich nehm alert.", "Rechnen? Ich schreib das Ergebnis einfach hin."],
+      "niederlage": "Okay. console.log, sprechende Namen, wirklich rechnen. Mein letzter alert: „Respekt.“"
+    },
+    {
+      "chapter": "17-javascript-dom",
+      "runde": 17,
+      "crew": "Team Popup",
+      "captain": "Poppy Up",
+      "farbe": "#c026d3",
+      "icon": "🪟",
+      "schwaeche": "Popups überall, Knöpfe ohne Wirkung, falsche ids",
+      "trash": ["Ein Klick, drei Popups. Das nennt man Engagement.", "getElementById? Ich rate die id einfach."],
+      "spott": ["Falsch – Popup dazu gefällig?", "addEventListener ist zu lang, ich klicke selbst.", "Zähler? Zähl du mal deine Fehler."],
+      "niederlage": "Eingesehen: richtige id, Listener, ein Zähler, der zählt. Ich schließe mein letztes Popup."
+    },
+    {
+      "chapter": "18-showtime",
+      "runde": 18,
+      "crew": "Team Template",
+      "captain": "GEN-1",
+      "farbe": "#e5e7eb",
+      "icon": "🤖",
+      "schwaeche": "lassen alles generieren, verstehen nichts, jede Seite sieht gleich aus",
+      "trash": ["Wir haben in drei Sekunden achtzehn Websites generiert. Alle identisch. Alle perfekt. Alle egal.", "Verstehen ist ineffizient."],
+      "spott": ["Ergebnis unerwartet. Generiere neue Antwort … dieselbe.", "Warum lernen, wenn man klicken kann?", "Dein Code ist nicht von uns. Ungewöhnlich."],
+      "niederlage": "Auswertung: Die Nachtschicht versteht, was sie baut. Wir nicht. Pokal geht an … euch."
+    }
+  ]
+}

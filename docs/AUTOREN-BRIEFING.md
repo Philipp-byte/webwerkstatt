@@ -52,13 +52,13 @@ Wiederholungslektion (`*-wiederholung`): explain-Intro (2 Sätze, was wiederholt
 ## 4. Fragenpool (pool.json) und Abnahme (boss.json)
 
 - Pool: 12–20 Fragen, IDs `<nr>-01` …, jede mit `konzept` aus deinem Kapitel (DIDAKTIK Abschnitt 4), alle fünf Typen (`quiz`, `fill`, `order`, `pair`, `bug`), mindestens 3× `bug`. Fragen müssen **ohne Kontext** lösbar sein – sie erscheinen Wochen später im Soundcheck und in der Blitzrunde. Kurz halten (Quiz-Frage ≤ 25 Wörter).
-- Abnahme: `title` „Abnahme: <Station>“, `intro` als Sam-Zitat (Kundschaft, chaotisch-herzlich, 1–3 Sätze, bezieht sich auf das, was gerade gebaut wurde), `bestanden: 0.8`, 8–12 Aufgaben: ~60 % dieses Kapitel, ~40 % Wiederholungskapitel; **mindestens 2 code** (ohne hints, mit starter/solution/tests, eine davon `mode: "fix"`); jede Nicht-Code-Aufgabe mit `konzept`.
+- Abnahme: `title` „Abnahme: <Station>“, `intro` als Sam-Zitat (Jury des WEBCUP, chaotisch-herzlich, 1–3 Sätze, bezieht sich auf das, was gerade gebaut wurde), `bestanden: 0.8`, 8–12 Aufgaben: ~60 % dieses Kapitel, ~40 % Wiederholungskapitel; **mindestens 2 code** (ohne hints, mit starter/solution/tests, eine davon `mode: "fix"`); jede Nicht-Code-Aufgabe mit `konzept`.
 
 ## 5. Ton, Figuren, Story
 
 - Du-Form, freundlich-direkt, konkret, kein Kindergarten, kein Büro-Deutsch. Fachbegriffe beim ersten Mal **fett** und erklärt.
-- Figuren sparsam (max. 2 `sprecher`-Schritte pro Lektion): **Ayla** (Lead Dev, ruhig, Struktur/Design), **Jonas** (JS/Technik, trockener Humor, Backups), **Robby** (Werkstatt-Bot, prüft, tippt, feiert), **Sam** (Kollektiv FUNKEN, Kundschaft).
-- Story-Rahmen: Die Website des Schülerfestivals FUNKEN (Heilbronn, 17./18. Juli 2027) ist verschwunden; die Werkstatt baut sie mit den Lernenden neu. Fakten stehen in `PROJEKT-BIBEL.md`.
+- Figuren sparsam (max. 2 `sprecher`-Schritte pro Lektion): **Ayla** (Captain der Crew „Nachtschicht“, ruhig, Struktur/Design), **Jonas** (JS/Technik, trockener Humor, Backups), **Robby** (Crew-Bot, prüft, tippt, feiert), **Sam** (Kollektiv FUNKEN, Jury des WEBCUP).
+- Story-Rahmen: Die Website des Schülerfestivals FUNKEN (Heilbronn, 17./18. Juli 2027) ist verschwunden; im Turnier **WEBCUP** baut die Crew „Nachtschicht“ sie mit den Lernenden neu – Runde für Runde gegen eine Gegner-Crew, die einen typischen Anfängerfehler verkörpert (`public/content/story/crews.json`). Lektionstexte bleiben davon unabhängig; die Gegner tauchen nur in Turnierplan, Runden-Seite, Match und Reaktions-Sprechblasen auf. Fakten stehen in `PROJEKT-BIBEL.md`.
 
 ## 6. Grafik (figure)
 

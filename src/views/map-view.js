@@ -1,8 +1,10 @@
-// Die Gelände-Karte: Plan des FUNKEN-Festivalgeländes bei Nacht. Jede Station
-// ist ein Kapitel; erledigte Stationen leuchten, die nächste pulsiert.
+// Der Turnierplan (Startseite): die 18 Runden des WEBCUP, gespielt an 18 Stationen
+// des FUNKEN-Festivalgeländes. Jede Runde ist ein Kapitel mit einer Gegner-Crew.
+// Gewonnene Runden leuchten (Gegner: RAUS), die nächste pulsiert.
 
-import { loadCurriculum, loadAlleKapitel } from '../content.js';
+import { loadCurriculum, loadAlleKapitel, loadCrews } from '../content.js';
 import { getState } from '../store.js';
+import { rangAus } from '../gamification/xp.js';
 import { kapitelStand, kapitelFrei, sterneHtml } from '../progress.js';
 import { escapeHtml } from '../engine/markdown.js';
 
@@ -13,10 +15,10 @@ const POSITIONEN = [
   [80, 490], [260, 510], [450, 490], [680, 520],
 ];
 
-function pfad() {
-  // weiche Kurve durch alle Stationen
+function pfad(bis = POSITIONEN.length) {
+  // weiche Kurve durch die Stationen
   let d = `M ${POSITIONEN[0][0]} ${POSITIONEN[0][1]}`;
-  for (let i = 1; i < POSITIONEN.length; i++) {
+  for (let i = 1; i < bis; i++) {
     const [x0, y0] = POSITIONEN[i - 1];
     const [x1, y1] = POSITIONEN[i];
     const cx = (x0 + x1) / 2;
@@ -59,13 +61,13 @@ function kulisse(fertigAnteil, bloecke) {
     <!-- Fluss -->
     <path d="M0 600 C 200 570, 400 620, 600 590 S 900 560, 1000 600 L1000 640 L0 640Z" fill="#101a2e"/>
     <path d="M0 604 C 200 574, 400 624, 600 594 S 900 564, 1000 604" fill="none" stroke="#1c2d4d" stroke-width="2"/>
-    <!-- Hauptbühne (Block HTML) -->
+    <!-- Hauptbühne mit WEBCUP-Leinwand (Block HTML) -->
     <g transform="translate(410 160)" opacity="${bLicht}">
       <path d="M0 40 L20 0 H220 L240 40 Z" fill="#1f2438"/>
       <rect x="0" y="40" width="240" height="70" fill="#181c2c"/>
       <rect x="18" y="52" width="204" height="46" fill="#0b0d16"/>
       <circle cx="60" cy="42" r="18" fill="url(#glow-warm)"/><circle cx="120" cy="42" r="18" fill="url(#glow-cool)"/><circle cx="180" cy="42" r="18" fill="url(#glow-warm)"/>
-      <text x="120" y="82" text-anchor="middle" fill="#ff8a3d" font-family="Unbounded Variable, sans-serif" font-weight="800" font-size="18" letter-spacing="4">FUNKEN</text>
+      <text x="120" y="82" text-anchor="middle" fill="#ff8a3d" font-family="Unbounded Variable, sans-serif" font-weight="800" font-size="18" letter-spacing="4">WEBCUP</text>
     </g>
     <!-- Lichtturm (Block CSS) -->
     <g transform="translate(60 360)" opacity="${cLicht}">
@@ -104,11 +106,17 @@ function kulisse(fertigAnteil, bloecke) {
 }
 
 export async function renderMap(app) {
-  const [curriculum, kapitel] = await Promise.all([loadCurriculum(), loadAlleKapitel()]);
+  const [curriculum, kapitel, crews] = await Promise.all([
+    loadCurriculum(),
+    loadAlleKapitel(),
+    loadCrews().catch(() => ({ turnier: { name: 'WEBCUP', untertitel: '' }, crew: null, runden: [] })),
+  ]);
   const s = getState();
+  const rang = rangAus(s.xp);
   const staende = kapitel.map((k) => kapitelStand(k));
-  const fertigZahl = staende.filter((st) => st.abgenommen || st.fertig).length;
-  const naechste = kapitel.findIndex((k, i) => kapitelFrei(i, kapitel) && !(staende[i].abgenommen));
+  const fertigZahl = staende.filter((st) => st.abgenommen).length;
+  const naechste = kapitel.findIndex((k, i) => kapitelFrei(i, kapitel) && !staende[i].abgenommen);
+  const rundeVon = (id) => crews.runden.find((r) => r.chapter === id) || null;
   const anteilBlock = (ids) => {
     const idx = ids.map((id) => kapitel.findIndex((k) => k.id === id)).filter((i) => i >= 0);
     if (!idx.length) return 0;
@@ -125,6 +133,7 @@ export async function renderMap(app) {
       const [x, y] = POSITIONEN[i];
       const st = staende[i];
       const frei = kapitelFrei(i, kapitel);
+      const r = rundeVon(k.id);
       const klasse = st.abgenommen ? 'fertig' : i === naechste ? 'aktiv' : frei ? 'offen' : 'gesperrt';
       const farbe = k.color || '#ff8a3d';
       const fuellung = st.abgenommen ? farbe : frei ? '#232a40' : '#151928';
@@ -132,83 +141,96 @@ export async function renderMap(app) {
       const symbol = frei ? k.icon : '🔒';
       const oben = y < 200 || y > 400;
       const ty = oben ? y - 34 : y + 46;
-      return `<g class="station ${klasse}" data-id="${k.id}" tabindex="0" role="link" aria-label="Station ${i + 1}: ${escapeHtml(k.title)}">
+      const sub = st.abgenommen
+        ? `${'★'.repeat(Math.round((st.sterne / Math.max(1, st.maxSterne)) * 3)) || '✓'} · ${r ? escapeHtml(r.crew) : ''} raus`
+        : r ? `vs. ${escapeHtml(r.crew)}` : `${st.erledigt}/${st.gesamt}`;
+      return `<g class="station ${klasse}" data-id="${k.id}" tabindex="0" role="link" aria-label="Runde ${i + 1}: ${escapeHtml(k.title)}${r ? ` gegen ${escapeHtml(r.crew)}` : ''}">
         ${st.abgenommen || i === naechste ? `<circle cx="${x}" cy="${y}" r="34" fill="url(#glow-warm)"/>` : ''}
         <circle class="station-kreis" cx="${x}" cy="${y}" r="22" fill="${fuellung}" stroke="${rand}" stroke-width="2.5"/>
         <text x="${x}" y="${y + 6}" text-anchor="middle" font-size="18" style="pointer-events:none">${symbol}</text>
-        <text class="station-titel" x="${x}" y="${ty}" text-anchor="middle" font-size="12">${i + 1} · ${escapeHtml(k.station || k.title)}</text>
-        <text class="station-sub" x="${x}" y="${ty + 14}" text-anchor="middle" font-size="10">${st.abgenommen ? '★'.repeat(Math.round((st.sterne / Math.max(1, st.maxSterne)) * 3)) || '✓' : `${st.erledigt}/${st.gesamt}`}</text>
+        <text class="station-titel" x="${x}" y="${ty}" text-anchor="middle" font-size="12">R${i + 1} · ${escapeHtml(k.station || k.title)}</text>
+        <text class="station-sub" x="${x}" y="${ty + 14}" text-anchor="middle" font-size="10">${sub}</text>
       </g>`;
     })
     .join('');
 
   const pfadLaenge = naechste < 0 ? POSITIONEN.length : naechste + 1;
-  const hellerPfad = (() => {
-    let d = `M ${POSITIONEN[0][0]} ${POSITIONEN[0][1]}`;
-    for (let i = 1; i < pfadLaenge; i++) {
-      const [x0, y0] = POSITIONEN[i - 1];
-      const [x1, y1] = POSITIONEN[i];
-      const cx = (x0 + x1) / 2;
-      d += ` C ${cx} ${y0}, ${cx} ${y1}, ${x1} ${y1}`;
-    }
-    return d;
-  })();
-
   const offen = kapitel.length - fertigZahl;
+  const naechsteRunde = naechste >= 0 ? rundeVon(kapitel[naechste].id) : null;
+  const crew = crews.crew;
+
   app.innerHTML = `
     <div class="auftritt">
       <div class="gelaende-kopf">
         <div class="gelaende-titel">
-          <span class="chip chip-farbe" style="--farbe: var(--spark)">Auftrag · Kollektiv FUNKEN</span>
-          <h1>Das <span>Gelände</span></h1>
+          <span class="chip chip-farbe" style="--farbe: var(--spark)">${escapeHtml(crews.turnier?.name || 'WEBCUP')} · ${escapeHtml(crews.turnier?.untertitel || '')}</span>
+          <h1>Der <span>Turnierplan</span></h1>
           <p class="untertitel">${escapeHtml(curriculum.subtitle)}</p>
           <div class="schritt-buttons">
-            ${naechste >= 0 ? `<a class="btn btn-primaer" href="#/kapitel/${kapitel[naechste].id}">${staende[naechste].erledigt ? 'Weitermachen' : 'Nächste Station'}: ${escapeHtml(kapitel[naechste].title)} →</a>` : '<a class="btn btn-primaer" href="#/showtime">Showtime →</a>'}
+            ${naechste >= 0
+              ? `<a class="btn btn-primaer" href="#/kapitel/${kapitel[naechste].id}">${staende[naechste].erledigt ? 'Weiter in' : 'Anpfiff'} Runde ${naechste + 1}${naechsteRunde ? `: vs. ${escapeHtml(naechsteRunde.crew)}` : ''} →</a>`
+              : '<a class="btn btn-primaer" href="#/showtime">🏆 Pokal geholt – Showtime →</a>'}
             <a class="btn btn-geist" href="#/intro">🎬 Vorspann</a>
           </div>
         </div>
         <div class="karte countdown">
-          <small>Countdown</small>
-          <div class="countdown-zahl">${offen}</div>
-          <div>${offen === 1 ? 'Station' : 'Stationen'} bis Showtime · ${fertigZahl} von ${kapitel.length} abgenommen</div>
+          <small>${naechste >= 0 ? 'Aktuelle Runde' : 'Turnier gewonnen'}</small>
+          <div class="countdown-zahl">${naechste >= 0 ? naechste + 1 : kapitel.length}<span style="font-size:0.4em;color:var(--muted)"> / ${kapitel.length}</span></div>
+          <div>${fertigZahl} ${fertigZahl === 1 ? 'Crew' : 'Crews'} rausgeworfen · ${offen === 0 ? 'Pokal geholt!' : `${offen} ${offen === 1 ? 'Runde' : 'Runden'} bis zum Pokal`}</div>
           <div class="balken" style="--farbe: var(--spark)"><span style="width:${Math.round((fertigZahl / kapitel.length) * 100)}%"></span></div>
-          <small>${s.xp} XP · ${Object.values(s.lessons).reduce((a, l) => a + (l.stars || 0), 0)} Sterne</small>
+          <small>${s.xp} XP · ${Object.values(s.lessons).reduce((a, l) => a + (l.stars || 0), 0)} Sterne · ${rang.icon} ${rang.titel}</small>
         </div>
       </div>
 
+      ${crew ? `<div class="crew-leiste">
+        <span class="crew-name">🌙 ${escapeHtml(crew.name)}</span>
+        <span class="crew-motto">„${escapeHtml(crew.motto)}“</span>
+        ${Object.values(crew.mitglieder || {}).map((m) => `<span class="crew-mitglied" style="--farbe:${escapeHtml(m.farbe)}"><span class="punkt"></span>${escapeHtml(m.name)} · ${escapeHtml(m.rolle)}</span>`).join('')}
+        <span class="crew-mitglied" style="--farbe: var(--spark-2)"><span class="punkt"></span>${escapeHtml(s.name || 'Du')} · ${rang.titel}</span>
+      </div>` : ''}
+
       <div class="gelaende" id="gelaende">
-        <svg viewBox="0 0 1000 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Plan des Festivalgeländes mit 18 Stationen">
+        <svg viewBox="0 0 1000 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Turnierplan: 18 Runden auf dem Festivalgelände">
           ${kulisse(fertigZahl / kapitel.length, bloecke)}
           <path d="${pfad()}" fill="none" stroke="#2a3150" stroke-width="6" stroke-linecap="round" stroke-dasharray="1 12"/>
-          <path d="${hellerPfad}" fill="none" stroke="#ff8a3d" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 10" opacity="0.9"/>
+          <path d="${pfad(pfadLaenge)}" fill="none" stroke="#ff8a3d" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 10" opacity="0.9"/>
           ${stationenSvg}
         </svg>
       </div>
 
       <div class="schnellzugriff">
-        <a class="schnell-karte" href="#/projekt"><span class="icon">🌐</span><span><strong>FUNKEN-Website</strong><small>Euer Projekt – Seite für Seite</small></span></a>
-        <a class="schnell-karte" href="#/backstage"><span class="icon">🎮</span><span><strong>Backstage</strong><small>Blitzrunde, Fehlerjagd, Bühnenaufbau</small></span></a>
-        <a class="schnell-karte" href="#/keycard"><span class="icon">🪪</span><span><strong>Keycard</strong><small>Rang, Abzeichen, Spielstand sichern</small></span></a>
+        <a class="schnell-karte" href="#/projekt"><span class="icon">🌐</span><span><strong>FUNKEN-Website</strong><small>Euer Turnier-Projekt – Seite für Seite</small></span></a>
+        <a class="schnell-karte" href="#/backstage"><span class="icon">🏋️</span><span><strong>Trainingslager</strong><small>Blitzrunde, Fehlerjagd, Bühnenaufbau</small></span></a>
+        <a class="schnell-karte" href="#/keycard"><span class="icon">🃏</span><span><strong>Spielerkarte</strong><small>Rang, Werte, Trophäen, Spielstand sichern</small></span></a>
       </div>
 
       ${curriculum.blocks
         .map(
           (b) => `
         <div class="block-titel" style="color:${b.color}">${escapeHtml(b.title)}</div>
-        <div class="stations-liste">
+        <div class="runden-liste">
           ${b.chapters
             .map((id) => {
               const i = kapitel.findIndex((k) => k.id === id);
               const k = kapitel[i];
               const st = staende[i];
               const frei = kapitelFrei(i, kapitel);
-              return `<a class="station-karte ${frei ? '' : 'gesperrt'}" href="${frei ? `#/kapitel/${k.id}` : '#/'}" style="--farbe:${k.color}" ${frei ? '' : 'aria-disabled="true" title="Erst die Abnahme der vorherigen Station bestehen"'}>
-                <span class="icon">${frei ? k.icon : '🔒'}</span>
+              const r = rundeVon(id);
+              const klasse = [frei ? '' : 'gesperrt', st.abgenommen ? 'gewonnen' : '', i === naechste ? 'jetzt' : ''].join(' ');
+              const status = st.abgenommen
+                ? `Gewonnen mit ${Math.round(st.abnahme.best * 100)} %`
+                : i === naechste
+                  ? st.erledigt ? `Training ${st.erledigt}/${st.gesamt} · dann das Match` : 'Jetzt dran – Training beginnt'
+                  : frei ? `${st.erledigt}/${st.gesamt} Lektionen` : 'Erst die Runde davor gewinnen';
+              return `<a class="runde-karte ${klasse}" href="${frei ? `#/kapitel/${k.id}` : '#/'}" style="--farbe:${r?.farbe || k.color}" ${frei ? '' : 'aria-disabled="true" title="Erst das Match der vorherigen Runde gewinnen"'}>
+                <span class="runde-gegner">${frei ? (r?.icon || k.icon) : '🔒'}</span>
                 <span style="flex:1;min-width:0">
-                  <strong>${i + 1} · ${escapeHtml(k.title)}</strong>
-                  <small>${escapeHtml(k.station)} · ${st.erledigt}/${st.gesamt} Lektionen ${st.abgenommen ? '· abgenommen ✓' : ''}</small>
+                  <span class="runde-nr">Runde ${i + 1} · ${escapeHtml(k.station)}</span>
+                  <strong>${r ? `vs. ${escapeHtml(r.crew)}` : escapeHtml(k.title)}</strong>
+                  <small>${escapeHtml(k.title)} · ${status}</small>
                   <span class="balken"><span style="width:${Math.round((st.erledigt / Math.max(1, st.gesamt)) * 100)}%"></span></span>
                 </span>
+                ${st.abgenommen ? '<span class="stempel">Raus</span>' : i === naechste ? '<span class="chip chip-farbe chip-jetzt" style="--farbe: var(--spark)">Jetzt</span>' : ''}
                 ${st.sterne ? sterneHtml(Math.round((st.sterne / Math.max(1, st.maxSterne)) * 3)) : ''}
               </a>`;
             })

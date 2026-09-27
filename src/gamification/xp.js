@@ -20,13 +20,14 @@ export const XP = {
   backstageTagesdeckel: 150,
 };
 
+// Die Ränge im WEBCUP (Spielerkarte) – Schwellen siehe docs/DIDAKTIK.md Abschnitt 6.
 export const RAENGE = [
-  { id: 'praktikum', titel: 'Praktikum', ab: 0, icon: '🪪' },
-  { id: 'junior', titel: 'Junior', ab: 1500, icon: '🔧' },
-  { id: 'developer', titel: 'Developer', ab: 4500, icon: '💻' },
-  { id: 'senior', titel: 'Senior', ab: 9000, icon: '🛠️' },
-  { id: 'lead', titel: 'Lead', ab: 15000, icon: '🎛️' },
-  { id: 'legende', titel: 'Werkstatt-Legende', ab: 22000, icon: '🏆' },
+  { id: 'rookie', titel: 'Rookie', ab: 0, icon: '🎽' },
+  { id: 'starter', titel: 'Starter', ab: 1500, icon: '⚡' },
+  { id: 'pro', titel: 'Pro', ab: 4500, icon: '💻' },
+  { id: 'captain', titel: 'Captain', ab: 9000, icon: '🧢' },
+  { id: 'mvp', titel: 'MVP', ab: 15000, icon: '🏅' },
+  { id: 'legende', titel: 'Legende', ab: 22000, icon: '🏆' },
 ];
 
 export function xpFuerLevel(level) {

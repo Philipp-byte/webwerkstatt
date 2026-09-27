@@ -23,6 +23,9 @@ const SZENEN = {
   plan: 'Abstract illustration of three stacked translucent layers floating above a workbench: an orange skeleton layer at the bottom, a cyan color-and-light layer in the middle, a yellow electric layer on top, blueprint grid background, no text.',
   keycard: 'A sleek holographic employee keycard floating above a dark desk, orange and cyan light reflections, a small robot icon on the card, dramatic close-up, no readable text.',
   karte: 'Top-down stylized map of a festival ground at night with a winding glowing path connecting eighteen small lit stations, stages, food trucks, a ferris wheel and a river at the bottom, warm lights, no text.',
+  arena: 'A festival main stage at night with a huge blank LED screen glowing orange and cyan, spotlights cutting through haze, confetti in the air, a cheering crowd in silhouette raising hands, tournament atmosphere, no text.',
+  bracket: 'A large dark tournament bracket board hanging in an old factory hall, eighteen empty glowing circular badge slots connected by dotted lines in three rows, one badge at the bottom highlighted in warm orange, cyan and amber lights, no text.',
+  spielerkarte: 'A holographic trading card floating above a dark desk, portrait silhouette of a young coder in the center, three small stat boxes at the bottom glowing orange, cyan and yellow, warm rim light, dramatic close-up, no readable text.',
 };
 
 const args = process.argv.slice(2);

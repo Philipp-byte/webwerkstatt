@@ -1,6 +1,6 @@
 {
   "title": "WebWerkstatt",
-  "subtitle": "Schritt für Schritt eigene Websites bauen – und dabei die Website des FUNKEN-Festivals neu aufbauen: erst das Gerüst, dann Licht und Farbe, zum Schluss Strom.",
+  "subtitle": "18 Runden gegen 18 Crews – und dabei die Website des FUNKEN-Festivals bauen: erst das Gerüst (HTML), dann Licht und Farbe (CSS), zum Schluss Strom (JavaScript).",
   "blocks": [
     {
       "id": "backstage",

@@ -1,11 +1,11 @@
 {
-  "titel": "FUNKEN",
-  "untertitel": "42 Tage. 18 Stationen. Eine Website.",
+  "titel": "WEBCUP",
+  "untertitel": "18 Crews. 18 Runden. Eine Website geht live.",
   "bilder": {},
   "akte": {
-    "1": "404",
-    "2": "Die Werkstatt",
-    "3": "Deine Keycard"
+    "1": "Der Aufruf",
+    "2": "Die Nachtschicht",
+    "3": "Deine Spielerkarte"
   },
   "szenen": [
     {
@@ -13,16 +13,8 @@
       "kulisse": "skyline",
       "sprecher": "Erzählung",
       "ton": "erzaehler",
-      "text": "Heilbronn, 23:40 Uhr. Am Neckar liegt das alte Fabrikgelände, auf dem in 42 Tagen FUNKEN steigt – das Schülerfestival der Stadt. Zwei Bühnen. Foodtrucks. Dreitausend Leute.",
+      "text": "Heilbronn, Freitagnacht. Auf dem alten Fabrikgelände am Neckar steigt in 42 Tagen FUNKEN – das Schülerfestival der Stadt. Zwei Bühnen, Foodtrucks, dreitausend Leute. Und genau eine Website, die alle brauchen.",
       "sfx": "wusch"
-    },
-    {
-      "akt": 1,
-      "kulisse": "gelaende",
-      "sprecher": "Sam · Kollektiv FUNKEN",
-      "ton": "sam",
-      "text": "Line-up steht, Bühnen sind gebucht, die Tickets gehen morgen früh in den Vorverkauf. Ich lade nur noch schnell das Plakat auf die Website hoch …",
-      "sfx": "klick"
     },
     {
       "akt": 1,
@@ -30,49 +22,75 @@
       "sprecher": "Browser",
       "ton": "system",
       "badge": { "eyebrow": "FEHLER 404", "title": "SEITE NICHT GEFUNDEN" },
-      "text": "funken-festival.de antwortet nicht. Der Server der Agentur ist abgeschaltet. Keine Sicherung gefunden.",
+      "text": "funken-festival.de ist weg. Die Agentur hat über Nacht dichtgemacht und den Server abgeschaltet. Keine Sicherung. Kein Line-up, kein Ticketshop, keine Anfahrt.",
       "effekt": "glitch",
       "sfx": "alarm"
     },
     {
       "akt": 1,
-      "kulisse": "bildschirm",
-      "sprecher": "Sam",
+      "kulisse": "gelaende",
+      "sprecher": "Sam · Kollektiv FUNKEN",
       "ton": "sam",
-      "text": "Nicht gefunden? NICHT GEFUNDEN?! Die Agentur hat über Nacht dichtgemacht. Alles weg: Line-up, Anfahrt, Ticketformular. Und morgen wollen dreitausend Leute Tickets kaufen.",
-      "effekt": "glitch"
+      "text": "Okay. OKAY. Ich könnte jetzt heulen. Oder ich mache das, was ich am besten kann: ein Event daraus.",
+      "sfx": "klick"
     },
     {
       "akt": 1,
-      "kulisse": "skyline",
+      "kulisse": "arena",
+      "sprecher": "Sam · Kollektiv FUNKEN",
+      "ton": "sam",
+      "badge": { "eyebrow": "AUFRUF AN ALLE CREWS", "title": "WEBCUP" },
+      "text": "Hiermit rufe ich den WEBCUP aus: Wer baut uns die beste Website? 18 Crews aus der ganzen Stadt haben sich gemeldet. 18 Runden, eine Jury – ich –, und die Gewinner-Website geht am Festival live.",
+      "effekt": "lichter",
+      "sfx": "fanfare"
+    },
+    {
+      "akt": 1,
+      "kulisse": "bracket",
       "sprecher": "Erzählung",
       "ton": "erzaehler",
-      "text": "Um 23:52 Uhr schreibt Sam eine Nachricht an die einzige Adresse, die noch nicht offline ist: die Webwerkstatt in Halle 7.",
-      "effekt": "nachricht",
-      "sfx": "chime"
+      "text": "Ein Turnier im K.-o.-Modus: Runde für Runde tritt eine Crew gegen eine andere an. Wer die Runde verliert, ist raus. Wer 18 Runden übersteht, hat die Website gebaut, die dreitausend Leute sehen werden."
+    },
+    {
+      "akt": 1,
+      "kulisse": "bracket",
+      "sprecher": "Kev Kabel · Captain der Offliner",
+      "ton": "gegner",
+      "gegner": { "icon": "🔌", "farbe": "#8f97ab", "crew": "Die Offliner" },
+      "text": "Runde 1 gegen die Nachtschicht? Die Neuen? Pff. Unsere Seite ist längst fertig. Sie liegt auf meinem Laptop. Was wollt ihr mit Servern?",
+      "sfx": "falsch"
+    },
+    {
+      "akt": 1,
+      "kulisse": "bracket",
+      "sprecher": "GEN-1 · Team Template",
+      "ton": "gegner",
+      "gegner": { "icon": "🤖", "farbe": "#e5e7eb", "crew": "Team Template" },
+      "text": "Wir haben in drei Sekunden achtzehn Websites generiert. Alle identisch. Alle perfekt. Alle egal. Wir sehen uns im Finale – falls ihr so weit kommt.",
+      "effekt": "glitch"
     },
     {
       "akt": 2,
       "kulisse": "werkstatt",
-      "sprecher": "Ayla Demir · Lead Developerin",
+      "sprecher": "Ayla · Captain der Nachtschicht",
       "ton": "ayla",
-      "text": "Wir haben die Nachricht um Mitternacht gelesen. Ich bin Ayla – ich habe die Werkstatt gegründet. Wir bauen Websites. Nicht die schnellen. Die, die halten.",
+      "text": "Halle 7, 23:58 Uhr. Willkommen bei der Nachtschicht. Ich bin Ayla, Captain. Zwei Leute, ein Bot, null Budget. Die anderen Crews lachen über uns. Sollen sie.",
       "sfx": "wusch"
     },
     {
       "akt": 2,
       "kulisse": "werkstatt",
-      "sprecher": "Jonas Brandt · Entwickler",
+      "sprecher": "Jonas · Strom & Backups",
       "ton": "jonas",
-      "text": "Jonas. Ich mache den Strom – also alles, was auf einer Seite klickt, zählt und reagiert. Und ich bin der, der Backups macht. Fragt Sam mal, wie wichtig das ist."
+      "text": "Jonas. Ich bringe alles zum Laufen, was klickt, zählt und reagiert. Und ich bin der Grund, warum diese Crew nie wieder eine Sicherung vergisst. Nie wieder, Sam."
     },
     {
       "akt": 2,
       "kulisse": "werkstatt",
-      "sprecher": "Robby · Werkstatt-Bot",
+      "sprecher": "Robby · Crew-Bot",
       "ton": "robby",
       "robby": "hallo-einstieg",
-      "text": "Und ich bin Robby, der Werkstatt-Bot. Ich prüfe jeden Code, den ihr schreibt, gebe Tipps, wenn es hakt – und ich feiere, wenn es läuft. Willkommen im Team!",
+      "text": "Und ich bin Robby, der Crew-Bot! Ich prüfe jede Zeile, die du schreibst, gebe Tipps, wenn es hakt, und feiere, wenn es läuft. Außerdem zähle ich mit, wie viele Crews rausfliegen. Ha!",
       "sfx": "chime"
     },
     {
@@ -80,7 +98,7 @@
       "kulisse": "plan",
       "sprecher": "Ayla",
       "ton": "ayla",
-      "text": "Der Plan: Wir bauen die Seite neu – von Grund auf. Erst das Gerüst: HTML. Dann Licht und Farbe: CSS. Zum Schluss Strom: JavaScript. Genau in dieser Reihenfolge, Schritt für Schritt.",
+      "text": "Unser Spielplan gegen 17 Crews, die alles gleichzeitig wollen: Wir bauen in Reihenfolge. Erst das Gerüst: HTML. Dann Licht und Farbe: CSS. Zum Schluss Strom: JavaScript. Wer die Reihenfolge kann, gewinnt.",
       "effekt": "schichten"
     },
     {
@@ -88,55 +106,56 @@
       "kulisse": "werkstatt",
       "sprecher": "Jonas",
       "ton": "jonas",
-      "text": "42 Tage. Zu zweit schaffen wir das nicht. Deshalb suchen wir Verstärkung – Leute, die noch nie eine Zeile Code geschrieben haben, aber Lust haben, das zu ändern."
+      "text": "Uns fehlt genau eine Person. Jemand, der noch nie eine Zeile Code geschrieben hat – und deshalb keine schlechten Angewohnheiten. Jemand wie du. Willkommen im Kader, Rookie."
     },
     {
       "akt": 2,
       "kulisse": "werkstatt",
-      "sprecher": "Sam",
+      "sprecher": "Sam · Jury",
       "ton": "sam",
-      "text": "Ich bring Kaffee, Pizza und Panik. Und ich nehme jede Station ab – wenn es mir gefällt, geht es weiter. Wenn nicht … dann eben nochmal. Deal?"
+      "text": "Ich bin die Jury. Nach jeder Runde nehme ich eure Arbeit ab – ehrlich und gnadenlos. Ab 80 Prozent kommt ihr weiter und die Gegner-Crew fliegt raus. Darunter gibt es eine Revanche. Deal?"
     },
     {
       "akt": 3,
-      "kulisse": "keycard",
+      "kulisse": "spielerkarte",
       "sprecher": "Ayla",
       "ton": "ayla",
-      "badge": { "eyebrow": "KEYCARD AUSGESTELLT", "title": "PRAKTIKUM · LEVEL 1" },
-      "text": "Das ist deine Keycard. Praktikum, Level 1, null XP. Jede Aufgabe bringt XP, jede Lektion Sterne, jede Station ein Stück Festival. Ränge gibt es fürs Können – nicht fürs Rumsitzen.",
+      "badge": { "eyebrow": "SPIELERKARTE AUSGESTELLT", "title": "ROOKIE · LEVEL 1" },
+      "text": "Das ist deine Spielerkarte. Rookie, Level 1, null XP. Jede Aufgabe bringt XP, jede Lektion Sterne, jede gewonnene Runde einen Gegner weniger. Die Ränge gibt es fürs Können: Rookie, Starter, Pro, Captain, MVP, Legende.",
       "sfx": "abzeichen"
     },
     {
       "akt": 3,
-      "kulisse": "keycard",
+      "kulisse": "spielerkarte",
       "sprecher": "Robby",
       "ton": "robby",
       "robby": "idee-tipp",
-      "text": "Drei Regeln aus der Werkstatt: Erstens – Fehler gehören zum Job, du bekommst genaue Rückmeldung statt Rätselraten. Zweitens – Tipps sind erlaubt. Drittens – sichere deinen Spielstand. Backups, Sam. Backups."
+      "text": "Drei Crew-Regeln. Erstens: Fehler sind Training – du bekommst genaue Rückmeldung statt Rätselraten. Zweitens: Tipps sind erlaubt, Abschreiben nicht. Drittens: Sichere deinen Spielstand als Datei. Backups, Sam. Backups."
     },
     {
       "akt": 3,
       "kulisse": "karte",
       "sprecher": "Jonas",
       "ton": "jonas",
-      "text": "Das Gelände ist dein Plan: 18 Stationen, vom Info-Point bis Showtime. Jede fertige Station bringt ein Stück Festival zum Leuchten. Und im Backstage kannst du jederzeit üben.",
+      "text": "Der Turnierplan: 18 Runden, gespielt an 18 Stationen des Festivalgeländes, vom Info-Point bis Showtime. Jede gewonnene Runde bringt ein Stück Festival zum Leuchten. Im Trainingslager kannst du jederzeit üben.",
       "effekt": "lichter",
       "sfx": "chime"
     },
     {
       "akt": 3,
       "kulisse": "karte",
-      "sprecher": "Sam",
+      "sprecher": "Sam · Jury",
       "ton": "sam",
-      "text": "Countdown läuft. 42 Tage, 18 Stationen, eine Website. Und ganz am Ende baust du deine eigene – zu dem, was du willst."
+      "text": "42 Tage, 18 Runden, eine Website. Und ganz am Ende baust du deine eigene – zu dem, was du willst. Das ist dein Finale."
     },
     {
       "akt": 3,
-      "kulisse": "werkstatt",
+      "kulisse": "bracket",
       "sprecher": "Ayla",
       "ton": "ayla",
-      "badge": { "eyebrow": "STATION 1", "title": "INFO-POINT" },
-      "text": "Erste Station: der Info-Point. Bevor du eine Zeile schreibst, musst du wissen, was passiert, wenn jemand funken-festival.de eintippt. Bereit? Dann los.",
+      "badge": { "eyebrow": "RUNDE 1", "title": "VS. DIE OFFLINER" },
+      "gegner": { "icon": "🔌", "farbe": "#8f97ab", "crew": "Die Offliner" },
+      "text": "Runde 1: die Offliner. Die glauben, das Internet liegt auf ihrem Laptop. Zeig ihnen, was wirklich passiert, wenn jemand funken-festival.de eintippt. Bereit? Anpfiff.",
       "sfx": "fanfare"
     }
   ]

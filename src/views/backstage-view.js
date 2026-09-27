@@ -1,4 +1,4 @@
-// Backstage: drei Minispiele zur Wiederholung – Blitzrunde (60 s), Fehlerjagd
+// Trainingslager (Route #/backstage): drei Minispiele zur Wiederholung – Blitzrunde (60 s), Fehlerjagd
 // (8 Runden, falsche Zeile finden) und Bühnenaufbau (Zeilen sortieren).
 // Fragen kommen aus den Pools der Kapitel, die schon begonnen wurden.
 
@@ -43,9 +43,9 @@ export async function renderBackstage(app, spielId) {
   const xpHeute = s.backstage.tag === heute ? s.backstage.xpHeute : 0;
   app.innerHTML = `
     <div class="auftritt">
-      <a class="zurueck" href="#/">← Zum Gelände</a>
-      <h1 style="margin-top:0.5rem">🎮 Backstage</h1>
-      <p style="color:var(--ink-2);max-width:60ch">Hier wird geübt, was du schon gelernt hast – schnell, spielerisch, so oft du willst. Der Fragenvorrat wächst mit jeder Station, die du beginnst (${pool.length} Fragen im Vorrat). Heute schon ${xpHeute} von ${XP.backstageTagesdeckel} Backstage-XP geholt.</p>
+      <a class="zurueck" href="#/">← Zum Turnierplan</a>
+      <h1 style="margin-top:0.5rem">🏋️ Trainingslager</h1>
+      <p style="color:var(--ink-2);max-width:60ch">Hier trainiert die Nachtschicht zwischen den Runden: alles, was du schon gelernt hast – schnell, spielerisch, so oft du willst. Der Fragenvorrat wächst mit jeder Runde, die du beginnst (${pool.length} Fragen im Vorrat). Heute schon ${xpHeute} von ${XP.backstageTagesdeckel} Trainings-XP geholt.</p>
       <div class="backstage-grid">
         ${SPIELE.map((sp) => `<div class="karte spiel-karte">
           <div class="icon">${sp.icon}</div>
@@ -64,14 +64,14 @@ async function spiel(app, id) {
   const pool = await ladePool();
   const fragen = mische(pool.filter((f) => (id === 'jagd' ? f.type === 'bug' : id === 'aufbau' ? f.type === 'order' : ['quiz', 'fill', 'pair'].includes(f.type))));
   if (fragen.length < 3) {
-    app.innerHTML = `<div class="lektion-seite"><a class="zurueck" href="#/backstage">← Backstage</a><div class="karte gesperrt-karte"><h2>Noch zu wenig Vorrat</h2><p>Für dieses Spiel gibt es noch nicht genug Fragen. Schließ erst ein paar Lektionen ab.</p></div></div>`;
+    app.innerHTML = `<div class="lektion-seite"><a class="zurueck" href="#/backstage">← Trainingslager</a><div class="karte gesperrt-karte"><h2>Noch zu wenig Vorrat</h2><p>Für dieses Spiel gibt es noch nicht genug Fragen. Schließ erst ein paar Lektionen ab.</p></div></div>`;
     return;
   }
 
   app.innerHTML = `
     <div class="lektion-seite">
       <div class="spiel-kopf">
-        <a class="zurueck" href="#/backstage">← Backstage</a>
+        <a class="zurueck" href="#/backstage">← Trainingslager</a>
         <h1 style="margin:0;flex:1">${sp.icon} ${sp.titel}</h1>
         <span class="spiel-punkte">Punkte <strong id="punkte">0</strong> <span class="spiel-combo" id="combo"></span></span>
         <span class="spiel-timer" id="timer">${id === 'blitz' ? '60' : ''}</span>
@@ -191,7 +191,7 @@ async function spiel(app, id) {
       <div class="abschluss-buttons">
         <a class="btn btn-primaer" href="#/backstage/${id}" onclick="setTimeout(()=>location.reload(),0)">Nochmal</a>
         <a class="btn btn-sekundaer" href="#/backstage">Andere Spiele</a>
-        <a class="btn btn-geist" href="#/">Zum Gelände</a>
+        <a class="btn btn-geist" href="#/">Zum Turnierplan</a>
       </div>
     </section>`;
     if (richtig >= 3) konfetti(rekord ? 'gross' : 'mittel');

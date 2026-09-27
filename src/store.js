@@ -1,5 +1,5 @@
 // Der Spielstand: alles in EINEM localStorage-Eintrag, kein Konto, kein Server.
-// Sichern/Laden als JSON-Datei (Keycard). Die Views ändern den Zustand nur über
+// Sichern/Laden als JSON-Datei (Spielerkarte). Die Views ändern den Zustand nur über
 // die Funktionen hier, damit XP, Abzeichen und Leitner konsistent bleiben.
 
 import { XP, levelAus, rangAus, comboFaktor } from './gamification/xp.js';

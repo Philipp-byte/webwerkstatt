@@ -1,10 +1,11 @@
-// Keycard: Profil ohne Konto – Rang, Level, Abzeichen, Statistik, Kompetenzen,
+// Spielerkarte (Route #/keycard): Profil ohne Konto – Rang, Level, Werte für
+// HTML/CSS/JS, Trophäenwand (besiegte Crews), Abzeichen, Statistik, Kompetenzen,
 // Spielstand sichern/laden, Einstellungen.
 
 import { getState, setName, exportSpielstand, importSpielstand, spielstandLoeschen, getSettings, setSetting, abzeichenPruefen, istLehrkraft } from '../store.js';
 import { levelFortschritt, rangAus, naechsterRang, RAENGE } from '../gamification/xp.js';
 import { ABZEICHEN } from '../gamification/badges.js';
-import { loadKonzepte, loadAlleKapitel } from '../content.js';
+import { loadKonzepte, loadAlleKapitel, loadCurriculum, loadCrews } from '../content.js';
 import { escapeHtml } from '../engine/markdown.js';
 import { toast } from '../gamification/celebrate.js';
 import { sound } from '../gamification/sound.js';
@@ -18,7 +19,12 @@ function datum(ms) {
 
 export async function renderKeycard(app) {
   const s = getState();
-  const [konzepte, kapitel] = await Promise.all([loadKonzepte(), loadAlleKapitel()]);
+  const [konzepte, kapitel, curriculum, crews] = await Promise.all([
+    loadKonzepte(),
+    loadAlleKapitel(),
+    loadCurriculum(),
+    loadCrews().catch(() => ({ turnier: { name: 'WEBCUP' }, crew: null, runden: [] })),
+  ]);
   const lf = levelFortschritt(s.xp);
   const rang = rangAus(s.xp);
   const naechster = naechsterRang(s.xp);
@@ -27,7 +33,8 @@ export async function renderKeycard(app) {
   const gesamtLektionen = kapitel.reduce((a, k) => a + k.lessons.length, 0);
   const genauigkeit = s.stats.correct + s.stats.wrong ? Math.round((s.stats.correct / (s.stats.correct + s.stats.wrong)) * 100) : 0;
   const einst = getSettings();
-  const code = `WW-${String(s.stats.firstActive || 0).slice(-6).padStart(6, '0')}-${String(lf.level).padStart(2, '0')}`;
+  const code = `WC-${String(s.stats.firstActive || 0).slice(-6).padStart(6, '0')}-${String(lf.level).padStart(2, '0')}`;
+  const gewonnen = Object.values(s.boss).filter((b) => b.passed).length;
 
   const bloecke = [
     { titel: 'Web-Grundlagen', prefix: 'web.', farbe: 'var(--basics)' },
@@ -42,19 +49,53 @@ export async function renderKeycard(app) {
     return { ...b, gesamt: ids.length, gelernt: gelernt.length, sicher: sicher.length };
   });
 
+  // Werte wie auf einer Sammelkarte (5–99): Lektionen des Blocks, gelernte und sichere Konzepte
+  const lektionenAnteil = (ids) => {
+    const ks = kapitel.filter((k) => ids.includes(k.id));
+    const gesamt = ks.reduce((a, k) => a + k.lessons.length, 0);
+    const fertig = ks.reduce((a, k) => a + k.lessons.filter((l) => s.lessons[`${k.id}/${l}`]?.done).length, 0);
+    return gesamt ? fertig / gesamt : 0;
+  };
+  const wertFuer = (prefix, blockId) => {
+    const b = bloecke.find((x) => x.prefix === prefix);
+    const ids = curriculum.blocks.find((bl) => bl.id === blockId)?.chapters || [];
+    const gelernt = b.gesamt ? b.gelernt / b.gesamt : 0;
+    const sicher = b.gesamt ? b.sicher / b.gesamt : 0;
+    return Math.round(5 + 94 * (0.5 * lektionenAnteil(ids) + 0.3 * gelernt + 0.2 * sicher));
+  };
+  const werte = [
+    { kurz: 'HTML', farbe: 'var(--html)', wert: wertFuer('html.', 'html') },
+    { kurz: 'CSS', farbe: 'var(--css)', wert: wertFuer('css.', 'css') },
+    { kurz: 'JS', farbe: 'var(--js)', wert: wertFuer('js.', 'js') },
+  ];
+  const gesamtwert = Math.round(werte.reduce((a, w) => a + w.wert, 0) / werte.length);
+  const naechsteRundeIdx = crews.runden.findIndex((r) => !s.boss[r.chapter]?.passed);
+
   app.innerHTML = `
     <div class="auftritt">
-      <a class="zurueck" href="#/">← Zum Gelände</a>
-      <div class="keycard" style="margin-top:0.75rem">
-        <div class="keycard-avatar"><img src="${robby(lf.level >= 10 ? 'erfolg-pokal' : 'hallo-winken')}" alt=""></div>
-        <div>
+      <a class="zurueck" href="#/">← Zum Turnierplan</a>
+      <div class="spielerkarte" style="margin-top:0.75rem">
+        <div class="spielerkarte-crew"><span>🌙 ${escapeHtml(crews.crew?.name || 'Nachtschicht')} · ${escapeHtml(crews.turnier?.name || 'WEBCUP')}</span><span>${code}</span></div>
+        <div class="spielerkarte-links">
+          <div class="spielerkarte-avatar"><img src="${robby(lf.level >= 10 ? 'erfolg-pokal' : 'hallo-winken')}" alt=""></div>
+          <div class="spielerkarte-ovr">${gesamtwert}<small>Gesamtwert</small></div>
+        </div>
+        <div class="spielerkarte-mitte">
           <div class="keycard-rang">${rang.icon} ${rang.titel}${istLehrkraft() ? ' · Lehrkraft-Modus' : ''}</div>
-          <input class="keycard-name-input" id="name" type="text" maxlength="30" placeholder="Dein Name (optional)" value="${escapeHtml(s.name)}" aria-label="Name auf der Keycard">
+          <input class="keycard-name-input" id="name" type="text" maxlength="30" placeholder="Dein Name (optional)" value="${escapeHtml(s.name)}" aria-label="Name auf der Spielerkarte">
           <div class="keycard-level">Level ${lf.level} · ${s.xp} XP${naechster ? ` · noch ${naechster.ab - s.xp} XP bis ${naechster.titel}` : ' · höchster Rang erreicht'}</div>
           <div class="balken" style="--farbe: var(--spark)"><span style="width:${Math.round(lf.anteil * 100)}%"></span></div>
           <small style="color:#9aa3b8">${lf.fehlt} XP bis Level ${lf.level + 1}</small>
         </div>
-        <div class="keycard-code">WEBWERKSTATT · ${code}</div>
+        <div class="spielerkarte-werte">
+          ${werte.map((w) => `<div class="wert" style="--farbe:${w.farbe}"><small>${w.kurz}</small><strong>${w.wert}</strong></div>`).join('')}
+        </div>
+        <div class="spielerkarte-runden">
+          <span>🏆 ${gewonnen} / ${crews.runden.length || 18} Runden gewonnen</span>
+          <span>⭐ ${sterne} Sterne</span>
+          <span>🔥 längste Serie ${s.stats.longestCombo}</span>
+          ${naechsteRundeIdx >= 0 && crews.runden[naechsteRundeIdx] ? `<span>Nächster Gegner: ${crews.runden[naechsteRundeIdx].icon} ${escapeHtml(crews.runden[naechsteRundeIdx].crew)}</span>` : '<span>Alle Crews besiegt – Pokal geholt!</span>'}
+        </div>
       </div>
 
       <div class="statistik-grid">
@@ -63,12 +104,24 @@ export async function renderKeycard(app) {
         <div class="stat-kachel"><strong>${s.stats.codePassed}</strong><small>Code-Aufgaben bestanden</small></div>
         <div class="stat-kachel"><strong>${genauigkeit} %</strong><small>Treffsicherheit</small></div>
         <div class="stat-kachel"><strong>${s.stats.longestCombo}</strong><small>Längste Serie</small></div>
-        <div class="stat-kachel"><strong>${Object.values(s.boss).filter((b) => b.passed).length}</strong><small>Abnahmen bestanden</small></div>
+        <div class="stat-kachel"><strong>${gewonnen}</strong><small>Matches gewonnen</small></div>
       </div>
+
+      ${crews.runden.length ? `<div class="sektion karte">
+        <h2>🏆 Trophäenwand <span class="chip">${gewonnen} / ${crews.runden.length} Crews raus</span></h2>
+        <p style="color:var(--muted);font-size:0.9rem">Jede gewonnene Runde hängt hier: die Crew, die du im Match geschlagen hast. Fahr mit der Maus über eine Crew, um ihre Schwäche zu sehen.</p>
+        <div class="trophaeen">
+          ${crews.runden.map((r, i) => {
+            const besiegt = !!s.boss[r.chapter]?.passed;
+            const klasse = besiegt ? 'besiegt' : i === naechsteRundeIdx ? 'naechste' : 'offen';
+            return `<div class="trophaee ${klasse}" style="--farbe:${escapeHtml(r.farbe)}" title="${escapeHtml(r.crew)} (Captain ${escapeHtml(r.captain)}) – ${escapeHtml(r.schwaeche)}"><span class="icon">${r.icon}</span>R${r.runde} · ${escapeHtml(r.crew)}${besiegt ? '<span class="stempel">Raus</span>' : ''}</div>`;
+          }).join('')}
+        </div>
+      </div>` : ''}
 
       <div class="sektion karte">
         <h2>🧠 Was sitzt schon?</h2>
-        <p style="color:var(--muted);font-size:0.9rem">Sicher = im Soundcheck mehrfach richtig beantwortet (Leitner-Box 4 oder höher). Was noch wackelt, kommt automatisch wieder dran.</p>
+        <p style="color:var(--muted);font-size:0.9rem">Sicher = im Soundcheck mehrfach richtig beantwortet (Leitner-Box 4 oder höher). Was noch wackelt, kommt automatisch wieder dran – und hebt deine Werte auf der Karte.</p>
         <div class="kompetenz-liste">
           ${bloecke.map((b) => `<div class="kompetenz-zeile"><span>${b.titel}</span><span class="balken" style="--farbe:${b.farbe}"><span style="width:${b.gesamt ? Math.round((b.sicher / b.gesamt) * 100) : 0}%"></span></span><span style="color:var(--muted);font-size:0.8rem">${b.sicher}/${b.gesamt}</span></div>`).join('')}
         </div>
@@ -82,7 +135,7 @@ export async function renderKeycard(app) {
       </div>
 
       <div class="sektion karte">
-        <h2>🪜 Die Ränge der Werkstatt</h2>
+        <h2>🪜 Die Ränge im ${escapeHtml(crews.turnier?.name || 'WEBCUP')}</h2>
         <div class="kompetenz-liste">
           ${RAENGE.map((r) => `<div class="kompetenz-zeile" style="opacity:${s.xp >= r.ab ? 1 : 0.5}"><span>${r.icon} ${r.titel}</span><span class="balken" style="--farbe: var(--spark)"><span style="width:${Math.min(100, Math.round((s.xp / Math.max(1, r.ab)) * 100))}%"></span></span><span style="color:var(--muted);font-size:0.8rem">${r.ab} XP</span></div>`).join('')}
         </div>
@@ -147,7 +200,7 @@ export async function renderKeycard(app) {
   });
 
   app.querySelector('#reset').addEventListener('click', () => {
-    if (!confirm('Wirklich den gesamten Spielstand löschen? XP, Sterne, Abzeichen und die FUNKEN-Website sind dann weg.')) return;
+    if (!confirm('Wirklich den gesamten Spielstand löschen? XP, Sterne, Abzeichen, gewonnene Runden und die FUNKEN-Website sind dann weg.')) return;
     if (!confirm('Ganz sicher? Das lässt sich nicht rückgängig machen.')) return;
     spielstandLoeschen();
     location.reload();

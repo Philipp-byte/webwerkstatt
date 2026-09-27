@@ -125,7 +125,7 @@ js.getElementById  js.textContent  js.addEventListener  js.zaehler  js.classList
 | Soundcheck-Frage richtig | 5 |
 | Abnahme bestanden | 150 (+ 50 bei 100 %) |
 | Backstage: Blitzrunde / Fehlerjagd / Bühnenaufbau | 5 je richtige Frage / 10 je Runde / 15 je Runde, max. 150 XP pro Tag |
-| Serie (Combo) | ab 3 richtig in Folge ×1,25, ab 6 ×1,5 (nur Lektions- und Backstage-Aufgaben) |
+| Serie (Combo) | ab 3 richtig in Folge ×1,25, ab 6 ×1,5 (nur Lektions- und Trainingslager-Aufgaben) |
 
 XP gibt es **einmal** pro Schritt. Lektion wiederholen: keine neuen XP, aber die Sterne können sich verbessern (bestes Ergebnis zählt).
 
@@ -133,7 +133,7 @@ XP gibt es **einmal** pro Schritt. Lektion wiederholen: keine neuen XP, aber die
 
 **Level:** `xpFürLevel(n) = round(100 · (n−1)^1,5)` → Level 10 bei 2 700, Level 20 bei 8 280, Level 30 bei 15 600 XP. Gesamt sind rund 24 000 XP erreichbar (≈ Level 38).
 
-**Ränge:** Praktikum 0 · Junior 1 500 · Developer 4 500 · Senior 9 000 · Lead 15 000 · Werkstatt-Legende 22 000.
+**Ränge (Spielerkarte):** Rookie 0 · Starter 1 500 · Pro 4 500 · Captain 9 000 · MVP 15 000 · Legende 22 000.
 
 ## 7. Regeln für Aufgaben (Kurzfassung, verbindlich in `AUTOREN-HANDBUCH.md`)
 

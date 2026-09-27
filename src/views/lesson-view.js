@@ -13,6 +13,7 @@ import { renderStep, SCHRITT_NAMEN, SCHRITT_ICONS } from '../engine/steps.js';
 import { md, escapeHtml } from '../engine/markdown.js';
 import { sound } from '../gamification/sound.js';
 import { konfetti, toast, xpFlieger } from '../gamification/celebrate.js';
+import { erzeugeTicker, reaktionenEntfernen } from '../gamification/reaktionen.js';
 
 const robby = (pose) => new URL(`figuren/robby/${pose}.png`, document.baseURI).href;
 
@@ -29,7 +30,7 @@ export function zeigeLevelup(level, rang) {
     <img src="${robby('erfolg-pokal')}" alt="" style="width:120px;height:120px;object-fit:contain">
     <div class="chip chip-farbe" style="--farbe: var(--spark)">${rang ? 'Neuer Rang' : 'Level-up'}</div>
     <div class="gross">${rang ? rang.titel : `Level ${level}`}</div>
-    <p style="color:var(--muted)">${rang ? `Du bist jetzt ${rang.titel} der Werkstatt.` : 'Weiter so – die Werkstatt zählt auf dich.'}</p>
+    <p style="color:var(--muted)">${rang ? `Du bist jetzt ${rang.titel} der Nachtschicht.` : 'Weiter so – die Crew zählt auf dich.'}</p>
     <button class="btn btn-primaer" type="button">Weiter</button>
   </div>`;
   document.body.appendChild(overlay);
@@ -82,6 +83,8 @@ export async function renderLesson(app, chapterId, lessonId) {
 
   const key = lessonKey(chapterId, lessonId);
   const schonErledigt = !!getState().lessons[key]?.done;
+  const ticker = await erzeugeTicker(chapterId);
+  const runde = ticker.runde;
   const ctx = { fehler: 0, tipps: 0, loesungGesehen: false, serie: 0, xpGesamt: 0, xpListe: [], comebackKandidat: 0 };
 
   app.innerHTML = `
@@ -89,6 +92,7 @@ export async function renderLesson(app, chapterId, lessonId) {
       <div class="lektion-kopf">
         <a class="zurueck" href="#/kapitel/${chapterId}">← ${kapitel.icon} ${escapeHtml(kapitel.title)}</a>
         <h1>${escapeHtml(lektion.title)}</h1>
+        ${runde ? `<span class="chip chip-farbe" style="--farbe:${escapeHtml(runde.farbe)}" title="Training für das Match gegen ${escapeHtml(runde.crew)}">${runde.icon} Runde ${runde.runde} · vs. ${escapeHtml(runde.crew)}</span>` : ''}
         <span class="combo-anzeige" id="combo">🔥 Serie <span id="combo-zahl">0</span> · ×<span id="combo-faktor">1</span></span>
         <div class="pager-fortschritt">
           <span class="pager-zaehler"></span>
@@ -248,6 +252,7 @@ export async function renderLesson(app, chapterId, lessonId) {
         seite.geloest = true;
         if (!info?.sofort) {
           richtig();
+          ticker.erfolg({ serie: ctx.serie, comeback: fehlversucheHier >= 3 });
           if (fehlversucheHier >= 3) {
             zaehle('comebacks');
             meldeAbzeichen(abzeichenPruefen({ ereignis: 'comeback' }));
@@ -285,6 +290,7 @@ export async function renderLesson(app, chapterId, lessonId) {
       wrong: () => {
         fehlversucheHier++;
         falsch();
+        ticker.fehler(fehlversucheHier);
       },
       hint: () => {
         ctx.tipps++;
@@ -392,14 +398,14 @@ export async function renderLesson(app, chapterId, lessonId) {
       <div class="sterne-gross">${[1, 2, 3].map((n) => `<span class="stern ${n <= sterne ? '' : 'leer'}">★</span>`).join('')}</div>
       <p style="color:var(--muted)">${begruendung}</p>
       ${ctx.xpGesamt ? `<div class="abschluss-xp">+${ctx.xpGesamt} XP</div><ul class="abschluss-liste">${ctx.xpListe.map(([t, x]) => `<li><span>${t}</span><span>+${x}</span></li>`).join('')}</ul>` : '<p style="color:var(--muted)">Wiederholt – keine neuen XP, aber Übung macht sicher.</p>'}
-      ${fertigKapitel ? `<div class="hinweis-box" style="margin-top:0.75rem">🎉 Alle Lektionen dieser Station geschafft – Sam wartet auf die <a href="#/abnahme/${chapterId}">Abnahme</a>.</div>` : ''}
+      ${fertigKapitel ? `<div class="hinweis-box" style="margin-top:0.75rem">🎉 Training komplett – jetzt das <a href="#/abnahme/${chapterId}">Match</a>${runde ? ` gegen ${escapeHtml(runde.crew)}` : ''}: Sam nimmt ab.</div>` : ''}
       <div class="abschluss-buttons">
-        ${fertigKapitel ? `<a class="btn btn-primaer" href="#/abnahme/${chapterId}">Zur Abnahme →</a>` : naechste ? `<a class="btn btn-primaer" href="#/lektion/${naechste.chapterId}/${naechste.lessonId}">Nächste Lektion →</a>` : ''}
+        ${fertigKapitel ? `<a class="btn btn-primaer" href="#/abnahme/${chapterId}">🥊 Zum Match →</a>` : naechste ? `<a class="btn btn-primaer" href="#/lektion/${naechste.chapterId}/${naechste.lessonId}">Nächste Lektion →</a>` : ''}
         ${steps.some((st) => st.etappe) ? '<a class="btn btn-sekundaer" href="#/projekt">🌐 FUNKEN-Website ansehen</a>' : ''}
-        <a class="btn btn-sekundaer" href="#/kapitel/${chapterId}">Zur Station</a>
+        <a class="btn btn-sekundaer" href="#/kapitel/${chapterId}">Zur Runde</a>
         <button class="btn btn-geist abschluss-nochmal" type="button">← Nochmal ansehen</button>
       </div>
-      <p style="color:var(--muted);font-size:0.85rem;margin-top:1rem">💾 Tipp: Auf der <a href="#/keycard">Keycard</a> kannst du deinen Spielstand als Datei sichern – wichtig an Schulrechnern.</p>`;
+      <p style="color:var(--muted);font-size:0.85rem;margin-top:1rem">💾 Tipp: Auf deiner <a href="#/keycard">Spielerkarte</a> kannst du deinen Spielstand als Datei sichern – wichtig an Schulrechnern.</p>`;
     seitenEl.appendChild(abschlussKarte);
     abschlussKarte.querySelector('.abschluss-nochmal').addEventListener('click', () => zeige(0, 'zurueck'));
     zeige(seiten.length, 'vor');
@@ -459,6 +465,7 @@ export async function renderLesson(app, chapterId, lessonId) {
   return {
     destroy: () => {
       window.removeEventListener('keydown', onKey);
+      reaktionenEntfernen();
       controller.forEach((c) => c?.destroy?.());
     },
   };

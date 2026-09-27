@@ -22,7 +22,7 @@ export async function renderBericht(app) {
   app.innerHTML = `
     <div class="bericht auftritt">
       <div class="bericht-leiste">
-        <a class="zurueck" href="#/keycard">← Zur Keycard</a>
+        <a class="zurueck" href="#/keycard">← Zur Spielerkarte</a>
         <button class="btn btn-primaer" type="button" id="drucken">🖨 Drucken / als PDF speichern</button>
       </div>
       <div class="karte bericht-blatt">
@@ -36,9 +36,9 @@ export async function renderBericht(app) {
           <div class="stat-kachel"><strong>${Object.values(s.boss).filter((b) => b.passed).length}/${kapitel.length}</strong><small>Abnahmen</small></div>
           <div class="stat-kachel"><strong>${sicher}/${konzepte.length}</strong><small>Konzepte sicher</small></div>
         </div>
-        <h2>Stationen</h2>
+        <h2>Runden (Stationen)</h2>
         <table class="pruef-tabelle bericht-tabelle">
-          <thead><tr><th>Station</th><th>Lektionen</th><th>Sterne</th><th>Abnahme</th></tr></thead>
+          <thead><tr><th>Runde · Station</th><th>Lektionen</th><th>Sterne</th><th>Match (Abnahme)</th></tr></thead>
           <tbody>
             ${kapitel.map((k, i) => {
               const done = k.lessons.filter((l) => s.lessons[`${k.id}/${l}`]?.done).length;

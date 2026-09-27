@@ -8,6 +8,7 @@ import './styles/base.css';
 import './styles/werkbank.css';
 import './styles/views.css';
 import './styles/intro.css';
+import './styles/turnier.css';
 
 import { initRouter } from './router.js';
 import { startBackground } from './background.js';

@@ -15,17 +15,17 @@ export async function renderProjekt(app, seite) {
   const geschafft = Object.keys(projekt.etappen).length;
 
   if (!seiten.length) {
-    app.innerHTML = `<div class="auftritt"><a class="zurueck" href="#/">← Zum Gelände</a>
+    app.innerHTML = `<div class="auftritt"><a class="zurueck" href="#/">← Zum Turnierplan</a>
       <h1 style="margin-top:0.5rem">🌐 FUNKEN-Website</h1>
       <div class="karte gesperrt-karte"><p style="font-size:2.5rem;margin:0">🚧</p><h2>Noch nichts gebaut</h2>
-      <p>Hier entsteht die Festival-Website – Etappe für Etappe, am Ende jeder Lektion. Die erste Etappe wartet in <a href="#/kapitel/02-html-erste-schritte">Station 2 · Fundament</a>.</p></div></div>`;
+      <p>Hier entsteht die Festival-Website – Etappe für Etappe, am Ende jeder Lektion. Die erste Etappe wartet in <a href="#/kapitel/02-html-erste-schritte">Runde 2 · Fundament</a>.</p></div></div>`;
     return;
   }
 
   const aktiv = seiten.find((p) => p.id === seite) || seiten[0];
   app.innerHTML = `
     <div class="auftritt">
-      <a class="zurueck" href="#/">← Zum Gelände</a>
+      <a class="zurueck" href="#/">← Zum Turnierplan</a>
       <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin:0.5rem 0 0.75rem">
         <h1 style="margin:0;flex:1">🌐 FUNKEN-Website</h1>
         <span class="chip chip-farbe" style="--farbe: var(--projekt)">${geschafft} / ${gesamtEtappen} Etappen</span>

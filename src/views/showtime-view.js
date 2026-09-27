@@ -56,7 +56,7 @@ export async function renderShowtime(app) {
   const st = getShowtime();
   app.innerHTML = `
     <div class="auftritt">
-      <a class="zurueck" href="#/">← Zum Gelände</a>
+      <a class="zurueck" href="#/">← Zum Turnierplan</a>
       <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin:0.5rem 0 0.5rem">
         <h1 style="margin:0;flex:1">🎆 Showtime – deine eigene Website</h1>
         <span class="chip chip-farbe" id="stand" style="--farbe: var(--projekt)">0 / ${PFLICHT.length} Pflicht-Kriterien</span>

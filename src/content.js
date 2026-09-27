@@ -25,6 +25,7 @@ export const loadPool = (ch) => ladeJson(`chapters/${ch}/pool.json`).catch(() =>
 export const loadBoss = (ch) => ladeJson(`chapters/${ch}/boss.json`).catch(() => null);
 export const loadEtappen = () => ladeJson('projekt/etappen.json');
 export const loadIntro = () => ladeJson('story/intro.json');
+export const loadCrews = () => ladeJson('story/crews.json');
 export const loadLehrkraft = () => ladeJson('lehrkraft.json').catch(() => ({ hash: '' }));
 
 export async function alleKapitelIds() {
@@ -93,4 +94,10 @@ export async function etappeAufloesen(id) {
     solution[datei] = e.files[datei];
   }
   return { ...e, starter, solution, project: { page: e.page, save: e.save } };
+}
+
+// Turnier-Runde (Gegner-Crew) zu einem Kapitel, dazu die eigene Crew und die Turnierdaten
+export async function rundeFuer(chapterId) {
+  const c = await loadCrews();
+  return { runde: c.runden.find((r) => r.chapter === chapterId) || null, crew: c.crew, turnier: c.turnier, runden: c.runden };
 }

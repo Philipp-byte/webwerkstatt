@@ -1,14 +1,14 @@
-// Der Vorspann: Szenen mit animierten SVG-Kulissen (oder generierten Bildern,
+// Der Vorspann (WEBCUP): Szenen mit animierten SVG-Kulissen (oder generierten Bildern,
 // falls unter public/intro/assets/<kulisse>.webp vorhanden), Sprechblase mit
 // Schreibmaschinen-Effekt, Klangkulisse. Manuell weiterklicken, jederzeit überspringbar.
 
-import { loadIntro } from '../content.js';
+import { loadIntro, loadCrews } from '../content.js';
 import { setIntroGesehen } from '../store.js';
 import { sound } from '../gamification/sound.js';
 import { escapeHtml } from '../engine/markdown.js';
 
 const robby = (pose) => new URL(`figuren/robby/${pose}.png`, document.baseURI).href;
-const TON_FARBEN = { erzaehler: '#8fd3ff', sam: '#4ade80', ayla: '#38c7ff', jonas: '#ffd84d', robby: '#ff8a3d', system: '#fb7185' };
+const TON_FARBEN = { erzaehler: '#8fd3ff', sam: '#4ade80', ayla: '#38c7ff', jonas: '#ffd84d', robby: '#ff8a3d', system: '#fb7185', gegner: '#fb7185' };
 
 /* ---------- Kulissen (SVG) ---------- */
 
@@ -103,6 +103,56 @@ const KULISSEN = {
     ${[[120,130],[300,230],[480,330],[660,230],[840,130],[1080,330],[840,330],[660,430],[480,540],[300,440],[120,330],[300,540],[660,540],[1080,540]].map(([x, y], i) => `<g class="licht-an" style="animation-delay:${i * 0.12}s"><circle cx="${x}" cy="${y}" r="30" fill="#ff8a3d" opacity="0.18"/><circle cx="${x}" cy="${y}" r="14" fill="${i < 5 ? '#ff7a45' : i < 10 ? '#38c7ff' : '#ffd84d'}"/></g>`).join('')}
     <text x="600" y="640" text-anchor="middle" fill="#2a3150" font-family="Unbounded Variable, sans-serif" font-weight="800" font-size="30" letter-spacing="8">18 STATIONEN</text>
   </svg>`,
+
+  arena: ({ leinwand = true } = {}) => `<svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="ar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05060c"/><stop offset="1" stop-color="#141a2e"/></linearGradient>
+    <linearGradient id="led" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a3d"/><stop offset="1" stop-color="#38c7ff"/></linearGradient>
+    <radialGradient id="spot"><stop offset="0" stop-color="#ffc857" stop-opacity="0.6"/><stop offset="1" stop-color="#ffc857" stop-opacity="0"/></radialGradient></defs>
+    <rect width="1200" height="700" fill="url(#ar)"/>${sterne(60)}
+    <g class="flackern"><path d="M250 120 L120 560 L420 560Z" fill="#ff8a3d" opacity="0.14"/><path d="M950 120 L780 560 L1080 560Z" fill="#38c7ff" opacity="0.14"/><path d="M600 60 L470 560 L730 560Z" fill="#ffc857" opacity="0.1"/></g>
+    <g transform="translate(250 180)"><path d="M0 120 L40 0 H660 L700 120Z" fill="#161a2a"/><rect x="0" y="120" width="700" height="180" fill="#101422"/>
+      <rect x="70" y="30" width="560" height="200" rx="10" fill="#0b0d16" stroke="#2a3150" stroke-width="4"/>
+      <rect x="80" y="40" width="540" height="180" rx="6" fill="url(#led)" opacity="0.16"/>
+      ${leinwand ? `<text x="350" y="150" text-anchor="middle" fill="url(#led)" font-family="Unbounded Variable, sans-serif" font-weight="800" font-size="86" letter-spacing="8" class="flackern">WEBCUP</text>
+      <text x="350" y="195" text-anchor="middle" fill="#8f97ab" font-family="JetBrains Mono Variable, monospace" font-size="18" letter-spacing="6">18 CREWS · 18 RUNDEN</text>` : ''}
+      <circle cx="60" cy="118" r="30" fill="url(#spot)"/><circle cx="640" cy="118" r="30" fill="url(#spot)"/></g>
+    <g fill="#07090f">${Array.from({ length: 60 }, (_, i) => `<circle cx="${(i * 37) % 1200 + 10}" cy="${560 + ((i * 13) % 40)}" r="${16 + (i % 3) * 4}"/><rect x="${(i * 37) % 1200 - 4}" y="${570 + ((i * 13) % 40)}" width="28" height="140"/>`).join('')}</g>
+    <g stroke="#0d1020" stroke-width="6" stroke-linecap="round">${Array.from({ length: 24 }, (_, i) => `<line x1="${(i * 97) % 1200 + 20}" y1="${600 + ((i * 7) % 30)}" x2="${(i * 97) % 1200 + 26}" y2="${540 + ((i * 11) % 30)}"/>`).join('')}</g>
+    <g>${Array.from({ length: 40 }, (_, i) => `<rect x="${(i * 131) % 1200}" y="${(i * 59) % 500}" width="6" height="10" fill="${['#ff8a3d', '#38c7ff', '#ffd84d', '#4ade80'][i % 4]}" transform="rotate(${(i * 23) % 90} ${(i * 131) % 1200} ${(i * 59) % 500})" opacity="0.8"/>`).join('')}</g>
+  </svg>`,
+
+  bracket: ({ runden = [] } = {}) => {
+    const slots = Array.from({ length: 18 }, (_, i) => runden[i] || { icon: '❔', farbe: '#2a3150', crew: `Crew ${i + 1}` });
+    return `<svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="700" fill="#07080d"/>${sterne(40, 120)}
+    <rect x="60" y="40" width="1080" height="620" rx="24" fill="#0e111c" stroke="#232a40" stroke-width="3"/>
+    <text x="600" y="100" text-anchor="middle" fill="#ffc857" font-family="Unbounded Variable, sans-serif" font-weight="800" font-size="34" letter-spacing="10">WEBCUP · TURNIERPLAN</text>
+    <path d="M120 170 H1080 M120 330 H1080 M120 490 H1080" stroke="#232a40" stroke-width="3" stroke-dasharray="4 10"/>
+    ${slots.map((r, i) => {
+      const x = 150 + (i % 6) * 180;
+      const y = 170 + Math.floor(i / 6) * 160;
+      return `<g class="licht-an" style="animation-delay:${i * 0.08}s"><circle cx="${x}" cy="${y}" r="40" fill="#141a2b" stroke="${r.farbe}" stroke-width="3"/><text x="${x}" y="${y + 14}" text-anchor="middle" font-size="38">${r.icon}</text><text x="${x}" y="${y + 66}" text-anchor="middle" fill="#8f97ab" font-family="Atkinson Hyperlegible, sans-serif" font-size="13">R${i + 1} · ${escapeHtml(r.crew)}</text></g>`;
+    }).join('')}
+    <g transform="translate(600 610)"><rect x="-190" y="-30" width="380" height="60" rx="14" fill="#1a1208" stroke="#ff8a3d" stroke-width="3"/><text x="0" y="8" text-anchor="middle" fill="#ff8a3d" font-family="Unbounded Variable, sans-serif" font-weight="800" font-size="22" letter-spacing="6">NACHTSCHICHT</text></g>
+  </svg>`;
+  },
+
+  spielerkarte: () => `<svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="spk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a1a0e"/><stop offset="0.5" stop-color="#151827"/><stop offset="1" stop-color="#0d1a22"/></linearGradient>
+    <linearGradient id="holo2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a3d" stop-opacity="0"/><stop offset="0.5" stop-color="#ffc857" stop-opacity="0.3"/><stop offset="1" stop-color="#38c7ff" stop-opacity="0"/></linearGradient></defs>
+    <rect width="1200" height="700" fill="#07080d"/>${sterne(50, 700)}
+    <g transform="rotate(-5 600 350)">
+      <rect x="410" y="80" width="380" height="540" rx="26" fill="url(#spk)" stroke="#ff8a3d" stroke-width="4"/>
+      <rect x="410" y="80" width="380" height="540" rx="26" fill="url(#holo2)"/>
+      <text x="600" y="130" text-anchor="middle" fill="#ffc857" font-family="Unbounded Variable, sans-serif" font-size="13" letter-spacing="5">NACHTSCHICHT · WEBCUP</text>
+      <rect x="470" y="155" width="260" height="190" rx="20" fill="#0b0d16" stroke="#2f3756"/>
+      <circle cx="600" cy="230" r="38" fill="#2a3150"/><path d="M520 345 C 530 280, 670 280, 680 345Z" fill="#2a3150"/>
+      <text x="600" y="400" text-anchor="middle" fill="#eef1f8" font-family="Unbounded Variable, sans-serif" font-weight="800" font-size="40">ROOKIE</text>
+      <text x="600" y="432" text-anchor="middle" fill="#8f97ab" font-family="JetBrains Mono Variable, monospace" font-size="16">LEVEL 1 · 0 XP</text>
+      ${[['HTML', '#ff7a45'], ['CSS', '#38c7ff'], ['JS', '#ffd84d']].map(([n, f], i) => `<g transform="translate(${470 + i * 90} 460)"><rect width="80" height="70" rx="12" fill="#0b0d16" stroke="${f}" stroke-width="2"/><text x="40" y="28" text-anchor="middle" fill="${f}" font-family="Unbounded Variable, sans-serif" font-size="12" letter-spacing="2">${n}</text><text x="40" y="58" text-anchor="middle" fill="#eef1f8" font-family="Unbounded Variable, sans-serif" font-weight="800" font-size="22">5</text></g>`).join('')}
+      <rect x="470" y="560" width="260" height="10" rx="5" fill="#0b0d16"/><rect x="470" y="560" width="20" height="10" rx="5" fill="#ff8a3d"/>
+    </g>
+  </svg>`,
 };
 
 async function bildVorhanden(url) {
@@ -117,6 +167,8 @@ async function bildVorhanden(url) {
 export async function renderIntro(app) {
   const daten = await loadIntro();
   const szenen = daten.szenen;
+  const crews = await loadCrews().catch(() => null);
+  const ctx = { runden: crews?.runden || [] };
   // Generierte Szenenbilder (scripts/generate-intro-assets.mjs trägt sie in intro.json ein)
   const bilder = {};
   await Promise.all(
@@ -139,7 +191,7 @@ export async function renderIntro(app) {
 
   function startbildschirm() {
     intro.innerHTML = `<div class="intro-start">
-      <div class="intro-kulisse animiert">${KULISSEN.gelaende()}</div><div class="intro-vignette"></div>
+      <div class="intro-kulisse animiert">${KULISSEN.arena({ leinwand: false })}</div><div class="intro-vignette"></div>
       <div class="intro-partikel">${Array.from({ length: 30 }, (_, i) => `<i style="left:${(i * 37) % 100}%;--d:${5 + (i % 5)}s;--v:-${(i * 0.7) % 6}s;--x:${(i % 3) - 1}0px"></i>`).join('')}</div>
       <div style="position:relative">
         <div class="chip chip-farbe" style="--farbe:#ffc857;margin-bottom:1rem">WebWerkstatt · Vorspann</div>
@@ -147,7 +199,7 @@ export async function renderIntro(app) {
         <p>${escapeHtml(daten.untertitel)}</p>
         <div class="schritt-buttons">
           <button class="btn btn-primaer btn-gross" type="button" id="start">▶ Vorspann starten</button>
-          <button class="btn btn-geist" type="button" id="skip">Ohne Vorspann zum Gelände ›</button>
+          <button class="btn btn-geist" type="button" id="skip">Ohne Vorspann zum Turnierplan ›</button>
         </div>
       </div></div>`;
     intro.querySelector('#start').addEventListener('click', () => {
@@ -174,6 +226,7 @@ export async function renderIntro(app) {
         <div class="intro-vignette"></div>
         <div class="intro-partikel" id="partikel"></div>
         <div id="badge"></div>
+        <div id="gegner"></div>
         <img class="intro-figur" id="figur" alt="" hidden>
         <article class="intro-blase" aria-live="polite">
           <div class="intro-sprecher" id="sprecher"></div>
@@ -212,7 +265,7 @@ export async function renderIntro(app) {
         neu.innerHTML = '';
       } else {
         neu.style.backgroundImage = '';
-        neu.innerHTML = KULISSEN[s.kulisse] ? KULISSEN[s.kulisse]() : '';
+        neu.innerHTML = KULISSEN[s.kulisse] ? KULISSEN[s.kulisse](ctx) : '';
       }
       if (alt && alt !== neu) alt.classList.add('weg');
       aktuelleKulisse = s.kulisse;
@@ -227,6 +280,9 @@ export async function renderIntro(app) {
     intro.querySelector('#fortschritt').style.width = `${((i + 1) / szenen.length) * 100}%`;
     intro.querySelector('#nr').textContent = i + 1;
     intro.querySelector('#badge').innerHTML = s.badge ? `<div class="intro-badge ${s.ton === 'system' ? 'alarm' : ''}"><span>${escapeHtml(s.badge.eyebrow)}</span><strong>${escapeHtml(s.badge.title)}</strong></div>` : '';
+    intro.querySelector('#gegner').innerHTML = s.gegner
+      ? `<div class="intro-gegner" style="--farbe:${escapeHtml(s.gegner.farbe || '#fb7185')}"><span class="intro-gegner-icon">${s.gegner.icon || '❔'}</span><span class="intro-gegner-name">${escapeHtml(s.gegner.crew || '')}</span></div>`
+      : '';
     const figur = intro.querySelector('#figur');
     if (s.robby) {
       figur.src = robby(s.robby);
@@ -286,14 +342,14 @@ export async function renderIntro(app) {
     clearInterval(tippTimer);
     setIntroGesehen(true);
     intro.innerHTML = `<div class="intro-ende">
-      <div class="intro-kulisse animiert">${KULISSEN.karte()}</div><div class="intro-vignette"></div>
+      <div class="intro-kulisse animiert">${KULISSEN.arena({ leinwand: false })}</div><div class="intro-vignette"></div>
       <div style="position:relative">
-        <div class="chip chip-farbe" style="--farbe:#ffc857;margin-bottom:1rem">Der Auftrag beginnt</div>
+        <div class="chip chip-farbe" style="--farbe:#ffc857;margin-bottom:1rem">Das Turnier beginnt</div>
         <h1>${escapeHtml(daten.titel)}</h1>
-        <p>${escapeHtml(daten.untertitel)}<br>Deine Keycard ist ausgestellt. Erste Station: Info-Point.</p>
+        <p>${escapeHtml(daten.untertitel)}<br>Deine Spielerkarte ist ausgestellt. Runde 1: die Offliner am Info-Point.</p>
         <div class="schritt-buttons">
-          <a class="btn btn-primaer btn-gross" href="#/kapitel/01-wie-das-web-funktioniert">Zur ersten Station ›</a>
-          <a class="btn btn-sekundaer" href="#/">Zum Gelände</a>
+          <a class="btn btn-primaer btn-gross" href="#/kapitel/01-wie-das-web-funktioniert">Anpfiff: Runde 1 ›</a>
+          <a class="btn btn-sekundaer" href="#/">Zum Turnierplan</a>
           <button class="btn btn-geist" type="button" id="nochmal">Noch einmal ansehen</button>
         </div>
       </div></div>`;
