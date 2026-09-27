@@ -1,117 +1,69 @@
-// Einstiegspunkt: erkennt Demo- vs. Schulmodus, richtet den Router ein,
-// startet die App.
-//
-// Modus-Erkennung: läuft die Seite unter dem Flask-Server (Schulmodus),
-// existiert /api/ping. Auf GitHub Pages (reines Static Hosting, Demo-Modus)
-// gibt es diese Route nicht -> automatischer Fallback auf localStorage,
-// ohne Build-Unterscheidung. WICHTIG: der Ping läuft über document.baseURI,
-// weil die App auf Pages unter /webwerkstatt/ liegt, auf dem Schulserver
-// unter /.
-//
-// Login-/Lehrer-/Admin-Views werden nur bei Bedarf per dynamischem import()
-// geladen – die meisten Aufrufe sind Demo-Modus oder Schüler:innen, die
-// diese Views nie sehen.
+// Einstiegspunkt: Design, Hintergrund, Kopfzeile, Router.
 
-import './styles.css';
+import '@fontsource-variable/unbounded';
+import '@fontsource/atkinson-hyperlegible';
+import '@fontsource/atkinson-hyperlegible/700.css';
+import '@fontsource-variable/jetbrains-mono';
+import './styles/base.css';
+import './styles/werkbank.css';
+import './styles/views.css';
+import './styles/intro.css';
+
 import { initRouter } from './router.js';
-import { setBackendMode } from './progress.js';
+import { startBackground } from './background.js';
+import { getSettings, getState, onChange, introGesehen, istLehrkraft } from './store.js';
+import { levelFortschritt, rangAus } from './gamification/xp.js';
+import { sound } from './gamification/sound.js';
 import { loadCurriculum } from './content.js';
 
-const app = document.getElementById('app');
+function wendeEinstellungenAn() {
+  const s = getSettings();
+  document.documentElement.dataset.theme = s.theme === 'hell' ? 'hell' : 'dunkel';
+  document.documentElement.dataset.motion = s.motion === 'aus' ? 'aus' : 'an';
+}
 
-async function detectSchoolMode() {
-  try {
-    const res = await fetch(new URL('api/ping', document.baseURI), {
-      credentials: 'same-origin',
-    });
-    if (!res.ok) return false;
-    // Manche Static-Hosts liefern für unbekannte Pfade die index.html mit
-    // Status 200 – deshalb zusätzlich prüfen, ob wirklich unsere API antwortet.
-    const data = await res.json().catch(() => null);
-    return Boolean(data && data.ok);
-  } catch {
-    return false;
-  }
+function renderTopbar() {
+  const el = document.getElementById('topbar-rechts');
+  if (!el) return;
+  const s = getState();
+  const lf = levelFortschritt(s.xp);
+  const rang = rangAus(s.xp);
+  el.innerHTML = `
+    ${istLehrkraft() ? '<a class="chip chip-farbe" style="--farbe: var(--js)" href="#/lehrkraft" title="Lehrkraft-Modus aktiv">🔓 Lehrkraft</a>' : ''}
+    <a class="xp-pille" href="#/keycard" title="${rang.titel} · Level ${lf.level} · ${s.xp} XP">
+      <span class="level-kreis">${lf.level}</span>
+      <span class="xp-balken"><span style="width:${Math.round(lf.anteil * 100)}%"></span></span>
+      <span class="xp-zahl">${s.xp} XP</span>
+    </a>
+    <button class="icon-btn" id="ton-knopf" type="button" title="Ton an/aus" aria-pressed="${!sound.istStumm()}">${sound.istStumm() ? '🔇' : '🔊'}</button>`;
+  el.querySelector('#ton-knopf').addEventListener('click', () => {
+    sound.setStumm(!sound.istStumm());
+    if (!sound.istStumm()) sound.klick();
+    renderTopbar();
+  });
+}
+
+function markiereNav() {
+  const teil = location.hash.replace(/^#\/?/, '').split('/')[0] || '';
+  document.querySelectorAll('#topbar-nav a').forEach((a) => {
+    a.classList.toggle('aktiv', a.dataset.route === teil);
+  });
 }
 
 async function boot() {
-  app.innerHTML = '<p class="laden">Lade …</p>';
-
-  // Beides gleichzeitig starten statt nacheinander: die Modus-Erkennung ist
-  // im Demo-Modus eine 404-Rundreise, die sonst die Ladezeit verlängert.
-  // Das Curriculum landet dabei schon im Cache von content.js.
+  wendeEinstellungenAn();
+  startBackground();
+  renderTopbar();
+  onChange(renderTopbar);
+  window.addEventListener('hashchange', markiereNav);
+  markiereNav();
   loadCurriculum().catch(() => {});
-  const schulmodus = await detectSchoolMode();
 
-  if (!schulmodus) {
-    initRouter();
-    return;
+  // Erster Besuch ohne Ziel → Vorspann
+  if (!location.hash && !introGesehen()) {
+    location.replace('#/intro');
   }
-
-  setBackendMode('remote');
-  const { whoAmI } = await import('./progress-remote.js');
-  const me = await whoAmI();
-  if (me) {
-    await enterApp(me);
-  } else {
-    const { renderLogin } = await import('./views/login-view.js');
-    await renderLogin(app, { onLoggedIn: enterApp });
-  }
-}
-
-// Wird sowohl beim direkten Seitenaufruf mit bestehender Sitzung als auch
-// direkt nach dem Login-Formular durchlaufen, damit die Rollen-Weiche in
-// beiden Fällen greift.
-async function enterApp(me) {
-  const { whoAmI, loadState } = await import('./progress-remote.js');
-  if (!me) me = await whoAmI();
-  if (!me) {
-    location.reload();
-    return;
-  }
-
-  if (me.role === 'teacher') {
-    const { renderTeacherDashboard } = await import('./views/teacher-view.js');
-    await renderTeacherDashboard(app, me);
-    return;
-  }
-  if (me.role === 'admin') {
-    const { renderAdminDashboard } = await import('./views/admin-view.js');
-    await renderAdminDashboard(app, me);
-    return;
-  }
-
-  // Schüler:in: Fortschritt vom Server laden, dann die normale App starten.
-  await loadState();
-  mountLogoutButton(me);
   initRouter();
-}
-
-// Kleiner Abmelde-Knopf in der Kopfzeile – wichtig im Computerraum, wo sich
-// mehrere SuS einen Rechner teilen. Nur im Schulmodus sichtbar.
-function mountLogoutButton(me) {
-  const topbar = document.querySelector('.topbar');
-  if (!topbar || topbar.querySelector('.topbar-abmelden')) return;
-  const btn = document.createElement('button');
-  btn.type = 'button';
-  btn.className = 'topbar-abmelden';
-  btn.title = 'Abmelden';
-  btn.innerHTML = `<span class="topbar-abmelden-name">${escapeHtml(me.pseudonym)}</span> · Abmelden`;
-  btn.addEventListener('click', async () => {
-    const { logout } = await import('./progress-remote.js');
-    try {
-      await logout();
-    } catch {
-      // Auch bei Netzfehler neu laden – dann greift das Login-Gate erneut.
-    }
-    location.hash = '';
-    location.reload();
-  });
-  topbar.appendChild(btn);
-}
-
-function escapeHtml(s = '') {
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 boot();

@@ -3,16 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0e1016" />
+  <meta name="description" content="WebWerkstatt – HTML, CSS und JavaScript lernen und dabei die Website des FUNKEN-Festivals bauen." />
   <title>WebWerkstatt – HTML, CSS &amp; JavaScript lernen</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧰</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%23ff8a3d%22/><text x=%2232%22 y=%2243%22 font-size=%2230%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-weight=%22bold%22 fill=%22%231a0d05%22>&lt;/&gt;</text></svg>" />
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#/">🧰 <span>WebWerkstatt</span></a>
-    <div class="topbar-progress" id="topbar-progress"></div>
+    <a class="brand" href="#/"><span class="brand-mark">&lt;/&gt;</span><span>WebWerkstatt</span></a>
+    <nav class="topbar-nav" id="topbar-nav">
+      <a href="#/" data-route="">Gelände</a>
+      <a href="#/projekt" data-route="projekt">FUNKEN-Website</a>
+      <a href="#/backstage" data-route="backstage">Backstage</a>
+    </nav>
+    <div class="topbar-rechts" id="topbar-rechts"></div>
   </header>
-  <main id="app"></main>
-  <footer class="seitenfuss">WebWerkstatt – Lernplattform für HTML, CSS &amp; JavaScript</footer>
+  <main id="app"><p class="laden">Lade …</p></main>
+  <footer class="seitenfuss">WebWerkstatt · Lernplattform für HTML, CSS &amp; JavaScript · Kein Konto, kein Server – dein Spielstand bleibt in diesem Browser. Sichere ihn auf der Keycard.</footer>
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>

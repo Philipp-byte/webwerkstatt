@@ -1,9 +1,10 @@
 {
   "id": "01-wie-das-web-funktioniert",
-  "title": "So funktioniert das Web",
-  "icon": "🌍",
-  "color": "#7a3fbf",
-  "description": "Client, Server, URL und HTTP – was wirklich passiert, wenn du eine Webseite aufrufst.",
+  "title": "Wie das Web funktioniert",
+  "station": "Info-Point",
+  "icon": "🛰️",
+  "color": "#b48cff",
+  "description": "Was passiert zwischen dem Eintippen einer Adresse und der fertigen Seite? Client, Server, URL, HTTP, Browser – und warum es Standards gibt.",
   "lessons": [
     "01-was-passiert-beim-seitenaufruf",
     "02-url-und-http",

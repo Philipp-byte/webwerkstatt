@@ -10,6 +10,13 @@ function norm(s) {
   return String(s ?? '').replace(/\s+/g, ' ').trim();
 }
 
+// Sichtbarer Text: innerText macht aus <br> einen Umbruch (→ Leerzeichen nach norm),
+// textContent würde die Zeilen zusammenkleben.
+function textVon(el) {
+  const t = typeof el.innerText === 'string' ? el.innerText : el.textContent;
+  return t && t.trim() ? t : el.textContent;
+}
+
 function asList(v) {
   return Array.isArray(v) ? v : [v];
 }
@@ -48,10 +55,10 @@ function checkOne(t, ctx) {
       if (!alle.length) return { label, pass: false, detail: `Kein Element „${t.selector}“ gefunden` };
       const kandidaten = t.any ? alle : [alle[0]];
       const treffer = kandidaten.some((el) => {
-        const ist = norm(el.textContent);
+        const ist = norm(textVon(el));
         return asList(t.expected).some((e) => (t.contains ? ist.includes(norm(e)) : ist === norm(e)));
       });
-      return { label, pass: treffer, detail: treffer ? '' : `Gefunden: „${norm(alle[0].textContent).slice(0, 80)}“` };
+      return { label, pass: treffer, detail: treffer ? '' : `Gefunden: „${norm(textVon(alle[0])).slice(0, 80)}“` };
     }
 
     case 'attr': {

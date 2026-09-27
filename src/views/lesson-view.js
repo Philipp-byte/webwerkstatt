@@ -1,50 +1,101 @@
-// Die Lektionsansicht: ein Schritt pro Seite – weiterblättern statt scrollen.
-// Vor: Weiter-Button, Wischen nach links, Pfeiltaste rechts (erst wenn der
-// Schritt gelöst ist). Zurück: jederzeit. Alle Schritte werden vorab gerendert
-// und nur ein-/ausgeblendet, damit Editor-Inhalte beim Blättern erhalten bleiben.
-// Schritt-Typen: explain, example, quiz, fill, code.
+// Lektions-Player: Soundcheck (Wiederholung) → Schritte (ein Schritt pro Seite) → Abschluss.
+// XP pro Schritt (einmalig), Serie/Combo, Sterne, Abzeichen, Etappen-Speicherung.
 
-import { loadChapter, loadLesson, nextLessonAfter } from '../content.js';
-import { markDone, isChapterLocked } from '../progress.js';
-import { md } from '../markdown.js';
-import { createWorkbench } from '../workbench.js';
-import { runTests } from '../checker.js';
-import { updateProgressBadge } from '../router.js';
-import { getProjektSeite, getProjektCss, setProjektSeite, setProjektCss, getProjektJs, setProjektJs } from '../projekt.js';
-import { merkeLoesung } from '../loesungen.js';
+import { loadChapter, loadLesson, loadAlleKapitel, naechsteLektion, poolFuer, etappeAufloesen } from '../content.js';
+import {
+  getState, vergibXp, zaehle, merkeCombo, lektionAbschliessen, loesungMerken, abzeichenPruefen,
+  frageGestellt, getProjekt, projektSpeichern, lessonKey,
+} from '../store.js';
+import { antwort as leitnerAntwort, soundcheckAuswahl } from '../gamification/leitner.js';
+import { XP, comboFaktor, levelAus } from '../gamification/xp.js';
+import { kapitelFrei, lektionFrei, kapitelFertig } from '../progress.js';
+import { renderStep, SCHRITT_NAMEN, SCHRITT_ICONS } from '../engine/steps.js';
+import { md, escapeHtml } from '../engine/markdown.js';
+import { sound } from '../gamification/sound.js';
+import { konfetti, toast, xpFlieger } from '../gamification/celebrate.js';
+
+const robby = (pose) => new URL(`figuren/robby/${pose}.png`, document.baseURI).href;
+
+function xpFuerStep(step) {
+  if (step.etappe) return XP.etappe;
+  if (step.type === 'code') return step.mode === 'fix' ? XP.fix : XP.code;
+  return XP[step.type] || 0;
+}
+
+export function zeigeLevelup(level, rang) {
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+  overlay.innerHTML = `<div class="overlay-karte">
+    <img src="${robby('erfolg-pokal')}" alt="" style="width:120px;height:120px;object-fit:contain">
+    <div class="chip chip-farbe" style="--farbe: var(--spark)">${rang ? 'Neuer Rang' : 'Level-up'}</div>
+    <div class="gross">${rang ? rang.titel : `Level ${level}`}</div>
+    <p style="color:var(--muted)">${rang ? `Du bist jetzt ${rang.titel} der Werkstatt.` : 'Weiter so – die Werkstatt zählt auf dich.'}</p>
+    <button class="btn btn-primaer" type="button">Weiter</button>
+  </div>`;
+  document.body.appendChild(overlay);
+  sound.levelup();
+  konfetti('mittel');
+  const weg = () => overlay.remove();
+  overlay.querySelector('button').addEventListener('click', weg);
+  overlay.addEventListener('click', (e) => e.target === overlay && weg());
+}
+
+export function meldeAbzeichen(neu) {
+  neu.forEach((a, i) => {
+    setTimeout(() => {
+      toast({ titel: `Abzeichen: ${a.titel}`, text: a.text, icon: a.icon, art: 'abzeichen', dauer: 5000 });
+      sound.abzeichen();
+    }, i * 700);
+  });
+}
+
+export function verarbeiteXp(ergebnis, anker) {
+  if (!ergebnis || !ergebnis.xp) return;
+  xpFlieger(ergebnis.xp, anker);
+  sound.xp();
+  if (ergebnis.rangup) setTimeout(() => zeigeLevelup(ergebnis.levelup, ergebnis.rangup), 500);
+  else if (ergebnis.levelup) setTimeout(() => zeigeLevelup(ergebnis.levelup), 500);
+}
 
 export async function renderLesson(app, chapterId, lessonId) {
-  if (isChapterLocked(chapterId)) {
-    app.innerHTML = `
-      <div class="lektion-seite">
-        <a class="zurueck" href="#/">← Zur Übersicht</a>
-        <div class="karte gesperrt-karte">
-          <p><strong>🔒 Diese Lektion gehört zu einem gesperrten Kapitel.</strong></p>
-          <p>Deine Lehrkraft schaltet das Kapitel frei, sobald es im Unterricht dran ist.</p>
-        </div>
-      </div>`;
+  const [kapitel, lektion, alle] = await Promise.all([loadChapter(chapterId), loadLesson(chapterId, lessonId), loadAlleKapitel()]);
+  const index = alle.findIndex((k) => k.id === chapterId);
+  if (!lektionFrei(kapitel, lessonId, kapitelFrei(index, alle))) {
+    app.innerHTML = `<div class="lektion-seite"><a class="zurueck" href="#/kapitel/${chapterId}">← ${escapeHtml(kapitel.title)}</a>
+      <div class="karte gesperrt-karte"><h2>🔒 Noch gesperrt</h2><p>Erst die vorherige Lektion abschließen.</p></div></div>`;
     return;
   }
 
-  const [kapitel, lektion] = await Promise.all([
-    loadChapter(chapterId),
-    loadLesson(chapterId, lessonId),
-  ]);
-  const steps = lektion.steps;
+  // Etappen auflösen (Starter aus dem Projektstand, wenn vorhanden)
+  const steps = await Promise.all(
+    lektion.steps.map(async (step) => {
+      if (step.type !== 'code' || !step.etappe) return step;
+      const e = await etappeAufloesen(step.etappe);
+      const projekt = getProjekt();
+      const files = { ...e.starter };
+      if (files.html != null && e.page && projekt.pages[e.page] != null) files.html = projekt.pages[e.page];
+      if (files.css != null && projekt.css != null) files.css = projekt.css;
+      if (files.js != null && projekt.js != null) files.js = projekt.js;
+      return { ...step, task: e.task, hints: e.hints, tests: e.tests, starter: files, solution: e.solution, editable: e.editable, project: e.project, etappeId: e.id, titel: e.titel };
+    })
+  );
+
+  const key = lessonKey(chapterId, lessonId);
+  const schonErledigt = !!getState().lessons[key]?.done;
+  const ctx = { fehler: 0, tipps: 0, loesungGesehen: false, serie: 0, xpGesamt: 0, xpListe: [], comebackKandidat: 0 };
 
   app.innerHTML = `
     <div class="lektion-seite">
       <div class="lektion-kopf">
-        <a class="zurueck" href="#/kapitel/${chapterId}">← ${kapitel.icon} ${kapitel.title}</a>
-        <h1 class="lektion-ueberschrift">${lektion.title}</h1>
+        <a class="zurueck" href="#/kapitel/${chapterId}">← ${kapitel.icon} ${escapeHtml(kapitel.title)}</a>
+        <h1>${escapeHtml(lektion.title)}</h1>
+        <span class="combo-anzeige" id="combo">🔥 Serie <span id="combo-zahl">0</span> · ×<span id="combo-faktor">1</span></span>
         <div class="pager-fortschritt">
           <span class="pager-zaehler"></span>
           <div class="pager-dots" role="tablist"></div>
         </div>
       </div>
-      <div class="pager">
-        <div class="pager-seiten"></div>
-      </div>
+      <div class="pager"><div class="pager-seiten"></div></div>
       <div class="pager-nav">
         <button class="btn btn-sekundaer pager-zurueck" type="button">← Zurück</button>
         <span class="pager-hinweis"></span>
@@ -59,19 +110,195 @@ export async function renderLesson(app, chapterId, lessonId) {
   const btnZurueck = app.querySelector('.pager-zurueck');
   const btnWeiter = app.querySelector('.pager-weiter');
   const navEl = app.querySelector('.pager-nav');
+  const comboEl = app.querySelector('#combo');
 
-  const geloest = steps.map(() => false);
-  let aktuell = 0;
-  let maxErreicht = 0;
-  let abschlussKarte = null;
+  function comboAnzeigen() {
+    comboEl.classList.toggle('an', ctx.serie >= 2);
+    comboEl.querySelector('#combo-zahl').textContent = ctx.serie;
+    comboEl.querySelector('#combo-faktor').textContent = String(comboFaktor(ctx.serie)).replace('.', ',');
+  }
 
-  // Fortschrittspunkte – vor den Schritten anlegen, weil Erklär-Schritte sich
-  // schon beim Rendern als gelöst melden und die Navigation aktualisieren.
-  const dots = steps.map((step, i) => {
+  function richtig() {
+    ctx.serie++;
+    merkeCombo(ctx.serie);
+    zaehle('correct');
+    comboAnzeigen();
+    sound.richtig();
+  }
+  function falsch() {
+    ctx.serie = 0;
+    ctx.fehler++;
+    zaehle('wrong');
+    comboAnzeigen();
+    sound.falsch();
+  }
+
+  /* ---------- Soundcheck ---------- */
+  const seiten = []; // { el, geloest, art }
+  const s0 = getState();
+  const gelernte = Object.keys(s0.leitner);
+  let soundcheckFragen = [];
+  if (gelernte.length) {
+    const kapitelBis = alle.slice(0, index + 1).map((k) => k.id);
+    const pool = await poolFuer(kapitelBis);
+    const konzepte = soundcheckAuswahl(s0, 3);
+    const benutzt = new Set();
+    for (const kz of konzepte) {
+      let kandidaten = pool.filter((f) => f.konzept === kz && !benutzt.has(f.id) && !s0.recentQuestions.includes(f.id));
+      if (!kandidaten.length) kandidaten = pool.filter((f) => f.konzept === kz && !benutzt.has(f.id));
+      if (!kandidaten.length) kandidaten = pool.filter((f) => !benutzt.has(f.id) && gelernte.includes(f.konzept));
+      if (!kandidaten.length) continue;
+      const f = kandidaten[Math.floor(Math.random() * kandidaten.length)];
+      benutzt.add(f.id);
+      soundcheckFragen.push(f);
+    }
+  }
+
+  if (soundcheckFragen.length) {
+    const sc = document.createElement('section');
+    sc.className = 'schritt schritt-soundcheck pager-seite';
+    sc.hidden = true;
+    sc.innerHTML = `<div class="soundcheck-kopf">
+        <img src="${robby('erklaeren')}" alt="" style="width:64px;height:64px;object-fit:contain">
+        <div style="flex:1"><div class="schritt-art">🎚️ Soundcheck</div><strong>Kurz aufwärmen: ${soundcheckFragen.length} Fragen zu Dingen, die du schon kennst.</strong><div style="color:var(--muted);font-size:0.9rem">Jede richtige Antwort bringt ${XP.soundcheck} XP${schonErledigt ? ' (Lektion schon geschafft – diesmal ohne XP)' : ''}. Überspringen geht auch – aber dann bleibt der Stoff in der Wiederholungsschleife.</div></div>
+        <button class="btn btn-geist btn-klein sc-skip" type="button">Überspringen</button>
+      </div>
+      <div class="sc-fragen"></div>`;
+    seitenEl.appendChild(sc);
+    const fragenEl = sc.querySelector('.sc-fragen');
+    let scIndex = 0;
+    const seite = { el: sc, geloest: false, art: 'soundcheck' };
+    seiten.push(seite);
+
+    function naechsteFrage() {
+      fragenEl.innerHTML = '';
+      if (scIndex >= soundcheckFragen.length) {
+        seite.geloest = true;
+        fragenEl.innerHTML = `<div class="rueckmeldung rueckmeldung-ok"><strong>Soundcheck fertig.</strong> Jetzt geht's los.</div>`;
+        aktualisiereNav();
+        return;
+      }
+      const f = soundcheckFragen[scIndex];
+      const box = document.createElement('div');
+      box.className = 'sc-frage';
+      fragenEl.appendChild(box);
+      let versucht = false;
+      renderStep(box, f, {
+        solved: () => {
+          frageGestellt(f.id);
+          if (!versucht) {
+            leitnerAntwort(getState(), f.konzept, true);
+            zaehle('soundcheckCorrect');
+            richtig();
+            if (!schonErledigt) {
+              const erg = vergibXp(XP.soundcheck, { key: `${key}#sc:${f.id}:${s0.lessonCounter}` });
+              ctx.xpGesamt += erg.xp;
+              verarbeiteXp(erg, box);
+            }
+          }
+          const weiter = document.createElement('button');
+          weiter.type = 'button';
+          weiter.className = 'btn btn-primaer';
+          weiter.textContent = scIndex + 1 < soundcheckFragen.length ? 'Nächste Frage →' : 'Soundcheck abschließen ✔';
+          weiter.addEventListener('click', () => {
+            scIndex++;
+            naechsteFrage();
+          });
+          const zeile = document.createElement('div');
+          zeile.className = 'schritt-buttons';
+          zeile.appendChild(weiter);
+          box.appendChild(zeile);
+        },
+        wrong: () => {
+          if (!versucht) leitnerAntwort(getState(), f.konzept, false);
+          versucht = true;
+          falsch();
+        },
+      });
+    }
+    sc.querySelector('.sc-skip').addEventListener('click', () => {
+      seite.geloest = true;
+      scIndex = soundcheckFragen.length;
+      naechsteFrage();
+      weiter();
+    });
+    naechsteFrage();
+  }
+
+  /* ---------- Schritte ---------- */
+  const controller = [];
+  steps.forEach((step, i) => {
+    const karte = document.createElement('section');
+    karte.className = `schritt schritt-${step.type} pager-seite`;
+    karte.hidden = true;
+    seitenEl.appendChild(karte);
+    const seite = { el: karte, geloest: false, art: step.type };
+    seiten.push(seite);
+    const stepKey = `${key}#${i}`;
+    let fehlversucheHier = 0;
+
+    const c = renderStep(karte, step, {
+      allowSolution: step.type === 'code' && !!step.solution,
+      solved: (info) => {
+        if (seite.geloest) return;
+        seite.geloest = true;
+        if (!info?.sofort) {
+          richtig();
+          if (fehlversucheHier >= 3) {
+            zaehle('comebacks');
+            meldeAbzeichen(abzeichenPruefen({ ereignis: 'comeback' }));
+          }
+          const betrag = xpFuerStep(step);
+          if (betrag) {
+            const erg = vergibXp(betrag, { key: stepKey, serie: ctx.serie });
+            if (erg.xp) {
+              ctx.xpGesamt += erg.xp;
+              ctx.xpListe.push([`${SCHRITT_ICONS[step.type]} ${step.etappe ? 'Etappe' : SCHRITT_NAMEN[step.type]}${ctx.serie >= 3 ? ` (Serie ×${comboFaktor(ctx.serie)})` : ''}`, erg.xp]);
+            }
+            verarbeiteXp(erg, karte.querySelector('.rueckmeldung-ok') || karte);
+          }
+          if (step.type === 'code') {
+            zaehle('codePassed');
+            if (info.eigene) loesungMerken(chapterId, lessonId, i, info.eigene);
+            if (step.etappe && step.project?.save) {
+              const save = step.project.save;
+              projektSpeichern({
+                page: save.includes('html') ? step.project.page : null,
+                html: save.includes('html') ? info.files.html : null,
+                css: save.includes('css') ? info.files.css : null,
+                js: save.includes('js') ? info.files.js : null,
+                etappeId: step.etappeId,
+              });
+              const ok = karte.querySelector('.rueckmeldung-ok');
+              if (ok) ok.innerHTML += ' <a href="#/projekt">In der FUNKEN-Website gespeichert →</a>';
+              konfetti('klein');
+            }
+            meldeAbzeichen(abzeichenPruefen({ ereignis: 'code' }));
+          }
+        }
+        if (seiten.indexOf(seite) === aktuell) aktualisiereNav();
+      },
+      wrong: () => {
+        fehlversucheHier++;
+        falsch();
+      },
+      hint: () => {
+        ctx.tipps++;
+        zaehle('hintsUsed');
+      },
+      solutionViewed: () => {
+        ctx.loesungGesehen = true;
+      },
+    });
+    controller.push(c);
+  });
+
+  /* ---------- Blättern ---------- */
+  const dots = seiten.map((seite, i) => {
     const dot = document.createElement('button');
     dot.type = 'button';
     dot.className = 'pager-dot';
-    dot.title = `Schritt ${i + 1}: ${schrittName(step)}`;
+    dot.title = seite.art === 'soundcheck' ? 'Soundcheck' : `Schritt ${i + (soundcheckFragen.length ? 0 : 1)}: ${SCHRITT_NAMEN[seite.art] || seite.art}`;
     dot.addEventListener('click', () => {
       if (i <= maxErreicht) zeige(i);
     });
@@ -79,118 +306,135 @@ export async function renderLesson(app, chapterId, lessonId) {
     return dot;
   });
 
-  // Alle Schritte vorab rendern (versteckt) – DOM bleibt beim Blättern erhalten.
-  const karten = steps.map((step, i) => {
-    const karte = document.createElement('section');
-    karte.className = `schritt schritt-${step.type} pager-seite`;
-    karte.hidden = true;
-    seitenEl.appendChild(karte);
-
-    const fertig = () => {
-      if (geloest[i]) return;
-      geloest[i] = true;
-      karte.classList.add('schritt-fertig');
-      if (i === aktuell) aktualisiereNav();
-    };
-    const ctx = { chapterId, lessonId, stepIndex: i };
-    const renderer = { explain: renderExplain, example: renderExample, quiz: renderQuiz, fill: renderFill, code: renderCode }[step.type];
-    if (renderer) renderer(karte, step, fertig, ctx);
-    else {
-      karte.innerHTML = `<p>Unbekannter Schritt-Typ: ${step.type}</p>`;
-      fertig();
-    }
-    return karte;
-  });
-
-  function schrittName(step) {
-    return { explain: 'Erklärung', example: 'Beispiel', quiz: 'Quiz', fill: 'Lückentext', code: 'Aufgabe' }[step.type] || step.type;
-  }
+  let aktuell = 0;
+  let maxErreicht = 0;
+  let abschlussKarte = null;
 
   function aktualisiereNav() {
-    const amEnde = aktuell >= steps.length;
+    const amEnde = aktuell >= seiten.length;
     navEl.hidden = amEnde;
     if (amEnde) return;
+    const seite = seiten[aktuell];
     btnZurueck.disabled = aktuell === 0;
-    const frei = geloest[aktuell];
+    const frei = seite.geloest;
     btnWeiter.disabled = !frei;
-    btnWeiter.classList.toggle('pager-weiter-bereit', frei && steps[aktuell].type !== 'explain');
-    btnWeiter.textContent = aktuell === steps.length - 1 ? 'Lektion abschließen ✔' : 'Weiter →';
-    hinweisEl.textContent = frei ? '' : `Löse ${steps[aktuell].type === 'quiz' ? 'das Quiz' : steps[aktuell].type === 'fill' ? 'den Lückentext' : 'die Aufgabe'}, um weiterzublättern.`;
-    zaehlerEl.textContent = `Schritt ${aktuell + 1} von ${steps.length}`;
+    btnWeiter.classList.toggle('pager-weiter-bereit', frei && !['explain', 'example', 'soundcheck'].includes(seite.art));
+    btnWeiter.textContent = aktuell === seiten.length - 1 ? 'Lektion abschließen ✔' : 'Weiter →';
+    const namen = { quiz: 'das Quiz', fill: 'den Lückentext', order: 'die Sortieraufgabe', pair: 'die Zuordnung', code: 'die Aufgabe', soundcheck: 'den Soundcheck', bug: 'die Fehlerjagd' };
+    hinweisEl.textContent = frei ? '' : `Löse ${namen[seite.art] || 'die Aufgabe'}, um weiterzublättern.`;
+    zaehlerEl.textContent = seite.art === 'soundcheck' ? 'Soundcheck' : `Schritt ${aktuell + 1 - (soundcheckFragen.length ? 1 : 0)} von ${steps.length}`;
     dots.forEach((d, i) => {
       d.classList.toggle('aktiv', i === aktuell);
-      d.classList.toggle('erledigt', geloest[i] && i !== aktuell);
+      d.classList.toggle('erledigt', seiten[i].geloest && i !== aktuell);
       d.classList.toggle('erreichbar', i <= maxErreicht);
     });
   }
 
-  function zeige(index, richtung = index > aktuell ? 'vor' : 'zurueck') {
-    karten.forEach((k) => (k.hidden = true));
+  function zeige(i, richtung = i > aktuell ? 'vor' : 'zurueck') {
+    seiten.forEach((s) => (s.el.hidden = true));
     if (abschlussKarte) abschlussKarte.hidden = true;
-    aktuell = index;
-    maxErreicht = Math.max(maxErreicht, index);
-    const ziel = index >= steps.length ? abschlussKarte : karten[index];
+    aktuell = i;
+    maxErreicht = Math.max(maxErreicht, i);
+    const ziel = i >= seiten.length ? abschlussKarte : seiten[i].el;
     if (ziel) {
       ziel.hidden = false;
       ziel.classList.remove('slide-vor', 'slide-zurueck');
-      void ziel.offsetWidth; // Animation neu starten
+      void ziel.offsetWidth;
       ziel.classList.add(richtung === 'vor' ? 'slide-vor' : 'slide-zurueck');
+      const wb = ziel.querySelector('.cm-editor');
+      if (wb) setTimeout(() => wb.querySelector('.cm-content')?.dispatchEvent(new Event('resize')), 50);
     }
     aktualisiereNav();
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
 
+  function sterneBerechnen() {
+    if (ctx.loesungGesehen) return 1;
+    let sterne = 3;
+    if (ctx.fehler >= 3) sterne -= 2;
+    else if (ctx.fehler >= 1) sterne -= 1;
+    if (ctx.tipps >= 1) sterne -= 1;
+    return Math.max(1, sterne);
+  }
+
   async function lektionGeschafft() {
-    markDone(chapterId, lessonId);
-    updateProgressBadge();
-    const naechste = await nextLessonAfter(chapterId, lessonId);
+    const sterne = sterneBerechnen();
+    const { erster } = lektionAbschliessen(chapterId, lessonId, { stars: sterne, konzepte: lektion.konzepte || [], fehler: ctx.fehler, tipps: ctx.tipps });
+    const erg = vergibXp(XP.lektion, { key: `${key}#lektion` });
+    if (erg.xp) {
+      ctx.xpGesamt += erg.xp;
+      ctx.xpListe.push(['🏁 Lektion abgeschlossen', erg.xp]);
+    }
+    let erg2 = null;
+    if (sterne === 3) {
+      erg2 = vergibXp(XP.lektionPerfekt, { key: `${key}#perfekt` });
+      if (erg2.xp) {
+        ctx.xpGesamt += erg2.xp;
+        ctx.xpListe.push(['⭐ 3 Sterne', erg2.xp]);
+      }
+    }
+    const fertigKapitel = kapitelFertig(kapitel);
+    const neu = abzeichenPruefen({ ereignis: 'lektion', kapitelFertig: (id) => (id === chapterId ? fertigKapitel : alle.find((k) => k.id === id) ? kapitelFertig(alle.find((k) => k.id === id)) : false) });
+    const naechste = await naechsteLektion(chapterId, lessonId);
+    const pose = sterne === 3 ? 'jubel-geschafft' : sterne === 2 ? 'gut-gemacht' : 'motivation-herz';
+    const begruendung =
+      sterne === 3
+        ? 'Kein Fehler, kein Tipp – sauber!'
+        : ctx.loesungGesehen
+          ? 'Du hast die Musterlösung angesehen – deshalb 1 Stern. Wiederhol die Lektion für mehr.'
+          : `${ctx.fehler} Fehler${ctx.tipps ? `, ${ctx.tipps} Tipp${ctx.tipps > 1 ? 's' : ''}` : ''} – deshalb ${sterne} von 3 Sternen. Wiederholen zählt das bessere Ergebnis.`;
+
     abschlussKarte = document.createElement('section');
-    abschlussKarte.className = 'schritt schritt-abschluss pager-seite';
+    abschlussKarte.className = 'schritt schritt-abschluss pager-seite abschluss';
     abschlussKarte.innerHTML = `
-      <h2>✔ Lektion geschafft!</h2>
-      <p>Stark – du hast alle ${steps.length} Schritte dieser Lektion gemeistert.</p>
+      <img src="${robby(pose)}" alt="" style="width:130px;height:130px;object-fit:contain">
+      <h2>${erster ? 'Lektion geschafft!' : 'Nochmal geschafft!'}</h2>
+      <div class="sterne-gross">${[1, 2, 3].map((n) => `<span class="stern ${n <= sterne ? '' : 'leer'}">★</span>`).join('')}</div>
+      <p style="color:var(--muted)">${begruendung}</p>
+      ${ctx.xpGesamt ? `<div class="abschluss-xp">+${ctx.xpGesamt} XP</div><ul class="abschluss-liste">${ctx.xpListe.map(([t, x]) => `<li><span>${t}</span><span>+${x}</span></li>`).join('')}</ul>` : '<p style="color:var(--muted)">Wiederholt – keine neuen XP, aber Übung macht sicher.</p>'}
+      ${fertigKapitel ? `<div class="hinweis-box" style="margin-top:0.75rem">🎉 Alle Lektionen dieser Station geschafft – Sam wartet auf die <a href="#/abnahme/${chapterId}">Abnahme</a>.</div>` : ''}
       <div class="abschluss-buttons">
-        ${naechste ? `<a class="btn btn-primaer" href="#/lektion/${naechste.chapterId}/${naechste.lessonId}">Nächste Lektion →</a>` : ''}
-        <a class="btn btn-sekundaer" href="#/arbeitsblatt/${chapterId}">📄 Arbeitsblatt mit meinen Lösungen</a>
-        <a class="btn btn-sekundaer" href="#/kapitel/${chapterId}">Zum Kapitel</a>
-        <button class="btn btn-sekundaer abschluss-nochmal" type="button">← Nochmal ansehen</button>
-      </div>`;
+        ${fertigKapitel ? `<a class="btn btn-primaer" href="#/abnahme/${chapterId}">Zur Abnahme →</a>` : naechste ? `<a class="btn btn-primaer" href="#/lektion/${naechste.chapterId}/${naechste.lessonId}">Nächste Lektion →</a>` : ''}
+        ${steps.some((st) => st.etappe) ? '<a class="btn btn-sekundaer" href="#/projekt">🌐 FUNKEN-Website ansehen</a>' : ''}
+        <a class="btn btn-sekundaer" href="#/kapitel/${chapterId}">Zur Station</a>
+        <button class="btn btn-geist abschluss-nochmal" type="button">← Nochmal ansehen</button>
+      </div>
+      <p style="color:var(--muted);font-size:0.85rem;margin-top:1rem">💾 Tipp: Auf der <a href="#/keycard">Keycard</a> kannst du deinen Spielstand als Datei sichern – wichtig an Schulrechnern.</p>`;
     seitenEl.appendChild(abschlussKarte);
     abschlussKarte.querySelector('.abschluss-nochmal').addEventListener('click', () => zeige(0, 'zurueck'));
-    zeige(steps.length, 'vor');
+    zeige(seiten.length, 'vor');
+    sound.fanfare();
+    konfetti(sterne === 3 ? 'gross' : 'mittel');
+    if (erg.rangup) setTimeout(() => zeigeLevelup(erg.levelup, erg.rangup), 900);
+    else if (erg.levelup || erg2?.levelup) setTimeout(() => zeigeLevelup(erg.levelup || erg2.levelup), 900);
+    meldeAbzeichen(neu);
   }
 
   function weiter() {
-    if (aktuell >= steps.length || !geloest[aktuell]) return;
-    if (aktuell === steps.length - 1) {
-      if (abschlussKarte) zeige(steps.length, 'vor');
+    if (aktuell >= seiten.length || !seiten[aktuell].geloest) return;
+    if (aktuell === seiten.length - 1) {
+      if (abschlussKarte) zeige(seiten.length, 'vor');
       else lektionGeschafft();
-    } else {
-      zeige(aktuell + 1, 'vor');
-    }
+    } else zeige(aktuell + 1, 'vor');
   }
-
   function zurueck() {
     if (aktuell > 0) zeige(aktuell - 1, 'zurueck');
   }
-
   btnWeiter.addEventListener('click', weiter);
   btnZurueck.addEventListener('click', zurueck);
 
-  // Pfeiltasten (nicht, während im Editor getippt wird)
   const onKey = (e) => {
     if (!app.isConnected) {
       window.removeEventListener('keydown', onKey);
       return;
     }
     const tag = document.activeElement?.tagName;
-    if (tag === 'TEXTAREA' || tag === 'INPUT') return;
+    if (tag === 'TEXTAREA' || tag === 'INPUT' || document.activeElement?.closest('.cm-editor')) return;
     if (e.key === 'ArrowRight') weiter();
     if (e.key === 'ArrowLeft') zurueck();
   };
   window.addEventListener('keydown', onKey);
 
-  // Wischen (Touch): nach links = weiter, nach rechts = zurück
   const pagerEl = app.querySelector('.pager');
   let touchStartX = null;
   let touchStartY = null;
@@ -204,241 +448,18 @@ export async function renderLesson(app, chapterId, lessonId) {
     const dy = e.changedTouches[0].clientY - touchStartY;
     touchStartX = null;
     if (Math.abs(dx) < 60 || Math.abs(dy) > Math.abs(dx)) return;
-    if (e.target.closest('textarea, input, iframe')) return;
+    if (e.target.closest('textarea, input, iframe, .cm-editor, .sortier, .paare')) return;
     if (dx < 0) weiter();
     else zurueck();
   }, { passive: true });
 
   zeige(0, 'vor');
-}
+  comboAnzeigen();
 
-/* ---------- Schritt-Renderer ---------- */
-
-function escapeHtml(s) {
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-
-function grafik(step) {
-  return step.figure ? `<div class="schritt-grafik">${step.figure}</div>` : '';
-}
-
-function renderExplain(karte, step, fertig) {
-  karte.innerHTML = `${grafik(step)}<div class="schritt-inhalt">${md(step.text)}</div>`;
-  fertig();
-}
-
-function renderExample(karte, step, fertig) {
-  karte.innerHTML = `${grafik(step)}<div class="schritt-inhalt">${md(step.text)}</div>`;
-  const files = {};
-  ['html', 'css', 'js'].forEach((k) => {
-    if (step[k] != null) files[k] = step[k];
-  });
-  createWorkbench(karte, files, { editable: step.editable });
-  fertig();
-}
-
-function renderQuiz(karte, step, fertig) {
-  karte.innerHTML = `
-    ${grafik(step)}
-    <div class="schritt-inhalt">${md(step.question)}</div>
-    <div class="quiz-optionen"></div>
-    <div class="rueckmeldung" hidden></div>`;
-  const optionenEl = karte.querySelector('.quiz-optionen');
-  const feedback = karte.querySelector('.rueckmeldung');
-
-  step.options.forEach((option, i) => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'quiz-option';
-    btn.innerHTML = md(option);
-    btn.addEventListener('click', () => {
-      if (i === step.correct) {
-        btn.classList.add('quiz-richtig');
-        optionenEl.querySelectorAll('button').forEach((b) => (b.disabled = true));
-        feedback.hidden = false;
-        feedback.className = 'rueckmeldung rueckmeldung-ok';
-        feedback.innerHTML = `<strong>Richtig!</strong> ${step.explanation ? md(step.explanation) : ''}`;
-        fertig();
-      } else {
-        btn.classList.add('quiz-falsch');
-        btn.disabled = true;
-        feedback.hidden = false;
-        feedback.className = 'rueckmeldung rueckmeldung-fehler';
-        feedback.textContent = 'Leider nein – probier eine andere Antwort.';
-      }
-    });
-    optionenEl.appendChild(btn);
-  });
-}
-
-function renderFill(karte, step, fertig) {
-  karte.innerHTML = `${grafik(step)}<div class="schritt-inhalt">${md(step.text)}</div>`;
-
-  const zeile = document.createElement('div');
-  zeile.className = 'fill-zeile codeblock';
-  const teile = step.template.split('___');
-  teile.forEach((teil, i) => {
-    zeile.appendChild(document.createTextNode(teil));
-    if (i < teile.length - 1) {
-      const input = document.createElement('input');
-      input.className = 'fill-input';
-      input.type = 'text';
-      input.spellcheck = false;
-      input.setAttribute('autocapitalize', 'off');
-      zeile.appendChild(input);
-    }
-  });
-  karte.appendChild(zeile);
-
-  const feedback = document.createElement('div');
-  feedback.className = 'rueckmeldung';
-  feedback.hidden = true;
-  karte.appendChild(feedback);
-
-  const buttons = document.createElement('div');
-  buttons.className = 'schritt-buttons';
-  const pruefen = document.createElement('button');
-  pruefen.type = 'button';
-  pruefen.className = 'btn btn-primaer';
-  pruefen.textContent = 'Prüfen';
-  buttons.appendChild(pruefen);
-  karte.appendChild(buttons);
-
-  const input = zeile.querySelector('.fill-input');
-
-  function pruefe() {
-    const wert = input.value.trim();
-    const akzeptiert = (step.accept || [step.solution]).some((a) => a.trim() === wert);
-    if (akzeptiert) {
-      input.classList.add('fill-richtig');
-      input.disabled = true;
-      pruefen.remove();
-      feedback.hidden = false;
-      feedback.className = 'rueckmeldung rueckmeldung-ok';
-      feedback.innerHTML = '<strong>Richtig!</strong>';
-      fertig();
-    } else {
-      input.classList.add('fill-falsch');
-      setTimeout(() => input.classList.remove('fill-falsch'), 600);
-      feedback.hidden = false;
-      feedback.className = 'rueckmeldung rueckmeldung-fehler';
-      feedback.innerHTML = step.hint ? `Noch nicht ganz. Tipp: ${md(step.hint)}` : 'Noch nicht ganz – probier es weiter.';
-    }
-  }
-
-  pruefen.addEventListener('click', pruefe);
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') pruefe();
-  });
-}
-
-function renderCode(karte, step, fertig, ctx) {
-  karte.innerHTML = `${grafik(step)}<div class="schritt-inhalt">${md(step.task)}</div>`;
-
-  // Projekt-Etappe: gespeicherten Projektstand als Ausgangspunkt laden
-  // (der starter aus der Lektion bleibt Fallback für Quereinsteiger).
-  const files = { ...step.starter };
-  if (step.project) {
-    if (step.project.page && files.html != null) {
-      const stand = getProjektSeite(step.project.page);
-      if (stand != null) files.html = stand;
-    }
-    if (files.css != null) {
-      const css = getProjektCss();
-      if (css != null) files.css = css;
-    }
-    if (files.js != null) {
-      const js = getProjektJs();
-      if (js != null) files.js = js;
-    }
-  }
-
-  const werkbank = createWorkbench(karte, files, { editable: step.editable });
-
-  const ergebnisse = document.createElement('div');
-  ergebnisse.className = 'test-ergebnisse';
-  karte.appendChild(ergebnisse);
-
-  const tippBox = document.createElement('div');
-  tippBox.className = 'rueckmeldung rueckmeldung-tipp';
-  tippBox.hidden = true;
-  karte.appendChild(tippBox);
-
-  const buttons = document.createElement('div');
-  buttons.className = 'schritt-buttons';
-  const pruefen = document.createElement('button');
-  pruefen.type = 'button';
-  pruefen.className = 'btn btn-primaer';
-  pruefen.textContent = '✔ Prüfen';
-  buttons.appendChild(pruefen);
-
-  let tippIndex = 0;
-  if (step.hints && step.hints.length) {
-    const tipp = document.createElement('button');
-    tipp.type = 'button';
-    tipp.className = 'btn btn-sekundaer';
-    tipp.textContent = '💡 Tipp';
-    tipp.addEventListener('click', () => {
-      tippBox.hidden = false;
-      tippBox.innerHTML = `<strong>Tipp ${Math.min(tippIndex + 1, step.hints.length)}/${step.hints.length}:</strong> ${md(step.hints[Math.min(tippIndex, step.hints.length - 1)])}`;
-      tippIndex++;
-      if (tippIndex >= step.hints.length) tipp.disabled = true;
-    });
-    buttons.appendChild(tipp);
-  }
-  karte.appendChild(buttons);
-
-  let geschafft = false;
-  pruefen.addEventListener('click', async () => {
-    if (geschafft) return;
-    pruefen.disabled = true;
-    pruefen.textContent = 'Prüfe …';
-    const results = await runTests(werkbank.getFiles(), step.tests);
-    pruefen.disabled = false;
-    pruefen.textContent = '✔ Prüfen';
-
-    ergebnisse.innerHTML = results
-      .map(
-        (r) => `
-        <div class="test-zeile ${r.pass ? 'test-ok' : 'test-fehler'}">
-          <span class="test-symbol">${r.pass ? '✔' : '✘'}</span>
-          <span>${escapeHtml(r.label)}${!r.pass && r.detail ? `<span class="test-detail">${escapeHtml(r.detail)}</span>` : ''}</span>
-        </div>`
-      )
-      .join('');
-
-    if (results.every((r) => r.pass)) {
-      geschafft = true;
-      pruefen.remove();
-      const stand = werkbank.getFiles();
-      const ok = document.createElement('div');
-      ok.className = 'rueckmeldung rueckmeldung-ok';
-      ok.innerHTML = '<strong>Alle Prüfungen bestanden!</strong> 🎉';
-
-      // Eigene Lösung fürs Arbeitsblatt merken (nur die editierbaren Dateien)
-      const editable = step.editable || Object.keys(step.starter || {});
-      const eigene = {};
-      editable.forEach((k) => {
-        if (stand[k] != null) eigene[k] = stand[k];
-      });
-      merkeLoesung(ctx.chapterId, ctx.lessonId, ctx.stepIndex, eigene);
-
-      // Projekt-Etappe geschafft → Ergebnis im Café-Projekt sichern
-      if (step.project && Array.isArray(step.project.save)) {
-        if (step.project.save.includes('html') && step.project.page && stand.html != null) {
-          setProjektSeite(step.project.page, stand.html);
-        }
-        if (step.project.save.includes('css') && stand.css != null) {
-          setProjektCss(stand.css);
-        }
-        if (step.project.save.includes('js') && stand.js != null) {
-          setProjektJs(stand.js);
-        }
-        ok.innerHTML += ' <a href="#/projekt">Im Café-Projekt gespeichert →</a>';
-      }
-
-      karte.insertBefore(ok, buttons);
-      fertig();
-    }
-  });
+  return {
+    destroy: () => {
+      window.removeEventListener('keydown', onKey);
+      controller.forEach((c) => c?.destroy?.());
+    },
+  };
 }

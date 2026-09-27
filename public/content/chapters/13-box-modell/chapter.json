@@ -1,13 +1,15 @@
 {
   "id": "13-box-modell",
-  "title": "Das Box-Modell",
+  "title": "Box-Modell",
+  "station": "Container",
   "icon": "📦",
-  "color": "#1f66c2",
-  "description": "Jedes Element ist eine Box: Rahmen, Innen- und Außenabstand, Breite, runde Ecken.",
+  "color": "#38c7ff",
+  "description": "Rahmen, Innen- und Außenabstand, Breite, runde Ecken und Schatten – jedes Element ist eine Box.",
   "lessons": [
-    "01-rahmen-innenabstand",
-    "02-aussenabstand-breite",
-    "03-karten-uebung",
-    "04-wiederholung"
+    "01-rahmen-und-innenabstand",
+    "02-aussenabstand-und-breite",
+    "03-ecken-und-schatten",
+    "04-wiederholung",
+    "05-projekt-karten"
   ]
 }

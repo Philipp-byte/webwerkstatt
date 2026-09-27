@@ -1,13 +1,15 @@
 {
   "id": "05-links",
   "title": "Links",
-  "icon": "🔗",
-  "color": "#c9563e",
-  "description": "Externe Links, Links zwischen eigenen Seiten und Sprungmarken innerhalb einer Seite.",
+  "station": "Wegweiser",
+  "icon": "🧭",
+  "color": "#ff7a45",
+  "description": "Links zu fremden Seiten, zu eigenen Seiten, Sprungmarken, E-Mail-Links und neue Tabs – die Navigation entsteht.",
   "lessons": [
     "01-externe-links",
     "02-interne-links-und-sprungmarken",
-    "03-wiederholung",
-    "04-projekt-navigation"
+    "03-mailto-und-neuer-tab",
+    "04-wiederholung",
+    "05-projekt-navigation"
   ]
 }

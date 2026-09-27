@@ -1,0 +1,442 @@
+[
+  {
+    "id": "web.client-server",
+    "titel": "Client und Server",
+    "block": "web"
+  },
+  {
+    "id": "web.url",
+    "titel": "Aufbau einer URL",
+    "block": "web"
+  },
+  {
+    "id": "web.http",
+    "titel": "HTTP: Anfrage und Antwort",
+    "block": "web"
+  },
+  {
+    "id": "web.browser",
+    "titel": "Browser und Quelltext",
+    "block": "web"
+  },
+  {
+    "id": "web.standards",
+    "titel": "Standards (W3C)",
+    "block": "web"
+  },
+  {
+    "id": "web.sprachen",
+    "titel": "HTML, CSS, JavaScript – die drei Sprachen",
+    "block": "web"
+  },
+  {
+    "id": "html.tag",
+    "titel": "Tags und Elemente",
+    "block": "html"
+  },
+  {
+    "id": "html.attribut",
+    "titel": "Attribute",
+    "block": "html"
+  },
+  {
+    "id": "html.grundgeruest",
+    "titel": "Grundgerüst",
+    "block": "html"
+  },
+  {
+    "id": "html.verschachtelung",
+    "titel": "Verschachtelung",
+    "block": "html"
+  },
+  {
+    "id": "html.ueberschrift",
+    "titel": "Überschriften h1–h6",
+    "block": "html"
+  },
+  {
+    "id": "html.absatz",
+    "titel": "Absätze",
+    "block": "html"
+  },
+  {
+    "id": "html.br-hr",
+    "titel": "Zeilenumbruch und Linie",
+    "block": "html"
+  },
+  {
+    "id": "html.strong-em",
+    "titel": "Betonung strong/em",
+    "block": "html"
+  },
+  {
+    "id": "html.kommentar",
+    "titel": "Kommentare",
+    "block": "html"
+  },
+  {
+    "id": "html.entity",
+    "titel": "Sonderzeichen (Entities)",
+    "block": "html"
+  },
+  {
+    "id": "html.ul",
+    "titel": "Ungeordnete Liste",
+    "block": "html"
+  },
+  {
+    "id": "html.ol",
+    "titel": "Geordnete Liste",
+    "block": "html"
+  },
+  {
+    "id": "html.liste-verschachtelt",
+    "titel": "Verschachtelte Listen",
+    "block": "html"
+  },
+  {
+    "id": "html.a-extern",
+    "titel": "Externe Links",
+    "block": "html"
+  },
+  {
+    "id": "html.a-intern",
+    "titel": "Interne Links",
+    "block": "html"
+  },
+  {
+    "id": "html.a-sprungmarke",
+    "titel": "Sprungmarken",
+    "block": "html"
+  },
+  {
+    "id": "html.a-mailto",
+    "titel": "E-Mail-Links",
+    "block": "html"
+  },
+  {
+    "id": "html.a-target",
+    "titel": "Neuer Tab (target)",
+    "block": "html"
+  },
+  {
+    "id": "html.img",
+    "titel": "Bilder",
+    "block": "html"
+  },
+  {
+    "id": "html.alt",
+    "titel": "Alternativtext",
+    "block": "html"
+  },
+  {
+    "id": "html.audio-video",
+    "titel": "Audio und Video",
+    "block": "html"
+  },
+  {
+    "id": "html.figure",
+    "titel": "figure und figcaption",
+    "block": "html"
+  },
+  {
+    "id": "html.table",
+    "titel": "Tabellen",
+    "block": "html"
+  },
+  {
+    "id": "html.th",
+    "titel": "Kopfzellen",
+    "block": "html"
+  },
+  {
+    "id": "html.colspan",
+    "titel": "Verbundene Zellen",
+    "block": "html"
+  },
+  {
+    "id": "html.class",
+    "titel": "Klassen",
+    "block": "html"
+  },
+  {
+    "id": "html.id",
+    "titel": "IDs",
+    "block": "html"
+  },
+  {
+    "id": "html.div-span",
+    "titel": "div und span",
+    "block": "html"
+  },
+  {
+    "id": "html.semantik",
+    "titel": "Semantische Elemente",
+    "block": "html"
+  },
+  {
+    "id": "html.form",
+    "titel": "Formulare",
+    "block": "html"
+  },
+  {
+    "id": "html.input",
+    "titel": "Eingabefelder",
+    "block": "html"
+  },
+  {
+    "id": "html.label",
+    "titel": "Labels",
+    "block": "html"
+  },
+  {
+    "id": "html.select",
+    "titel": "Auswahllisten",
+    "block": "html"
+  },
+  {
+    "id": "html.radio-checkbox",
+    "titel": "Radio und Checkbox",
+    "block": "html"
+  },
+  {
+    "id": "html.textarea",
+    "titel": "Textbereich",
+    "block": "html"
+  },
+  {
+    "id": "html.button",
+    "titel": "Knöpfe",
+    "block": "html"
+  },
+  {
+    "id": "css.regel",
+    "titel": "CSS-Regel: Selektor, Eigenschaft, Wert",
+    "block": "css"
+  },
+  {
+    "id": "css.orte",
+    "titel": "Die drei Orte für CSS",
+    "block": "css"
+  },
+  {
+    "id": "css.link",
+    "titel": "Externe CSS-Datei einbinden",
+    "block": "css"
+  },
+  {
+    "id": "css.farbe",
+    "titel": "Farben",
+    "block": "css"
+  },
+  {
+    "id": "css.background",
+    "titel": "Hintergrund",
+    "block": "css"
+  },
+  {
+    "id": "css.sel-element",
+    "titel": "Element-Selektor",
+    "block": "css"
+  },
+  {
+    "id": "css.sel-klasse",
+    "titel": "Klassen-Selektor",
+    "block": "css"
+  },
+  {
+    "id": "css.sel-id",
+    "titel": "ID-Selektor",
+    "block": "css"
+  },
+  {
+    "id": "css.sel-gruppe",
+    "titel": "Gruppen-Selektor",
+    "block": "css"
+  },
+  {
+    "id": "css.sel-nachfahre",
+    "titel": "Nachfahren-Selektor",
+    "block": "css"
+  },
+  {
+    "id": "css.hover",
+    "titel": "hover",
+    "block": "css"
+  },
+  {
+    "id": "css.font-family",
+    "titel": "Schriftart",
+    "block": "css"
+  },
+  {
+    "id": "css.font-size",
+    "titel": "Schriftgröße",
+    "block": "css"
+  },
+  {
+    "id": "css.text-align",
+    "titel": "Textausrichtung",
+    "block": "css"
+  },
+  {
+    "id": "css.font-weight-style",
+    "titel": "Fett und Kursiv",
+    "block": "css"
+  },
+  {
+    "id": "css.text-decoration",
+    "titel": "Unterstreichung",
+    "block": "css"
+  },
+  {
+    "id": "css.line-height",
+    "titel": "Zeilenabstand",
+    "block": "css"
+  },
+  {
+    "id": "css.border",
+    "titel": "Rahmen",
+    "block": "css"
+  },
+  {
+    "id": "css.padding",
+    "titel": "Innenabstand",
+    "block": "css"
+  },
+  {
+    "id": "css.margin",
+    "titel": "Außenabstand",
+    "block": "css"
+  },
+  {
+    "id": "css.width",
+    "titel": "Breite",
+    "block": "css"
+  },
+  {
+    "id": "css.border-radius",
+    "titel": "Runde Ecken",
+    "block": "css"
+  },
+  {
+    "id": "css.box-shadow",
+    "titel": "Schatten",
+    "block": "css"
+  },
+  {
+    "id": "css.flex",
+    "titel": "Flexbox einschalten",
+    "block": "css"
+  },
+  {
+    "id": "css.flex-direction",
+    "titel": "Richtung",
+    "block": "css"
+  },
+  {
+    "id": "css.gap",
+    "titel": "Abstand (gap)",
+    "block": "css"
+  },
+  {
+    "id": "css.justify-content",
+    "titel": "Verteilen (justify-content)",
+    "block": "css"
+  },
+  {
+    "id": "css.align-items",
+    "titel": "Ausrichten (align-items)",
+    "block": "css"
+  },
+  {
+    "id": "css.flex-wrap",
+    "titel": "Umbrechen",
+    "block": "css"
+  },
+  {
+    "id": "css.flex-grow",
+    "titel": "Wachsen (flex)",
+    "block": "css"
+  },
+  {
+    "id": "recht.urheberrecht",
+    "titel": "Urheberrecht",
+    "block": "recht"
+  },
+  {
+    "id": "recht.lizenz",
+    "titel": "Lizenzen",
+    "block": "recht"
+  },
+  {
+    "id": "recht.impressum",
+    "titel": "Impressum",
+    "block": "recht"
+  },
+  {
+    "id": "recht.datenschutz",
+    "titel": "Datenschutz",
+    "block": "recht"
+  },
+  {
+    "id": "recht.fotos",
+    "titel": "Fotos von Personen",
+    "block": "recht"
+  },
+  {
+    "id": "js.script",
+    "titel": "script-Element",
+    "block": "js"
+  },
+  {
+    "id": "js.console",
+    "titel": "Konsole",
+    "block": "js"
+  },
+  {
+    "id": "js.variable",
+    "titel": "Variablen",
+    "block": "js"
+  },
+  {
+    "id": "js.datentyp",
+    "titel": "Zahlen und Texte",
+    "block": "js"
+  },
+  {
+    "id": "js.operator",
+    "titel": "Rechnen",
+    "block": "js"
+  },
+  {
+    "id": "js.verkettung",
+    "titel": "Texte verbinden",
+    "block": "js"
+  },
+  {
+    "id": "js.getElementById",
+    "titel": "Elemente finden",
+    "block": "js"
+  },
+  {
+    "id": "js.textContent",
+    "titel": "Inhalt ändern",
+    "block": "js"
+  },
+  {
+    "id": "js.addEventListener",
+    "titel": "Auf Klick reagieren",
+    "block": "js"
+  },
+  {
+    "id": "js.zaehler",
+    "titel": "Zähler",
+    "block": "js"
+  },
+  {
+    "id": "js.classList",
+    "titel": "Klassen umschalten",
+    "block": "js"
+  }
+]

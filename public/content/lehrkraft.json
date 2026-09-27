@@ -1,0 +1,4 @@
+{
+  "hash": "aa87b423dd00c486e27ac523bc20ead26aaaebf23aec4d0c6131c562fb3d5566",
+  "hinweis": "SHA-256 des Lehrkraft-Passworts. Ändern mit: node scripts/lehrkraft-passwort.mjs \"neues Passwort\""
+}

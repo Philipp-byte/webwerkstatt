@@ -1,15 +1,19 @@
 {
   "title": "WebWerkstatt",
-  "subtitle": "Schritt für Schritt eigene Webseiten bauen – von den Grundlagen des Web bis zur fertigen Café-Website.",
+  "subtitle": "Schritt für Schritt eigene Websites bauen – und dabei die Website des FUNKEN-Festivals neu aufbauen: erst das Gerüst, dann Licht und Farbe, zum Schluss Strom.",
   "blocks": [
     {
-      "title": "Grundlagen – So funktioniert das Web",
-      "color": "#7a3fbf",
-      "chapters": ["01-wie-das-web-funktioniert"]
+      "id": "backstage",
+      "title": "Block A · Backstage – Grundlagen",
+      "color": "#b48cff",
+      "chapters": [
+        "01-wie-das-web-funktioniert"
+      ]
     },
     {
-      "title": "HTML – Inhalt & Struktur",
-      "color": "#e0632e",
+      "id": "html",
+      "title": "Block B · Das Gerüst – HTML",
+      "color": "#ff7a45",
       "chapters": [
         "02-html-erste-schritte",
         "03-text",
@@ -22,8 +26,9 @@
       ]
     },
     {
-      "title": "CSS – Gestaltung & Recht",
-      "color": "#2f6fdb",
+      "id": "css",
+      "title": "Block C · Licht & Farbe – CSS",
+      "color": "#38c7ff",
       "chapters": [
         "10-css-grundlagen",
         "11-selektoren",
@@ -34,14 +39,21 @@
       ]
     },
     {
-      "title": "JavaScript – Interaktion",
-      "color": "#d4a017",
-      "chapters": ["16-javascript-start", "17-javascript-dom"]
+      "id": "js",
+      "title": "Block D · Strom – JavaScript",
+      "color": "#ffd84d",
+      "chapters": [
+        "16-javascript-start",
+        "17-javascript-dom"
+      ]
     },
     {
-      "title": "Das große Projekt",
-      "color": "#1a9e5c",
-      "chapters": ["18-projekt-finale"]
+      "id": "showtime",
+      "title": "Block E · Showtime",
+      "color": "#4ade80",
+      "chapters": [
+        "18-showtime"
+      ]
     }
   ]
 }

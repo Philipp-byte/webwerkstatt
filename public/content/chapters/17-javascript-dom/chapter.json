@@ -1,13 +1,16 @@
 {
   "id": "17-javascript-dom",
   "title": "JavaScript & die Seite",
-  "icon": "🖱️",
-  "color": "#b8860b",
-  "description": "HTML und JavaScript greifen ineinander: Inhalte ändern, auf Klicks reagieren.",
+  "station": "Schaltpult",
+  "icon": "🎛️",
+  "color": "#ffd84d",
+  "description": "Elemente finden und verändern, auf Klicks reagieren, zählen und Klassen umschalten – die Seite lebt.",
   "lessons": [
     "01-elemente-aendern",
     "02-auf-klick-reagieren",
-    "03-klick-zaehler",
-    "04-projekt-interaktiv"
+    "03-zaehler",
+    "04-klassen-schalten",
+    "05-wiederholung",
+    "06-projekt-interaktiv"
   ]
 }

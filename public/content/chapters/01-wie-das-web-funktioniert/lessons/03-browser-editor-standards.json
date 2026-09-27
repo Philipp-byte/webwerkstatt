@@ -1,66 +1,88 @@
 {
   "id": "03-browser-editor-standards",
   "title": "Browser, Editor & Standards",
+  "konzepte": [
+    "web.browser",
+    "web.sprachen",
+    "web.standards"
+  ],
   "steps": [
     {
       "type": "explain",
-      "text": "Um Webseiten zu bauen, brauchst du genau zwei Werkzeuge – und beide hast du schon:\n\nEinen **Editor**: ein Programm für reine Textdateien, zum Beispiel der Windows-Editor oder Visual Studio Code. In der WebWerkstatt übernimmt das die eingebaute **Werkbank**: links schreibst du den Code.\n\nEinen **Browser**: Er öffnet die Datei und macht daraus die sichtbare Seite. In der Werkbank siehst du das rechts in der **Vorschau**.",
-      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><defs><marker id=\"pf3\" markerWidth=\"8\" markerHeight=\"8\" refX=\"7\" refY=\"4\" orient=\"auto\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#5b6b7c\"/></marker></defs><text x=\"160\" y=\"24\" text-anchor=\"middle\" fill=\"#1d2733\" font-weight=\"bold\">Zwei Werkzeuge – eine Textdatei</text><rect x=\"6\" y=\"44\" width=\"84\" height=\"72\" rx=\"8\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"48\" y=\"70\" text-anchor=\"middle\" fill=\"#2f6fdb\" font-weight=\"bold\">Editor</text><text x=\"48\" y=\"90\" text-anchor=\"middle\" fill=\"#1d2733\">du schreibst</text><text x=\"48\" y=\"106\" text-anchor=\"middle\" fill=\"#1d2733\">den Code</text><rect x=\"118\" y=\"52\" width=\"84\" height=\"56\" rx=\"8\" fill=\"#eef2f8\" stroke=\"#5b6b7c\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/><text x=\"160\" y=\"76\" text-anchor=\"middle\" fill=\"#1d2733\" font-weight=\"bold\">seite.html</text><text x=\"160\" y=\"96\" text-anchor=\"middle\" fill=\"#5b6b7c\">Textdatei</text><rect x=\"230\" y=\"44\" width=\"84\" height=\"72\" rx=\"8\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"272\" y=\"70\" text-anchor=\"middle\" fill=\"#1a9e5c\" font-weight=\"bold\">Browser</text><text x=\"272\" y=\"90\" text-anchor=\"middle\" fill=\"#1d2733\">zeigt die</text><text x=\"272\" y=\"106\" text-anchor=\"middle\" fill=\"#1d2733\">Seite an</text><line x1=\"94\" y1=\"80\" x2=\"114\" y2=\"80\" stroke=\"#5b6b7c\" stroke-width=\"2\" marker-end=\"url(#pf3)\"/><line x1=\"206\" y1=\"80\" x2=\"226\" y2=\"80\" stroke=\"#5b6b7c\" stroke-width=\"2\" marker-end=\"url(#pf3)\"/></svg>"
-    },
-    {
-      "type": "explain",
-      "text": "Mehr ist es nicht – eine Webseite ist am Ende eine **Textdatei**, die der Browser darstellt.\n\nWord ist dafür übrigens ungeeignet: Es speichert keine reinen Textdateien, sondern packt unsichtbare Formatierungen dazu, die den Browser verwirren."
-    },
-    {
-      "type": "explain",
-      "text": "Das Beste am Web: Jede echte Webseite zeigt dir freiwillig ihren Code!\n\nKlicke auf einer Webseite mit der **rechten Maustaste** und wähle **„Seitenquelltext anzeigen“** – oder drücke **Strg + U**. Du siehst dann den **Quelltext**: die HTML-Datei, die der Server geliefert hat.\n\nProbier das heute bei deiner Lieblings-Gaming-Seite aus. Noch sieht der Code kryptisch aus – nach den nächsten Kapiteln kannst du vieles davon lesen."
+      "text": "Der **Browser** ist das Programm, das die Antwort des Servers liest und daraus die sichtbare Seite zeichnet. Was er bekommt, ist reiner **Text** mit Markierungen – der **Quelltext**.\n\nDu kannst ihn bei jeder Seite ansehen: Rechtsklick → „Seitenquelltext anzeigen“ (oder `Strg` + `U`)."
     },
     {
       "type": "example",
-      "text": "Genau dieses Paar siehst du bei Strg + U auch: **links der Quelltext, rechts die fertige Seite.**\n\nÄndere links etwas am Text und schau, was rechts passiert – du arbeitest gerade wie eine echte Web-Entwicklerin.",
-      "html": "<h1>Jede Seite zeigt ihren Code</h1>\n<p>Drücke auf einer echten Webseite Strg + U – und du siehst ihren Quelltext.</p>\n"
+      "text": "So sieht Quelltext aus. Links ist der Text mit Markierungen, rechts zeichnet der Browser daraus die Seite. **Ändere** den Text zwischen den spitzen Klammern und schau, was passiert.",
+      "html": "<h1>FUNKEN</h1>\n<p>Das Schülerfestival am Neckar.</p>\n"
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Eine Website besteht aus drei Sprachen – und wir lernen sie genau in dieser Reihenfolge:\n\n- **HTML** – das **Gerüst**: Überschriften, Texte, Bilder, Links.\n- **CSS** – **Licht und Farbe**: Schrift, Farben, Abstände, Layout.\n- **JavaScript** – der **Strom**: alles, was auf Klicks reagiert.\n\nOhne Gerüst kein Licht, ohne Licht kein Strom.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><path d=\"M160 104 L60 128 L160 152 L260 128Z\" fill=\"#2a1a12\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"160\" y=\"132\" text-anchor=\"middle\" fill=\"#ff7a45\" font-weight=\"bold\">HTML · Gerüst</text><path d=\"M160 60 L60 84 L160 108 L260 84Z\" fill=\"#0f2230\" stroke=\"#38c7ff\" stroke-width=\"2\"/><text x=\"160\" y=\"88\" text-anchor=\"middle\" fill=\"#38c7ff\" font-weight=\"bold\">CSS · Licht &amp; Farbe</text><path d=\"M160 16 L60 40 L160 64 L260 40Z\" fill=\"#2a2510\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"160\" y=\"44\" text-anchor=\"middle\" fill=\"#ffd84d\" font-weight=\"bold\">JavaScript · Strom</text></svg>"
+    },
+    {
+      "type": "pair",
+      "text": "Welche Sprache ist wofür zuständig?",
+      "pairs": [
+        [
+          "HTML",
+          "Inhalt und Struktur – Überschriften, Texte, Bilder"
+        ],
+        [
+          "CSS",
+          "Aussehen – Farben, Schrift, Abstände"
+        ],
+        [
+          "JavaScript",
+          "Verhalten – reagiert auf Klicks"
+        ]
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Die Überschrift auf der FUNKEN-Seite soll **orange** werden. Welche Sprache brauchst du dafür?",
+      "options": [
+        "CSS",
+        "HTML",
+        "JavaScript"
+      ],
+      "correct": 0,
+      "explanation": "Farben sind Aussehen – das ist CSS. HTML sagt nur, *dass* es eine Überschrift gibt."
+    },
+    {
+      "type": "explain",
+      "text": "Quelltext schreibst du in einem **Editor** – einem Programm für reinen Text. Eine Textverarbeitung wie ein Schreibprogramm taugt nicht: Sie speichert unsichtbare Formatierungen, die der Browser nicht versteht.\n\nDie Dateien bekommen passende Endungen: `.html`, `.css`, `.js`. In der Werkstatt benutzt du unsere **Werkbank** – Editor und Vorschau nebeneinander."
+    },
+    {
+      "type": "quiz",
+      "question": "Womit schreibst du eine HTML-Datei?",
+      "options": [
+        "Mit einem Editor für reinen Text",
+        "Mit einem Schreibprogramm für Briefe und Bewerbungen",
+        "Mit einem Bildprogramm"
+      ],
+      "correct": 0,
+      "explanation": "HTML ist reiner Text. Schreibprogramme speichern versteckte Formatierungen, die der Browser nicht lesen kann."
+    },
+    {
+      "type": "explain",
+      "text": "Warum sieht eine Seite in jedem Browser gleich aus? Weil es **Standards** gibt: Regeln, die genau festlegen, was HTML, CSS und JavaScript bedeuten.\n\nDafür sorgt das **W3C** (World Wide Web Consortium) zusammen mit den Browser-Herstellern. Ohne Standards müsste jede Seite für jeden Browser extra gebaut werden."
     },
     {
       "type": "fill",
-      "text": "Vervollständige: Mit Strg + U zeigt der Browser den … einer Webseite an.",
-      "template": "Rechtsklick → „Seiten___ anzeigen“ (oder Strg + U)",
-      "solution": "quelltext",
-      "accept": ["quelltext", "Quelltext"],
-      "hint": "Gesucht ist der Code, aus dem die Seite entsteht – die „Quelle“ der Seite."
-    },
-    {
-      "type": "explain",
-      "text": "Es gibt viele verschiedene Browser – und jede Webseite soll in **allen** gleich funktionieren.\n\nDas klappt nur, wenn sich alle an gemeinsame Regeln halten: **Standards**. Ein Standard legt genau fest, was ein Überschriften-Tag bedeutet und wie ein Browser ihn darstellt – so wie im Straßenverkehr überall gilt: „Rot heißt Stopp“."
-    },
-    {
-      "type": "explain",
-      "text": "Ohne Standards müsstest du jede Seite mehrfach bauen – für jeden Browser einzeln.\n\nGenau so war es in den 1990er-Jahren: Damals stand auf Webseiten ernsthaft „Diese Seite funktioniert am besten im Browser XY“."
-    },
-    {
-      "type": "quiz",
-      "question": "Warum braucht das Web **Standards**?",
-      "options": [
-        "Damit alle Browser eine Webseite gleich verstehen und darstellen",
-        "Damit Webseiten automatisch schöner aussehen",
-        "Damit nur ausgebildete Profis Webseiten bauen dürfen"
+      "text": "Wie heißt die Organisation, die die Web-Standards festlegt?",
+      "template": "Standards kommen vom ___ (World Wide Web Consortium).",
+      "accept": [
+        "W3C"
       ],
-      "correct": 0,
-      "explanation": "Standards sind gemeinsame Regeln für alle Browser-Hersteller und Webseiten-Bauer. Nur so funktioniert dieselbe HTML-Datei überall – egal in welchem Browser."
+      "hint": "Drei W und ein C – als Abkürzung geschrieben."
     },
     {
       "type": "explain",
-      "text": "Und wer legt diese Standards fest? Das **W3C** – das **World Wide Web Consortium**. Dort entwickeln Browser-Hersteller, Firmen und Fachleute gemeinsam die Regeln des Webs und veröffentlichen sie für alle.\n\nGegründet wurde das W3C 1994 von **Tim Berners-Lee** – dem Erfinder des World Wide Web.\n\nAuch HTML und CSS sind solche Standards. Deshalb funktioniert dein Code nachher in jedem Browser."
-    },
-    {
-      "type": "quiz",
-      "question": "Welche Organisation entwickelt und veröffentlicht die Standards des Webs – etwa für HTML und CSS?",
-      "options": [
-        "Das W3C (World Wide Web Consortium)",
-        "Die Firma hinter dem beliebtesten Browser – sie entscheidet allein",
-        "Niemand – jeder Browser legt eigene Regeln fest"
-      ],
-      "correct": 0,
-      "explanation": "Im W3C arbeiten viele Organisationen gemeinsam an den Web-Standards – gegründet wurde es von Tim Berners-Lee, dem Erfinder des Web. Würde jeder Browser eigene Regeln machen, sähe jede Seite überall anders aus."
+      "sprecher": "robby",
+      "text": "Info-Point geschafft! Du weißt jetzt: Client fragt, Server antwortet, die URL sagt wo, und drei Sprachen bauen die Seite.\n\nGleich nimmt Sam die Station ab. Danach geht es ans **Fundament** – die ersten Zeilen HTML für die FUNKEN-Website."
     }
   ]
 }

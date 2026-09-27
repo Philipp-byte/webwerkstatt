@@ -1,13 +1,15 @@
 {
   "id": "16-javascript-start",
   "title": "JavaScript-Start",
+  "station": "Stromkasten",
   "icon": "⚡",
-  "color": "#d4a017",
-  "description": "Die Programmiersprache des Webs: Ausgaben, Variablen und Rechnen.",
+  "color": "#ffd84d",
+  "description": "Das script-Element, die Konsole, Variablen, Zahlen, Texte und Rechnen – der Strom wird angeschlossen.",
   "lessons": [
     "01-was-ist-javascript",
     "02-variablen",
-    "03-rechnen",
-    "04-wiederholung"
+    "03-rechnen-und-verbinden",
+    "04-wiederholung",
+    "05-projekt-erstes-skript"
   ]
 }

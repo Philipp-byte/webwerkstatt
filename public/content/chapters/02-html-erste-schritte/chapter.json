@@ -1,13 +1,15 @@
 {
   "id": "02-html-erste-schritte",
   "title": "HTML: Erste Schritte",
-  "icon": "🌐",
-  "color": "#e0632e",
-  "description": "Was HTML ist, wie Tags und Attribute funktionieren – und deine erste eigene Seite.",
+  "station": "Fundament",
+  "icon": "🧱",
+  "color": "#ff7a45",
+  "description": "Tags, Elemente, Attribute und das Grundgerüst jeder Seite – die ersten Zeilen der FUNKEN-Website.",
   "lessons": [
     "01-was-ist-html",
     "02-tags-und-attribute",
     "03-grundgeruest",
-    "04-projekt-startseite"
+    "04-wiederholung",
+    "05-projekt-startseite"
   ]
 }

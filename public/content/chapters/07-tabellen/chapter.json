@@ -1,13 +1,15 @@
 {
   "id": "07-tabellen",
   "title": "Tabellen",
-  "icon": "📊",
-  "color": "#a3612c",
-  "description": "Zeilen, Spalten, Kopfzeilen und verbundene Zellen – bis zur fertigen Speisekarte.",
+  "station": "Timetable",
+  "icon": "🗓️",
+  "color": "#ff7a45",
+  "description": "Zeilen, Zellen, Kopfzeilen und verbundene Zellen – der Zeitplan der Bühnen als Tabelle.",
   "lessons": [
     "01-tabellen-aufbau",
-    "02-kopfzeile-und-verbundene-zellen",
-    "03-wiederholung",
-    "04-projekt-speisekarte"
+    "02-kopfzeile",
+    "03-verbundene-zellen",
+    "04-wiederholung",
+    "05-projekt-timetable"
   ]
 }

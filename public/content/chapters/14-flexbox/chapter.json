@@ -1,13 +1,15 @@
 {
   "id": "14-flexbox",
   "title": "Flexbox",
-  "icon": "🧲",
-  "color": "#4a90d9",
-  "description": "Elemente nebeneinander anordnen und sauber ausrichten – modernes Layout.",
+  "station": "Bühnen-Layout",
+  "icon": "📐",
+  "color": "#38c7ff",
+  "description": "Elemente nebeneinander anordnen, ausrichten, verteilen und umbrechen – das Layout der Seite.",
   "lessons": [
     "01-flex-grundlagen",
     "02-ausrichten",
-    "03-wiederholung",
-    "04-projekt-layout"
+    "03-umbrechen-und-wachsen",
+    "04-wiederholung",
+    "05-projekt-layout"
   ]
 }

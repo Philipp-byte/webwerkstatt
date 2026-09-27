@@ -1,0 +1,406 @@
+/* Vorspann */
+
+body.intro-aktiv .topbar,
+body.intro-aktiv .seitenfuss {
+  display: none;
+}
+body.intro-aktiv #app {
+  max-width: none;
+  padding: 0;
+}
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: #07080d;
+  color: #eef1f8;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.intro-start,
+.intro-ende {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+}
+.intro-start h1,
+.intro-ende h1 {
+  font-size: clamp(3rem, 12vw, 8rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0;
+  background: linear-gradient(120deg, #ff8a3d, #ffc857 60%, #fff 130%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: einblenden 1.2s ease both;
+}
+.intro-start p,
+.intro-ende p {
+  color: #b7bfd2;
+  font-size: 1.1rem;
+  animation: einblenden 1.2s 0.4s ease both;
+}
+.intro-start .schritt-buttons,
+.intro-ende .schritt-buttons {
+  justify-content: center;
+  animation: einblenden 1.2s 0.8s ease both;
+}
+
+.intro-kopf {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1rem;
+  background: rgba(7, 8, 13, 0.7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 3;
+}
+.intro-akt {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.intro-akt span {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: #ff8a3d;
+  text-transform: uppercase;
+}
+.intro-akt strong {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+.intro-kopf .rechts {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.intro-fortschritt {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, #ff8a3d, #ffc857);
+  transition: width 0.5s ease;
+}
+
+.intro-buehne {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+.intro-kulisse {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.9s ease;
+  background-size: cover;
+  background-position: center;
+}
+.intro-kulisse svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.intro-kulisse.weg {
+  opacity: 0;
+}
+.intro-kulisse.animiert svg {
+  animation: kamera 18s ease-in-out infinite alternate;
+  transform-origin: 50% 60%;
+}
+@keyframes kamera {
+  from {
+    transform: scale(1.02) translateX(-0.5%);
+  }
+  to {
+    transform: scale(1.08) translateX(0.5%);
+  }
+}
+
+.intro-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 40%, transparent 45%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.intro-figur {
+  position: absolute;
+  bottom: 190px;
+  right: 6%;
+  width: min(30vw, 260px);
+  pointer-events: none;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
+  animation: figur-auf 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes figur-auf {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.intro-badge {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  border: 1px solid rgba(255, 138, 61, 0.6);
+  background: rgba(7, 8, 13, 0.75);
+  border-radius: 12px;
+  padding: 0.5rem 0.9rem;
+  animation: einblenden 0.5s ease both;
+}
+.intro-badge span {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: #ff8a3d;
+}
+.intro-badge strong {
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+.intro-badge.alarm {
+  border-color: #fb7185;
+  animation: alarm-blink 1s infinite alternate;
+}
+.intro-badge.alarm span {
+  color: #fb7185;
+}
+@keyframes alarm-blink {
+  to {
+    box-shadow: 0 0 30px rgba(251, 113, 133, 0.5);
+  }
+}
+
+.intro-blase {
+  position: absolute;
+  left: 50%;
+  bottom: 84px;
+  transform: translateX(-50%);
+  width: min(92vw, 780px);
+  background: rgba(10, 12, 20, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  padding: 1rem 1.3rem 1.1rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: blase 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes blase {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 16px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+.intro-sprecher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ton, #ffc857);
+  margin-bottom: 0.35rem;
+}
+.intro-sprecher::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 10px currentColor;
+}
+.intro-text {
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  line-height: 1.5;
+  min-height: 3.2em;
+  margin: 0;
+}
+.intro-text .cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  vertical-align: -0.15em;
+  background: #ffc857;
+  margin-left: 2px;
+  animation: cursor 0.8s steps(2) infinite;
+}
+@keyframes cursor {
+  to {
+    opacity: 0;
+  }
+}
+
+.intro-steuerung {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 1.2rem;
+  background: linear-gradient(transparent, rgba(7, 8, 13, 0.9));
+}
+.intro-steuerung .mitte {
+  text-align: center;
+  color: #8f97ab;
+  font-size: 0.8rem;
+}
+.intro-steuerung .mitte strong {
+  display: block;
+  color: #eef1f8;
+  font-family: var(--font-display);
+}
+
+/* Effekte */
+.intro-glitch svg {
+  animation: glitch 0.5s steps(2) infinite;
+}
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    filter: none;
+  }
+  20% {
+    transform: translate(-3px, 1px);
+    filter: hue-rotate(30deg);
+  }
+  40% {
+    transform: translate(3px, -1px);
+  }
+  60% {
+    transform: translate(-2px, 2px);
+    filter: contrast(1.3);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+.intro-partikel {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.intro-partikel i {
+  position: absolute;
+  bottom: -10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffc857;
+  opacity: 0;
+  animation: funke var(--d, 6s) linear var(--v, 0s) infinite;
+}
+@keyframes funke {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-90vh) translateX(var(--x, 0)) scale(1.2);
+    opacity: 0;
+  }
+}
+.regen {
+  animation: regen 0.7s linear infinite;
+}
+@keyframes regen {
+  to {
+    transform: translateY(40px);
+  }
+}
+.flackern {
+  animation: flackern 3s infinite;
+}
+@keyframes flackern {
+  0%,
+  92%,
+  100% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.4;
+  }
+  95% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 0.6;
+  }
+}
+.schicht {
+  animation: schicht-auf 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.schicht:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.schicht:nth-child(3) {
+  animation-delay: 1s;
+}
+@keyframes schicht-auf {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.licht-an {
+  animation: licht-an 1.2s ease both;
+}
+@keyframes licht-an {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 720px) {
+  .intro-figur {
+    width: 34vw;
+    right: 2%;
+    bottom: 230px;
+  }
+  .intro-blase {
+    bottom: 76px;
+    padding: 0.8rem 1rem;
+  }
+  .intro-steuerung .mitte {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro-kulisse.animiert svg,
+  .intro-glitch svg,
+  .intro-partikel i {
+    animation: none;
+  }
+}

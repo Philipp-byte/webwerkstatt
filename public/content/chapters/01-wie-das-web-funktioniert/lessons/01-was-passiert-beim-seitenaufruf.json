@@ -1,69 +1,104 @@
 {
   "id": "01-was-passiert-beim-seitenaufruf",
   "title": "Was passiert beim Seitenaufruf?",
+  "konzepte": [
+    "web.client-server",
+    "web.http"
+  ],
   "steps": [
     {
       "type": "explain",
-      "text": "Du tippst eine Adresse ein, drückst Enter – und einen Wimpernschlag später ist die Seite da. Was ist in dieser Zeit passiert?\n\nStell dir den Dönerladen vor: Du bestellst am Tresen, die Person dahinter macht den Döner und **serviert** ihn dir.\n\nIm Web läuft es genauso: Dein Browser **bestellt** eine Seite – ein anderer Computer irgendwo im Internet **liefert** sie. Dieser Computer heißt **Server** (englisch „to serve“ = servieren).",
-      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><defs><marker id=\"pf1\" markerWidth=\"8\" markerHeight=\"8\" refX=\"7\" refY=\"4\" orient=\"auto\"><path d=\"M0,0 L8,4 L0,8 z\" fill=\"#5b6b7c\"/></marker></defs><text x=\"160\" y=\"22\" text-anchor=\"middle\" fill=\"#1d2733\" font-weight=\"bold\">Der Client fragt – der Server antwortet</text><rect x=\"8\" y=\"44\" width=\"96\" height=\"64\" rx=\"8\" fill=\"#eef2f8\" stroke=\"#2f6fdb\" stroke-width=\"2\"/><text x=\"56\" y=\"72\" text-anchor=\"middle\" fill=\"#2f6fdb\" font-weight=\"bold\">Browser</text><text x=\"56\" y=\"92\" text-anchor=\"middle\" fill=\"#1d2733\">= Client</text><rect x=\"216\" y=\"44\" width=\"96\" height=\"64\" rx=\"8\" fill=\"#eef2f8\" stroke=\"#1a9e5c\" stroke-width=\"2\"/><text x=\"264\" y=\"72\" text-anchor=\"middle\" fill=\"#1a9e5c\" font-weight=\"bold\">Server</text><text x=\"264\" y=\"92\" text-anchor=\"middle\" fill=\"#1d2733\">liefert</text><line x1=\"108\" y1=\"62\" x2=\"210\" y2=\"62\" stroke=\"#5b6b7c\" stroke-width=\"2\" marker-end=\"url(#pf1)\"/><text x=\"160\" y=\"54\" text-anchor=\"middle\" fill=\"#1d2733\">1. Anfrage</text><line x1=\"212\" y1=\"94\" x2=\"110\" y2=\"94\" stroke=\"#5b6b7c\" stroke-width=\"2\" marker-end=\"url(#pf1)\"/><text x=\"160\" y=\"126\" text-anchor=\"middle\" fill=\"#1d2733\">2. Antwort: die HTML-Datei</text></svg>"
+      "sprecher": "ayla",
+      "text": "Sam tippt **funken-festival.de** ins Handy – und bekommt „Seite nicht gefunden“. Bevor wir das reparieren, musst du wissen, was bei einem normalen Seitenaufruf überhaupt passiert.\n\nDie kurze Antwort: Dein Handy **fragt** einen anderen Computer, und der **antwortet** mit der Seite.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><rect x=\"18\" y=\"40\" width=\"90\" height=\"80\" rx=\"10\" fill=\"#1b2135\" stroke=\"#38c7ff\" stroke-width=\"2\"/><rect x=\"30\" y=\"52\" width=\"66\" height=\"44\" rx=\"4\" fill=\"#0f1320\"/><text x=\"63\" y=\"79\" text-anchor=\"middle\" fill=\"#38c7ff\" font-size=\"11\">Browser</text><text x=\"63\" y=\"136\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Client</text><rect x=\"212\" y=\"30\" width=\"90\" height=\"100\" rx=\"10\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><rect x=\"226\" y=\"44\" width=\"62\" height=\"14\" rx=\"3\" fill=\"#0f1320\"/><rect x=\"226\" y=\"64\" width=\"62\" height=\"14\" rx=\"3\" fill=\"#0f1320\"/><rect x=\"226\" y=\"84\" width=\"62\" height=\"14\" rx=\"3\" fill=\"#0f1320\"/><circle cx=\"234\" cy=\"51\" r=\"3\" fill=\"#4ade80\"/><circle cx=\"234\" cy=\"71\" r=\"3\" fill=\"#4ade80\"/><circle cx=\"234\" cy=\"91\" r=\"3\" fill=\"#4ade80\"/><text x=\"257\" y=\"146\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Server</text><path d=\"M112 66 H200\" stroke=\"#ffd84d\" stroke-width=\"2\" marker-end=\"url(#p)\"/><text x=\"156\" y=\"60\" text-anchor=\"middle\" fill=\"#ffd84d\">Anfrage</text><path d=\"M200 96 H112\" stroke=\"#4ade80\" stroke-width=\"2\" marker-end=\"url(#g)\"/><text x=\"156\" y=\"112\" text-anchor=\"middle\" fill=\"#4ade80\">Antwort: Seite</text><defs><marker id=\"p\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#ffd84d\"/></marker><marker id=\"g\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#4ade80\"/></marker></defs></svg>"
     },
     {
       "type": "explain",
-      "text": "Die beiden Rollen haben feste Namen – zusammen bilden sie das **Client-Server-Prinzip**:\n\nDer **Client** (englisch „Kunde“) ist das Programm, das etwas anfordert. Beim Surfen ist das dein **Browser** – auf dem Handy genauso wie am PC.\n\nDer **Server** ist der Computer, auf dem die Webseite gespeichert ist. Er läuft Tag und Nacht und wartet auf Bestellungen."
-    },
-    {
-      "type": "explain",
-      "text": "Der Ablauf ist immer gleich:\n\n1. Der Client schickt eine **Anfrage** (englisch: Request): „Gib mir bitte die Startseite!“\n2. Der Server schickt eine **Antwort** (englisch: Response): die bestellte Seite.\n\nWichtig: Der Client macht immer den ersten Schritt. Ein Server ruft nie von sich aus bei deinem Browser an – er antwortet nur."
+      "text": "Zwei Rollen, die du dir merken musst:\n\n- **Client** – das Gerät, das eine Seite haben will: dein Handy, dein Laptop, genauer: der **Browser** darauf.\n- **Server** – ein Computer, der Websites bereithält und rund um die Uhr auf Anfragen wartet.\n\nDie Website liegt also **nicht** auf deinem Handy. Sie liegt auf dem Server und wird bei jedem Aufruf neu geschickt."
     },
     {
       "type": "quiz",
-      "question": "Du rufst auf deinem Handy eine Webseite auf. Wer ist in diesem Moment der **Client**?",
+      "question": "Sam öffnet auf dem Handy die Seite eines Streamingdienstes. Wer ist hier der **Server**?",
       "options": [
-        "Der Browser auf deinem Handy",
-        "Der Computer, auf dem die Webseite gespeichert ist",
-        "Die Person, die die Webseite geschrieben hat"
+        "Der Computer des Streamingdienstes, der die Seite bereithält",
+        "Sams Handy",
+        "Die App, mit der Sam die Seite öffnet"
       ],
       "correct": 0,
-      "explanation": "Der Client ist das Programm, das die Anfrage schickt – also dein Browser. Der Computer mit der gespeicherten Seite ist der Server."
+      "explanation": "Der Server hält die Seite bereit und antwortet. Sams Handy mit dem Browser ist der Client – es fragt an."
     },
     {
       "type": "explain",
-      "text": "Und was steckt in der **Antwort** des Servers? Kein fertiges Bild der Seite – sondern eine **HTML-Datei**: eine normale Textdatei mit Anweisungen, was auf der Seite stehen soll.\n\nErst dein Browser verwandelt diesen Text in die sichtbare Seite. Man sagt: Der Browser **rendert** die Seite.\n\nWie beim Möbelpaket: Geliefert wird die Bauanleitung – aufgebaut wird bei dir. Diese „Bauanleitung“ heißt **HTML**, und ab dem nächsten Kapitel schreibst du sie selbst."
+      "text": "Der Ablauf hat einen Namen: **Anfrage und Antwort** (englisch *Request* und *Response*).\n\n1. Du tippst eine Adresse ein.\n2. Der Browser schickt eine **Anfrage** an den Server: „Gib mir diese Seite.“\n3. Der Server sucht die Datei und schickt sie als **Antwort** zurück.\n4. Der Browser zeichnet die Seite auf den Bildschirm.\n\nDas passiert in Millisekunden – und für jedes Bild auf der Seite noch einmal extra."
     },
     {
-      "type": "example",
-      "text": "So eine Server-Antwort siehst du hier: **links die HTML-Textdatei, rechts das, was dein Browser daraus baut.**\n\nÄndere links etwas am Text – zum Beispiel den Namen des Spiels – und beobachte, wie sich die Vorschau sofort mitverändert!",
-      "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Mein Lieblingsspiel</title>\n  </head>\n  <body>\n    <h1>Mein Lieblingsspiel</h1>\n    <p>Diese Seite hat ein Server als Textdatei geliefert.</p>\n    <p>Dein Browser hat daraus die fertige Ansicht gebaut.</p>\n  </body>\n</html>\n"
+      "type": "pair",
+      "text": "Ordne die Begriffe zu.",
+      "pairs": [
+        [
+          "Client",
+          "fragt eine Seite an – z. B. der Browser auf dem Handy"
+        ],
+        [
+          "Server",
+          "hält Websites bereit und antwortet"
+        ],
+        [
+          "Anfrage",
+          "„Gib mir diese Seite“ – geht vom Browser aus"
+        ],
+        [
+          "Antwort",
+          "die Datei, die der Server zurückschickt"
+        ]
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Und genau da liegt Sams Problem: Der Server der alten Agentur wurde **abgeschaltet**. Der Browser schickt seine Anfrage – und **niemand antwortet**.\n\nAnders ist der Fall **404**: Da antwortet der Server zwar, sagt aber „Diese Datei habe ich nicht“. Zwei Fehler, zwei Ursachen."
     },
     {
       "type": "quiz",
-      "question": "Welcher Ablauf beschreibt einen Seitenaufruf **richtig**?",
+      "question": "Du rufst eine Seite auf und siehst **404 – Seite nicht gefunden**. Was ist passiert?",
       "options": [
-        "Browser schickt Anfrage → Server antwortet → Browser zeigt die Seite",
-        "Server schickt Anfrage → Browser antwortet → Server zeigt die Seite",
-        "Browser zeigt die Seite → Browser schickt Anfrage → Server antwortet"
+        "Der Server hat geantwortet, aber die angefragte Datei gibt es dort nicht",
+        "Dein Handy hat kein Internet",
+        "Der Server wurde abgeschaltet und antwortet gar nicht"
       ],
       "correct": 0,
-      "explanation": "Der Client (dein Browser) beginnt immer mit der Anfrage. Der Server antwortet mit der HTML-Datei – und der Browser rendert daraus die sichtbare Seite."
+      "explanation": "404 ist eine **Antwort** des Servers: „Diese Datei kenne ich nicht.“ Wenn der Server aus ist, kommt gar keine Antwort – der Browser meldet dann, dass der Server nicht erreichbar ist."
+    },
+    {
+      "type": "order",
+      "text": "Bring die Schritte eines Seitenaufrufs in die richtige Reihenfolge.",
+      "lines": [
+        "Adresse in den Browser eintippen",
+        "Der Browser schickt eine Anfrage an den Server",
+        "Der Server sucht die Datei",
+        "Der Server schickt die Antwort zurück",
+        "Der Browser zeigt die Seite an"
+      ],
+      "explanation": "Erst fragen, dann antworten, dann anzeigen – immer in dieser Reihenfolge."
     },
     {
       "type": "fill",
-      "text": "Vervollständige den Merksatz: Der Client schickt eine Anfrage – der Server schickt eine …",
-      "template": "Client → Anfrage → Server\nServer → ___ → Client",
-      "solution": "Antwort",
-      "accept": ["Antwort", "antwort", "Response", "response"],
-      "hint": "Das englische Wort dafür ist „Response“ – gesucht ist das deutsche."
+      "text": "Vervollständige den Merksatz.",
+      "template": "Der ___ schickt die Anfrage, der ___ schickt die Antwort.",
+      "accept": [
+        [
+          "Client",
+          "Browser"
+        ],
+        [
+          "Server"
+        ]
+      ],
+      "hint": "Wer fragt, wer antwortet? Das Gerät mit dem Browser fragt."
     },
     {
-      "type": "quiz",
-      "question": "Was steckt in der **Antwort** des Servers, wenn du eine Webseite aufrufst?",
-      "options": [
-        "Ein fertiges Foto der Webseite",
-        "Eine HTML-Textdatei, die der Browser erst in eine Seite verwandelt",
-        "Ein Video vom Bildschirm des Servers"
-      ],
-      "correct": 1,
-      "explanation": "Der Server liefert nur Text: die HTML-Datei. Das Rendern – also das Bauen der sichtbaren Seite – übernimmt dein Browser."
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Merk dir: **Client fragt, Server antwortet.** Die Seite liegt auf dem Server, nicht auf deinem Gerät.\n\nNächste Lektion: Woraus besteht eigentlich so eine Adresse wie funken-festival.de – und woher weiß der Browser, welchen Server er fragen muss?"
     }
   ]
 }

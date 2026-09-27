@@ -1,13 +1,16 @@
 {
   "id": "11-selektoren",
   "title": "Selektoren",
+  "station": "Spots",
   "icon": "🎯",
-  "color": "#2558b8",
-  "description": "Klassen, IDs, Gruppen und verschachtelte Selektoren – gezielt gestalten.",
+  "color": "#38c7ff",
+  "description": "Element-, Klassen-, ID-, Gruppen- und Nachfahren-Selektoren sowie hover – jeder Spot trifft genau.",
   "lessons": [
-    "01-klassen-selektor",
-    "02-id-und-gruppen",
+    "01-element-und-klassen-selektor",
+    "02-id-und-gruppen-selektor",
     "03-verschachtelte-selektoren",
-    "04-wiederholung"
+    "04-hover",
+    "05-wiederholung",
+    "06-projekt-selektoren"
   ]
 }

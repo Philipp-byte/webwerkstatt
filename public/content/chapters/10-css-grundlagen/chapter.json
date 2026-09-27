@@ -1,9 +1,10 @@
 {
   "id": "10-css-grundlagen",
   "title": "CSS-Grundlagen",
+  "station": "Lichtpult",
   "icon": "🎨",
-  "color": "#2f6fdb",
-  "description": "Wie CSS-Regeln aufgebaut sind, die drei Orte für CSS und die ersten Farben.",
+  "color": "#38c7ff",
+  "description": "Wie CSS-Regeln aufgebaut sind, die drei Orte für CSS, Farben und Hintergründe – das Licht geht an.",
   "lessons": [
     "01-was-ist-css",
     "02-drei-orte-fuer-css",

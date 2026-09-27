@@ -1,13 +1,15 @@
 {
   "id": "09-formulare",
   "title": "Formulare",
-  "icon": "📝",
-  "color": "#8f5a2b",
-  "description": "Eingabefelder, Labels, Auswahllisten und Knöpfe – so sammeln Webseiten Eingaben.",
+  "station": "Ticket-Schalter",
+  "icon": "🎟️",
+  "color": "#ff7a45",
+  "description": "Eingabefelder, Labels, Auswahlfelder, Textbereiche und Knöpfe – das Ticketformular.",
   "lessons": [
     "01-eingabefelder-und-labels",
-    "02-auswahlfelder-und-knoepfe",
-    "03-wiederholung",
-    "04-projekt-kontaktformular"
+    "02-auswahlfelder",
+    "03-textarea-und-knoepfe",
+    "04-wiederholung",
+    "05-projekt-ticketformular"
   ]
 }
