@@ -1,0 +1,175 @@
+{
+  "id": "01-was-ist-javascript",
+  "title": "Was ist JavaScript?",
+  "konzepte": [
+    "js.script",
+    "js.console"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "jonas",
+      "text": "Gerüst steht, Licht ist an – jetzt kommt der **Strom**. Auf der FUNKEN-Seite passiert bisher nichts: kein Zähler, keine Reaktion auf Klicks.\n\n**JavaScript** ist die Sprache, die eine Seite lebendig macht. Sie **reagiert** (auf Klicks und Eingaben), **rechnet** (Preise, Punkte, Countdown) und **verändert** die Seite, während sie offen ist – wie der Warenkorb, der beim Tippen sofort die Summe anpasst.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><rect x=\"12\" y=\"20\" width=\"118\" height=\"120\" rx=\"8\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"71\" y=\"38\" text-anchor=\"middle\" fill=\"#ff7a45\" font-weight=\"bold\">index.html</text><text x=\"22\" y=\"62\" fill=\"#eef2ff\" font-family=\"monospace\">&lt;body&gt;</text><text x=\"22\" y=\"80\" fill=\"#eef2ff\" font-family=\"monospace\">  Inhalt …</text><text x=\"22\" y=\"102\" fill=\"#ffd84d\" font-family=\"monospace\">  &lt;script src&gt;</text><text x=\"22\" y=\"122\" fill=\"#eef2ff\" font-family=\"monospace\">&lt;/body&gt;</text><path d=\"M132 98 H164\" stroke=\"#ffd84d\" stroke-width=\"2\" marker-end=\"url(#pf)\"/><text x=\"239\" y=\"74\" text-anchor=\"middle\" fill=\"#ffd84d\" font-weight=\"bold\">script.js</text><rect x=\"170\" y=\"82\" width=\"138\" height=\"32\" rx=\"8\" fill=\"#1b2135\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"239\" y=\"103\" text-anchor=\"middle\" fill=\"#eef2ff\" font-family=\"monospace\">console.log(\"Hi\")</text><path d=\"M239 116 V126\" stroke=\"#4ade80\" stroke-width=\"2\" marker-end=\"url(#pg)\"/><rect x=\"170\" y=\"128\" width=\"138\" height=\"26\" rx=\"8\" fill=\"#0f1320\" stroke=\"#4ade80\" stroke-width=\"2\"/><text x=\"239\" y=\"146\" text-anchor=\"middle\" fill=\"#4ade80\" font-family=\"monospace\">Konsole: Hi</text><defs><marker id=\"pf\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#ffd84d\"/></marker><marker id=\"pg\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#4ade80\"/></marker></defs></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "JavaScript kommt in eine eigene Datei: `script.js`. Die Seite bindet sie mit dem **script-Element** ein – das Attribut `src` nennt die Datei, genau wie bei Bildern.\n\n```html\n    <p>Bis bald am Neckar!</p>\n    <script src=\"script.js\"></script>\n  </body>\n```\n\nDas Element steht **ganz am Ende des body**. Der Browser liest von oben nach unten: So ist die komplette Seite schon da, wenn das Skript loslegt."
+    },
+    {
+      "type": "example",
+      "text": "Links die Seite, rechts die Vorschau – und darunter die **Konsole**. Die Seite selbst bleibt gleich, aber in der Konsole erscheint der Text aus dem Skript. **Ändere** den Text zwischen den Anführungszeichen und **ergänze** eine zweite Zeile.",
+      "html": "<h1>Sneaker-Drop</h1>\n<p>Freitag, 10:00 Uhr – nur online.</p>\n",
+      "js": "console.log(\"Drop-Seite geladen\");\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Warum steht das script-Element am **Ende des body** und nicht ganz oben?",
+      "options": [
+        "Damit die ganze Seite schon da ist, wenn das Skript startet",
+        "Weil JavaScript nur direkt vor dem schließenden html-Tag erlaubt ist",
+        "Damit die Datei script.js kleiner wird"
+      ],
+      "correct": 0,
+      "explanation": "Der Browser liest von oben nach unten. Steht das Skript am Ende, existieren alle Elemente bereits – wichtig, sobald das Skript sie später verändern soll."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** im Skript eine Ausgabe in der Konsole mit dem Text „Level 1 geschafft“.",
+      "starter": {
+        "js": "// Mein erstes Skript\n"
+      },
+      "hints": [
+        "Für Ausgaben in der Konsole gibt es den Befehl console.log.",
+        "Der Text kommt in gerade Anführungszeichen, das Ganze in runde Klammern – wie in `console.log(\"Hallo\");`.",
+        "Struktur: `console.log(\"…\");` – zwischen die Anführungszeichen kommt der Text aus der Aufgabe."
+      ],
+      "solution": {
+        "js": "// Mein erstes Skript\nconsole.log(\"Level 1 geschafft\");\n"
+      },
+      "tests": [
+        {
+          "type": "console",
+          "expected": "Level 1 geschafft",
+          "label": "Die Konsole zeigt „Level 1 geschafft“"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "console\\.log\\(",
+          "label": "Die Ausgabe kommt von console.log"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "So ist eine **Anweisung** aufgebaut:\n\n```js\n// Kommentar: Diese Zeile überspringt der Browser\nconsole.log(\"Tor für Heilbronn!\");\nconsole.log(\"Halbzeit\");\n```\n\n- `console.log(…)` schreibt in die Konsole.\n- **Text** steht immer in geraden Anführungszeichen `\"…\"`.\n- Das **Semikolon** `;` schließt die Anweisung ab – wie der Punkt am Satzende.\n- **Kommentare** beginnen mit `//` und sind Notizen für Menschen.\n\nJede Anweisung bekommt eine eigene Zeile; die Konsole zeigt die Ausgaben in dieser Reihenfolge."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige die Anweisung, die „Einlass geöffnet“ in die Konsole schreibt.",
+      "template": "___.___(\"Einlass geöffnet\");",
+      "accept": [
+        [
+          "console"
+        ],
+        [
+          "log"
+        ]
+      ],
+      "hint": "Erst das Werkzeug (die Konsole), dann nach dem Punkt der Befehl zum Schreiben."
+    },
+    {
+      "type": "code",
+      "task": "Die Fitness-App braucht Strom. 1. **Ergänze** in der Seite das Einbinden der Datei script.js – ganz am Ende des body. 2. **Erstelle** im Skript eine Konsolenausgabe „Training gestartet“.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Fit am Neckar</title>\n  </head>\n  <body>\n    <h1>Fit am Neckar</h1>\n    <p>Heute: 20 Minuten Laufen.</p>\n  </body>\n</html>\n",
+        "js": "// Skript der Fitness-App\n"
+      },
+      "hints": [
+        "Das script-Element mit dem src-Attribut kommt direkt vor das schließende body-Tag.",
+        "Muster aus einem anderen Projekt: `<script src=\"spiel.js\"></script>` – hier heißt die Datei anders.",
+        "Im Skript reicht eine Zeile mit console.log und dem Text in Anführungszeichen."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Fit am Neckar</title>\n  </head>\n  <body>\n    <h1>Fit am Neckar</h1>\n    <p>Heute: 20 Minuten Laufen.</p>\n    <script src=\"script.js\"></script>\n  </body>\n</html>\n",
+        "js": "// Skript der Fitness-App\nconsole.log(\"Training gestartet\");\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "body script",
+          "attr": "src",
+          "expected": "script.js",
+          "label": "script.js ist im body eingebunden"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "p",
+            "script[src]"
+          ],
+          "label": "Das Skript steht nach dem Inhalt der Seite"
+        },
+        {
+          "type": "console",
+          "expected": "Training gestartet",
+          "label": "Die Konsole zeigt „Training gestartet“"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Sortiere die Zeilen der Ticket-Seite: erst die Überschrift, dann der Absatz – und das Skript ganz am Ende des body.",
+      "lines": [
+        "<body>",
+        "  <h1>Ticket-Schalter</h1>",
+        "  <p>Noch 120 Tickets.</p>",
+        "  <script src=\"script.js\"></script>",
+        "</body>"
+      ],
+      "explanation": "Das script-Element ist das letzte Element im body – so ist die Seite komplett geladen, bevor das Skript läuft."
+    },
+    {
+      "type": "explain",
+      "text": "Was passiert bei einem Tippfehler? Die Konsole zeigt eine **Fehlermeldung** in Rot, und das Skript bleibt an dieser Stelle stehen:\n\n```js\nconsle.log(\"Hallo\");\n```\n\n→ `consle is not defined` – „consle kennt der Browser nicht“. Fehlende Anführungszeichen oder eine vergessene Klammer melden einen `SyntaxError`.\n\nLies die Meldung genau: Sie nennt meist das Wort, das nicht passt. Fehler sind beim Programmieren normal – die Konsole hilft dir, sie zu finden."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** das Skript der Fitness-App: Es soll „Willkommen zurück!“ und „Heute ist Beintag“ in die Konsole schreiben, zeigt aber nur eine rote Fehlermeldung. Zwei Zeilen sind fehlerhaft.",
+      "starter": {
+        "js": "// Begrüßung beim Öffnen der App\nconsol.log(\"Willkommen zurück!\");\nconsole.log(Heute ist Beintag);\n"
+      },
+      "hints": [
+        "Lies die Fehlermeldung in der Konsole: Welches Wort kennt der Browser nicht?",
+        "Text muss in Anführungszeichen stehen – sonst hält der Browser ihn für Befehle.",
+        "Vergleiche beide Zeilen Buchstabe für Buchstabe mit dem Muster `console.log(\"…\");`."
+      ],
+      "solution": {
+        "js": "// Begrüßung beim Öffnen der App\nconsole.log(\"Willkommen zurück!\");\nconsole.log(\"Heute ist Beintag\");\n"
+      },
+      "tests": [
+        {
+          "type": "console",
+          "expected": "Willkommen zurück!",
+          "label": "Die Konsole zeigt „Willkommen zurück!“"
+        },
+        {
+          "type": "console",
+          "expected": "Heute ist Beintag",
+          "label": "Die Konsole zeigt „Heute ist Beintag“"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Ab zur FUNKEN-Website! Die Startseite bekommt ihren Stromanschluss: Du bindest die Datei script.js am Ende des body ein und lässt das Skript in der Konsole melden, dass die Startseite geladen ist.\n\nDer Text muss genau stimmen – mit dem langen Strich „–“. Am sichersten kopierst du ihn aus der Aufgabe. Den Kommentar im Skript lässt du stehen."
+    },
+    {
+      "type": "code",
+      "etappe": "16-javascript-start/01-was-ist-javascript"
+    }
+  ]
+}

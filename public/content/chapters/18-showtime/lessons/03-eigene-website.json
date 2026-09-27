@@ -1,0 +1,160 @@
+{
+  "id": "03-eigene-website",
+  "title": "Deine eigene Website",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "„Die FUNKEN-Seite steht – Line-up, Tickets, Galerie, Impressum. Ihr habt sie in sechs Wochen neu gebaut. Und jetzt will ich sehen, was **du** baust: eine Website zu **deinem** Thema. Dein Verein, dein Hobby, dein Lieblingsspiel, ein Foodtruck, eine Band, dein Fitness-Plan, das Praktikum – egal was. Zwei Bedingungen: Du kennst dich aus, und es gibt Stoff für mindestens drei Abschnitte.“"
+    },
+    {
+      "type": "quiz",
+      "question": "Welches Thema eignet sich am besten für deine eigene Website?",
+      "options": [
+        "Mein Fußballverein: Team, Trainingszeiten, Anfahrt, Kontakt",
+        "Alles über das Internet",
+        "Ein Bild von meiner Katze – ohne Text"
+      ],
+      "correct": 0,
+      "explanation": "Der Verein liefert Stoff für Texte, Liste, Tabelle, Bild und Formular. „Alles über das Internet“ ist zu groß, ein Bild allein zu wenig."
+    },
+    {
+      "type": "explain",
+      "text": "So planst du – **vor** der ersten Zeile Code:\n\n1. **Thema** festlegen – ein Satz: „Eine Seite für …“\n2. **Seitenstruktur** skizzieren – auf Papier: Kopfbereich, Navigation, drei Abschnitte, Fußbereich.\n3. **Inhalte** sammeln – Texte, Liste, Tabelle, Bild, Formular.\n4. **Farben** wählen – zwei bis drei Farben, eine Schriftart.\n5. **Checkliste** prüfen – erst wenn alles grün ist, kommt die Kür.\n\nGebaut wird wie immer: Gerüst → Licht → Strom.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"30\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Deine Website in 5 Schritten</text><path d=\"M30 84 H290\" stroke=\"#4ade80\" stroke-width=\"2\"/><rect x=\"14\" y=\"58\" width=\"54\" height=\"52\" rx=\"8\" fill=\"#1b2135\" stroke=\"#b48cff\" stroke-width=\"2\"/><text x=\"41\" y=\"80\" text-anchor=\"middle\" fill=\"#b48cff\" font-weight=\"bold\">1</text><text x=\"41\" y=\"100\" text-anchor=\"middle\" fill=\"#eef2ff\">Thema</text><rect x=\"76\" y=\"58\" width=\"54\" height=\"52\" rx=\"8\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"103\" y=\"80\" text-anchor=\"middle\" fill=\"#ff7a45\" font-weight=\"bold\">2</text><text x=\"103\" y=\"100\" text-anchor=\"middle\" fill=\"#eef2ff\">Skizze</text><rect x=\"138\" y=\"58\" width=\"54\" height=\"52\" rx=\"8\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"165\" y=\"80\" text-anchor=\"middle\" fill=\"#ff7a45\" font-weight=\"bold\">3</text><text x=\"165\" y=\"100\" text-anchor=\"middle\" fill=\"#eef2ff\">Inhalte</text><rect x=\"200\" y=\"58\" width=\"54\" height=\"52\" rx=\"8\" fill=\"#1b2135\" stroke=\"#38c7ff\" stroke-width=\"2\"/><text x=\"227\" y=\"80\" text-anchor=\"middle\" fill=\"#38c7ff\" font-weight=\"bold\">4</text><text x=\"227\" y=\"100\" text-anchor=\"middle\" fill=\"#eef2ff\">Farben</text><rect x=\"262\" y=\"58\" width=\"54\" height=\"52\" rx=\"8\" fill=\"#1b2135\" stroke=\"#4ade80\" stroke-width=\"2\"/><text x=\"289\" y=\"80\" text-anchor=\"middle\" fill=\"#4ade80\" font-weight=\"bold\">5</text><text x=\"289\" y=\"100\" text-anchor=\"middle\" fill=\"#eef2ff\">Prüfen</text><text x=\"160\" y=\"140\" text-anchor=\"middle\" fill=\"#eef2ff\">erst planen, dann bauen: Gerüst → Licht → Strom</text></svg>"
+    },
+    {
+      "type": "order",
+      "text": "Bringe die Schritte zum Bau deiner Website in eine sinnvolle Reihenfolge.",
+      "lines": [
+        "Thema festlegen",
+        "Seitenstruktur auf Papier skizzieren",
+        "Inhalte sammeln: Texte, Liste, Tabelle, Bild",
+        "HTML-Gerüst und Inhalte schreiben",
+        "Stylesheet: Farben, Schrift, Layout",
+        "Skript: ein Knopf reagiert auf Klick",
+        "Checkliste prüfen und als ZIP herunterladen"
+      ],
+      "explanation": "Erst planen (Thema, Skizze, Inhalte), dann bauen: Gerüst, Licht, Strom – und zum Schluss prüfen."
+    },
+    {
+      "type": "explain",
+      "text": "Die Checkliste im Finale prüft **15 Pflicht-Kriterien** automatisch. Für die HTML-Seite:\n\n- Grundgerüst mit Titel und Zeichensatz\n- **genau eine** `h1`, mindestens zwei `h2`\n- mindestens drei Absätze\n- `nav` mit mindestens drei Links\n- eine Liste mit mindestens drei Einträgen\n- ein Bild mit Alternativtext\n- eine Tabelle mit Kopfzeile\n- ein Formular mit Eingabefeld, Label und Knopf\n- `header`, `main`, `footer`\n- ein Link, dessen Adresse „impressum“ enthält"
+    },
+    {
+      "type": "pair",
+      "text": "Welche Technik erfüllt welches Kriterium?",
+      "pairs": [
+        [
+          "Navigation als Leiste nebeneinander",
+          "`nav` mit `display: flex`"
+        ],
+        [
+          "Bild, das auch ohne Anzeige verständlich ist",
+          "`img` mit `alt`-Attribut"
+        ],
+        [
+          "Ein Knopf verändert etwas auf der Seite",
+          "`addEventListener` und `textContent`"
+        ],
+        [
+          "Mehrere Elemente gleich gestalten",
+          "Klasse im HTML, `.klasse` im Stylesheet"
+        ],
+        [
+          "Bereiche mit Bedeutung",
+          "`header`, `main`, `footer`"
+        ],
+        [
+          "Tabelle mit Kopfzeile",
+          "`th` in der ersten Zeile"
+        ]
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Für Stylesheet und Skript:\n\n- `body` mit eigener Schriftart, `h1` mit eigener Farbe\n- mindestens eine Klasse verwendet **und** gestaltet\n- Box-Modell: `padding` plus `border` oder `margin`\n- die Navigation als Flexbox\n- ein Knopf, der beim Klick etwas verändert (Element finden, Listener)\n\nAlles darüber hinaus ist **Kür**: hover-Effekte, Schatten auf Karten, ein Zähler, ein Nachtmodus-Schalter. Kür bringt keine Punkte – aber Applaus bei der Präsentation."
+    },
+    {
+      "type": "quiz",
+      "question": "Die Checkliste prüft „Ein Link zu einem Impressum-Abschnitt oder einer Impressum-Seite“. Was muss der Link haben?",
+      "options": [
+        "Eine Adresse, in der „impressum“ vorkommt – z. B. die Sprungmarke `#impressum`",
+        "Den Linktext „Impressum“ in Großbuchstaben",
+        "Eine zweite HTML-Datei – ein Abschnitt reicht nicht"
+      ],
+      "correct": 0,
+      "explanation": "Geprüft wird die Adresse im `href`. Die Werkbank im Finale hat nur eine HTML-Datei – das Impressum wird also ein Abschnitt mit der id `impressum`, zu dem der Link springt."
+    },
+    {
+      "type": "code",
+      "task": "1. **Vervollständige** den Kopfbereich deiner Startseite um den Zeichensatz UTF-8, einen Titel deiner Wahl und die Verknüpfung mit style.css. 2. **Strukturiere** den Körper: Kopfbereich mit Hauptüberschrift, Navigation, Hauptbereich, Fußbereich – in dieser Reihenfolge – und ganz am Ende die Einbindung von script.js.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <!-- Zeichensatz, Titel, Stylesheet -->\n  </head>\n  <body>\n    <!-- Kopfbereich, Navigation, Hauptbereich, Fußbereich, Skript -->\n  </body>\n</html>\n",
+        "css": "body {\n  font-family: Arial, sans-serif;\n}\n",
+        "js": "// Dein JavaScript\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "hints": [
+        "Das Grundgerüst kennst du von jeder FUNKEN-Seite: Im head stehen meta, title und link; im body die vier Zonen und ganz unten das Skript.",
+        "Muster für die Verknüpfungen: `<link rel=\"stylesheet\" href=\"…\">` im head und `<script src=\"…\"></script>` vor dem schließenden body-Tag – Dateinamen aus der Aufgabe.",
+        "Reihenfolge im body: header (mit h1) → nav → main → footer → script. Leere Zonen sind in Ordnung – gefüllt werden sie im Finale."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Mein Verein</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <header>\n      <h1>Mein Verein</h1>\n    </header>\n    <nav>\n    </nav>\n    <main>\n    </main>\n    <footer>\n    </footer>\n    <script src=\"script.js\"></script>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<meta[^>]+charset\\s*=\\s*[\"']?utf-8",
+          "label": "Der Zeichensatz UTF-8 ist angegeben"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<title>\\s*\\S",
+          "label": "Die Seite hat einen Titel"
+        },
+        {
+          "type": "attr",
+          "selector": "link[rel=\"stylesheet\"]",
+          "attr": "href",
+          "expected": "style.css",
+          "label": "style.css ist verknüpft"
+        },
+        {
+          "type": "selector",
+          "selector": "header h1",
+          "count": 1,
+          "label": "Im Kopfbereich steht genau eine Hauptüberschrift"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "header",
+            "nav",
+            "main",
+            "footer"
+          ],
+          "label": "Kopfbereich, Navigation, Hauptbereich, Fußbereich – in dieser Reihenfolge"
+        },
+        {
+          "type": "attr",
+          "selector": "script[src]",
+          "attr": "src",
+          "expected": "script.js",
+          "label": "script.js ist eingebunden"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Alles vorbereitet. Im Finale findest du die Werkbank mit drei Dateien, die Checkliste mit den 15 Kriterien und den ZIP-Download. Dein Stand wird automatisch gespeichert – du kannst jederzeit weitermachen.\n\nDenk dran: eine HTML-Datei – das Impressum wird ein Abschnitt mit der id `impressum`. Die Übungsbilder (`katze.svg`, `pizza.svg`, `controller.svg` …) darfst du benutzen.\n\n[Showtime öffnen](#/showtime) – und danach nimmt Sam bei der Abnahme die FUNKEN-Website ab."
+    }
+  ]
+}

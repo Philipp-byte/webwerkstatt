@@ -1,0 +1,221 @@
+{
+  "id": "04-wiederholung",
+  "title": "Wiederholung: Ticket-Schalter",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Rundgang vor der Abnahme: Ich frage Formulare aus diesem Kapitel ab, dazu die Seitenzonen aus Kapitel 8, Tabellen mit Kopfzeile aus Kapitel 7, Links aus Kapitel 5 – und aus Kapitel 1 die Anfrage an den Server. Denn genau dorthin gehen die Formulardaten beim Absenden."
+    },
+    {
+      "type": "quiz",
+      "question": "Jemand füllt das Ticketformular aus und klickt auf „Ticket reservieren“. Was passiert technisch?",
+      "options": [
+        "Der Browser schickt die Eingaben als Anfrage an den Server",
+        "Der Browser speichert die Eingaben dauerhaft auf dem Handy",
+        "HTML schickt automatisch eine E-Mail an das Kollektiv",
+        "Nichts – HTML kann keine Daten weitergeben"
+      ],
+      "correct": 0,
+      "explanation": "Absenden heißt: Anfrage an den Server, mit den Eingaben als name=wert-Paare. Ob daraus eine E-Mail oder ein Eintrag in einer Liste wird, entscheidet ein Programm auf dem Server – nicht HTML."
+    },
+    {
+      "type": "fill",
+      "text": "Die Preistabelle bekommt eine Kopfzeile. Vervollständige die beiden Kopfzellen.",
+      "template": "<tr>\n  <___>Ticket</th>\n  <___>Preis</th>\n</tr>",
+      "accept": [
+        [
+          "th"
+        ],
+        [
+          "th"
+        ]
+      ],
+      "hint": "Kopfzellen sind ein eigenes Element – „table header“ – der Browser zeigt sie fett."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** die Seite: 1. Zwischen Kopf- und Hauptbereich kommt eine Navigation mit zwei Links: „Startseite“ → index.html und „Programm“ → programm.html. 2. Im Formular folgt nach dem Namen ein beschriftetes E-Mail-Feld „E-Mail“ (id und Name `email`), ebenfalls Pflichtfeld.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Helfer:innen – Schulfest</title>\n  </head>\n  <body>\n    <header>\n      <h1>Helfer:innen gesucht</h1>\n    </header>\n\n    <main>\n      <p>Trag dich ein – wir melden uns.</p>\n      <form>\n        <label for=\"name\">Name</label>\n        <input type=\"text\" id=\"name\" name=\"name\" required>\n      </form>\n    </main>\n\n    <footer>\n      <p>SMV der Neckarschule</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "hints": [
+        "Die Navigation ist ein eigenes semantisches Element mit den Links darin – wie auf der Programm-Seite. Das E-Mail-Feld folgt dem Muster des Namensfeldes.",
+        "Muster: `<nav><a href=\"galerie.html\">Galerie</a></nav>` – und ein Pflichtfeld trägt das Attribut ohne Wert am Ende des Tags.",
+        "Reihenfolge im body: header, nav, main, footer. Im Formular: `<label for=\"…\">E-Mail</label>` und `<input type=\"…\" id=\"…\" name=\"…\" required>`."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Helfer:innen – Schulfest</title>\n  </head>\n  <body>\n    <header>\n      <h1>Helfer:innen gesucht</h1>\n    </header>\n\n    <nav>\n      <a href=\"index.html\">Startseite</a>\n      <a href=\"programm.html\">Programm</a>\n    </nav>\n\n    <main>\n      <p>Trag dich ein – wir melden uns.</p>\n      <form>\n        <label for=\"name\">Name</label>\n        <input type=\"text\" id=\"name\" name=\"name\" required>\n\n        <label for=\"email\">E-Mail</label>\n        <input type=\"email\" id=\"email\" name=\"email\" required>\n      </form>\n    </main>\n\n    <footer>\n      <p>SMV der Neckarschule</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "nav a",
+          "count": 2,
+          "label": "Die Navigation hat zwei Links"
+        },
+        {
+          "type": "attr",
+          "selector": "nav a",
+          "attr": "href",
+          "expected": "index.html",
+          "label": "Der erste Link führt zur Startseite"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "header",
+            "nav",
+            "main"
+          ],
+          "label": "Die Navigation liegt zwischen Kopf- und Hauptbereich"
+        },
+        {
+          "type": "attr",
+          "selector": "form input#email[name=\"email\"]",
+          "attr": "type",
+          "expected": "email",
+          "label": "Das E-Mail-Feld hat den Typ email"
+        },
+        {
+          "type": "attr",
+          "selector": "input#email",
+          "attr": "required",
+          "present": true,
+          "label": "Die E-Mail ist ein Pflichtfeld"
+        },
+        {
+          "type": "text",
+          "selector": "label[for=\"email\"]",
+          "expected": "E-Mail",
+          "label": "Das E-Mail-Feld ist beschriftet"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Bring die Preistabelle in die richtige Reihenfolge: Kopfzeile mit Ticket und Preis, dann die Zeile für das Tagesticket.",
+      "lines": [
+        "<table>",
+        "  <tr>",
+        "    <th>Ticket</th>",
+        "    <th>Preis</th>",
+        "  </tr>",
+        "  <tr><td>Tagesticket</td><td>12 €</td></tr>",
+        "</table>"
+      ],
+      "explanation": "Erst die Kopfzeile mit den Kopfzellen, dann die Datenzeile – alles innerhalb von table."
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Seitenzonen und Formular-Bausteine zu.",
+      "pairs": [
+        [
+          "`<header>`",
+          "Kopfbereich – Hauptüberschrift und Intro"
+        ],
+        [
+          "`<nav>`",
+          "Navigation – die Links zu den anderen Seiten"
+        ],
+        [
+          "`<main>`",
+          "Hauptbereich – der eigentliche Inhalt"
+        ],
+        [
+          "`<footer>`",
+          "Fußbereich – Adresse und Kleingedrucktes"
+        ],
+        [
+          "`<form>`",
+          "Rahmen um alle Eingabefelder"
+        ],
+        [
+          "`<label>`",
+          "Beschriftung, über for mit einem Feld verbunden"
+        ]
+      ]
+    },
+    {
+      "type": "bug",
+      "text": "Beide Optionsfelder lassen sich gleichzeitig anklicken. Welche Zeile ist schuld?",
+      "lines": [
+        "<input type=\"radio\" id=\"ja\" name=\"newsletter\" value=\"ja\">",
+        "<label for=\"ja\">Ja, gern</label>",
+        "<input type=\"radio\" id=\"nein\" name=\"news\" value=\"nein\">",
+        "<label for=\"nein\">Nein, danke</label>"
+      ],
+      "line": 2,
+      "explanation": "Nur Optionsfelder mit demselben name bilden eine Gruppe. „news“ und „newsletter“ sind zwei Gruppen – also lassen sich beide wählen."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** die Bestellseite: Statt einer Klappliste stehen die Sorten als loser Text auf der Seite, und ein Klick auf „Dein Name“ springt nicht ins Namensfeld. Am Ende gibt es eine Auswahlliste mit drei Sorten und eine funktionierende Beschriftung.",
+      "starter": {
+        "html": "<h1>Bubble-Tea-Bestellung</h1>\n<form>\n  <label for=\"nme\">Dein Name</label>\n  <input type=\"text\" id=\"name\" name=\"name\">\n\n  <label for=\"sorte\">Sorte</label>\n  <selct id=\"sorte\" name=\"sorte\">\n    <option value=\"mango\">Mango</option>\n    <option value=\"litschi\">Litschi</option>\n    <option value=\"matcha\">Matcha</option>\n  </selct>\n\n  <button type=\"submit\">Bestellen</button>\n</form>\n"
+      },
+      "hints": [
+        "Zwei Fehler: Der Name des Listen-Elements ist falsch geschrieben, und for und id passen nicht zusammen.",
+        "Die Klappliste heißt `select` – öffnender und schließender Tag müssen beide richtig geschrieben sein.",
+        "Vergleiche das `for` der Beschriftung „Dein Name“ mit der `id` des Namensfelds – Buchstabe für Buchstabe."
+      ],
+      "solution": {
+        "html": "<h1>Bubble-Tea-Bestellung</h1>\n<form>\n  <label for=\"name\">Dein Name</label>\n  <input type=\"text\" id=\"name\" name=\"name\">\n\n  <label for=\"sorte\">Sorte</label>\n  <select id=\"sorte\" name=\"sorte\">\n    <option value=\"mango\">Mango</option>\n    <option value=\"litschi\">Litschi</option>\n    <option value=\"matcha\">Matcha</option>\n  </select>\n\n  <button type=\"submit\">Bestellen</button>\n</form>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "select#sorte[name=\"sorte\"] option",
+          "count": 3,
+          "label": "Die Auswahlliste „Sorte“ hat drei Einträge"
+        },
+        {
+          "type": "text",
+          "selector": "select#sorte option:first-child",
+          "expected": "Mango",
+          "label": "Der erste Eintrag ist Mango"
+        },
+        {
+          "type": "text",
+          "selector": "label[for=\"name\"]",
+          "expected": "Dein Name",
+          "label": "Die Beschriftung „Dein Name“ gehört zum Feld mit der id name"
+        },
+        {
+          "type": "selector",
+          "selector": "input#name[name=\"name\"]",
+          "count": 1,
+          "label": "Das Namensfeld ist noch da"
+        },
+        {
+          "type": "text",
+          "selector": "form button[type=\"submit\"]",
+          "expected": "Bestellen",
+          "label": "Der Knopf „Bestellen“ ist noch da"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "In der Navigation der Tickets-Seite soll ein Link zur eigenen Programm-Seite stehen. Welche Adresse ist richtig?",
+      "options": [
+        "`programm.html`",
+        "`https://programm.html`",
+        "`#programm`",
+        "`www.programm.html`"
+      ],
+      "correct": 0,
+      "explanation": "Eigene Seiten verlinkst du nur mit dem Dateinamen. `https://` ist für fremde Seiten, `#` für Sprungmarken innerhalb der Seite."
+    },
+    {
+      "type": "explain",
+      "text": "Ab zur FUNKEN-Website: Vor dem Formular fehlt die Preisübersicht – Sam will, dass niemand fragen muss, was ein Ticket kostet. Der Abschnitt „Preise“ kommt ganz oben in den Hauptbereich: Zwischenüberschrift plus Tabelle mit Kopfzeile, drei Ticketarten, drei Preise. Danach erst der Hinweis-Absatz und das Formular."
+    },
+    {
+      "type": "code",
+      "etappe": "09-formulare/04-wiederholung"
+    }
+  ]
+}

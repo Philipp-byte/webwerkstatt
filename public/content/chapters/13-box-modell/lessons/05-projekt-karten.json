@@ -1,0 +1,63 @@
+{
+  "id": "05-projekt-karten",
+  "title": "Projekt: Bild-Karten",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Meilenstein! Rückblick: Der Hinweis-Kasten hat Rahmen, Luft, runde Ecken und Schatten, der Hauptbereich eine Höchstbreite, die Tabellen Rahmen und Innenabstand.\n\nJetzt die Galerie: Sam wünscht sich die Bilder mit Bildunterschrift als **Karten** – weiß, mit Luft innen und runden Ecken. Und ohne den Außenabstand, den `figure` von Haus aus mitbringt."
+    },
+    {
+      "type": "quiz",
+      "question": "Bild-Blöcke (`figure`) bringen von Haus aus Außenabstand mit. Welche Eigenschaft setzt du auf 0, um ihn zu entfernen?",
+      "options": [
+        "`margin`",
+        "`padding`",
+        "`border`",
+        "`width`"
+      ],
+      "correct": 0,
+      "explanation": "Außenabstand ist margin. Mit dem Wert 0 verschwindet der Abstand, den der Browser standardmäßig vergibt."
+    },
+    {
+      "type": "pair",
+      "text": "Ordne jede Eigenschaft ihrer Wirkung zu.",
+      "pairs": [
+        [
+          "`border`",
+          "Rahmen: Dicke, Linienart, Farbe"
+        ],
+        [
+          "`padding`",
+          "Innenabstand"
+        ],
+        [
+          "`margin`",
+          "Außenabstand"
+        ],
+        [
+          "`max-width`",
+          "Höchstbreite"
+        ],
+        [
+          "`border-radius`",
+          "runde Ecken"
+        ],
+        [
+          "`box-shadow`",
+          "Schatten"
+        ]
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Ab zur Galerie! Jedes `figure`-Element wird eine Karte: weißer Hintergrund, rundum 12 Pixel Innenabstand, 12 Pixel runde Ecken, kein Außenabstand. Dafür brauchst du eine **neue Regel** mit dem Element-Selektor.\n\nDanach lohnt sich ein Blick auf die ganze Website unter **#/projekt** – Station „Container“ geschafft, gleich nimmt Sam ab!"
+    },
+    {
+      "type": "code",
+      "etappe": "13-box-modell/05-projekt-karten"
+    }
+  ]
+}

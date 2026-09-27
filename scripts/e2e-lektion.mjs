@@ -36,6 +36,7 @@ try {
   });
   await page.goto(`${base}#/lektion/${chapterId}/${lessonId}`, { waitUntil: 'networkidle' });
   await page.reload({ waitUntil: 'networkidle' });
+  await page.addStyleTag({ content: '.overlay{display:none !important}' }); // Level-up-Overlays stören den Testlauf nicht
   await page.waitForSelector('.lektion-seite', { timeout: 15000 });
   // Soundcheck überspringen, falls vorhanden
   const skip = await page.$('.sc-skip');

@@ -1,0 +1,214 @@
+{
+  "id": "02-div-und-span",
+  "title": "div und span",
+  "konzepte": [
+    "html.div-span"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Sam will den Foodtruck-Bereich später als eigene Kachel gestalten – Überschrift, Absatz und Liste zusammen. Aber welches Element fasst drei Elemente zu einer Gruppe? Bisher keins. Dafür gibt es zwei **Container** ohne eigene Bedeutung:\n\n- **div** – eine Kiste für ganze Blöcke: Überschriften, Absätze, Listen.\n- **span** – ein Etikett für ein Stück Text *innerhalb* einer Zeile.\n\nBeide sind unsichtbar. Ihren Sinn bekommen sie durch class oder id.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"84\" y=\"22\" text-anchor=\"middle\" fill=\"#ff7a45\" font-weight=\"bold\">div = Block-Kiste</text><rect x=\"14\" y=\"32\" width=\"140\" height=\"116\" rx=\"8\" fill=\"none\" stroke=\"#ff7a45\" stroke-width=\"2\" stroke-dasharray=\"6 4\"/><rect x=\"24\" y=\"42\" width=\"120\" height=\"26\" rx=\"4\" fill=\"#1b2135\"/><text x=\"84\" y=\"60\" text-anchor=\"middle\" fill=\"#eef2ff\" font-family=\"monospace\">&lt;h2&gt;</text><rect x=\"24\" y=\"76\" width=\"120\" height=\"26\" rx=\"4\" fill=\"#1b2135\"/><text x=\"84\" y=\"94\" text-anchor=\"middle\" fill=\"#eef2ff\" font-family=\"monospace\">&lt;p&gt;</text><rect x=\"24\" y=\"110\" width=\"120\" height=\"26\" rx=\"4\" fill=\"#1b2135\"/><text x=\"84\" y=\"128\" text-anchor=\"middle\" fill=\"#eef2ff\" font-family=\"monospace\">&lt;ul&gt;</text><text x=\"238\" y=\"22\" text-anchor=\"middle\" fill=\"#38c7ff\" font-weight=\"bold\">span = Inline-Etikett</text><rect x=\"170\" y=\"70\" width=\"136\" height=\"40\" rx=\"4\" fill=\"#1b2135\"/><text x=\"180\" y=\"95\" fill=\"#eef2ff\">Preis:</text><rect x=\"222\" y=\"78\" width=\"60\" height=\"24\" rx=\"4\" fill=\"#38c7ff\"/><text x=\"252\" y=\"95\" text-anchor=\"middle\" fill=\"#0f1320\" font-weight=\"bold\">12 €</text><text x=\"238\" y=\"134\" text-anchor=\"middle\" fill=\"#eef2ff\">bleibt in der Zeile</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Das Stylesheet (wieder nur zum Zuschauen) gibt der Klasse `karte` einen Rahmen und der Klasse `preis` eine Farbe.\n\n**Verschiebe** das schließende `</div>` unter den Lieferungs-Absatz – der Rahmen wächst mit. Dann **umschließe** das Wort „Leichter“ mit `<span class=\"preis\">` und `</span>` und schau, was passiert.",
+      "html": "<div class=\"karte\">\n  <h2>Neon Runner</h2>\n  <p>Leichter Laufschuh, Größe 38 bis 46.</p>\n  <p>Preis: <span class=\"preis\">129 €</span></p>\n</div>\n<p>Lieferung in zwei Tagen.</p>\n",
+      "css": ".karte { border: 2px solid #ff6a00; border-radius: 8px; padding: 12px; }\n.preis { color: #d94f00; font-weight: bold; }\n",
+      "editable": [
+        "html"
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Im Satz „Nur noch 3 Tickets!“ soll allein die Zahl 3 markiert werden. Welches Element passt?",
+      "options": [
+        "`span` – bleibt in der Zeile",
+        "`div` – beginnt eine neue Zeile",
+        "`p` – ein neuer Absatz"
+      ],
+      "correct": 0,
+      "explanation": "Ein Stück Text innerhalb einer Zeile ist Inline – dafür ist span da. div und p würden die Zahl in eine eigene Zeile setzen."
+    },
+    {
+      "type": "code",
+      "task": "**Gruppiere** die Margherita – Überschrift und beide Absätze – in einem Container mit der Klasse `gericht`. Die Funghi bleibt außerhalb.",
+      "starter": {
+        "html": "<h1>Pizza-Truck – Karte</h1>\n<h2>Margherita</h2>\n<p>Tomate, Mozzarella, Basilikum</p>\n<p>7 €</p>\n<h2>Funghi</h2>\n<p>Tomate, Mozzarella, Champignons</p>\n<p>8 €</p>\n"
+      },
+      "hints": [
+        "Der Container ist ein Block-Element ohne eigene Bedeutung. Er öffnet vor der Überschrift und schließt nach dem Preis.",
+        "Muster: `<div class=\"karte\">` … `</div>` – dazwischen liegen die Elemente, die zusammengehören.",
+        "Struktur: `<div class=\"…\">`, dann Überschrift, Absatz, Absatz der Margherita, dann `</div>` – die Funghi kommt erst danach."
+      ],
+      "solution": {
+        "html": "<h1>Pizza-Truck – Karte</h1>\n<div class=\"gericht\">\n  <h2>Margherita</h2>\n  <p>Tomate, Mozzarella, Basilikum</p>\n  <p>7 €</p>\n</div>\n<h2>Funghi</h2>\n<p>Tomate, Mozzarella, Champignons</p>\n<p>8 €</p>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "div.gericht > h2",
+          "expected": "Margherita",
+          "label": "Die Margherita-Überschrift liegt im Container"
+        },
+        {
+          "type": "selector",
+          "selector": "div.gericht > p",
+          "count": 2,
+          "label": "Beide Margherita-Absätze liegen im Container"
+        },
+        {
+          "type": "selector",
+          "selector": "div.gericht h2",
+          "count": 1,
+          "label": "Nur ein Gericht liegt im Container"
+        },
+        {
+          "type": "selector",
+          "selector": "div h1",
+          "count": 0,
+          "label": "Die Hauptüberschrift bleibt außerhalb"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Zwei Sorten von Elementen:\n\n- **Block-Elemente** beginnen auf einer neuen Zeile und nehmen die ganze Breite: h1 bis h6, p, ul, ol, table – und div.\n- **Inline-Elemente** laufen im Text mit: a, strong, em, img – und span.\n\nRegel: Block darf Inline enthalten, nicht umgekehrt. Ein span gehört *in* den Absatz, nie um ihn herum.\n\n```html\n<div class=\"karte\">\n  <p>Preis: <span class=\"preis\">7 €</span></p>\n</div>\n```"
+    },
+    {
+      "type": "fill",
+      "text": "**Vervollständige** die Sneaker-Karte: außen die Kiste für den ganzen Block, innen das Etikett für den Preis.",
+      "template": "<___ class=\"karte\">\n  <h2>Court Low</h2>\n  <p>Preis: <___ class=\"preis\">89 €</___></p>\n</___>",
+      "accept": [
+        [
+          "div"
+        ],
+        [
+          "span"
+        ],
+        [
+          "span"
+        ],
+        [
+          "div"
+        ]
+      ],
+      "hint": "Block-Container außen, Inline-Container im Absatz."
+    },
+    {
+      "type": "code",
+      "task": "**Markiere** in der Watchlist bei jedem Eintrag die Staffel-Angabe („Staffel 2“ und so weiter) mit einem Inline-Element der Klasse `staffel`. Der sichtbare Text der Einträge bleibt gleich.",
+      "starter": {
+        "html": "<h2>Meine Watchlist</h2>\n<ul>\n  <li>Nachtschicht – Staffel 2</li>\n  <li>Kabelsalat – Staffel 1</li>\n  <li>Neckar-Krimi – Staffel 4</li>\n</ul>\n"
+      },
+      "hints": [
+        "Ein Stück Text in der Zeile markieren – das ist das Inline-Etikett, nicht die Block-Kiste.",
+        "Muster: `Preis: <span class=\"preis\">7 €</span>` – öffnender Tag vor dem Stück, schließender danach.",
+        "In jedem Listenpunkt: `<li>Name – <span class=\"…\">Staffel …</span></li>`."
+      ],
+      "solution": {
+        "html": "<h2>Meine Watchlist</h2>\n<ul>\n  <li>Nachtschicht – <span class=\"staffel\">Staffel 2</span></li>\n  <li>Kabelsalat – <span class=\"staffel\">Staffel 1</span></li>\n  <li>Neckar-Krimi – <span class=\"staffel\">Staffel 4</span></li>\n</ul>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "li span.staffel",
+          "count": 3,
+          "label": "Alle drei Staffel-Angaben sind markiert"
+        },
+        {
+          "type": "text",
+          "selector": "li span.staffel",
+          "expected": "Staffel 2",
+          "label": "Das erste Etikett enthält genau „Staffel 2“"
+        },
+        {
+          "type": "text",
+          "selector": "li",
+          "expected": "Nachtschicht – Staffel 2",
+          "label": "Der erste Eintrag liest sich unverändert"
+        },
+        {
+          "type": "selector",
+          "selector": "li div",
+          "count": 0,
+          "label": "Kein Block-Container in der Liste"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Bring die Sneaker-Karte in die richtige Reihenfolge: erst Name, dann Beschreibung, dann Preis.",
+      "lines": [
+        "<div class=\"karte\">",
+        "  <h2>Court Low</h2>",
+        "  <p>Klassischer Sneaker in Weiß.</p>",
+        "  <p>Preis: <span class=\"preis\">89 €</span></p>",
+        "</div>"
+      ],
+      "explanation": "Die Kiste öffnet zuerst und schließt zuletzt; das span bleibt im Absatz."
+    },
+    {
+      "type": "code",
+      "task": "1. **Gruppiere** jedes Handy (Überschrift und beide Absätze) in einem eigenen Container mit der Klasse `handy`. 2. **Markiere** die beiden Preise „299 €“ und „449 €“ mit einem Inline-Element der Klasse `preis`.",
+      "starter": {
+        "html": "<h1>Handy-Vergleich</h1>\n<h2>Nova X2</h2>\n<p>6,1 Zoll, 128 GB, zwei Kameras</p>\n<p>Preis: 299 €</p>\n<h2>Orbit Lite</h2>\n<p>6,7 Zoll, 256 GB, drei Kameras</p>\n<p>Preis: 449 €</p>\n"
+      },
+      "hints": [
+        "Zwei Kisten, zwei Etiketten: Jede Kiste umschließt genau ein Handy, jedes Etikett genau den Preis.",
+        "Kiste: `<div class=\"karte\">` … `</div>`. Etikett: `<span class=\"neu\">…</span>` – hier mit anderen Klassennamen.",
+        "Pro Handy: `<div class=\"…\">`, h2, p, `<p>Preis: <span class=\"…\">… €</span></p>`, `</div>`."
+      ],
+      "solution": {
+        "html": "<h1>Handy-Vergleich</h1>\n<div class=\"handy\">\n  <h2>Nova X2</h2>\n  <p>6,1 Zoll, 128 GB, zwei Kameras</p>\n  <p>Preis: <span class=\"preis\">299 €</span></p>\n</div>\n<div class=\"handy\">\n  <h2>Orbit Lite</h2>\n  <p>6,7 Zoll, 256 GB, drei Kameras</p>\n  <p>Preis: <span class=\"preis\">449 €</span></p>\n</div>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "div.handy",
+          "count": 2,
+          "label": "Es gibt zwei Handy-Container"
+        },
+        {
+          "type": "selector",
+          "selector": "div.handy > h2",
+          "count": 2,
+          "label": "Jede Überschrift liegt in ihrem Container"
+        },
+        {
+          "type": "selector",
+          "selector": "div.handy > p",
+          "count": 4,
+          "label": "Alle vier Absätze liegen in den Containern"
+        },
+        {
+          "type": "text",
+          "selector": "div.handy span.preis",
+          "expected": "299 €",
+          "label": "Der erste Preis ist als Etikett markiert"
+        },
+        {
+          "type": "text",
+          "selector": "div.handy:last-of-type span.preis",
+          "expected": "449 €",
+          "label": "Der zweite Preis ist als Etikett markiert"
+        },
+        {
+          "type": "selector",
+          "selector": "div h1",
+          "count": 0,
+          "label": "Die Hauptüberschrift bleibt außerhalb"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "jonas",
+      "text": "Ab zur FUNKEN-Website. In Kapitel 14 wird der Foodtruck-Bereich eine Kachel mit eigenem Layout – dafür müssen Überschrift, Absatz und Liste als **eine** Gruppe gefasst sein. Jetzt baust du die Kiste dafür.\n\nUnd weil Sam für 2027 werben will, bekommt der Absatz ganz vorn ein kleines Etikett mit dem Text „Neu 2027:“ – ein Inline-Element mit einer Klasse."
+    },
+    {
+      "type": "code",
+      "etappe": "08-struktur-und-attribute/02-div-und-span"
+    }
+  ]
+}

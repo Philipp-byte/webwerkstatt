@@ -1,0 +1,237 @@
+{
+  "id": "02-auswahlfelder",
+  "title": "Auswahlfelder",
+  "konzepte": [
+    "html.select",
+    "html.radio-checkbox"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Sam will wissen, welche **Ticketart** jemand möchte. In ein Textfeld tippen die Leute „Festivalpass“, „festival pass“ oder „Pass fürs ganze WE“ – Chaos. Besser: feste Auswahl.\n\nHTML kennt drei Auswahl-Elemente:\n\n- **Auswahlliste** (`select`): Klappliste – eins aus vielen\n- **Optionsfelder** (Radio): runde Knöpfe, alle sichtbar – eins aus wenigen\n- **Kontrollkästchen** (Checkbox): Häkchen – an oder aus, mehrere möglich",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"60\" y=\"34\" text-anchor=\"middle\" fill=\"#ff7a45\" font-family=\"monospace\" font-size=\"13\">select</text><rect x=\"14\" y=\"48\" width=\"92\" height=\"28\" rx=\"5\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"22\" y=\"67\" fill=\"#eef2ff\">Festivalpass ▾</text><text x=\"60\" y=\"122\" text-anchor=\"middle\" fill=\"#eef2ff\">eins aus vielen</text><text x=\"160\" y=\"34\" text-anchor=\"middle\" fill=\"#38c7ff\" font-family=\"monospace\" font-size=\"13\">radio</text><circle cx=\"128\" cy=\"60\" r=\"7\" fill=\"#38c7ff\"/><text x=\"142\" y=\"65\" fill=\"#eef2ff\">Ja</text><circle cx=\"128\" cy=\"86\" r=\"7\" fill=\"none\" stroke=\"#38c7ff\" stroke-width=\"2\"/><text x=\"142\" y=\"91\" fill=\"#eef2ff\">Nein</text><text x=\"160\" y=\"122\" text-anchor=\"middle\" fill=\"#eef2ff\">eins aus wenigen</text><text x=\"260\" y=\"34\" text-anchor=\"middle\" fill=\"#ffd84d\" font-family=\"monospace\" font-size=\"13\">checkbox</text><rect x=\"222\" y=\"52\" width=\"14\" height=\"14\" rx=\"2\" fill=\"none\" stroke=\"#ffd84d\" stroke-width=\"2\"/><path d=\"M225 59 l3 4 l7 -8\" stroke=\"#ffd84d\" stroke-width=\"2\" fill=\"none\"/><text x=\"244\" y=\"65\" fill=\"#eef2ff\">Käse</text><rect x=\"222\" y=\"78\" width=\"14\" height=\"14\" rx=\"2\" fill=\"none\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"244\" y=\"91\" fill=\"#eef2ff\">Scharf</text><text x=\"260\" y=\"122\" text-anchor=\"middle\" fill=\"#eef2ff\">mehrere möglich</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Eine Auswahlliste: `<select>` ist die Liste, jedes `<option>` ein Eintrag. Der sichtbare Text steht zwischen den Tags; das Attribut `value` ist der Wert, der beim Absenden an den Server geht. **Ergänze** eine vierte Option „Family“ und **ändere** den Text „Mittel“ in „Medium“.",
+      "html": "<h1>Pizza-Bestellung</h1>\n<form>\n  <label for=\"groesse\">Größe</label>\n  <select id=\"groesse\" name=\"groesse\">\n    <option value=\"klein\">Klein</option>\n    <option value=\"mittel\">Mittel</option>\n    <option value=\"gross\">Groß</option>\n  </select>\n</form>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Beim Absenden bekommt der Server `groesse=gross`. Woher kommt „gross“?",
+      "options": [
+        "Aus dem Attribut `value` der gewählten Option",
+        "Aus dem sichtbaren Text der Option",
+        "Aus dem Attribut `for` der Beschriftung"
+      ],
+      "correct": 0,
+      "explanation": "Der Server bekommt immer `name=value`: den Namen der Auswahlliste und den Wert der gewählten Option – nicht den angezeigten Text."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter der Beschriftung eine Auswahlliste mit der id und dem Namen `boden` und drei Einträgen: „Klassisch“ (Wert klassisch), „Dünn“ (Wert duenn) und „Käserand“ (Wert kaeserand).",
+      "starter": {
+        "html": "<h1>Pizza-Bestellung</h1>\n<form>\n  <label for=\"boden\">Boden</label>\n  <!-- hier kommt die Auswahlliste -->\n</form>\n"
+      },
+      "hints": [
+        "Die Liste ist ein `select`-Element mit id und name; jeder Eintrag darin ist ein `option`-Element.",
+        "Muster aus einem anderen Kontext: `<option value=\"cola\">Cola</option>` – Wert im Attribut, sichtbarer Text zwischen den Tags.",
+        "Aufbau: `<select id=\"…\" name=\"…\">`, darin drei `<option value=\"…\">…</option>`, dann `</select>`."
+      ],
+      "solution": {
+        "html": "<h1>Pizza-Bestellung</h1>\n<form>\n  <label for=\"boden\">Boden</label>\n  <select id=\"boden\" name=\"boden\">\n    <option value=\"klassisch\">Klassisch</option>\n    <option value=\"duenn\">Dünn</option>\n    <option value=\"kaeserand\">Käserand</option>\n  </select>\n</form>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "select#boden[name=\"boden\"]",
+          "count": 1,
+          "label": "Die Auswahlliste „boden“ ist da"
+        },
+        {
+          "type": "selector",
+          "selector": "select#boden option",
+          "count": 3,
+          "label": "Die Liste hat drei Einträge"
+        },
+        {
+          "type": "text",
+          "selector": "select#boden option:first-child",
+          "expected": "Klassisch",
+          "label": "Der erste Eintrag heißt „Klassisch“"
+        },
+        {
+          "type": "attr",
+          "selector": "select#boden option:last-child",
+          "attr": "value",
+          "expected": "kaeserand",
+          "label": "Der letzte Eintrag hat den Wert kaeserand"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Für **eins aus wenigen** – bar oder mit Karte zahlen – nimmst du **Optionsfelder**: `<input type=\"radio\">`.\n\n```html\n<input type=\"radio\" id=\"bar\" name=\"zahlung\" value=\"bar\">\n<label for=\"bar\">Bar</label>\n<input type=\"radio\" id=\"karte\" name=\"zahlung\" value=\"karte\">\n<label for=\"karte\">Karte</label>\n```\n\nDer gleiche **name** macht die Felder zur **Gruppe** – nur eins lässt sich wählen. Jedes Feld hat eine eigene id und einen eigenen `value`. Die Beschriftung steht hier **hinter** dem Feld."
+    },
+    {
+      "type": "fill",
+      "text": "Zwei Optionsfelder für die Sauce sollen eine Gruppe bilden – nur eine Sauce lässt sich wählen. Vervollständige Typ und Gruppenname.",
+      "template": "<input type=\"___\" id=\"tomate\" name=\"sauce\" value=\"tomate\">\n<label for=\"tomate\">Tomate</label>\n<input type=\"radio\" id=\"bbq\" name=\"___\" value=\"bbq\">\n<label for=\"bbq\">BBQ</label>",
+      "accept": [
+        [
+          "radio"
+        ],
+        [
+          "sauce"
+        ]
+      ],
+      "hint": "Der Typ heißt wie der runde Knopf; der Gruppenname ist bei beiden Feldern derselbe."
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** unter der Frage zwei Optionsfelder mit dem gemeinsamen Namen `lieferung`, jeweils mit Beschriftung dahinter: „Abholen“ (id und Wert `abholen`) und „Liefern“ (id und Wert `liefern`).",
+      "starter": {
+        "html": "<h1>Pizza-Bestellung</h1>\n<form>\n  <label for=\"boden\">Boden</label>\n  <select id=\"boden\" name=\"boden\">\n    <option value=\"klassisch\">Klassisch</option>\n    <option value=\"duenn\">Dünn</option>\n    <option value=\"kaeserand\">Käserand</option>\n  </select>\n\n  <p>Wie bekommst du die Pizza?</p>\n  <!-- hier kommen die Optionsfelder -->\n</form>\n"
+      },
+      "hints": [
+        "Optionsfelder sind `input`-Elemente mit dem Typ radio. Derselbe name macht sie zur Gruppe.",
+        "Muster mit einer anderen Gruppe: `<input type=\"radio\" id=\"bar\" name=\"zahlung\" value=\"bar\">` und dahinter `<label for=\"bar\">Bar</label>`.",
+        "Aufbau: `<input type=\"radio\" id=\"…\" name=\"…\" value=\"…\">` und dahinter `<label for=\"…\">…</label>` – zweimal, mit den Werten aus der Aufgabe."
+      ],
+      "solution": {
+        "html": "<h1>Pizza-Bestellung</h1>\n<form>\n  <label for=\"boden\">Boden</label>\n  <select id=\"boden\" name=\"boden\">\n    <option value=\"klassisch\">Klassisch</option>\n    <option value=\"duenn\">Dünn</option>\n    <option value=\"kaeserand\">Käserand</option>\n  </select>\n\n  <p>Wie bekommst du die Pizza?</p>\n  <input type=\"radio\" id=\"abholen\" name=\"lieferung\" value=\"abholen\">\n  <label for=\"abholen\">Abholen</label>\n  <input type=\"radio\" id=\"liefern\" name=\"lieferung\" value=\"liefern\">\n  <label for=\"liefern\">Liefern</label>\n</form>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "input[type=\"radio\"][name=\"lieferung\"]",
+          "count": 2,
+          "label": "Zwei Optionsfelder gehören zur Gruppe „lieferung“"
+        },
+        {
+          "type": "attr",
+          "selector": "input[type=\"radio\"]#abholen",
+          "attr": "value",
+          "expected": "abholen",
+          "label": "Das Feld „abholen“ hat den Wert abholen"
+        },
+        {
+          "type": "text",
+          "selector": "label[for=\"abholen\"]",
+          "expected": "Abholen",
+          "label": "Die Beschriftung „Abholen“ gehört zum ersten Feld"
+        },
+        {
+          "type": "text",
+          "selector": "label[for=\"liefern\"]",
+          "expected": "Liefern",
+          "label": "Die Beschriftung „Liefern“ gehört zum zweiten Feld"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "p",
+            "input#abholen",
+            "input#liefern"
+          ],
+          "label": "Die Felder stehen unter der Frage, Abholen zuerst"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Für **an oder aus** – Newsletter ja oder nein – gibt es das **Kontrollkästchen**: `<input type=\"checkbox\">`.\n\n```html\n<input type=\"checkbox\" id=\"news\" name=\"news\">\n<label for=\"news\">Newsletter abonnieren</label>\n```\n\nJedes Kästchen ist unabhängig: keins, eins oder alle ankreuzen. Deshalb bekommt jedes seinen **eigenen** name. Auch hier steht das Label hinter dem Feld.\n\nMerksatz: Radio = **eins** aus der Gruppe, Checkbox = **jedes für sich**."
+    },
+    {
+      "type": "pair",
+      "text": "Welches Element passt zu welcher Situation?",
+      "pairs": [
+        [
+          "`<select>`",
+          "eins aus vielen – als Klappliste"
+        ],
+        [
+          "`<option>`",
+          "ein Eintrag in der Auswahlliste"
+        ],
+        [
+          "`type=\"radio\"`",
+          "eins aus wenigen – alle Möglichkeiten sichtbar"
+        ],
+        [
+          "`type=\"checkbox\"`",
+          "an oder aus – mehrere Kästchen möglich"
+        ],
+        [
+          "gleicher `name`",
+          "macht Optionsfelder zu einer Gruppe"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Formular am Ende um zwei Kontrollkästchen mit Beschriftung dahinter: „Extra Käse“ (id und Name `kaese`) und „Extra scharf“ (id und Name `scharf`). Beide lassen sich unabhängig voneinander ankreuzen.",
+      "starter": {
+        "html": "<h1>Pizza-Bestellung</h1>\n<form>\n  <label for=\"boden\">Boden</label>\n  <select id=\"boden\" name=\"boden\">\n    <option value=\"klassisch\">Klassisch</option>\n    <option value=\"duenn\">Dünn</option>\n    <option value=\"kaeserand\">Käserand</option>\n  </select>\n\n  <p>Wie bekommst du die Pizza?</p>\n  <input type=\"radio\" id=\"abholen\" name=\"lieferung\" value=\"abholen\">\n  <label for=\"abholen\">Abholen</label>\n  <input type=\"radio\" id=\"liefern\" name=\"lieferung\" value=\"liefern\">\n  <label for=\"liefern\">Liefern</label>\n\n  <p>Extras:</p>\n</form>\n"
+      },
+      "hints": [
+        "Kontrollkästchen sind `input`-Elemente mit dem Typ checkbox – jedes mit eigener id und eigenem name.",
+        "Muster aus einem anderen Kontext: `<input type=\"checkbox\" id=\"news\" name=\"news\">` und dahinter `<label for=\"news\">Newsletter</label>`.",
+        "Aufbau: zweimal `<input type=\"checkbox\" id=\"…\" name=\"…\">` mit `<label for=\"…\">…</label>` dahinter – ids und Texte aus der Aufgabe."
+      ],
+      "solution": {
+        "html": "<h1>Pizza-Bestellung</h1>\n<form>\n  <label for=\"boden\">Boden</label>\n  <select id=\"boden\" name=\"boden\">\n    <option value=\"klassisch\">Klassisch</option>\n    <option value=\"duenn\">Dünn</option>\n    <option value=\"kaeserand\">Käserand</option>\n  </select>\n\n  <p>Wie bekommst du die Pizza?</p>\n  <input type=\"radio\" id=\"abholen\" name=\"lieferung\" value=\"abholen\">\n  <label for=\"abholen\">Abholen</label>\n  <input type=\"radio\" id=\"liefern\" name=\"lieferung\" value=\"liefern\">\n  <label for=\"liefern\">Liefern</label>\n\n  <p>Extras:</p>\n  <input type=\"checkbox\" id=\"kaese\" name=\"kaese\">\n  <label for=\"kaese\">Extra Käse</label>\n  <input type=\"checkbox\" id=\"scharf\" name=\"scharf\">\n  <label for=\"scharf\">Extra scharf</label>\n</form>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "input[type=\"checkbox\"]",
+          "count": 2,
+          "label": "Es gibt zwei Kontrollkästchen"
+        },
+        {
+          "type": "selector",
+          "selector": "input[type=\"checkbox\"]#kaese[name=\"kaese\"]",
+          "count": 1,
+          "label": "Das Kästchen „kaese“ ist da"
+        },
+        {
+          "type": "text",
+          "selector": "label[for=\"kaese\"]",
+          "expected": "Extra Käse",
+          "label": "Die Beschriftung „Extra Käse“ gehört zum Kästchen kaese"
+        },
+        {
+          "type": "text",
+          "selector": "label[for=\"scharf\"]",
+          "expected": "Extra scharf",
+          "label": "Die Beschriftung „Extra scharf“ gehört zum Kästchen scharf"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "input#liefern",
+            "input#kaese",
+            "input#scharf"
+          ],
+          "label": "Die Kästchen stehen nach den Optionsfeldern, Käse zuerst"
+        },
+        {
+          "type": "selector",
+          "selector": "select#boden option",
+          "count": 3,
+          "label": "Die Auswahlliste ist noch vollständig"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Ab zur FUNKEN-Website: Das Ticketformular bekommt die Ticketart als Auswahlliste – drei feste Einträge, keine Tippfehler mehr für Sam. Danach die Newsletter-Frage als zwei Optionsfelder: Ja oder Nein, aber nie beides.\n\nDenk an die Beschriftungen: bei der Liste davor, bei den Optionsfeldern dahinter – und immer über for und id verbunden."
+    },
+    {
+      "type": "code",
+      "etappe": "09-formulare/02-auswahlfelder"
+    }
+  ]
+}

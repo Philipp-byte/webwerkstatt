@@ -1,0 +1,202 @@
+{
+  "id": "04-wiederholung",
+  "title": "Wiederholung: Zonen, Tabellen, Bilder, Listen",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Wiederholung! Heute mischen wir die Zonen aus diesem Kapitel mit Tabellen (Kapitel 07), Bildern und Medien (Kapitel 06) und Listen (Kapitel 04). Am Ende bekommt die Programm-Seite dieselbe Struktur wie die Startseite."
+    },
+    {
+      "type": "quiz",
+      "question": "Welche Zone darf auf einer Seite nur **einmal** vorkommen?",
+      "options": [
+        "`main` – der Hauptinhalt",
+        "`section` – ein Abschnitt",
+        "`nav` – die Navigation"
+      ],
+      "correct": 0,
+      "explanation": "Es gibt genau einen Hauptinhalt. Abschnitte und sogar Navigationen kann eine Seite mehrere haben."
+    },
+    {
+      "type": "fill",
+      "text": "**Vervollständige** den Timetable: Die erste Zeile besteht aus Kopfzellen, die Pausen-Zelle geht über beide Bühnen-Spalten.",
+      "template": "<tr>\n  <___>Zeit</___>\n  <th>Hauptbühne</th>\n  <th>Zeltbühne</th>\n</tr>\n<tr>\n  <td>18:00</td>\n  <td ___=\"2\">Pause – Foodtrucks öffnen</td>\n</tr>",
+      "accept": [
+        [
+          "th"
+        ],
+        [
+          "th"
+        ],
+        [
+          "colspan"
+        ]
+      ],
+      "hint": "Kopfzelle = table header. Spalten verbinden = column span."
+    },
+    {
+      "type": "code",
+      "task": "1. **Strukturiere** die Café-Seite: Überschrift und Slogan in den Kopfbereich, die Links direkt in eine Navigation, beide Abschnitte in den Hauptbereich, die Adresse in den Fußbereich. 2. **Ergänze** beim Katzenbild den fehlenden Alternativtext „Kater Mo auf dem Sofa“.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Katzencafé Schnurr</title>\n  </head>\n  <body>\n    <h1>Katzencafé Schnurr</h1>\n    <p>Kaffee, Kuchen und sechs Katzen.</p>\n    <p>\n      <a href=\"index.html\">Start</a> ·\n      <a href=\"karte.html\">Karte</a>\n    </p>\n\n    <h2>Unsere Katzen</h2>\n    <figure>\n      <img src=\"katze.svg\">\n      <figcaption>Mo, der Chef im Haus</figcaption>\n    </figure>\n\n    <h2>Öffnungszeiten</h2>\n    <table>\n      <tr>\n        <th>Tag</th>\n        <th>Zeit</th>\n      </tr>\n      <tr>\n        <td>Mo bis Fr</td>\n        <td>12 bis 19 Uhr</td>\n      </tr>\n      <tr>\n        <td>Sa</td>\n        <td>10 bis 20 Uhr</td>\n      </tr>\n    </table>\n\n    <p>Katzencafé Schnurr · Kirchgasse 3 · 74072 Heilbronn</p>\n  </body>\n</html>\n"
+      },
+      "hints": [
+        "Gleiches Muster wie bei der Clan-Seite: Kopf, Navigation, Hauptbereich, Fuß – und ein Attribut am Bild.",
+        "Der Alternativtext ist das Attribut, das vorgelesen wird, wenn das Bild fehlt: `alt=\"…\"` direkt im img-Tag.",
+        "Gerüst: `<header>` h1 + p `</header>`, `<nav>` zwei a `</nav>`, `<main>` Katzen + Öffnungszeiten `</main>`, `<footer>` Adresse `</footer>`."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Katzencafé Schnurr</title>\n  </head>\n  <body>\n    <header>\n      <h1>Katzencafé Schnurr</h1>\n      <p>Kaffee, Kuchen und sechs Katzen.</p>\n    </header>\n\n    <nav>\n      <a href=\"index.html\">Start</a>\n      <a href=\"karte.html\">Karte</a>\n    </nav>\n\n    <main>\n      <h2>Unsere Katzen</h2>\n      <figure>\n        <img src=\"katze.svg\" alt=\"Kater Mo auf dem Sofa\">\n        <figcaption>Mo, der Chef im Haus</figcaption>\n      </figure>\n\n      <h2>Öffnungszeiten</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Zeit</th>\n        </tr>\n        <tr>\n          <td>Mo bis Fr</td>\n          <td>12 bis 19 Uhr</td>\n        </tr>\n        <tr>\n          <td>Sa</td>\n          <td>10 bis 20 Uhr</td>\n        </tr>\n      </table>\n    </main>\n\n    <footer>\n      <p>Katzencafé Schnurr · Kirchgasse 3 · 74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "header > h1",
+          "expected": "Katzencafé Schnurr",
+          "label": "Die Hauptüberschrift liegt im Kopfbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "nav > a",
+          "count": 2,
+          "label": "Beide Links stehen direkt in der Navigation"
+        },
+        {
+          "type": "selector",
+          "selector": "main figure",
+          "count": 1,
+          "label": "Der Bild-Block liegt im Hauptbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "main table",
+          "count": 1,
+          "label": "Die Öffnungszeiten liegen im Hauptbereich"
+        },
+        {
+          "type": "attr",
+          "selector": "figure img",
+          "attr": "alt",
+          "expected": "Kater Mo auf dem Sofa",
+          "label": "Das Katzenbild hat den Alternativtext"
+        },
+        {
+          "type": "text",
+          "selector": "footer p",
+          "expected": "Katzencafé Schnurr · Kirchgasse 3 · 74072 Heilbronn",
+          "label": "Die Adresse steht im Fußbereich"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Elemente und Attribute zu.",
+      "pairs": [
+        [
+          "`<ol>`",
+          "nummerierte Liste"
+        ],
+        [
+          "`<th>`",
+          "Kopfzelle einer Tabelle"
+        ],
+        [
+          "`<figcaption>`",
+          "Bildunterschrift im Bild-Block"
+        ],
+        [
+          "`controls`",
+          "Bedienelemente für Audio und Video"
+        ],
+        [
+          "`<span>`",
+          "Inline-Container ohne eigene Bedeutung"
+        ]
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Bring das Line-up der Zeltbühne in die richtige Reihenfolge – innen liegt eine nummerierte Liste.",
+      "lines": [
+        "<ul>",
+        "  <li>Zeltbühne",
+        "    <ol>",
+        "      <li>Kiki Volt</li>",
+        "    </ol>",
+        "  </li>",
+        "</ul>"
+      ],
+      "explanation": "Die innere Liste liegt im Listenpunkt: Sie steht vor dessen schließendem Tag."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** im Hauptbereich der Turnierseite unter der Überschrift eine Tabelle mit der Klasse `plan`: Kopfzeile Zeit | Spiel, dann zwei Zeilen: 18:00 | Viertelfinale und 20:00 | Finale.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Stadtliga – Turnier</title>\n  </head>\n  <body>\n    <header>\n      <h1>Stadtliga-Turnier</h1>\n    </header>\n    <nav>\n      <a href=\"index.html\">Start</a>\n      <a href=\"teams.html\">Teams</a>\n    </nav>\n    <main>\n      <h2>Spielplan Samstag</h2>\n      <!-- hier kommt die Tabelle hin -->\n    </main>\n    <footer>\n      <p>Pixelpiraten e. V.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "hints": [
+        "Tabelle, Zeilen, Zellen – wie im Timetable. Die Klasse kommt als Attribut an das Tabellen-Element.",
+        "Kopfzellen: `<th>Was</th>`, Datenzellen: `<td>16:00 Uhr</td>` – jede Zeile in `<tr>` … `</tr>`.",
+        "Gerüst: `<table class=\"…\">`, eine Zeile mit zwei th, zwei Zeilen mit je zwei td, `</table>` – alles unter der Überschrift im Hauptbereich."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Stadtliga – Turnier</title>\n  </head>\n  <body>\n    <header>\n      <h1>Stadtliga-Turnier</h1>\n    </header>\n    <nav>\n      <a href=\"index.html\">Start</a>\n      <a href=\"teams.html\">Teams</a>\n    </nav>\n    <main>\n      <h2>Spielplan Samstag</h2>\n      <table class=\"plan\">\n        <tr>\n          <th>Zeit</th>\n          <th>Spiel</th>\n        </tr>\n        <tr>\n          <td>18:00</td>\n          <td>Viertelfinale</td>\n        </tr>\n        <tr>\n          <td>20:00</td>\n          <td>Finale</td>\n        </tr>\n      </table>\n    </main>\n    <footer>\n      <p>Pixelpiraten e. V.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "main table.plan",
+          "count": 1,
+          "label": "Die Tabelle mit der Klasse „plan“ liegt im Hauptbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr:first-child th",
+          "count": 2,
+          "label": "Die Kopfzeile hat zwei Kopfzellen"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr",
+          "count": 3,
+          "label": "Die Tabelle hat drei Zeilen"
+        },
+        {
+          "type": "text",
+          "selector": "table tr:last-child td:last-child",
+          "expected": "Finale",
+          "label": "Um 20:00 ist das Finale"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "main h2",
+            "main table"
+          ],
+          "label": "Die Tabelle steht unter der Überschrift"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Ein Audio-Player zeigt keine Abspiel-Knöpfe. Welches Attribut fehlt?",
+      "options": [
+        "`controls`",
+        "`alt`",
+        "`play`"
+      ],
+      "correct": 0,
+      "explanation": "Ohne controls zeichnet der Browser keine Bedienelemente – der Player ist dann unsichtbar. alt gehört zu Bildern, play gibt es als Attribut nicht."
+    },
+    {
+      "type": "explain",
+      "text": "Ab zur FUNKEN-Website: Die Programm-Seite bekommt dieselben Zonen wie die Startseite – Kopf, Navigation mit vier Links, Hauptbereich mit den drei Tabellen, Fuß mit der Adresse.\n\nNeu dabei: Der vierte Link ist eine Sprungmarke zur Freitags-Überschrift. Die braucht dafür eine id – genau wie „Line-up“ auf der Startseite. Der alte Rück-Link-Absatz entfällt."
+    },
+    {
+      "type": "code",
+      "etappe": "08-struktur-und-attribute/04-wiederholung"
+    }
+  ]
+}

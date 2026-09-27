@@ -1,0 +1,210 @@
+{
+  "id": "05-wiederholung",
+  "title": "Wiederholung",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Vier Selektoren und eine Pseudoklasse – Zeit, alles einmal durchzuspielen: Punkt, Raute, Komma, Leerzeichen und `:hover`. Dazu kommt Stoff aus dem Lichtpult, dem Ticket-Schalter, dem Timetable und dem Textbanner. Am Ende schließt du die Galerie-Seite ans Stylesheet an."
+    },
+    {
+      "type": "quiz",
+      "question": "Ein Absatz hat die id `einlass` und die Klasse `hinweis`. Oben steht `#einlass { color: red; }`, darunter `.hinweis { color: blue; }`. Welche Farbe?",
+      "options": [
+        "Rot – die id ist stärker als die Klasse",
+        "Blau – die spätere Regel gewinnt immer",
+        "Lila – beide Farben mischen sich"
+      ],
+      "correct": 0,
+      "explanation": "id schlägt Klasse, egal wo die Regeln stehen. Die Reihenfolge entscheidet nur bei Gleichstand."
+    },
+    {
+      "type": "fill",
+      "text": "Die Galerie-Seite soll das Stylesheet benutzen. **Vervollständige** die Verknüpfung im Kopfbereich.",
+      "template": "<___ rel=\"___\" href=\"style.css\">",
+      "accept": [
+        [
+          "link"
+        ],
+        [
+          "stylesheet"
+        ]
+      ],
+      "hint": "Das Leerelement für Verknüpfungen im head; das rel-Attribut nennt die Art der Datei – ein Stylesheet."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** das Anmeldeformular der Fahrschule: 1. Der Absende-Knopf bekommt im HTML die Klasse `absenden`. 2. Diese Klasse bekommt die Hintergrundfarbe `#ff6a00`, beim Überfahren mit der Maus `#d94f00`. 3. Alle Beschriftungen werden fett.",
+      "starter": {
+        "html": "<h2>Anmeldung Fahrstunde</h2>\n<form>\n  <label for=\"name\">Name</label>\n  <input type=\"text\" id=\"name\" name=\"name\">\n  <label for=\"email\">E-Mail</label>\n  <input type=\"email\" id=\"email\" name=\"email\">\n  <label for=\"klasse\">Führerscheinklasse</label>\n  <select id=\"klasse\" name=\"klasse\">\n    <option>B – Auto</option>\n    <option>A1 – Leichtkraftrad</option>\n  </select>\n  <button type=\"submit\">Termin anfragen</button>\n</form>\n",
+        "css": "body {\n  color: #1b1b2f;\n}\n\n/* Deine Regeln */\n"
+      },
+      "editable": [
+        "html",
+        "css"
+      ],
+      "hints": [
+        "HTML-Tab: das class-Attribut an den Knopf. CSS-Tab: drei Regeln – Beschriftungen, Klasse, Klasse mit hover.",
+        "Klasse im HTML: `class=\"…\"` als Attribut im öffnenden Tag. Im CSS mit Punkt ansprechen, hover mit Doppelpunkt anhängen.",
+        "Regeln: label mit Schriftstärke bold; Punkt-Klasse mit Hintergrundfarbe; Punkt-Klasse plus hover mit der zweiten Hintergrundfarbe."
+      ],
+      "solution": {
+        "html": "<h2>Anmeldung Fahrstunde</h2>\n<form>\n  <label for=\"name\">Name</label>\n  <input type=\"text\" id=\"name\" name=\"name\">\n  <label for=\"email\">E-Mail</label>\n  <input type=\"email\" id=\"email\" name=\"email\">\n  <label for=\"klasse\">Führerscheinklasse</label>\n  <select id=\"klasse\" name=\"klasse\">\n    <option>B – Auto</option>\n    <option>A1 – Leichtkraftrad</option>\n  </select>\n  <button type=\"submit\" class=\"absenden\">Termin anfragen</button>\n</form>\n",
+        "css": "body {\n  color: #1b1b2f;\n}\n\nlabel {\n  font-weight: bold;\n}\n\n.absenden {\n  background-color: #ff6a00;\n}\n\n.absenden:hover {\n  background-color: #d94f00;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "button.absenden",
+          "count": 1,
+          "label": "Der Absende-Knopf hat die Klasse „absenden“"
+        },
+        {
+          "type": "style",
+          "selector": ".absenden",
+          "prop": "background-color",
+          "expected": "#ff6a00",
+          "label": "Der Knopf ist orange (#ff6a00)"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "\\.absenden:hover\\s*\\{(\\s*|[^}]*[\\s;])background-color\\s*:\\s*#d94f00",
+          "label": "Der Knopf hat eine hover-Regel mit der Hintergrundfarbe #d94f00"
+        },
+        {
+          "type": "style",
+          "selector": "label",
+          "prop": "font-weight",
+          "expected": [
+            "700",
+            "bold"
+          ],
+          "label": "Die Beschriftungen sind fett"
+        },
+        {
+          "type": "selector",
+          "selector": "form label",
+          "count": 3,
+          "label": "Die drei Beschriftungen sind noch da"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die HTML-Elemente ihrer Bedeutung zu.",
+      "pairs": [
+        [
+          "`<th>`",
+          "Kopfzelle einer Tabelle"
+        ],
+        [
+          "`<td>`",
+          "Datenzelle einer Tabelle"
+        ],
+        [
+          "`<tr>`",
+          "Zeile einer Tabelle"
+        ],
+        [
+          "`<strong>`",
+          "starke Betonung"
+        ],
+        [
+          "`<em>`",
+          "leichte Betonung"
+        ],
+        [
+          "`<hr>`",
+          "Trennlinie"
+        ]
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Sortiere die Tabelle mit einer Kopfzeile: erst die Kopfzelle „Team“, dann „Punkte“.",
+      "lines": [
+        "<table>",
+        "  <tr>",
+        "    <th>Team</th>",
+        "    <th>Punkte</th>",
+        "  </tr>",
+        "</table>"
+      ],
+      "explanation": "Zeile in die Tabelle, Kopfzellen in die Zeile – Kopfzellen sind th statt td."
+    },
+    {
+      "type": "quiz",
+      "question": "Wie verknüpfst du die Beschriftung „Name“ mit dem Eingabefeld, das die id `name` hat?",
+      "options": [
+        "Mit einem label, dessen for-Attribut den Wert name hat",
+        "Mit einem Absatz direkt vor dem Feld",
+        "Mit einer Kopfzelle über dem Feld"
+      ],
+      "correct": 0,
+      "explanation": "label und for verbinden Text und Feld – ein Klick auf die Beschriftung setzt den Cursor ins Feld."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Behebe** zwei Fehler auf der Kader-Seite: Nur die stark betonten Wörter sollen orange sein, und der Absatz mit der Klasse `hinweis` soll fett sein. Stattdessen sind alle Absätze orange, und der Hinweis ist nicht fett.",
+      "starter": {
+        "html": "<h2>Kader – Saison 2027</h2>\n<p>Unser Kapitän <strong>Mo</strong> spielt seit 2022 im Team.</p>\n<p>Neu dabei: <strong>Aylin</strong> im Sturm und <strong>Samir</strong> in der Abwehr.</p>\n<p class=\"hinweis\">Training immer dienstags und donnerstags um 18 Uhr.</p>\n",
+        "css": "body {\n  color: #1b1b2f;\n}\n\nstrong, p {\n  color: #ff6a00;\n}\n\n#hinweis {\n  font-weight: bold;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Fehler 1 steckt im Selektor der orangen Regel: Wer soll getroffen werden – nur strong oder auch p?",
+        "Fehler 2: Der Hinweis hat im HTML eine Klasse, keine id. Welches Zeichen gehört vor den Namen?",
+        "Erste Regel: ein Element zu viel in der Gruppe. Zweite Regel: Das Zeichen vor hinweis passt nicht zum HTML."
+      ],
+      "solution": {
+        "css": "body {\n  color: #1b1b2f;\n}\n\nstrong {\n  color: #ff6a00;\n}\n\n.hinweis {\n  font-weight: bold;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "strong",
+          "prop": "color",
+          "expected": "#ff6a00",
+          "label": "Die betonten Namen sind orange"
+        },
+        {
+          "type": "style",
+          "selector": "p:not(.hinweis)",
+          "prop": "color",
+          "expected": "#1b1b2f",
+          "label": "Die Absätze sind wieder dunkel"
+        },
+        {
+          "type": "style",
+          "selector": ".hinweis",
+          "prop": "font-weight",
+          "expected": [
+            "700",
+            "bold"
+          ],
+          "label": "Der Hinweis ist fett"
+        },
+        {
+          "type": "style",
+          "selector": ".hinweis",
+          "prop": "color",
+          "expected": "#1b1b2f",
+          "label": "Der Hinweis ist dunkel, nicht orange"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Die Galerie-Seite hängt noch nicht am Stylesheet – sie sieht aus wie 2005. Zwei Dinge im HTML-Tab: die Verknüpfung mit style.css im Kopfbereich und die Klasse `highlight` für die Aftermovie-Überschrift. Dann im CSS-Tab die passende Regel: blau.\n\nZwei Tabs, zwei Dateien, ein Prüfen – so arbeitest du ab jetzt immer."
+    },
+    {
+      "type": "code",
+      "etappe": "11-selektoren/05-wiederholung"
+    }
+  ]
+}

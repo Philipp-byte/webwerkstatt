@@ -1,0 +1,212 @@
+{
+  "chapter": "14-flexbox",
+  "title": "Abnahme: Bühnen-Layout",
+  "intro": "Menü in einer Reihe, Foodtrucks als Kacheln, der Kopf leuchtet – jetzt sieht die Startseite endlich nach Festival aus! Bevor ich das dem Kollektiv zeige: Erklär mir, was da passiert, und bau mir so eine Kachel-Reihe einmal ohne Vorlage.",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "css.flex",
+      "type": "quiz",
+      "question": "Vier Kacheln sollen nebeneinander stehen. Welches Element bekommt `display: flex`?",
+      "options": [
+        "Der Container, der die vier Kacheln umschließt",
+        "Jede einzelne Kachel",
+        "Das body-Element"
+      ],
+      "correct": 0,
+      "explanation": "Flexbox wird am Eltern-Element eingeschaltet; die Kacheln werden dadurch zu Flex-Kindern."
+    },
+    {
+      "konzept": "css.justify-content",
+      "type": "pair",
+      "text": "Ordne die Zeilen ihrer Wirkung zu (Richtung `row`).",
+      "pairs": [
+        [
+          "`justify-content: center`",
+          "Kinder waagerecht in der Mitte"
+        ],
+        [
+          "`justify-content: space-between`",
+          "erstes Kind links, letztes rechts"
+        ],
+        [
+          "`align-items: center`",
+          "Kinder senkrecht mittig"
+        ],
+        [
+          "`align-items: flex-end`",
+          "Kinder unten am Ende der Querachse"
+        ]
+      ]
+    },
+    {
+      "konzept": "css.flex-wrap",
+      "type": "fill",
+      "text": "Die Foodtruck-Kacheln dürfen in die nächste Zeile umbrechen.",
+      "template": ".foodtrucks {\n  display: flex;\n  flex-wrap: ___;\n  gap: 12px;\n}",
+      "accept": [
+        "wrap"
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Angebots-Kacheln des Pizza-Lieferdienstes: Die Kacheln stehen in einem Flex-Container mit 16 Pixel Abstand, dürfen umbrechen und wachsen alle gleichmäßig, bis die Reihe voll ist.",
+      "starter": {
+        "html": "<h2>Unsere Angebote</h2>\n<div class=\"angebote\">\n  <div class=\"angebot\">Margherita<br>7,50 €</div>\n  <div class=\"angebot\">Salami<br>8,50 €</div>\n  <div class=\"angebot\">Veggie<br>9,00 €</div>\n  <div class=\"angebot\">Familienpizza<br>16,00 €</div>\n</div>\n",
+        "css": ".angebote {\n  /* Kachel-Reihe */\n}\n\n.angebot {\n  border: 2px solid #ff7a45;\n  border-radius: 8px;\n  padding: 16px;\n  text-align: center;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "solution": {
+        "css": ".angebote {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 16px;\n}\n\n.angebot {\n  border: 2px solid #ff7a45;\n  border-radius: 8px;\n  padding: 16px;\n  text-align: center;\n  flex: 1;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".angebote",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Die Angebote sind ein Flex-Container"
+        },
+        {
+          "type": "style",
+          "selector": ".angebote",
+          "prop": "flex-wrap",
+          "expected": "wrap",
+          "label": "Die Kacheln dürfen umbrechen"
+        },
+        {
+          "type": "style",
+          "selector": ".angebote",
+          "prop": "column-gap",
+          "expected": "16px",
+          "label": "Zwischen den Kacheln sind 16 Pixel Abstand"
+        },
+        {
+          "type": "style",
+          "selector": ".angebot",
+          "prop": "flex-grow",
+          "expected": "1",
+          "label": "Jede Kachel wächst gleichmäßig"
+        }
+      ]
+    },
+    {
+      "konzept": "css.padding",
+      "type": "quiz",
+      "question": "Welche Eigenschaft schafft Abstand zwischen Rahmen und Text **innerhalb** einer Karte?",
+      "options": [
+        "`padding`",
+        "`margin`",
+        "`gap`"
+      ],
+      "correct": 0,
+      "explanation": "`padding` ist der Innenabstand. `margin` ist außen, `gap` liegt zwischen Flex-Kindern."
+    },
+    {
+      "konzept": "css.flex-direction",
+      "type": "bug",
+      "text": "Die Nachrichten sollen untereinander stehen, stehen aber nebeneinander. Welche Zeile ist falsch?",
+      "lines": [
+        ".chat {",
+        "  display: flex;",
+        "  flex-direction: colum;",
+        "  gap: 8px;",
+        "}"
+      ],
+      "line": 2,
+      "explanation": "Der Wert heißt `column`. Tippfehler im Wert – die Zeile wird ignoriert."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** die Kopfzeile des Sneaker-Shops und behebe zwei Fehler: Logo und Menü sollen in einer Reihe stehen – Logo ganz links, Menü ganz rechts, beide mittig auf gleicher Höhe. Stattdessen stehen sie untereinander.",
+      "starter": {
+        "html": "<header class=\"kopf\">\n  <img class=\"logo\" src=\"sneaker.svg\" alt=\"Logo des Sneaker-Shops\">\n  <nav class=\"menue\">\n    <a href=\"#neu\">Neu</a>\n    <a href=\"#sale\">Sale</a>\n    <a href=\"#warenkorb\">Warenkorb</a>\n  </nav>\n</header>\n",
+        "css": ".kopf {\n  dispaly: flex;\n  justify-content: space-betwen;\n  align-items: center;\n  background-color: #1b1b2f;\n  padding: 12px 24px;\n}\n\n.logo {\n  width: 56px;\n}\n\n.menue a {\n  color: #fff7e8;\n  margin-left: 16px;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "solution": {
+        "css": ".kopf {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  background-color: #1b1b2f;\n  padding: 12px 24px;\n}\n\n.logo {\n  width: 56px;\n}\n\n.menue a {\n  color: #fff7e8;\n  margin-left: 16px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".kopf",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Logo und Menü stehen in einer Reihe"
+        },
+        {
+          "type": "style",
+          "selector": ".kopf",
+          "prop": "justify-content",
+          "expected": "space-between",
+          "label": "Logo ganz links, Menü ganz rechts"
+        },
+        {
+          "type": "style",
+          "selector": ".kopf",
+          "prop": "align-items",
+          "expected": "center",
+          "label": "Beide sind mittig auf gleicher Höhe"
+        },
+        {
+          "type": "style",
+          "selector": ".kopf",
+          "prop": "background-color",
+          "expected": "#1b1b2f",
+          "label": "Die Kopfzeile bleibt dunkel"
+        }
+      ]
+    },
+    {
+      "konzept": "html.alt",
+      "type": "quiz",
+      "question": "Wozu dient das Attribut `alt` bei einem Bild?",
+      "options": [
+        "Es beschreibt das Bild, falls es nicht lädt oder vorgelesen wird",
+        "Es legt die Breite des Bildes fest",
+        "Es verlinkt das Bild mit einer anderen Seite"
+      ],
+      "correct": 0,
+      "explanation": "Der Alternativtext ersetzt das Bild, wenn es fehlt, und wird von Screenreadern vorgelesen."
+    },
+    {
+      "konzept": "css.text-align",
+      "type": "fill",
+      "text": "Der Text im Fußbereich soll zentriert sein.",
+      "template": "footer {\n  text-align: ___;\n}",
+      "accept": [
+        "center"
+      ]
+    },
+    {
+      "konzept": "css.background",
+      "type": "quiz",
+      "question": "Welche Eigenschaft färbt den Hintergrund des Kopfbereichs dunkel?",
+      "options": [
+        "`background-color`",
+        "`color`",
+        "`border-color`"
+      ],
+      "correct": 0,
+      "explanation": "`background-color` färbt die Fläche. `color` ist die Schriftfarbe, `border-color` die Rahmenfarbe."
+    },
+    {
+      "konzept": "css.align-items",
+      "type": "quiz",
+      "question": "Eine Profilkarte hat `flex-direction: column`. Welche Zeile zentriert Bild und Name horizontal?",
+      "options": [
+        "`align-items: center;`",
+        "`justify-content: center;`",
+        "`flex-wrap: wrap;`"
+      ],
+      "correct": 0,
+      "explanation": "In Spaltenrichtung liegt die Querachse waagerecht – horizontal zentrieren übernimmt deshalb `align-items`."
+    }
+  ]
+}

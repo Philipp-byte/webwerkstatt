@@ -1,0 +1,216 @@
+{
+  "chapter": "09-formulare",
+  "title": "Abnahme: Ticket-Schalter",
+  "intro": "Der Ticket-Schalter ist offen! Bevor ich den Link rausschicke, will ich sehen, dass ihr Formulare wirklich könnt – Felder, Beschriftungen, Auswahl, Knopf, alles. Und dass die Preistabelle nicht aus Versehen wieder verschwindet.",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "html.label",
+      "type": "quiz",
+      "question": "Wozu verbindet man ein Label über `for` mit der id eines Feldes?",
+      "options": [
+        "Klick aufs Label aktiviert das Feld, Screenreader lesen die Beschriftung vor",
+        "Das Feld wird dadurch zum Pflichtfeld",
+        "Der Server bekommt so den Text des Labels"
+      ],
+      "correct": 0,
+      "explanation": "Die Verbindung hilft beim Bedienen: Klick auf die Beschriftung springt ins Feld, Vorlese-Programme wissen, wozu das Feld gehört."
+    },
+    {
+      "konzept": "html.input",
+      "type": "fill",
+      "text": "Das Zahlenfeld nimmt nur Werte von 1 bis 4 an.",
+      "template": "<input type=\"___\" id=\"anzahl\" name=\"anzahl\" min=\"1\" ___=\"4\">",
+      "accept": [
+        [
+          "number"
+        ],
+        [
+          "max"
+        ]
+      ]
+    },
+    {
+      "konzept": "html.semantik",
+      "type": "pair",
+      "text": "Ordne die Seitenzonen zu.",
+      "pairs": [
+        [
+          "`<header>`",
+          "Kopfbereich"
+        ],
+        [
+          "`<nav>`",
+          "Navigation"
+        ],
+        [
+          "`<main>`",
+          "Hauptbereich"
+        ],
+        [
+          "`<footer>`",
+          "Fußbereich"
+        ]
+      ]
+    },
+    {
+      "konzept": "html.select",
+      "type": "order",
+      "text": "Sortiere die Auswahlliste für den Festivaltag – Freitag vor Samstag.",
+      "lines": [
+        "<label for=\"tag\">Tag</label>",
+        "<select id=\"tag\" name=\"tag\">",
+        "  <option value=\"fr\">Freitag</option>",
+        "  <option value=\"sa\">Samstag</option>",
+        "</select>"
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** im Formular: 1. ein beschriftetes E-Mail-Feld „E-Mail“ (id und Name `email`) als Pflichtfeld, 2. zwei Optionsfelder mit dem gemeinsamen Namen `tag` – „Samstag“ (Wert samstag) und „Sonntag“ (Wert sonntag), jeweils beschriftet, 3. einen Knopf „Anmelden“, der das Formular absendet.",
+      "starter": {
+        "html": "<h1>Anmeldung E-Sport-Turnier</h1>\n<p>Zwei Spieltage, ein Pokal. Melde dich an:</p>\n<form>\n</form>\n"
+      },
+      "solution": {
+        "html": "<h1>Anmeldung E-Sport-Turnier</h1>\n<p>Zwei Spieltage, ein Pokal. Melde dich an:</p>\n<form>\n  <label for=\"email\">E-Mail</label>\n  <input type=\"email\" id=\"email\" name=\"email\" required>\n\n  <input type=\"radio\" id=\"samstag\" name=\"tag\" value=\"samstag\">\n  <label for=\"samstag\">Samstag</label>\n  <input type=\"radio\" id=\"sonntag\" name=\"tag\" value=\"sonntag\">\n  <label for=\"sonntag\">Sonntag</label>\n\n  <button type=\"submit\">Anmelden</button>\n</form>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "label[for=\"email\"]",
+          "expected": "E-Mail",
+          "label": "Die Beschriftung „E-Mail“ gehört zum E-Mail-Feld"
+        },
+        {
+          "type": "attr",
+          "selector": "input#email[name=\"email\"][type=\"email\"]",
+          "attr": "required",
+          "present": true,
+          "label": "Das E-Mail-Feld hat den Typ email und ist Pflicht"
+        },
+        {
+          "type": "selector",
+          "selector": "input[type=\"radio\"][name=\"tag\"]",
+          "count": 2,
+          "label": "Zwei Optionsfelder gehören zur Gruppe „tag“"
+        },
+        {
+          "type": "attr",
+          "selector": "input[type=\"radio\"][name=\"tag\"]",
+          "attr": "value",
+          "expected": "samstag",
+          "label": "Das erste Optionsfeld hat den Wert samstag"
+        },
+        {
+          "type": "text",
+          "selector": "label",
+          "expected": "Sonntag",
+          "any": true,
+          "label": "Die Beschriftung „Sonntag“ ist da"
+        },
+        {
+          "type": "text",
+          "selector": "form button[type=\"submit\"]",
+          "expected": "Anmelden",
+          "label": "Der Knopf „Anmelden“ schickt das Formular ab"
+        }
+      ]
+    },
+    {
+      "konzept": "web.http",
+      "type": "quiz",
+      "question": "Was schickt der Browser beim Absenden eines Formulars an den Server?",
+      "options": [
+        "Eine Anfrage mit den Eingaben als name=wert-Paare",
+        "Die komplette HTML-Datei der Seite",
+        "Nur den Text des Absende-Knopfs"
+      ],
+      "correct": 0,
+      "explanation": "Absenden ist eine Anfrage wie beim Seitenaufruf – nur mit den Eingaben im Gepäck. Ein Programm auf dem Server nimmt sie an."
+    },
+    {
+      "konzept": "html.radio-checkbox",
+      "type": "bug",
+      "text": "Man kann „Ja“ und „Nein“ gleichzeitig wählen. Welche Zeile ist falsch?",
+      "lines": [
+        "<input type=\"radio\" id=\"ja\" name=\"newsletter\" value=\"ja\">",
+        "<label for=\"ja\">Ja</label>",
+        "<input type=\"radio\" id=\"nein\" name=\"newsleter\" value=\"nein\">",
+        "<label for=\"nein\">Nein</label>"
+      ],
+      "line": 2,
+      "explanation": "Der name ist falsch geschrieben – „newsleter“ und „newsletter“ sind zwei Gruppen."
+    },
+    {
+      "konzept": "html.th",
+      "type": "fill",
+      "text": "Vervollständige die Kopfzelle der Preistabelle.",
+      "template": "<tr>\n  <th>Ticket</th>\n  <___>Preis</th>\n</tr>",
+      "accept": [
+        "th"
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** die Verlosung: Schwarz und Weiß lassen sich gleichzeitig wählen, und der Knopf „Teilnehmen“ ist verschwunden – stattdessen steht Code im Textbereich. Am Ende gibt es genau eine Farbwahl und einen funktionierenden Knopf.",
+      "starter": {
+        "html": "<h1>Sneaker-Verlosung</h1>\n<p>Wir verlosen ein Paar Retro Runner. Mitmachen:</p>\n<form>\n  <label for=\"name\">Name</label>\n  <input type=\"text\" id=\"name\" name=\"name\" required>\n\n  <label for=\"groesse\">Schuhgröße</label>\n  <input type=\"number\" id=\"groesse\" name=\"groesse\" min=\"36\" max=\"48\">\n\n  <input type=\"radio\" id=\"schwarz\" name=\"farbe\" value=\"schwarz\">\n  <label for=\"schwarz\">Schwarz</label>\n  <input type=\"radio\" id=\"weiss\" name=\"farben\" value=\"weiss\">\n  <label for=\"weiss\">Weiß</label>\n\n  <label for=\"warum\">Warum du?</label>\n  <textarea id=\"warum\" name=\"warum\">\n\n  <button type=\"submit\">Teilnehmen</button>\n</form>\n"
+      },
+      "solution": {
+        "html": "<h1>Sneaker-Verlosung</h1>\n<p>Wir verlosen ein Paar Retro Runner. Mitmachen:</p>\n<form>\n  <label for=\"name\">Name</label>\n  <input type=\"text\" id=\"name\" name=\"name\" required>\n\n  <label for=\"groesse\">Schuhgröße</label>\n  <input type=\"number\" id=\"groesse\" name=\"groesse\" min=\"36\" max=\"48\">\n\n  <input type=\"radio\" id=\"schwarz\" name=\"farbe\" value=\"schwarz\">\n  <label for=\"schwarz\">Schwarz</label>\n  <input type=\"radio\" id=\"weiss\" name=\"farbe\" value=\"weiss\">\n  <label for=\"weiss\">Weiß</label>\n\n  <label for=\"warum\">Warum du?</label>\n  <textarea id=\"warum\" name=\"warum\"></textarea>\n\n  <button type=\"submit\">Teilnehmen</button>\n</form>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "input[type=\"radio\"][name=\"farbe\"]",
+          "count": 2,
+          "label": "Beide Farben gehören zur Gruppe „farbe“ – nur eine ist wählbar"
+        },
+        {
+          "type": "text",
+          "selector": "form button[type=\"submit\"]",
+          "expected": "Teilnehmen",
+          "label": "Der Knopf „Teilnehmen“ ist wieder da"
+        },
+        {
+          "type": "selector",
+          "selector": "textarea#warum[name=\"warum\"]",
+          "count": 1,
+          "label": "Der Textbereich „warum“ ist noch da"
+        },
+        {
+          "type": "attr",
+          "selector": "input#groesse",
+          "attr": "max",
+          "expected": "48",
+          "label": "Das Größenfeld ist unverändert"
+        }
+      ]
+    },
+    {
+      "konzept": "html.a-intern",
+      "type": "quiz",
+      "question": "Der Fußbereich der Tickets-Seite soll einen Link zur Startseite bekommen. Welcher Link ist richtig?",
+      "options": [
+        "`<a href=\"index.html\">Startseite</a>`",
+        "`<a href=\"https://index.html\">Startseite</a>`",
+        "`<a link=\"index.html\">Startseite</a>`"
+      ],
+      "correct": 0,
+      "explanation": "Eigene Seiten verlinkst du mit dem Dateinamen im Attribut href – ohne https://."
+    },
+    {
+      "konzept": "html.textarea",
+      "type": "quiz",
+      "question": "Welche Aussage über `<textarea>` stimmt?",
+      "options": [
+        "Es braucht öffnenden und schließenden Tag; dazwischen steht die Vorbelegung",
+        "Es ist ein leeres Element wie input",
+        "Es ist ein input mit dem Typ textarea"
+      ],
+      "correct": 0,
+      "explanation": "textarea ist ein eigenes Element mit zwei Tags. Steht Text dazwischen, ist er im Feld vorbelegt."
+    }
+  ]
+}

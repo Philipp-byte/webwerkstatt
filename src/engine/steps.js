@@ -298,7 +298,7 @@ function renderOrder(karte, step, api) {
       karte.appendChild(rueckmeldung('ok', `<strong>Richtig sortiert!</strong> ${step.explanation ? md(step.explanation) : ''}`));
       api.solved({});
     } else {
-      karte.appendChild(rueckmeldung('fehler', 'Rot markierte Zeilen stehen noch an der falschen Stelle. Denk an öffnende und schließende Tags.'));
+      karte.appendChild(rueckmeldung('fehler', 'Rot markierte Zeilen stehen noch an der falschen Stelle – schau dir die Reihenfolge noch einmal an.'));
       api.wrong();
     }
   });

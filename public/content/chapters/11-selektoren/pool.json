@@ -1,0 +1,279 @@
+{
+  "chapter": "11-selektoren",
+  "fragen": [
+    {
+      "id": "11-01",
+      "konzept": "css.sel-klasse",
+      "type": "quiz",
+      "question": "Welcher Selektor trifft alle Elemente mit `class=\"neu\"`?",
+      "options": [
+        "`.neu`",
+        "`#neu`",
+        "`neu`"
+      ],
+      "correct": 0,
+      "explanation": "Punkt = Klasse. Die Raute ist für ids, ohne Zeichen sucht der Browser ein Element namens neu."
+    },
+    {
+      "id": "11-02",
+      "konzept": "css.sel-id",
+      "type": "quiz",
+      "question": "Welcher Selektor trifft das Element mit `id=\"oben\"`?",
+      "options": [
+        "`#oben`",
+        "`.oben`",
+        "`id oben`"
+      ],
+      "correct": 0,
+      "explanation": "Raute = id. Der Punkt wäre eine Klasse."
+    },
+    {
+      "id": "11-03",
+      "konzept": "css.sel-gruppe",
+      "type": "fill",
+      "text": "Eine Regel soll beide Überschriftenebenen färben. Welches Zeichen fehlt?",
+      "template": "h1___ h2 {\n  color: #d94f00;\n}",
+      "accept": [
+        ","
+      ],
+      "hint": "Gruppen-Selektor: Die Selektoren werden durch ein Satzzeichen getrennt."
+    },
+    {
+      "id": "11-04",
+      "konzept": "css.sel-nachfahre",
+      "type": "quiz",
+      "question": "Was trifft der Selektor `footer a`?",
+      "options": [
+        "Alle Links innerhalb des Fußbereichs",
+        "Den Fußbereich und alle Links",
+        "Alle Links mit der Klasse footer"
+      ],
+      "correct": 0,
+      "explanation": "Leerzeichen = „innerhalb von“. Für „Fußbereich und alle Links“ bräuchte es ein Komma."
+    },
+    {
+      "id": "11-05",
+      "konzept": "css.hover",
+      "type": "quiz",
+      "question": "Wann gilt die Regel `a:hover`?",
+      "options": [
+        "Solange die Maus über dem Link ist",
+        "Nach dem Klick auf den Link",
+        "Immer, auch ohne Maus"
+      ],
+      "correct": 0,
+      "explanation": "hover = Maus darüber. Danach gilt wieder die normale Regel."
+    },
+    {
+      "id": "11-06",
+      "konzept": "css.sel-element",
+      "type": "quiz",
+      "question": "Was trifft der Selektor `li`?",
+      "options": [
+        "Alle Listenpunkte der Seite",
+        "Nur den ersten Listenpunkt",
+        "Alle Elemente mit der Klasse li"
+      ],
+      "correct": 0,
+      "explanation": "Ein Element-Selektor trifft jedes Element dieses Typs."
+    },
+    {
+      "id": "11-07",
+      "konzept": "css.sel-klasse",
+      "type": "bug",
+      "text": "Der Absatz mit `class=\"hinweis\"` wird nicht rot. Welche Zeile ist falsch?",
+      "lines": [
+        "hinweis {",
+        "  color: red;",
+        "  font-weight: bold;",
+        "}"
+      ],
+      "line": 0,
+      "explanation": "Klassen brauchen den Punkt: `.hinweis {`."
+    },
+    {
+      "id": "11-08",
+      "konzept": "css.sel-id",
+      "type": "bug",
+      "text": "Die Überschrift mit `id=\"lineup\"` bleibt schwarz. Welche Zeile ist falsch?",
+      "lines": [
+        ".lineup {",
+        "  color: #0b7dd6;",
+        "}"
+      ],
+      "line": 0,
+      "explanation": "Eine id wird mit Raute angesprochen: `#lineup`. Der Punkt sucht eine Klasse."
+    },
+    {
+      "id": "11-09",
+      "konzept": "css.sel-nachfahre",
+      "type": "bug",
+      "text": "Alle Links der Seite sind gelb – nur die in der Navigation sollten es sein. Welche Zeile ist falsch?",
+      "lines": [
+        "nav, a {",
+        "  color: #ffd23f;",
+        "}"
+      ],
+      "line": 0,
+      "explanation": "Komma = Gruppe (nav und alle a). Für Links innerhalb von nav: Leerzeichen – `nav a`."
+    },
+    {
+      "id": "11-10",
+      "konzept": "css.hover",
+      "type": "bug",
+      "text": "Der Link soll beim Überfahren orange werden, aber nichts passiert. Welche Zeile ist falsch?",
+      "lines": [
+        "a hover {",
+        "  color: #ff6a00;",
+        "}"
+      ],
+      "line": 0,
+      "explanation": "Die Pseudoklasse braucht den Doppelpunkt, ohne Leerzeichen: `a:hover`."
+    },
+    {
+      "id": "11-11",
+      "konzept": "css.sel-gruppe",
+      "type": "pair",
+      "text": "Ordne die Selektoren zu.",
+      "pairs": [
+        [
+          "`h1, h2`",
+          "Gruppe: alle h1 und alle h2"
+        ],
+        [
+          "`nav a`",
+          "Links innerhalb der Navigation"
+        ],
+        [
+          "`.neu`",
+          "alle Elemente mit der Klasse neu"
+        ],
+        [
+          "`#oben`",
+          "das Element mit der id oben"
+        ]
+      ]
+    },
+    {
+      "id": "11-12",
+      "konzept": "css.sel-nachfahre",
+      "type": "order",
+      "text": "Sortiere so, dass `nav a` genau einen Link trifft – die Navigation zuerst.",
+      "lines": [
+        "<nav>",
+        "  <a href=\"index.html\">Start</a>",
+        "</nav>",
+        "<p>Fragen? <a href=\"hilfe.html\">Hilfe</a></p>"
+      ],
+      "explanation": "Nur der Link innerhalb von nav wird getroffen – der im Absatz nicht."
+    },
+    {
+      "id": "11-13",
+      "konzept": "css.sel-id",
+      "type": "order",
+      "text": "Sortiere die Selektoren von schwach nach stark.",
+      "lines": [
+        "p",
+        ".hinweis",
+        "#einlass"
+      ],
+      "explanation": "Element < Klasse < id."
+    },
+    {
+      "id": "11-14",
+      "konzept": "css.hover",
+      "type": "fill",
+      "text": "Der Link soll orange werden, solange die Maus darüber ist. Vervollständige.",
+      "template": "a___ {\n  color: #ff6a00;\n}",
+      "accept": [
+        ":hover"
+      ],
+      "hint": "Pseudoklasse mit Doppelpunkt."
+    },
+    {
+      "id": "11-15",
+      "konzept": "css.sel-klasse",
+      "type": "fill",
+      "text": "Alle Elemente mit der Klasse sieg werden grün. Welches Zeichen fehlt?",
+      "template": "___sieg {\n  color: #1a8f3c;\n}",
+      "accept": [
+        "."
+      ],
+      "hint": "Das Zeichen für Klassen."
+    },
+    {
+      "id": "11-16",
+      "konzept": "css.sel-element",
+      "type": "fill",
+      "text": "Alle Kopfzellen aller Tabellen sollen orange werden. Welcher Selektor?",
+      "template": "___ {\n  color: #ff6a00;\n}",
+      "accept": [
+        "th"
+      ],
+      "hint": "Der Elementname der Kopfzelle, ohne spitze Klammern."
+    },
+    {
+      "id": "11-17",
+      "konzept": "css.sel-gruppe",
+      "type": "bug",
+      "text": "h1 und h2 sollen beide orange sein, aber keine der beiden ist es. Welche Zeile ist falsch?",
+      "lines": [
+        "h1 h2 {",
+        "  color: #ff6a00;",
+        "}"
+      ],
+      "line": 0,
+      "explanation": "Leerzeichen heißt „h2 innerhalb von h1“ – das gibt es nicht. Gruppe = Komma: `h1, h2`."
+    },
+    {
+      "id": "11-18",
+      "konzept": "css.hover",
+      "type": "quiz",
+      "question": "Warum funktioniert `:hover` auf dem Handy nicht?",
+      "options": [
+        "Es gibt keine Maus, die über Elemente fahren kann",
+        "Handys können kein CSS",
+        "hover geht nur bei Links"
+      ],
+      "correct": 0,
+      "explanation": "Ohne Maus gibt es kein Darüberfahren. Wichtiges darf nie nur per hover erreichbar sein."
+    },
+    {
+      "id": "11-19",
+      "konzept": "css.sel-klasse",
+      "type": "quiz",
+      "question": "Oben steht `li { color: red; }`, darunter `.sieg { color: green; }`. Welche Farbe hat ein Listenpunkt mit der Klasse sieg?",
+      "options": [
+        "Grün – Klasse schlägt Element",
+        "Rot – die erste Regel gewinnt",
+        "Rot – Element schlägt Klasse"
+      ],
+      "correct": 0,
+      "explanation": "Rangfolge: id schlägt Klasse schlägt Element. Die Reihenfolge zählt nur bei Gleichstand."
+    },
+    {
+      "id": "11-20",
+      "konzept": "css.sel-element",
+      "type": "pair",
+      "text": "Welcher Selektor trifft was?",
+      "pairs": [
+        [
+          "`p`",
+          "alle Absätze"
+        ],
+        [
+          "`th`",
+          "alle Kopfzellen"
+        ],
+        [
+          "`a`",
+          "alle Links"
+        ],
+        [
+          "`figcaption`",
+          "alle Bildunterschriften"
+        ]
+      ]
+    }
+  ]
+}

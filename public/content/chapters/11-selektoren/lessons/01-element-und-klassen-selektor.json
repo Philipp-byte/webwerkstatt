@@ -1,0 +1,226 @@
+{
+  "id": "01-element-und-klassen-selektor",
+  "title": "Element- und Klassen-Selektor",
+  "konzepte": [
+    "css.sel-element",
+    "css.sel-klasse"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Bisher hast du Regeln für `h1`, `a` oder `body` geschrieben. Das sind **Element-Selektoren**: Sie treffen **alle** Elemente dieses Typs – jede Überschrift, jeden Link.\n\nSam will aber nur *einen* Absatz hervorheben: den Einlass-Hinweis. Mit `p` würdest du alle Absätze ändern. Du brauchst einen genaueren Spot – den **Klassen-Selektor**. Er trifft nur Elemente, die eine bestimmte Klasse tragen.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"14\" y=\"38\" fill=\"#38c7ff\" font-family=\"monospace\" font-size=\"14\">p { }</text><text x=\"14\" y=\"56\" fill=\"#eef2ff\">trifft alle Absätze</text><text x=\"14\" y=\"118\" fill=\"#ffd84d\" font-family=\"monospace\" font-size=\"14\">.hinweis { }</text><text x=\"14\" y=\"136\" fill=\"#eef2ff\">trifft nur die Klasse</text><path d=\"M62 34 L160 31 M62 34 L160 79 M62 34 L160 127\" stroke=\"#38c7ff\" stroke-width=\"2\" fill=\"none\"/><path d=\"M126 114 L160 84\" stroke=\"#ffd84d\" stroke-width=\"3\" fill=\"none\"/><rect x=\"160\" y=\"16\" width=\"150\" height=\"30\" rx=\"6\" fill=\"#e8ecf7\"/><text x=\"235\" y=\"36\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\">&lt;p&gt;</text><rect x=\"160\" y=\"64\" width=\"150\" height=\"30\" rx=\"6\" fill=\"#e8ecf7\" stroke=\"#ffd84d\" stroke-width=\"3\"/><text x=\"235\" y=\"84\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\">&lt;p class=\"hinweis\"&gt;</text><rect x=\"160\" y=\"112\" width=\"150\" height=\"30\" rx=\"6\" fill=\"#e8ecf7\"/><text x=\"235\" y=\"132\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\">&lt;p&gt;</text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Eine Klasse vergibst du im HTML, das kennst du aus Kapitel 08: `<p class=\"hinweis\">`. Im CSS sprichst du sie mit einem **Punkt** vor dem Namen an:\n\n```css\n.hinweis {\n  color: #d94f00;\n}\n```\n\nDer Punkt bedeutet: „Alle Elemente mit dieser Klasse.“ Ob Absatz, Überschrift oder Listenpunkt ist egal – hat das Element die Klasse, trifft die Regel. Und die Klasse darf auf beliebig vielen Elementen stehen."
+    },
+    {
+      "type": "example",
+      "text": "Zwei Regeln, eine Liste: `li` färbt alle Ergebnisse grau, `.sieg` nur die Siege grün. **Ändere** die Farbe in `.sieg` und beobachte, welche Zeilen sich ändern. Dann **gib** im HTML einem weiteren Listenpunkt die Klasse `sieg`.",
+      "html": "<h2>Hallenturnier – unsere Ergebnisse</h2>\n<ul>\n  <li class=\"sieg\">3:1 gegen Team Nord</li>\n  <li>1:2 gegen Team Süd</li>\n  <li class=\"sieg\">2:0 gegen Team West</li>\n  <li>0:0 gegen Team Ost</li>\n</ul>\n",
+      "css": "li {\n  color: #6b6b7a;\n}\n\n.sieg {\n  color: #1a8f3c;\n}\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Im HTML steht `<li class=\"neu\">Bubble Tea</li>`. Welcher Selektor trifft genau die Elemente mit dieser Klasse?",
+      "options": [
+        "`.neu`",
+        "`neu`",
+        "`class.neu`"
+      ],
+      "correct": 0,
+      "explanation": "Der Punkt sagt „Klasse“. Ohne Punkt sucht der Browser ein Element namens neu – das gibt es nicht. Das Wort class gehört ins HTML, nicht in den Selektor."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Ergebnisliste des Clan-Turniers: Alle Zeilen mit der Klasse `sieg` bekommen die Farbe `#1a8f3c`. Die anderen Ergebnisse bleiben, wie sie sind.",
+      "starter": {
+        "html": "<h2>Clan-Turnier – Ergebnisse</h2>\n<ul>\n  <li class=\"sieg\">13:7 gegen Nachtfalken</li>\n  <li>9:13 gegen Pixelpiraten</li>\n  <li class=\"sieg\">13:4 gegen Team Lava</li>\n  <li>11:13 gegen Neonwölfe</li>\n</ul>\n",
+        "css": "body {\n  color: #1b1b2f;\n}\n\n/* Hier kommt deine Regel für die Siege */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Nur die Zeilen mit der Klasse sollen sich ändern – also kein Element-Selektor, sondern ein Klassen-Selektor.",
+        "Klassen sprichst du mit Punkt an. Beispiel aus einem anderen Kontext: `.neu { color: red; }` färbt alles mit der Klasse neu rot.",
+        "Punkt, Klassenname aus der Aufgabe, geschweifte Klammern – darin die Farb-Eigenschaft mit dem Wert aus der Aufgabe."
+      ],
+      "solution": {
+        "css": "body {\n  color: #1b1b2f;\n}\n\n.sieg {\n  color: #1a8f3c;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".sieg",
+          "prop": "color",
+          "expected": "#1a8f3c",
+          "label": "Die Siege sind grün (#1a8f3c)"
+        },
+        {
+          "type": "style",
+          "selector": "li:not(.sieg)",
+          "prop": "color",
+          "expected": "#1b1b2f",
+          "label": "Die anderen Ergebnisse bleiben dunkel"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Farbe allein reicht oft nicht – ein Hinweis soll auch **fett** sein. Die Eigenschaft für die Schriftstärke heißt `font-weight`, der Wert für fett ist `bold`:\n\n```css\n.wichtig {\n  font-weight: bold;\n}\n```\n\nDas Gegenteil ist `normal`. Farbe und Schriftstärke kombinierst du in derselben Regel: jede Deklaration in eine eigene Zeile, jede endet mit einem Semikolon."
+    },
+    {
+      "type": "fill",
+      "text": "Die Regel soll alle Elemente mit der Klasse `kapitaen` fett machen. **Vervollständige** Selektor und Wert.",
+      "template": "___ {\n  font-weight: ___;\n}",
+      "accept": [
+        [
+          ".kapitaen"
+        ],
+        [
+          "bold"
+        ]
+      ],
+      "hint": "Klasse → Punkt davor. Der englische Wert für fett hat vier Buchstaben."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Kaderliste: Der Eintrag mit der Klasse `kapitaen` wird fett und bekommt die Farbe `#0b7dd6`. Alle anderen Einträge bleiben grau und normal.",
+      "starter": {
+        "html": "<h2>Kader – Saison 2027</h2>\n<ul>\n  <li>Lena · Tor</li>\n  <li>Samir · Abwehr</li>\n  <li class=\"kapitaen\">Mo · Mittelfeld</li>\n  <li>Aylin · Sturm</li>\n</ul>\n",
+        "css": "body {\n  color: #1b1b2f;\n}\n\nli {\n  color: #6b6b7a;\n}\n\n/* Regel für den Kapitän */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Eine neue Regel mit Klassen-Selektor – und zwei Deklarationen darin: Farbe und Schriftstärke.",
+        "Schriftstärke: die Eigenschaft heißt font-weight, der Wert für fett bold. Die Farbe kommt als zweite Deklaration in dieselbe Regel.",
+        "Struktur: Punkt + Klassenname, Klammer auf, zwei Zeilen mit Eigenschaft: Wert; – Klammer zu."
+      ],
+      "solution": {
+        "css": "body {\n  color: #1b1b2f;\n}\n\nli {\n  color: #6b6b7a;\n}\n\n.kapitaen {\n  color: #0b7dd6;\n  font-weight: bold;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".kapitaen",
+          "prop": "font-weight",
+          "expected": [
+            "700",
+            "bold"
+          ],
+          "label": "Der Kapitän ist fett"
+        },
+        {
+          "type": "style",
+          "selector": ".kapitaen",
+          "prop": "color",
+          "expected": "#0b7dd6",
+          "label": "Der Kapitän ist blau (#0b7dd6)"
+        },
+        {
+          "type": "style",
+          "selector": "li:not(.kapitaen)",
+          "prop": "font-weight",
+          "expected": [
+            "400",
+            "normal"
+          ],
+          "label": "Die anderen Einträge bleiben normal"
+        },
+        {
+          "type": "style",
+          "selector": "li:not(.kapitaen)",
+          "prop": "color",
+          "expected": "#6b6b7a",
+          "label": "Die anderen Einträge bleiben grau"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Ordne zu.",
+      "pairs": [
+        [
+          "`p`",
+          "trifft alle Absätze der Seite"
+        ],
+        [
+          "`.sieg`",
+          "trifft alle Elemente mit der Klasse sieg"
+        ],
+        [
+          "`class=\"sieg\"`",
+          "gibt einem Element im HTML die Klasse"
+        ],
+        [
+          "`font-weight: bold;`",
+          "macht die Schrift fett"
+        ],
+        [
+          "`color`",
+          "setzt die Textfarbe"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Behebe** den Fehler auf der Speisekarte des Foodtrucks: Das Tagesangebot (Klasse `angebot`) soll orange `#ff6a00` und fett sein, sieht aber aus wie alle anderen Gerichte.",
+      "starter": {
+        "html": "<h2>Pizza &amp; Mehr – Speisekarte</h2>\n<ul>\n  <li>Margherita 7 €</li>\n  <li class=\"angebot\">Tagesangebot: Pizza Funghi 6 €</li>\n  <li>Salami 8 €</li>\n  <li>Calzone 9 €</li>\n</ul>\n",
+        "css": "body {\n  color: #1b1b2f;\n}\n\nangebot {\n  color: #ff6a00;\n  font-weight: bold;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Die Deklarationen in der Regel sind richtig. Schau dir den Selektor an: Wie spricht man eine Klasse an?",
+        "Ohne das richtige Zeichen sucht der Browser ein Element namens angebot – und findet keins.",
+        "Vergleiche mit einem funktionierenden Muster: `.sieg { color: green; }`."
+      ],
+      "solution": {
+        "css": "body {\n  color: #1b1b2f;\n}\n\n.angebot {\n  color: #ff6a00;\n  font-weight: bold;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".angebot",
+          "prop": "color",
+          "expected": "#ff6a00",
+          "label": "Das Tagesangebot ist orange (#ff6a00)"
+        },
+        {
+          "type": "style",
+          "selector": ".angebot",
+          "prop": "font-weight",
+          "expected": [
+            "700",
+            "bold"
+          ],
+          "label": "Das Tagesangebot ist fett"
+        },
+        {
+          "type": "style",
+          "selector": "li:not(.angebot)",
+          "prop": "color",
+          "expected": "#1b1b2f",
+          "label": "Die anderen Gerichte bleiben dunkel"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Der Einlass-Hinweis auf der Startseite – seit Kapitel 08 hat er die Klasse `hinweis`, aber er sieht aus wie jeder andere Absatz. Letztes Jahr standen zwanzig Leute um 15 Uhr vor verschlossenem Tor!\n\nGib ihm seinen eigenen Spot: dunkles Orange und fett. Die anderen Absätze bleiben, wie sie sind – genau dafür ist ein Klassen-Selektor da."
+    },
+    {
+      "type": "code",
+      "etappe": "11-selektoren/01-element-und-klassen-selektor"
+    }
+  ]
+}

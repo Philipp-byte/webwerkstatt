@@ -1,0 +1,62 @@
+{
+  "id": "06-projekt-selektoren",
+  "title": "Projekt: Selektoren im Einsatz",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Meilenstein! Die Spots sitzen: Klasse, id, Gruppe, Nachfahre und hover. Rückblick: Der Einlass-Hinweis leuchtet, die Sprungziele sind blau, Navigation und Fuß haben eigene Linkfarben, die Navigation reagiert auf die Maus, und die Galerie hängt am Stylesheet.\n\nJetzt bekommt die Programm-Seite den letzten Schliff: Kopfzellen in Funken-Orange, Bildunterschriften in ruhigem Grau – mit zwei schlichten Element-Selektoren."
+    },
+    {
+      "type": "pair",
+      "text": "Kontrolle: Welcher Selektor trifft was?",
+      "pairs": [
+        [
+          "`th`",
+          "alle Kopfzellen aller Tabellen"
+        ],
+        [
+          "`figcaption`",
+          "alle Bildunterschriften"
+        ],
+        [
+          "`.highlight`",
+          "alle Elemente mit der Klasse highlight"
+        ],
+        [
+          "`#lineup`",
+          "das eine Element mit der id lineup"
+        ],
+        [
+          "`nav a`",
+          "alle Links innerhalb der Navigation"
+        ],
+        [
+          "`a:hover`",
+          "Links, solange die Maus darüber ist"
+        ]
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Die Regel für Kopfzellen kommt in style.css. Wo wirkt sie?",
+      "options": [
+        "Auf jeder Seite, die style.css verknüpft – in allen Tabellen",
+        "Nur auf der Programm-Seite",
+        "Nur in der ersten Tabelle jeder Seite"
+      ],
+      "correct": 0,
+      "explanation": "Ein externes Stylesheet gilt überall, wo es eingebunden ist: Startseite, Programm, Galerie. Genau deshalb lohnt sich eine Regel statt vieler."
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Zwei Regeln am Ende des Stylesheets, zwei Element-Selektoren – und weil style.css auf allen Seiten eingebunden ist, wirken sie überall: im Timetable der Programm-Seite genauso wie bei den Bildunterschriften der Galerie.\n\nWenn die Etappe steht, schau dir das Ergebnis an: [FUNKEN-Website ansehen](#/projekt). Danach geht es zum Schriftzug – Schrift und Text."
+    },
+    {
+      "type": "code",
+      "etappe": "11-selektoren/06-projekt-selektoren"
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "id": "01-rahmen-und-innenabstand",
+  "title": "Rahmen und Innenabstand",
+  "konzepte": [
+    "css.border",
+    "css.padding"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Sam will, dass der Einlass-Hinweis auf der Startseite auffällt – wie ein Schild, nicht wie ein normaler Absatz. Dafür musst du wissen: Für den Browser ist **jedes Element eine Box**.\n\nVon innen nach außen: **Inhalt** (Text, Bild) → **padding** (Innenabstand) → **border** (Rahmen) → **margin** (Außenabstand).\n\nEselsbrücke: *Padding polstert innen, Margin macht Platz außen.*",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><rect x=\"10\" y=\"12\" width=\"170\" height=\"136\" rx=\"6\" fill=\"none\" stroke=\"#b48cff\" stroke-width=\"2\" stroke-dasharray=\"6 4\"/><rect x=\"28\" y=\"28\" width=\"134\" height=\"104\" fill=\"#ff7a45\"/><rect x=\"40\" y=\"40\" width=\"110\" height=\"80\" fill=\"#4ade80\"/><rect x=\"58\" y=\"56\" width=\"74\" height=\"48\" fill=\"#38c7ff\"/><text x=\"95\" y=\"84\" text-anchor=\"middle\" fill=\"#0f1320\" font-weight=\"bold\">Inhalt</text><rect x=\"196\" y=\"30\" width=\"12\" height=\"12\" fill=\"none\" stroke=\"#b48cff\" stroke-width=\"2\" stroke-dasharray=\"3 2\"/><text x=\"214\" y=\"41\" fill=\"#eef2ff\">margin · außen</text><rect x=\"196\" y=\"60\" width=\"12\" height=\"12\" fill=\"#ff7a45\"/><text x=\"214\" y=\"71\" fill=\"#eef2ff\">border · Rahmen</text><rect x=\"196\" y=\"90\" width=\"12\" height=\"12\" fill=\"#4ade80\"/><text x=\"214\" y=\"101\" fill=\"#eef2ff\">padding · innen</text><rect x=\"196\" y=\"120\" width=\"12\" height=\"12\" fill=\"#38c7ff\"/><text x=\"214\" y=\"131\" fill=\"#eef2ff\">Inhalt</text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Ein **Rahmen** braucht drei Angaben in einer Zeile: **Dicke**, **Linienart**, **Farbe**.\n\n```css\n.karte {\n  border: 3px solid #2f6fdb;\n}\n```\n\nLinienarten: `solid` (durchgezogen), `dashed` (gestrichelt), `dotted` (gepunktet), `double` (doppelt). Fehlt die Linienart, zeichnet der Browser **gar keinen** Rahmen – ein häufiger Fehler."
+    },
+    {
+      "type": "example",
+      "text": "Eine Spielerkarte mit Rahmen. **Ändere** die Dicke `3px` auf `10px`, dann `solid` auf `dashed` oder `dotted` – und tausche zum Schluss die Farbe.",
+      "html": "<div class=\"spieler\">\n  <h2>Neo_77</h2>\n  <p>Level 42 · 1.280 Punkte</p>\n</div>\n",
+      "css": ".spieler {\n  border: 3px solid #ff7a45;\n  background-color: #fff3e6;\n}\n",
+      "editable": [
+        "css"
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Im Stylesheet steht `border: 3px #e10600;` – aber im Browser ist kein Rahmen zu sehen. Warum?",
+      "options": [
+        "Die Linienart fehlt – ohne sie zeichnet der Browser keinen Rahmen",
+        "3 Pixel sind zu dünn, um sichtbar zu sein",
+        "Die Farbe muss vor der Dicke stehen",
+        "Rahmen brauchen zusätzlich eine Hintergrundfarbe"
+      ],
+      "correct": 0,
+      "explanation": "Dicke, Linienart, Farbe – die Linienart ist Pflicht. Die Reihenfolge der drei Angaben ist dem Browser dagegen egal."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Produktkachel mit der Klasse `kachel`: ein 2 Pixel dicker, durchgezogener Rahmen in der Farbe `#1b1b2f`.",
+      "starter": {
+        "html": "<div class=\"kachel\">\n  <img src=\"sneaker.svg\" alt=\"Sneaker Modell Neon\">\n  <h2>Sneaker „Neon“</h2>\n  <p>89,90 €</p>\n</div>\n",
+        "css": ".kachel {\n  background-color: white;\n  /* Rahmen hier ergänzen */\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Ein Rahmen ist die Eigenschaft border mit drei Angaben in einer Zeile.",
+        "Die Angaben sind Dicke, Linienart und Farbe – zum Beispiel `border: 5px dotted red;`.",
+        "Für „durchgezogen“ brauchst du die Linienart solid, für die Dicke 2px – und dann die Farbe aus der Aufgabe."
+      ],
+      "solution": {
+        "css": ".kachel {\n  background-color: white;\n  border: 2px solid #1b1b2f;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".kachel",
+          "prop": "border-top-width",
+          "expected": "2px",
+          "label": "Der Rahmen ist 2px dick"
+        },
+        {
+          "type": "style",
+          "selector": ".kachel",
+          "prop": "border-top-style",
+          "expected": "solid",
+          "label": "Der Rahmen ist durchgezogen"
+        },
+        {
+          "type": "style",
+          "selector": ".kachel",
+          "prop": "border-top-color",
+          "expected": "#1b1b2f",
+          "label": "Der Rahmen hat die Farbe #1b1b2f"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Jetzt klebt der Text am Rahmen. **Innenabstand** schafft Luft zwischen Inhalt und Rahmen – die Eigenschaft heißt **`padding`**:\n\n```css\n.karte {\n  padding: 16px;\n}\n```\n\nEin Wert gilt für **alle vier Seiten**. Nur eine Seite? Dann `padding-top`, `padding-right`, `padding-bottom` oder `padding-left`. Hat die Box eine Hintergrundfarbe, wächst die farbige Fläche mit."
+    },
+    {
+      "type": "fill",
+      "text": "**Vervollständige** die Regel: Die Chat-Blase bekommt einen 2 Pixel dicken, gestrichelten Rahmen und rundum 12 Pixel Innenabstand.",
+      "template": ".blase {\n  border: 2px ___ #38c7ff;\n  ___: 12px;\n}",
+      "accept": [
+        [
+          "dashed"
+        ],
+        [
+          "padding"
+        ]
+      ],
+      "hint": "Gestrichelt ist eine der vier Linienarten. Innenabstand ist die Eigenschaft, die innen Luft macht."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Chat-Nachrichten mit der Klasse `blase`: ein 1 Pixel dicker, durchgezogener Rahmen in `#38c7ff` und rundum 12 Pixel Innenabstand.",
+      "starter": {
+        "html": "<div class=\"chat\">\n  <p class=\"blase\">Kommst du Samstag zum Festival?</p>\n  <p class=\"blase\">Klar! Ich hab schon Tickets.</p>\n</div>\n",
+        "css": ".blase {\n  background-color: #e6f7ff;\n  /* Rahmen und Innenabstand ergänzen */\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Zwei Eigenschaften: eine für den Rahmen, eine für den Innenabstand.",
+        "Der Rahmen braucht Dicke, Linienart und Farbe – wie `border: 4px dotted green;`.",
+        "Innenabstand für alle Seiten ist ein einziger Wert, etwa `padding: 30px;` – mit der Zahl aus der Aufgabe."
+      ],
+      "solution": {
+        "css": ".blase {\n  background-color: #e6f7ff;\n  border: 1px solid #38c7ff;\n  padding: 12px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".blase",
+          "prop": "border-top-width",
+          "expected": "1px",
+          "label": "Der Rahmen ist 1px dick"
+        },
+        {
+          "type": "style",
+          "selector": ".blase",
+          "prop": "border-top-style",
+          "expected": "solid",
+          "label": "Der Rahmen ist durchgezogen"
+        },
+        {
+          "type": "style",
+          "selector": ".blase",
+          "prop": "border-top-color",
+          "expected": "#38c7ff",
+          "label": "Der Rahmen ist hellblau (#38c7ff)"
+        },
+        {
+          "type": "style",
+          "selector": ".blase",
+          "prop": "padding-top",
+          "expected": "12px",
+          "label": "Oben sind 12px Innenabstand"
+        },
+        {
+          "type": "style",
+          "selector": ".blase",
+          "prop": "padding-left",
+          "expected": "12px",
+          "label": "Links sind 12px Innenabstand"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Begriffe zu.",
+      "pairs": [
+        [
+          "`solid`",
+          "durchgezogene Linie"
+        ],
+        [
+          "`dashed`",
+          "gestrichelte Linie"
+        ],
+        [
+          "`dotted`",
+          "gepunktete Linie"
+        ],
+        [
+          "`padding`",
+          "Innenabstand – Luft zwischen Inhalt und Rahmen"
+        ],
+        [
+          "`padding-left`",
+          "Innenabstand nur auf der linken Seite"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Behebe** die zwei Fehler in der Regel für die Spielerkarte: Der Rahmen (2 Pixel, durchgezogen, `#ff7a45`) ist nicht zu sehen, und der Text klebt am Rand, obwohl 16 Pixel Innenabstand gemeint sind.",
+      "starter": {
+        "html": "<div class=\"spieler\">\n  <h2>pixel_lena</h2>\n  <p>Level 39 · 1.150 Punkte</p>\n</div>\n",
+        "css": ".spieler {\n  background-color: #fff3e6;\n  boder: 2px solid #ff7a45;\n  padding: 16;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Lies jede Zeile langsam: Stimmt der Name jeder Eigenschaft? Hat jede Zahl eine Einheit?",
+        "Der Browser ignoriert Eigenschaften, die er nicht kennt – und Längenangaben ohne Einheit gleich mit.",
+        "Die Eigenschaft für den Rahmen heißt border, Pixelwerte enden auf px."
+      ],
+      "solution": {
+        "css": ".spieler {\n  background-color: #fff3e6;\n  border: 2px solid #ff7a45;\n  padding: 16px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".spieler",
+          "prop": "border-top-style",
+          "expected": "solid",
+          "label": "Der Rahmen ist zu sehen (durchgezogen)"
+        },
+        {
+          "type": "style",
+          "selector": ".spieler",
+          "prop": "border-top-width",
+          "expected": "2px",
+          "label": "Der Rahmen ist 2px dick"
+        },
+        {
+          "type": "style",
+          "selector": ".spieler",
+          "prop": "border-top-color",
+          "expected": "#ff7a45",
+          "label": "Der Rahmen ist orange"
+        },
+        {
+          "type": "style",
+          "selector": ".spieler",
+          "prop": "padding-top",
+          "expected": "16px",
+          "label": "Der Text hat 16px Luft zum Rahmen"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Ab zur FUNKEN-Website! Auf der Startseite steht der Hinweis „Einlass ab 16:00 Uhr“ – bisher nur fett und dunkelorange. Sam will ihn als **Kasten**: ein orangefarbener Rahmen und Luft innen, damit der Text nicht am Rahmen klebt.\n\nDie Regel für die Klasse `hinweis` gibt es schon – du erweiterst sie um zwei Zeilen."
+    },
+    {
+      "type": "code",
+      "etappe": "13-box-modell/01-rahmen-und-innenabstand"
+    }
+  ]
+}

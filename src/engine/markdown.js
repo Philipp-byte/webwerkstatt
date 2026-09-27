@@ -20,7 +20,9 @@ function inline(text) {
   });
   t = t.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   t = t.replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g, '$1<em>$2</em>');
-  t = t.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+|#[^)\s]*)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  t = t.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+|#[^)\s]*)\)/g, (_, text, url) =>
+    url.startsWith('#') ? `<a href="${url}">${text}</a>` : `<a href="${url}" target="_blank" rel="noopener">${text}</a>`
+  );
   t = t.replace(/ {2}\n/g, '<br>');
   t = t.replace(/\u0000(\d+)\u0000/g, (_, i) => spans[Number(i)]);
   return t;

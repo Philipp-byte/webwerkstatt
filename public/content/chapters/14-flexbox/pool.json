@@ -1,0 +1,282 @@
+{
+  "chapter": "14-flexbox",
+  "fragen": [
+    {
+      "id": "14-01",
+      "konzept": "css.flex",
+      "type": "quiz",
+      "question": "Drei Karten sollen nebeneinander stehen. Welche Zeile gehört in die Regel des Containers?",
+      "options": [
+        "`display: flex;`",
+        "`display: block;`",
+        "`flex-direction: row;` allein"
+      ],
+      "correct": 0,
+      "explanation": "`display: flex` schaltet Flexbox am Container ein. `flex-direction` wirkt erst, wenn Flexbox eingeschaltet ist."
+    },
+    {
+      "id": "14-02",
+      "konzept": "css.flex",
+      "type": "fill",
+      "text": "Flexbox am Container einschalten.",
+      "template": "nav {\n  display: ___;\n}",
+      "accept": [
+        "flex"
+      ],
+      "hint": "Der Wert heißt wie das Layout-Werkzeug, nur kürzer."
+    },
+    {
+      "id": "14-03",
+      "konzept": "css.flex",
+      "type": "bug",
+      "text": "Die Karten im Container `.team` sollen nebeneinander stehen. Welche Zeile steht am falschen Element?",
+      "lines": [
+        ".team { gap: 12px; }",
+        ".karte { display: flex; }",
+        ".karte { padding: 12px; }",
+        ".team { flex-direction: row; }"
+      ],
+      "line": 1,
+      "explanation": "`display: flex` gehört an den Container `.team`, nicht an die Kinder."
+    },
+    {
+      "id": "14-04",
+      "konzept": "css.flex",
+      "type": "order",
+      "text": "Rangliste: Der Container umschließt die drei Plätze (Reihenfolge 1 bis 3). **Sortiere** die Zeilen.",
+      "lines": [
+        "<div class=\"rangliste\">",
+        "  <div class=\"platz\">1. Nova</div>",
+        "  <div class=\"platz\">2. Kato</div>",
+        "  <div class=\"platz\">3. Blitz</div>",
+        "</div>"
+      ],
+      "explanation": "Der äußere `div` ist der Container, die Plätze sind seine Flex-Kinder."
+    },
+    {
+      "id": "14-05",
+      "konzept": "css.flex-direction",
+      "type": "quiz",
+      "question": "Welcher Wert von `flex-direction` stapelt die Flex-Kinder untereinander?",
+      "options": [
+        "`column`",
+        "`row`",
+        "`stack`"
+      ],
+      "correct": 0,
+      "explanation": "`column` heißt Spalte – die Kinder stehen untereinander. `row` (Reihe) ist der Standard, `stack` gibt es nicht."
+    },
+    {
+      "id": "14-06",
+      "konzept": "css.flex-direction",
+      "type": "bug",
+      "text": "Die Chat-Nachrichten sollen untereinander stehen, stehen aber nebeneinander. Welche Zeile ist falsch?",
+      "lines": [
+        ".chat {",
+        "  display: flex;",
+        "  flex-direction: colum;",
+        "  gap: 8px;",
+        "}"
+      ],
+      "line": 2,
+      "explanation": "Der Wert heißt `column` – mit n am Ende. Falsch geschriebene Werte ignoriert der Browser."
+    },
+    {
+      "id": "14-07",
+      "konzept": "css.gap",
+      "type": "fill",
+      "text": "16 Pixel Abstand zwischen den Flex-Kindern.",
+      "template": ".menue {\n  display: flex;\n  ___: 16px;\n}",
+      "accept": [
+        "gap"
+      ],
+      "hint": "Drei Buchstaben, englisch für „Lücke“."
+    },
+    {
+      "id": "14-08",
+      "konzept": "css.gap",
+      "type": "quiz",
+      "question": "Was bewirkt `gap: 20px` in einem Flex-Container?",
+      "options": [
+        "20 Pixel Abstand zwischen den Kindern, nicht außen herum",
+        "20 Pixel Innenabstand im Container",
+        "20 Pixel Außenabstand um den Container"
+      ],
+      "correct": 0,
+      "explanation": "`gap` ist nur der Abstand zwischen den Kindern. Innenabstand wäre `padding`, Außenabstand `margin`."
+    },
+    {
+      "id": "14-09",
+      "konzept": "css.justify-content",
+      "type": "pair",
+      "text": "`justify-content` – ordne die Werte zu.",
+      "pairs": [
+        [
+          "`flex-start`",
+          "am Anfang der Hauptachse (Standard)"
+        ],
+        [
+          "`center`",
+          "in der Mitte"
+        ],
+        [
+          "`space-between`",
+          "erstes und letztes Kind am Rand, Rest gleichmäßig"
+        ],
+        [
+          "`space-around`",
+          "gleich viel Luft um jedes Kind"
+        ]
+      ]
+    },
+    {
+      "id": "14-10",
+      "konzept": "css.justify-content",
+      "type": "quiz",
+      "question": "Die Links einer Reihe sollen mittig verteilt sein. Welche Zeile?",
+      "options": [
+        "`justify-content: center;`",
+        "`align-items: center;`",
+        "`text-align: middle;`"
+      ],
+      "correct": 0,
+      "explanation": "Verteilen entlang der Hauptachse ist `justify-content`. `align-items` arbeitet auf der Querachse, `middle` gibt es bei `text-align` nicht."
+    },
+    {
+      "id": "14-11",
+      "konzept": "css.justify-content",
+      "type": "bug",
+      "text": "Die Links sollen mittig sein, kleben aber links. Welche Zeile ist falsch?",
+      "lines": [
+        ".menue {",
+        "  display: flex;",
+        "  justify-content: middle;",
+        "}"
+      ],
+      "line": 2,
+      "explanation": "`middle` gibt es nicht – der Wert für die Mitte heißt `center`."
+    },
+    {
+      "id": "14-12",
+      "konzept": "css.align-items",
+      "type": "quiz",
+      "question": "Logo und Menü in einer Reihe sollen senkrecht auf gleicher Höhe stehen. Welche Eigenschaft?",
+      "options": [
+        "`align-items`",
+        "`justify-content`",
+        "`text-align`"
+      ],
+      "correct": 0,
+      "explanation": "Senkrecht ist bei `row` die Querachse – dafür ist `align-items` zuständig."
+    },
+    {
+      "id": "14-13",
+      "konzept": "css.align-items",
+      "type": "fill",
+      "text": "Gestapelte Kinder (Spaltenrichtung) horizontal zentrieren.",
+      "template": ".profil {\n  display: flex;\n  flex-direction: column;\n  ___: center;\n}",
+      "accept": [
+        "align-items"
+      ],
+      "hint": "In Spaltenrichtung ist „horizontal“ die Querachse."
+    },
+    {
+      "id": "14-14",
+      "konzept": "css.align-items",
+      "type": "bug",
+      "text": "Die Kinder sollen auf der Querachse mittig sein, sind es aber nicht. Welche Zeile ist falsch?",
+      "lines": [
+        ".kopf {",
+        "  display: flex;",
+        "  align-item: center;",
+        "}"
+      ],
+      "line": 2,
+      "explanation": "Die Eigenschaft heißt `align-items` – mit s am Ende."
+    },
+    {
+      "id": "14-15",
+      "konzept": "css.flex-wrap",
+      "type": "quiz",
+      "question": "Acht Kacheln passen nicht in eine Zeile. Welche Zeile lässt sie umbrechen?",
+      "options": [
+        "`flex-wrap: wrap;`",
+        "`flex-wrap: nowrap;`",
+        "`flex: 1;`"
+      ],
+      "correct": 0,
+      "explanation": "`wrap` erlaubt den Umbruch. `nowrap` ist der Standard und quetscht alles in eine Zeile; `flex: 1` lässt Kinder wachsen."
+    },
+    {
+      "id": "14-16",
+      "konzept": "css.flex-wrap",
+      "type": "fill",
+      "text": "Die Kacheln dürfen in die nächste Zeile rutschen.",
+      "template": ".kacheln {\n  display: flex;\n  flex-wrap: ___;\n}",
+      "accept": [
+        "wrap"
+      ],
+      "hint": "Umbrechen auf Englisch, vier Buchstaben."
+    },
+    {
+      "id": "14-17",
+      "konzept": "css.flex-wrap",
+      "type": "order",
+      "text": "**Sortiere**, was bei `flex-wrap: wrap` passiert, wenn der Platz knapp wird.",
+      "lines": [
+        "Flexbox legt die Kinder nebeneinander in eine Zeile",
+        "Die Zeile ist voll – das nächste Kind passt nicht mehr",
+        "Dank flex-wrap: wrap rutscht es in eine neue Zeile",
+        "gap hält auch zwischen den Zeilen den Abstand"
+      ],
+      "explanation": "Erst füllt sich die Zeile, dann bricht der Container um – und gap wirkt auch zwischen den Zeilen."
+    },
+    {
+      "id": "14-18",
+      "konzept": "css.flex-grow",
+      "type": "quiz",
+      "question": "Die Kacheln sollen die ganze Breite ausfüllen. Wo kommt `flex: 1` hin?",
+      "options": [
+        "An jede Kachel – also an die Kinder",
+        "An den Container",
+        "In die body-Regel"
+      ],
+      "correct": 0,
+      "explanation": "Wachsen ist eine Eigenschaft der Kinder. Der Container bekommt `display: flex`, die Kinder `flex: 1`."
+    },
+    {
+      "id": "14-19",
+      "konzept": "css.flex-grow",
+      "type": "pair",
+      "text": "Eigenschaften an den Flex-Kindern – ordne zu.",
+      "pairs": [
+        [
+          "`flex: 1`",
+          "wächst, alle Kinder gleich breit"
+        ],
+        [
+          "`flex: 2`",
+          "bekommt doppelt so viel Platz"
+        ],
+        [
+          "`flex-grow: 0`",
+          "wächst nicht (Standard)"
+        ]
+      ]
+    },
+    {
+      "id": "14-20",
+      "konzept": "css.flex-grow",
+      "type": "bug",
+      "text": "Die Kacheln sollen wachsen und die Breite füllen. Welche Zeile steht am falschen Element?",
+      "lines": [
+        ".kacheln { display: flex; }",
+        ".kacheln { flex-wrap: wrap; }",
+        ".kacheln { flex: 1; }",
+        ".kachel { padding: 12px; }"
+      ],
+      "line": 2,
+      "explanation": "`flex: 1` gehört an die Kinder (`.kachel`), nicht an den Container."
+    }
+  ]
+}

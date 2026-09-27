@@ -1,0 +1,290 @@
+{
+  "id": "02-grosse-wiederholung",
+  "title": "Die große Wiederholung",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Die große Wiederholung: einmal durch alle Stationen – Gerüst, Licht und Farbe, Strom. Zehn Aufgaben aus allen Blöcken, keine neuen Regeln. Am Ende bekommt die Tickets-Seite ihren letzten Abschnitt."
+    },
+    {
+      "type": "quiz",
+      "question": "Eine Seite hat Kopfbereich, Navigation, Hauptinhalt und Fußbereich. Welche Elemente passen – in dieser Reihenfolge?",
+      "options": [
+        "`header`, `nav`, `main`, `footer`",
+        "`head`, `nav`, `body`, `footer`",
+        "`div`, `nav`, `main`, `span`"
+      ],
+      "correct": 0,
+      "explanation": "`head` ist der unsichtbare Kopf des Dokuments (Titel, Zeichensatz), nicht der sichtbare Kopfbereich. `div` und `span` haben keine Bedeutung – die semantischen Elemente schon."
+    },
+    {
+      "type": "order",
+      "text": "Sortiere die verschachtelte Liste: Der Punkt „Rennspiele“ enthält eine nummerierte Rangliste mit „Kart Kings“ auf Platz 1.",
+      "lines": [
+        "<ul>",
+        "  <li>Rennspiele",
+        "    <ol>",
+        "      <li>Kart Kings</li>",
+        "    </ol>",
+        "  </li>",
+        "</ul>"
+      ],
+      "explanation": "Die innere Liste liegt komplett im Listenpunkt: Erst schließt die innere Liste, dann der Punkt, dann die äußere Liste."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige das Formularfeld: Das Label ist mit dem Eingabefeld verbunden – ein Klick auf „Name“ setzt den Cursor ins Feld.",
+      "template": "<label ___=\"name\">Name</label>\n<input type=\"text\" ___=\"name\" name=\"name\">",
+      "accept": [
+        [
+          "for"
+        ],
+        [
+          "id"
+        ]
+      ],
+      "hint": "Das Attribut am Label zeigt auf das Attribut am Feld – beide haben denselben Wert. Am Feld ist es die eindeutige Kennung."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Repariere** die Spieleliste: Der zweite Titel hat keinen Aufzählungspunkt, und der Link „Alle Spiele“ lässt sich nicht anklicken.",
+      "starter": {
+        "html": "<h2>Meine Top 3</h2>\n<ul>\n  <li>Kart Kings 2</li>\n  <p>Pixel Farm</p>\n  <li>Nachtstraße</li>\n</ul>\n<p><a herf=\"spiele.html\">Alle Spiele</a></p>\n"
+      },
+      "hints": [
+        "Ein Listenpunkt ist immer ein li-Element – auch in der Mitte der Liste. Vergleiche die drei Einträge.",
+        "Ein Link ist nur anklickbar, wenn sein Adress-Attribut richtig geschrieben ist – Buchstabe für Buchstabe."
+      ],
+      "solution": {
+        "html": "<h2>Meine Top 3</h2>\n<ul>\n  <li>Kart Kings 2</li>\n  <li>Pixel Farm</li>\n  <li>Nachtstraße</li>\n</ul>\n<p><a href=\"spiele.html\">Alle Spiele</a></p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "ul li",
+          "count": 3,
+          "label": "Die Liste hat drei Einträge"
+        },
+        {
+          "type": "text",
+          "selector": "ul li:nth-child(2)",
+          "expected": "Pixel Farm",
+          "label": "„Pixel Farm“ ist der zweite Listenpunkt"
+        },
+        {
+          "type": "selector",
+          "selector": "ul p",
+          "count": 0,
+          "label": "In der Liste steht kein Absatz mehr"
+        },
+        {
+          "type": "attr",
+          "selector": "a",
+          "attr": "href",
+          "expected": "spiele.html",
+          "label": "Der Link führt zu spiele.html"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Ordne jedem Selektor zu, was er trifft.",
+      "pairs": [
+        [
+          "`p`",
+          "alle Absätze"
+        ],
+        [
+          "`.neu`",
+          "alle Elemente mit der Klasse neu"
+        ],
+        [
+          "`#logo`",
+          "das eine Element mit der id logo"
+        ],
+        [
+          "`nav a`",
+          "nur Links innerhalb der Navigation"
+        ],
+        [
+          "`a:hover`",
+          "Links, solange die Maus darüber ist"
+        ],
+        [
+          "`h1, h2`",
+          "alle h1 und alle h2"
+        ]
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Ein Absatz hat einen Rahmen, aber der Text klebt innen am Rahmen. Welche Eigenschaft schafft Luft **zwischen Text und Rahmen**?",
+      "options": [
+        "`padding`",
+        "`margin`",
+        "`gap`",
+        "`border`"
+      ],
+      "correct": 0,
+      "explanation": "`padding` ist der Innenabstand (innerhalb des Rahmens), `margin` der Außenabstand (außerhalb). `gap` wirkt nur zwischen Flex-Kindern."
+    },
+    {
+      "type": "code",
+      "task": "1. **Ordne** die Karten im Container mit der Klasse `drops` nebeneinander an, mit 16 Pixel Abstand dazwischen. 2. **Gestalte** jede Karte mit der Klasse `drop`: ein 2 Pixel dicker, durchgezogener Rahmen in `#1b1b2f`, rundum 12 Pixel Innenabstand, 8 Pixel runde Ecken.",
+      "starter": {
+        "html": "<h1>Sneaker-Drops im Juli</h1>\n<div class=\"drops\">\n  <div class=\"drop\">\n    <h3>Nightrunner</h3>\n    <p>Samstag, 10 Uhr</p>\n  </div>\n  <div class=\"drop\">\n    <h3>Court Classic</h3>\n    <p>Sonntag, 12 Uhr</p>\n  </div>\n  <div class=\"drop\">\n    <h3>Trail Fox</h3>\n    <p>Bald</p>\n  </div>\n</div>\n",
+        "css": "body {\n  font-family: Arial, sans-serif;\n}\n\nh3 {\n  color: #ff6a00;\n}\n\n/* Container und Karten: */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Zwei neue Regeln: eine für den Container (Flexbox einschalten, Abstand), eine für die Karten (Rahmen, Innenabstand, Ecken).",
+        "Rahmen in einer Zeile mit drei Angaben, z. B. `border: 1px solid red;`. Der Abstand zwischen Flex-Kindern ist `gap`.",
+        "Gerüst: `.drops { display: …; gap: …; }` und `.drop { border: … … …; padding: …; border-radius: …; }`."
+      ],
+      "solution": {
+        "css": "body {\n  font-family: Arial, sans-serif;\n}\n\nh3 {\n  color: #ff6a00;\n}\n\n/* Container und Karten: */\n.drops {\n  display: flex;\n  gap: 16px;\n}\n\n.drop {\n  border: 2px solid #1b1b2f;\n  padding: 12px;\n  border-radius: 8px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".drops",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Die Karten stehen nebeneinander (Flex-Container)"
+        },
+        {
+          "type": "style",
+          "selector": ".drops",
+          "prop": "column-gap",
+          "expected": "16px",
+          "label": "Zwischen den Karten sind 16px Abstand"
+        },
+        {
+          "type": "style",
+          "selector": ".drop",
+          "prop": "border-top-width",
+          "expected": "2px",
+          "label": "Jede Karte hat einen 2px dicken Rahmen"
+        },
+        {
+          "type": "style",
+          "selector": ".drop",
+          "prop": "border-top-color",
+          "expected": "#1b1b2f",
+          "label": "Der Rahmen ist dunkel"
+        },
+        {
+          "type": "style",
+          "selector": ".drop",
+          "prop": "padding-top",
+          "expected": "12px",
+          "label": "Jede Karte hat 12px Innenabstand"
+        },
+        {
+          "type": "style",
+          "selector": ".drop",
+          "prop": "border-top-left-radius",
+          "expected": "8px",
+          "label": "Die Ecken sind rund"
+        }
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige das Skript: Der Knopf mit der id `start` wird gefunden und reagiert auf Klicks.",
+      "template": "const knopf = document.___(\"start\");\nknopf.___(\"click\", function () {\n  console.log(\"Los!\");\n});",
+      "accept": [
+        [
+          "getElementById"
+        ],
+        [
+          "addEventListener"
+        ]
+      ],
+      "hint": "Element über die id finden, dann einen Listener anmelden – beide Methodennamen kennst du vom Schaltpult."
+    },
+    {
+      "type": "quiz",
+      "question": "Was gibt dieses Skript in der Konsole aus?\n\n```js\nconst preis = 12;\nconst anzahl = 3;\nconsole.log(\"Summe: \" + preis * anzahl);\n```",
+      "options": [
+        "Summe: 36",
+        "Summe: 123",
+        "Summe: 12 * 3"
+      ],
+      "correct": 0,
+      "explanation": "Punkt vor Strich: Erst wird 12 * 3 gerechnet, dann wird das Ergebnis 36 an den Text gehängt."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Skript: Beim Klick auf den Knopf `schalter` wird am body die Klasse `kontrast` ein- oder ausgeschaltet.",
+      "starter": {
+        "html": "<button id=\"schalter\">Kontrast</button>\n<h1>Fitness-Plan</h1>\n<p>Montag: Laufen · Mittwoch: Kraft · Freitag: Schwimmen</p>\n",
+        "css": "body {\n  background-color: #fff7e8;\n  color: #1b1b2f;\n  font-family: Arial, sans-serif;\n}\n\n.kontrast {\n  background-color: #1b1b2f;\n  color: #fff7e8;\n}\n",
+        "js": "// Knopf finden, beim Klick die Klasse am body umschalten\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "hints": [
+        "Den body erreichst du immer über document.body – dort wird die Klasse geschaltet.",
+        "Umschalten heißt toggle, z. B. `element.classList.toggle(\"aktiv\")` – hier am body, mit der Klasse aus der Aufgabe."
+      ],
+      "solution": {
+        "js": "// Knopf finden, beim Klick die Klasse am body umschalten\nconst schalter = document.getElementById(\"schalter\");\nschalter.addEventListener(\"click\", function () {\n  document.body.classList.toggle(\"kontrast\");\n});\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "background-color",
+          "expected": "#fff7e8",
+          "label": "Vor dem Klick ist die Seite hell"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#schalter"
+        },
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "background-color",
+          "expected": "#1b1b2f",
+          "label": "Nach dem Klick ist die Seite dunkel"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#schalter"
+        },
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "background-color",
+          "expected": "#fff7e8",
+          "label": "Ein zweiter Klick schaltet zurück"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "classList\\.toggle\\(\\s*[\"']kontrast[\"']",
+          "label": "Das Skript schaltet die Klasse kontrast um"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "jonas",
+      "text": "Letzter Feinschliff an der Tickets-Seite, bevor Sam abnimmt: Die Navigation bekommt den vierten Link zum Impressum – das muss von jeder Seite aus erreichbar sein. Und unter dem Formular kommen die drei Fragen, die Sam jeden Tag per Mail bekommt: eine Liste, jede Frage stark betont, dann Gedankenstrich und Antwort.\n\nDen Gedankenstrich „–“ kopierst du am besten aus der Aufgabe – auf der Tastatur ist er gut versteckt."
+    },
+    {
+      "type": "code",
+      "etappe": "18-showtime/02-grosse-wiederholung"
+    }
+  ]
+}

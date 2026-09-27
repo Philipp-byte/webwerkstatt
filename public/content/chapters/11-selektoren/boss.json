@@ -1,0 +1,205 @@
+{
+  "chapter": "11-selektoren",
+  "title": "Abnahme: Spots",
+  "intro": "Okay, die Spots sitzen – der Einlass leuchtet, und die Navigation wird orange, wenn man drüberfährt. Aber ich hab gestern selbst so eine Regel getippt, und nichts ist passiert. Zeigt mir, dass ihr wisst, wo Punkt, Raute und Komma hingehören.",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "css.sel-klasse",
+      "type": "quiz",
+      "question": "Der Absatz `<p class=\"hinweis\">` soll gestaltet werden. Welcher Selektor?",
+      "options": [
+        "`.hinweis`",
+        "`#hinweis`",
+        "`p.class`"
+      ],
+      "correct": 0,
+      "explanation": "Punkt für Klassen, Raute für ids."
+    },
+    {
+      "konzept": "css.sel-gruppe",
+      "type": "fill",
+      "text": "Beide Überschriften mit id sollen in einer Regel blau werden. Welches Zeichen fehlt?",
+      "template": "#lineup___ #anfahrt {\n  color: #0b7dd6;\n}",
+      "accept": [
+        ","
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Navigationsleiste der Clan-Seite: Links in der Navigation bekommen die Farbe `#fff7e8`, beim Überfahren mit der Maus `#ffd23f`. Der Link im Text bleibt blau.",
+      "starter": {
+        "html": "<nav>\n  <a href=\"#\">Start</a>\n  <a href=\"#\">Kader</a>\n  <a href=\"#\">Termine</a>\n</nav>\n<main>\n  <p>Nächstes Scrim am Freitag – Details im <a href=\"#\">Team-Chat</a>.</p>\n</main>\n",
+        "css": "body {\n  color: #1b1b2f;\n}\n\na {\n  color: #0b7dd6;\n}\n\nnav {\n  background-color: #1b1b2f;\n}\n\n/* Deine Regeln */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "solution": {
+        "css": "body {\n  color: #1b1b2f;\n}\n\na {\n  color: #0b7dd6;\n}\n\nnav {\n  background-color: #1b1b2f;\n}\n\nnav a {\n  color: #fff7e8;\n}\n\nnav a:hover {\n  color: #ffd23f;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "nav a",
+          "prop": "color",
+          "expected": "#fff7e8",
+          "label": "Die Navigations-Links sind hell (#fff7e8)"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "a:hover\\s*\\{(\\s*|[^}]*[\\s;])color\\s*:\\s*#ffd23f",
+          "label": "Es gibt eine hover-Regel für die Links mit der Farbe #ffd23f"
+        },
+        {
+          "type": "style",
+          "selector": "main a",
+          "prop": "color",
+          "expected": "#0b7dd6",
+          "label": "Der Link im Text bleibt blau"
+        }
+      ]
+    },
+    {
+      "konzept": "html.table",
+      "type": "pair",
+      "text": "Ordne die Tabellen-Elemente zu.",
+      "pairs": [
+        [
+          "`<table>`",
+          "die ganze Tabelle"
+        ],
+        [
+          "`<tr>`",
+          "eine Zeile"
+        ],
+        [
+          "`<th>`",
+          "eine Kopfzelle"
+        ],
+        [
+          "`<td>`",
+          "eine Datenzelle"
+        ]
+      ]
+    },
+    {
+      "konzept": "css.link",
+      "type": "quiz",
+      "question": "Wo steht die Verknüpfung zur Datei style.css?",
+      "options": [
+        "Im head, als link-Element",
+        "Ganz unten im body",
+        "In der CSS-Datei selbst"
+      ],
+      "correct": 0,
+      "explanation": "Das link-Element im head verbindet die Seite mit dem Stylesheet."
+    },
+    {
+      "konzept": "css.sel-nachfahre",
+      "type": "bug",
+      "text": "Nur die Absätze in den Spielerkarten (Klasse karte) sollen grau sein – aber alle Absätze sind grau. Welche Zeile ist falsch?",
+      "lines": [
+        ".karte, p {",
+        "  color: #6b6b7a;",
+        "}"
+      ],
+      "line": 0,
+      "explanation": "Komma = Gruppe: die Karten und alle Absätze. Für Absätze innerhalb der Karten: `.karte p` mit Leerzeichen."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Behebe** zwei Fehler auf der Turnier-Seite: Die Überschrift mit der id `finale` soll dunkelorange `#d94f00` sein, und Tabellenzeilen sollen beim Überfahren mit der Maus die Hintergrundfarbe `#fff7e8` bekommen. Beides passiert nicht.",
+      "starter": {
+        "html": "<h2 id=\"finale\">Finale: Team West gegen Team Nord</h2>\n<table>\n  <tr>\n    <th>Minute</th>\n    <th>Ereignis</th>\n  </tr>\n  <tr>\n    <td>12</td>\n    <td>1:0 Team West</td>\n  </tr>\n  <tr>\n    <td>37</td>\n    <td>1:1 Team Nord</td>\n  </tr>\n  <tr>\n    <td>58</td>\n    <td>2:1 Team West</td>\n  </tr>\n</table>\n",
+        "css": "body {\n  color: #1b1b2f;\n}\n\n.finale {\n  color: #d94f00;\n}\n\ntr hover {\n  background-color: #fff7e8;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "solution": {
+        "css": "body {\n  color: #1b1b2f;\n}\n\n#finale {\n  color: #d94f00;\n}\n\ntr:hover {\n  background-color: #fff7e8;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "#finale",
+          "prop": "color",
+          "expected": "#d94f00",
+          "label": "Die Finale-Überschrift ist dunkelorange (#d94f00)"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "tr:hover\\s*\\{(\\s*|[^}]*[\\s;])background-color\\s*:\\s*#fff7e8",
+          "label": "Zeilen haben eine hover-Regel mit der Hintergrundfarbe #fff7e8"
+        },
+        {
+          "type": "style",
+          "selector": "td",
+          "prop": "color",
+          "expected": "#1b1b2f",
+          "label": "Die Zellen bleiben dunkel"
+        }
+      ]
+    },
+    {
+      "konzept": "html.label",
+      "type": "quiz",
+      "question": "Welches Attribut verbindet ein label mit seinem Eingabefeld?",
+      "options": [
+        "`for` – mit der id des Feldes",
+        "`href` – mit dem Namen des Feldes",
+        "`class` – mit dem Feldtyp"
+      ],
+      "correct": 0,
+      "explanation": "for im label und id im Feld tragen denselben Wert."
+    },
+    {
+      "konzept": "css.sel-id",
+      "type": "order",
+      "text": "Sortiere die Selektoren von schwach nach stark.",
+      "lines": [
+        "li",
+        ".sieg",
+        "#finale"
+      ],
+      "explanation": "Element < Klasse < id – bei Gleichstand gewinnt die spätere Regel."
+    },
+    {
+      "konzept": "html.strong-em",
+      "type": "quiz",
+      "question": "Welches Element betont ein Wort **stark** – der Browser zeigt es fett?",
+      "options": [
+        "`<strong>`",
+        "`<em>`",
+        "`<hr>`"
+      ],
+      "correct": 0,
+      "explanation": "strong = starke Betonung (fett), em = leichte Betonung (kursiv), hr = Trennlinie."
+    },
+    {
+      "konzept": "css.hover",
+      "type": "fill",
+      "text": "Der Knopf soll beim Überfahren mit der Maus orange werden. Vervollständige.",
+      "template": "button___ {\n  background-color: #ff6a00;\n}",
+      "accept": [
+        ":hover"
+      ]
+    },
+    {
+      "konzept": "css.background",
+      "type": "quiz",
+      "question": "Mit welcher Eigenschaft bekommt der Fußbereich eine dunkle Hintergrundfarbe?",
+      "options": [
+        "`background-color`",
+        "`color`",
+        "`background-farbe`"
+      ],
+      "correct": 0,
+      "explanation": "color ist die Textfarbe, background-color die Hintergrundfarbe."
+    }
+  ]
+}

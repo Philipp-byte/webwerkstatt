@@ -1,0 +1,185 @@
+{
+  "id": "04-wiederholung",
+  "title": "Wiederholung",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Kurz durchatmen: Diese Runde mischt den neuen Strom (Skript, Konsole, Variablen, Rechnen) mit der Sicherheitszentrale, dem Bühnen-Layout, dem Schriftzug und den Zonen der Seite. Am Ende bekommt das FUNKEN-Skript eine Einlass-Meldung."
+    },
+    {
+      "type": "quiz",
+      "question": "Für die Festival-Seite findest du im Netz ein Foto ohne Lizenzangabe. Was gilt?",
+      "options": [
+        "Es ist urheberrechtlich geschützt – ohne Erlaubnis darfst du es nicht verwenden",
+        "Alles im Netz darf frei genutzt werden, wenn du die Quelle nennst",
+        "Fotos sind nur geschützt, wenn ein ©-Zeichen dabeisteht"
+      ],
+      "correct": 0,
+      "explanation": "Fotos sind automatisch geschützt, auch ohne ©-Zeichen. Nur mit Erlaubnis oder einer passenden Lizenz (z. B. CC BY mit Namensnennung) darfst du sie einbauen."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** das Punkte-Skript: Nach dem Bonus soll die Konsole „Punkte: 45“ zeigen, sie zeigt aber „Punkte: 405“. Eine Zeile ist schuld.",
+      "starter": {
+        "js": "// Punktestand mit Bonus\nconst punkte = \"40\";\nconst bonus = 5;\nconsole.log(\"Punkte: \" + (punkte + bonus));\n"
+      },
+      "hints": [
+        "Schau auf die Werte: Was ist Text, was ist Zahl? Mit Text klebt das Plus, statt zu rechnen.",
+        "Zahlen stehen ohne Anführungszeichen – wie in `const alter = 17;`.",
+        "Nur die Zeile, die punkte anlegt, muss sich ändern."
+      ],
+      "solution": {
+        "js": "// Punktestand mit Bonus\nconst punkte = 40;\nconst bonus = 5;\nconsole.log(\"Punkte: \" + (punkte + bonus));\n"
+      },
+      "tests": [
+        {
+          "type": "console",
+          "expected": "Punkte: 45",
+          "label": "Die Konsole zeigt „Punkte: 45“"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "const\\s+punkte\\s*=\\s*40\\s*;",
+          "label": "punkte ist eine Zahl, kein Text"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Bühnen-Layout: Ordne die Flexbox-Eigenschaften ihrer Wirkung zu.",
+      "pairs": [
+        [
+          "`display: flex;`",
+          "Kinder stehen nebeneinander in einer Reihe"
+        ],
+        [
+          "`justify-content: center;`",
+          "verteilt die Kinder in der Mitte der Zeile"
+        ],
+        [
+          "`flex-wrap: wrap;`",
+          "bricht in die nächste Zeile um, wenn der Platz fehlt"
+        ],
+        [
+          "`gap: 16px;`",
+          "16 Pixel Abstand zwischen den Kindern"
+        ],
+        [
+          "`flex-direction: column;`",
+          "Kinder untereinander statt nebeneinander"
+        ]
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "Schriftzug: Die Hauptüberschrift soll 48 Pixel groß und zentriert sein. Vervollständige die Regel.",
+      "template": "h1 {\n  font-size: ___px;\n  text-align: ___;\n}",
+      "accept": [
+        [
+          "48"
+        ],
+        [
+          "center"
+        ]
+      ],
+      "hint": "Die Größe als Zahl vor px, die Ausrichtung als englisches Wort für „Mitte“."
+    },
+    {
+      "type": "order",
+      "text": "Zonen: Bring den body in die übliche Reihenfolge – Kopfbereich, Navigation, Hauptbereich, Fußbereich, zuletzt das Skript.",
+      "lines": [
+        "<body>",
+        "  <header><h1>Foodtruck-Fest</h1></header>",
+        "  <nav><a href=\"menu.html\">Menü</a></nav>",
+        "  <main><p>Vier Trucks, ein Abend.</p></main>",
+        "  <footer><p>Truck-Kollektiv</p></footer>",
+        "  <script src=\"script.js\"></script>",
+        "</body>"
+      ],
+      "explanation": "header, nav, main, footer – und das Skript als letztes Element im body."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Navigation der Foodtruck-Seite: Die Links stehen nebeneinander mit 12 Pixel Abstand, sind in der Mitte der Zeile verteilt und haben keine Unterstreichung.",
+      "starter": {
+        "html": "<nav>\n  <a href=\"menu.html\">Menü</a>\n  <a href=\"trucks.html\">Trucks</a>\n  <a href=\"anfahrt.html\">Anfahrt</a>\n</nav>\n",
+        "css": "/* Navigation */\nnav {\n\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Nebeneinander heißt: nav wird ein Flex-Container. Für die Links brauchst du eine zweite Regel mit Nachfahren-Selektor.",
+        "Muster aus dem Bühnen-Layout: `display: flex; gap: 8px; justify-content: space-between;` – hier mit anderen Werten.",
+        "Zweite Regel: `nav a { … }` mit der Eigenschaft, die die Unterstreichung ausschaltet (Wert none)."
+      ],
+      "solution": {
+        "css": "/* Navigation */\nnav {\n  display: flex;\n  gap: 12px;\n  justify-content: center;\n}\n\nnav a {\n  text-decoration: none;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "nav",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Die Links stehen nebeneinander (Flex-Container)"
+        },
+        {
+          "type": "style",
+          "selector": "nav",
+          "prop": "column-gap",
+          "expected": "12px",
+          "label": "12 Pixel Abstand zwischen den Links"
+        },
+        {
+          "type": "style",
+          "selector": "nav",
+          "prop": "justify-content",
+          "expected": "center",
+          "label": "Die Links sind in der Mitte verteilt"
+        },
+        {
+          "type": "style",
+          "selector": "nav a",
+          "prop": "text-decoration-line",
+          "expected": "none",
+          "label": "Die Links sind nicht unterstrichen"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Was zeigt die Konsole bei `console.log(\"3\" + 4);`?",
+      "options": [
+        "34",
+        "7",
+        "Eine Fehlermeldung"
+      ],
+      "correct": 0,
+      "explanation": "„3“ steht in Anführungszeichen und ist Text – das Plus klebt: 34. Ohne Anführungszeichen wäre es 7."
+    },
+    {
+      "type": "bug",
+      "text": "Fehlerjagd: Die Konsole meldet „Stadt is not defined“. Welche Zeile ist schuld?",
+      "lines": [
+        "const stadt = \"Heilbronn\";",
+        "let besucher = 1200;",
+        "console.log(Stadt);",
+        "console.log(besucher);"
+      ],
+      "line": 2,
+      "explanation": "Groß- und Kleinschreibung zählt: Die Variable heißt `stadt`, nicht `Stadt`."
+    },
+    {
+      "type": "explain",
+      "text": "Ab zur FUNKEN-Website! Das Skript soll den Einlass melden: Der Festivalname kommt aus der vorhandenen Variablen, die Einlasszeit aus einer neuen Konstante, dazwischen ein Textstück mit Gedankenstrich.\n\nDrei Teile, zwei Pluszeichen – und achte auf die Leerzeichen am Rand des Textstücks, sonst kleben die Wörter zusammen."
+    },
+    {
+      "type": "code",
+      "etappe": "16-javascript-start/04-wiederholung"
+    }
+  ]
+}

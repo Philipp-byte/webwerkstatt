@@ -1,0 +1,233 @@
+{
+  "id": "01-class-und-id",
+  "title": "Klasse und id",
+  "konzepte": [
+    "html.class",
+    "html.id"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Auf dem FUNKEN-Gelände tragen alle Helfer dasselbe grüne Bändchen – aber jedes Ticket hat eine eigene Nummer. Genauso hat HTML zwei Namensschilder für Elemente:\n\n- **class** (Klasse) ist das Bändchen: Beliebig viele Elemente dürfen dieselbe Klasse tragen.\n- **id** ist die Ticketnummer: Sie kommt genau **einmal** pro Seite vor.\n\nSichtbar ändert sich nichts. Aber mit diesen Namen sprichst du Elemente später gezielt an – in CSS und JavaScript.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"22\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">class = Bändchen · id = Ticketnummer</text><rect x=\"10\" y=\"40\" width=\"158\" height=\"26\" rx=\"6\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"16\" y=\"58\" fill=\"#eef2ff\" font-family=\"monospace\">&lt;p class=\"hinweis\"&gt;</text><rect x=\"10\" y=\"74\" width=\"158\" height=\"26\" rx=\"6\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"16\" y=\"92\" fill=\"#eef2ff\" font-family=\"monospace\">&lt;li class=\"hinweis\"&gt;</text><rect x=\"10\" y=\"108\" width=\"158\" height=\"26\" rx=\"6\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"16\" y=\"126\" fill=\"#eef2ff\" font-family=\"monospace\">&lt;td class=\"hinweis\"&gt;</text><text x=\"89\" y=\"152\" text-anchor=\"middle\" fill=\"#ff7a45\">beliebig oft</text><rect x=\"176\" y=\"74\" width=\"134\" height=\"26\" rx=\"6\" fill=\"#1b2135\" stroke=\"#38c7ff\" stroke-width=\"2\"/><text x=\"182\" y=\"92\" fill=\"#eef2ff\" font-family=\"monospace\">&lt;h2 id=\"anfahrt\"&gt;</text><text x=\"243\" y=\"152\" text-anchor=\"middle\" fill=\"#38c7ff\">genau 1× pro Seite</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Damit du die Namensschilder *siehst*, hängt hier ein kleines Stylesheet dran – CSS lernst du erst in Kapitel 10, hier nur zuschauen: Alles mit der Klasse `angebot` wird grün, die Überschrift mit der id `karte` bekommt eine Linie.\n\n**Ändere** im HTML: Gib „Salami“ auch die Klasse `angebot` – und nimm sie bei „Gemüse“ weg.",
+      "html": "<h2 id=\"karte\">Pizza-Truck – Karte</h2>\n<p class=\"angebot\">Margherita – 6 €</p>\n<p>Salami – 7 €</p>\n<p class=\"angebot\">Gemüse – 7 €</p>\n<p>Vier Käse – 8 €</p>\n",
+      "css": ".angebot { color: #2e7d32; font-weight: bold; }\n#karte { border-bottom: 3px solid #ff6a00; }\n",
+      "editable": [
+        "html"
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Fünf Absätze auf einer Seite sollen als „Hinweis“ markiert werden. Welches Attribut nimmst du?",
+      "options": [
+        "`class` – mehrere Elemente dürfen dieselbe Klasse tragen",
+        "`id` – ein Name für alle fünf Absätze",
+        "`href` – das verbindet die Absätze"
+      ],
+      "correct": 0,
+      "explanation": "Eine Klasse darf beliebig oft vorkommen. Eine id gibt es nur einmal pro Seite – fünf Absätze mit derselben id wären ein Fehler. href gehört zu Links."
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** im Steckbrief: Die drei Absätze mit Lieblingsspiel, Plattform und „Spielt seit“ bekommen die Klasse `fakt`. Der Motto-Absatz bleibt ohne Klasse.",
+      "starter": {
+        "html": "<h2>Steckbrief: Mila</h2>\n<p>Lieblingsspiel: Sternenflotte 3</p>\n<p>Plattform: Konsole</p>\n<p>Spielt seit: 2021</p>\n<p>Motto: Erst denken, dann drücken.</p>\n"
+      },
+      "hints": [
+        "Die Klasse ist ein Attribut im öffnenden Tag – der Text im Absatz bleibt, wie er ist.",
+        "Muster aus einem anderen Kontext: `<li class=\"neu\">Neon Runner</li>` – Attributname, Gleichheitszeichen, Wert in Anführungszeichen.",
+        "Dreimal dasselbe Attribut mit dem Wert fakt: `<p class=\"…\">Lieblingsspiel: …</p>` – und genauso bei den zwei anderen Fakten."
+      ],
+      "solution": {
+        "html": "<h2>Steckbrief: Mila</h2>\n<p class=\"fakt\">Lieblingsspiel: Sternenflotte 3</p>\n<p class=\"fakt\">Plattform: Konsole</p>\n<p class=\"fakt\">Spielt seit: 2021</p>\n<p>Motto: Erst denken, dann drücken.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "p.fakt",
+          "count": 3,
+          "label": "Drei Absätze tragen die Klasse „fakt“"
+        },
+        {
+          "type": "text",
+          "selector": "p.fakt",
+          "expected": "Lieblingsspiel: Sternenflotte 3",
+          "label": "Der erste Fakt ist das Lieblingsspiel"
+        },
+        {
+          "type": "attr",
+          "selector": "p:last-of-type",
+          "attr": "class",
+          "absent": true,
+          "label": "Der Motto-Absatz hat keine Klasse"
+        },
+        {
+          "type": "selector",
+          "selector": "p",
+          "count": 4,
+          "label": "Es sind noch alle vier Absätze da"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Die **id** kennst du von den Sprungmarken: `href=\"#lineup\"` springt zum Element mit `id=\"lineup\"`. Genau deshalb darf jede id nur **einmal** vorkommen – sonst wüsste der Browser nicht, wohin.\n\nEin Element darf dagegen **mehrere Klassen** tragen, getrennt durch ein Leerzeichen:\n\n```html\n<h2 id=\"steckbrief\">Steckbrief</h2>\n<p class=\"fakt wichtig\">Plattform: Konsole</p>\n```\n\nLeerzeichen, kein Komma – sonst versteht der Browser beide Klassen falsch."
+    },
+    {
+      "type": "fill",
+      "text": "Mehrere Absätze sollen als Warnung markiert werden, die Überschrift „Einstellungen“ ist das Ziel einer Sprungmarke. **Vervollständige** die Attributnamen.",
+      "template": "<h2 ___=\"einstellungen\">Einstellungen</h2>\n<p ___=\"warnung\">Akku fast leer.</p>\n<p ___=\"warnung\">Speicher voll.</p>",
+      "accept": [
+        [
+          "id"
+        ],
+        [
+          "class"
+        ],
+        [
+          "class"
+        ]
+      ],
+      "hint": "Einmalig und Sprungziel → id. Mehrfach → class.",
+      "explanation": "Die Überschrift ist einmalig und Sprungziel – id. Die Warnung gibt es mehrfach – class."
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** im Trainingsplan: Die Überschrift bekommt die id `woche-1`, beide Ruhetage bekommen die Klasse `pause`, und der Dehn-Absatz bekommt zwei Klassen zugleich: `tipp` und `wichtig`.",
+      "starter": {
+        "html": "<h2>Trainingsplan Woche 1</h2>\n<ul>\n  <li>Montag: Beine</li>\n  <li>Dienstag: Ruhetag</li>\n  <li>Mittwoch: Rücken</li>\n  <li>Donnerstag: Ruhetag</li>\n  <li>Freitag: Ganzkörper</li>\n</ul>\n<p>Nach jedem Training: dehnen!</p>\n"
+      },
+      "hints": [
+        "Drei Aufgaben, alle im öffnenden Tag: eine id für die Überschrift, eine Klasse für zwei Listenpunkte, zwei Klassen für den Absatz.",
+        "Zwei Klassen in einem Attribut: `class=\"neu sale\"` – mit Leerzeichen dazwischen.",
+        "Struktur: `<h2 id=\"…\">` für die Überschrift, `<li class=\"…\">` bei beiden Ruhetagen, `<p class=\"… …\">` beim Absatz."
+      ],
+      "solution": {
+        "html": "<h2 id=\"woche-1\">Trainingsplan Woche 1</h2>\n<ul>\n  <li>Montag: Beine</li>\n  <li class=\"pause\">Dienstag: Ruhetag</li>\n  <li>Mittwoch: Rücken</li>\n  <li class=\"pause\">Donnerstag: Ruhetag</li>\n  <li>Freitag: Ganzkörper</li>\n</ul>\n<p class=\"tipp wichtig\">Nach jedem Training: dehnen!</p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "h2#woche-1",
+          "count": 1,
+          "label": "Die Überschrift hat die id „woche-1“"
+        },
+        {
+          "type": "selector",
+          "selector": "li.pause",
+          "count": 2,
+          "label": "Beide Ruhetage tragen die Klasse „pause“"
+        },
+        {
+          "type": "text",
+          "selector": "li.pause",
+          "expected": "Dienstag: Ruhetag",
+          "label": "Der erste Ruhetag ist der Dienstag"
+        },
+        {
+          "type": "selector",
+          "selector": "p.tipp.wichtig",
+          "count": 1,
+          "label": "Der Dehn-Absatz trägt beide Klassen"
+        },
+        {
+          "type": "selector",
+          "selector": "li",
+          "count": 5,
+          "label": "Der Plan hat noch alle fünf Tage"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Namen für Klassen und ids wählst du selbst – mit Regeln:\n\n- nur Kleinbuchstaben, Ziffern und Bindestrich: `haupt-buehne`, `woche-1`\n- keine Leerzeichen, keine Umlaute, nicht mit einer Ziffer beginnen\n- Groß und klein ist ein Unterschied: `Fakt` ist nicht `fakt`\n\nUnd: Der Name sagt, **was** das Element ist – nicht, wie es aussieht. `hinweis` bleibt richtig, auch wenn der Hinweis später blau statt rot wird."
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Attribute ihrer Bedeutung zu.",
+      "pairs": [
+        [
+          "`class=\"neu\"`",
+          "Klasse – darf auf vielen Elementen stehen"
+        ],
+        [
+          "`id=\"oben\"`",
+          "id – genau einmal pro Seite"
+        ],
+        [
+          "`class=\"karte gross\"`",
+          "zwei Klassen auf einem Element"
+        ],
+        [
+          "`href=\"#oben\"`",
+          "Link, der zum Element mit der id oben springt"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Korrigiere** zwei Fehler im Sneaker-Check: Der Link „Zum Preis“ landet bei den Farben, und „Zu den Farben“ tut gar nichts. Außerdem ist der Preis zwar fett, aber nicht grün wie die anderen Fakten.",
+      "starter": {
+        "html": "<h1>Sneaker-Check: Neon Runner</h1>\n<p><a href=\"#preis\">Zum Preis</a> · <a href=\"#farben\">Zu den Farben</a></p>\n\n<h2 id=\"preis\">Farben</h2>\n<p class=\"fakt\">Schwarz, Weiß, Neon-Grün</p>\n\n<h2 id=\"preis\">Preis</h2>\n<p class=\"fakt, wichtig\">129 €</p>\n<p class=\"fakt\">Lieferung in zwei Tagen</p>\n",
+        "css": ".fakt { color: #2e7d32; }\n.wichtig { font-weight: bold; }\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "hints": [
+        "Zwei Überschriften tragen dieselbe id – der Browser springt immer zur ersten. Welche id passt zum Link „Zu den Farben“?",
+        "Mehrere Klassen trennt ein Leerzeichen – schau dir das Attribut beim Preis genau an.",
+        "Ziel: `<h2 id=\"…\">Farben</h2>` mit passender id und `<p class=\"… …\">129 €</p>` mit zwei Klassen ohne Komma."
+      ],
+      "solution": {
+        "html": "<h1>Sneaker-Check: Neon Runner</h1>\n<p><a href=\"#preis\">Zum Preis</a> · <a href=\"#farben\">Zu den Farben</a></p>\n\n<h2 id=\"farben\">Farben</h2>\n<p class=\"fakt\">Schwarz, Weiß, Neon-Grün</p>\n\n<h2 id=\"preis\">Preis</h2>\n<p class=\"fakt wichtig\">129 €</p>\n<p class=\"fakt\">Lieferung in zwei Tagen</p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "h2#farben",
+          "count": 1,
+          "label": "Die Farben-Überschrift hat die id „farben“"
+        },
+        {
+          "type": "text",
+          "selector": "h2#preis",
+          "expected": "Preis",
+          "label": "Die id „preis“ sitzt an der Preis-Überschrift"
+        },
+        {
+          "type": "selector",
+          "selector": "#preis",
+          "count": 1,
+          "label": "Die id „preis“ kommt nur einmal vor"
+        },
+        {
+          "type": "selector",
+          "selector": "p.fakt",
+          "count": 3,
+          "label": "Alle drei Fakten tragen die Klasse „fakt“"
+        },
+        {
+          "type": "selector",
+          "selector": "p.fakt.wichtig",
+          "count": 1,
+          "label": "Der Preis trägt die Klassen „fakt“ und „wichtig“"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Ab zur FUNKEN-Website. Sam will zwei Dinge: Der Hinweis mit den Einlasszeiten soll später auffällig gestaltet werden, und die Anfahrt soll direkt ansteuerbar sein.\n\nBeides bereitest du jetzt vor: Der Einlass-Absatz bekommt eine Klasse, die Anfahrts-Überschrift eine id. Sichtbar passiert noch nichts – aber die Namensschilder hängen."
+    },
+    {
+      "type": "code",
+      "etappe": "08-struktur-und-attribute/01-class-und-id"
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "chapter": "12-schrift-und-text",
+  "fragen": [
+    {
+      "id": "12-01",
+      "konzept": "css.font-family",
+      "type": "quiz",
+      "question": "Wozu steht `sans-serif` am Ende von `font-family: Arial, sans-serif;`?",
+      "options": [
+        "Als Ersatz, falls Arial auf dem Gerät nicht installiert ist",
+        "Damit Arial ohne Serifen dargestellt wird",
+        "Damit die Schrift kleiner wird"
+      ],
+      "correct": 0,
+      "explanation": "Die Liste ist eine Rangfolge. Die generische Familie am Ende gibt es auf jedem Gerät – sie ist das Sicherheitsnetz."
+    },
+    {
+      "id": "12-02",
+      "konzept": "css.font-family",
+      "type": "fill",
+      "text": "Die Seite soll Verdana nutzen, ersatzweise irgendeine Schrift ohne Füßchen.",
+      "template": "body {\n  font-family: Verdana, ___;\n}",
+      "accept": [
+        "sans-serif"
+      ],
+      "hint": "Die generische Familie „ohne Serifen“ – auf Englisch."
+    },
+    {
+      "id": "12-03",
+      "konzept": "css.font-family",
+      "type": "bug",
+      "text": "Die Schrift ändert sich nicht. Welche Zeile ist falsch?",
+      "lines": [
+        "p {",
+        "  font-family: \"Trebuchet MS\" sans-serif;",
+        "  color: #333;",
+        "}"
+      ],
+      "line": 1,
+      "explanation": "Zwischen den Schriften fehlt das Komma – ohne Komma ist der ganze Wert ungültig und wird ignoriert."
+    },
+    {
+      "id": "12-04",
+      "konzept": "css.font-family",
+      "type": "order",
+      "text": "Sortiere, wie der Browser bei `font-family: \"Trebuchet MS\", Verdana, sans-serif;` vorgeht.",
+      "lines": [
+        "Der Browser liest die Liste von links nach rechts.",
+        "Ist Trebuchet MS installiert? Dann nimm sie.",
+        "Sonst: Ist Verdana installiert? Dann nimm sie.",
+        "Sonst: Nimm irgendeine serifenlose Schrift."
+      ],
+      "explanation": "Die erste installierte Schrift gewinnt – die generische Familie ist das Sicherheitsnetz."
+    },
+    {
+      "id": "12-05",
+      "konzept": "css.font-size",
+      "type": "quiz",
+      "question": "Welche Angabe macht eine Überschrift 32 Pixel groß?",
+      "options": [
+        "`font-size: 32px;`",
+        "`font-size: 32;`",
+        "`text-size: 32px;`",
+        "`size: 32px;`"
+      ],
+      "correct": 0,
+      "explanation": "Die Eigenschaft heißt font-size, und eine Größe braucht immer eine Einheit wie px."
+    },
+    {
+      "id": "12-06",
+      "konzept": "css.font-size",
+      "type": "fill",
+      "text": "Wie groß ist Text, wenn keine Schriftgröße festgelegt ist?",
+      "template": "Ohne Angabe ist Text ___ Pixel groß.",
+      "accept": [
+        "16"
+      ],
+      "hint": "Die Grundgröße – 1rem entspricht genau dieser Zahl in Pixeln."
+    },
+    {
+      "id": "12-07",
+      "konzept": "css.font-size",
+      "type": "bug",
+      "text": "Die Überschrift bleibt klein. Welche Zeile ist falsch?",
+      "lines": [
+        "h1 {",
+        "  color: #ff6a00;",
+        "  font-size: 40;",
+        "}"
+      ],
+      "line": 2,
+      "explanation": "Ohne Einheit ignoriert der Browser die Größe komplett – richtig wäre 40px."
+    },
+    {
+      "id": "12-08",
+      "konzept": "css.text-align",
+      "type": "quiz",
+      "question": "Was bewirkt `text-align: center;` bei einem Absatz?",
+      "options": [
+        "Der Text steht mittig in seinem Kasten",
+        "Der Kasten rutscht in die Seitenmitte und wird schmaler",
+        "Der Text wird fett und größer"
+      ],
+      "correct": 0,
+      "explanation": "Die Textausrichtung wirkt auf den Inhalt eines Kastens – der Kasten selbst bleibt, wo er ist."
+    },
+    {
+      "id": "12-09",
+      "konzept": "css.text-align",
+      "type": "pair",
+      "text": "Ordne die Werte zu.",
+      "pairs": [
+        [
+          "`text-align: left;`",
+          "linksbündig (Standard)"
+        ],
+        [
+          "`text-align: center;`",
+          "zentriert"
+        ],
+        [
+          "`text-align: right;`",
+          "rechtsbündig"
+        ]
+      ]
+    },
+    {
+      "id": "12-10",
+      "konzept": "css.text-align",
+      "type": "bug",
+      "text": "Die Überschrift soll mittig stehen, klebt aber links. Welche Zeile ist falsch?",
+      "lines": [
+        "h1 {",
+        "  text-align: middle;",
+        "  color: #0b7dd6;",
+        "}"
+      ],
+      "line": 1,
+      "explanation": "Den Wert middle gibt es nicht – mittig heißt center."
+    },
+    {
+      "id": "12-11",
+      "konzept": "css.font-weight-style",
+      "type": "quiz",
+      "question": "Ein Zitat soll kursiv erscheinen. Welche Angabe stimmt?",
+      "options": [
+        "`font-style: italic;`",
+        "`font-weight: italic;`",
+        "`text-decoration: italic;`",
+        "`font-style: kursiv;`"
+      ],
+      "correct": 0,
+      "explanation": "Kursiv ist die Schriftlage (font-style) mit dem englischen Wert italic. font-weight regelt nur die Stärke."
+    },
+    {
+      "id": "12-12",
+      "konzept": "css.font-weight-style",
+      "type": "fill",
+      "text": "Der Preis soll fett erscheinen.",
+      "template": ".preis {\n  font-weight: ___;\n}",
+      "accept": [
+        "bold",
+        "700"
+      ],
+      "hint": "Das englische Wort für fett."
+    },
+    {
+      "id": "12-13",
+      "konzept": "css.font-weight-style",
+      "type": "pair",
+      "text": "Ordne die Deklarationen ihrer Wirkung zu.",
+      "pairs": [
+        [
+          "`font-weight: bold;`",
+          "fett"
+        ],
+        [
+          "`font-style: italic;`",
+          "kursiv"
+        ],
+        [
+          "`font-weight: normal;`",
+          "normale Stärke, nicht fett"
+        ],
+        [
+          "`font-style: normal;`",
+          "aufrecht, nicht kursiv"
+        ]
+      ]
+    },
+    {
+      "id": "12-14",
+      "konzept": "css.text-decoration",
+      "type": "quiz",
+      "question": "Warum sind Links unterstrichen, obwohl du das nie festgelegt hast?",
+      "options": [
+        "Browser-Standard für Links – mit text-decoration änderst du das",
+        "HTML verlangt bei Links immer eine Linie, CSS kann das nicht ändern",
+        "Die blaue Farbe erzeugt automatisch eine Linie"
+      ],
+      "correct": 0,
+      "explanation": "Unterstreichung ist der Browser-Standard für Links. text-decoration: none nimmt sie weg."
+    },
+    {
+      "id": "12-15",
+      "konzept": "css.text-decoration",
+      "type": "fill",
+      "text": "Die Menü-Links sollen keine Unterstreichung haben.",
+      "template": "nav a {\n  text-decoration: ___;\n}",
+      "accept": [
+        "none"
+      ],
+      "hint": "Das englische Wort für „keine“."
+    },
+    {
+      "id": "12-16",
+      "konzept": "css.text-decoration",
+      "type": "bug",
+      "text": "Die Menü-Links sind immer noch unterstrichen. Welche Zeile ist falsch?",
+      "lines": [
+        "nav a {",
+        "  color: #1b1b2f;",
+        "  text-decoration: non;",
+        "}"
+      ],
+      "line": 2,
+      "explanation": "Tippfehler: Der Wert heißt none. Unbekannte Werte ignoriert der Browser."
+    },
+    {
+      "id": "12-17",
+      "konzept": "css.line-height",
+      "type": "quiz",
+      "question": "Ein Absatz hat 16 Pixel Schrift und `line-height: 1.5;`. Wie hoch ist eine Zeile?",
+      "options": [
+        "24 Pixel",
+        "1,5 Pixel",
+        "16 Pixel",
+        "15 Pixel"
+      ],
+      "correct": 0,
+      "explanation": "Zahl ohne Einheit = Faktor: 16 × 1,5 = 24 Pixel."
+    },
+    {
+      "id": "12-18",
+      "konzept": "css.line-height",
+      "type": "fill",
+      "text": "Der Zeilenabstand soll das 1,5-Fache der Schriftgröße sein.",
+      "template": "body {\n  line-height: ___;\n}",
+      "accept": [
+        "1.5"
+      ],
+      "hint": "Zahl ohne Einheit – mit Dezimalpunkt statt Komma."
+    },
+    {
+      "id": "12-19",
+      "konzept": "css.line-height",
+      "type": "bug",
+      "text": "Die Zeilen liegen übereinander. Welche Zeile ist falsch?",
+      "lines": [
+        "p {",
+        "  font-size: 16px;",
+        "  line-height: 1.5px;",
+        "}"
+      ],
+      "line": 2,
+      "explanation": "1.5px wäre eine winzige Zeilenhöhe. Der Zeilenabstand kommt als Zahl ohne Einheit: 1.5."
+    }
+  ]
+}

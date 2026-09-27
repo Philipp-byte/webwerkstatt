@@ -1,0 +1,275 @@
+{
+  "chapter": "10-css-grundlagen",
+  "fragen": [
+    {
+      "id": "10-01",
+      "konzept": "css.regel",
+      "type": "quiz",
+      "question": "In `h1 { color: red; }` – was ist `h1`?",
+      "options": [
+        "Der Selektor",
+        "Die Eigenschaft",
+        "Der Wert"
+      ],
+      "correct": 0,
+      "explanation": "Der Selektor sagt, welche Elemente die Regel betrifft: alle h1."
+    },
+    {
+      "id": "10-02",
+      "konzept": "css.regel",
+      "type": "fill",
+      "text": "Vervollständige die Regel, die alle Absätze blau färbt.",
+      "template": "p {\n  ___: blue;\n}",
+      "accept": [
+        "color"
+      ],
+      "hint": "Die Eigenschaft für die Schriftfarbe."
+    },
+    {
+      "id": "10-03",
+      "konzept": "css.regel",
+      "type": "bug",
+      "text": "Die Absätze werden nicht grau. Welche Zeile ist falsch?",
+      "lines": [
+        "h1 {",
+        "  color: orange;",
+        "}",
+        "<p> {",
+        "  color: gray;",
+        "}"
+      ],
+      "line": 3,
+      "explanation": "Selektoren stehen ohne spitze Klammern: `p {`."
+    },
+    {
+      "id": "10-04",
+      "konzept": "css.regel",
+      "type": "order",
+      "text": "Sortiere die Zeilen zu einer Regel.",
+      "lines": [
+        "h2 {",
+        "  color: green;",
+        "}"
+      ]
+    },
+    {
+      "id": "10-05",
+      "konzept": "css.regel",
+      "type": "pair",
+      "text": "Ordne die Teile von `a { color: blue; }` zu.",
+      "pairs": [
+        [
+          "`a`",
+          "Selektor"
+        ],
+        [
+          "`color`",
+          "Eigenschaft"
+        ],
+        [
+          "`blue`",
+          "Wert"
+        ]
+      ]
+    },
+    {
+      "id": "10-06",
+      "konzept": "css.orte",
+      "type": "quiz",
+      "question": "Welcher Ort für CSS gilt nur für ein einzelnes Element?",
+      "options": [
+        "Das style-Attribut direkt am Tag",
+        "Das style-Element im head",
+        "Eine externe CSS-Datei"
+      ],
+      "correct": 0,
+      "explanation": "Inline-CSS im style-Attribut gilt nur für genau dieses Element."
+    },
+    {
+      "id": "10-07",
+      "konzept": "css.orte",
+      "type": "pair",
+      "text": "Ordne die drei Orte für CSS zu.",
+      "pairs": [
+        [
+          "style-Attribut am Tag",
+          "gilt für ein einzelnes Element"
+        ],
+        [
+          "style-Element im head",
+          "gilt für eine Seite"
+        ],
+        [
+          "externe Datei per link",
+          "gilt für alle Seiten, die sie einbinden"
+        ]
+      ]
+    },
+    {
+      "id": "10-08",
+      "konzept": "css.orte",
+      "type": "bug",
+      "text": "Ein Absatz bekommt seine Farbe nicht. Welche Zeile ist falsch?",
+      "lines": [
+        "<h1 style=\"color: orange;\">Mein Setup</h1>",
+        "<p style=\"color: gray;\">Monitor</p>",
+        "<p style=\"color gray;\">Maus</p>"
+      ],
+      "line": 2,
+      "explanation": "Zwischen Eigenschaft und Wert fehlt der Doppelpunkt: `color: gray;`."
+    },
+    {
+      "id": "10-09",
+      "konzept": "css.link",
+      "type": "fill",
+      "text": "Vervollständige die Verknüpfung mit dem Stylesheet.",
+      "template": "<link rel=\"___\" href=\"style.css\">",
+      "accept": [
+        "stylesheet"
+      ],
+      "hint": "Die Art der Beziehung: ein Stylesheet."
+    },
+    {
+      "id": "10-10",
+      "konzept": "css.link",
+      "type": "quiz",
+      "question": "Wohin gehört das link-Element für die CSS-Datei?",
+      "options": [
+        "In den head",
+        "Ans Ende des body",
+        "Vor den Dokumenttyp"
+      ],
+      "correct": 0,
+      "explanation": "Das link-Element steht im head, meist nach dem title."
+    },
+    {
+      "id": "10-11",
+      "konzept": "css.link",
+      "type": "bug",
+      "text": "Das Stylesheet wird nicht geladen. Welche Zeile ist falsch?",
+      "lines": [
+        "<head>",
+        "  <meta charset=\"utf-8\">",
+        "  <title>Mein Setup</title>",
+        "  <link rel=\"stylesheet\" herf=\"style.css\">",
+        "</head>"
+      ],
+      "line": 3,
+      "explanation": "Das Attribut für die Datei heißt `href`, nicht herf."
+    },
+    {
+      "id": "10-12",
+      "konzept": "css.farbe",
+      "type": "quiz",
+      "question": "Welcher Wert ergibt Weiß?",
+      "options": [
+        "`#ffffff`",
+        "`#000000`",
+        "`rgb(0, 0, 0)`"
+      ],
+      "correct": 0,
+      "explanation": "Alle drei Anteile voll (ff) ergeben Weiß; `#000000` und `rgb(0, 0, 0)` sind Schwarz."
+    },
+    {
+      "id": "10-13",
+      "konzept": "css.farbe",
+      "type": "pair",
+      "text": "Ordne die Farbwerte zu.",
+      "pairs": [
+        [
+          "`#ff0000`",
+          "Rot"
+        ],
+        [
+          "`#00ff00`",
+          "Grün"
+        ],
+        [
+          "`#0000ff`",
+          "Blau"
+        ],
+        [
+          "`#000`",
+          "Schwarz"
+        ]
+      ]
+    },
+    {
+      "id": "10-14",
+      "konzept": "css.farbe",
+      "type": "fill",
+      "text": "Vervollständige die Farbangabe mit drei Zahlen für Rot, Grün und Blau.",
+      "template": "h1 {\n  color: ___(0, 128, 0);\n}",
+      "accept": [
+        "rgb"
+      ],
+      "hint": "Die Funktion heißt nach den drei Farbanteilen."
+    },
+    {
+      "id": "10-15",
+      "konzept": "css.farbe",
+      "type": "bug",
+      "text": "Die Absätze bekommen keine Farbe. Welche Zeile ist falsch?",
+      "lines": [
+        "h1 {",
+        "  color: #ff6a00;",
+        "}",
+        "p {",
+        "  color: #1b1b2;",
+        "}"
+      ],
+      "line": 4,
+      "explanation": "Ein Hex-Code hat drei oder sechs Zeichen – hier sind es fünf."
+    },
+    {
+      "id": "10-16",
+      "konzept": "css.background",
+      "type": "quiz",
+      "question": "Welche Eigenschaft färbt die Fläche hinter dem Text?",
+      "options": [
+        "`background-color`",
+        "`color`",
+        "`bgcolor`"
+      ],
+      "correct": 0,
+      "explanation": "`color` färbt die Schrift, `background-color` die Fläche. `bgcolor` ist kein CSS."
+    },
+    {
+      "id": "10-17",
+      "konzept": "css.background",
+      "type": "fill",
+      "text": "Vervollständige: Der Fußbereich bekommt eine dunkle Fläche und helle Schrift.",
+      "template": "footer {\n  ___: #1b1b2f;\n  color: white;\n}",
+      "accept": [
+        "background-color"
+      ],
+      "hint": "Zwei Wörter mit Bindestrich."
+    },
+    {
+      "id": "10-18",
+      "konzept": "css.background",
+      "type": "bug",
+      "text": "Die Seite bekommt keinen cremefarbenen Hintergrund. Welche Zeile ist falsch?",
+      "lines": [
+        "body {",
+        "  backgroundcolor: #fff7e8;",
+        "}"
+      ],
+      "line": 1,
+      "explanation": "Die Eigenschaft heißt `background-color` – mit Bindestrich."
+    },
+    {
+      "id": "10-19",
+      "konzept": "css.background",
+      "type": "quiz",
+      "question": "Ein Kopfbereich hat eine dunkle Fläche. Welche Schriftfarbe ist gut lesbar?",
+      "options": [
+        "Eine helle, z. B. `#ffffff`",
+        "Eine dunkle, z. B. `#222222`",
+        "Egal – Kontrast spielt keine Rolle"
+      ],
+      "correct": 0,
+      "explanation": "Dunkle Fläche, helle Schrift: Kontrast macht Text lesbar."
+    }
+  ]
+}

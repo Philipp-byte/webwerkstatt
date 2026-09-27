@@ -1,0 +1,203 @@
+{
+  "id": "04-wiederholung",
+  "title": "Wiederholung",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Rundgang vor dem Meilenstein: Flexbox aus diesem Kapitel, dazu das Box-Modell (Container), Schrift (Schriftzug), CSS-Grundlagen (Lichtpult) und Bilder (Foto-Wand). Acht Aufgaben – dann bekommt der Fußbereich der FUNKEN-Website Luft."
+    },
+    {
+      "type": "quiz",
+      "question": "Eine Profilkarte stapelt Bild und Name mit `flex-direction: column`. Welche Zeile zentriert beide **horizontal**?",
+      "options": [
+        "`align-items: center`",
+        "`justify-content: center`",
+        "`flex-wrap: center`"
+      ],
+      "correct": 0,
+      "explanation": "In Spaltenrichtung zeigt die Hauptachse nach unten, die Querachse nach rechts. Horizontal zentrieren ist also Sache der Querachse – `align-items`."
+    },
+    {
+      "type": "fill",
+      "text": "Eine Karte bekommt einen 3 Pixel dicken, durchgezogenen Rahmen in `#1b1b2f` und rundum 12 Pixel Innenabstand. **Vervollständige** die Regel.",
+      "template": ".karte {\n  border: ___ solid #1b1b2f;\n  padding: ___;\n}",
+      "accept": [
+        [
+          "3px"
+        ],
+        [
+          "12px"
+        ]
+      ],
+      "hint": "Pixelwerte brauchen die Einheit px."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Kopfzeile des Sneaker-Shops: Logo ganz links, Menü ganz rechts, beide auf der Querachse mittig. Die Leiste bekommt die Hintergrundfarbe `#1b1b2f`, die Menü-Links werden 20 Pixel groß.",
+      "starter": {
+        "html": "<header class=\"kopf\">\n  <img class=\"logo\" src=\"sneaker.svg\" alt=\"Logo des Sneaker-Shops\">\n  <nav class=\"menue\">\n    <a href=\"#neu\">Neu</a>\n    <a href=\"#sale\">Sale</a>\n    <a href=\"#warenkorb\">Warenkorb</a>\n  </nav>\n</header>\n",
+        "css": ".kopf {\n  display: flex;\n  padding: 12px 24px;\n  /* verteilen, ausrichten, Hintergrund */\n}\n\n.logo {\n  width: 56px;\n}\n\n.menue a {\n  color: #fff7e8;\n  text-decoration: none;\n  margin-left: 16px;\n  /* Schriftgröße */\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Vier Ziele, zwei Regeln: Drei Dinge gehören zur Kopfzeile, die Schriftgröße zu den Links.",
+        "Verteilen und Ausrichten wie in Lektion 2 (Hauptachse, Querachse). Hintergrund ist `background-color`, Schriftgröße `font-size` – Muster: `font-size: 14px;`.",
+        "Struktur `.kopf`: `justify-content: …;`, `align-items: …;`, `background-color: …;`. In `.menue a`: `font-size: …;`."
+      ],
+      "solution": {
+        "css": ".kopf {\n  display: flex;\n  padding: 12px 24px;\n  justify-content: space-between;\n  align-items: center;\n  background-color: #1b1b2f;\n}\n\n.logo {\n  width: 56px;\n}\n\n.menue a {\n  color: #fff7e8;\n  text-decoration: none;\n  margin-left: 16px;\n  font-size: 20px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".kopf",
+          "prop": "justify-content",
+          "expected": "space-between",
+          "label": "Logo ganz links, Menü ganz rechts"
+        },
+        {
+          "type": "style",
+          "selector": ".kopf",
+          "prop": "align-items",
+          "expected": "center",
+          "label": "Logo und Menü sind mittig auf gleicher Höhe"
+        },
+        {
+          "type": "style",
+          "selector": ".kopf",
+          "prop": "background-color",
+          "expected": "#1b1b2f",
+          "label": "Die Kopfzeile ist dunkel"
+        },
+        {
+          "type": "style",
+          "selector": ".menue a",
+          "prop": "font-size",
+          "expected": "20px",
+          "label": "Die Menü-Links sind 20 Pixel groß"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Ein Bild mit Bildunterschrift für die Foto-Wand – die Unterschrift steht unter dem Bild. **Bringe** die Zeilen in die richtige Reihenfolge.",
+      "lines": [
+        "<figure>",
+        "  <img src=\"crowd.svg\" alt=\"Die Menge vor der Bühne\">",
+        "  <figcaption>Die Menge vor der Bühne</figcaption>",
+        "</figure>"
+      ],
+      "explanation": "`figure` umschließt Bild und Unterschrift; `figcaption` steht nach dem Bild."
+    },
+    {
+      "type": "pair",
+      "text": "**Ordne** jeder Eigenschaft ihre Bedeutung zu.",
+      "pairs": [
+        [
+          "`font-family`",
+          "Schriftart"
+        ],
+        [
+          "`padding`",
+          "Innenabstand"
+        ],
+        [
+          "`margin`",
+          "Außenabstand"
+        ],
+        [
+          "`background-color`",
+          "Hintergrundfarbe"
+        ],
+        [
+          "`line-height`",
+          "Zeilenabstand"
+        ],
+        [
+          "`border-radius`",
+          "runde Ecken"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** die Rangliste und behebe zwei Fehler: Die drei Karten sollen nebeneinander stehen und rundum 12 Pixel Innenabstand haben – stattdessen stapeln sie sich, und der Text klebt am Rahmen.",
+      "starter": {
+        "html": "<h2>Rangliste</h2>\n<div class=\"rangliste\">\n  <div class=\"platz\">1. Nova</div>\n  <div class=\"platz\">2. Kato</div>\n  <div class=\"platz\">3. Blitz</div>\n</div>\n",
+        "css": ".rangliste {\n  display flex;\n  gap: 12px;\n}\n\n.platz {\n  border: 2px solid #ffd23f;\n  border-radius: 8px;\n  padding: 12;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Beide Fehler sind winzig: Einmal fehlt ein Zeichen zwischen Eigenschaft und Wert, einmal fehlt etwas hinter einer Zahl.",
+        "Eine Deklaration ist immer `eigenschaft: wert;` – mit Doppelpunkt. Längen brauchen eine Einheit, zum Beispiel `margin: 8px;`.",
+        "Prüfe jede Zeile der beiden Regeln nach dem Muster `eigenschaft: wert;` – und Pixel heißen `px`."
+      ],
+      "solution": {
+        "css": ".rangliste {\n  display: flex;\n  gap: 12px;\n}\n\n.platz {\n  border: 2px solid #ffd23f;\n  border-radius: 8px;\n  padding: 12px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".rangliste",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Die Karten stehen nebeneinander"
+        },
+        {
+          "type": "style",
+          "selector": ".platz",
+          "prop": "padding-top",
+          "expected": "12px",
+          "label": "Die Karten haben 12 Pixel Innenabstand"
+        },
+        {
+          "type": "style",
+          "selector": ".platz",
+          "prop": "border-top-width",
+          "expected": "2px",
+          "label": "Der Rahmen bleibt 2 Pixel dick"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Die Datei `style.css` soll auf der Seite wirken. Welche Zeile gehört in den `head`?",
+      "options": [
+        "`<link rel=\"stylesheet\" href=\"style.css\">`",
+        "`<style src=\"style.css\">`",
+        "`<css href=\"style.css\">`"
+      ],
+      "correct": 0,
+      "explanation": "Externe Stylesheets bindest du mit `link` ein: `rel=\"stylesheet\"` sagt, was es ist, `href` zeigt auf die Datei."
+    },
+    {
+      "type": "fill",
+      "text": "Die Hauptüberschrift soll zentriert und 32 Pixel groß sein. **Vervollständige** die Regel.",
+      "template": "h1 {\n  text-align: ___;\n  font-size: ___;\n}",
+      "accept": [
+        [
+          "center"
+        ],
+        [
+          "32px"
+        ]
+      ],
+      "hint": "Mittig auf Englisch; die Größe mit Einheit."
+    },
+    {
+      "type": "explain",
+      "text": "Ab zur FUNKEN-Website: Der Fußbereich der Startseite klebt noch am Rand. Er bekommt rundum 16 Pixel Innenabstand und zentrierten Text – Box-Modell und Schrift in einem Zug.\n\nBeides kommt in die vorhandene footer-Regel; Hintergrund und Schriftfarbe bleiben, wie sie sind."
+    },
+    {
+      "type": "code",
+      "etappe": "14-flexbox/04-wiederholung"
+    }
+  ]
+}

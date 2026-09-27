@@ -24,6 +24,7 @@ try {
     localStorage.setItem('webwerkstatt2.lehrkraft', '1');
     localStorage.setItem('webwerkstatt2.spielstand.v1', JSON.stringify({ intro: { seen: true } }));
   });
+  await page.addStyleTag({ content: '.overlay{display:none !important}' });
   await page.evaluate((h) => { location.hash = h; }, `#/abnahme/${chapterId}`);
   await page.waitForSelector('#start', { timeout: 15000 });
   await page.click('#start');

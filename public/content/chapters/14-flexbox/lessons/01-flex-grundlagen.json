@@ -1,0 +1,203 @@
+{
+  "id": "01-flex-grundlagen",
+  "title": "Flex-Grundlagen",
+  "konzepte": [
+    "css.flex",
+    "css.flex-direction",
+    "css.gap"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Auf der Startseite deiner Gaming-Seite sollen drei Spielerkarten **nebeneinander** stehen. Doch der Browser stapelt Blöcke wie `div` immer **untereinander** – egal, wie breit der Bildschirm ist.\n\nDie Lösung heißt **Flexbox**. Du schaltest sie am **Container** ein, also am Eltern-Element – und schon ordnet er seine **Kinder** in einer Reihe an:\n\n```css\n.team {\n  display: flex;\n}\n```",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"60\" y=\"30\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">ohne Flexbox</text><rect x=\"25\" y=\"42\" width=\"70\" height=\"20\" rx=\"3\" fill=\"#ff7a45\"/><rect x=\"25\" y=\"70\" width=\"70\" height=\"20\" rx=\"3\" fill=\"#ff7a45\"/><rect x=\"25\" y=\"98\" width=\"70\" height=\"20\" rx=\"3\" fill=\"#ff7a45\"/><text x=\"60\" y=\"140\" text-anchor=\"middle\" fill=\"#eef2ff\">Blöcke stapeln sich</text><text x=\"124\" y=\"88\" text-anchor=\"middle\" fill=\"#eef2ff\" font-size=\"22\">→</text><text x=\"230\" y=\"30\" text-anchor=\"middle\" fill=\"#38c7ff\" font-weight=\"bold\">display: flex</text><rect x=\"150\" y=\"42\" width=\"160\" height=\"80\" rx=\"6\" fill=\"#0f1320\" stroke=\"#38c7ff\" stroke-width=\"2\"/><rect x=\"162\" y=\"56\" width=\"40\" height=\"44\" rx=\"3\" fill=\"#ff7a45\"/><rect x=\"210\" y=\"56\" width=\"40\" height=\"44\" rx=\"3\" fill=\"#ff7a45\"/><rect x=\"258\" y=\"56\" width=\"40\" height=\"44\" rx=\"3\" fill=\"#ff7a45\"/><path d=\"M206 104 V112 M254 104 V112\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"230\" y=\"116\" text-anchor=\"middle\" fill=\"#ffd84d\">gap</text><text x=\"230\" y=\"140\" text-anchor=\"middle\" fill=\"#38c7ff\">Container mit 3 Kindern</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Werkbank: Vier Spielerkarten liegen in einem Container mit der Klasse `team`. `display: flex;` legt sie nebeneinander, `gap: 12px;` sorgt für 12 Pixel Luft dazwischen.\n\n**Ändere** `flex` in `block` und beobachte, was passiert. Setze es zurück und **ändere** dann `12px` in `40px`.",
+      "html": "<div class=\"team\">\n  <div class=\"karte\">Nova<br>Level 42</div>\n  <div class=\"karte\">Blitz<br>Level 39</div>\n  <div class=\"karte\">Kato<br>Level 51</div>\n  <div class=\"karte\">Rey<br>Level 36</div>\n</div>\n",
+      "css": ".team {\n  display: flex;\n  gap: 12px;\n}\n\n.karte {\n  border: 2px solid #38c7ff;\n  border-radius: 8px;\n  padding: 12px;\n  text-align: center;\n}\n",
+      "editable": [
+        "css"
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Drei Kacheln sollen nebeneinander stehen. In welche Regel gehört `display: flex`?",
+      "options": [
+        "In die Regel des Containers, der die Kacheln umschließt",
+        "In die Regel jeder einzelnen Kachel",
+        "In die body-Regel, damit es überall gilt"
+      ],
+      "correct": 0,
+      "explanation": "Flexbox wird am Eltern-Element eingeschaltet – die Kinder werden automatisch zu Flex-Kindern. Am `body` würde es Kopfbereich, Navigation und Inhalt nebeneinander zwängen."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Menüleiste der Gaming-Seite als Flex-Container: Die vier Links stehen in einer Reihe mit 16 Pixel Abstand zwischen ihnen.",
+      "starter": {
+        "html": "<nav class=\"menue\">\n  <a href=\"#start\">Start</a>\n  <a href=\"#spiele\">Spiele</a>\n  <a href=\"#ranglisten\">Ranglisten</a>\n  <a href=\"#profil\">Profil</a>\n</nav>\n",
+        "css": ".menue {\n  background-color: #1b1b2f;\n  padding: 12px;\n  /* Flexbox hier einschalten */\n}\n\n.menue a {\n  color: #ffd23f;\n  text-decoration: none;\n  font-weight: bold;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Flexbox wird am Container eingeschaltet – hier ist das die Menüleiste mit der Klasse `menue`, nicht die einzelnen Links.",
+        "Die Eigenschaft heißt `display`; für den Abstand zwischen Flex-Kindern gibt es `gap`. Muster aus einem anderen Kontext: `gap: 8px;` macht 8 Pixel Luft.",
+        "Zwei Zeilen in der vorhandenen Regel `.menue`: `display: …;` und `gap: …;` mit den Werten aus der Aufgabe."
+      ],
+      "solution": {
+        "css": ".menue {\n  background-color: #1b1b2f;\n  padding: 12px;\n  display: flex;\n  gap: 16px;\n}\n\n.menue a {\n  color: #ffd23f;\n  text-decoration: none;\n  font-weight: bold;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".menue",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Die Menüleiste ist ein Flex-Container"
+        },
+        {
+          "type": "style",
+          "selector": ".menue",
+          "prop": "column-gap",
+          "expected": "16px",
+          "label": "Zwischen den Links sind 16 Pixel Abstand"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Die **Richtung** bestimmst du mit `flex-direction`:\n\n- `row` – Reihe, nebeneinander (Standard, musst du nicht schreiben)\n- `column` – Spalte, untereinander\n\n`gap` wirkt in beide Richtungen: In der Spalte ist es der Abstand zwischen den Zeilen. So stapelt ein Chat seine Nachrichten:\n\n```css\n.chat {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n```"
+    },
+    {
+      "type": "fill",
+      "text": "Die Nachrichten im Chat sollen untereinander stehen, mit Abstand. **Vervollständige** die Regel.",
+      "template": ".chat {\n  display: ___;\n  flex-direction: ___;\n  gap: 8px;\n}",
+      "accept": [
+        [
+          "flex"
+        ],
+        [
+          "column"
+        ]
+      ],
+      "hint": "Erst Flexbox einschalten, dann die Richtung „Spalte“ – auf Englisch."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** das Seitenmenü der Profilseite: Die vier Links stehen untereinander, mit 8 Pixel Abstand zwischen ihnen.",
+      "starter": {
+        "html": "<nav class=\"seitenmenue\">\n  <a href=\"#profil\">Profil</a>\n  <a href=\"#freunde\">Freunde</a>\n  <a href=\"#erfolge\">Erfolge</a>\n  <a href=\"#einstellungen\">Einstellungen</a>\n</nav>\n",
+        "css": ".seitenmenue {\n  width: 180px;\n  background-color: #1b1b2f;\n  padding: 12px;\n  /* Flexbox in Spaltenrichtung */\n}\n\n.seitenmenue a {\n  color: #fff7e8;\n  text-decoration: none;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Auch „untereinander mit Abstand“ ist ein Fall für Flexbox: einschalten und dann die Richtung ändern.",
+        "Die Richtung steuert `flex-direction`; die Werte heißen `row` und `column`. Der Abstand ist wieder `gap`.",
+        "Drei Zeilen in der Regel `.seitenmenue`: Flexbox einschalten, Richtung Spalte, Abstand 8 Pixel."
+      ],
+      "solution": {
+        "css": ".seitenmenue {\n  width: 180px;\n  background-color: #1b1b2f;\n  padding: 12px;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.seitenmenue a {\n  color: #fff7e8;\n  text-decoration: none;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".seitenmenue",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Das Seitenmenü ist ein Flex-Container"
+        },
+        {
+          "type": "style",
+          "selector": ".seitenmenue",
+          "prop": "flex-direction",
+          "expected": "column",
+          "label": "Die Links stehen untereinander (Spaltenrichtung)"
+        },
+        {
+          "type": "style",
+          "selector": ".seitenmenue",
+          "prop": "row-gap",
+          "expected": "8px",
+          "label": "Zwischen den Links sind 8 Pixel Abstand"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Eine Rangliste: Der Container mit der Klasse `rangliste` soll später `display: flex` bekommen, die drei Plätze sind seine Kinder. **Bringe** die Zeilen in die richtige Reihenfolge.",
+      "lines": [
+        "<div class=\"rangliste\">",
+        "  <div class=\"platz\">1. Nova – 9 870 Punkte</div>",
+        "  <div class=\"platz\">2. Kato – 8 120 Punkte</div>",
+        "  <div class=\"platz\">3. Blitz – 7 450 Punkte</div>",
+        "</div>"
+      ],
+      "explanation": "Der äußere `div` ist der Container – nur er bekommt `display: flex`. Die drei Plätze darin sind die Flex-Kinder."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** das Stylesheet der Team-Seite und behebe zwei Fehler: Die drei Spielerkarten sollen nebeneinander stehen, die Statistik-Zeilen darunter untereinander – beides klappt nicht, obwohl Flexbox schon eingebaut ist.",
+      "starter": {
+        "html": "<h2>Team Nova</h2>\n<div class=\"team\">\n  <div class=\"karte\">Nova · Level 42</div>\n  <div class=\"karte\">Blitz · Level 39</div>\n  <div class=\"karte\">Kato · Level 51</div>\n</div>\n\n<h2>Statistik</h2>\n<div class=\"stats\">\n  <div>Siege: 128</div>\n  <div>Niederlagen: 64</div>\n  <div>Punkte: 9 870</div>\n</div>\n",
+        "css": ".karte {\n  display: flex;\n  border: 2px solid #38c7ff;\n  border-radius: 8px;\n  padding: 12px;\n}\n\n.team {\n  gap: 12px;\n}\n\n.stats {\n  display: flex;\n  flex-direction: colum;\n  gap: 8px;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Schau genau, an welchem Element `display: flex` steht – am Container oder an den Kindern?",
+        "Der zweite Fehler steckt in der Statistik-Regel: Ein Wert ist falsch geschrieben, und der Browser ignoriert die ganze Zeile. Vergleiche Buchstabe für Buchstabe mit dem Chat-Beispiel.",
+        "Struktur: `.team` bekommt `display: …;`, `.karte` nicht. In `.stats` heißt die Richtung genau wie im Chat-Beispiel dieser Lektion."
+      ],
+      "solution": {
+        "css": ".karte {\n  border: 2px solid #38c7ff;\n  border-radius: 8px;\n  padding: 12px;\n}\n\n.team {\n  display: flex;\n  gap: 12px;\n}\n\n.stats {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".team",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Die Spielerkarten stehen nebeneinander (Container ist flex)"
+        },
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "display",
+          "expected": "block",
+          "label": "Die einzelnen Karten sind keine Flex-Container"
+        },
+        {
+          "type": "style",
+          "selector": ".stats",
+          "prop": "flex-direction",
+          "expected": "column",
+          "label": "Die Statistik-Zeilen stehen untereinander"
+        },
+        {
+          "type": "style",
+          "selector": ".team",
+          "prop": "column-gap",
+          "expected": "12px",
+          "label": "Zwischen den Karten bleiben 12 Pixel Abstand"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Ab zur FUNKEN-Website! Die Navigations-Links der Startseite stehen noch als lose Textzeile – ihre Abstände hängen von Leerzeichen ab. Jetzt wird die Navigation ein **Flex-Container** mit 16 Pixel Abstand zwischen den Links.\n\nDafür ergänzt du die vorhandene nav-Regel um zwei Zeilen. Die Links kleben danach noch links – zentriert wird in der nächsten Lektion."
+    },
+    {
+      "type": "code",
+      "etappe": "14-flexbox/01-flex-grundlagen"
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "id": "04-wiederholung",
+  "title": "Wiederholung",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Wiederholung! Heute mischen wir das Box-Modell mit Schrift (Kapitel 12), Selektoren (Kapitel 11), Formularen (Kapitel 09) und Links (Kapitel 05).\n\nAm Ende bekommen die Tabellen der Programm-Seite Luft in den Zellen und einen Rahmen."
+    },
+    {
+      "type": "quiz",
+      "question": "Der Text einer Kachel klebt innen am Rahmen. Welche Eigenschaft schafft Luft zwischen Text und Rahmen?",
+      "options": [
+        "`padding`",
+        "`margin`",
+        "`border`",
+        "`width`"
+      ],
+      "correct": 0,
+      "explanation": "padding ist der Innenabstand – zwischen Inhalt und Rahmen. margin würde nur außen Platz schaffen."
+    },
+    {
+      "type": "fill",
+      "text": "**Vervollständige** die Regeln: Links in der Navigation verlieren ihre Unterstreichung und werden beim Überfahren mit der Maus orange.",
+      "template": "nav a {\n  text-decoration: ___;\n}\n\nnav a:___ {\n  color: #ff6a00;\n}",
+      "accept": [
+        [
+          "none"
+        ],
+        [
+          "hover"
+        ]
+      ],
+      "hint": "Keine Unterstreichung ist der Wert none. Der Zustand „Maus darüber“ ist eine Pseudoklasse nach dem Doppelpunkt."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Kachel (Klasse `kachel`): 1 Pixel dicker, durchgezogener Rahmen in `#d0d4de`, rundum 16 Pixel Innenabstand, 12 Pixel runde Ecken. **Erstelle** außerdem eine Regel für die Klasse `preis`: fette Schrift, 24 Pixel groß.",
+      "starter": {
+        "html": "<div class=\"kachel\">\n  <img src=\"pizza.svg\" alt=\"Pizza Margherita\">\n  <h2>Pizza Margherita</h2>\n  <p class=\"preis\">8,50 €</p>\n</div>\n",
+        "css": ".kachel {\n  background-color: white;\n  width: 220px;\n  text-align: center;\n}\n\nimg {\n  width: 100%;\n}\n\n/* Regel für den Preis */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Drei Zeilen in der kachel-Regel und eine neue Regel mit Punkt-Selektor für den Preis.",
+        "Fett ist die Schriftstärke mit dem Wert bold, die Schriftgröße kennst du aus Kapitel 12.",
+        "Rahmen: Dicke, Linienart, Farbe in einer Zeile – wie `border: 4px dashed blue;`."
+      ],
+      "solution": {
+        "css": ".kachel {\n  background-color: white;\n  width: 220px;\n  text-align: center;\n  border: 1px solid #d0d4de;\n  padding: 16px;\n  border-radius: 12px;\n}\n\nimg {\n  width: 100%;\n}\n\n.preis {\n  font-weight: bold;\n  font-size: 24px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".kachel",
+          "prop": "border-top-style",
+          "expected": "solid",
+          "label": "Die Kachel hat einen durchgezogenen Rahmen"
+        },
+        {
+          "type": "style",
+          "selector": ".kachel",
+          "prop": "border-top-color",
+          "expected": "#d0d4de",
+          "label": "Der Rahmen ist hellgrau (#d0d4de)"
+        },
+        {
+          "type": "style",
+          "selector": ".kachel",
+          "prop": "padding-top",
+          "expected": "16px",
+          "label": "Die Kachel hat 16px Innenabstand"
+        },
+        {
+          "type": "style",
+          "selector": ".kachel",
+          "prop": "border-top-left-radius",
+          "expected": "12px",
+          "label": "Die Ecken sind 12px rund"
+        },
+        {
+          "type": "style",
+          "selector": ".preis",
+          "prop": "font-weight",
+          "expected": [
+            "700",
+            "bold"
+          ],
+          "label": "Der Preis ist fett"
+        },
+        {
+          "type": "style",
+          "selector": ".preis",
+          "prop": "font-size",
+          "expected": "24px",
+          "label": "Der Preis ist 24px groß"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Link-Attribute ihrer Wirkung zu.",
+      "pairs": [
+        [
+          "`href=\"#lineup\"`",
+          "Sprungmarke – springt zum Element mit der id lineup"
+        ],
+        [
+          "`href=\"mailto:hallo@beispiel.de\"`",
+          "öffnet das Mailprogramm"
+        ],
+        [
+          "`href=\"programm.html\"`",
+          "eigene Seite im selben Ordner"
+        ],
+        [
+          "`href=\"https://www.example.com\"`",
+          "externe Website"
+        ],
+        [
+          "`target=\"_blank\"`",
+          "öffnet den Link in einem neuen Tab"
+        ]
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Bringe das Anmelde-Formular in die richtige Reihenfolge: erst die Beschriftung, dann das Feld, zum Schluss der Knopf.",
+      "lines": [
+        "<form>",
+        "  <label for=\"email\">E-Mail</label>",
+        "  <input type=\"email\" id=\"email\" name=\"email\">",
+        "  <button type=\"submit\">Anmelden</button>",
+        "</form>"
+      ],
+      "explanation": "Die Beschriftung steht vor dem Feld und zeigt mit for auf dessen id. Der Absende-Knopf kommt am Ende."
+    },
+    {
+      "type": "quiz",
+      "question": "Kopfzellen und Datenzellen sollen mit **einer** Regel denselben Innenabstand bekommen. Welcher Selektor?",
+      "options": [
+        "`th, td`",
+        "`th td`",
+        "`th + td`",
+        "`th.td`"
+      ],
+      "correct": 0,
+      "explanation": "Das Komma bildet eine Gruppe: Die Regel gilt für beide Elemente. `th td` wäre ein Nachfahren-Selektor – eine Datenzelle innerhalb einer Kopfzelle gibt es nicht."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Behebe** die zwei Fehler: Die Chat-Blasen (Klasse `blase`) sollen einen 1 Pixel dicken, durchgezogenen blauen Rahmen und 12 Pixel Außenabstand nach unten haben – im Browser sind sie aber rahmenlos und kleben aneinander.",
+      "starter": {
+        "html": "<div class=\"chat\">\n  <div class=\"blase\">Wer kommt Freitag zu Neonpuls?</div>\n  <div class=\"blase\">Ich! Treffen am Einlass um 16 Uhr?</div>\n  <div class=\"blase\">Passt, bis dann.</div>\n</div>\n",
+        "css": "blase {\n  background-color: #e6f7ff;\n  border: 1px solid #38c7ff;\n  padding: 10px;\n  margin-bottom: 12;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Erst den Selektor prüfen: Wie spricht man eine Klasse an?",
+        "Dann jede Zeile: Hat jede Längenangabe eine Einheit?",
+        "Klassen-Selektor mit Punkt davor, Pixelwerte enden auf px."
+      ],
+      "solution": {
+        "css": ".blase {\n  background-color: #e6f7ff;\n  border: 1px solid #38c7ff;\n  padding: 10px;\n  margin-bottom: 12px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".blase",
+          "prop": "border-top-style",
+          "expected": "solid",
+          "label": "Die Blasen haben einen durchgezogenen Rahmen"
+        },
+        {
+          "type": "style",
+          "selector": ".blase",
+          "prop": "border-top-color",
+          "expected": "#38c7ff",
+          "label": "Der Rahmen ist blau (#38c7ff)"
+        },
+        {
+          "type": "style",
+          "selector": ".blase",
+          "prop": "margin-bottom",
+          "expected": "12px",
+          "label": "Unter jeder Blase sind 12px Luft"
+        },
+        {
+          "type": "style",
+          "selector": ".blase",
+          "prop": "padding-top",
+          "expected": "10px",
+          "label": "Der Innenabstand wirkt"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Ab zur FUNKEN-Website, diesmal auf die Programm-Seite. Die Tabellen dort sind eng: Der Text klebt an den Zellrändern. Kopf- und Datenzellen bekommen mit **einer** gemeinsamen Regel Innenabstand – Kurzschreibweise mit zwei Werten. Und jede Tabelle bekommt einen dünnen, dunklen Rahmen.\n\nDie table-Regel gibt es schon, die Zellen-Regel ist neu."
+    },
+    {
+      "type": "code",
+      "etappe": "13-box-modell/04-wiederholung"
+    }
+  ]
+}

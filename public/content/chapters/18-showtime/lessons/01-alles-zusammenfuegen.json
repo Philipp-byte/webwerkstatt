@@ -1,0 +1,268 @@
+{
+  "id": "01-alles-zusammenfuegen",
+  "title": "Alles zusammenfügen",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Letzte Station. Die FUNKEN-Website ist fast fertig: fünf Seiten, ein Stylesheet, ein Skript. Bevor der letzte Knopf eingebaut wird, ein Blick auf das Ganze – **welche Datei macht was?**\n\n- `index.html`, `programm.html`, `galerie.html`, `tickets.html`, `impressum.html` – das **Gerüst**: Texte, Listen, Tabellen, Formular, Bilder.\n- `style.css` – **Licht und Farbe**: eine Datei für alle Seiten.\n- `script.js` – **Strom**: reagiert auf Klicks, nur auf der Startseite.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><rect x=\"14\" y=\"48\" width=\"104\" height=\"64\" rx=\"8\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"66\" y=\"76\" text-anchor=\"middle\" fill=\"#ff7a45\" font-weight=\"bold\">index.html</text><text x=\"66\" y=\"96\" text-anchor=\"middle\" fill=\"#eef2ff\">Gerüst + Text</text><rect x=\"200\" y=\"14\" width=\"106\" height=\"48\" rx=\"8\" fill=\"#1b2135\" stroke=\"#38c7ff\" stroke-width=\"2\"/><text x=\"253\" y=\"34\" text-anchor=\"middle\" fill=\"#38c7ff\" font-weight=\"bold\">style.css</text><text x=\"253\" y=\"52\" text-anchor=\"middle\" fill=\"#eef2ff\">Aussehen</text><rect x=\"200\" y=\"98\" width=\"106\" height=\"48\" rx=\"8\" fill=\"#1b2135\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"253\" y=\"118\" text-anchor=\"middle\" fill=\"#ffd84d\" font-weight=\"bold\">script.js</text><text x=\"253\" y=\"136\" text-anchor=\"middle\" fill=\"#eef2ff\">Verhalten</text><path d=\"M118 66 L200 38\" stroke=\"#38c7ff\" stroke-width=\"2\"/><text x=\"196\" y=\"30\" text-anchor=\"end\" fill=\"#38c7ff\">&lt;link&gt; im head</text><path d=\"M118 94 L200 122\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"196\" y=\"140\" text-anchor=\"end\" fill=\"#ffd84d\">&lt;script&gt; am Ende</text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Zwei Zeilen verbinden die drei Dateien:\n\n```html\n<link rel=\"stylesheet\" href=\"style.css\">\n<script src=\"script.js\"></script>\n```\n\nDie erste steht im `head` – so wirkt das Stylesheet, bevor die Seite gezeichnet wird. Die zweite steht **vor dem schließenden body-Tag**: Das Skript läuft erst, wenn alle Elemente existieren. Sonst findet `getElementById` nichts."
+    },
+    {
+      "type": "pair",
+      "text": "Was steht in welcher Datei? Ordne zu.",
+      "pairs": [
+        [
+          "`<h2>Line-up</h2>`",
+          "index.html – Inhalt und Struktur"
+        ],
+        [
+          "`h2 { color: #d94f00; }`",
+          "style.css – Aussehen"
+        ],
+        [
+          "`knopf.addEventListener(\"click\", …)`",
+          "script.js – Verhalten"
+        ],
+        [
+          "`<link rel=\"stylesheet\" href=\"style.css\">`",
+          "im head – verknüpft das Stylesheet"
+        ],
+        [
+          "`<script src=\"script.js\"></script>`",
+          "vor dem Ende von body – bindet das Skript ein"
+        ]
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Jonas schiebt das `script`-Element versehentlich in den `head`. Beim Laden meldet die Konsole einen Fehler. Warum?",
+      "options": [
+        "Das Skript läuft, bevor die Elemente im body existieren",
+        "Im head darf überhaupt kein JavaScript stehen",
+        "Stylesheet und Skript stören sich gegenseitig"
+      ],
+      "correct": 0,
+      "explanation": "Der Browser führt das Skript sofort aus, wenn er die Zeile erreicht. Im head ist der body noch leer – `getElementById` liefert nichts. Deshalb: Skript vor dem schließenden body-Tag."
+    },
+    {
+      "type": "explain",
+      "text": "**Ein Link als Knopf** – der Klassiker für „Jetzt kaufen“ oder „Jetzt spielen“. Der Link bleibt ein `a`-Element; erst das Stylesheet macht ihn zum Knopf:\n\n```css\n.laden a {\n  background-color: #0b7dd6;\n  color: white;\n  padding: 8px 14px;\n  border-radius: 999px;\n  text-decoration: none;\n}\n```\n\n`padding` mit zwei Werten: erst oben/unten, dann links/rechts. `border-radius: 999px` macht eine Pille. Der Nachfahren-Selektor `.laden a` trifft nur Links im Absatz mit der Klasse `laden`."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** den Link im Absatz mit der Klasse `aktion` als Knopf: Hintergrund `#2f6fdb`, weiße Schrift, oben/unten 8 und links/rechts 14 Pixel Innenabstand, 999 Pixel runde Ecken, keine Unterstreichung.",
+      "starter": {
+        "html": "<div class=\"karte\">\n  <img src=\"controller.svg\" alt=\"Ein Gamecontroller\">\n  <h2>Kart Kings 2</h2>\n  <p>Das Rennspiel für die Couch – bis zu vier Leute gleichzeitig.</p>\n  <p class=\"aktion\"><a href=\"spielen.html\">Jetzt spielen</a></p>\n</div>\n",
+        "css": ".karte {\n  width: 260px;\n  padding: 16px;\n  border: 1px solid #cccccc;\n  border-radius: 12px;\n  font-family: Arial, sans-serif;\n}\n\n.karte img {\n  width: 120px;\n}\n\n/* Der Link als Knopf: */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Du brauchst eine neue Regel mit einem Nachfahren-Selektor: Klasse des Absatzes, Leerzeichen, dann das Link-Element.",
+        "Fünf Eigenschaften wie im Beispiel `.laden a`: background-color, color, padding mit zwei Werten, border-radius, text-decoration – nur mit den Werten aus der Aufgabe.",
+        "Gerüst: `.aktion a { background-color: …; color: …; padding: … …; border-radius: …; text-decoration: …; }` – Werte aus der Aufgabe einsetzen."
+      ],
+      "solution": {
+        "css": ".karte {\n  width: 260px;\n  padding: 16px;\n  border: 1px solid #cccccc;\n  border-radius: 12px;\n  font-family: Arial, sans-serif;\n}\n\n.karte img {\n  width: 120px;\n}\n\n/* Der Link als Knopf: */\n.aktion a {\n  background-color: #2f6fdb;\n  color: white;\n  padding: 8px 14px;\n  border-radius: 999px;\n  text-decoration: none;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".aktion a",
+          "prop": "background-color",
+          "expected": "#2f6fdb",
+          "label": "Der Link ist blau hinterlegt"
+        },
+        {
+          "type": "style",
+          "selector": ".aktion a",
+          "prop": "color",
+          "expected": "white",
+          "label": "Die Schrift ist weiß"
+        },
+        {
+          "type": "style",
+          "selector": ".aktion a",
+          "prop": "padding-top",
+          "expected": "8px",
+          "label": "Oben und unten 8px Innenabstand"
+        },
+        {
+          "type": "style",
+          "selector": ".aktion a",
+          "prop": "padding-left",
+          "expected": "14px",
+          "label": "Links und rechts 14px Innenabstand"
+        },
+        {
+          "type": "style",
+          "selector": ".aktion a",
+          "prop": "border-top-left-radius",
+          "expected": "999px",
+          "label": "Die Ecken sind rund"
+        },
+        {
+          "type": "style",
+          "selector": ".aktion a",
+          "prop": "text-decoration-line",
+          "expected": "none",
+          "label": "Keine Unterstreichung"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Eine komplette kleine Seite besteht immer aus denselben Zonen – in fester Reihenfolge:\n\n```html\n<header><h1>Waffelwagen</h1></header>\n<nav>\n  <a href=\"karte.html\">Karte</a>\n  <a href=\"kontakt.html\">Kontakt</a>\n</nav>\n<main>…</main>\n<footer>…</footer>\n```\n\nDie Navigation wird mit Flexbox zur Leiste: `display: flex` schaltet sie ein, `gap` macht Abstand zwischen den Links, `justify-content: center` verteilt sie mittig."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige die Regel: Die Links der Navigation stehen nebeneinander, mit Abstand, mittig verteilt.",
+      "template": "nav {\n  display: ___;\n  gap: 12px;\n  justify-content: ___;\n}",
+      "accept": [
+        [
+          "flex"
+        ],
+        [
+          "center"
+        ]
+      ],
+      "hint": "Flexbox einschalten über display; verteilen entlang der Hauptachse über justify-content – der Wert heißt wie „Mitte“ auf Englisch."
+    },
+    {
+      "type": "code",
+      "task": "1. **Ergänze** zwischen Kopf- und Hauptbereich eine Navigation mit drei Links: „Karte“ → karte.html, „Standorte“ → standorte.html, „Kontakt“ → kontakt.html. 2. **Gestalte** die Navigation als Flex-Container mit 12 Pixel Abstand zwischen den Links, mittig verteilt.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Waffelwagen</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <header>\n      <h1>Waffelwagen</h1>\n      <p>Frische Waffeln – jeden Tag woanders.</p>\n    </header>\n\n    <main>\n      <h2>Heute</h2>\n      <p>Bis 18 Uhr auf dem Marktplatz.</p>\n    </main>\n\n    <footer>\n      <p>Waffelwagen · Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  font-family: Arial, sans-serif;\n  background-color: #fff7e8;\n}\n\nheader {\n  background-color: #1b1b2f;\n  color: #ffd23f;\n  padding: 16px;\n}\n\n/* Regel für die Navigation: */\n"
+      },
+      "hints": [
+        "Die Navigation ist ein eigenes Element zwischen header und main; darin stehen nur die drei Links.",
+        "Ein Link sieht so aus: `<a href=\"team.html\">Team</a>` – Adresse und Text aus der Aufgabe. Für die Regel den Selektor nav verwenden.",
+        "Die Regel braucht drei Eigenschaften: display, gap und justify-content – mit denselben Werten wie im Lückentext."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Waffelwagen</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <header>\n      <h1>Waffelwagen</h1>\n      <p>Frische Waffeln – jeden Tag woanders.</p>\n    </header>\n\n    <nav>\n      <a href=\"karte.html\">Karte</a>\n      <a href=\"standorte.html\">Standorte</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n    </nav>\n\n    <main>\n      <h2>Heute</h2>\n      <p>Bis 18 Uhr auf dem Marktplatz.</p>\n    </main>\n\n    <footer>\n      <p>Waffelwagen · Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "body {\n  font-family: Arial, sans-serif;\n  background-color: #fff7e8;\n}\n\nheader {\n  background-color: #1b1b2f;\n  color: #ffd23f;\n  padding: 16px;\n}\n\n/* Regel für die Navigation: */\nnav {\n  display: flex;\n  gap: 12px;\n  justify-content: center;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "nav a",
+          "count": 3,
+          "label": "Die Navigation hat drei Links"
+        },
+        {
+          "type": "text",
+          "selector": "nav a[href=\"standorte.html\"]",
+          "expected": "Standorte",
+          "label": "Der Link „Standorte“ führt zu standorte.html"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "header",
+            "nav",
+            "main"
+          ],
+          "label": "Die Navigation steht zwischen Kopf- und Hauptbereich"
+        },
+        {
+          "type": "style",
+          "selector": "nav",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Die Navigation ist ein Flex-Container"
+        },
+        {
+          "type": "style",
+          "selector": "nav",
+          "prop": "column-gap",
+          "expected": "12px",
+          "label": "Zwischen den Links sind 12px Abstand"
+        },
+        {
+          "type": "style",
+          "selector": "nav",
+          "prop": "justify-content",
+          "expected": "center",
+          "label": "Die Links sind mittig verteilt"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Und der Strom: ein Knopf, ein Listener, eine Änderung. Das Muster kennst du vom Schaltpult – hier für eine Sneaker-Seite:\n\n```js\nconst knopf = document.getElementById(\"mehr\");\nconst info = document.getElementById(\"info\");\nknopf.addEventListener(\"click\", function () {\n  info.textContent = \"Drop am Samstag, 10 Uhr\";\n});\n```\n\nDrei Schritte: Element finden, auf `click` hören, `textContent` ändern. Für einen Zähler kommt eine Variable dazu, die bei jedem Klick um 1 wächst."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Skript der Sneaker-Seite: Bei jedem Klick auf den Knopf `merken` steigt die Zahl im Element `anzahl` um 1, und der Absatz `meldung` zeigt „Auf deiner Liste!“.",
+      "starter": {
+        "html": "<h1>Sneaker-Drop: Nightrunner</h1>\n<img src=\"sneaker.svg\" alt=\"Der Nightrunner in Schwarz und Orange\">\n<p><button id=\"merken\">Merken</button> <span id=\"anzahl\">0</span> Mal gemerkt</p>\n<p id=\"meldung\"></p>\n",
+        "js": "let gemerkt = 0;\n// Knopf finden, auf Klick reagieren, zählen und melden\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "hints": [
+        "Drei Schritte: den Knopf über seine id finden, einen Listener für click anmelden, in der Funktion zählen und die beiden Texte setzen.",
+        "Zählen wie beim Dabei-Knopf: `punkte = punkte + 1;` – danach den neuen Wert per textContent in das Anzeige-Element schreiben.",
+        "Gerüst: `knopf.addEventListener(\"click\", function () { … });` – in der Funktion drei Zeilen: erhöhen, Zahl anzeigen, Meldung setzen."
+      ],
+      "solution": {
+        "js": "let gemerkt = 0;\n// Knopf finden, auf Klick reagieren, zählen und melden\nconst knopf = document.getElementById(\"merken\");\nknopf.addEventListener(\"click\", function () {\n  gemerkt = gemerkt + 1;\n  document.getElementById(\"anzahl\").textContent = gemerkt;\n  document.getElementById(\"meldung\").textContent = \"Auf deiner Liste!\";\n});\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "#anzahl",
+          "expected": "0",
+          "label": "Vor dem Klick steht der Zähler auf 0"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#merken"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#merken"
+        },
+        {
+          "type": "text",
+          "selector": "#anzahl",
+          "expected": "2",
+          "label": "Nach zwei Klicks steht der Zähler auf 2"
+        },
+        {
+          "type": "text",
+          "selector": "#meldung",
+          "expected": "Auf deiner Liste!",
+          "label": "Die Meldung „Auf deiner Liste!“ erscheint"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "addEventListener\\(\\s*[\"']click[\"']",
+          "label": "Das Skript reagiert auf click"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "„Die Seite ist fast fertig – aber wo klickt man auf Tickets? Ganz oben muss ein Knopf hin, den niemand übersehen kann. Orange, rund, groß – so wie der Knopf auf deiner Spiele-Karte vorhin. Ayla sagt, du weißt, wie das geht: unter dem Countdown ein Absatz mit einem Link zur Tickets-Seite, und der Rest passiert im Stylesheet.“"
+    },
+    {
+      "type": "code",
+      "etappe": "18-showtime/01-alles-zusammenfuegen"
+    }
+  ]
+}

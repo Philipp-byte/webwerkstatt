@@ -1,0 +1,44 @@
+{
+  "id": "06-projekt-erste-styles",
+  "title": "Projekt: Erste Styles",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Okay, ich hab die Seite gesehen – das ist ORANGE! Endlich sieht das nach Festival aus und nicht nach Schulheft.\n\nWas du am Lichtpult gelernt hast: den Aufbau einer Regel, die drei Orte für CSS, drei Farbschreibweisen und den Unterschied zwischen Schrift und Fläche. Zum Abschluss bekommen Zwischenüberschriften und Tabellen der Startseite ihre Farben."
+    },
+    {
+      "type": "quiz",
+      "question": "Alle Tabellen der Startseite sollen weiß hinterlegt werden. Wie lautet der Selektor?",
+      "options": [
+        "`table`",
+        "`<table>`",
+        "`tabelle`",
+        "`td`"
+      ],
+      "correct": 0,
+      "explanation": "Der Element-Selektor ist der englische Tag-Name ohne spitze Klammern. `td` würde nur die Zellen treffen, nicht die ganze Tabelle."
+    },
+    {
+      "type": "bug",
+      "text": "Die Zwischenüberschriften bleiben schwarz und die Fläche fehlt. Welche Zeile ist falsch?",
+      "lines": [
+        "h2 {",
+        "  color: #d94f00",
+        "  background-color: white;",
+        "}"
+      ],
+      "line": 1,
+      "explanation": "Ohne Semikolon liest der Browser beide Zeilen als eine einzige Deklaration – und verwirft sie komplett."
+    },
+    {
+      "type": "explain",
+      "text": "Zwei neue Regeln für style.css: Zwischenüberschriften in Dunkelorange, Tabellen mit weißer Fläche – Weiß als Farbname oder als Hex-Code, beides zählt. Die vorhandenen Regeln bleiben stehen.\n\nWenn die Etappe steht, öffne die FUNKEN-Website über **Projekt** – zum ersten Mal in Farbe. Danach wartet Sam mit der Abnahme."
+    },
+    {
+      "type": "code",
+      "etappe": "10-css-grundlagen/06-projekt-erste-styles"
+    }
+  ]
+}

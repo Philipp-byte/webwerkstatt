@@ -1,0 +1,192 @@
+{
+  "id": "03-wiederholung",
+  "title": "Wiederholung",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Schrift, Größe, Ausrichtung, Zeilenabstand – die Startseite liest sich jetzt wie eine echte Website. Bevor die Tickets-Seite angeschlossen wird, mischen wir das Neue mit Selektoren, CSS-Grundlagen, Klassen und Listen aus den Kapiteln 11, 10, 08 und 04."
+    },
+    {
+      "type": "quiz",
+      "question": "Die Seite soll Verdana nutzen, ersatzweise irgendeine serifenlose Schrift. Welche Zeile stimmt?",
+      "options": [
+        "`font-family: Verdana, sans-serif;`",
+        "`font-family: Verdana sans-serif;`",
+        "`font-family: sans-serif, Verdana;`",
+        "`font-family: Verdana oder sans-serif;`"
+      ],
+      "correct": 0,
+      "explanation": "Das Komma trennt die Kandidaten, die Reihenfolge ist die Rangfolge: erst die Wunschschrift, am Ende die generische Familie."
+    },
+    {
+      "type": "fill",
+      "text": "**Vervollständige** die Zeile im Kopfbereich, die die Datei style.css einbindet.",
+      "template": "<___ ___=\"stylesheet\" href=\"style.css\">",
+      "accept": [
+        [
+          "link"
+        ],
+        [
+          "rel"
+        ]
+      ],
+      "hint": "Ein Leerelement, das eine Datei verknüpft – das erste Attribut nennt die Beziehung zur Datei."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** den Kursplan: Die Überschrift steht zentriert, Kursnamen (Klasse `kurs`) sind fett, und die Links im Fußbereich haben keine Unterstreichung. Der Link im Hauptteil bleibt unterstrichen.",
+      "starter": {
+        "html": "<h1>Kursplan Herbst</h1>\n<main>\n  <p><span class=\"kurs\">Kraft &amp; Core</span> – Montag 18 Uhr</p>\n  <p><span class=\"kurs\">HIIT</span> – Mittwoch 19 Uhr</p>\n  <p><span class=\"kurs\">Yoga</span> – Freitag 17 Uhr</p>\n  <p>Neu hier? <a href=\"probetraining.html\">Probetraining buchen</a></p>\n</main>\n<footer>\n  <a href=\"impressum.html\">Impressum</a>\n  <a href=\"kontakt.html\">Kontakt</a>\n</footer>\n",
+        "css": "/* Kursplan */\nbody {\n  font-family: Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #4ade80;\n}\n\nfooter {\n  background-color: #0f1320;\n  color: #eef2ff;\n}\n\nfooter a {\n  color: #38c7ff;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Drei Regeln: eine vorhandene für h1, eine neue für die Klasse kurs (Punkt davor!), eine vorhandene für footer a.",
+        "Muster für eine Klassenregel: `.neu { color: red; }` – hier mit der Schriftstärke statt der Farbe.",
+        "h1 → Ausrichtung mittig · .kurs → Stärke fett · footer a → keine Linie."
+      ],
+      "solution": {
+        "css": "/* Kursplan */\nbody {\n  font-family: Arial, sans-serif;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #4ade80;\n  text-align: center;\n}\n\n.kurs {\n  font-weight: bold;\n}\n\nfooter {\n  background-color: #0f1320;\n  color: #eef2ff;\n}\n\nfooter a {\n  color: #38c7ff;\n  text-decoration: none;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "text-align",
+          "expected": "center",
+          "label": "Die Überschrift ist zentriert"
+        },
+        {
+          "type": "style",
+          "selector": ".kurs",
+          "prop": "font-weight",
+          "expected": [
+            "700",
+            "bold"
+          ],
+          "label": "Kursnamen sind fett"
+        },
+        {
+          "type": "style",
+          "selector": "footer a",
+          "prop": "text-decoration-line",
+          "expected": "none",
+          "label": "Fußbereichs-Links ohne Unterstreichung"
+        },
+        {
+          "type": "style",
+          "selector": "main a",
+          "prop": "text-decoration-line",
+          "expected": "underline",
+          "label": "Der Link im Hauptteil bleibt unterstrichen"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "**Bringe** den HTML-Ausschnitt in die richtige Reihenfolge: ein Abschnitt mit id, darin Überschrift und Liste.",
+      "lines": [
+        "<section id=\"playlist\">",
+        "  <h2>Meine Playlist</h2>",
+        "  <ul>",
+        "    <li>Nachtfahrt – Neonlicht</li>",
+        "  </ul>",
+        "</section>"
+      ],
+      "explanation": "Der Abschnitt umschließt alles, die Überschrift steht vor der Liste, und jedes Element wird in umgekehrter Reihenfolge geschlossen."
+    },
+    {
+      "type": "pair",
+      "text": "**Ordne** die Selektoren zu.",
+      "pairs": [
+        [
+          "`.hinweis`",
+          "alle Elemente mit der Klasse hinweis"
+        ],
+        [
+          "`#lineup`",
+          "das eine Element mit der id lineup"
+        ],
+        [
+          "`nav a`",
+          "Links innerhalb der Navigation"
+        ],
+        [
+          "`h1, h2`",
+          "Haupt- und Zwischenüberschriften gemeinsam"
+        ],
+        [
+          "`a:hover`",
+          "Links, solange die Maus darüber ist"
+        ]
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Ein einzelnes Wort mitten im Satz soll eine Klasse bekommen, um es per CSS fett zu machen. Welches Element?",
+      "options": [
+        "`<span>`",
+        "`<div>`",
+        "`<p>`",
+        "`<br>`"
+      ],
+      "correct": 0,
+      "explanation": "span markiert einen Textteil innerhalb einer Zeile, ohne Umbruch. div ist ein Block für ganze Bereiche, p ein Absatz."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Behebe** die zwei Fehler: Die Lernkarte soll einen Zeilenabstand von 1.5 haben, die Frage (Klasse `frage`) soll zentriert und 24 Pixel groß sein. Doch die Zeilen liegen übereinander, und die Frage sieht aus wie normaler Text.",
+      "starter": {
+        "html": "<div class=\"karte\">\n  <p class=\"frage\">Wie lang ist der Anhalteweg bei 50 km/h?</p>\n  <p>Reaktionsweg 15 m + Bremsweg 25 m = 40 m. Bei nasser Fahrbahn deutlich mehr.</p>\n  <p>Merke: Der Anhalteweg wächst mit dem Quadrat der Geschwindigkeit.</p>\n</div>\n",
+        "css": "/* Führerschein-Lernkarte */\n.karte {\n  background-color: #ffd84d;\n  color: #0f1320;\n  line-height: 1.5px;\n}\n\nfrage {\n  text-align: center;\n  font-size: 24px;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Ein Fehler steckt in einem Wert (Einheit?), einer in einem Selektor (Klasse?).",
+        "Zeilenabstand als Zahl ohne Einheit, Muster: `line-height: 2;`. Klassen-Selektoren beginnen mit einem Punkt: `.beispiel`.",
+        "Der erste Fehler steht in der karte-Regel, der zweite ganz am Anfang der zweiten Regel."
+      ],
+      "solution": {
+        "css": "/* Führerschein-Lernkarte */\n.karte {\n  background-color: #ffd84d;\n  color: #0f1320;\n  line-height: 1.5;\n}\n\n.frage {\n  text-align: center;\n  font-size: 24px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "line-height",
+          "expected": "24px",
+          "label": "Der Zeilenabstand ist 1.5 (24px)"
+        },
+        {
+          "type": "style",
+          "selector": ".frage",
+          "prop": "text-align",
+          "expected": "center",
+          "label": "Die Frage ist zentriert"
+        },
+        {
+          "type": "style",
+          "selector": ".frage",
+          "prop": "font-size",
+          "expected": "24px",
+          "label": "Die Frage ist 24px groß"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "jonas",
+      "text": "Ab zur FUNKEN-Website: Die Tickets-Seite ist die letzte Seite ohne Stylesheet – sie sieht noch aus wie 1995. Im HTML-Tab verknüpfst du im Kopfbereich style.css, genau wie bei Programm und Galerie.\n\nIm CSS-Tab bekommt die Preistabelle Feinschliff: Die Kopfzellen werden linksbündig, damit „Ticket“ und „Preis“ sauber über ihren Spalten stehen. Die Regel für Kopfzellen gibt es schon – sie braucht nur eine Zeile mehr."
+    },
+    {
+      "type": "code",
+      "etappe": "12-schrift-und-text/03-wiederholung"
+    }
+  ]
+}

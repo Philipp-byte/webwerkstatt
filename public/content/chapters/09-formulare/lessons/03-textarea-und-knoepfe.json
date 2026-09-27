@@ -1,0 +1,200 @@
+{
+  "id": "03-textarea-und-knoepfe",
+  "title": "Textarea und Knöpfe",
+  "konzepte": [
+    "html.textarea",
+    "html.button"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Nach dem Festival will Sam eine **Umfrage**: „Was war gut, was hat gefehlt?“ In ein `<input>` passt eine Zeile – für Meinungen zu wenig.\n\nDafür gibt es den **Textbereich** `<textarea>`: mehrzeilig, an der Ecke größer ziehbar, mit **öffnendem und schließendem Tag**.\n\n```html\n<label for=\"meinung\">Deine Meinung</label>\n<textarea id=\"meinung\" name=\"meinung\"></textarea>\n```\n\nZwischen den Tags steht nichts – was dort stünde, wäre die Vorbelegung des Feldes."
+    },
+    {
+      "type": "example",
+      "text": "Ein Textbereich zum Ausprobieren; `rows` legt fest, wie viele Zeilen sichtbar sind. **Tippe** mehrere Zeilen hinein – Enter macht einen Umbruch. **Ändere** `rows=\"3\"` in `rows=\"8\"`. **Schreib** dann ein Wort zwischen die beiden Tags und schau, wo es auftaucht.",
+      "html": "<h1>Festival-Umfrage</h1>\n<form>\n  <label for=\"feedback\">Was war gut?</label>\n  <textarea id=\"feedback\" name=\"feedback\" rows=\"3\"></textarea>\n</form>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Welche Zeile erzeugt ein mehrzeiliges Textfeld richtig?",
+      "options": [
+        "`<textarea id=\"kommentar\" name=\"kommentar\"></textarea>`",
+        "`<input type=\"textarea\" name=\"kommentar\">`",
+        "`<textarea id=\"kommentar\" name=\"kommentar\">`"
+      ],
+      "correct": 0,
+      "explanation": "`textarea` ist ein eigenes Element mit schließendem Tag. Einen `input`-Typ „textarea“ gibt es nicht – und ohne `</textarea>` steckt der Browser alles Folgende ins Feld."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter der Beschriftung „Was hat gefehlt?“ einen mehrzeiligen Textbereich, dessen id und Name `wunsch` lauten.",
+      "starter": {
+        "html": "<h1>Festival-Umfrage</h1>\n<p>Drei Fragen, zwei Minuten – danke!</p>\n<form>\n  <label for=\"highlight\">Dein Highlight</label>\n  <input type=\"text\" id=\"highlight\" name=\"highlight\">\n\n  <label for=\"wunsch\">Was hat gefehlt?</label>\n  <!-- hier kommt der Textbereich -->\n</form>\n"
+      },
+      "hints": [
+        "Der mehrzeilige Textbereich ist ein eigenes Element – nicht `input`. Es hat einen öffnenden und einen schließenden Tag.",
+        "Muster aus einem anderen Kontext: `<textarea id=\"notiz\" name=\"notiz\"></textarea>`",
+        "An die Stelle des Kommentars: `<textarea id=\"…\" name=\"…\"></textarea>` mit dem Namen aus der Aufgabe."
+      ],
+      "solution": {
+        "html": "<h1>Festival-Umfrage</h1>\n<p>Drei Fragen, zwei Minuten – danke!</p>\n<form>\n  <label for=\"highlight\">Dein Highlight</label>\n  <input type=\"text\" id=\"highlight\" name=\"highlight\">\n\n  <label for=\"wunsch\">Was hat gefehlt?</label>\n  <textarea id=\"wunsch\" name=\"wunsch\"></textarea>\n</form>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "textarea#wunsch[name=\"wunsch\"]",
+          "count": 1,
+          "label": "Der Textbereich „wunsch“ ist da"
+        },
+        {
+          "type": "selector",
+          "selector": "form textarea",
+          "count": 1,
+          "label": "Im Formular steht genau ein Textbereich"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "label[for=\"wunsch\"]",
+            "textarea#wunsch"
+          ],
+          "label": "Der Textbereich steht unter seiner Beschriftung"
+        },
+        {
+          "type": "selector",
+          "selector": "input#highlight",
+          "count": 1,
+          "label": "Das Highlight-Feld ist noch da"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Bis jetzt kann niemand das Formular **abschicken**. Dafür gibt es den **Knopf** – `type=\"submit\"` heißt: Dieser Knopf sendet.\n\n```html\n<button type=\"submit\">Abschicken</button>\n```\n\nBeim Klick sammelt der Browser alle Eingaben als `name=wert`-Paare und schickt sie als **Anfrage** an den Server – wie beim Seitenaufruf, nur mit Daten im Gepäck. Dort muss ein Programm die Daten annehmen; das ist nicht mehr HTML.\n\nIn der Werkbank wird das Absenden **abgefangen** – die Seite bleibt, wie sie ist.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"22\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Klick auf den Absende-Knopf</text><rect x=\"14\" y=\"36\" width=\"100\" height=\"100\" rx=\"8\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"24\" y=\"58\" fill=\"#eef2ff\">Name: Sam</text><text x=\"24\" y=\"78\" fill=\"#eef2ff\">E-Mail: sam@…</text><rect x=\"24\" y=\"94\" width=\"80\" height=\"26\" rx=\"4\" fill=\"#ff7a45\"/><text x=\"64\" y=\"112\" text-anchor=\"middle\" fill=\"#0f1320\" font-weight=\"bold\">Absenden</text><path d=\"M120 70 H210\" stroke=\"#ffd84d\" stroke-width=\"2\" marker-end=\"url(#m9y)\"/><text x=\"168\" y=\"60\" text-anchor=\"middle\" fill=\"#ffd84d\">Anfrage + Daten</text><text x=\"168\" y=\"86\" text-anchor=\"middle\" fill=\"#ffd84d\" font-family=\"monospace\" font-size=\"12\">name=Sam&amp;…</text><path d=\"M216 112 H126\" stroke=\"#4ade80\" stroke-width=\"2\" marker-end=\"url(#m9g)\"/><text x=\"168\" y=\"128\" text-anchor=\"middle\" fill=\"#4ade80\">Antwort: Danke!</text><rect x=\"222\" y=\"36\" width=\"84\" height=\"100\" rx=\"8\" fill=\"#1b2135\" stroke=\"#4ade80\" stroke-width=\"2\"/><text x=\"264\" y=\"62\" text-anchor=\"middle\" fill=\"#4ade80\" font-weight=\"bold\">Server</text><text x=\"264\" y=\"84\" text-anchor=\"middle\" fill=\"#eef2ff\">Programm</text><text x=\"264\" y=\"102\" text-anchor=\"middle\" fill=\"#eef2ff\">nimmt Daten an</text><defs><marker id=\"m9y\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#ffd84d\"/></marker><marker id=\"m9g\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#4ade80\"/></marker></defs></svg>"
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige den Knopf, der die Anmeldung abschickt.",
+      "template": "<___ type=\"___\">Jetzt anmelden</button>",
+      "accept": [
+        [
+          "button"
+        ],
+        [
+          "submit"
+        ]
+      ],
+      "hint": "Erst der Name des Knopf-Elements, dann der Typ, der das Formular abschickt."
+    },
+    {
+      "type": "explain",
+      "text": "Ohne Namen kann Sam kein Ticket reservieren. Solche **Pflichtfelder** bekommen das Attribut `required` – ohne Wert:\n\n```html\n<input type=\"text\" id=\"vorname\" name=\"vorname\" required>\n```\n\nBeim Klick auf den Absende-Knopf prüft der Browser zuerst: Sind alle Pflichtfelder gefüllt, sieht die E-Mail wie eine E-Mail aus, liegt die Zahl zwischen min und max? Wenn nicht, zeigt er einen Hinweis am Feld und schickt **nichts** ab. Das siehst du auch in der Werkbank-Vorschau."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Formular: 1. Das Feld „Dein Highlight“ wird zum Pflichtfeld. 2. Am Ende kommt ein Knopf mit dem Text „Umfrage abschicken“, der das Formular absendet.",
+      "starter": {
+        "html": "<h1>Festival-Umfrage</h1>\n<p>Drei Fragen, zwei Minuten – danke!</p>\n<form>\n  <label for=\"highlight\">Dein Highlight</label>\n  <input type=\"text\" id=\"highlight\" name=\"highlight\">\n\n  <label for=\"wunsch\">Was hat gefehlt?</label>\n  <textarea id=\"wunsch\" name=\"wunsch\"></textarea>\n</form>\n"
+      },
+      "hints": [
+        "Ein Pflichtfeld erkennt der Browser an einem Attribut ohne Wert. Der Knopf ist ein eigenes Element mit einem Typ, der absendet.",
+        "Muster aus einem anderen Kontext: `<input type=\"email\" id=\"mail\" name=\"mail\" required>` und `<button type=\"submit\">Los</button>`",
+        "Das Attribut kommt ans Ende des öffnenden input-Tags von „highlight“; der Knopf `<button type=\"…\">…</button>` kommt vor `</form>`."
+      ],
+      "solution": {
+        "html": "<h1>Festival-Umfrage</h1>\n<p>Drei Fragen, zwei Minuten – danke!</p>\n<form>\n  <label for=\"highlight\">Dein Highlight</label>\n  <input type=\"text\" id=\"highlight\" name=\"highlight\" required>\n\n  <label for=\"wunsch\">Was hat gefehlt?</label>\n  <textarea id=\"wunsch\" name=\"wunsch\"></textarea>\n\n  <button type=\"submit\">Umfrage abschicken</button>\n</form>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "input#highlight",
+          "attr": "required",
+          "present": true,
+          "label": "Das Highlight-Feld ist ein Pflichtfeld"
+        },
+        {
+          "type": "text",
+          "selector": "form button[type=\"submit\"]",
+          "expected": "Umfrage abschicken",
+          "label": "Der Absende-Knopf heißt „Umfrage abschicken“"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "textarea#wunsch",
+            "form button"
+          ],
+          "label": "Der Knopf steht am Ende des Formulars"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Bring das Bewerbungsformular in die richtige Reihenfolge: Beschriftung jeweils vor dem Feld, erst der Name, dann die Begründung, der Knopf zuletzt.",
+      "lines": [
+        "<form>",
+        "  <label for=\"name\">Name</label>",
+        "  <input type=\"text\" id=\"name\" name=\"name\" required>",
+        "  <label for=\"grund\">Warum willst du mitmachen?</label>",
+        "  <textarea id=\"grund\" name=\"grund\"></textarea>",
+        "  <button type=\"submit\">Bewerben</button>",
+        "</form>"
+      ],
+      "explanation": "Label vor Feld, Felder in der Reihenfolge des Formulars, der Knopf ganz unten – alles innerhalb von form."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** die Umfrage: Der Knopf „Abschicken“ ist verschwunden – stattdessen steht Code im Textbereich. Und ein Klick auf „Dein Kommentar“ springt nicht ins Feld. Am Ende funktionieren Knopf und Beschriftung.",
+      "starter": {
+        "html": "<h1>Umfrage: Schulfest</h1>\n<form>\n  <label for=\"klasse\">Deine Klasse</label>\n  <input type=\"text\" id=\"klasse\" name=\"klasse\" required>\n\n  <label for=\"kommentar\">Dein Kommentar</label>\n  <textarea id=\"komentar\" name=\"kommentar\">\n\n  <button type=\"submit\">Abschicken</button>\n</form>\n"
+      },
+      "hints": [
+        "Zwei Fehler: einer beim Textbereich (wie endet er?), einer bei der Verbindung zwischen Label und Feld (for und id müssen gleich sein).",
+        "Ohne schließenden Tag hält der Browser alles Folgende für Text im Feld. Vergleiche mit dem Muster: `<textarea id=\"notiz\" name=\"notiz\"></textarea>`",
+        "Prüfe Buchstabe für Buchstabe: Das `for` im Label lautet kommentar – wie lautet die id des Textbereichs?"
+      ],
+      "solution": {
+        "html": "<h1>Umfrage: Schulfest</h1>\n<form>\n  <label for=\"klasse\">Deine Klasse</label>\n  <input type=\"text\" id=\"klasse\" name=\"klasse\" required>\n\n  <label for=\"kommentar\">Dein Kommentar</label>\n  <textarea id=\"kommentar\" name=\"kommentar\"></textarea>\n\n  <button type=\"submit\">Abschicken</button>\n</form>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "form button[type=\"submit\"]",
+          "expected": "Abschicken",
+          "label": "Der Knopf „Abschicken“ ist wieder da"
+        },
+        {
+          "type": "selector",
+          "selector": "textarea#kommentar[name=\"kommentar\"]",
+          "count": 1,
+          "label": "Der Textbereich hat die id kommentar – die Beschriftung findet ihn"
+        },
+        {
+          "type": "selector",
+          "selector": "form textarea",
+          "count": 1,
+          "label": "Im Formular steht genau ein Textbereich"
+        },
+        {
+          "type": "attr",
+          "selector": "input#klasse",
+          "attr": "required",
+          "present": true,
+          "label": "Das Klassenfeld ist weiterhin Pflicht"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Ab zur FUNKEN-Website: Das Ticketformular wird komplett. Am Ende kommen ein Textbereich für eine Nachricht (optional – nicht jeder hat eine), ein Kontrollkästchen für die Datenschutzerklärung und der Absende-Knopf „Ticket reservieren“.\n\nDas Kästchen ist kein Schmuck: Wer Daten sammelt, muss sagen, was damit passiert – mehr dazu in der Sicherheitszentrale. Ich prüfe die Reihenfolge: Nachricht, Kästchen, Knopf."
+    },
+    {
+      "type": "code",
+      "etappe": "09-formulare/03-textarea-und-knoepfe"
+    }
+  ]
+}

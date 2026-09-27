@@ -1,0 +1,280 @@
+{
+  "chapter": "09-formulare",
+  "fragen": [
+    {
+      "id": "09-01",
+      "konzept": "html.form",
+      "type": "quiz",
+      "question": "Welches Element ist der Rahmen, in dem alle Eingabefelder eines Formulars liegen?",
+      "options": [
+        "`<form>`",
+        "`<input>`",
+        "`<main>`"
+      ],
+      "correct": 0,
+      "explanation": "`<form>` fasst die Felder zusammen; beim Absenden gehen alle Eingaben darin an den Server."
+    },
+    {
+      "id": "09-02",
+      "konzept": "html.form",
+      "type": "fill",
+      "text": "Vervollständige den Rahmen des Formulars.",
+      "template": "<___>\n  <input type=\"text\" name=\"team\">\n</form>",
+      "accept": [
+        "form"
+      ],
+      "hint": "Der öffnende Tag heißt wie der schließende."
+    },
+    {
+      "id": "09-03",
+      "konzept": "html.form",
+      "type": "bug",
+      "text": "Der Browser erkennt kein Formular – nichts lässt sich abschicken. Welche Zeile ist falsch?",
+      "lines": [
+        "<from>",
+        "  <label for=\"ort\">Ort</label>",
+        "  <input type=\"text\" id=\"ort\" name=\"ort\">",
+        "  <button type=\"submit\">Senden</button>",
+        "</form>"
+      ],
+      "line": 0,
+      "explanation": "Der Rahmen heißt `form` – mit dem Tippfehler „from“ gibt es kein Formular."
+    },
+    {
+      "id": "09-04",
+      "konzept": "html.input",
+      "type": "quiz",
+      "question": "Ein Zahlenfeld soll nur Werte von 1 bis 10 annehmen. Welche Attribute brauchst du dafür?",
+      "options": [
+        "`min` und `max`",
+        "`from` und `to`",
+        "`start` und `end`"
+      ],
+      "correct": 0,
+      "explanation": "`min` legt den kleinsten, `max` den größten erlaubten Wert fest."
+    },
+    {
+      "id": "09-05",
+      "konzept": "html.input",
+      "type": "fill",
+      "text": "Das Feld prüft, ob die Eingabe wie eine E-Mail-Adresse aussieht.",
+      "template": "<input type=\"___\" id=\"mail\" name=\"mail\">",
+      "accept": [
+        "email"
+      ],
+      "hint": "Der Typ heißt wie die Sache, die eingegeben wird – auf Englisch."
+    },
+    {
+      "id": "09-06",
+      "konzept": "html.input",
+      "type": "bug",
+      "text": "Ein Eingabefeld ist falsch geschrieben. Welche Zeile?",
+      "lines": [
+        "<input type=\"text\" id=\"name\" name=\"name\">",
+        "<input type=\"email\" id=\"mail\" name=\"mail\">",
+        "<input type=\"number\" id=\"alter\" name=\"alter\"></input>",
+        "<input type=\"text\" id=\"ort\" name=\"ort\">"
+      ],
+      "line": 2,
+      "explanation": "`input` ist ein leeres Element – es gibt keinen schließenden Tag."
+    },
+    {
+      "id": "09-07",
+      "konzept": "html.label",
+      "type": "quiz",
+      "question": "Was bewirkt `<label for=\"alter\">` bei einem Feld mit `id=\"alter\"`?",
+      "options": [
+        "Klick auf die Beschriftung setzt den Cursor ins Feld",
+        "Das Feld wird zum Pflichtfeld",
+        "Die Beschriftung wird fett"
+      ],
+      "correct": 0,
+      "explanation": "for und id verbinden Label und Feld: Klick aufs Label aktiviert das Feld, Screenreader lesen die Beschriftung vor."
+    },
+    {
+      "id": "09-08",
+      "konzept": "html.label",
+      "type": "fill",
+      "text": "Verbinde die Beschriftung mit dem Feld.",
+      "template": "<label ___=\"stadt\">Stadt</label>\n<input type=\"text\" id=\"___\" name=\"stadt\">",
+      "accept": [
+        [
+          "for"
+        ],
+        [
+          "stadt"
+        ]
+      ],
+      "hint": "Das Attribut im Label nennt die id des Feldes – beide Werte müssen gleich sein."
+    },
+    {
+      "id": "09-09",
+      "konzept": "html.label",
+      "type": "bug",
+      "text": "Ein Klick auf „Alter“ springt nicht ins Feld. Welche Zeile ist schuld?",
+      "lines": [
+        "<label for=\"alter\">Alter</label>",
+        "<input type=\"number\" id=\"jahre\" name=\"alter\">",
+        "<label for=\"ort\">Ort</label>",
+        "<input type=\"text\" id=\"ort\" name=\"ort\">"
+      ],
+      "line": 1,
+      "explanation": "Das Label sucht die id „alter“, das Feld hat aber die id „jahre“. for und id müssen gleich sein."
+    },
+    {
+      "id": "09-10",
+      "konzept": "html.select",
+      "type": "order",
+      "text": "Sortiere die Auswahlliste für die Größe – S vor M.",
+      "lines": [
+        "<label for=\"groesse\">Größe</label>",
+        "<select id=\"groesse\" name=\"groesse\">",
+        "  <option value=\"s\">S</option>",
+        "  <option value=\"m\">M</option>",
+        "</select>"
+      ]
+    },
+    {
+      "id": "09-11",
+      "konzept": "html.select",
+      "type": "quiz",
+      "question": "Was steht im Attribut `value` einer Option?",
+      "options": [
+        "Der Wert, der beim Absenden an den Server geht",
+        "Der Text, den man in der Liste sieht",
+        "Die Nummer der Option"
+      ],
+      "correct": 0,
+      "explanation": "Sichtbar ist der Text zwischen den Tags; gesendet wird der value der gewählten Option."
+    },
+    {
+      "id": "09-12",
+      "konzept": "html.select",
+      "type": "bug",
+      "text": "Die Klappliste zeigt nur zwei statt drei Sorten. Welche Zeile ist falsch?",
+      "lines": [
+        "<select id=\"sorte\" name=\"sorte\">",
+        "  <option value=\"mango\">Mango</option>",
+        "  <option value=\"litschi\">Litschi</option>",
+        "  <li value=\"matcha\">Matcha</li>",
+        "</select>"
+      ],
+      "line": 3,
+      "explanation": "In einer Auswahlliste sind nur option-Elemente erlaubt – kein li."
+    },
+    {
+      "id": "09-13",
+      "konzept": "html.radio-checkbox",
+      "type": "quiz",
+      "question": "Drei Optionsfelder sollen eine Gruppe bilden, aus der man nur eins wählen kann. Was müssen sie gemeinsam haben?",
+      "options": [
+        "Denselben `name`",
+        "Dieselbe `id`",
+        "Denselben `value`"
+      ],
+      "correct": 0,
+      "explanation": "Der gleiche name macht die Gruppe. ids sind immer eindeutig, values unterscheiden die Antworten."
+    },
+    {
+      "id": "09-14",
+      "konzept": "html.radio-checkbox",
+      "type": "pair",
+      "text": "Radio oder Checkbox?",
+      "pairs": [
+        [
+          "`type=\"radio\"`",
+          "eins aus einer Gruppe – nur eine Wahl"
+        ],
+        [
+          "`type=\"checkbox\"`",
+          "jedes Kästchen einzeln an oder aus"
+        ],
+        [
+          "gleicher `name`",
+          "macht Optionsfelder zur Gruppe"
+        ],
+        [
+          "`value`",
+          "der Wert, der für die gewählte Option gesendet wird"
+        ]
+      ]
+    },
+    {
+      "id": "09-15",
+      "konzept": "html.radio-checkbox",
+      "type": "bug",
+      "text": "Bei der Zahlungsart lassen sich Bar und Karte gleichzeitig wählen. Welche Zeile?",
+      "lines": [
+        "<input type=\"radio\" id=\"bar\" name=\"zahlung\" value=\"bar\">",
+        "<label for=\"bar\">Bar</label>",
+        "<input type=\"checkbox\" id=\"karte\" name=\"zahlung\" value=\"karte\">",
+        "<label for=\"karte\">Karte</label>"
+      ],
+      "line": 2,
+      "explanation": "Ein Kontrollkästchen gehört zu keiner Gruppe – für „eins von beiden“ müssen beide Felder Optionsfelder (radio) sein."
+    },
+    {
+      "id": "09-16",
+      "konzept": "html.textarea",
+      "type": "quiz",
+      "question": "Ein Feld für mehrzeilige Nachrichten – welche Schreibweise ist richtig?",
+      "options": [
+        "`<textarea id=\"text\" name=\"text\"></textarea>`",
+        "`<input type=\"textarea\" name=\"text\">`",
+        "`<textarea id=\"text\" name=\"text\">`"
+      ],
+      "correct": 0,
+      "explanation": "`textarea` ist ein eigenes Element mit schließendem Tag; einen input-Typ „textarea“ gibt es nicht."
+    },
+    {
+      "id": "09-17",
+      "konzept": "html.textarea",
+      "type": "fill",
+      "text": "Vervollständige den mehrzeiligen Textbereich.",
+      "template": "<___ id=\"nachricht\" name=\"nachricht\"></textarea>",
+      "accept": [
+        "textarea"
+      ],
+      "hint": "Der öffnende Tag heißt wie der schließende."
+    },
+    {
+      "id": "09-18",
+      "konzept": "html.button",
+      "type": "quiz",
+      "question": "Welcher Knopf schickt das Formular ab?",
+      "options": [
+        "`<button type=\"submit\">Senden</button>`",
+        "`<button type=\"send\">Senden</button>`",
+        "`<input type=\"button\">Senden</input>`"
+      ],
+      "correct": 0,
+      "explanation": "Der Knopf ist ein button-Element; der Typ submit schickt das Formular ab."
+    },
+    {
+      "id": "09-19",
+      "konzept": "html.button",
+      "type": "fill",
+      "text": "Der Knopf soll das Formular absenden.",
+      "template": "<button type=\"___\">Anmelden</button>",
+      "accept": [
+        "submit"
+      ],
+      "hint": "Englisch für „abschicken“."
+    },
+    {
+      "id": "09-20",
+      "konzept": "html.button",
+      "type": "bug",
+      "text": "Neben „Senden“ erscheint ein zweiter, leerer Knopf. Welche Zeile ist falsch?",
+      "lines": [
+        "<form>",
+        "  <label for=\"mail\">E-Mail</label>",
+        "  <input type=\"email\" id=\"mail\" name=\"mail\">",
+        "  <button type=\"submit\">Senden<button>",
+        "</form>"
+      ],
+      "line": 3,
+      "explanation": "Dem schließenden Tag fehlt der Schrägstrich – `<button>` öffnet einen zweiten Knopf statt den ersten zu schließen."
+    }
+  ]
+}

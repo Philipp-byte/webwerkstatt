@@ -1,0 +1,224 @@
+{
+  "id": "02-drei-orte-fuer-css",
+  "title": "Drei Orte für CSS",
+  "konzepte": [
+    "css.orte",
+    "css.link"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Bevor du weiterfärbst, eine Frage: *Wo* schreibt man CSS eigentlich hin? Es gibt drei Orte:\n\n1. **Inline** – direkt am Tag, im Attribut `style`. Gilt für genau dieses Element.\n2. **Intern** – in einem `style`-Element im head. Gilt für diese eine Seite.\n3. **Extern** – in einer eigenen Datei wie `style.css`, die jede Seite einbindet.\n\nAlle drei funktionieren. Aber nur einer ist wirklich praktisch.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"22\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Drei Orte für CSS</text><rect x=\"12\" y=\"38\" width=\"92\" height=\"96\" rx=\"8\" fill=\"#e8ecf7\"/><text x=\"58\" y=\"62\" text-anchor=\"middle\" fill=\"#0f1320\" font-weight=\"bold\">Inline</text><text x=\"58\" y=\"86\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\">style=\"…\"</text><text x=\"58\" y=\"118\" text-anchor=\"middle\" fill=\"#ff7a45\" font-weight=\"bold\">1 Element</text><rect x=\"114\" y=\"38\" width=\"92\" height=\"96\" rx=\"8\" fill=\"#e8ecf7\"/><text x=\"160\" y=\"62\" text-anchor=\"middle\" fill=\"#0f1320\" font-weight=\"bold\">Intern</text><text x=\"160\" y=\"86\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\">&lt;style&gt;</text><text x=\"160\" y=\"118\" text-anchor=\"middle\" fill=\"#ff7a45\" font-weight=\"bold\">1 Seite</text><rect x=\"216\" y=\"38\" width=\"92\" height=\"96\" rx=\"8\" fill=\"#38c7ff\"/><text x=\"262\" y=\"62\" text-anchor=\"middle\" fill=\"#0f1320\" font-weight=\"bold\">Extern</text><text x=\"262\" y=\"86\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\">style.css</text><text x=\"262\" y=\"118\" text-anchor=\"middle\" fill=\"#0f1320\" font-weight=\"bold\">alle Seiten</text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "So sehen die ersten beiden Orte aus:\n\n```html\n<head>\n  <style>\n    p { color: gray; }\n  </style>\n</head>\n<body>\n  <p style=\"color: red;\">Rot – nur dieser Absatz.</p>\n  <p>Grau – wie alle anderen Absätze.</p>\n</body>\n```\n\nIm `style`-Element steht eine normale Regel mit Selektor. Im `style`-Attribut steht **nur die Deklaration** – ohne Selektor, ohne Klammern. Der Browser weiß ja, welches Element gemeint ist."
+    },
+    {
+      "type": "example",
+      "text": "**Ändere** im `style`-Attribut `red` zu `green` – nur ein Absatz ändert sich. **Ändere** im `style`-Element `gray` zu `blue` – alle anderen Absätze folgen. Und der erste? Bleibt grün: Die Angabe direkt am Element gewinnt gegen die Regel im head.",
+      "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Drei Orte</title>\n    <style>\n      p { color: gray; }\n    </style>\n  </head>\n  <body>\n    <h1>Setup-Tipps</h1>\n    <p style=\"color: red;\">Monitor immer auf Augenhöhe.</p>\n    <p>Tastatur flach, Handgelenke gerade.</p>\n    <p>Maus-Empfindlichkeit einmal einstellen, dann lassen.</p>\n  </body>\n</html>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Ein Sneaker-Shop hat 40 Seiten. Die Linkfarbe soll überall geändert werden – mit einer einzigen Änderung. Welcher Ort für CSS macht das möglich?",
+      "options": [
+        "Eine externe CSS-Datei, die alle 40 Seiten einbinden",
+        "Ein style-Attribut an jedem einzelnen Link",
+        "Ein style-Element im head jeder Seite"
+      ],
+      "correct": 0,
+      "explanation": "Externe Datei: eine Zeile ändern, 40 Seiten ändern sich. Bei den anderen Orten müsstest du jede Seite oder sogar jeden Link einzeln anfassen."
+    },
+    {
+      "type": "explain",
+      "text": "Der dritte Ort: eine eigene Datei, zum Beispiel `design.css`. Darin stehen **nur Regeln**, kein HTML. Jede Seite bindet sie im head ein, am besten nach dem `title`:\n\n```html\n<head>\n  <title>Mein Setup</title>\n  <link rel=\"stylesheet\" href=\"design.css\">\n</head>\n```\n\n`link` ist ein **Leerelement** – kein schließender Tag. `rel=\"stylesheet\"` sagt: Diese Datei ist ein Stylesheet. `href` nennt den Dateinamen."
+    },
+    {
+      "type": "explain",
+      "text": "Warum extern die beste Wahl ist: **eine Datei, alle Seiten.** Änderst du dort eine Zeile, ändern sich Startseite, Programm und Tickets gleichzeitig. Inhalt (HTML) und Aussehen (CSS) bleiben getrennt – übersichtlich und leicht zu pflegen.\n\nIn der Werkbank ist der Tab **style.css** genau diese Datei. Die Vorschau verbindet sie automatisch – auf einer echten Website übernimmt das `link`-Element diese Aufgabe."
+    },
+    {
+      "type": "code",
+      "task": "**Vervollständige** den Kopfbereich der Setup-Seite um die Verknüpfung mit der Stylesheet-Datei `style.css`, direkt nach dem Titel.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Mein Setup</title>\n  </head>\n  <body>\n    <h1>Mein Gaming-Setup</h1>\n    <p>Selbst zusammengestellt, Stück für Stück.</p>\n    <h2>Monitor</h2>\n    <p>27 Zoll, 144 Hertz – ruckelfrei.</p>\n    <h2>Tastatur</h2>\n    <p>Mechanisch, mit roten Schaltern.</p>\n  </body>\n</html>\n",
+        "css": "/* Setup-Seite */\n\nh1 {\n  color: #38c7ff;\n}\n\nh2 {\n  color: #ffd84d;\n}\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "hints": [
+        "Die Verknüpfung ist ein Leerelement im head – ohne schließenden Tag.",
+        "Zwei Attribute: Eins nennt die Art der Beziehung (stylesheet), das andere die Datei.",
+        "Muster aus der Erklärung: `<link rel=\"stylesheet\" href=\"design.css\">` – bei dir heißt die Datei anders."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Mein Setup</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Mein Gaming-Setup</h1>\n    <p>Selbst zusammengestellt, Stück für Stück.</p>\n    <h2>Monitor</h2>\n    <p>27 Zoll, 144 Hertz – ruckelfrei.</p>\n    <h2>Tastatur</h2>\n    <p>Mechanisch, mit roten Schaltern.</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "head link[rel=\"stylesheet\"]",
+          "attr": "href",
+          "expected": "style.css",
+          "label": "Der head verknüpft style.css als Stylesheet"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "head title",
+            "head link[rel=\"stylesheet\"]"
+          ],
+          "label": "Die Verknüpfung steht nach dem Titel"
+        },
+        {
+          "type": "text",
+          "selector": "title",
+          "expected": "Mein Setup",
+          "label": "Der Titel ist noch da"
+        }
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "**Vervollständige** die Verknüpfung mit der Datei `farben.css`.",
+      "template": "<___ rel=\"___\" href=\"farben.css\">",
+      "accept": [
+        [
+          "link"
+        ],
+        [
+          "stylesheet"
+        ]
+      ],
+      "hint": "Das Leerelement heißt wie „Verknüpfung“ auf Englisch; die Beziehung ist ein Stylesheet."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** im Steckbrief genau den Motto-Absatz rot (`red`) – direkt am Element, ohne Regel im Stylesheet. Alle anderen Absätze bleiben schwarz.",
+      "starter": {
+        "html": "<h1>Steckbrief: Lea</h1>\n<p>17 Jahre, Heilbronn, Praktikum in einer Fahrradwerkstatt.</p>\n<h2>Lieblingsdinge</h2>\n<ul>\n  <li>Bouldern am Wochenende</li>\n  <li>Pizza mit Pilzen</li>\n  <li>Katze Mo</li>\n</ul>\n<p>Mehr Fotos: <a href=\"galerie.html\">Galerie</a></p>\n<p>Motto: Erst machen, dann reden.</p>\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "hints": [
+        "Inline-CSS: Das Attribut kommt in den öffnenden Tag des Motto-Absatzes.",
+        "Im Attribut steht nur die Deklaration – kein Selektor, keine geschweiften Klammern.",
+        "Muster: `<h2 style=\"color: blue;\">…</h2>` – bei dir ein Absatz in Rot."
+      ],
+      "solution": {
+        "html": "<h1>Steckbrief: Lea</h1>\n<p>17 Jahre, Heilbronn, Praktikum in einer Fahrradwerkstatt.</p>\n<h2>Lieblingsdinge</h2>\n<ul>\n  <li>Bouldern am Wochenende</li>\n  <li>Pizza mit Pilzen</li>\n  <li>Katze Mo</li>\n</ul>\n<p>Mehr Fotos: <a href=\"galerie.html\">Galerie</a></p>\n<p style=\"color: red;\">Motto: Erst machen, dann reden.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "p:last-of-type",
+          "prop": "color",
+          "expected": "red",
+          "label": "Der Motto-Absatz ist rot"
+        },
+        {
+          "type": "style",
+          "selector": "p:first-of-type",
+          "prop": "color",
+          "expected": "black",
+          "label": "Der erste Absatz bleibt schwarz"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<p[^>]*style\\s*=",
+          "label": "Die Farbe steht im style-Attribut direkt am Absatz"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "**Sortiere**: Was passiert, wenn der Browser eine Seite mit externem Stylesheet lädt?",
+      "lines": [
+        "Der Browser lädt die HTML-Datei",
+        "Im head findet er das link-Element",
+        "Er lädt die Datei style.css",
+        "Er wendet die Regeln auf die passenden Elemente an",
+        "Die Seite erscheint mit Farben"
+      ],
+      "explanation": "Erst HTML, dann das Stylesheet, dann anwenden – deshalb steht das link-Element im head, ganz oben."
+    },
+    {
+      "type": "code",
+      "task": "**Übertrage** die beiden Regeln aus dem style-Element in die externe Datei `style.css`: Das style-Element verschwindet, der head verknüpft die Datei. Die Überschrift bleibt grün, die Absätze bleiben grau.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>SV Neckarkick</title>\n    <style>\n      h1 {\n        color: green;\n      }\n\n      p {\n        color: gray;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>SV Neckarkick</h1>\n    <p>Fußball in Heilbronn seit 1921.</p>\n    <p>Nächstes Spiel: Sonntag, 15 Uhr, Sportplatz Hafenstraße.</p>\n  </body>\n</html>\n",
+        "css": "/* Stylesheet des Vereins */\n"
+      },
+      "editable": [
+        "html",
+        "css"
+      ],
+      "hints": [
+        "Reihenfolge: Regeln in den CSS-Tab kopieren, dann das style-Element samt Inhalt löschen, dann verknüpfen.",
+        "In style.css stehen nur die Regeln – ohne style-Tags.",
+        "Die Verknüpfung ist dasselbe Leerelement wie in der ersten Aufgabe: im head, nach dem title."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>SV Neckarkick</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>SV Neckarkick</h1>\n    <p>Fußball in Heilbronn seit 1921.</p>\n    <p>Nächstes Spiel: Sonntag, 15 Uhr, Sportplatz Hafenstraße.</p>\n  </body>\n</html>\n",
+        "css": "/* Stylesheet des Vereins */\n\nh1 {\n  color: green;\n}\n\np {\n  color: gray;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<style",
+          "absent": true,
+          "label": "Im HTML gibt es kein style-Element mehr"
+        },
+        {
+          "type": "attr",
+          "selector": "head link[rel=\"stylesheet\"]",
+          "attr": "href",
+          "expected": "style.css",
+          "label": "Der head verknüpft style.css"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "h1\\s*\\{",
+          "label": "Die h1-Regel steht im Stylesheet"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "p\\s*\\{",
+          "label": "Die p-Regel steht im Stylesheet"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "color",
+          "expected": "green",
+          "label": "Die Überschrift ist weiterhin grün"
+        },
+        {
+          "type": "style",
+          "selector": "p",
+          "prop": "color",
+          "expected": "gray",
+          "label": "Die Absätze sind weiterhin grau"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "jonas",
+      "text": "Eine Datei für alle Seiten – und ein Backup davon, bitte.\n\nDie FUNKEN-Startseite hat ihre Regel schon in style.css, aber der head weiß noch nichts davon. Jetzt kommt die Verknüpfung in den Kopfbereich, nach dem Titel. In der Werkbank ändert sich sichtbar nichts; auf der echten Website macht genau diese Zeile den Unterschied."
+    },
+    {
+      "type": "code",
+      "etappe": "10-css-grundlagen/02-drei-orte-fuer-css"
+    }
+  ]
+}

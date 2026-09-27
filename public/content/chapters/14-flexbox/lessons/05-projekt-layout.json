@@ -1,0 +1,62 @@
+{
+  "id": "05-projekt-layout",
+  "title": "Projekt: Bühnen-Layout",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Meilenstein! Menü in einer Reihe, Foodtrucks als Kacheln, alles ausgerichtet – die Startseite hat jetzt ein echtes Layout. Zum Abschluss soll der **Kopfbereich leuchten**: dunkler Hintergrund, Luft rundum, gelbe Schrift für Überschrift und Absatz.\n\nDafür kombinierst du drei Stationen: Hintergrundfarbe (Lichtpult), Innenabstand (Container) und einen Gruppen-Selektor aus zwei Nachfahren-Selektoren (Spots)."
+    },
+    {
+      "type": "quiz",
+      "question": "Was bewirkt das Komma in `nav a, footer a { color: white; }`?",
+      "options": [
+        "Beide Selektoren bekommen dieselben Deklarationen",
+        "Nur Links, die in nav und footer zugleich liegen, werden weiß",
+        "Das Komma trennt zwei Eigenschaften voneinander"
+      ],
+      "correct": 0,
+      "explanation": "Das Komma bildet einen Gruppen-Selektor: Eine Regel gilt für alle aufgezählten Selektoren. Jeder davon darf selbst ein Nachfahren-Selektor sein."
+    },
+    {
+      "type": "pair",
+      "text": "Rückblick Bühnen-Layout: **Ordne** jeder Flexbox-Zeile ihre Aufgabe zu.",
+      "pairs": [
+        [
+          "`display: flex`",
+          "schaltet Flexbox am Container ein"
+        ],
+        [
+          "`gap`",
+          "Abstand zwischen den Kindern"
+        ],
+        [
+          "`justify-content`",
+          "verteilt entlang der Hauptachse"
+        ],
+        [
+          "`align-items`",
+          "richtet auf der Querachse aus"
+        ],
+        [
+          "`flex-wrap: wrap`",
+          "erlaubt den Umbruch in neue Zeilen"
+        ],
+        [
+          "`flex: 1`",
+          "lässt ein Kind wachsen"
+        ]
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Jetzt der Meilenstein: Die vorhandene header-Regel bekommt Hintergrundfarbe und Innenabstand. Eine neue Gruppen-Regel färbt Hauptüberschrift und Absatz im Kopfbereich gelb – beide Selektoren sind Nachfahren-Selektoren, durch ein Komma getrennt.\n\nDanach unbedingt **FUNKEN-Website ansehen**: Das Bühnen-Layout steht!"
+    },
+    {
+      "type": "code",
+      "etappe": "14-flexbox/05-projekt-layout"
+    }
+  ]
+}
