@@ -1251,7 +1251,7 @@ schreibe('pool.json', {
 schreibe('boss.json', {
   chapter: '11-selektoren',
   title: 'Abnahme: Spots',
-  intro: 'Okay, die Spots sitzen – der Einlass leuchtet, und die Navigation wird orange, wenn man drüberfährt. Aber ich hab gestern selbst so eine Regel getippt, und nichts ist passiert. Zeigt mir, dass ihr wisst, wo Punkt, Raute und Komma hingehören.',
+  intro: 'Okay, die Spots sitzen – der Einlass leuchtet, und die Navigation wird orange, wenn man drüberfährt. Aber ich hab gestern selbst so eine Regel getippt, und nichts ist passiert. Zeig mir, dass du weißt, wo Punkt, Raute und Komma hingehören.',
   bestanden: 0.8,
   aufgaben: [
     { konzept: 'css.sel-klasse', type: 'quiz', question: 'Der Absatz `<p class="hinweis">` soll gestaltet werden. Welcher Selektor?', options: ['`.hinweis`', '`#hinweis`', '`p.class`'], correct: 0, explanation: 'Punkt für Klassen, Raute für ids.' },

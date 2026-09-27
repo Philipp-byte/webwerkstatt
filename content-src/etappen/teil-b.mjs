@@ -136,7 +136,7 @@ export function teilB(etappe) {
     task: '**Gestalte** die Navigations-Links beim Überfahren mit der Maus: Sie werden dann orange `#ff6a00`.',
     hints: ['Der Zustand „Maus darüber“ ist eine Pseudoklasse, die mit Doppelpunkt an den Selektor gehängt wird.', 'Neue Regel nach der nav-a-Regel – gleiche Selektoren plus Pseudoklasse.'],
     tests: [
-      { type: 'source', file: 'css', matches: 'nav\\s+a:hover\\s*\\{[^}]*color\\s*:\\s*#ff6a00', label: 'Es gibt eine Regel nav a:hover mit der Farbe #ff6a00' },
+      { type: 'source', file: 'css', matches: 'nav\\s+a:hover\\s*\\{(?:[^}]*[\\s;{])?color\\s*:\\s*#ff6a00', label: 'Es gibt eine Regel nav a:hover mit der Farbe #ff6a00' },
       { type: 'style', selector: 'nav a', prop: 'color', expected: '#1b1b2f', label: 'Ohne Maus bleiben die Links dunkel' },
     ],
     aendern: { css: ['nav a {\n  color: #1b1b2f;\n}\n', 'nav a {\n  color: #1b1b2f;\n}\n\nnav a:hover {\n  color: #ff6a00;\n}\n'] },

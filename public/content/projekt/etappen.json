@@ -2719,7 +2719,7 @@
         {
           "type": "source",
           "file": "css",
-          "matches": "nav\\s+a:hover\\s*\\{[^}]*color\\s*:\\s*#ff6a00",
+          "matches": "nav\\s+a:hover\\s*\\{(?:[^}]*[\\s;{])?color\\s*:\\s*#ff6a00",
           "label": "Es gibt eine Regel nav a:hover mit der Farbe #ff6a00"
         },
         {
