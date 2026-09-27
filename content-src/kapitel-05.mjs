@@ -267,7 +267,7 @@ schreibe('lessons/03-mailto-und-neuer-tab.json', {
     },
     {
       type: 'example',
-      text: 'Zwei E-Mail-Links. **Fahre** mit der Maus darüber – beide Ziele beginnen mit mailto. Beim zweiten ist der Linktext die Adresse selbst: So kann man sie auch abschreiben, wenn kein Mailprogramm eingerichtet ist. **Ändere** die Adresse im ersten Link und **beobachte**: Die Seite sieht gleich aus, nur das Ziel ändert sich.',
+      text: 'Zwei E-Mail-Links. **Fahre** mit der Maus darüber – der Browser zeigt unten das Ziel, es beginnt mit mailto. Beim zweiten ist der Linktext die Adresse selbst: So kann man sie auch abschreiben, wenn kein Mailprogramm eingerichtet ist. **Ändere** die Adresse im ersten Link und **beobachte**: Die Seite sieht gleich aus, nur das Ziel ändert sich.',
       html: '<h1>Kontakt</h1>\n<p>Fragen zum Turnier? <a href="mailto:turnier@clan-nachtwache-beispiel.de">Schreib uns</a></p>\n<p>Presse: <a href="mailto:presse@clan-nachtwache-beispiel.de">presse@clan-nachtwache-beispiel.de</a></p>\n',
     },
     {
@@ -490,7 +490,7 @@ schreibe('lessons/05-projekt-navigation.json', {
     {
       type: 'quiz',
       question: 'Der Link „Nach oben“ soll zur Hauptüberschrift springen. Was brauchst du dafür?',
-      options: ['Eine id an der Überschrift und einen Link mit # plus dieser id', 'Einen Link zur Datei index.html', 'Einen Link mit dem Attribut target'],
+      options: ['Eine id an der Überschrift, im Link # plus diese id', 'Einen Link zur Datei index.html', 'Einen Link mit dem Attribut target'],
       correct: 0,
       explanation: '„Nach oben“ ist eine Sprungmarke: id am Ziel, `#` plus id im Link. Ein Link auf `index.html` würde die Seite neu laden, `target` öffnet nur einen neuen Tab.',
     },

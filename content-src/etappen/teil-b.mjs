@@ -426,6 +426,9 @@ export function teilB(etappe) {
     task: '**Erstelle** die Impressum-Seite: Grundgerüst (Deutsch, UTF-8, Titel „Impressum – FUNKEN“, Verknüpfung mit style.css), Kopfbereich mit Hauptüberschrift „Impressum“, Navigation mit einem Link „Startseite“ → index.html, Hauptbereich mit dem Abschnitt „Angaben“ (Absatz mit drei Zeilen: Kollektiv FUNKEN – Schülerfirma (fiktiv), Hafenstraße 9, 74072 Heilbronn, dann ein E-Mail-Link hallo@funken-festival-beispiel.de) und dem Abschnitt „Datenschutzerklärung“ mit dem Absatz „Beim Ticketformular speichern wir Name und E-Mail nur, um die Reservierung zu bestätigen.“ und dem stark betonten Absatz „Fiktiver Betrieb für Übungszwecke.“, Fußbereich mit „Kollektiv FUNKEN · Hafenstraße 9 · 74072 Heilbronn“.',
     hints: ['Grundgerüst plus link im head – wie bei den anderen Seiten.', 'Zeilenumbrüche im Adress-Absatz, dahinter der mailto-Link.', 'Zwei Abschnitte mit h2 im Hauptbereich.'],
     tests: [
+      { type: 'source', file: 'html', matches: '^\\s*<!doctype html>', label: 'Die Datei beginnt mit dem Dokumenttyp' },
+      { type: 'source', file: 'html', matches: '<html[^>]+lang\\s*=\\s*["\']de["\']', label: 'Das html-Element hat lang="de"' },
+      { type: 'source', file: 'html', matches: '<meta[^>]+charset', label: 'Der Zeichensatz ist angegeben' },
       { type: 'text', selector: 'title', expected: 'Impressum – FUNKEN', label: 'Der Titel lautet „Impressum – FUNKEN“' },
       { type: 'attr', selector: 'head link[rel="stylesheet"]', attr: 'href', expected: 'style.css', label: 'Die Seite verknüpft style.css' },
       { type: 'text', selector: 'header h1', expected: 'Impressum', label: 'Die Hauptüberschrift lautet „Impressum“' },

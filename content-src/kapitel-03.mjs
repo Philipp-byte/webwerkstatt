@@ -305,7 +305,7 @@ schreibe('lessons/03-hervorheben-und-kommentare.json', {
     },
     {
       type: 'code',
-      task: '**Erweitere** die Studio-Seite:\n\n1. Im ersten Absatz wird „jeden Tag“ leicht betont.\n2. Über dem zweiten Absatz steht ein Kommentar mit dem Text „Preise prüfen“.',
+      task: 'Zwei Aufgaben für die Studio-Seite:\n\n1. **Gestalte** den ersten Absatz: „jeden Tag“ wird leicht betont.\n2. **Ergänze** über dem zweiten Absatz einen Kommentar mit dem Text „Preise prüfen“.',
       starter: {
         html: '<h1>Fitness-Studio Neckarblick</h1>\n<p>Geöffnet jeden Tag von 6 bis 23 Uhr.</p>\n<p>Monatsbeitrag: 29 Euro, Schüler zahlen 19 Euro.</p>\n',
       },
@@ -398,7 +398,7 @@ schreibe('lessons/04-wiederholung.json', {
     },
     {
       type: 'code',
-      task: '**Erweitere** die Seite unter dem Absatz:\n\n1. Eine Zwischenüberschrift „Snacks & Drinks“ – das &-Zeichen als Sonderzeichen geschrieben.\n2. Darunter ein Absatz mit zwei Zeilen: „Pommes 3 Euro“ und „Limo 2 Euro“ – das Wort „Pommes“ stark betont.',
+      task: 'Die Kiosk-Seite wächst:\n\n1. **Ergänze** unter dem Absatz eine Zwischenüberschrift „Snacks & Drinks“ – das &-Zeichen als Sonderzeichen geschrieben.\n2. **Erstelle** darunter einen Absatz mit zwei Zeilen: „Pommes 3 Euro“ und „Limo 2 Euro“ – das Wort „Pommes“ stark betont.',
       starter: {
         html: '<!DOCTYPE html>\n<html lang="de">\n  <head>\n    <meta charset="utf-8">\n    <title>Kiosk am Sportplatz</title>\n  </head>\n  <body>\n    <h1>Kiosk am Sportplatz</h1>\n    <p>Geöffnet bei jedem Heimspiel ab 13 Uhr.</p>\n  </body>\n</html>\n',
       },
@@ -539,7 +539,7 @@ schreibe('pool.json', {
 schreibe('boss.json', {
   chapter: '03-text',
   title: 'Abnahme: Textbanner',
-  intro: 'Okay, die Startseite liest sich jetzt wie eine echte Festival-Seite – Das Festival, Die Bühnen, Foodtrucks, unten unsere Adresse. Bevor ich das den anderen zeige: Zeigt mir, dass ihr das nicht nur einmal hingekriegt habt.',
+  intro: 'Okay, die Startseite liest sich jetzt wie eine echte Festival-Seite – Das Festival, Die Bühnen, Foodtrucks, unten unsere Adresse. Bevor ich das den anderen zeige: Zeig mir, dass das kein Zufall war.',
   bestanden: 0.8,
   aufgaben: [
     { konzept: 'html.ueberschrift', type: 'quiz', question: 'Die Startseite hat die h1 „FUNKEN“ und die Abschnitte „Das Festival“ und „Die Bühnen“ als h2. Welche Ebene bekommt ein neuer Abschnitt „Tickets“?', options: ['h2 – gleichrangig mit den anderen Abschnitten', 'h1 – jeder Abschnitt braucht eine Hauptüberschrift', 'h3 – weil es der dritte Abschnitt ist'], correct: 0, explanation: 'Gleichrangige Abschnitte bekommen dieselbe Ebene. Die h1 gibt es nur einmal.' },

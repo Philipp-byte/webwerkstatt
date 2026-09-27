@@ -1,0 +1,243 @@
+{
+  "id": "03-grundgeruest",
+  "title": "Das Grundgerüst",
+  "konzepte": [
+    "html.grundgeruest"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Bis jetzt hast du **Schnipsel** geschrieben – die Werkbank hat sie heimlich in eine komplette Seite gesteckt. Eine echte Datei wie `index.html` braucht das selbst: das **Grundgerüst**, den festen Rahmen, den jeder Browser erwartet.\n\n```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Steckbrief</title>\n  </head>\n  <body>\n    <h1>Deniz</h1>\n  </body>\n</html>\n```\n\nSieht nach viel aus, ist aber immer gleich. Wir gehen es Zeile für Zeile durch.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"20\" y=\"20\" fill=\"#eef2ff\" font-family=\"monospace\">&lt;!DOCTYPE html&gt;</text><rect x=\"14\" y=\"28\" width=\"292\" height=\"124\" rx=\"8\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"24\" y=\"46\" fill=\"#ff7a45\" font-family=\"monospace\">&lt;html lang=\"de\"&gt;</text><rect x=\"28\" y=\"56\" width=\"128\" height=\"76\" rx=\"6\" fill=\"#0f1320\" stroke=\"#b48cff\" stroke-width=\"2\"/><text x=\"92\" y=\"76\" text-anchor=\"middle\" fill=\"#b48cff\" font-weight=\"bold\">&lt;head&gt;</text><text x=\"92\" y=\"96\" text-anchor=\"middle\" fill=\"#eef2ff\">unsichtbar</text><text x=\"92\" y=\"118\" text-anchor=\"middle\" fill=\"#eef2ff\" font-family=\"monospace\">meta · title</text><rect x=\"164\" y=\"56\" width=\"128\" height=\"76\" rx=\"6\" fill=\"#0f1320\" stroke=\"#4ade80\" stroke-width=\"2\"/><text x=\"228\" y=\"76\" text-anchor=\"middle\" fill=\"#4ade80\" font-weight=\"bold\">&lt;body&gt;</text><text x=\"228\" y=\"96\" text-anchor=\"middle\" fill=\"#eef2ff\">sichtbar</text><text x=\"228\" y=\"118\" text-anchor=\"middle\" fill=\"#eef2ff\" font-family=\"monospace\">h1 · p · img</text><text x=\"24\" y=\"147\" fill=\"#ff7a45\" font-family=\"monospace\">&lt;/html&gt;</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "**Ändere** den Text im `title` – in der Vorschau passiert nichts, denn der Titel gehört zum Browser-Tab, nicht zur Seite. **Ändere** dann die Überschrift im `body` – das siehst du sofort.",
+      "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Steckbrief von Deniz</title>\n  </head>\n  <body>\n    <h1>Deniz</h1>\n    <p>17 Jahre, Heilbronn. Fußball, Sneaker und viel zu viele Serien.</p>\n  </body>\n</html>\n"
+    },
+    {
+      "type": "explain",
+      "text": "**Zeile 1:** `<!DOCTYPE html>` ist der **Dokumenttyp**. Er sagt dem Browser „Das ist modernes HTML“ – kein Tag, kein Inhalt, kein schließendes Gegenstück, immer die allererste Zeile.\n\n**Zeile 2:** `<html lang=\"de\">` ist das **Wurzelelement**. Alles andere steckt darin; ganz unten schließt `</html>` es. Das Attribut `lang` nennt die Sprache der Seite – Vorlese-Programme und Übersetzer richten sich danach. `de` steht für Deutsch."
+    },
+    {
+      "type": "quiz",
+      "question": "Eine Seite ist auf Deutsch geschrieben, im Code steht aber `lang=\"en\"`. Was passiert?",
+      "options": [
+        "Browser und Vorlese-Programme halten die Seite für Englisch",
+        "Der Browser übersetzt die Seite automatisch ins Englische",
+        "Die Seite wird gar nicht angezeigt"
+      ],
+      "correct": 0,
+      "explanation": "Der Browser prüft die Angabe nicht, er glaubt sie: Vorlese-Programme lesen dann mit englischer Aussprache, und der Browser bietet eine Übersetzung „aus dem Englischen“ an."
+    },
+    {
+      "type": "explain",
+      "text": "**Zeilen 3–6: der Kopf.** Zwischen `<head>` und `</head>` stehen Infos *über* die Seite – nichts davon ist auf der Seite sichtbar.\n\n- `<meta charset=\"utf-8\">` legt den **Zeichensatz** fest. Ohne ihn werden ä, ö, ü oder € zu Zeichensalat. Ein Leerelement mit einem Attribut.\n- `<title>Steckbrief</title>` ist der **Titel**: Er erscheint im Browser-Tab, in Lesezeichen und als Überschrift in Suchergebnissen."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige den Kopfbereich der Sneaker-Store-Seite.",
+      "template": "<head>\n  <meta ___=\"utf-8\">\n  <___>Kick Lab – Sneaker in Heilbronn</title>\n</head>",
+      "accept": [
+        [
+          "charset"
+        ],
+        [
+          "title"
+        ]
+      ],
+      "hint": "Lücke 1: das Attribut für den Zeichensatz. Lücke 2: der Tag-Name des Seitentitels – schau auf den schließenden Tag."
+    },
+    {
+      "type": "code",
+      "task": "**Vervollständige** den Kopfbereich der Seite um die Zeichensatz-Angabe UTF-8 und den Titel „Kick Lab – Sneaker in Heilbronn“.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n\n  </head>\n  <body>\n    <h1>Kick Lab</h1>\n    <p>Sneaker, Caps und mehr – mitten in Heilbronn.</p>\n  </body>\n</html>\n"
+      },
+      "hints": [
+        "Zwei Zeilen fehlen zwischen `<head>` und `</head>`: das Leerelement für den Zeichensatz und das Element für den Titel.",
+        "Die Zeichensatz-Zeile ist auf jeder Seite gleich – schau sie im Grundgerüst der Erklärung nach. Der Titel folgt dem Muster `<title>Clan Nachtfalken</title>`.",
+        "Reihenfolge im head: erst der Zeichensatz, dann der Titel – beide eingerückt."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Kick Lab – Sneaker in Heilbronn</title>\n  </head>\n  <body>\n    <h1>Kick Lab</h1>\n    <p>Sneaker, Caps und mehr – mitten in Heilbronn.</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<meta[^>]+charset\\s*=\\s*[\"']?utf-8",
+          "label": "Der Zeichensatz UTF-8 ist angegeben"
+        },
+        {
+          "type": "text",
+          "selector": "title",
+          "expected": "Kick Lab – Sneaker in Heilbronn",
+          "label": "Der Titel lautet „Kick Lab – Sneaker in Heilbronn“"
+        },
+        {
+          "type": "selector",
+          "selector": "head title",
+          "count": 1,
+          "label": "Der Titel steht im Kopfbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "body h1",
+          "count": 1,
+          "label": "Die Überschrift ist noch da"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Zeilen 7–9: der Körper.** Alles zwischen `<body>` und `</body>` wird angezeigt – Überschriften, Absätze, Bilder, Links. Deine bisherigen Schnipsel gehören genau hierhin.\n\nDie **Einrückung** (zwei Leerzeichen pro Ebene) ist nur für Menschen: Sie zeigt, was in was steckt. Dem Browser ist sie egal – die Reihenfolge nicht: erst `head`, dann `body`, beides im `html`."
+    },
+    {
+      "type": "order",
+      "text": "Bring das Grundgerüst der Clan-Seite in die richtige Reihenfolge.",
+      "lines": [
+        "<!DOCTYPE html>",
+        "<html lang=\"de\">",
+        "  <head>",
+        "    <title>Clan Nachtfalken</title>",
+        "  </head>",
+        "  <body>",
+        "  </body>",
+        "</html>"
+      ],
+      "explanation": "Dokumenttyp zuerst, dann umschließt html alles: erst der head mit dem Titel, dann der body."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** aus dem Schnipsel eine vollständige Seite: Dokumenttyp, Wurzelelement mit der Sprache Deutsch, Kopfbereich mit Zeichensatz UTF-8 und dem Titel „Clan Nachtfalken“, Körper mit Überschrift und Absatz.",
+      "starter": {
+        "html": "<h1>Clan Nachtfalken</h1>\n<p>Wir zocken seit 2023 zusammen – Ranked, Turniere und Spaß.</p>\n"
+      },
+      "hints": [
+        "Nimm das Grundgerüst aus der Erklärung – die beiden vorhandenen Zeilen wandern in den body.",
+        "Reihenfolge: Dokumenttyp, html mit lang, darin head (Zeichensatz, Titel) und body (Überschrift, Absatz).",
+        "Muster: `<html lang=\"…\">`, `<meta charset=\"…\">`, `<title>…</title>` – Werte und Text aus der Aufgabe einsetzen."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Clan Nachtfalken</title>\n  </head>\n  <body>\n    <h1>Clan Nachtfalken</h1>\n    <p>Wir zocken seit 2023 zusammen – Ranked, Turniere und Spaß.</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "^\\s*<!doctype html>",
+          "label": "Die Datei beginnt mit dem Dokumenttyp"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<html[^>]+lang\\s*=\\s*[\"']?de",
+          "label": "Die Sprache ist Deutsch (lang)"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<meta[^>]+charset\\s*=\\s*[\"']?utf-8",
+          "label": "Der Zeichensatz UTF-8 ist angegeben"
+        },
+        {
+          "type": "text",
+          "selector": "title",
+          "expected": "Clan Nachtfalken",
+          "label": "Der Titel lautet „Clan Nachtfalken“"
+        },
+        {
+          "type": "selector",
+          "selector": "head title",
+          "count": 1,
+          "label": "Der Titel steht im Kopfbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "body h1",
+          "count": 1,
+          "label": "Die Überschrift steht im Körper"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Wohin gehört was? Ordne zu.",
+      "pairs": [
+        [
+          "`<!DOCTYPE html>`",
+          "ganz oben – vor allem anderen"
+        ],
+        [
+          "`<meta charset=\"utf-8\">`",
+          "in den head – legt den Zeichensatz fest"
+        ],
+        [
+          "`<title>`",
+          "in den head – Text für den Browser-Tab"
+        ],
+        [
+          "`<h1>`",
+          "in den body – sichtbare Überschrift"
+        ],
+        [
+          "`lang=\"de\"`",
+          "Attribut am html-Tag – Sprache der Seite"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Korrigiere** zwei Fehler: Die Vorschau der Sneaker-Seite ist komplett leer, und auf dem Handy fragt der Browser „Diese Seite aus dem Englischen übersetzen?“ – obwohl alles auf Deutsch ist.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Kick Lab – Sneaker in Heilbronn<title>\n  </head>\n  <body>\n    <h1>Kick Lab</h1>\n    <p>Retro-Runner, Caps und Socken – mitten in Heilbronn.</p>\n  </body>\n</html>\n"
+      },
+      "hints": [
+        "Leere Seite: Ein Element im head wird nie geschlossen und schluckt den ganzen Rest. Vergleiche dort öffnende und schließende Tags.",
+        "Übersetzungsfrage: Der Browser glaubt dem lang-Attribut. Welchen Wert hat es – und welchen sollte es für Deutsch haben?",
+        "Muster: `<title>…</title>` mit Schrägstrich im schließenden Tag; die Sprache Deutsch hat den Wert de."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Kick Lab – Sneaker in Heilbronn</title>\n  </head>\n  <body>\n    <h1>Kick Lab</h1>\n    <p>Retro-Runner, Caps und Socken – mitten in Heilbronn.</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "html",
+          "attr": "lang",
+          "expected": "de",
+          "label": "Die Seite ist als Deutsch gekennzeichnet"
+        },
+        {
+          "type": "text",
+          "selector": "title",
+          "expected": "Kick Lab – Sneaker in Heilbronn",
+          "label": "Der Titel lautet „Kick Lab – Sneaker in Heilbronn“"
+        },
+        {
+          "type": "selector",
+          "selector": "body h1",
+          "count": 1,
+          "label": "Die Überschrift ist wieder sichtbar"
+        },
+        {
+          "type": "text",
+          "selector": "p",
+          "expected": "Retro-Runner, Caps und Socken – mitten in Heilbronn.",
+          "label": "Der Absatz ist wieder sichtbar"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Ab zur FUNKEN-Website! Aus dem Schnipsel wird eine echte Datei: `index.html` bekommt das komplette Grundgerüst, und Kommentar, Überschrift und Absatz wandern in den Körper.\n\nWichtig für Sam: Titel „FUNKEN – Das Schülerfestival“ (so heißt der Tab), Sprache Deutsch und Zeichensatz UTF-8 – damit „Schülerfestival“ auf jedem Handy mit ü erscheint."
+    },
+    {
+      "type": "code",
+      "etappe": "02-html-erste-schritte/03-grundgeruest"
+    }
+  ]
+}

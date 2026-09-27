@@ -148,8 +148,8 @@
         {
           "type": "selector",
           "selector": "table td",
-          "count": 7,
-          "label": "Insgesamt gibt es sieben Datenzellen"
+          "count": 5,
+          "label": "Insgesamt gibt es fünf Datenzellen"
         }
       ]
     },

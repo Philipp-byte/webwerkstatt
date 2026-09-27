@@ -1,0 +1,44 @@
+{
+  "id": "05-projekt-startseite",
+  "title": "Projekt: Startseite steht",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "„Ich hab die Seite auf dem Handy aufgemacht – da steht FUNKEN, da steht der Termin. Ihr seid gut! Jetzt noch die Uhrzeiten, dann kann ich den Link rumschicken.“\n\n**Meilenstein:** Du kennst Tags, Attribute, Verschachtelung und das Grundgerüst – und `index.html` ist eine echte, vollständige Seite. Bevor der letzte Absatz dazukommt, zwei Kontrollfragen."
+    },
+    {
+      "type": "quiz",
+      "question": "Welche Zeile fehlt in diesem Grundgerüst?\n\n```html\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>FUNKEN</title>\n  </head>\n  <body></body>\n</html>\n```",
+      "options": [
+        "Der Dokumenttyp in der ersten Zeile",
+        "Ein schließender Tag für meta",
+        "Ein zweites head-Element für den body"
+      ],
+      "correct": 0,
+      "explanation": "`<!DOCTYPE html>` gehört immer ganz nach oben. `<meta>` ist ein Leerelement ohne schließenden Tag, und head gibt es genau einmal."
+    },
+    {
+      "type": "order",
+      "text": "Bring den Inhalt des body der Startseite in die richtige Reihenfolge.",
+      "lines": [
+        "<body>",
+        "  <!-- Startseite von FUNKEN -->",
+        "  <h1>FUNKEN</h1>",
+        "  <p>Das Schülerfestival Heilbronn – zwei Bühnen, Foodtrucks, Open Air am Neckar.</p>",
+        "  <p>Freitag, 17. und Samstag, 18. Juli 2027 auf dem alten Fabrikgelände am Neckar.</p>",
+        "</body>"
+      ],
+      "explanation": "Kommentar, Hauptüberschrift, dann die Absätze in Lesereihenfolge – alles zwischen den body-Tags."
+    },
+    {
+      "type": "explain",
+      "text": "Jetzt der letzte Absatz für diesen Meilenstein: Einlass und Ende, direkt unter dem Termin. Damit ist die Startseite vorzeigbar: Grundgerüst, Titel, Überschrift, drei Absätze.\n\nDanach lohnt sich ein Blick aufs Ganze: [FUNKEN-Website ansehen](#/projekt) – dort siehst du die Seite so, wie Sam sie sieht. Im nächsten Kapitel bekommt der Text mehr Struktur: Zwischenüberschriften, Hervorhebungen, Linien."
+    },
+    {
+      "type": "code",
+      "etappe": "02-html-erste-schritte/05-projekt-startseite"
+    }
+  ]
+}

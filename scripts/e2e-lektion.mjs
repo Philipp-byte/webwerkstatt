@@ -6,7 +6,7 @@
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import { chromium } from 'playwright';
-import { loeseSchritt } from './lib/spieler.mjs';
+import { loeseSchritt, schliesseOverlays } from './lib/spieler.mjs';
 
 const [chapterId, lessonId] = process.argv.slice(2);
 if (!chapterId || !lessonId) {
@@ -46,6 +46,7 @@ try {
     if (!karte) throw new Error(`Schritt ${i + 1}: keine sichtbare Karte`);
     await loeseSchritt(page, step, karte, { etappen });
     await page.waitForTimeout(150);
+    await schliesseOverlays(page);
     const weiter = await page.$('.pager-weiter');
     if (await weiter.isDisabled()) throw new Error(`Schritt ${i + 1} (${step.type}) wurde nicht als gelöst erkannt`);
     if (shots) await page.screenshot({ path: `/tmp/e2e-${lessonId}-${i + 1}.png` });
@@ -53,6 +54,7 @@ try {
     await page.waitForTimeout(250);
   }
   await page.waitForSelector('.schritt-abschluss:not([hidden])', { timeout: 10000 });
+  await schliesseOverlays(page);
   const sterne = await page.$$eval('.abschluss .sterne-gross .stern:not(.leer)', (s) => s.length);
   const xp = await page.$eval('.xp-zahl', (e) => e.textContent);
   const gespeichert = await page.evaluate(() => JSON.parse(localStorage.getItem('webwerkstatt2.spielstand.v1')));

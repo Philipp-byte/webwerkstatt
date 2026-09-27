@@ -103,7 +103,7 @@
         "<tr><td>Pizza</td><td>2,50 €</td></tr>",
         "</table>"
       ],
-      "explanation": "Trennlinie und Bild sind Leerelemente ohne schließenden Tag; die Tabelle beginnt mit der Kopfzeile."
+      "explanation": "Die Trennlinie ist ein Leerelement ohne schließenden Tag; die Tabelle beginnt mit der Kopfzeile."
     },
     {
       "type": "pair",

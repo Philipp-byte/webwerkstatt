@@ -1,7 +1,17 @@
 // Gemeinsame Hilfen für die E2E-Skripte: einen Schritt im Browser lösen.
 export const md = (s) => String(s).replace(/`/g, '').replace(/\*\*/g, '').trim();
 
+export async function schliesseOverlays(page) {
+  for (let i = 0; i < 5; i++) {
+    const btn = await page.$('.overlay button');
+    if (!btn) return;
+    await btn.click().catch(() => {});
+    await page.waitForTimeout(150);
+  }
+}
+
 export async function loeseSchritt(page, step, karte, { etappen = [] } = {}) {
+  await schliesseOverlays(page);
   switch (step.type) {
     case 'quiz': {
       const soll = md(step.options[step.correct]);

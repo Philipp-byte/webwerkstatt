@@ -428,7 +428,8 @@ export function teilA(etappe) {
     hints: ['Grundgerüst wie bei der Startseite – nur Titel und Inhalt sind anders.', 'Audio und Video brauchen die Quelle und das Attribut für die Bedienelemente (controls), sonst sieht man nichts.', 'Reihenfolge im body: h1, h2 Jingle + Audio, h2 Aftermovie + Video.'],
     tests: [
       { type: 'text', selector: 'title', expected: 'Galerie – FUNKEN', label: 'Der Titel lautet „Galerie – FUNKEN“' },
-      { type: 'attr', selector: 'html', attr: 'lang', expected: 'de', label: 'Grundgerüst mit lang="de"' },
+      { type: 'source', file: 'html', matches: '^\\s*<!doctype html>', label: 'Die Datei beginnt mit dem Dokumenttyp' },
+      { type: 'source', file: 'html', matches: '<html[^>]+lang\\s*=\\s*["\']de["\']', label: 'Das html-Element hat lang="de"' },
       { type: 'text', selector: 'h1', expected: 'Galerie', label: 'Die Hauptüberschrift lautet „Galerie“' },
       { type: 'text', selector: 'h2', expected: 'Der FUNKEN-Jingle', label: 'Die erste Zwischenüberschrift ist „Der FUNKEN-Jingle“' },
       { type: 'attr', selector: 'audio', attr: 'src', expected: 'jingle.wav', label: 'Der Audio-Player lädt jingle.wav' },
@@ -586,6 +587,9 @@ export function teilA(etappe) {
     task: '**Erstelle** die Programm-Seite: Grundgerüst (Deutsch, UTF-8, Titel „Programm – FUNKEN“), Hauptüberschrift „Programm“, Rück-Link „Zurück zur Startseite“, dann der Abschnitt „Freitag“ mit einer Tabelle: Kopfzeile Zeit | Hauptbühne | Zeltbühne und drei Zeilen: 17:00 | Neonpuls | Kiki Volt · 19:00 | Basslager | Die Kabelträger · 21:00 | Neonpuls | Lou & die Lichter.',
     hints: ['Kopfzellen sind ein eigenes Element – der Browser stellt sie fett dar.', 'Erste Zeile = drei Kopfzellen, danach drei Zeilen mit je drei Datenzellen.', 'Das &-Zeichen im Bandnamen als Entity.'],
     tests: [
+      { type: 'source', file: 'html', matches: '^\\s*<!doctype html>', label: 'Die Datei beginnt mit dem Dokumenttyp' },
+      { type: 'source', file: 'html', matches: '<html[^>]+lang\\s*=\\s*["\']de["\']', label: 'Das html-Element hat lang="de"' },
+      { type: 'source', file: 'html', matches: '<meta[^>]+charset', label: 'Der Zeichensatz ist angegeben' },
       { type: 'text', selector: 'title', expected: 'Programm – FUNKEN', label: 'Der Titel lautet „Programm – FUNKEN“' },
       { type: 'text', selector: 'h1', expected: 'Programm', label: 'Die Hauptüberschrift lautet „Programm“' },
       { type: 'attr', selector: 'h1 + p a', attr: 'href', expected: 'index.html', label: 'Der Rück-Link führt zur Startseite' },
@@ -935,6 +939,9 @@ export function teilA(etappe) {
     task: '**Erstelle** die Tickets-Seite: Grundgerüst (Deutsch, UTF-8, Titel „Tickets – FUNKEN“), Kopfbereich mit Hauptüberschrift „Tickets“ und dem Absatz „Sichere dir deinen Platz – der Vorverkauf läuft.“, Navigation (Startseite, Programm, Galerie), Hauptbereich mit dem Absatz „Fülle das Formular aus, wir melden uns per E-Mail.“ und einem Formular mit zwei beschrifteten Feldern: „Name“ (Textfeld, id `name`) und „E-Mail“ (E-Mail-Feld, id `email`). Fußbereich mit „Kollektiv FUNKEN · Hafenstraße 9 · 74072 Heilbronn“.',
     hints: ['Jedes Feld bekommt eine Beschriftung, die über das for-Attribut mit der id des Feldes verbunden ist.', 'Das E-Mail-Feld hat einen eigenen Typ – der Browser prüft dann die Eingabe.', 'Die Felder brauchen auch ein name-Attribut, damit die Eingabe einen Namen hat.'],
     tests: [
+      { type: 'source', file: 'html', matches: '^\\s*<!doctype html>', label: 'Die Datei beginnt mit dem Dokumenttyp' },
+      { type: 'source', file: 'html', matches: '<html[^>]+lang\\s*=\\s*["\']de["\']', label: 'Das html-Element hat lang="de"' },
+      { type: 'source', file: 'html', matches: '<meta[^>]+charset', label: 'Der Zeichensatz ist angegeben' },
       { type: 'text', selector: 'title', expected: 'Tickets – FUNKEN', label: 'Der Titel lautet „Tickets – FUNKEN“' },
       { type: 'text', selector: 'header h1', expected: 'Tickets', label: 'Die Hauptüberschrift lautet „Tickets“' },
       { type: 'selector', selector: 'nav a', count: 3, label: 'Die Navigation hat drei Links' },

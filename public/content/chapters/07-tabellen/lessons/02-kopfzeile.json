@@ -174,7 +174,7 @@
     },
     {
       "type": "code",
-      "task": "**Erstelle** unter der Überschrift den Stundenplan als Tabelle: Kopfzeile Zeit, Montag, Dienstag; dann die Zeile 8:00 mit Mathe und Kunst & Design; dann die Zeile 9:45 mit Deutsch und Sport.",
+      "task": "**Erstelle** unter der Überschrift den Stundenplan als Tabelle: Kopfzeile Zeit, Montag, Dienstag – dann die Zeile 8:00 mit Mathe und Kunst & Design, danach die Zeile 9:45 mit Deutsch und Sport.",
       "starter": {
         "html": "<h2>Stundenplan 11a</h2>\n<!-- Hier kommt der Stundenplan -->\n"
       },

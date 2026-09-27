@@ -55,7 +55,7 @@ export function createWorkbench(container, files, options = {}) {
     </div>
     <div class="werkbank-ausgabe">
       <div class="vorschau-kopf"><span class="vorschau-punkt"></span><span class="vorschau-punkt"></span><span class="vorschau-punkt"></span><span class="vorschau-titel">Vorschau</span></div>
-      <iframe class="vorschau" title="Vorschau" sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe>
+      <iframe class="vorschau" title="Vorschau" sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox"></iframe>
       <div class="konsole" hidden>
         <div class="konsole-kopf">Konsole</div>
         <pre class="konsole-inhalt"></pre>

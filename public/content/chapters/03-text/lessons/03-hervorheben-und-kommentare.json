@@ -85,7 +85,7 @@
     },
     {
       "type": "code",
-      "task": "**Erweitere** die Studio-Seite:\n\n1. Im ersten Absatz wird „jeden Tag“ leicht betont.\n2. Über dem zweiten Absatz steht ein Kommentar mit dem Text „Preise prüfen“.",
+      "task": "Zwei Aufgaben für die Studio-Seite:\n\n1. **Gestalte** den ersten Absatz: „jeden Tag“ wird leicht betont.\n2. **Ergänze** über dem zweiten Absatz einen Kommentar mit dem Text „Preise prüfen“.",
       "starter": {
         "html": "<h1>Fitness-Studio Neckarblick</h1>\n<p>Geöffnet jeden Tag von 6 bis 23 Uhr.</p>\n<p>Monatsbeitrag: 29 Euro, Schüler zahlen 19 Euro.</p>\n"
       },

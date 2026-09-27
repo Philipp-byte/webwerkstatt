@@ -33,7 +33,7 @@
     },
     {
       "type": "code",
-      "task": "**Erstelle** unter der Überschrift die Highscore-Tabelle: Kopfzeile Platz, Name, Punkte; danach die Zeilen 1 mit Lena und 9870 sowie 2 mit Deniz und 8450.",
+      "task": "**Erstelle** unter der Überschrift die Highscore-Tabelle: Kopfzeile Platz, Name, Punkte – danach die Zeilen 1 mit Lena und 9870 sowie 2 mit Deniz und 8450.",
       "starter": {
         "html": "<h2>Highscore</h2>\n<!-- Hier kommt die Tabelle -->\n"
       },

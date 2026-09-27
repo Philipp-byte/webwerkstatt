@@ -1095,11 +1095,16 @@
           "label": "Der Titel lautet „Galerie – FUNKEN“"
         },
         {
-          "type": "attr",
-          "selector": "html",
-          "attr": "lang",
-          "expected": "de",
-          "label": "Grundgerüst mit lang=\"de\""
+          "type": "source",
+          "file": "html",
+          "matches": "^\\s*<!doctype html>",
+          "label": "Die Datei beginnt mit dem Dokumenttyp"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<html[^>]+lang\\s*=\\s*[\"']de[\"']",
+          "label": "Das html-Element hat lang=\"de\""
         },
         {
           "type": "text",
@@ -1399,6 +1404,24 @@
         "Das &-Zeichen im Bandnamen als Entity."
       ],
       "tests": [
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "^\\s*<!doctype html>",
+          "label": "Die Datei beginnt mit dem Dokumenttyp"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<html[^>]+lang\\s*=\\s*[\"']de[\"']",
+          "label": "Das html-Element hat lang=\"de\""
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<meta[^>]+charset",
+          "label": "Der Zeichensatz ist angegeben"
+        },
         {
           "type": "text",
           "selector": "title",
@@ -1936,6 +1959,24 @@
         "Die Felder brauchen auch ein name-Attribut, damit die Eingabe einen Namen hat."
       ],
       "tests": [
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "^\\s*<!doctype html>",
+          "label": "Die Datei beginnt mit dem Dokumenttyp"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<html[^>]+lang\\s*=\\s*[\"']de[\"']",
+          "label": "Das html-Element hat lang=\"de\""
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<meta[^>]+charset",
+          "label": "Der Zeichensatz ist angegeben"
+        },
         {
           "type": "text",
           "selector": "title",
@@ -3546,6 +3587,24 @@
         "Zwei Abschnitte mit h2 im Hauptbereich."
       ],
       "tests": [
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "^\\s*<!doctype html>",
+          "label": "Die Datei beginnt mit dem Dokumenttyp"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<html[^>]+lang\\s*=\\s*[\"']de[\"']",
+          "label": "Das html-Element hat lang=\"de\""
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<meta[^>]+charset",
+          "label": "Der Zeichensatz ist angegeben"
+        },
         {
           "type": "text",
           "selector": "title",

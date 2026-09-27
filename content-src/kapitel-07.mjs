@@ -13,7 +13,7 @@ const schreibe = (rel, obj) => {
 /* ---------- Grafiken ---------- */
 
 // Mechanismus: Tabelle enthält Zeilen, Zeilen enthalten Zellen.
-const FIG_TABELLE = `<svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12"><rect width="320" height="160" fill="#0f1320"/><rect x="30" y="18" width="260" height="128" rx="8" fill="none" stroke="#ff7a45" stroke-width="2"/><text x="40" y="36" fill="#ff7a45" font-family="monospace">&lt;table&gt;</text><text x="181" y="36" text-anchor="middle" fill="#ffd84d" font-family="monospace">&lt;td&gt; = Zelle</text><rect x="44" y="48" width="232" height="40" rx="6" fill="#1b2135" stroke="#38c7ff" stroke-width="2"/><text x="52" y="72" fill="#38c7ff" font-family="monospace">&lt;tr&gt;</text><rect x="96" y="55" width="80" height="26" rx="4" fill="#e8ecf7"/><text x="136" y="73" text-anchor="middle" fill="#0f1320">8:00</text><rect x="186" y="55" width="80" height="26" rx="4" fill="#e8ecf7"/><text x="226" y="73" text-anchor="middle" fill="#0f1320">Mathe</text><rect x="44" y="96" width="232" height="40" rx="6" fill="#1b2135" stroke="#38c7ff" stroke-width="2"/><text x="52" y="120" fill="#38c7ff" font-family="monospace">&lt;tr&gt;</text><rect x="96" y="103" width="80" height="26" rx="4" fill="#e8ecf7"/><text x="136" y="121" text-anchor="middle" fill="#0f1320">9:45</text><rect x="186" y="103" width="80" height="26" rx="4" fill="#e8ecf7"/><text x="226" y="121" text-anchor="middle" fill="#0f1320">Deutsch</text></svg>`;
+const FIG_TABELLE = `<svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12"><rect width="320" height="160" fill="#0f1320"/><rect x="30" y="18" width="260" height="128" rx="8" fill="none" stroke="#ff7a45" stroke-width="2"/><text x="40" y="36" fill="#ff7a45" font-family="monospace">&lt;table&gt;</text><text x="181" y="36" text-anchor="middle" fill="#ffd84d" font-family="monospace">&lt;td&gt; = Zelle</text><rect x="44" y="48" width="232" height="40" rx="6" fill="none" stroke="#38c7ff" stroke-width="2"/><text x="52" y="72" fill="#38c7ff" font-family="monospace">&lt;tr&gt;</text><rect x="96" y="55" width="80" height="26" rx="4" fill="#e8ecf7"/><text x="136" y="73" text-anchor="middle" fill="#0f1320">8:00</text><rect x="186" y="55" width="80" height="26" rx="4" fill="#e8ecf7"/><text x="226" y="73" text-anchor="middle" fill="#0f1320">Mathe</text><rect x="44" y="96" width="232" height="40" rx="6" fill="none" stroke="#38c7ff" stroke-width="2"/><rect x="96" y="103" width="80" height="26" rx="4" fill="#e8ecf7"/><text x="136" y="121" text-anchor="middle" fill="#0f1320">9:45</text><rect x="186" y="103" width="80" height="26" rx="4" fill="#e8ecf7"/><text x="226" y="121" text-anchor="middle" fill="#0f1320">Deutsch</text></svg>`;
 
 // Mechanismus: Kopfzeile aus th (fett, zentriert, beschriftet die Spalten) über Datenzeilen aus td.
 const FIG_KOPFZEILE = `<svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12"><rect width="320" height="160" fill="#0f1320"/><rect x="30" y="30" width="130" height="32" fill="#ff7a45" stroke="#0f1320"/><text x="95" y="51" text-anchor="middle" fill="#0f1320" font-weight="bold">Team</text><rect x="160" y="30" width="100" height="32" fill="#ff7a45" stroke="#0f1320"/><text x="210" y="51" text-anchor="middle" fill="#0f1320" font-weight="bold">Punkte</text><rect x="30" y="62" width="130" height="32" fill="#e8ecf7" stroke="#0f1320"/><text x="40" y="83" fill="#0f1320">FC Neckarblitz</text><rect x="160" y="62" width="100" height="32" fill="#e8ecf7" stroke="#0f1320"/><text x="170" y="83" fill="#0f1320">22</text><rect x="30" y="94" width="130" height="32" fill="#e8ecf7" stroke="#0f1320"/><text x="40" y="115" fill="#0f1320">SV Hafenkick</text><rect x="160" y="94" width="100" height="32" fill="#e8ecf7" stroke="#0f1320"/><text x="170" y="115" fill="#0f1320">19</text><text x="268" y="51" fill="#ff7a45" font-family="monospace">&lt;th&gt;</text><text x="268" y="99" fill="#38c7ff" font-family="monospace">&lt;td&gt;</text></svg>`;
@@ -350,7 +350,7 @@ schreibe('lessons/03-verbundene-zellen.json', {
         { type: 'text', selector: 'td[rowspan]', expected: 'Sport', label: 'Die verbundene Zelle heißt „Sport“' },
         { type: 'selector', selector: 'table tr:last-child td', count: 1, label: 'Die Zeile 11:00 hat nur noch eine Zelle' },
         { type: 'selector', selector: 'table tr', count: 4, label: 'Die Tabelle hat weiterhin vier Zeilen' },
-        { type: 'selector', selector: 'table td', count: 7, label: 'Insgesamt gibt es sieben Datenzellen' },
+        { type: 'selector', selector: 'table td', count: 5, label: 'Insgesamt gibt es fünf Datenzellen' },
       ],
     },
     {
@@ -457,7 +457,7 @@ schreibe('lessons/04-wiederholung.json', {
         '<tr><td>Pizza</td><td>2,50 €</td></tr>',
         '</table>',
       ],
-      explanation: 'Trennlinie und Bild sind Leerelemente ohne schließenden Tag; die Tabelle beginnt mit der Kopfzeile.',
+      explanation: 'Die Trennlinie ist ein Leerelement ohne schließenden Tag; die Tabelle beginnt mit der Kopfzeile.',
     },
     {
       type: 'pair',

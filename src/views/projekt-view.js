@@ -41,7 +41,7 @@ export async function renderProjekt(app, seite) {
           ${projekt.css != null ? '<div class="projekt-seite-btn" style="cursor:default"><span>style.css</span><small>für alle Seiten</small></div>' : ''}
           ${projekt.js != null ? '<div class="projekt-seite-btn" style="cursor:default"><span>script.js</span><small>Startseite</small></div>' : ''}
         </div>
-        <div class="projekt-vorschau"><iframe title="FUNKEN-Website" sandbox="allow-scripts allow-same-origin allow-forms allow-modals"></iframe></div>
+        <div class="projekt-vorschau"><iframe title="FUNKEN-Website" sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox"></iframe></div>
       </div>
       <p style="color:var(--muted);font-size:0.85rem;margin-top:0.75rem">Die Vorschau zeigt genau den Stand, den du in den Etappen gebaut hast. Links zwischen den Seiten funktionieren. Das ZIP enthält echte Dateien, die du in jedem Browser öffnen kannst.</p>
     </div>`;

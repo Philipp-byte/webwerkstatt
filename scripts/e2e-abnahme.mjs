@@ -4,7 +4,7 @@
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import { chromium } from 'playwright';
-import { loeseSchritt } from './lib/spieler.mjs';
+import { loeseSchritt, schliesseOverlays } from './lib/spieler.mjs';
 
 const chapterId = process.argv[2];
 const port = 4183;
@@ -33,6 +33,7 @@ try {
     const karte = await page.$('#buehne .schritt');
     await loeseSchritt(page, a, karte);
     await page.waitForTimeout(300);
+    await schliesseOverlays(page);
     await page.click('#buehne .schritt-buttons .btn-primaer');
   }
   await page.waitForSelector('#buehne .abschluss', { timeout: 10000 });

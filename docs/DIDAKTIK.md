@@ -117,7 +117,7 @@ js.getElementById  js.textContent  js.addEventListener  js.zaehler  js.classList
 
 | Ereignis | XP |
 |---|---|
-| Quiz / Lückentext richtig | 10 |
+| Quiz / Lückentext / Fehlerjagd-Frage richtig | 10 |
 | Sortieren / Paare | 15 |
 | Code-Aufgabe bestanden | 30 (Fehlerjagd 25) |
 | Etappe bestanden | 40 |

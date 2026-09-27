@@ -1,0 +1,297 @@
+{
+  "chapter": "02-html-erste-schritte",
+  "fragen": [
+    {
+      "id": "02-01",
+      "konzept": "html.tag",
+      "type": "quiz",
+      "question": "Was ist bei `<p>Bis morgen!</p>` der Inhalt des Elements?",
+      "options": [
+        "Bis morgen!",
+        "`<p>`",
+        "`</p>`"
+      ],
+      "correct": 0,
+      "explanation": "Der Inhalt steht zwischen öffnendem und schließendem Tag – nur ihn zeigt der Browser an."
+    },
+    {
+      "id": "02-02",
+      "konzept": "html.tag",
+      "type": "fill",
+      "text": "Vervollständige das Element mit dem schließenden Tag.",
+      "template": "<h1>Turnierplan___",
+      "accept": [
+        "</h1>"
+      ],
+      "hint": "Spitze Klammer, Schrägstrich, Tag-Name, spitze Klammer."
+    },
+    {
+      "id": "02-03",
+      "konzept": "html.tag",
+      "type": "bug",
+      "text": "Eine Zeile hat einen Fehler im Tag. Welche?",
+      "lines": [
+        "<h1>Steckbrief</h1>",
+        "<p>Name: Lena<p>",
+        "<p>Alter: 17</p>",
+        "<p>Stadt: Heilbronn</p>"
+      ],
+      "line": 1,
+      "explanation": "Dem schließenden Tag fehlt der Schrägstrich: `</p>`."
+    },
+    {
+      "id": "02-04",
+      "konzept": "html.tag",
+      "type": "pair",
+      "text": "Ordne zu.",
+      "pairs": [
+        [
+          "`<h1>`",
+          "öffnender Tag"
+        ],
+        [
+          "`</h1>`",
+          "schließender Tag"
+        ],
+        [
+          "`<br>`",
+          "Leerelement ohne schließenden Tag"
+        ],
+        [
+          "Element",
+          "öffnender Tag + Inhalt + schließender Tag"
+        ]
+      ]
+    },
+    {
+      "id": "02-05",
+      "konzept": "html.tag",
+      "type": "quiz",
+      "question": "Welches Element hat keinen schließenden Tag?",
+      "options": [
+        "`<br>`",
+        "`<p>`",
+        "`<h1>`"
+      ],
+      "correct": 0,
+      "explanation": "`<br>` ist ein Leerelement: kein Inhalt, kein schließender Tag."
+    },
+    {
+      "id": "02-06",
+      "konzept": "html.attribut",
+      "type": "quiz",
+      "question": "In `<img src=\"katze.svg\" alt=\"Katze\">` – was ist `src`?",
+      "options": [
+        "Der Name eines Attributs",
+        "Der Name eines Tags",
+        "Der Inhalt des Elements"
+      ],
+      "correct": 0,
+      "explanation": "`src` ist ein Attribut-Name, `katze.svg` sein Wert. Der Tag heißt `img`."
+    },
+    {
+      "id": "02-07",
+      "konzept": "html.attribut",
+      "type": "fill",
+      "text": "Vervollständige den Link mit dem Attribut für sein Ziel.",
+      "template": "<a ___=\"programm.html\">Programm</a>",
+      "accept": [
+        "href"
+      ],
+      "hint": "Vier Buchstaben, steht bei jedem Link."
+    },
+    {
+      "id": "02-08",
+      "konzept": "html.attribut",
+      "type": "bug",
+      "text": "Ein Attribut ist falsch geschrieben. Welche Zeile?",
+      "lines": [
+        "<h1>Foodtrucks</h1>",
+        "<img src=\"foodtruck.svg\" alt=\"Foodtruck\">",
+        "<img src=pizza.svg\" alt=\"Pizza\">",
+        "<p>Ab 16 Uhr geöffnet.</p>"
+      ],
+      "line": 2,
+      "explanation": "Werte stehen in Anführungszeichen – vor `pizza.svg` fehlt eines."
+    },
+    {
+      "id": "02-09",
+      "konzept": "html.attribut",
+      "type": "pair",
+      "text": "Welches Attribut macht was?",
+      "pairs": [
+        [
+          "`src`",
+          "welche Bilddatei geladen wird"
+        ],
+        [
+          "`alt`",
+          "Ersatztext, falls das Bild fehlt"
+        ],
+        [
+          "`href`",
+          "Ziel eines Links"
+        ],
+        [
+          "`lang`",
+          "Sprache der Seite"
+        ]
+      ]
+    },
+    {
+      "id": "02-10",
+      "konzept": "html.attribut",
+      "type": "quiz",
+      "question": "Wo stehen Attribute?",
+      "options": [
+        "Im öffnenden Tag, nach dem Tag-Namen",
+        "Im schließenden Tag",
+        "Zwischen öffnendem und schließendem Tag"
+      ],
+      "correct": 0,
+      "explanation": "Attribute stehen immer im öffnenden Tag: `<a href=\"…\">`."
+    },
+    {
+      "id": "02-11",
+      "konzept": "html.verschachtelung",
+      "type": "quiz",
+      "question": "Welche Verschachtelung ist richtig?",
+      "options": [
+        "`<p>Mehr im <a href=\"plan.html\">Plan</a>.</p>`",
+        "`<p>Mehr im <a href=\"plan.html\">Plan</p></a>`",
+        "`<p>Mehr im <a href=\"plan.html\">Plan.</p>`"
+      ],
+      "correct": 0,
+      "explanation": "Zuletzt geöffnet, zuerst geschlossen: Der Link wird im Absatz geöffnet und dort auch geschlossen."
+    },
+    {
+      "id": "02-12",
+      "konzept": "html.verschachtelung",
+      "type": "bug",
+      "text": "Welche Zeile verstößt gegen „zuletzt geöffnet, zuerst geschlossen“?",
+      "lines": [
+        "<p>Hallo <a href=\"start.html\">Start</a></p>",
+        "<p>Tickets im <a href=\"shop.html\">Shop</p></a>",
+        "<p>Bis bald!</p>"
+      ],
+      "line": 1,
+      "explanation": "Die Tags überkreuzen sich: erst `</a>`, dann `</p>`."
+    },
+    {
+      "id": "02-13",
+      "konzept": "html.verschachtelung",
+      "type": "order",
+      "text": "Sortiere – der Link steckt im Absatz.",
+      "lines": [
+        "<p>",
+        "  Alle Preise im",
+        "  <a href=\"tickets.html\">Ticket-Shop</a>",
+        "</p>"
+      ]
+    },
+    {
+      "id": "02-14",
+      "konzept": "html.verschachtelung",
+      "type": "fill",
+      "text": "Welches Element wird hier zuerst geschlossen?",
+      "template": "<p>Mehr im <a href=\"plan.html\">Plan</___></p>",
+      "accept": [
+        "a"
+      ],
+      "hint": "Das zuletzt geöffnete Element – der Link."
+    },
+    {
+      "id": "02-15",
+      "konzept": "html.grundgeruest",
+      "type": "order",
+      "text": "Sortiere das Grundgerüst.",
+      "lines": [
+        "<!DOCTYPE html>",
+        "<html lang=\"de\">",
+        "  <head>",
+        "    <title>Programm</title>",
+        "  </head>",
+        "  <body>",
+        "  </body>",
+        "</html>"
+      ]
+    },
+    {
+      "id": "02-16",
+      "konzept": "html.grundgeruest",
+      "type": "quiz",
+      "question": "Wo steht der `<title>` einer Seite?",
+      "options": [
+        "Im head",
+        "Im body",
+        "Vor dem Dokumenttyp"
+      ],
+      "correct": 0,
+      "explanation": "Der Titel ist eine Info über die Seite und gehört in den head. Sichtbar ist er nur im Browser-Tab."
+    },
+    {
+      "id": "02-17",
+      "konzept": "html.grundgeruest",
+      "type": "fill",
+      "text": "Vervollständige die Zeichensatz-Angabe.",
+      "template": "<meta ___=\"utf-8\">",
+      "accept": [
+        "charset"
+      ],
+      "hint": "Englisch für „Zeichensatz“, ein Wort."
+    },
+    {
+      "id": "02-18",
+      "konzept": "html.grundgeruest",
+      "type": "pair",
+      "text": "Ordne die Teile des Grundgerüsts zu.",
+      "pairs": [
+        [
+          "`<!DOCTYPE html>`",
+          "erste Zeile – Dokumenttyp"
+        ],
+        [
+          "`<head>`",
+          "unsichtbare Infos über die Seite"
+        ],
+        [
+          "`<body>`",
+          "alles Sichtbare"
+        ],
+        [
+          "`<title>`",
+          "Text im Browser-Tab"
+        ]
+      ]
+    },
+    {
+      "id": "02-19",
+      "konzept": "html.grundgeruest",
+      "type": "bug",
+      "text": "Eine Zeile steht am falschen Ort. Welche?",
+      "lines": [
+        "<!DOCTYPE html>",
+        "<html lang=\"de\">",
+        "  <head>",
+        "    <h1>Steckbrief</h1>",
+        "    <title>Steckbrief</title>",
+        "  </head>"
+      ],
+      "line": 3,
+      "explanation": "Sichtbares wie eine Überschrift gehört in den body, nicht in den head."
+    },
+    {
+      "id": "02-20",
+      "konzept": "html.grundgeruest",
+      "type": "quiz",
+      "question": "Was bewirkt `<meta charset=\"utf-8\">`?",
+      "options": [
+        "Umlaute und Sonderzeichen werden richtig angezeigt",
+        "Die Seite wird ins Deutsche übersetzt",
+        "Der Titel erscheint im Browser-Tab"
+      ],
+      "correct": 0,
+      "explanation": "Der Zeichensatz UTF-8 sorgt dafür, dass ä, ö, ü, € und Co. nicht zu Zeichensalat werden."
+    }
+  ]
+}

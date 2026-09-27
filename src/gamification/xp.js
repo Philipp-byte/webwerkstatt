@@ -3,6 +3,7 @@
 export const XP = {
   quiz: 10,
   fill: 10,
+  bug: 10,
   order: 15,
   pair: 15,
   code: 30,
