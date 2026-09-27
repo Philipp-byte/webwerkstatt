@@ -1,0 +1,44 @@
+{
+  "id": "05-projekt-navigation",
+  "title": "Projekt: Navigation",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Meilenstein! Die Startseite hat jetzt Wegweiser in alle Richtungen: die Linkzeile zu Programm, Galerie und Tickets, den Fahrplan im neuen Tab, die E-Mail zum Kollektiv und die Linkliste unter „Mehr“.\n\nNur eins nervt: Wer unten angekommen ist, scrollt auf dem Handy eine halbe Ewigkeit zurück. Geht da nicht ein Sprung nach oben?"
+    },
+    {
+      "type": "quiz",
+      "question": "Der Link „Nach oben“ soll zur Hauptüberschrift springen. Was brauchst du dafür?",
+      "options": [
+        "Eine id an der Überschrift und einen Link mit # plus dieser id",
+        "Einen Link zur Datei index.html",
+        "Einen Link mit dem Attribut target"
+      ],
+      "correct": 0,
+      "explanation": "„Nach oben“ ist eine Sprungmarke: id am Ziel, `#` plus id im Link. Ein Link auf `index.html` würde die Seite neu laden, `target` öffnet nur einen neuen Tab."
+    },
+    {
+      "type": "order",
+      "text": "Bring den Ausschnitt der FUNKEN-Startseite in die richtige Reihenfolge – „Nach oben“ steht vor der Trennlinie.",
+      "lines": [
+        "<h1 id=\"oben\">FUNKEN</h1>",
+        "<p><a href=\"programm.html\">Programm</a></p>",
+        "<h2 id=\"lineup\">Line-up</h2>",
+        "<p><a href=\"#oben\">Nach oben</a></p>",
+        "<hr>",
+        "<p>Kollektiv FUNKEN</p>"
+      ],
+      "explanation": "Oben die Überschrift mit ihrer id und die Linkzeile, unten der Sprung zurück, dann Trennlinie und Adresse."
+    },
+    {
+      "type": "explain",
+      "text": "Ab zur FUNKEN-Website: Die Hauptüberschrift bekommt die id `oben`, und vor dem Kontakt-Kommentar kommt ein Absatz mit dem Link „Nach oben“.\n\nDanach lohnt sich der Knopf **FUNKEN-Website ansehen** (`#/projekt`): Die Sprungmarken funktionieren dort schon. Die Links zu Programm, Galerie und Tickets warten noch auf ihre Seiten – die entstehen an den nächsten Stationen."
+    },
+    {
+      "type": "code",
+      "etappe": "05-links/05-projekt-navigation"
+    }
+  ]
+}

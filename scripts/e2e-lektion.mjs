@@ -6,6 +6,7 @@
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import { chromium } from 'playwright';
+import { loeseSchritt } from './lib/spieler.mjs';
 
 const [chapterId, lessonId] = process.argv.slice(2);
 if (!chapterId || !lessonId) {
@@ -26,92 +27,6 @@ const fehler = [];
 page.on('pageerror', (e) => fehler.push(`pageerror: ${e.message}`));
 page.on('console', (m) => m.type() === 'error' && !/404|Failed to load resource/.test(m.text()) && fehler.push(`console: ${m.text()}`));
 
-async function loeseSchritt(step, karte) {
-  const md = (s) => String(s).replace(/`/g, '').replace(/\*\*/g, '').trim();
-  switch (step.type) {
-    case 'quiz': {
-      const soll = md(step.options[step.correct]);
-      const btns = await karte.$$('.quiz-option');
-      for (const b of btns) {
-        const t = (await b.innerText()).replace(/^[A-D]\s*/, '').trim();
-        if (t === soll) {
-          await b.click();
-          return;
-        }
-      }
-      throw new Error(`Quiz-Option nicht gefunden: ${soll}`);
-    }
-    case 'fill': {
-      const inputs = await karte.$$('.fill-input');
-      const accept = Array.isArray(step.accept[0]) ? step.accept : [step.accept];
-      for (let i = 0; i < inputs.length; i++) await inputs[i].fill(accept[i][0]);
-      await karte.$eval('.btn-primaer', (b) => b.click());
-      return;
-    }
-    case 'order': {
-      for (const zeile of step.lines) {
-        const btns = await karte.$$('.sortier-pool .sortier-zeile');
-        let ok = false;
-        for (const b of btns) {
-          const t = (await b.innerText()).replace(/^\+\s*/, '').trim();
-          if (t === zeile.trim()) {
-            await b.click();
-            ok = true;
-            break;
-          }
-        }
-        if (!ok) throw new Error(`Sortier-Zeile nicht gefunden: ${zeile}`);
-      }
-      await karte.$eval('.schritt-buttons .btn-primaer', (b) => b.click());
-      return;
-    }
-    case 'pair': {
-      for (let i = 0; i < step.pairs.length; i++) {
-        await (await karte.$(`.paar-links .paar-item[data-i="${i}"]`)).click();
-        const rechts = await karte.$$('.paar-rechts .paar-item');
-        const soll = md(step.pairs[i][1]);
-        let ok = false;
-        for (const r of rechts) {
-          if ((await r.innerText()).trim() === soll) {
-            await r.click();
-            ok = true;
-            break;
-          }
-        }
-        if (!ok) throw new Error(`Paar nicht gefunden: ${soll}`);
-      }
-      return;
-    }
-    case 'bug': {
-      const zeilen = await karte.$$('.bug-zeile');
-      await zeilen[step.line].click();
-      return;
-    }
-    case 'code': {
-      let st = step;
-      if (step.etappe) {
-        const e = etappen.find((x) => x.id === step.etappe);
-        st = { ...step, solution: e.solution ?? e.files, editable: e.editable };
-        // Lösung = Zustand nach der Etappe (files), nur editierbare Dateien
-        st.solution = Object.fromEntries(e.editable.map((k) => [k, e.files[k]]));
-      }
-      const editable = st.editable || Object.keys(st.solution);
-      for (const k of editable) {
-        await karte.$eval(`.editor-wrap[data-datei="${k}"]`, (wrap, text) => {
-          const v = wrap.cmView;
-          v.dispatch({ changes: { from: 0, to: v.state.doc.length, insert: text } });
-        }, st.solution[k]);
-      }
-      await page.waitForTimeout(300);
-      await karte.$eval('.schritt-buttons .btn-primaer', (b) => b.click());
-      await page.waitForSelector('.schritt:not([hidden]) .rueckmeldung-ok', { timeout: 15000 });
-      return;
-    }
-    default:
-      return;
-  }
-}
-
 try {
   await page.goto(base, { waitUntil: 'networkidle' });
   await page.evaluate(() => {
@@ -129,7 +44,7 @@ try {
     const step = lektion.steps[i];
     const karte = await page.$('.schritt.pager-seite:not([hidden])');
     if (!karte) throw new Error(`Schritt ${i + 1}: keine sichtbare Karte`);
-    await loeseSchritt(step, karte);
+    await loeseSchritt(page, step, karte, { etappen });
     await page.waitForTimeout(150);
     const weiter = await page.$('.pager-weiter');
     if (await weiter.isDisabled()) throw new Error(`Schritt ${i + 1} (${step.type}) wurde nicht als gelöst erkannt`);

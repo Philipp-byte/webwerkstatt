@@ -1,0 +1,208 @@
+{
+  "id": "02-interne-links-und-sprungmarken",
+  "title": "Interne Links und Sprungmarken",
+  "konzepte": [
+    "html.a-intern",
+    "html.a-sprungmarke"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Die FUNKEN-Website bekommt mehrere Seiten: Startseite, Programm, Galerie, Tickets. Von einer zur anderen kommt man mit **internen Links** – Links zu eigenen Dateien.\n\nDafür reicht der **Dateiname**: `href=\"programm.html\"`. Kein `https://`, keine Domain – der Browser sucht die Datei im selben Ordner wie die aktuelle Seite. Auf der fertigen Website liegen alle Dateien nebeneinander.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"88\" y=\"22\" text-anchor=\"middle\" fill=\"#ff7a45\" font-weight=\"bold\">Eigene Seite</text><rect x=\"24\" y=\"34\" width=\"128\" height=\"26\" rx=\"5\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"88\" y=\"52\" text-anchor=\"middle\" fill=\"#eef2ff\">index.html</text><path d=\"M40 62 V106\" stroke=\"#4ade80\" stroke-width=\"2\" marker-end=\"url(#m5g)\"/><text x=\"50\" y=\"88\" fill=\"#4ade80\" font-family=\"monospace\" font-size=\"12\">href=\"team.html\"</text><rect x=\"24\" y=\"112\" width=\"128\" height=\"26\" rx=\"5\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"88\" y=\"130\" text-anchor=\"middle\" fill=\"#eef2ff\">team.html</text><text x=\"88\" y=\"154\" text-anchor=\"middle\" fill=\"#eef2ff\">nur der Dateiname</text><text x=\"248\" y=\"22\" text-anchor=\"middle\" fill=\"#38c7ff\" font-weight=\"bold\">Sprungmarke</text><rect x=\"190\" y=\"34\" width=\"116\" height=\"116\" rx=\"5\" fill=\"#e8ecf7\"/><text x=\"198\" y=\"56\" fill=\"#0f1320\" font-family=\"monospace\" font-size=\"12\">href=\"#essen\"</text><path d=\"M248 64 V118\" stroke=\"#38c7ff\" stroke-width=\"2\" marker-end=\"url(#m5c)\"/><text x=\"198\" y=\"140\" fill=\"#0f1320\" font-family=\"monospace\" font-size=\"12\">id=\"essen\"</text><defs><marker id=\"m5g\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#4ade80\"/></marker><marker id=\"m5c\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#38c7ff\"/></marker></defs></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Eine **Linkzeile** ist die einfachste Navigation: ein Absatz mit mehreren Links, getrennt durch einen Mittelpunkt (·). Die ersten beiden führen zu eigenen Dateien, der dritte nach draußen. **Klicke** auf „Spielplan“: In der Werkbank passiert nichts, denn die Datei spiele.html gibt es hier nicht – auf der fertigen Website öffnet sie sich. **Ergänze** einen vierten Link „Tickets“ zur Datei tickets.html.",
+      "html": "<h1>SV Neckarblick</h1>\n<p>\n  <a href=\"team.html\">Team</a> ·\n  <a href=\"spiele.html\">Spielplan</a> ·\n  <a href=\"https://www.example.com/verband\">Verband</a>\n</p>\n<p>Willkommen auf der Seite des SV Neckarblick!</p>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Ein Link soll von der Startseite zur eigenen Datei `spiele.html` im selben Ordner führen. Welche Adresse ist richtig?",
+      "options": [
+        "`spiele.html`",
+        "`https://spiele.html`",
+        "`spiele`"
+      ],
+      "correct": 0,
+      "explanation": "Eigene Dateien im selben Ordner erreichst du über den Dateinamen mit Endung. `https://` gehört nur zu fremden Servern, und ohne `.html` findet der Browser die Datei nicht."
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** direkt unter der Hauptüberschrift einen neuen Absatz mit einem Link: Der Linktext lautet „Spielplan“, das Ziel ist die eigene Datei `spiele.html`. Die beiden vorhandenen Absätze bleiben.",
+      "starter": {
+        "html": "<h1>SV Neckarblick</h1>\n<p>Der Verein aus dem Heilbronner Osten – seit 1921.</p>\n<p>Nächstes Heimspiel: Sonntag, 15 Uhr.</p>\n"
+      },
+      "hints": [
+        "Eigene Dateien verlinkst du nur mit dem Dateinamen samt Endung – ohne https und ohne Domain.",
+        "Muster aus einem anderen Kontext: `<p><a href=\"speisekarte.html\">Speisekarte</a></p>`",
+        "Der neue Absatz steht zwischen der Überschrift und dem ersten vorhandenen Absatz – darin nur der Link."
+      ],
+      "solution": {
+        "html": "<h1>SV Neckarblick</h1>\n<p><a href=\"spiele.html\">Spielplan</a></p>\n<p>Der Verein aus dem Heilbronner Osten – seit 1921.</p>\n<p>Nächstes Heimspiel: Sonntag, 15 Uhr.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "h1 + p a",
+          "attr": "href",
+          "expected": "spiele.html",
+          "label": "Der Link direkt unter der Überschrift führt zu spiele.html"
+        },
+        {
+          "type": "text",
+          "selector": "h1 + p a",
+          "expected": "Spielplan",
+          "label": "Der Linktext lautet „Spielplan“"
+        },
+        {
+          "type": "text",
+          "selector": "h1 + p",
+          "expected": "Spielplan",
+          "label": "Der neue Absatz enthält nur den Link"
+        },
+        {
+          "type": "selector",
+          "selector": "p",
+          "count": 3,
+          "label": "Die beiden anderen Absätze sind noch da"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Lange Seite, Kontakt ganz unten? Eine **Sprungmarke** ist ein Link, der innerhalb der Seite springt. Zwei Zutaten:\n\n1. Das Ziel bekommt eine **id** – einen eindeutigen Namen ohne Leerzeichen, nur einmal pro Seite.\n2. Der Link zeigt mit `#` auf diesen Namen.\n\n```html\n<p><a href=\"#kontakt\">Zum Kontakt</a></p>\n…\n<h2 id=\"kontakt\">Kontakt</h2>\n```\n\nEin Link „Nach oben“ funktioniert genauso – sein Ziel ist die Hauptüberschrift mit einer id."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige die Sprungmarke zum Kontakt-Abschnitt: erst den Link, dann das Ziel.",
+      "template": "<a href=\"___\">Zum Kontakt</a> … <h2 ___=\"kontakt\">Kontakt</h2>",
+      "accept": [
+        [
+          "#kontakt"
+        ],
+        [
+          "id"
+        ]
+      ],
+      "hint": "Der Link braucht die Raute vor dem Namen. Das Ziel bekommt das Attribut für den eindeutigen Namen."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** eine Sprungmarke: Die Überschrift „Preise“ bekommt die id `preise`. Im Absatz unter der Hauptüberschrift wird das Wort „Preise“ zum Link, der zu dieser Überschrift springt – der restliche Satz bleibt.",
+      "starter": {
+        "html": "<h1>Fitness-Block Heilbronn</h1>\n<p>Kurse, Geräte, Preise – alles auf einer Seite.</p>\n<h2>Kurse</h2>\n<p>Montag Kraft, Mittwoch Ausdauer, Freitag Mobility.</p>\n<h2>Preise</h2>\n<p>Schüler und Azubis zahlen 19 Euro im Monat.</p>\n"
+      },
+      "hints": [
+        "Zwei Stellen: Das Ziel (die Überschrift) braucht das Attribut mit dem eindeutigen Namen, der Link zeigt mit Raute auf diesen Namen.",
+        "Muster: `<h2 id=\"faq\">Fragen</h2>` und dazu `<a href=\"#faq\">Zu den Fragen</a>`",
+        "Im Absatz nur das Wort „Preise“ mit den Link-Tags einschließen – der Rest des Satzes bleibt stehen."
+      ],
+      "solution": {
+        "html": "<h1>Fitness-Block Heilbronn</h1>\n<p>Kurse, Geräte, <a href=\"#preise\">Preise</a> – alles auf einer Seite.</p>\n<h2>Kurse</h2>\n<p>Montag Kraft, Mittwoch Ausdauer, Freitag Mobility.</p>\n<h2 id=\"preise\">Preise</h2>\n<p>Schüler und Azubis zahlen 19 Euro im Monat.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "h2#preise",
+          "label": "Die Überschrift „Preise“ hat die id preise"
+        },
+        {
+          "type": "attr",
+          "selector": "h1 + p a",
+          "attr": "href",
+          "expected": "#preise",
+          "label": "Der Link springt zur id preise"
+        },
+        {
+          "type": "text",
+          "selector": "h1 + p a",
+          "expected": "Preise",
+          "label": "Nur das Wort „Preise“ ist der Link"
+        },
+        {
+          "type": "text",
+          "selector": "h1 + p",
+          "expected": "Kurse, Geräte, Preise – alles auf einer Seite.",
+          "label": "Der Satz ist sonst unverändert"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Bring die Speiseplan-Seite in die richtige Reihenfolge: Überschrift, Sprungmarken-Link, dann die Tage.",
+      "lines": [
+        "<h1>Kantine</h1>",
+        "<p><a href=\"#freitag\">Direkt zu Freitag</a></p>",
+        "<h2>Montag</h2>",
+        "<p>Pasta mit Tomatensoße</p>",
+        "<h2 id=\"freitag\">Freitag</h2>",
+        "<p>Pizza-Tag</p>"
+      ],
+      "explanation": "Der Sprungmarken-Link steht oben, sein Ziel – die Überschrift mit der id – weiter unten."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** den Steckbrief um Sprungmarken: Die drei Zwischenüberschriften bekommen die ids `hobbys`, `essen` und `kontakt`, die Hauptüberschrift die id `oben`. Im Absatz „Springe zu:“ werden die drei Wörter zu Links auf die passenden Überschriften. Ganz unten kommt ein Absatz mit dem Link „Nach oben“.",
+      "starter": {
+        "html": "<h1>Steckbrief: Lena</h1>\n<p>Springe zu: Hobbys · Lieblingsessen · Kontakt</p>\n<h2>Hobbys</h2>\n<p>Bouldern, Zeichnen und Serien schauen.</p>\n<h2>Lieblingsessen</h2>\n<p>Ramen – scharf, mit extra Ei.</p>\n<h2>Kontakt</h2>\n<p>Sprich mich in der Schule an – ich beiße nicht.</p>\n"
+      },
+      "hints": [
+        "Jede Sprungmarke braucht zwei Dinge: eine id am Ziel und einen Link mit Raute und demselben Namen. Vier Ziele, vier Links.",
+        "Muster: `<h2 id=\"preise\">Preise</h2>` und `<a href=\"#preise\">Preise</a>` – Namen genau gleich schreiben, klein und ohne Leerzeichen.",
+        "„Nach oben“ ist ein ganz normaler Sprungmarken-Link: Sein Ziel ist die h1 mit der id oben, er steht als letzter Absatz der Seite."
+      ],
+      "solution": {
+        "html": "<h1 id=\"oben\">Steckbrief: Lena</h1>\n<p>Springe zu: <a href=\"#hobbys\">Hobbys</a> · <a href=\"#essen\">Lieblingsessen</a> · <a href=\"#kontakt\">Kontakt</a></p>\n<h2 id=\"hobbys\">Hobbys</h2>\n<p>Bouldern, Zeichnen und Serien schauen.</p>\n<h2 id=\"essen\">Lieblingsessen</h2>\n<p>Ramen – scharf, mit extra Ei.</p>\n<h2 id=\"kontakt\">Kontakt</h2>\n<p>Sprich mich in der Schule an – ich beiße nicht.</p>\n<p><a href=\"#oben\">Nach oben</a></p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "h1#oben",
+          "label": "Die Hauptüberschrift hat die id oben"
+        },
+        {
+          "type": "selector",
+          "selector": "h2#hobbys, h2#essen, h2#kontakt",
+          "count": 3,
+          "label": "Die drei Zwischenüberschriften haben die ids hobbys, essen und kontakt"
+        },
+        {
+          "type": "selector",
+          "selector": "p a[href=\"#hobbys\"], p a[href=\"#essen\"], p a[href=\"#kontakt\"]",
+          "count": 3,
+          "label": "Im Absatz „Springe zu:“ stehen drei Sprungmarken-Links"
+        },
+        {
+          "type": "text",
+          "selector": "a[href=\"#essen\"]",
+          "expected": "Lieblingsessen",
+          "label": "Der Link „Lieblingsessen“ springt zum Essen"
+        },
+        {
+          "type": "text",
+          "selector": "a[href=\"#oben\"]",
+          "expected": "Nach oben",
+          "label": "Der Link „Nach oben“ springt zur Hauptüberschrift"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "h2#kontakt",
+            "a[href=\"#oben\"]"
+          ],
+          "label": "„Nach oben“ steht ganz unten"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Navigation zuerst – dann weiß jede Seite, wo sie hingehört. Direkt unter die Hauptüberschrift kommt eine Linkzeile zu Programm, Galerie und Tickets. Die Seiten selbst bauen wir in den nächsten Stationen, die Links legen wir jetzt schon an.\n\nDazu eine Sprungmarke „Direkt zum Line-up“ – die Line-up-Überschrift braucht dafür eine id."
+    },
+    {
+      "type": "code",
+      "etappe": "05-links/02-interne-links-und-sprungmarken"
+    }
+  ]
+}

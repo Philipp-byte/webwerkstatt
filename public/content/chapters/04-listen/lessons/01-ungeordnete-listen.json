@@ -1,0 +1,220 @@
+{
+  "id": "01-ungeordnete-listen",
+  "title": "Ungeordnete Listen",
+  "konzepte": [
+    "html.ul"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Sam schickt das Line-up als eine lange Zeile: „Neonpuls, Basslager, Kiki Volt, Die Kabelträger“. Auf der Programm-Tafel soll daraus eine **Liste** werden – ein Punkt pro Act.\n\nIn HTML besteht eine Liste aus zwei Elementen: `<ul>` ist der Behälter (**unordered list** – Liste ohne Nummern), `<li>` ist ein einzelner Punkt (**list item**). Die Aufzählungspunkte malt der Browser von selbst.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"20\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Behälter + Punkte = Liste</text><rect x=\"12\" y=\"32\" width=\"164\" height=\"116\" rx=\"8\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"22\" y=\"52\" fill=\"#ff7a45\" font-family=\"monospace\">&lt;ul&gt;</text><text x=\"34\" y=\"76\" fill=\"#eef2ff\" font-family=\"monospace\">&lt;li&gt;Neonpuls&lt;/li&gt;</text><text x=\"34\" y=\"98\" fill=\"#eef2ff\" font-family=\"monospace\">&lt;li&gt;Basslager&lt;/li&gt;</text><text x=\"34\" y=\"120\" fill=\"#eef2ff\" font-family=\"monospace\">&lt;li&gt;Kiki Volt&lt;/li&gt;</text><text x=\"22\" y=\"140\" fill=\"#ff7a45\" font-family=\"monospace\">&lt;/ul&gt;</text><path d=\"M182 90 H198\" stroke=\"#4ade80\" stroke-width=\"2\"/><path d=\"M196 84 L206 90 L196 96Z\" fill=\"#4ade80\"/><rect x=\"212\" y=\"32\" width=\"96\" height=\"116\" rx=\"8\" fill=\"#e8ecf7\"/><circle cx=\"228\" cy=\"73\" r=\"3\" fill=\"#0f1320\"/><text x=\"238\" y=\"77\" fill=\"#0f1320\">Neonpuls</text><circle cx=\"228\" cy=\"95\" r=\"3\" fill=\"#0f1320\"/><text x=\"238\" y=\"99\" fill=\"#0f1320\">Basslager</text><circle cx=\"228\" cy=\"117\" r=\"3\" fill=\"#0f1320\"/><text x=\"238\" y=\"121\" fill=\"#0f1320\">Kiki Volt</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Eine Playlist als Liste. **Ändere** einen Songtitel und **füge** einen vierten `<li>` hinzu – der Punkt davor kommt automatisch. Und dann: Was passiert, wenn du bei einem Song das `<li>` durch `<p>` ersetzt?",
+      "html": "<h2>Playlist fürs Training</h2>\n<ul>\n  <li>Nachtfahrt</li>\n  <li>Neonlicht</li>\n  <li>Sommerregen</li>\n</ul>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Du willst drei Snacks als Aufzählung mit Punkten zeigen. Welches Element umschließt die **ganze Liste**?",
+      "options": [
+        "`<ul>`",
+        "`<li>`",
+        "`<p>`",
+        "`<list>`"
+      ],
+      "correct": 0,
+      "explanation": "`<ul>` ist der Behälter der Liste. `<li>` ist ein einzelner Punkt darin. `<list>` gibt es in HTML nicht, und `<p>` ist ein Absatz."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter dem Kommentar eine Liste mit Punkten für drei Songs: „Nachtfahrt“, „Neonlicht“, „Sommerregen“ – in dieser Reihenfolge.",
+      "starter": {
+        "html": "<h2>Meine Playlist</h2>\n<!-- Hier kommt die Liste hin -->\n"
+      },
+      "hints": [
+        "Zuerst der Behälter für die ganze Liste, darin für jeden Song ein eigener Listenpunkt.",
+        "Ein Listenpunkt sieht so aus: `<li>Kakao</li>` – und alle Punkte liegen zwischen dem öffnenden und dem schließenden Tag der Liste.",
+        "Struktur: Behälter öffnen – drei Punkte, jeder mit einem Songtitel – Behälter schließen."
+      ],
+      "solution": {
+        "html": "<h2>Meine Playlist</h2>\n<!-- Hier kommt die Liste hin -->\n<ul>\n  <li>Nachtfahrt</li>\n  <li>Neonlicht</li>\n  <li>Sommerregen</li>\n</ul>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "ul",
+          "count": 1,
+          "label": "Es gibt eine Liste mit Punkten"
+        },
+        {
+          "type": "selector",
+          "selector": "ul > li",
+          "count": 3,
+          "label": "Die Liste hat drei Einträge"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:first-child",
+          "expected": "Nachtfahrt",
+          "label": "Der erste Song ist „Nachtfahrt“"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:last-child",
+          "expected": "Sommerregen",
+          "label": "Der letzte Song ist „Sommerregen“"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "h2",
+            "ul"
+          ],
+          "label": "Die Liste steht unter der Überschrift"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Drei Regeln, die dir Ärger ersparen:\n\n- In `<ul>` stehen **nur** `<li>`-Elemente – kein loser Text, kein `<p>`.\n- Jeder Punkt hat ein öffnendes **und** ein schließendes Tag.\n- Im Punkt darf stehen, was auch in einem Absatz stehen darf: Betonung, Sonderzeichen …\n\n```html\n<ul>\n  <li><strong>Tipp:</strong> Chips &amp; Dip</li>\n  <li>Eiswürfel</li>\n</ul>\n```\n\nDie Einrückung ist nur für dich – der Browser ignoriert sie."
+    },
+    {
+      "type": "fill",
+      "text": "**Vervollständige** die Einkaufsliste für den Pizza-Abend: Drei Tags fehlen.",
+      "template": "<___>\n  <li>Mehl</li>\n  <___>Tomaten</li>\n</___>",
+      "accept": [
+        [
+          "ul"
+        ],
+        [
+          "li"
+        ],
+        [
+          "ul"
+        ]
+      ],
+      "hint": "Erste und dritte Lücke: der Behälter der Liste (öffnend und schließend). Zweite Lücke: ein einzelner Punkt – schau auf die Zeile darüber."
+    },
+    {
+      "type": "code",
+      "task": "**Übertrage** die Zutaten aus dem Absatz in eine Liste mit Punkten – jede Zutat ein eigener Punkt, gleiche Reihenfolge. Der Absatz mit den Kommas wird dabei gelöscht.",
+      "starter": {
+        "html": "<h2>Pizza-Abend am Freitag</h2>\n<p>Einkaufen: Mehl, Tomaten, Mozzarella, Basilikum</p>\n"
+      },
+      "hints": [
+        "Vier Zutaten = vier Listenpunkte in einem Behälter.",
+        "Jede Zutat bekommt ihr eigenes `<li>…</li>` – so wie `<li>Kakao</li>`. Der Komma-Absatz fliegt komplett raus.",
+        "Struktur: Behälter öffnen, vier Zeilen mit je einem Punkt, Behälter schließen – die Zutaten in der Reihenfolge aus dem Absatz."
+      ],
+      "solution": {
+        "html": "<h2>Pizza-Abend am Freitag</h2>\n<ul>\n  <li>Mehl</li>\n  <li>Tomaten</li>\n  <li>Mozzarella</li>\n  <li>Basilikum</li>\n</ul>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "ul > li",
+          "count": 4,
+          "label": "Die Liste hat vier Zutaten"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:first-child",
+          "expected": "Mehl",
+          "label": "Die erste Zutat ist Mehl"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:nth-child(3)",
+          "expected": "Mozzarella",
+          "label": "Die dritte Zutat ist Mozzarella"
+        },
+        {
+          "type": "selector",
+          "selector": "p",
+          "count": 0,
+          "label": "Der Komma-Absatz ist weg"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "h2",
+            "ul"
+          ],
+          "label": "Die Liste steht unter der Überschrift"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "**Bringe** die Zeilen des Trainingsplans in die richtige Reihenfolge – die Wochentage helfen dir.",
+      "lines": [
+        "<h2>Trainingsplan</h2>",
+        "<ul>",
+        "  <li>Montag: Beine</li>",
+        "  <li>Mittwoch: Rücken</li>",
+        "  <li>Freitag: Schultern</li>",
+        "</ul>"
+      ],
+      "explanation": "Erst die Überschrift, dann der Behälter, darin die Punkte in Wochenreihenfolge, zuletzt das schließende Tag."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Korrigiere** die Packliste: „Schlafsack“ hat keinen Aufzählungspunkt, und „Regenjacke“ steht unter der Liste statt darin. Am Ende sollen alle vier Sachen als Punkte in einer Liste stehen.",
+      "starter": {
+        "html": "<h2>Packliste fürs Festival</h2>\n<ul>\n  <li>Zelt</li>\n  <p>Schlafsack</p>\n  <li>Powerbank</li>\n</ul>\n<li>Regenjacke</li>\n"
+      },
+      "hints": [
+        "Zwei Dinge stimmen nicht: ein falsches Element in der Liste und ein Punkt an der falschen Stelle.",
+        "Ein Listenpunkt ist immer ein `<li>` – kein `<p>`. Und jedes `<li>` gehört zwischen `<ul>` und `</ul>`.",
+        "Tausche bei „Schlafsack“ das Element aus und schiebe die Regenjacke-Zeile vor das schließende Tag der Liste."
+      ],
+      "solution": {
+        "html": "<h2>Packliste fürs Festival</h2>\n<ul>\n  <li>Zelt</li>\n  <li>Schlafsack</li>\n  <li>Powerbank</li>\n  <li>Regenjacke</li>\n</ul>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "ul > li",
+          "count": 4,
+          "label": "Die Liste hat vier Punkte"
+        },
+        {
+          "type": "selector",
+          "selector": "ul p",
+          "count": 0,
+          "label": "Kein Absatz mehr in der Liste"
+        },
+        {
+          "type": "selector",
+          "selector": "body > li",
+          "count": 0,
+          "label": "Kein Punkt steht außerhalb der Liste"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:nth-child(2)",
+          "expected": "Schlafsack",
+          "label": "„Schlafsack“ ist der zweite Punkt"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:last-child",
+          "expected": "Regenjacke",
+          "label": "„Regenjacke“ ist der letzte Punkt"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Auf der Startseite steht das Line-up bisher nirgends. Zwischen „Die Bühnen“ und „Foodtrucks“ kommt jetzt ein neuer Abschnitt: eine Zwischenüberschrift „Line-up“ und darunter die vier Acts als Liste mit Punkten.\n\nHalte die Reihenfolge der Acts ein – so hat Sam sie mit den Bands abgesprochen."
+    },
+    {
+      "type": "code",
+      "etappe": "04-listen/01-ungeordnete-listen"
+    }
+  ]
+}

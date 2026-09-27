@@ -1,0 +1,254 @@
+{
+  "chapter": "04-listen",
+  "fragen": [
+    {
+      "id": "04-01",
+      "konzept": "html.ul",
+      "type": "quiz",
+      "question": "Welches Element umschließt eine Liste mit Aufzählungspunkten (ohne Nummern)?",
+      "options": [
+        "`<ul>`",
+        "`<ol>`",
+        "`<li>`"
+      ],
+      "correct": 0,
+      "explanation": "`<ul>` = unordered list, die Liste ohne Nummern. `<li>` ist ein einzelner Punkt darin."
+    },
+    {
+      "id": "04-02",
+      "konzept": "html.ul",
+      "type": "fill",
+      "text": "Vervollständige die Punkteliste.",
+      "template": "<___>\n  <li>Chips</li>\n  <li>Dip</li>\n</ul>",
+      "accept": [
+        "ul"
+      ],
+      "hint": "Unordered list – zwei Buchstaben, wie im schließenden Tag."
+    },
+    {
+      "id": "04-03",
+      "konzept": "html.ul",
+      "type": "pair",
+      "text": "Ordne zu.",
+      "pairs": [
+        [
+          "`<ul>`",
+          "Liste mit Punkten"
+        ],
+        [
+          "`<ol>`",
+          "nummerierte Liste"
+        ],
+        [
+          "`<li>`",
+          "ein einzelner Listenpunkt"
+        ]
+      ]
+    },
+    {
+      "id": "04-04",
+      "konzept": "html.ul",
+      "type": "bug",
+      "text": "„Cap“ erscheint ohne Aufzählungspunkt. Welche Zeile ist falsch?",
+      "lines": [
+        "<ul>",
+        "  <li>Hoodie</li>",
+        "  <p>Cap</p>",
+        "  <li>Sneaker</li>",
+        "</ul>"
+      ],
+      "line": 2,
+      "explanation": "In einer Liste sind alle Einträge `<li>` – ein `<p>` bekommt keinen Punkt."
+    },
+    {
+      "id": "04-05",
+      "konzept": "html.ul",
+      "type": "order",
+      "text": "Sortiere die Zeilen zu einer korrekten Liste.",
+      "lines": [
+        "<h2>Playlist</h2>",
+        "<ul>",
+        "  <li>Nachtfahrt</li>",
+        "</ul>"
+      ]
+    },
+    {
+      "id": "04-06",
+      "konzept": "html.ol",
+      "type": "quiz",
+      "question": "Eine Anleitung mit Schritten, deren Reihenfolge wichtig ist. Welches Element?",
+      "options": [
+        "`<ol>`",
+        "`<ul>`",
+        "`<p>`"
+      ],
+      "correct": 0,
+      "explanation": "`<ol>` = ordered list: Der Browser nummeriert die Schritte selbst."
+    },
+    {
+      "id": "04-07",
+      "konzept": "html.ol",
+      "type": "fill",
+      "text": "Die Rangliste soll bei Platz 3 beginnen. Welches Attribut fehlt?",
+      "template": "<ol ___=\"3\">",
+      "accept": [
+        "start"
+      ],
+      "hint": "Das Attribut heißt wie das englische Wort für Anfang."
+    },
+    {
+      "id": "04-08",
+      "konzept": "html.ol",
+      "type": "bug",
+      "text": "Eine Zeile passt nicht zur nummerierten Liste. Welche?",
+      "lines": [
+        "<ol>",
+        "  <li>Teig kneten</li>",
+        "  <li>Belegen</li>",
+        "</ul>"
+      ],
+      "line": 3,
+      "explanation": "Was mit `<ol>` beginnt, endet mit `</ol>` – nicht mit `</ul>`."
+    },
+    {
+      "id": "04-09",
+      "konzept": "html.ol",
+      "type": "quiz",
+      "question": "Du fügst in eine nummerierte Liste in der Mitte einen Schritt ein. Was passiert mit den Nummern?",
+      "options": [
+        "Der Browser nummeriert automatisch neu durch",
+        "Zwei Schritte haben jetzt dieselbe Nummer",
+        "Der neue Schritt bekommt keine Nummer"
+      ],
+      "correct": 0,
+      "explanation": "Nummern tippst du nie selbst – der Browser zählt bei jeder Anzeige neu."
+    },
+    {
+      "id": "04-10",
+      "konzept": "html.ol",
+      "type": "pair",
+      "text": "Was zeigt der Browser an?",
+      "pairs": [
+        [
+          "`<ol>`",
+          "1., 2., 3. …"
+        ],
+        [
+          "`<ol start=\"5\">`",
+          "5., 6., 7. …"
+        ],
+        [
+          "`<ul>`",
+          "• • •"
+        ]
+      ]
+    },
+    {
+      "id": "04-11",
+      "konzept": "html.liste-verschachtelt",
+      "type": "quiz",
+      "question": "Wo steht eine innere Liste?",
+      "options": [
+        "Im Listenpunkt, vor dessen schließendem Tag",
+        "Nach dem schließenden Tag des Listenpunkts",
+        "Direkt in der äußeren Liste zwischen zwei Punkten"
+      ],
+      "correct": 0,
+      "explanation": "Die innere Liste gehört zum Punkt – sie steht in seinem `<li>`, vor `</li>`."
+    },
+    {
+      "id": "04-12",
+      "konzept": "html.liste-verschachtelt",
+      "type": "order",
+      "text": "Sortiere die verschachtelte Liste.",
+      "lines": [
+        "<ol>",
+        "  <li>Technik",
+        "    <ul>",
+        "      <li>Powerbank</li>",
+        "    </ul>",
+        "  </li>",
+        "</ol>"
+      ]
+    },
+    {
+      "id": "04-13",
+      "konzept": "html.liste-verschachtelt",
+      "type": "bug",
+      "text": "Die innere Liste hängt nicht im Punkt „Snacks“. Welche Zeile ist falsch?",
+      "lines": [
+        "<ul>",
+        "  <li>Snacks</li>",
+        "  <ul>",
+        "    <li>Chips</li>",
+        "  </ul>",
+        "</ul>"
+      ],
+      "line": 1,
+      "explanation": "Der Punkt wird zu früh geschlossen: Die innere Liste muss vor `</li>` stehen."
+    },
+    {
+      "id": "04-14",
+      "konzept": "html.liste-verschachtelt",
+      "type": "fill",
+      "text": "Welcher Tag fehlt nach der inneren Liste? (Mit spitzen Klammern.)",
+      "template": "<ul>\n  <li>Getränke\n    <ul>\n      <li>Cola</li>\n    </ul>\n  ___\n</ul>",
+      "accept": [
+        "</li>"
+      ],
+      "hint": "Nach der inneren Liste wird der äußere Punkt geschlossen."
+    },
+    {
+      "id": "04-15",
+      "konzept": "html.ul",
+      "type": "quiz",
+      "question": "Welche Zeile ist ein korrekter Listenpunkt?",
+      "options": [
+        "`<li>Cola</li>`",
+        "`<ul>Cola</ul>`",
+        "`<item>Cola</item>`"
+      ],
+      "correct": 0,
+      "explanation": "Ein Punkt ist `<li>…</li>`. `<ul>` ist nur der Behälter, `<item>` gibt es nicht."
+    },
+    {
+      "id": "04-16",
+      "konzept": "html.ul",
+      "type": "bug",
+      "text": "Zwischen „Schlafsack“ und „Powerbank“ erscheint ein leerer Punkt. Welche Zeile ist falsch?",
+      "lines": [
+        "<ul>",
+        "  <li>Zelt</li>",
+        "  <li>Schlafsack<li>",
+        "  <li>Powerbank</li>",
+        "</ul>"
+      ],
+      "line": 2,
+      "explanation": "Dem schließenden Tag fehlt der Schrägstrich: `</li>`."
+    },
+    {
+      "id": "04-17",
+      "konzept": "html.liste-verschachtelt",
+      "type": "quiz",
+      "question": "Darf eine nummerierte Liste in einem Punkt einer Punkteliste stehen?",
+      "options": [
+        "Ja – ul und ol lassen sich beliebig verschachteln",
+        "Nein – nur gleiche Listen dürfen ineinander",
+        "Nein – Listen dürfen gar nicht ineinander"
+      ],
+      "correct": 0,
+      "explanation": "Jede Liste darf in einem `<li>` stehen – egal ob Punkte oder Nummern."
+    },
+    {
+      "id": "04-18",
+      "konzept": "html.ol",
+      "type": "fill",
+      "text": "Vervollständige die nummerierte Liste.",
+      "template": "<ol>\n  <li>Sehtest</li>\n  <___>Erste-Hilfe-Kurs</li>\n</ol>",
+      "accept": [
+        "li"
+      ],
+      "hint": "Jeder Schritt ist ein Listenpunkt – gleiches Element wie in der Punkteliste."
+    }
+  ]
+}

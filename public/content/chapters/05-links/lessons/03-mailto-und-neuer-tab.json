@@ -1,0 +1,220 @@
+{
+  "id": "03-mailto-und-neuer-tab",
+  "title": "E-Mail-Links und neuer Tab",
+  "konzepte": [
+    "html.a-mailto",
+    "html.a-target"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Sam will, dass Leute dem Kollektiv mit einem Klick schreiben können. Dafür gibt es den **E-Mail-Link**: Statt einer Adresse mit `https://` steht im href `mailto:` und direkt dahinter die E-Mail-Adresse.\n\n```html\n<a href=\"mailto:info@sv-neckarblick-beispiel.de\">Schreib uns</a>\n```\n\nBeim Klick öffnet sich das **Mailprogramm** mit fertig eingetragenem Empfänger. Oft ist der Linktext einfach die Adresse selbst.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"80\" y=\"30\" text-anchor=\"middle\" fill=\"#b48cff\" font-family=\"monospace\" font-size=\"12\">href=\"mailto:…\"</text><path d=\"M80 40 V62\" stroke=\"#b48cff\" stroke-width=\"2\" marker-end=\"url(#m5v)\"/><rect x=\"30\" y=\"68\" width=\"100\" height=\"60\" rx=\"6\" fill=\"#1b2135\" stroke=\"#b48cff\" stroke-width=\"2\"/><path d=\"M30 68 L80 102 L130 68\" stroke=\"#b48cff\" stroke-width=\"2\" fill=\"none\"/><text x=\"80\" y=\"150\" text-anchor=\"middle\" fill=\"#eef2ff\">Mailprogramm öffnet</text><text x=\"240\" y=\"30\" text-anchor=\"middle\" fill=\"#ffd84d\" font-family=\"monospace\" font-size=\"12\">target=\"_blank\"</text><path d=\"M240 40 V62\" stroke=\"#ffd84d\" stroke-width=\"2\" marker-end=\"url(#m5y)\"/><rect x=\"176\" y=\"68\" width=\"128\" height=\"60\" rx=\"6\" fill=\"#1b2135\" stroke=\"#ffd84d\" stroke-width=\"2\"/><rect x=\"182\" y=\"74\" width=\"52\" height=\"16\" rx=\"3\" fill=\"#0f1320\"/><text x=\"208\" y=\"86\" text-anchor=\"middle\" fill=\"#eef2ff\">FUNKEN</text><rect x=\"238\" y=\"74\" width=\"60\" height=\"16\" rx=\"3\" fill=\"#ffd84d\"/><text x=\"268\" y=\"86\" text-anchor=\"middle\" fill=\"#0f1320\">Fahrplan</text><text x=\"240\" y=\"150\" text-anchor=\"middle\" fill=\"#eef2ff\">neuer Tab</text><defs><marker id=\"m5v\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#b48cff\"/></marker><marker id=\"m5y\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#ffd84d\"/></marker></defs></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Zwei E-Mail-Links. **Fahre** mit der Maus darüber – beide Ziele beginnen mit mailto. Beim zweiten ist der Linktext die Adresse selbst: So kann man sie auch abschreiben, wenn kein Mailprogramm eingerichtet ist. **Ändere** die Adresse im ersten Link und **beobachte**: Die Seite sieht gleich aus, nur das Ziel ändert sich.",
+      "html": "<h1>Kontakt</h1>\n<p>Fragen zum Turnier? <a href=\"mailto:turnier@clan-nachtwache-beispiel.de\">Schreib uns</a></p>\n<p>Presse: <a href=\"mailto:presse@clan-nachtwache-beispiel.de\">presse@clan-nachtwache-beispiel.de</a></p>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Wie beginnt die Zieladresse eines Links, der das Mailprogramm öffnet?",
+      "options": [
+        "`mailto:`",
+        "`https://`",
+        "`email:`",
+        "`@`"
+      ],
+      "correct": 0,
+      "explanation": "`mailto:` sagt dem Browser: Das ist keine Webseite, sondern eine E-Mail-Adresse – öffne das Mailprogramm. `email:` gibt es nicht."
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** im Absatz „Bewerbung an:“ einen E-Mail-Link, der das Mailprogramm mit dem Empfänger jobs@pixelwerk-beispiel.de öffnet. Der Linktext ist die Adresse selbst.",
+      "starter": {
+        "html": "<h1>Praktikum bei Pixelwerk</h1>\n<p>Wir suchen Praktikantinnen und Praktikanten für Webdesign.</p>\n<p>Bewerbung an: </p>\n"
+      },
+      "hints": [
+        "Ein E-Mail-Link ist ein normaler Link – nur die Zieladresse beginnt mit mailto und einem Doppelpunkt, direkt gefolgt von der E-Mail-Adresse (kein Leerzeichen, kein https).",
+        "Muster: `<a href=\"mailto:post@kantine-beispiel.de\">post@kantine-beispiel.de</a>`",
+        "Der Link kommt hinter „Bewerbung an: “ in den vorhandenen Absatz. Die Adresse steht zweimal: einmal hinter mailto, einmal als sichtbarer Text."
+      ],
+      "solution": {
+        "html": "<h1>Praktikum bei Pixelwerk</h1>\n<p>Wir suchen Praktikantinnen und Praktikanten für Webdesign.</p>\n<p>Bewerbung an: <a href=\"mailto:jobs@pixelwerk-beispiel.de\">jobs@pixelwerk-beispiel.de</a></p>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "p a",
+          "attr": "href",
+          "expected": "mailto:jobs@pixelwerk-beispiel.de",
+          "label": "Der Link öffnet das Mailprogramm mit jobs@pixelwerk-beispiel.de"
+        },
+        {
+          "type": "text",
+          "selector": "p a",
+          "expected": "jobs@pixelwerk-beispiel.de",
+          "label": "Der Linktext ist die E-Mail-Adresse"
+        },
+        {
+          "type": "text",
+          "selector": "p:nth-of-type(2)",
+          "expected": "Bewerbung an: jobs@pixelwerk-beispiel.de",
+          "label": "Der Link steht im Absatz „Bewerbung an:“"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Ein Klick auf einen Link ersetzt normalerweise die aktuelle Seite. Mit dem Attribut `target` und dem Wert `_blank` öffnet der Link in einem **neuen Tab** – deine Seite bleibt offen.\n\n```html\n<a href=\"https://www.example.com/fahrplan\" target=\"_blank\">Fahrplan</a>\n```\n\nSinnvoll ist das bei **fremden Seiten**, die man nebenbei anschaut (Fahrplan, Karte). Eigene Seiten und Sprungmarken öffnest du **nie** im neuen Tab – sonst sammeln sich Tabs, und der Zurück-Knopf hilft nicht mehr."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige den Link so, dass die Karte in einem neuen Tab öffnet.",
+      "template": "<a href=\"https://www.example.com/karte\" ___=\"___\">Anfahrt auf der Karte</a>",
+      "accept": [
+        [
+          "target"
+        ],
+        [
+          "_blank"
+        ]
+      ],
+      "hint": "Das Attribut heißt wie „Ziel“ auf Englisch, der Wert beginnt mit einem Unterstrich."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** die beiden Links des Bubble-Tea-Ladens: Der Bestell-Link öffnet kein Mailprogramm, und die Stadtkarte öffnet im selben Tab statt in einem neuen. Am Ende funktionieren beide Links, die sichtbaren Texte bleiben gleich.",
+      "starter": {
+        "html": "<h1>Bubble Tea Bar</h1>\n<p>Vorbestellen: <a href=\"bestellung@bubble-bar-beispiel.de\">bestellung@bubble-bar-beispiel.de</a></p>\n<p>So findest du uns: <a href=\"https://www.example.com/karte\" traget=\"_blank\">Stadtkarte</a></p>\n"
+      },
+      "hints": [
+        "Vergleiche jede Zieladresse mit den Mustern aus der Lektion: Womit muss ein E-Mail-Link beginnen? Wie heißt das Attribut für den neuen Tab genau?",
+        "Der Browser ignoriert Attribute, die er nicht kennt – ein Buchstabendreher reicht, und der neue Tab bleibt aus.",
+        "Im ersten Link fehlt am Anfang der Adresse ein Wort mit Doppelpunkt. Im zweiten Link ist der Attributname falsch geschrieben."
+      ],
+      "solution": {
+        "html": "<h1>Bubble Tea Bar</h1>\n<p>Vorbestellen: <a href=\"mailto:bestellung@bubble-bar-beispiel.de\">bestellung@bubble-bar-beispiel.de</a></p>\n<p>So findest du uns: <a href=\"https://www.example.com/karte\" target=\"_blank\">Stadtkarte</a></p>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "p:nth-of-type(1) a",
+          "attr": "href",
+          "expected": "mailto:bestellung@bubble-bar-beispiel.de",
+          "label": "Der Bestell-Link öffnet das Mailprogramm"
+        },
+        {
+          "type": "text",
+          "selector": "p:nth-of-type(1) a",
+          "expected": "bestellung@bubble-bar-beispiel.de",
+          "label": "Der Linktext bleibt die E-Mail-Adresse"
+        },
+        {
+          "type": "attr",
+          "selector": "a[href=\"https://www.example.com/karte\"]",
+          "attr": "target",
+          "expected": "_blank",
+          "label": "Die Stadtkarte öffnet in einem neuen Tab"
+        },
+        {
+          "type": "text",
+          "selector": "a[href=\"https://www.example.com/karte\"]",
+          "expected": "Stadtkarte",
+          "label": "Der Linktext „Stadtkarte“ bleibt"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Welche Adresse macht was? Ordne zu.",
+      "pairs": [
+        [
+          "`mailto:sam@beispiel.de`",
+          "öffnet das Mailprogramm"
+        ],
+        [
+          "`target=\"_blank\"`",
+          "öffnet den Link in einem neuen Tab"
+        ],
+        [
+          "`#kontakt`",
+          "springt zum Element mit der id kontakt"
+        ],
+        [
+          "`galerie.html`",
+          "führt zur eigenen Datei im selben Ordner"
+        ],
+        [
+          "`https://www.example.com`",
+          "führt zu einer fremden Website"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter dem Absatz eine Aufzählungsliste mit drei Links: 1. „E-Mail an den Laden“ öffnet das Mailprogramm mit laden@sneaker-lager-beispiel.de. 2. „Anfahrt auf der Stadtkarte“ führt zu https://www.example.com/karte und öffnet in einem neuen Tab. 3. „Zurück zur Startseite“ führt zur eigenen Datei `index.html`.",
+      "starter": {
+        "html": "<h1>Sneaker-Lager Heilbronn</h1>\n<h2>Kontakt</h2>\n<p>Fragen zu Größen oder Drops? Schreib uns oder komm vorbei.</p>\n"
+      },
+      "hints": [
+        "Drei Listenpunkte, in jedem genau ein Link. Überlege für jeden: fremde Seite, E-Mail oder eigene Datei?",
+        "Nur der Link zur fremden Seite bekommt das Attribut für den neuen Tab. Muster: `<li><a href=\"https://www.example.org\" target=\"_blank\">Verband</a></li>`",
+        "Aufbau: `<ul>` mit drei `<li>`, darin je ein `<a href=\"…\">…</a>` – Adressen: mailto plus E-Mail-Adresse, die Karten-Adresse, der Dateiname."
+      ],
+      "solution": {
+        "html": "<h1>Sneaker-Lager Heilbronn</h1>\n<h2>Kontakt</h2>\n<p>Fragen zu Größen oder Drops? Schreib uns oder komm vorbei.</p>\n<ul>\n  <li><a href=\"mailto:laden@sneaker-lager-beispiel.de\">E-Mail an den Laden</a></li>\n  <li><a href=\"https://www.example.com/karte\" target=\"_blank\">Anfahrt auf der Stadtkarte</a></li>\n  <li><a href=\"index.html\">Zurück zur Startseite</a></li>\n</ul>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "ul li",
+          "count": 3,
+          "label": "Die Liste hat drei Punkte"
+        },
+        {
+          "type": "selector",
+          "selector": "li > a",
+          "count": 3,
+          "label": "In jedem Punkt steht ein Link"
+        },
+        {
+          "type": "text",
+          "selector": "a[href=\"mailto:laden@sneaker-lager-beispiel.de\"]",
+          "expected": "E-Mail an den Laden",
+          "label": "„E-Mail an den Laden“ öffnet das Mailprogramm mit der Laden-Adresse"
+        },
+        {
+          "type": "attr",
+          "selector": "a[href=\"https://www.example.com/karte\"]",
+          "attr": "target",
+          "expected": "_blank",
+          "label": "Die Stadtkarte öffnet in einem neuen Tab"
+        },
+        {
+          "type": "text",
+          "selector": "a[href=\"index.html\"]",
+          "expected": "Zurück zur Startseite",
+          "label": "„Zurück zur Startseite“ führt zu index.html"
+        },
+        {
+          "type": "attr",
+          "selector": "a[href=\"index.html\"]",
+          "attr": "target",
+          "absent": true,
+          "label": "Die eigene Startseite öffnet im selben Tab"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "jonas",
+      "text": "Mailto ist der älteste Trick im Web – und funktioniert immer noch. Auf der FUNKEN-Startseite bekommt der Fahrplan-Link den neuen Tab, damit niemand unsere Seite verlässt, um Bahnzeiten nachzusehen.\n\nUnd in den Adress-Absatz kommt nach einem weiteren Zeilenumbruch hallo@funken-festival-beispiel.de als anklickbarer E-Mail-Link – mit der Adresse als Linktext."
+    },
+    {
+      "type": "code",
+      "etappe": "05-links/03-mailto-und-neuer-tab"
+    }
+  ]
+}

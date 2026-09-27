@@ -1,0 +1,221 @@
+{
+  "id": "02-geordnete-listen",
+  "title": "Geordnete Listen",
+  "konzepte": [
+    "html.ol"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Führerschein-Anmeldung: erst Sehtest, dann Erste-Hilfe-Kurs, dann der Antrag. Hier zählt die **Reihenfolge** – Punkte reichen nicht, die Schritte brauchen Nummern.\n\nDafür gibt es `<ol>` (**ordered list** – geordnete Liste). Die Einträge darin sind wieder `<li>`. Die Nummern tippst du **nicht** selbst: Der Browser zählt 1, 2, 3 – und zählt neu, wenn du einen Schritt einschiebst.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"20\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Gleiche Punkte, anderer Behälter</text><rect x=\"12\" y=\"34\" width=\"142\" height=\"114\" rx=\"8\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"22\" y=\"54\" fill=\"#ff7a45\" font-family=\"monospace\">&lt;ul&gt;</text><text x=\"58\" y=\"54\" fill=\"#ff7a45\">Reihenfolge egal</text><circle cx=\"30\" cy=\"80\" r=\"3\" fill=\"#eef2ff\"/><text x=\"40\" y=\"84\" fill=\"#eef2ff\">Zelt</text><circle cx=\"30\" cy=\"104\" r=\"3\" fill=\"#eef2ff\"/><text x=\"40\" y=\"108\" fill=\"#eef2ff\">Schlafsack</text><circle cx=\"30\" cy=\"128\" r=\"3\" fill=\"#eef2ff\"/><text x=\"40\" y=\"132\" fill=\"#eef2ff\">Powerbank</text><rect x=\"166\" y=\"34\" width=\"142\" height=\"114\" rx=\"8\" fill=\"#1b2135\" stroke=\"#b48cff\" stroke-width=\"2\"/><text x=\"176\" y=\"54\" fill=\"#b48cff\" font-family=\"monospace\">&lt;ol&gt;</text><text x=\"210\" y=\"54\" fill=\"#b48cff\">Reihenfolge zählt</text><text x=\"178\" y=\"84\" fill=\"#eef2ff\">1. Sehtest</text><text x=\"178\" y=\"108\" fill=\"#eef2ff\">2. Erste-Hilfe-Kurs</text><text x=\"178\" y=\"132\" fill=\"#eef2ff\">3. Antrag</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Ein Rezept mit nummerierten Schritten. **Füge** zwischen „Belegen“ und „Backen“ einen Schritt „Käse drauf“ ein – die Nummern rücken nach. **Tausche** dann `<ol>` und `</ol>` gegen `<ul>` und `</ul>` und schau, was aus den Nummern wird.",
+      "html": "<h2>So wird die Pizza</h2>\n<ol>\n  <li>Teig ausrollen</li>\n  <li>Mit Tomatensoße bestreichen</li>\n  <li>Belegen</li>\n  <li>12 Minuten backen</li>\n</ol>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Du löschst in einer nummerierten Liste den Schritt 2. Was passiert mit dem bisherigen Schritt 3?",
+      "options": [
+        "Er bekommt automatisch die Nummer 2",
+        "Er behält die Nummer 3 – es entsteht eine Lücke",
+        "Die Liste zeigt gar keine Nummern mehr"
+      ],
+      "correct": 0,
+      "explanation": "Der Browser nummeriert `<ol>`-Listen bei jeder Anzeige neu durch. Du tippst nie Nummern in den Text."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter dem Absatz eine nummerierte Liste mit den drei Schritten zum Führerschein: „Sehtest machen“, „Erste-Hilfe-Kurs besuchen“, „Antrag bei der Fahrschule stellen“.",
+      "starter": {
+        "html": "<h2>Auf dem Weg zum Führerschein</h2>\n<p>Das sind die ersten Schritte:</p>\n"
+      },
+      "hints": [
+        "Reihenfolge wichtig → geordnete Liste. Der Behälter-Tag ist ein anderer als bei der Punkteliste.",
+        "Die Einträge sind wie gehabt `<li>…</li>`; nur der Behälter heißt anders – zwei Buchstaben, beginnt mit o.",
+        "Struktur: Behälter öffnen, drei Schritte als je ein Punkt, Behälter schließen – Nummern tippst du keine."
+      ],
+      "solution": {
+        "html": "<h2>Auf dem Weg zum Führerschein</h2>\n<p>Das sind die ersten Schritte:</p>\n<ol>\n  <li>Sehtest machen</li>\n  <li>Erste-Hilfe-Kurs besuchen</li>\n  <li>Antrag bei der Fahrschule stellen</li>\n</ol>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "ol",
+          "count": 1,
+          "label": "Es gibt eine nummerierte Liste"
+        },
+        {
+          "type": "selector",
+          "selector": "ol > li",
+          "count": 3,
+          "label": "Die Liste hat drei Schritte"
+        },
+        {
+          "type": "text",
+          "selector": "ol > li:first-child",
+          "expected": "Sehtest machen",
+          "label": "Schritt 1 ist der Sehtest"
+        },
+        {
+          "type": "text",
+          "selector": "ol > li:last-child",
+          "expected": "Antrag bei der Fahrschule stellen",
+          "label": "Schritt 3 ist der Antrag"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "p",
+            "ol"
+          ],
+          "label": "Die Liste steht unter dem Absatz"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Manchmal soll die Zählung nicht bei 1 beginnen – etwa wenn eine Rangliste auf zwei Tafeln verteilt ist. Dafür bekommt `<ol>` das **Attribut** `start` mit der ersten Nummer:\n\n```html\n<ol start=\"6\">\n  <li>Retro Runner</li>\n  <li>Street Low</li>\n</ol>\n```\n\nDer Browser zeigt 6. und 7. – weiter zählt er wie gewohnt selbst."
+    },
+    {
+      "type": "fill",
+      "text": "**Vervollständige** die Spielanleitung – die Schritte sollen nummeriert erscheinen.",
+      "template": "<___>\n  <li>Karten mischen</li>\n  <li>Jeder bekommt fünf Karten</li>\n</___>",
+      "accept": [
+        [
+          "ol"
+        ],
+        [
+          "ol"
+        ]
+      ],
+      "hint": "Nummeriert = geordnet. Der Tag hat zwei Buchstaben und steht öffnend und schließend."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter dem Absatz die Fortsetzung der Turnier-Rangliste: eine nummerierte Liste mit „Kickers Nord“, „TSV Hafen“ und „FC Neckar“, deren Zählung bei 4 beginnt.",
+      "starter": {
+        "html": "<h2>Turnier-Rangliste, Teil 2</h2>\n<p>Die Plätze 1 bis 3 stehen auf der ersten Tafel.</p>\n"
+      },
+      "hints": [
+        "Nummerierte Liste – aber der Startwert ist nicht 1.",
+        "Der Startwert ist ein Attribut am öffnenden Tag der Liste, wie `<ol start=\"10\">` bei einer Top-20.",
+        "Struktur: Liste mit Startwert 4 öffnen, drei Punkte mit den Teams, Liste schließen."
+      ],
+      "solution": {
+        "html": "<h2>Turnier-Rangliste, Teil 2</h2>\n<p>Die Plätze 1 bis 3 stehen auf der ersten Tafel.</p>\n<ol start=\"4\">\n  <li>Kickers Nord</li>\n  <li>TSV Hafen</li>\n  <li>FC Neckar</li>\n</ol>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "ol > li",
+          "count": 3,
+          "label": "Die Liste hat drei Teams"
+        },
+        {
+          "type": "attr",
+          "selector": "ol",
+          "attr": "start",
+          "expected": "4",
+          "label": "Die Zählung beginnt bei 4"
+        },
+        {
+          "type": "text",
+          "selector": "ol > li:first-child",
+          "expected": "Kickers Nord",
+          "label": "Platz 4 ist Kickers Nord"
+        },
+        {
+          "type": "text",
+          "selector": "ol > li:last-child",
+          "expected": "FC Neckar",
+          "label": "Platz 6 ist der FC Neckar"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "**Ordne** die Elemente ihrer Aufgabe zu.",
+      "pairs": [
+        [
+          "`<ul>`",
+          "Liste mit Punkten – Reihenfolge egal"
+        ],
+        [
+          "`<ol>`",
+          "nummerierte Liste – Reihenfolge wichtig"
+        ],
+        [
+          "`<li>`",
+          "ein einzelner Eintrag in der Liste"
+        ],
+        [
+          "`start=\"3\"`",
+          "Zählung beginnt bei 3"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "Die Tafel für den Turnier-Tag: 1. **Erstelle** unter „Teams“ eine Liste mit Punkten: „FC Neckar“, „Kickers Nord“, „TSV Hafen“. 2. **Erstelle** unter „Ablauf“ eine nummerierte Liste: „Anmeldung“, „Gruppenspiele“, „Finale“, „Siegerehrung“.",
+      "starter": {
+        "html": "<h1>Hallenturnier am Samstag</h1>\n<h2>Teams</h2>\n\n<h2>Ablauf</h2>\n\n"
+      },
+      "hints": [
+        "Zwei Listen, zwei Behälter: Reihenfolge egal → Punkte, Reihenfolge wichtig → Nummern.",
+        "Jede Liste kommt direkt unter ihre Zwischenüberschrift. Die Einträge sind in beiden Fällen `<li>…</li>`.",
+        "Struktur: Überschrift Teams → Punkteliste mit drei Einträgen; Überschrift Ablauf → nummerierte Liste mit vier Einträgen."
+      ],
+      "solution": {
+        "html": "<h1>Hallenturnier am Samstag</h1>\n<h2>Teams</h2>\n<ul>\n  <li>FC Neckar</li>\n  <li>Kickers Nord</li>\n  <li>TSV Hafen</li>\n</ul>\n\n<h2>Ablauf</h2>\n<ol>\n  <li>Anmeldung</li>\n  <li>Gruppenspiele</li>\n  <li>Finale</li>\n  <li>Siegerehrung</li>\n</ol>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "ul > li",
+          "count": 3,
+          "label": "Drei Teams stehen in einer Liste mit Punkten"
+        },
+        {
+          "type": "selector",
+          "selector": "ol > li",
+          "count": 4,
+          "label": "Der Ablauf hat vier nummerierte Schritte"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "h2:nth-of-type(1)",
+            "ul",
+            "h2:nth-of-type(2)",
+            "ol"
+          ],
+          "label": "Teams-Liste unter „Teams“, Ablauf unter „Ablauf“"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:first-child",
+          "expected": "FC Neckar",
+          "label": "Das erste Team ist der FC Neckar"
+        },
+        {
+          "type": "text",
+          "selector": "ol > li:last-child",
+          "expected": "Siegerehrung",
+          "label": "Der letzte Schritt ist die Siegerehrung"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Ich krieg ständig die Frage: „Wie komme ich zu euch?“ Deshalb bekommt die Startseite vor dem Kontakt-Kommentar einen Abschnitt „So kommst du hin“ – mit drei Schritten, die genau in dieser Reihenfolge passieren: Stadtbahn, Lichtern folgen, Ticket zeigen.\n\nReihenfolge wichtig – du weißt, welche Liste das braucht."
+    },
+    {
+      "type": "code",
+      "etappe": "04-listen/02-geordnete-listen"
+    }
+  ]
+}

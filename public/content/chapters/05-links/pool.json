@@ -1,0 +1,246 @@
+{
+  "chapter": "05-links",
+  "fragen": [
+    {
+      "id": "05-01",
+      "konzept": "html.a-extern",
+      "type": "quiz",
+      "question": "Welches Attribut enthält die Zieladresse eines Links?",
+      "options": [
+        "`href`",
+        "`src`",
+        "`link`"
+      ],
+      "correct": 0,
+      "explanation": "`href` trägt die Zieladresse. `src` gehört zu Bildern, `link` ist kein Attribut."
+    },
+    {
+      "id": "05-02",
+      "konzept": "html.a-extern",
+      "type": "fill",
+      "text": "Vervollständige den Link zur fremden Website.",
+      "template": "<a ___=\"https://www.example.com\">Zur Seite</a>",
+      "accept": [
+        "href"
+      ],
+      "hint": "Das Attribut für die Zieladresse – vier Buchstaben."
+    },
+    {
+      "id": "05-03",
+      "konzept": "html.a-extern",
+      "type": "bug",
+      "text": "Ein Link führt nicht zur fremden Website. Welche Zeile ist falsch?",
+      "lines": [
+        "<p>Alle Regeln beim",
+        "<a href=\"www.example.com/regeln\">Verband</a>",
+        "und beim",
+        "<a href=\"https://www.example.com/liga\">Ligaverband</a>.</p>"
+      ],
+      "line": 1,
+      "explanation": "Zu fremden Seiten führt nur die komplette Adresse mit `https://` – sonst sucht der Browser eine eigene Datei namens www.example.com/regeln."
+    },
+    {
+      "id": "05-04",
+      "konzept": "html.a-extern",
+      "type": "quiz",
+      "question": "Welcher Linktext ist am besten?",
+      "options": [
+        "Fahrplan der Stadtbahn",
+        "hier klicken",
+        "Link"
+      ],
+      "correct": 0,
+      "explanation": "Ein guter Linktext sagt, wohin es geht. „hier klicken“ und „Link“ verraten nichts."
+    },
+    {
+      "id": "05-05",
+      "konzept": "html.a-intern",
+      "type": "quiz",
+      "question": "Die Datei `galerie.html` liegt im selben Ordner wie die Startseite. Welche Adresse gehört in den Link?",
+      "options": [
+        "`galerie.html`",
+        "`https://galerie.html`",
+        "`www.galerie.html`"
+      ],
+      "correct": 0,
+      "explanation": "Eigene Dateien im selben Ordner verlinkst du nur mit dem Dateinamen – ohne Protokoll und ohne Domain."
+    },
+    {
+      "id": "05-06",
+      "konzept": "html.a-intern",
+      "type": "fill",
+      "text": "Der Link soll zu deiner eigenen Galerie-Seite führen – die Datei heißt wie die Seite, mit der üblichen Endung.",
+      "template": "<a href=\"___\">Galerie</a>",
+      "accept": [
+        "galerie.html"
+      ],
+      "hint": "Dateiname klein geschrieben plus Endung für HTML-Dateien."
+    },
+    {
+      "id": "05-07",
+      "konzept": "html.a-intern",
+      "type": "bug",
+      "text": "Ein Link der Navigation führt ins Leere. Welche Zeile ist falsch?",
+      "lines": [
+        "<p>",
+        "  <a href=\"programm.html\">Programm</a> ·",
+        "  <a href=\"https://galerie.html\">Galerie</a> ·",
+        "  <a href=\"tickets.html\">Tickets</a>",
+        "</p>"
+      ],
+      "line": 2,
+      "explanation": "Eigene Dateien werden nur mit dem Dateinamen verlinkt – `https://` gehört nur zu fremden Servern."
+    },
+    {
+      "id": "05-08",
+      "konzept": "html.a-sprungmarke",
+      "type": "fill",
+      "text": "Das Ziel hat die id `kontakt`. Vervollständige den Sprungmarken-Link.",
+      "template": "<a href=\"___\">Zum Kontakt</a>",
+      "accept": [
+        "#kontakt"
+      ],
+      "hint": "Raute plus der Name der id."
+    },
+    {
+      "id": "05-09",
+      "konzept": "html.a-sprungmarke",
+      "type": "order",
+      "text": "Sortiere den Steckbrief: Überschrift, Sprungmarken-Link, Abschnitt, „Nach oben“.",
+      "lines": [
+        "<h1 id=\"oben\">Steckbrief</h1>",
+        "<p><a href=\"#hobbys\">Zu den Hobbys</a></p>",
+        "<h2 id=\"hobbys\">Hobbys</h2>",
+        "<p>Bouldern und Zeichnen.</p>",
+        "<p><a href=\"#oben\">Nach oben</a></p>"
+      ]
+    },
+    {
+      "id": "05-10",
+      "konzept": "html.a-sprungmarke",
+      "type": "bug",
+      "text": "Der Link „Zu den Preisen“ springt nicht. Welche Zeile ist falsch?",
+      "lines": [
+        "<p><a href=\"#preise\">Zu den Preisen</a></p>",
+        "<h2>Kurse</h2>",
+        "<h2 id=\"preis\">Preise</h2>",
+        "<p>19 Euro im Monat.</p>"
+      ],
+      "line": 2,
+      "explanation": "Link-Adresse und id müssen genau übereinstimmen: `#preise` braucht `id=\"preise\"`, nicht `preis`."
+    },
+    {
+      "id": "05-11",
+      "konzept": "html.a-sprungmarke",
+      "type": "quiz",
+      "question": "Was braucht ein Link, der innerhalb derselben Seite springt?",
+      "options": [
+        "Eine id am Ziel und im Link # plus diese id",
+        "Eine zweite HTML-Datei",
+        "Das Attribut target"
+      ],
+      "correct": 0,
+      "explanation": "Sprungmarke = id am Ziel + Link mit `#` und demselben Namen. Keine neue Datei, kein neuer Tab."
+    },
+    {
+      "id": "05-12",
+      "konzept": "html.a-mailto",
+      "type": "quiz",
+      "question": "Womit beginnt die Adresse eines Links, der das Mailprogramm öffnet?",
+      "options": [
+        "`mailto:`",
+        "`https://`",
+        "`email:`"
+      ],
+      "correct": 0,
+      "explanation": "`mailto:` plus E-Mail-Adresse – dann öffnet der Browser das Mailprogramm mit eingetragenem Empfänger."
+    },
+    {
+      "id": "05-13",
+      "konzept": "html.a-mailto",
+      "type": "bug",
+      "text": "Der Link soll das Mailprogramm öffnen, tut es aber nicht. Welche Zeile ist falsch?",
+      "lines": [
+        "<p>Fragen?",
+        "<a href=\"hallo@festival-beispiel.de\">",
+        "Schreib uns</a>",
+        "</p>"
+      ],
+      "line": 1,
+      "explanation": "Vor der E-Mail-Adresse fehlt `mailto:` – sonst sucht der Browser eine Datei mit diesem Namen."
+    },
+    {
+      "id": "05-14",
+      "konzept": "html.a-target",
+      "type": "fill",
+      "text": "Der Fahrplan soll in einem neuen Tab öffnen. Vervollständige den Wert.",
+      "template": "<a href=\"https://www.example.com\" target=\"___\">Fahrplan</a>",
+      "accept": [
+        "_blank"
+      ],
+      "hint": "Unterstrich plus das englische Wort für „leer“."
+    },
+    {
+      "id": "05-15",
+      "konzept": "html.a-target",
+      "type": "quiz",
+      "question": "Welcher Link sollte in einem neuen Tab öffnen?",
+      "options": [
+        "Der Link zum Fahrplan auf einer fremden Website",
+        "Der Link zur eigenen Seite programm.html",
+        "Die Sprungmarke „Nach oben“"
+      ],
+      "correct": 0,
+      "explanation": "Neue Tabs nur für fremde Seiten, die man nebenbei ansieht. Eigene Seiten und Sprungmarken öffnen im selben Tab."
+    },
+    {
+      "id": "05-16",
+      "konzept": "html.a-extern",
+      "type": "pair",
+      "text": "Wohin führt der Link? Ordne zu.",
+      "pairs": [
+        [
+          "`https://www.example.com`",
+          "fremde Website"
+        ],
+        [
+          "`galerie.html`",
+          "eigene Datei im selben Ordner"
+        ],
+        [
+          "`#oben`",
+          "Sprungmarke auf derselben Seite"
+        ],
+        [
+          "`mailto:sam@beispiel.de`",
+          "E-Mail-Link"
+        ]
+      ]
+    },
+    {
+      "id": "05-17",
+      "konzept": "html.a-target",
+      "type": "bug",
+      "text": "Die Stadtkarte soll in einem neuen Tab öffnen, tut es aber nicht. Welche Zeile ist falsch?",
+      "lines": [
+        "<p>So findest du uns:",
+        "<a href=\"https://www.example.com/karte\" traget=\"_blank\">",
+        "Stadtkarte</a>",
+        "</p>"
+      ],
+      "line": 1,
+      "explanation": "Das Attribut heißt `target` – bei einem Buchstabendreher ignoriert der Browser es einfach."
+    },
+    {
+      "id": "05-18",
+      "konzept": "html.a-mailto",
+      "type": "fill",
+      "text": "Vervollständige den E-Mail-Link.",
+      "template": "<a href=\"___info@kantine-beispiel.de\">Schreib uns</a>",
+      "accept": [
+        "mailto:"
+      ],
+      "hint": "Das Wort vor der Adresse endet mit einem Doppelpunkt."
+    }
+  ]
+}
