@@ -1,0 +1,226 @@
+{
+  "chapter": "17-javascript-dom",
+  "title": "Abnahme: Schaltpult",
+  "intro": "Leute, die Seite reagiert! Ich hab zwanzigmal auf „Ich bin dabei!“ gedrückt, sorry dafür. Bevor ich das dem Kollektiv zeige: Beweist mir, dass ihr das Schaltpult im Griff habt – Knöpfe, Zähler, Nachtmodus, alles.",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "js.getElementById",
+      "type": "quiz",
+      "question": "Welche Zeile findet das Element `<span id=\"dabei\">0</span>`?",
+      "options": [
+        "`document.getElementById(\"dabei\")`",
+        "`document.getElementById(#dabei)`",
+        "`document.getElementById(\"span\")`"
+      ],
+      "correct": 0,
+      "explanation": "Die id steht als Text in Anführungszeichen in den Klammern – ohne Raute, ohne Tag-Namen."
+    },
+    {
+      "konzept": "js.addEventListener",
+      "type": "fill",
+      "text": "Vervollständige: Der Zuhörer soll beim Klick reagieren.",
+      "template": "knopf.addEventListener(\"___\", function () {",
+      "accept": [
+        "click"
+      ],
+      "exact": true
+    },
+    {
+      "type": "code",
+      "task": "**Entwickle** das Skript: Beim Klick auf den Knopf zeigt der Status „Geöffnet bis 23 Uhr“.",
+      "starter": {
+        "html": "<h2>Döner-Ecke</h2>\n<button id=\"offen-knopf\">Wir haben geöffnet</button>\n<p id=\"status\">Status unbekannt</p>\n",
+        "js": "const status = document.getElementById(\"status\");\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "solution": {
+        "js": "const status = document.getElementById(\"status\");\nconst offenKnopf = document.getElementById(\"offen-knopf\");\noffenKnopf.addEventListener(\"click\", function () {\n  status.textContent = \"Geöffnet bis 23 Uhr\";\n});\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "#status",
+          "expected": "Status unbekannt",
+          "label": "Vor dem Klick steht „Status unbekannt“"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#offen-knopf"
+        },
+        {
+          "type": "text",
+          "selector": "#status",
+          "expected": "Geöffnet bis 23 Uhr",
+          "label": "Nach dem Klick steht „Geöffnet bis 23 Uhr“"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "addEventListener\\(\\s*[\"']click[\"']",
+          "label": "Das Skript reagiert auf click"
+        }
+      ]
+    },
+    {
+      "konzept": "js.classList",
+      "type": "pair",
+      "text": "Ordne zu.",
+      "pairs": [
+        [
+          "`classList.toggle(\"x\")`",
+          "schaltet die Klasse x ein oder aus"
+        ],
+        [
+          "`classList.add(\"x\")`",
+          "fügt die Klasse x hinzu"
+        ],
+        [
+          "`classList.remove(\"x\")`",
+          "entfernt die Klasse x"
+        ],
+        [
+          "`document.body`",
+          "das body-Element – ohne id erreichbar"
+        ]
+      ]
+    },
+    {
+      "konzept": "js.variable",
+      "type": "quiz",
+      "question": "Ein Zähler soll sich bei jedem Klick ändern. Womit legst du ihn richtig an?",
+      "options": [
+        "`let zaehler = 0;`",
+        "`const zaehler = 0;`",
+        "`zaehler: 0;`"
+      ],
+      "correct": 0,
+      "explanation": "Werte, die sich ändern, brauchen `let`. Eine `const` lässt sich nicht neu zuweisen."
+    },
+    {
+      "konzept": "js.zaehler",
+      "type": "bug",
+      "text": "Der Like-Zähler bleibt bei 0. Welche Zeile ist falsch?",
+      "lines": [
+        "let likes = 0;",
+        "knopf.addEventListener(\"click\", function () {",
+        "  likes + 1;",
+        "  anzeige.textContent = likes;",
+        "});"
+      ],
+      "line": 2,
+      "explanation": "Die Rechnung muss gespeichert werden: `likes = likes + 1;`"
+    },
+    {
+      "konzept": "recht.impressum",
+      "type": "quiz",
+      "question": "Welche Angabe muss ins Impressum der Festival-Website?",
+      "options": [
+        "Name, Anschrift und Kontakt der Verantwortlichen",
+        "Die Lieblingsfarbe des Teams",
+        "Die Anzahl der Besucher pro Tag"
+      ],
+      "correct": 0,
+      "explanation": "Das Impressum sagt, wer für die Seite verantwortlich ist und wie man diese Person erreicht."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "Der Knopf tut nichts, und die Konsole meldet Fehler. **Überprüfe** das Skript und behebe beide Fehler, sodass die Anzeige nach zwei Klicks „2“ zeigt.",
+      "starter": {
+        "html": "<h2>Turnier-Anmeldungen</h2>\n<button id=\"plus-knopf\">+1 Team</button>\n<p><span id=\"teams\">0</span> Teams angemeldet</p>\n",
+        "js": "let teams = 0;\nconst plusKnopf = document.getElementById(\"plus-knopf\");\nconst anzeige = document.getElementById(\"Teams\");\nplusKnopf.addEventListener(\"click\", function () {\n  teams = teams + 1;\n  anzeige.textContent = teams;\n};\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "solution": {
+        "js": "let teams = 0;\nconst plusKnopf = document.getElementById(\"plus-knopf\");\nconst anzeige = document.getElementById(\"teams\");\nplusKnopf.addEventListener(\"click\", function () {\n  teams = teams + 1;\n  anzeige.textContent = teams;\n});\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "#teams",
+          "expected": "0",
+          "label": "Vor dem Klick steht 0"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#plus-knopf"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#plus-knopf"
+        },
+        {
+          "type": "text",
+          "selector": "#teams",
+          "expected": "2",
+          "label": "Nach zwei Klicks steht 2"
+        }
+      ]
+    },
+    {
+      "konzept": "css.padding",
+      "type": "pair",
+      "text": "Station 13 – ordne die Eigenschaften zu.",
+      "pairs": [
+        [
+          "`padding`",
+          "Innenabstand"
+        ],
+        [
+          "`margin`",
+          "Außenabstand"
+        ],
+        [
+          "`border`",
+          "Rahmen"
+        ],
+        [
+          "`box-shadow`",
+          "Schatten"
+        ]
+      ]
+    },
+    {
+      "konzept": "js.textContent",
+      "type": "quiz",
+      "question": "Was macht die Zeile `anzeige.textContent = 5;`?",
+      "options": [
+        "Sie zeigt im Element anzeige den Text 5",
+        "Sie zählt anzeige um 5 hoch",
+        "Sie erstellt ein neues Element mit der id 5"
+      ],
+      "correct": 0,
+      "explanation": "textContent setzt den sichtbaren Text – eine Zahl wird dabei automatisch zu Text."
+    },
+    {
+      "konzept": "js.verkettung",
+      "type": "fill",
+      "text": "Station 16: Verbinde Text und Variable zu einem Satz.",
+      "template": "const meldung = \"Noch \" + tage ___ \" Tage\";",
+      "accept": [
+        "+"
+      ],
+      "hint": "Das Zeichen, das Texte und Zahlen zu einem Text verbindet."
+    },
+    {
+      "konzept": "html.button",
+      "type": "quiz",
+      "question": "Womit erzeugst du im HTML einen klickbaren Knopf mit der Aufschrift „Absenden“?",
+      "options": [
+        "`<button>Absenden</button>`",
+        "`<knopf>Absenden</knopf>`",
+        "`<p>Absenden</p>`"
+      ],
+      "correct": 0,
+      "explanation": "Knöpfe sind button-Elemente; der Text dazwischen ist die Aufschrift."
+    }
+  ]
+}

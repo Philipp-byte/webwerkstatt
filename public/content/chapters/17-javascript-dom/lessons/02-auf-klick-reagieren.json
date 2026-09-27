@@ -1,0 +1,221 @@
+{
+  "id": "02-auf-klick-reagieren",
+  "title": "Auf Klick reagieren",
+  "konzepte": [
+    "js.addEventListener"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Ein Like-Knopf, ein Play-Knopf, „In den Warenkorb“: Alles auf einer Seite wartet auf **Ereignisse** – und das wichtigste davon ist der **Klick**.\n\nBisher lief dein Skript einmal beim Laden und war fertig. Jetzt meldest du einen **Zuhörer** an: Er wartet am Knopf und führt beim Klick deinen Code aus – so oft, wie geklickt wird.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"30\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Ereignis → Zuhörer → Reaktion</text><rect x=\"12\" y=\"58\" width=\"82\" height=\"52\" rx=\"8\" fill=\"#ff7a45\" fill-opacity=\"0.15\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"53\" y=\"80\" text-anchor=\"middle\" fill=\"#ff7a45\" font-weight=\"bold\">Knopf</text><text x=\"53\" y=\"98\" text-anchor=\"middle\" fill=\"#eef2ff\" font-family=\"monospace\" font-size=\"11\">&lt;button&gt;</text><path d=\"M96 84 H118\" stroke=\"#ffd84d\" stroke-width=\"2\" marker-end=\"url(#pe)\"/><text x=\"108\" y=\"128\" text-anchor=\"middle\" fill=\"#ffd84d\">Klick</text><rect x=\"122\" y=\"58\" width=\"96\" height=\"52\" rx=\"8\" fill=\"#ffd84d\" fill-opacity=\"0.12\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"170\" y=\"80\" text-anchor=\"middle\" fill=\"#ffd84d\" font-weight=\"bold\">Zuhörer</text><text x=\"170\" y=\"98\" text-anchor=\"middle\" fill=\"#eef2ff\" font-family=\"monospace\" font-size=\"11\">\"click\"</text><path d=\"M220 84 H242\" stroke=\"#4ade80\" stroke-width=\"2\" marker-end=\"url(#pg)\"/><rect x=\"246\" y=\"58\" width=\"62\" height=\"52\" rx=\"8\" fill=\"#4ade80\" fill-opacity=\"0.15\" stroke=\"#4ade80\" stroke-width=\"2\"/><text x=\"277\" y=\"80\" text-anchor=\"middle\" fill=\"#4ade80\" font-weight=\"bold\">Funktion</text><text x=\"277\" y=\"98\" text-anchor=\"middle\" fill=\"#eef2ff\" font-size=\"11\">Text ändern</text><text x=\"160\" y=\"150\" text-anchor=\"middle\" fill=\"#eef2ff\">läuft bei jedem Klick – nicht beim Laden</text><defs><marker id=\"pe\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#ffd84d\"/></marker><marker id=\"pg\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#4ade80\"/></marker></defs></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Der Knopf ist im HTML ein `<button>` mit id, zum Beispiel `<button id=\"start-knopf\">Los!</button>`. Im Skript holst du ihn wie gewohnt und hängst mit **addEventListener** einen Zuhörer an:\n\n```js\nconst knopf = document.getElementById(\"start-knopf\");\nknopf.addEventListener(\"click\", function () {\n  console.log(\"Geklickt!\");\n});\n```\n\n`\"click\"` ist der Name des Ereignisses. Danach kommt eine **Funktion** – ein Codeblock zwischen `{` und `}`, der erst beim Klick läuft. Ganz am Ende schließt `});` Funktion und Klammer."
+    },
+    {
+      "type": "example",
+      "text": "Klicke in der Vorschau auf den Knopf. **Ändere** dann den Text in der Funktion. Was passiert, wenn du aus `\"click\"` ein `\"klick\"` machst?",
+      "html": "<button id=\"knopf\">Klick mich</button>\n<p id=\"antwort\">Noch nichts passiert.</p>\n",
+      "js": "const knopf = document.getElementById(\"knopf\");\nconst antwort = document.getElementById(\"antwort\");\nknopf.addEventListener(\"click\", function () {\n  antwort.textContent = \"Danke für den Klick!\";\n});\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Wann läuft der Code zwischen den geschweiften Klammern von `addEventListener(\"click\", function () { … })`?",
+      "options": [
+        "Bei jedem Klick auf das Element – so oft, wie geklickt wird",
+        "Genau einmal, sobald die Seite geladen ist",
+        "Nur beim ersten Klick, danach nie wieder"
+      ],
+      "correct": 0,
+      "explanation": "Der Zuhörer bleibt am Element und reagiert auf jeden Klick. Beim Laden wird die Funktion nur angemeldet, nicht ausgeführt."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Skript: Beim Klick auf den Knopf zeigt die Anzeige „Los geht's – 20 Minuten!“. Vorher bleibt sie bei „Bereit?“.",
+      "starter": {
+        "html": "<h2>Workout</h2>\n<button id=\"start-knopf\">Training starten</button>\n<p id=\"anzeige\">Bereit?</p>\n",
+        "js": "const startKnopf = document.getElementById(\"start-knopf\");\nconst anzeige = document.getElementById(\"anzeige\");\n// Zuhörer für den Klick\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "hints": [
+        "Der Zuhörer gehört an den Knopf, die Textänderung in die Funktion.",
+        "Muster aus einem anderen Kontext: `licht.addEventListener(\"click\", function () { … });`",
+        "In die Funktion kommt eine Zeile, die den Text der Anzeige setzt – wie in Lektion 1."
+      ],
+      "solution": {
+        "js": "const startKnopf = document.getElementById(\"start-knopf\");\nconst anzeige = document.getElementById(\"anzeige\");\nstartKnopf.addEventListener(\"click\", function () {\n  anzeige.textContent = \"Los geht's – 20 Minuten!\";\n});\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "#anzeige",
+          "expected": "Bereit?",
+          "label": "Vor dem Klick steht „Bereit?“"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#start-knopf"
+        },
+        {
+          "type": "text",
+          "selector": "#anzeige",
+          "expected": "Los geht's – 20 Minuten!",
+          "label": "Nach dem Klick steht „Los geht's – 20 Minuten!“"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "addEventListener\\(\\s*[\"']click[\"']",
+          "label": "Das Skript reagiert auf click"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Drei Stolperfallen, die jeder einmal erlebt:\n\n- Das Ereignis heißt `\"click\"` – englisch, klein geschrieben.\n- Was **sofort** passieren soll, steht außerhalb der Funktion; was **beim Klick** passieren soll, steht drinnen.\n- Am Ende gehört `});` – die geschweifte Klammer schließt die Funktion, die runde den Aufruf.\n\nMehrere Knöpfe? Jeder bekommt seine eigene id und seinen eigenen Zuhörer."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige den Zuhörer: Beim Klick auf den Knopf soll die Meldung „Gespeichert“ erscheinen.",
+      "template": "knopf.___(\"___\", function () {\n  meldung.textContent = \"Gespeichert\";\n});",
+      "accept": [
+        [
+          "addEventListener"
+        ],
+        [
+          "click"
+        ]
+      ],
+      "exact": true,
+      "hint": "Der Befehl zum Anmelden des Zuhörers – und der englische Name des Ereignisses, klein geschrieben."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** über der Meldung einen Knopf mit der id `anmelden` und dem Text „Anmelden“. **Erweitere** das Skript: Beim Klick zeigt die Meldung „Du bist angemeldet!“.",
+      "starter": {
+        "html": "<h2>Turnier-Anmeldung</h2>\n<!-- Hier kommt der Knopf hin -->\n<p id=\"meldung\">Noch nicht angemeldet</p>\n",
+        "js": "const meldung = document.getElementById(\"meldung\");\n"
+      },
+      "editable": [
+        "html",
+        "js"
+      ],
+      "hints": [
+        "Ein Knopf ist ein button-Element mit id und dem Text dazwischen.",
+        "Im Skript: Knopf holen, Zuhörer anmelden, in der Funktion den Text der Meldung setzen.",
+        "Struktur: `const knopf = document.getElementById(\"…\");` und dann `knopf.addEventListener(\"click\", function () { … });`"
+      ],
+      "solution": {
+        "html": "<h2>Turnier-Anmeldung</h2>\n<button id=\"anmelden\">Anmelden</button>\n<p id=\"meldung\">Noch nicht angemeldet</p>\n",
+        "js": "const meldung = document.getElementById(\"meldung\");\nconst knopf = document.getElementById(\"anmelden\");\nknopf.addEventListener(\"click\", function () {\n  meldung.textContent = \"Du bist angemeldet!\";\n});\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "button#anmelden",
+          "expected": "Anmelden",
+          "label": "Der Knopf „Anmelden“ ist da"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "#anmelden",
+            "#meldung"
+          ],
+          "label": "Der Knopf steht über der Meldung"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#anmelden"
+        },
+        {
+          "type": "text",
+          "selector": "#meldung",
+          "expected": "Du bist angemeldet!",
+          "label": "Nach dem Klick steht „Du bist angemeldet!“"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "addEventListener\\(\\s*[\"']click[\"']",
+          "label": "Das Skript reagiert auf click"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Bringe das Skript in die richtige Reihenfolge: Beim Klick auf den Knopf soll die Anzeige „Gespeichert!“ zeigen.",
+      "lines": [
+        "const knopf = document.getElementById(\"speichern\");",
+        "knopf.addEventListener(\"click\", function () {",
+        "  document.getElementById(\"anzeige\").textContent = \"Gespeichert!\";",
+        "});"
+      ],
+      "explanation": "Erst den Knopf holen, dann den Zuhörer anmelden; die Reaktion steht in der Funktion, `});` schließt sie."
+    },
+    {
+      "type": "code",
+      "task": "**Entwickle** das Skript für die zwei Knöpfe: Nach einem Klick auf „Pizza“ zeigt die Auswahl „Deine Wahl: Pizza“, nach einem Klick auf „Waffel“ zeigt sie „Deine Wahl: Waffel“.",
+      "starter": {
+        "html": "<h2>Foodtruck-Bestellung</h2>\n<button id=\"pizza-knopf\">Pizza</button>\n<button id=\"waffel-knopf\">Waffel</button>\n<p id=\"auswahl\">Noch nichts gewählt</p>\n",
+        "js": "const auswahl = document.getElementById(\"auswahl\");\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "hints": [
+        "Zwei Knöpfe, zwei Konstanten, zwei Zuhörer.",
+        "Beide Zuhörer schreiben in dasselbe Element – nur mit anderem Text.",
+        "Struktur je Knopf: holen, dann `….addEventListener(\"click\", function () { … });`"
+      ],
+      "solution": {
+        "js": "const auswahl = document.getElementById(\"auswahl\");\nconst pizzaKnopf = document.getElementById(\"pizza-knopf\");\nconst waffelKnopf = document.getElementById(\"waffel-knopf\");\npizzaKnopf.addEventListener(\"click\", function () {\n  auswahl.textContent = \"Deine Wahl: Pizza\";\n});\nwaffelKnopf.addEventListener(\"click\", function () {\n  auswahl.textContent = \"Deine Wahl: Waffel\";\n});\n"
+      },
+      "tests": [
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#pizza-knopf"
+        },
+        {
+          "type": "text",
+          "selector": "#auswahl",
+          "expected": "Deine Wahl: Pizza",
+          "label": "Nach „Pizza“ steht „Deine Wahl: Pizza“"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#waffel-knopf"
+        },
+        {
+          "type": "text",
+          "selector": "#auswahl",
+          "expected": "Deine Wahl: Waffel",
+          "label": "Nach „Waffel“ steht „Deine Wahl: Waffel“"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "addEventListener[\\s\\S]*addEventListener",
+          "label": "Beide Knöpfe haben einen Zuhörer"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Sam wünscht sich für die Startseite einen Knopf „Gibt es noch Tickets?“ – draufdrücken, Antwort erscheint.\n\nDer Knopf kommt vor den Status-Absatz, der Status startet leer. Im Skript ersetzt ein Klick-Zuhörer die Zeile, die den Status bisher sofort gesetzt hat: Erst der Klick schreibt die Antwort hinein. Hol dir beide Elemente in Konstanten, dann hängst du den Zuhörer an den Knopf."
+    },
+    {
+      "type": "code",
+      "etappe": "17-javascript-dom/02-auf-klick-reagieren"
+    }
+  ]
+}

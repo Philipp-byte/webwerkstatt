@@ -1,0 +1,203 @@
+{
+  "id": "05-wiederholung",
+  "title": "Wiederholung",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Schaltpult-Check: Finden, Klick, Zähler, Klassen – dazu Variablen und Textverbindung aus Station 16, das Box-Modell aus 13, Formulare aus 09 und Recht aus 15. Sieben Aufgaben, dann baust du Sam noch ein Dankeschön in die Startseite."
+    },
+    {
+      "type": "quiz",
+      "question": "Die Konsole meldet einen Fehler mit „null“, sobald das Skript den Text eines Elements setzen will. Was ist die häufigste Ursache?",
+      "options": [
+        "Die id im Skript passt nicht zur id im HTML",
+        "Der Text in textContent ist zu lang",
+        "Der Knopf wurde noch nicht angeklickt"
+      ],
+      "correct": 0,
+      "explanation": "`null` heißt: nichts gefunden. Meist ist die id anders geschrieben als im HTML – oder das Skript läuft, bevor das Element existiert."
+    },
+    {
+      "type": "fill",
+      "text": "Station 09: Verbinde die Beschriftung mit dem Eingabefeld, damit ein Klick auf den Text das Feld aktiviert.",
+      "template": "<label ___=\"email\">E-Mail</label>\n<input type=\"email\" id=\"email\">",
+      "accept": [
+        "for"
+      ],
+      "hint": "Das Attribut am label nennt die id des Feldes."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Skript: Beim Klick auf den Knopf zeigt der Absatz „Summe: 24 €“ – berechnet aus `preis` mal `anzahl`, nicht als feste Zahl hingeschrieben.",
+      "starter": {
+        "html": "<h2>Pizza-Bestellung</h2>\n<p>3 × Margherita à 8 €</p>\n<button id=\"rechnen-knopf\">Summe berechnen</button>\n<p id=\"summe\">Summe: ?</p>\n",
+        "js": "const preis = 8;\nconst anzahl = 3;\nconst summe = document.getElementById(\"summe\");\nconst rechnenKnopf = document.getElementById(\"rechnen-knopf\");\n// Beim Klick: Summe berechnen und anzeigen\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "hints": [
+        "Zuhörer am Knopf; in der Funktion wird gerechnet und angezeigt.",
+        "Mal ist der Stern; Text und Zahl verbindest du mit Plus – wie in Station 16.",
+        "Struktur: `summe.textContent = \"Summe: \" + … + \" €\";` – in die Lücke kommt die Rechnung."
+      ],
+      "solution": {
+        "js": "const preis = 8;\nconst anzahl = 3;\nconst summe = document.getElementById(\"summe\");\nconst rechnenKnopf = document.getElementById(\"rechnen-knopf\");\nrechnenKnopf.addEventListener(\"click\", function () {\n  summe.textContent = \"Summe: \" + preis * anzahl + \" €\";\n});\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "#summe",
+          "expected": "Summe: ?",
+          "label": "Vor dem Klick steht „Summe: ?“"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#rechnen-knopf"
+        },
+        {
+          "type": "text",
+          "selector": "#summe",
+          "expected": "Summe: 24 €",
+          "label": "Nach dem Klick steht „Summe: 24 €“"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "preis\\s*\\*\\s*anzahl|anzahl\\s*\\*\\s*preis",
+          "label": "Die Summe wird aus preis und anzahl berechnet"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Station 13 – das Box-Modell. Ordne die Eigenschaften zu.",
+      "pairs": [
+        [
+          "`padding`",
+          "Innenabstand – Luft zwischen Inhalt und Rahmen"
+        ],
+        [
+          "`margin`",
+          "Außenabstand – Luft zu den Nachbarn"
+        ],
+        [
+          "`border`",
+          "der Rahmen um das Element"
+        ],
+        [
+          "`border-radius`",
+          "runde Ecken"
+        ],
+        [
+          "`box-shadow`",
+          "Schatten unter dem Element"
+        ]
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Sortiere das Skript für einen Abstimmungs-Zähler. `let stimmen = 0;` und die Konstante `anzeige` stehen schon weiter oben.",
+      "lines": [
+        "const knopf = document.getElementById(\"abstimmen\");",
+        "knopf.addEventListener(\"click\", function () {",
+        "  stimmen = stimmen + 1;",
+        "  anzeige.textContent = stimmen;",
+        "});"
+      ],
+      "explanation": "Knopf holen, Zuhörer anmelden, in der Funktion erst rechnen und dann anzeigen, `});` schließt ab."
+    },
+    {
+      "type": "quiz",
+      "question": "Station 15: Ihr wollt ein Foto aus dem Netz auf der Festival-Seite zeigen. Was gilt?",
+      "options": [
+        "Nur mit Erlaubnis oder passender Lizenz, etwa Creative Commons",
+        "Alles, was im Netz steht, darf frei verwendet werden",
+        "Es reicht, die Quelle in einem HTML-Kommentar zu nennen"
+      ],
+      "correct": 0,
+      "explanation": "Fotos sind urheberrechtlich geschützt. Ohne Erlaubnis oder Lizenz (z. B. CC BY mit Namensnennung) dürfen sie nicht auf die Seite."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** im CSS eine Regel für die Klasse `gewaehlt`: ein 3 Pixel dicker, durchgezogener Rahmen in `#ff7a45` und 8 Pixel runde Ecken. **Erweitere** das Skript: Der Klick auf „Auswählen“ schaltet diese Klasse an der Karte ein oder aus.",
+      "starter": {
+        "html": "<div id=\"karte\" class=\"karte\">\n  <h2>Festivalpass</h2>\n  <p>20 € · beide Tage</p>\n</div>\n<button id=\"waehlen-knopf\">Auswählen</button>\n",
+        "css": ".karte {\n  padding: 12px;\n  background-color: #ffffff;\n  border: 2px solid #d4d4d8;\n}\n\n/* Regel für die Klasse gewaehlt */\n",
+        "js": "const karte = document.getElementById(\"karte\");\nconst waehlenKnopf = document.getElementById(\"waehlen-knopf\");\n"
+      },
+      "editable": [
+        "css",
+        "js"
+      ],
+      "hints": [
+        "Rahmen: Dicke, Art und Farbe in einer Eigenschaft; runde Ecken haben eine eigene Eigenschaft (Station 13).",
+        "Zuhörer am Knopf, geschaltet wird an der Karte – mit toggle.",
+        "Die Regel beginnt mit `.gewaehlt {` und braucht zwei Deklarationen."
+      ],
+      "solution": {
+        "css": ".karte {\n  padding: 12px;\n  background-color: #ffffff;\n  border: 2px solid #d4d4d8;\n}\n\n.gewaehlt {\n  border: 3px solid #ff7a45;\n  border-radius: 8px;\n}\n",
+        "js": "const karte = document.getElementById(\"karte\");\nconst waehlenKnopf = document.getElementById(\"waehlen-knopf\");\nwaehlenKnopf.addEventListener(\"click\", function () {\n  karte.classList.toggle(\"gewaehlt\");\n});\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "#karte",
+          "prop": "border-top-width",
+          "expected": "2px",
+          "label": "Vor dem Klick hat die Karte ihren dünnen Rahmen"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#waehlen-knopf"
+        },
+        {
+          "type": "style",
+          "selector": "#karte",
+          "prop": "border-top-width",
+          "expected": "3px",
+          "label": "Nach dem Klick ist der Rahmen 3 Pixel dick"
+        },
+        {
+          "type": "style",
+          "selector": "#karte",
+          "prop": "border-top-style",
+          "expected": "solid",
+          "label": "Der Rahmen ist durchgezogen"
+        },
+        {
+          "type": "style",
+          "selector": "#karte",
+          "prop": "border-top-color",
+          "expected": "#ff7a45",
+          "label": "Der Rahmen ist orange"
+        },
+        {
+          "type": "style",
+          "selector": "#karte",
+          "prop": "border-top-left-radius",
+          "expected": "8px",
+          "label": "Die Ecken sind 8 Pixel rund"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "classList\\.toggle\\(\\s*[\"']gewaehlt[\"']",
+          "label": "Das Skript schaltet die Klasse gewaehlt um"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Wenn jemand auf „Ich bin dabei!“ drückt, soll die Seite Danke sagen! Also: Der Zähler zählt weiter wie bisher, und **zusätzlich** steht danach in der Status-Zeile „Danke – bis Juli!“.\n\nAyla meint, das sei eine einzige Zeile mehr im vorhandenen Zuhörer – die Konstante für den Status gibt es im Skript ja schon."
+    },
+    {
+      "type": "code",
+      "etappe": "17-javascript-dom/05-wiederholung"
+    }
+  ]
+}
