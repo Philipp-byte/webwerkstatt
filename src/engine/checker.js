@@ -10,6 +10,30 @@ function norm(s) {
   return String(s ?? '').replace(/\s+/g, ' ').trim();
 }
 
+// Weiche Normalisierung für Textvergleiche: typografische Zeichen (Gedankenstrich,
+// Anführungszeichen, Mittelpunkt) zählen wie ihre einfachen Tastatur-Varianten.
+function weich(s) {
+  return norm(s)
+    .replace(/[–—‑]/g, '-')
+    .replace(/[•]/g, '·')
+    .replace(/[„“”«»]/g, '"')
+    .replace(/[‚‘’‹›]/g, "'")
+    .replace(/\s*-\s*/g, ' - ')
+    .replace(/\s*·\s*/g, ' · ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// Erklärt eine knappe Abweichung („fast richtig“) in Worten.
+function fastRichtig(ist, soll) {
+  const a = weich(ist);
+  const b = weich(soll);
+  if (a.toLowerCase() === b.toLowerCase()) return 'Fast! Achte auf Groß- und Kleinschreibung.';
+  const nurZeichen = (x) => x.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '');
+  if (nurZeichen(a) === nurZeichen(b)) return 'Fast! Prüfe Satzzeichen und Leerzeichen.';
+  return '';
+}
+
 // Sichtbarer Text: innerText macht aus <br> einen Umbruch (→ Leerzeichen nach norm),
 // textContent würde die Zeilen zusammenkleben.
 function textVon(el) {
@@ -55,10 +79,12 @@ function checkOne(t, ctx) {
       if (!alle.length) return { label, pass: false, detail: `Kein Element „${t.selector}“ gefunden` };
       const kandidaten = t.any ? alle : [alle[0]];
       const treffer = kandidaten.some((el) => {
-        const ist = norm(textVon(el));
-        return asList(t.expected).some((e) => (t.contains ? ist.includes(norm(e)) : ist === norm(e)));
+        const ist = weich(textVon(el));
+        return asList(t.expected).some((e) => (t.contains ? ist.includes(weich(e)) : ist === weich(e)));
       });
-      return { label, pass: treffer, detail: treffer ? '' : `Gefunden: „${norm(textVon(alle[0])).slice(0, 80)}“` };
+      const gefunden = norm(textVon(alle[0]));
+      const hinweis = !treffer && !t.contains ? fastRichtig(gefunden, asList(t.expected)[0]) : '';
+      return { label, pass: treffer, detail: treffer ? '' : `Gefunden: „${gefunden.slice(0, 80)}“${hinweis ? ` – ${hinweis}` : ''}` };
     }
 
     case 'attr': {
@@ -98,11 +124,12 @@ function checkOne(t, ctx) {
       } else if (t.matches) {
         pass = logs.some((l) => new RegExp(t.matches, t.flags ?? '').test(l));
       } else {
-        const varianten = asList(t.expected).map(norm);
-        pass = logs.some((l) => varianten.includes(norm(l)));
+        const varianten = asList(t.expected).map(weich);
+        pass = logs.some((l) => varianten.includes(weich(l)));
       }
       if (t.absent) pass = !pass;
-      return { label, pass, detail: pass ? '' : `Konsole: ${logs.length ? logs.join(' ⏎ ') : '(keine Ausgabe)'}` };
+      const hinweis = !pass && !t.absent && t.expected && logs.length ? fastRichtig(logs[logs.length - 1], asList(t.expected)[0]) : '';
+      return { label, pass, detail: pass ? '' : `Konsole: ${logs.length ? logs.join(' ⏎ ') : '(keine Ausgabe)'}${hinweis ? ` – ${hinweis}` : ''}` };
     }
 
     case 'source': {

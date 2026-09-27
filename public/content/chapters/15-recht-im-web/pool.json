@@ -1,0 +1,302 @@
+{
+  "chapter": "15-recht-im-web",
+  "fragen": [
+    {
+      "id": "15-01",
+      "konzept": "recht.urheberrecht",
+      "type": "quiz",
+      "question": "Du findest über die Bildersuche ein Bühnenfoto. Darfst du es auf deiner Website nutzen?",
+      "options": [
+        "Nur mit Erlaubnis der Urheberin oder des Urhebers, etwa über eine Lizenz",
+        "Ja – alles im Internet ist frei nutzbar",
+        "Ja, wenn kein ©-Zeichen dabei steht"
+      ],
+      "correct": 0,
+      "explanation": "Das Urheberrecht gilt automatisch. Fremde Werke nutzt du nur mit Erlaubnis, zum Beispiel über eine Lizenz."
+    },
+    {
+      "id": "15-02",
+      "konzept": "recht.urheberrecht",
+      "type": "quiz",
+      "question": "Ab wann ist ein Foto urheberrechtlich geschützt?",
+      "options": [
+        "Sofort, sobald es gemacht wurde – ohne Anmeldung oder ©-Zeichen",
+        "Erst nach einer Anmeldung beim Amt",
+        "Erst, wenn ein ©-Zeichen darunter steht"
+      ],
+      "correct": 0,
+      "explanation": "Der Schutz entsteht automatisch mit dem Werk – niemand muss etwas anmelden oder kennzeichnen."
+    },
+    {
+      "id": "15-03",
+      "konzept": "recht.urheberrecht",
+      "type": "bug",
+      "text": "Eine Aussage ist falsch. Welche?",
+      "lines": [
+        "Fotos, Texte und Musik sind automatisch geschützt.",
+        "Wer ein Werk erstellt, ist Urheberin oder Urheber.",
+        "Ohne ©-Zeichen ist ein Bild frei nutzbar.",
+        "Auch ein Song für den Aftermovie braucht eine Erlaubnis."
+      ],
+      "line": 2,
+      "explanation": "Das ©-Zeichen ist nur ein Hinweis – der Schutz gilt auch ohne."
+    },
+    {
+      "id": "15-04",
+      "konzept": "recht.urheberrecht",
+      "type": "fill",
+      "text": "Vervollständige.",
+      "template": "Wer ein Foto macht, ist dessen ___ und entscheidet über die Nutzung.",
+      "accept": [
+        "Urheber",
+        "Urheberin",
+        "Urheber:in",
+        "Urheber*in"
+      ],
+      "hint": "Das Recht heißt Urheberrecht – wie heißt die Person?"
+    },
+    {
+      "id": "15-05",
+      "konzept": "recht.lizenz",
+      "type": "pair",
+      "text": "Ordne die Lizenzen zu.",
+      "pairs": [
+        [
+          "CC BY",
+          "Nutzung erlaubt, Name nennen"
+        ],
+        [
+          "CC BY-NC",
+          "Name nennen, nur nicht-kommerziell"
+        ],
+        [
+          "CC0",
+          "keine Bedingungen"
+        ],
+        [
+          "keine Lizenzangabe",
+          "alle Rechte vorbehalten – erst fragen"
+        ]
+      ]
+    },
+    {
+      "id": "15-06",
+      "konzept": "recht.lizenz",
+      "type": "quiz",
+      "question": "Ein Bild steht unter CC BY. Was musst du tun, wenn du es nutzt?",
+      "options": [
+        "Urheberin oder Urheber und die Lizenz nennen, etwa in der Bildunterschrift",
+        "Eine Gebühr überweisen",
+        "Nichts – CC BY heißt „frei ohne Bedingungen“"
+      ],
+      "correct": 0,
+      "explanation": "BY steht für die Namensnennung: Name und Lizenz gehören zum Bild, zum Beispiel „Foto: Kim Vogt, CC BY 4.0“."
+    },
+    {
+      "id": "15-07",
+      "konzept": "recht.lizenz",
+      "type": "bug",
+      "text": "Das Foto steht unter CC BY. Welche Zeile ist unvollständig?",
+      "lines": [
+        "<figure>",
+        "  <img src=\"buehne.svg\" alt=\"Bühne bei Nacht\">",
+        "  <figcaption>Bühne bei Nacht</figcaption>",
+        "</figure>"
+      ],
+      "line": 2,
+      "explanation": "Bei CC BY gehören Name und Lizenz in die Unterschrift: „Bühne bei Nacht (Foto: Kim Vogt, CC BY 4.0)“."
+    },
+    {
+      "id": "15-08",
+      "konzept": "recht.lizenz",
+      "type": "fill",
+      "text": "Vervollständige das Lizenz-Kürzel.",
+      "template": "Bei CC ___ musst du den Namen nennen, bei CC0 gibt es keine Bedingungen.",
+      "accept": [
+        "BY"
+      ],
+      "hint": "Zwei Buchstaben, englisch für „von“."
+    },
+    {
+      "id": "15-09",
+      "konzept": "recht.lizenz",
+      "type": "order",
+      "text": "Sortiere: So nutzt du ein fremdes Bild richtig.",
+      "lines": [
+        "Lizenz des Bildes prüfen",
+        "Bedingungen lesen: Ist Namensnennung nötig?",
+        "Bild in einen figure-Block einbauen",
+        "Nachweis in die Bildunterschrift schreiben"
+      ],
+      "explanation": "Erst prüfen und lesen, dann einbauen – und der Nachweis kommt zur Unterschrift."
+    },
+    {
+      "id": "15-10",
+      "konzept": "recht.fotos",
+      "type": "quiz",
+      "question": "Welches Foto darf ohne Nachfragen auf die Festival-Website?",
+      "options": [
+        "Die Menge vor der Bühne – niemand steht im Mittelpunkt",
+        "Eine Nahaufnahme eines einzelnen Gasts",
+        "Ein Gruppenfoto deiner Freunde vom Einlass"
+      ],
+      "correct": 0,
+      "explanation": "Menschenmengen bei Veranstaltungen sind eine Ausnahme. Erkennbare Einzelpersonen brauchen eine Einwilligung – auch Freunde."
+    },
+    {
+      "id": "15-11",
+      "konzept": "recht.fotos",
+      "type": "quiz",
+      "question": "Eine Freundin schickt dir ein Selfie von sich. Darfst du es auf deiner Website zeigen?",
+      "options": [
+        "Nur mit ihrer Einwilligung zur Veröffentlichung",
+        "Ja – sie hat es dir ja geschickt",
+        "Ja, wenn du ihren Namen weglässt"
+      ],
+      "correct": 0,
+      "explanation": "Ein zugeschicktes Foto ist keine Erlaubnis, es zu veröffentlichen. Wer erkennbar ist, muss zustimmen."
+    },
+    {
+      "id": "15-12",
+      "konzept": "recht.fotos",
+      "type": "fill",
+      "text": "Vervollständige den Merksatz.",
+      "template": "Wer erkennbar auf einem Foto ist, muss vor der Veröffentlichung seine ___ geben.",
+      "accept": [
+        "Einwilligung",
+        "Zustimmung",
+        "Erlaubnis"
+      ],
+      "hint": "Das Fachwort beginnt mit „Ein…“ – die Person willigt ein."
+    },
+    {
+      "id": "15-13",
+      "konzept": "recht.fotos",
+      "type": "bug",
+      "text": "Eine Aussage ist falsch. Welche?",
+      "lines": [
+        "Wer erkennbar zu sehen ist, muss zustimmen.",
+        "Bei Minderjährigen müssen zusätzlich die Eltern einwilligen.",
+        "Wer dir ein Foto schickt, erlaubt damit die Veröffentlichung.",
+        "Das Publikum vor der Bühne als Ganzes darf meist gezeigt werden."
+      ],
+      "line": 2,
+      "explanation": "Schicken ist keine Einwilligung – für die Veröffentlichung musst du ausdrücklich fragen."
+    },
+    {
+      "id": "15-14",
+      "konzept": "recht.impressum",
+      "type": "quiz",
+      "question": "Welche Website braucht ein Impressum?",
+      "options": [
+        "Die Festival-Seite mit Ticketverkauf – sie ist nicht rein privat",
+        "Keine – ein Impressum ist immer freiwillig",
+        "Nur Seiten mit mehr als 1000 Besuchen am Tag"
+      ],
+      "correct": 0,
+      "explanation": "Sobald eine Website nicht rein privat ist – Verein, Schülerfirma, Shop, Blog –, braucht sie ein Impressum."
+    },
+    {
+      "id": "15-15",
+      "konzept": "recht.impressum",
+      "type": "pair",
+      "text": "Ordne die Angaben des Impressums zu.",
+      "pairs": [
+        [
+          "Anschrift",
+          "Straße, Hausnummer, PLZ und Ort"
+        ],
+        [
+          "Kontakt",
+          "E-Mail-Adresse und etwa Telefon"
+        ],
+        [
+          "Verantwortliche Person",
+          "steht für Texte und Berichte gerade"
+        ],
+        [
+          "Link im Fußbereich",
+          "macht das Impressum von jeder Seite erreichbar"
+        ]
+      ]
+    },
+    {
+      "id": "15-16",
+      "konzept": "recht.impressum",
+      "type": "bug",
+      "text": "Eine Angabe im Impressum reicht so nicht. Welche?",
+      "lines": [
+        "Kollektiv FUNKEN – Schülerfirma",
+        "Postfach 1234, 74001 Heilbronn",
+        "hallo@funken-festival-beispiel.de",
+        "Verantwortlich für Inhalte: Sam, Kollektiv FUNKEN"
+      ],
+      "line": 1,
+      "explanation": "Ein Postfach reicht nicht – ins Impressum gehört eine Anschrift mit Straße und Hausnummer."
+    },
+    {
+      "id": "15-17",
+      "konzept": "recht.impressum",
+      "type": "bug",
+      "text": "Der E-Mail-Link im Impressum öffnet kein Mailprogramm. Welche Zeile ist falsch?",
+      "lines": [
+        "<h2>Angaben</h2>",
+        "<p>Kollektiv FUNKEN<br>Hafenstraße 9<br>74072 Heilbronn</p>",
+        "<p><a href=\"hallo@funken-festival-beispiel.de\">E-Mail schreiben</a></p>",
+        "<h2>Datenschutzerklärung</h2>"
+      ],
+      "line": 2,
+      "explanation": "Die Adresse eines E-Mail-Links beginnt mit `mailto:` – sonst sucht der Browser eine Datei mit diesem Namen."
+    },
+    {
+      "id": "15-18",
+      "konzept": "recht.datenschutz",
+      "type": "quiz",
+      "question": "Das Ticketformular speichert Name und E-Mail. Was muss die Datenschutzerklärung sagen?",
+      "options": [
+        "Welche Daten gespeichert werden und wozu",
+        "Nichts – Name und E-Mail sind nicht personenbezogen",
+        "Nur, dass die Seite sicher ist"
+      ],
+      "correct": 0,
+      "explanation": "Wer personenbezogene Daten erhebt, muss offen sagen, welche Daten es sind und wozu sie genutzt werden."
+    },
+    {
+      "id": "15-19",
+      "konzept": "recht.datenschutz",
+      "type": "pair",
+      "text": "Ordne die Begriffe zu.",
+      "pairs": [
+        [
+          "personenbezogene Daten",
+          "alles, was zu einer Person gehört: Name, E-Mail, IP-Adresse"
+        ],
+        [
+          "Datensparsamkeit",
+          "nur so viele Daten erheben wie nötig"
+        ],
+        [
+          "Zweckbindung",
+          "Daten nur für den genannten Zweck nutzen"
+        ],
+        [
+          "Datenschutzerklärung",
+          "erklärt, welche Daten wozu gespeichert werden"
+        ]
+      ]
+    },
+    {
+      "id": "15-20",
+      "konzept": "recht.datenschutz",
+      "type": "fill",
+      "text": "Wie heißt das EU-Regelwerk zum Datenschutz (Abkürzung)?",
+      "template": "Die ___ regelt, wie mit personenbezogenen Daten umgegangen wird.",
+      "accept": [
+        "DSGVO",
+        "Datenschutz-Grundverordnung",
+        "Datenschutzgrundverordnung"
+      ],
+      "hint": "Fünf Buchstaben: Datenschutz-Grundverordnung."
+    }
+  ]
+}
