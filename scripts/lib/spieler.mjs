@@ -2,12 +2,8 @@
 export const md = (s) => String(s).replace(/`/g, '').replace(/\*\*/g, '').trim();
 
 export async function schliesseOverlays(page) {
-  for (let i = 0; i < 5; i++) {
-    const btn = await page.$('.overlay button');
-    if (!btn) return;
-    await btn.click().catch(() => {});
-    await page.waitForTimeout(150);
-  }
+  // Level-up-/Rang-Overlays direkt entfernen (nicht klicken – im Test sind sie per CSS unsichtbar)
+  await page.evaluate(() => document.querySelectorAll('.overlay').forEach((o) => o.remove())).catch(() => {});
 }
 
 export async function loeseSchritt(page, step, karte, { etappen = [] } = {}) {
