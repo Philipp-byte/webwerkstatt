@@ -139,6 +139,7 @@ export function createWorkbench(container, files, options = {}) {
       parent: wrap,
     });
     editoren[k] = view;
+    wrap.cmView = view; // Testhaken (E2E)
   });
 
   function waehle(k) {

@@ -133,8 +133,12 @@ export async function renderLesson(app, chapterId, lessonId) {
     sound.falsch();
   }
 
-  /* ---------- Soundcheck ---------- */
+  /* ---------- Blätter-Zustand (vor dem Rendern, weil Erklär-Schritte sich sofort als gelöst melden) ---------- */
   const seiten = []; // { el, geloest, art }
+  let dots = [];
+  let aktuell = 0;
+  let maxErreicht = 0;
+  let abschlussKarte = null;
   const s0 = getState();
   const gelernte = Object.keys(s0.leitner);
   let soundcheckFragen = [];
@@ -276,7 +280,7 @@ export async function renderLesson(app, chapterId, lessonId) {
             meldeAbzeichen(abzeichenPruefen({ ereignis: 'code' }));
           }
         }
-        if (seiten.indexOf(seite) === aktuell) aktualisiereNav();
+        if (dots.length && seiten.indexOf(seite) === aktuell) aktualisiereNav();
       },
       wrong: () => {
         fehlversucheHier++;
@@ -294,7 +298,7 @@ export async function renderLesson(app, chapterId, lessonId) {
   });
 
   /* ---------- Blättern ---------- */
-  const dots = seiten.map((seite, i) => {
+  dots = seiten.map((seite, i) => {
     const dot = document.createElement('button');
     dot.type = 'button';
     dot.className = 'pager-dot';
@@ -305,10 +309,6 @@ export async function renderLesson(app, chapterId, lessonId) {
     dotsEl.appendChild(dot);
     return dot;
   });
-
-  let aktuell = 0;
-  let maxErreicht = 0;
-  let abschlussKarte = null;
 
   function aktualisiereNav() {
     const amEnde = aktuell >= seiten.length;

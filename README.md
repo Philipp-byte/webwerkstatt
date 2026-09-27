@@ -1,70 +1,68 @@
-# WebWerkstatt 🧰
+# WebWerkstatt 2 🎆
 
-Interaktive Lernplattform für **HTML, CSS und ein wenig JavaScript** im Schulunterricht — entwickelt für das **Technische Berufskolleg I (1BK1T, Fach Informationstechnik)** und das **Technische Gymnasium (Fach Informatik TG)** in Baden-Württemberg. Bewusst **ohne Gamification**: keine Punkte, keine Level — Lektionen, Häkchen, ein großes Projekt.
+Spielerische Lernplattform für **HTML, CSS und ein wenig JavaScript** – für die Klassen 11/12 (1BK1T Informationstechnik, TG Informatik) in Baden-Württemberg. Kein Konto, kein Server: Der Spielstand bleibt im Browser und lässt sich als Datei sichern.
 
 **➡ Live: https://philipp-byte.github.io/webwerkstatt/**
 
-## Konzept
+## Die Geschichte
 
-- **18 Kapitel, ~70 Lektionen** in vier Blöcken: Web-Grundlagen (Client/Server, URL, HTTP) → HTML → CSS inkl. Recht im Web → JavaScript.
-- **Kleinschrittig und tief:** jedes Konzept wird erklärt, gezeigt, ausprobiert und geprüft — mit gestuften Tipps bis zur Musterlösung.
-- **Alles selbstkorrigierend:** Quiz, Lückentexte und Code-Aufgaben mit automatischen Prüfungen (DOM, berechnete CSS-Werte, Konsole, Klick-Simulation) und verständlicher Rückmeldung.
-- **Das große Projekt:** Über den ganzen Kurs bauen die Lernenden die Website des fiktiven Schülercafés **Café Pause** — Startseite, Speisekarte, Galerie, Kontaktformular, Impressum. Jede Projekt-Etappe wird gespeichert; unter „Mein Café-Projekt“ entsteht daraus eine echte, klickbare Mehrseiten-Website.
-- **Spiralprinzip:** Eingebaute Wiederholungslektionen greifen früheren Stoff systematisch wieder auf.
-- **Bildungsplan-genau:** Mapping der Kompetenzen beider Pläne in [docs/bildungsplan-abdeckung.md](docs/bildungsplan-abdeckung.md).
+Sechs Wochen vor **FUNKEN**, dem Schülerfestival der Stadt, ist die Festival-Website verschwunden – die alte Agentur hat den Server abgeschaltet, ohne Sicherung. Die **Webwerkstatt** (Ayla, Jonas und der Bot Robby) übernimmt und braucht Verstärkung: die Lernenden. Mit ihrer **Keycard** arbeiten sie sich vom Praktikum zur Werkstatt-Legende hoch und bauen die Website **Schritt für Schritt** neu – erst das Gerüst (HTML), dann Licht und Farbe (CSS), zum Schluss Strom (JavaScript). Am Ende bauen sie ihre eigene Website.
+
+## Was drin ist
+
+- **18 Stationen** auf dem Festivalgelände (= Kapitel), 86 Lektionen, ca. 1 000 Schritte, ca. 250 Code-Aufgaben – alle selbstkorrigierend (DOM, berechnete CSS-Werte, Konsole, Klick-Simulation).
+- **Gamification:** XP, Level, Ränge, Sterne, Serien-Multiplikator, 28 Abzeichen, Abnahme (Boss-Level) pro Station, drei Backstage-Minispiele (Blitzrunde, Fehlerjagd, Bühnenaufbau).
+- **Wiederholung, die sitzt:** Soundcheck (Leitner-System) vor jeder Lektion, Wiederholungslektion in jedem Kapitel, Abnahmen mit altem und neuem Stoff, Etappen, die Altes weiterverwenden.
+- **Das Projekt:** Alle bauen dieselbe FUNKEN-Website (Start, Programm, Galerie, Tickets, Impressum, style.css, script.js) in 82 Etappen – als echte, klickbare Website mit ZIP-Download. Finale „Showtime“: eigene Website mit automatisch geprüfter Checkliste.
+- **Vorspann** mit eigener Geschichte, animierte Kulissen, Lehrkraft-Modus, heller/dunkler Modus, Klangkulisse.
+- **Aufgaben verraten nie die Lösung**: Sie beschreiben das Ziel; Tipps sind gestuft und ohne Komplettlösung (Validator erzwingt das).
+
+Konzept, Didaktik, Story: siehe [`docs/`](docs/) – `KONZEPT.md`, `DIDAKTIK.md`, `PROJEKT-BIBEL.md`, `AUTOREN-HANDBUCH.md`, `AUTOREN-BRIEFING.md`, offene Fragen in `FRAGEN.md`.
 
 ## Nutzung
 
-### Ohne Installation (Demo-Modus)
-
-Die GitHub-Pages-Version läuft komplett im Browser. Fortschritt und Projektstand liegen im localStorage; über die Startseite lassen sie sich als **JSON-Datei sichern und wiederherstellen** (wichtig bei Schulrechnern mit Löschung nach Neustart).
-
-### Entwicklung
-
 ```
 npm install
-npm run dev        # http://localhost:5174
+npm run dev        # http://localhost:5174/webwerkstatt/
 npm run build      # statischer Build in dist/
 ```
 
-### Schulmodus (optional, mit Lehrer-Dashboard)
+Deployment auf GitHub Pages läuft automatisch bei jedem Push auf `main` (`.github/workflows/deploy.yml`).
 
-Ein kleiner Flask-Server speichert den Fortschritt zentral (SQLite): Schüler-Logins mit Pseudonymen, Klassenverwaltung, Fortschrittsübersicht, Kapitel-Freischaltung. Anleitung: [server/README.md](server/README.md). Die App erkennt den Server automatisch — ohne ihn läuft sie im Demo-Modus.
+**Spielstand sichern:** Keycard → „Spielstand herunterladen“ (JSON) und am nächsten Rechner wieder laden – wichtig bei Schulrechnern, die nach dem Neustart gelöscht werden.
 
-## Lernen mit der App
-
-- **Blättern statt scrollen:** Jede Lektion zeigt einen Schritt pro Seite — kurz, mit Grafik, auf einen Blick. Weiter geht es per Button, Wischen nach links oder Pfeiltaste, sobald der Schritt gelöst ist; zurück jederzeit.
-- **Schülernahe Beispiele:** Gaming, Handy, Sneaker, Fußball, Streaming, Schulalltag — kein Büro-Deutsch.
-- **Aufgaben verraten nie die Lösung:** Sie beschreiben das Ziel mit einem Operator (erstelle, ergänze, gestalte …); die Tipps sind gestuft und freiwillig. Ein Validator meldet jeden Code-Span, der aus der Lösung stammt.
-- **Jede Lektion baut an der Website:** Der letzte Schritt jeder Lektion ist eine Etappe am Café-Pause-Projekt — Wiederholungslektionen verbinden dabei mehrere frühere Themen, Projekt-Lektionen sind Meilensteine.
-- **Editor mit Syntax-Highlighting** (CodeMirror 6) für HTML, CSS und JavaScript.
-
-## Arbeitsblätter
-
-Zwei Wege, beide im JJWS-Design:
-
-1. **Mit den eigenen Lösungen (in der App):** In jeder Kapitelansicht gibt es „Arbeitsblatt mit deinen Lösungen“ — ein PDF, das die Aufgaben des Kapitels enthält und dazu den Code, den die Lernenden selbst geschrieben haben (nur bestandene Lösungen). Entsteht komplett im Browser (jsPDF), nichts verlässt das Gerät.
-2. **Leer zum Ausdrucken:** `arbeitsblaetter/build_worksheet.py` erzeugt zu jedem Kapitel ein druckfertiges **Informations- & Aufgabenblatt** (A4-PDF, Layout der Arbeitsblatt-Skill-Familie) aus denselben Lektionsdaten — Inhalte und Blätter können nicht auseinanderlaufen. Die PDFs liegen unter `public/worksheets/` und sind aus der App verlinkt.
-
-```
-python arbeitsblaetter/build_worksheet.py --all
-```
+**Lehrkraft-Modus:** Keycard → Lehrkraft → Passwort (Standard `Werkstatt-2026`, im Repo liegt nur der SHA-256-Hash). Schaltet alle Stationen frei. Ändern: `node scripts/lehrkraft-passwort.mjs "neues Passwort"`.
 
 ## Aufbau (datengetrieben)
 
 ```
-public/content/curriculum.json              → Blöcke + Kapitelreihenfolge
-public/content/chapters/<id>/chapter.json   → Titel, Icon, Farbe, Lektionsliste
-public/content/chapters/<id>/lessons/*.json → Lektionen (explain/example/quiz/fill/code)
-docs/projekt-cafe.md                        → verbindliches Drehbuch des Café-Projekts
-docs/autoren-handbuch.md                    → Regeln und Schema für neue Lektionen
+public/content/curriculum.json               Blöcke + Kapitelreihenfolge
+public/content/konzepte.json                 Konzept-Register (Leitner)
+public/content/chapters/<id>/chapter.json    Titel, Station, Icon, Farbe, Lektionsliste
+public/content/chapters/<id>/lessons/*.json  Lektionen (explain/example/quiz/fill/order/pair/bug/code)
+public/content/chapters/<id>/pool.json       Fragenpool (Soundcheck, Backstage)
+public/content/chapters/<id>/boss.json       Abnahme
+public/content/projekt/etappen.json          GENERIERT: die 82 Etappen der FUNKEN-Website
+public/content/story/intro.json              Vorspann-Szenen
+content-src/                                 Quellen: Etappen-Kette (etappen/*.mjs), Kapitel-Generatoren (kapitel-NN.mjs)
+src/                                         App (Vite, Vanilla JS, CodeMirror 6)
 ```
 
 ## Qualitätssicherung
 
-- `node scripts/validiere-inhalte.mjs` — Schema- und Konsistenzprüfung aller Inhalte.
-- Route `#/pruefung` in der App — prüft jede Code-Aufgabe: Die Musterlösung muss alle Tests bestehen, der unveränderte Starter darf sie **nicht** bestehen (Gegenprobe).
+```
+node scripts/baue-etappen.mjs          # Etappen-Kette → etappen.json + docs/PROJEKT-BIBEL.md
+node scripts/validiere-inhalte.mjs     # Schema, Wortlimits, Lösungs-Leck, Pools, Abnahmen
+npm run build && node scripts/browser-test.mjs    # jede Code-Aufgabe: Lösung besteht, Starter fällt durch (Playwright)
+node scripts/e2e-lektion.mjs <kapitel> <lektion>  # eine Lektion komplett durchspielen
+```
+
+Im Browser: Route `#/pruefung` (Lehrkraft-Modus) zeigt dieselbe Prüfung.
+
+## Bilder und Videos für den Vorspann
+
+`scripts/generate-intro-assets.mjs` erzeugt mit einem OpenAI-Schlüssel (`OPENAI_API_KEY` als Umgebungsvariable) Szenenbilder unter `public/intro/assets/` und trägt sie in `public/content/story/intro.json` ein. Ohne Bilder nutzt der Vorspann die eingebauten SVG-Kulissen.
 
 ## Lizenz
 
-MIT
+MIT. Robby-Maskottchen: eigenes Material von Philipp Riegert.
