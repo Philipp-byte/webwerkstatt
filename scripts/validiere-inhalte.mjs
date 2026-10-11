@@ -345,7 +345,7 @@ try {
 }
 // Alte Turnier-Begriffe dürfen in den Inhalten nicht mehr auftauchen
 {
-  const ALT = /WEBCUP|Gegner-Crew|Nachtschicht-Crew|Trainingslager|\bRookie\b|Turnierplan|Abpfiff|Anpfiff/;
+  const ALT = /WEBCUP|Gegner-Crew|Nachtschicht-Crew|Trainingslager|\bRookie\b|Spähbericht|Crew-Funk/; // Übungsinhalte (Turnierplan eines Clans, Anpfiff im Fußball) sind erlaubt
   for (const f of fs.readdirSync(path.join(WURZEL, 'chapters'))) {
     const dir = path.join(WURZEL, 'chapters', f);
     if (!fs.statSync(dir).isDirectory()) continue;
