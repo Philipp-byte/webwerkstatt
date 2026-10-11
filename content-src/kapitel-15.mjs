@@ -360,7 +360,7 @@ const FITNESS_HTML = (mailHref) => '<!DOCTYPE html>\n<html lang="de">\n  <head>\
 
 schreibe('boss.json', {
   chapter: '15-recht-im-web',
-  title: 'Abnahme: Sicherheitszentrale',
+  title: 'Prüfung: Sicherheitszentrale',
   intro: 'Kurz mal ernst, Leute: Meine Schwester meint, ohne Impressum kriegen wir Post vom Anwalt. Also zeigt mir, dass die Galerie sauber nachgewiesen ist und das Impressum steht – dann darf der Bass wieder rein!',
   bestanden: 0.8,
   aufgaben: [

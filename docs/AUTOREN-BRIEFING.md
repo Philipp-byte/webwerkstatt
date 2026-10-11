@@ -9,7 +9,7 @@ Für das Kapitel `<id>` (z. B. `04-listen`) genau **eine** Datei `content-src/ka
 ```
 public/content/chapters/<id>/lessons/<lektion>.json   – für jede Lektion aus chapter.json
 public/content/chapters/<id>/pool.json                – 12–20 Fragen
-public/content/chapters/<id>/boss.json                – Abnahme, 8–12 Aufgaben
+public/content/chapters/<id>/boss.json                – Duell (Sams Prüfung), 8–12 Aufgaben
 ```
 
 `chapter.json` existiert schon und ist fix (Lektions-IDs und Reihenfolge nicht ändern). Die Etappen (letzter Schritt jeder Lektion) existieren schon in `public/content/projekt/etappen.json` – du referenzierst sie nur: `{ "type": "code", "etappe": "<kapitel>/<lektion>" }`.
@@ -49,16 +49,16 @@ Wiederholungslektion (`*-wiederholung`): explain-Intro (2 Sätze, was wiederholt
 - Beispiele aus der Lebenswelt (Gaming, Handy, Sneaker, Fußball, Fitness, Streaming, Essen, Führerschein, Schule, Praktikum), keine echten Marken; die Übungsaufgaben spielen **nicht** in der FUNKEN-Website (die kommt nur in der Etappe), dürfen aber Festival-Bezug haben.
 - Übungsbilder in `public/uebung/`: `buehne.svg`, `crowd.svg`, `foodtruck.svg`, `ticket.svg`, `plakat.svg`, `funken-logo.svg`, `sneaker.svg`, `controller.svg`, `pizza.svg`, `katze.svg`, `jingle.wav`, `clip.webm` – im Code einfach als Dateiname (`src="pizza.svg"`).
 
-## 4. Fragenpool (pool.json) und Abnahme (boss.json)
+## 4. Fragenpool (pool.json) und Duell (boss.json)
 
 - Pool: 12–20 Fragen, IDs `<nr>-01` …, jede mit `konzept` aus deinem Kapitel (DIDAKTIK Abschnitt 4), alle fünf Typen (`quiz`, `fill`, `order`, `pair`, `bug`), mindestens 3× `bug`. Fragen müssen **ohne Kontext** lösbar sein – sie erscheinen Wochen später im Soundcheck und in der Blitzrunde. Kurz halten (Quiz-Frage ≤ 25 Wörter).
-- Abnahme: `title` „Abnahme: <Station>“, `intro` als Sam-Zitat (Jury des WEBCUP, chaotisch-herzlich, 1–3 Sätze, bezieht sich auf das, was gerade gebaut wurde), `bestanden: 0.8`, 8–12 Aufgaben: ~60 % dieses Kapitel, ~40 % Wiederholungskapitel; **mindestens 2 code** (ohne hints, mit starter/solution/tests, eine davon `mode: "fix"`); jede Nicht-Code-Aufgabe mit `konzept`.
+- Duell: `title` „Prüfung: <Teil der Website>“, `intro` als Sam-Zitat (Meisterin der Werkstatt, herzlich-direkt, 1–3 Sätze, bezieht sich auf das, was gerade gebaut wurde; das Gespinst des Ortes kommt aus `welt.json` dazu), `bestanden: 0.8`, 8–12 Aufgaben: ~60 % dieses Kapitel, ~40 % Wiederholungskapitel; **mindestens 2 code** (ohne hints, mit starter/solution/tests, eine davon `mode: "fix"`); jede Nicht-Code-Aufgabe mit `konzept`.
 
 ## 5. Ton, Figuren, Story
 
 - Du-Form, freundlich-direkt, konkret, kein Kindergarten, kein Büro-Deutsch. Fachbegriffe beim ersten Mal **fett** und erklärt.
-- Figuren sparsam (max. 2 `sprecher`-Schritte pro Lektion): **Ayla** (Captain der Crew „Nachtschicht“, ruhig, Struktur/Design), **Jonas** (JS/Technik, trockener Humor, Backups), **Robby** (Crew-Bot, prüft, tippt, feiert), **Sam** (Kollektiv FUNKEN, Jury des WEBCUP).
-- Story-Rahmen: Die Website des Schülerfestivals FUNKEN (Heilbronn, 17./18. Juli 2027) ist verschwunden; im Turnier **WEBCUP** baut die Crew „Nachtschicht“ sie mit den Lernenden neu – Runde für Runde gegen eine Gegner-Crew, die einen typischen Anfängerfehler verkörpert (`public/content/story/crews.json`). Lektionstexte bleiben davon unabhängig; die Gegner tauchen nur in Turnierplan, Runden-Seite, Match und Reaktions-Sprechblasen auf. Fakten stehen in `PROJEKT-BIBEL.md`.
+- Figuren sparsam (max. 2 `sprecher`-Schritte pro Lektion): **Ayla** (Lichtweberin, ruhig, Struktur/Design), **Jonas** (Brückenbauer, JS/Technik, trockener Humor), **Robby** (der Funke, prüft, tippt, feiert), **Sam** (Meisterin der Werkstatt, prüft vor jedem Duell).
+- Story-Rahmen: Die Werkstatt baut mit den Lernenden die Website des Schülerfestivals FUNKEN (Heilbronn, 17./18. Juli 2027) neu, während in Hyperia Seidras Schattennetz die Orte besetzt hält (`public/content/story/welt.json`, `figuren.json`). Lektionstexte bleiben davon unabhängig; Gespinste und Verbündete tauchen auf der Ort-Seite, in Sprechblasen (Spott/Lob), in Hinterhalten und im Duell auf. Fakten zur Website stehen in `PROJEKT-BIBEL.md`.
 
 ## 6. Grafik (figure)
 
@@ -71,4 +71,4 @@ Eine Grafik pro Lernlektion (Inline-SVG, `viewBox="0 0 320 160"`, Farben nur `#f
 - [ ] Jede Code-Aufgabe: Starter fällt durch, Lösung besteht (im Kopf geprüft), Tests sind konkret (Texte, Anzahl, Attribute, Werte)
 - [ ] Keine Lösung in task oder hints; Tipp 3 ist keine fertige Lösung
 - [ ] Wortlimits (explain ≤ 70, task ≤ 50), Abwechslung der Formate, Lebenswelt-Beispiele
-- [ ] Wiederholungslektion und Abnahme greifen die Kapitel aus dem Wiederholungsplan auf
+- [ ] Wiederholungslektion und Duell greifen die Kapitel aus dem Wiederholungsplan auf

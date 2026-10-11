@@ -6,7 +6,7 @@
     {
       "type": "explain",
       "sprecher": "ayla",
-      "text": "Meilenstein! Die Startseite reagiert: Status auf Knopfdruck, ein Zähler unter dem Line-up, ein Nachtmodus. Vor fünfzehn Stationen stand hier eine einzige Überschrift.\n\nJetzt kommt der **Countdown** in den Kopfbereich: „Noch 42 Tage bis FUNKEN“ – die Zahl aus einer Variablen, der Text per Skript ins Element geschrieben. Ohne Klick, direkt beim Laden."
+      "text": "Meilenstein! Die Startseite reagiert: Status auf Knopfdruck, ein Zähler unter dem Line-up, ein Nachtmodus. Fünfzehn Orte zurück stand hier eine einzige Überschrift.\n\nJetzt kommt der **Countdown** in den Kopfbereich: „Noch 42 Tage bis FUNKEN“ – die Zahl aus einer Variablen, der Text per Skript ins Element geschrieben. Ohne Klick, direkt beim Laden."
     },
     {
       "type": "quiz",
@@ -44,7 +44,7 @@
     {
       "type": "explain",
       "sprecher": "robby",
-      "text": "Ab zur Etappe: Im Kopfbereich kommt nach dem Willkommens-Absatz ein leerer Absatz mit id für den Countdown. Im Skript: eine Konstante mit 42 und eine Zeile, die Text, Zahl und Text zusammensetzt und ins Element schreibt.\n\nDanach lohnt sich ein Blick auf die ganze Website: [FUNKEN-Website ansehen](#/projekt). Klick dich durch Status, Zähler und Nachtmodus – das ist deine Arbeit. Gleich nimmt Sam die Station ab."
+      "text": "Ab zur Etappe: Im Kopfbereich kommt nach dem Willkommens-Absatz ein leerer Absatz mit id für den Countdown. Im Skript: eine Konstante mit 42 und eine Zeile, die Text, Zahl und Text zusammensetzt und ins Element schreibt.\n\nDanach lohnt sich ein Blick auf die ganze Website: [FUNKEN-Website ansehen](#/projekt). Klick dich durch Status, Zähler und Nachtmodus – das ist deine Arbeit. Gleich kommt das Duell."
     },
     {
       "type": "code",

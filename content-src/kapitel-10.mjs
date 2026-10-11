@@ -731,7 +731,7 @@ schreibe('lessons/06-projekt-erste-styles.json', {
     },
     {
       type: 'explain',
-      text: 'Zwei neue Regeln für style.css: Zwischenüberschriften in Dunkelorange, Tabellen mit weißer Fläche – Weiß als Farbname oder als Hex-Code, beides zählt. Die vorhandenen Regeln bleiben stehen.\n\nWenn die Etappe steht, öffne die FUNKEN-Website über **Projekt** – zum ersten Mal in Farbe. Danach wartet Sam mit der Abnahme.',
+      text: 'Zwei neue Regeln für style.css: Zwischenüberschriften in Dunkelorange, Tabellen mit weißer Fläche – Weiß als Farbname oder als Hex-Code, beides zählt. Die vorhandenen Regeln bleiben stehen.\n\nWenn die Etappe steht, öffne die FUNKEN-Website über **Projekt** – zum ersten Mal in Farbe. Danach wartet das Duell.',
     },
     { type: 'code', etappe: '10-css-grundlagen/06-projekt-erste-styles' },
   ],
@@ -766,7 +766,7 @@ schreibe('pool.json', {
 /* ---------- Abnahme ---------- */
 schreibe('boss.json', {
   chapter: '10-css-grundlagen',
-  title: 'Abnahme: Lichtpult',
+  title: 'Prüfung: Lichtpult',
   intro: 'Ich hab die Seite gesehen – ORANGE! Und der Fußbereich ist nachtblau. Endlich sieht das nach Festival aus. Aber bevor ich das Lichtpult freigebe: Zeig mir, dass du weißt, was du da tust.',
   bestanden: 0.8,
   aufgaben: [

@@ -53,7 +53,7 @@ export async function renderDuell(app, chapterId) {
         <span class="duell-team">${figurBild('sam', { groesse: 44, titel: 'Sam' })}Du · Werkstatt</span>
         <span class="duell-stand" id="stand">0 : 0</span>
         <span class="duell-team gegner" id="gegner-team">${escapeHtml(gespinst.name)}${sigilSvg(gespinstId, { groesse: 44, titel: gespinst.name, klasse: 'duell-sigil' })}</span>
-        <span class="duell-info">Sam prüft · ${escapeHtml(boss.title)} · ab ${Math.round(boss.bestanden * 100)} % reißt das Gespinst</span>
+        <span class="duell-info">${escapeHtml(boss.title.replace(/^(Abnahme|Prüfung): /, 'Sam prüft: '))} · ab ${Math.round(boss.bestanden * 100)} % reißt das Gespinst</span>
       </div>
       <div id="buehne"></div>
     </div>`;

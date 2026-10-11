@@ -49,11 +49,11 @@ public/content/curriculum.json                  Blöcke + Kapitelreihenfolge
 public/content/konzepte.json                    Konzept-Register
 public/content/chapters/<id>/chapter.json       fix – nicht ändern
 public/content/chapters/<id>/lessons/<l>.json   Lektionen
-public/content/chapters/<id>/pool.json          Fragenpool (Soundcheck, Backstage, Abnahme)
-public/content/chapters/<id>/boss.json          Abnahme
+public/content/chapters/<id>/pool.json          Fragenpool (Soundcheck, Hinterhalte, Duell)
+public/content/chapters/<id>/boss.json          Duell (Sams Prüfung, dazu das Gespinst des Ortes aus welt.json)
 public/content/projekt/etappen.json             GENERIERT aus content-src/etappen.mjs – nicht von Hand ändern
-public/content/story/szenen.json                Zwischenspiele je Runde (Anpfiff, Crew-Funk, Abpfiff)
-public/content/story/crews.json                 Gegner-Crews inkl. Trophäenkarte (regel, beispiel, sprache)
+public/content/story/welt.json                  Hyperia: Regionen, 18 Orte (Gespinst, Einleitung, Regel, Beispiel), Seidra, Finale, Vorspann
+public/content/story/figuren.json               Verbündete (Lob) und Gespinste (Vorstellung, Spott-Reihe, Rückzug)
 ```
 
 ### Lektion
@@ -139,13 +139,13 @@ Alles Weitere (Starter, Lösung, Aufgabe, Tipps, Tests, Projektspeicherung) komm
 ```
 12–20 Fragen pro Kapitel, jedes Konzept des Kapitels mindestens zweimal, alle fünf Typen vertreten (`bug` mindestens 3× – das ist die Fehlerjagd). Fragen sind **ohne Kontext lösbar** (sie tauchen im Soundcheck späterer Lektionen und in der Blitzrunde auf). IDs `<kapitelnummer>-<lfd. Nr.>`.
 
-### Abnahme (`boss.json`)
+### Duell (`boss.json`)
 
 ```json
 {
   "chapter": "04-listen",
-  "title": "Abnahme: Programm-Tafel",
-  "intro": "Sam: „Zeig mir, dass die Tafel steht …“",
+  "title": "Prüfung: Programm-Tafel",
+  "intro": "Sam: „Zeig mir, dass die Tafel steht …“",   // Sam prüft; Spott, Lob und Rückzug des Gespinsts kommen aus figuren.json
   "aufgaben": [ … 8–12 Schritte der Typen quiz, fill, order, pair, code … ],
   "bestanden": 0.8
 }
@@ -183,25 +183,22 @@ Jedes Konzept braucht neben `id`, `titel`, `block`:
 
 Die Karte wird lesbar, sobald die einführende Lektion abgeschlossen ist, und erscheint in jeder Aufgabe unter „Nachlesen“. Beispiele dürfen Festival-Bezug haben, aber nicht die Etappe einer Lektion vorwegnehmen.
 
-### Zwischenspiele (`story/szenen.json`)
+### Welt und Figuren (`story/welt.json`, `story/figuren.json`)
 
-Je Kapitel-ID drei Szenen:
+Die Story-Schicht liegt getrennt von den Lektionen. `welt.json` enthält je Ort (= Kapitel, gleiche Reihenfolge wie das Curriculum):
 
 ```json
-"04-listen": {
-  "anpfiff": { "zeilen": [ { "wer": "sam", "text": "…" }, { "wer": "gegner", "text": "…" }, { "wer": "ayla", "text": "…" }, { "wer": "robby", "pose": "erklaeren", "text": "Spähbericht: …" } ],
-               "aufgabe": { "type": "bug", "text": "…", "lines": ["…"], "line": 2, "explanation": "…" },
-               "ausklang": [ { "wer": "jonas", "text": "…" } ] },
-  "funk":    { "nach": "02-geordnete-listen", "zeilen": [ … ], "aufgabe": { "type": "pair", … }, "ausklang": [ … ] },
-  "abpfiff": { "zeilen": [ { "wer": "sam", "text": "…" }, { "wer": "gegner", "text": "@niederlage" }, … ], "aufgabe": { "type": "quiz", … }, "ausklang": [ … ] }
-}
+{ "nr": 4, "chapter": "04-listen", "name": "Listental", "region": "runenmark", "gespinst": "krakel",
+  "verbuendete": ["sam", "robby"], "fallenart": "kritzelt Überschriften, Absätze und Listen durcheinander",
+  "einleitung": [ { "wer": "krakel", "text": "…" }, { "wer": "sam", "text": "…" }, { "wer": "robby", "text": "…" } ],
+  "befreit": { "wer": "sam", "text": "…" },
+  "regel": "…",  "beispiel": "<ul>\n  <li>…</li>\n</ul>", "sprache": "html" }
 ```
 
-- Sprecher: `sam`, `ayla`, `jonas`, `robby` (mit `pose` aus `public/figuren/robby/`), `gegner` (Captain der Runde), `erzaehler`. Zeilen ≤ 45 Wörter.
-- Platzhalter im Text: `@niederlage`, `@trash`, `@spott`, `@schwaeche` (aus `crews.json`).
-- `aufgabe`: `quiz`, `fill`, `order`, `pair` oder `bug` – lösbar mit dem, was die Zeilen davor sagen (Anpfiff: die Regel wird im Dialog genannt) bzw. mit den Lektionen davor (Funk, Abpfiff). Niemals `code`.
-- `funk.nach` muss eine Lektions-ID des Kapitels sein.
+- `einleitung`: zwei bis drei Sprechblasen (≤ 45 Wörter) – erst das Gespinst mit seiner Falle, dann die Verbündeten mit dem Lernziel. `befreit`: ein Satz nach dem gewonnenen Duell.
+- `regel` (≤ 45 Wörter) und `beispiel`: die richtige Praxis, die der Falle gegenübersteht – erscheint auf der Ort-Seite, auf der Ich-Seite und unter „Nachlesen“. Eine Wiederholungskarte, kein Aufgabentext.
+- `seidra`: Auftritte der Königin an Schlüsselorten (`wann`: `start` oder `befreit`), `finale`: die Dialogzeilen beim Funkenfest, `vorspann`: sechs Bilder mit Titel und Text (≤ 70 Wörter) für Video-Storyboard und Lesefassung.
 
-### Trophäenkarte (`story/crews.json`, je Runde)
+`figuren.json`: Verbündete (`rolle: "verbuendet"`, `lob`: Liste von `{ "text", "pose"? }`, Robby-Posen aus `public/figuren/robby/`) und Gespinste (`rolle: "gespinst"`, `fallenart`, `vorstellung`, `spott` als **feste Reihenfolge** von mindestens drei Sprüchen – der erste Fehler bekommt den ersten, der zweite den zweiten, der letzte wiederholt sich –, `rueckzug` nach dem Duell). Sprüche ≤ 40 Wörter, Spott zielt auf den Fehler, nie auf die Person, und verrät nebenbei die Regel.
 
-`regel` (≤ 45 Wörter: die richtige Praxis, die der Schwäche der Crew gegenübersteht), `beispiel` (kurzer Code), `sprache` (html/css/js/text). Die Karte ist eine Wiederholungskarte – kein Aufgabentext.
+Sprecher in Lektionen (`sprecher`-Schritte) bleiben `sam`, `ayla`, `jonas`, `robby`. Der Validator prüft Welt und Figuren (`node scripts/validiere-inhalte.mjs`).

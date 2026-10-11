@@ -198,7 +198,7 @@
     {
       "type": "explain",
       "sprecher": "ayla",
-      "text": "Navigation zuerst – dann weiß jede Seite, wo sie hingehört. Direkt unter die Hauptüberschrift kommt eine Linkzeile zu Programm, Galerie und Tickets. Die Seiten selbst bauen wir in den nächsten Stationen, die Links legen wir jetzt schon an.\n\nDazu eine Sprungmarke „Direkt zum Line-up“ – die Line-up-Überschrift braucht dafür eine id."
+      "text": "Navigation zuerst – dann weiß jede Seite, wo sie hingehört. Direkt unter die Hauptüberschrift kommt eine Linkzeile zu Programm, Galerie und Tickets. Die Seiten selbst bauen wir an den nächsten Orten, die Links legen wir jetzt schon an.\n\nDazu eine Sprungmarke „Direkt zum Line-up“ – die Line-up-Überschrift braucht dafür eine id."
     },
     {
       "type": "code",

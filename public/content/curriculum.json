@@ -1,10 +1,10 @@
 {
   "title": "WebWerkstatt",
-  "subtitle": "18 Runden gegen 18 Crews – und dabei die Website des FUNKEN-Festivals bauen: erst das Gerüst (HTML), dann Licht und Farbe (CSS), zum Schluss Strom (JavaScript).",
+  "subtitle": "Achtzehn Orte, neun Gespinste, eine Königin – und dabei die Website des FUNKEN-Festivals bauen: erst das Gerüst (HTML), dann Licht und Farbe (CSS), zum Schluss Strom (JavaScript).",
   "blocks": [
     {
       "id": "backstage",
-      "title": "Block A · Backstage – Grundlagen",
+      "title": "Block A · Die Quelle – Grundlagen",
       "color": "#b48cff",
       "chapters": [
         "01-wie-das-web-funktioniert"

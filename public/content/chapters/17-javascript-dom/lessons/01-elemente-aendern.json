@@ -74,7 +74,7 @@
     },
     {
       "type": "explain",
-      "text": "**textContent** kannst du auch lesen – und mit Texten aus Station 16 zusammensetzen:\n\n```js\nconst schild = document.getElementById(\"preis\");\nconsole.log(schild.textContent);\nconst preis = 89;\nschild.textContent = \"Nur \" + preis + \" €\";\n```\n\nWichtig ist die **Reihenfolge**: Das Skript kann nur finden, was der Browser schon gebaut hat. Deshalb steht `<script src=\"script.js\">` ganz am Ende des body – erst die Elemente, dann das Skript."
+      "text": "**textContent** kannst du auch lesen – und mit Texten aus Ort 16 zusammensetzen:\n\n```js\nconst schild = document.getElementById(\"preis\");\nconsole.log(schild.textContent);\nconst preis = 89;\nschild.textContent = \"Nur \" + preis + \" €\";\n```\n\nWichtig ist die **Reihenfolge**: Das Skript kann nur finden, was der Browser schon gebaut hat. Deshalb steht `<script src=\"script.js\">` ganz am Ende des body – erst die Elemente, dann das Skript."
     },
     {
       "type": "fill",

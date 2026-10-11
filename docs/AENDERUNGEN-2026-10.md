@@ -98,3 +98,26 @@ Priorisiert, mit Aufwandseinschätzung:
 - Dürfen die Gegner im Video und in den Szenen **frecher** werden, oder ist der Ton richtig?
 - Standard-Einstieg: **Video** oder **Comic**? (Aktuell: Video angeboten, Comic als zweite Option; ohne Ton funktioniert das Video dank Typo und Untertiteln.)
 - Tagesziel-Bonus 60 XP und Trainings-Deckel 150 XP – passt das zur XP-Ökonomie im Schuljahr?
+
+## 10. SCHATTENNETZ (11.10.2026) – die Geschichte ist neu
+
+Nach Philipps Rückmeldung („schlecht und langweilig, cooler, mehr Action, mehr Gefahr“ … „eine Fantasiewelt, ein Gegner, mehrere Lakaien wie bei PyQuest, aber andere Story“) wurde die Turnier-Schicht WEBCUP komplett ersetzt. Die 86 Lektionen, 82 Etappen und 18 Duelle (ehemals Abnahmen) sind unverändert gültig; nur Verweise auf „Station“, „Abnahme“ und „Runde“ in den Texten wurden auf Orte und Duelle umgestellt.
+
+| Bereich | Vorher (WEBCUP) | Jetzt (SCHATTENNETZ) |
+|---|---|---|
+| Welt | Turnier, 18 Gegner-Crews, Spielerkarte, Ränge | **Hyperia**: fünf Regionen, 18 Orte, **Seidra** als Gegnerin, **neun Gespinste** als Lakaien, Werkstatt (Sam, Ayla, Jonas, Robby) als Verbündete (`story/welt.json`, `story/figuren.json`) |
+| Startseite | Turnierplan | **Karte von Hyperia** (SVG), die Ort für Ort aufleuchtet, „Weiter“-Karte mit dem Gespinst des nächsten Ortes, Seidra-Auftritte |
+| Kapitelseite | Runden-Ablauf | **Ort-Seite**: Einleitung in drei Sprechblasen, Weg (Lektionen, Hinterhalte, Duell), Regel und Beispiel nach der Befreiung |
+| Reaktionen | Spott/Trost/Jubel mit Abkühlzeit | **Spott-Reihe** des Gespinsts in fester Reihenfolge (verrät die Regel), Vorstellung beim ersten Fehler, **Lob** der Verbündeten, Rückzug nach dem Duell |
+| Zwischenspiele | Anpfiff, Crew-Funk, Abpfiff | **Hinterhalte**: fünf Spiele gegen die Uhr (Knotenjagd, Brückenbau, Wahr oder Lüge, Runenpaare, Fäden flicken), Leitner-Priorität, Sterne, Pflicht nach jeder zweiten Lektion |
+| Match | Spielstand, RAUS-Stempel | **Duell**: Sams Prüfung plus Gespinst; ab 80 % reißt das Gespinst, Rückzug, Ort leuchtet; Finale beim Funkenfest |
+| Spielerkarte | Ränge, Werte, Trophäenwand | **Ich-Seite**: Statistik, Meilensteine, „Was sitzt“, Hinterhalt-Rekorde, befreite Orte, Spielstand, Einstellungen |
+| Entfernt | Tagesziel, Tages-Serie, Combo, Trainingslager, Crew-Embleme, Trophäenkarten | – (Meilensteine ersetzen die Abzeichen; Spielstand v3 mit Migration) |
+| Design | Werkstatt bei Nacht (Graphit/Orange/Cyan) | flaches, dunkles Violett mit Magenta (Gespinste) und Gold (Funke), heller Modus bleibt |
+| Vorspann | 92 s WEBCUP | **74 s SCHATTENNETZ** (Weberei, Großer Webstuhl, Hyperia, Seidra legt das Netz über die Karte, die Werkstatt, Titel), eigener Soundtrack in d-Moll; **beim ersten Start Pflicht in voller Länge**, danach Lesefassung |
+| Bilder | SVG-Kulissen, Crew-Embleme | **Grafik-Pipeline** über die OpenAI-Bild-API (`npm run grafiken`: 82 Aufträge – Figuren in Posen, Orte in zwei Zuständen, Vorspann-Szenen); ohne Bilder flache Sigille |
+| Betrieb | nur Browser (GitHub Pages) | zusätzlich **Schulmodus**: Flask + SQLite, Pseudonym + Passwort, Spielstand auf dem Server, Klassen-Dashboard, Admin, Docker (`server/`) |
+
+Neue Routen: `#/` (Karte), `#/ort/<id>`, `#/lektion/<kapitel>/<id>`, `#/hinterhalt/<kapitel>/<spiel>/<knoten>`, `#/duell/<kapitel>`, `#/ich`, `#/login`, `#/klasse`; alte Adressen (`kapitel`, `abnahme`, `backstage`, `keycard`) leiten weiter.
+
+QA: Validator 0 Fehler (prüft jetzt Welt und Figuren), Rauchtest grün (Vorspann → Onboarding → Ort → Lektion mit Spott und Lob → Hinterhalt → Duell → Karte → Ich → mobil), Schulmodus-Test grün (18 Prüfungen gegen den laufenden Server).

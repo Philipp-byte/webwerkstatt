@@ -1,57 +1,49 @@
-# WebWerkstatt 2 – Konzept (Neustart, 27.09.2026)
+# WebWerkstatt 2 – Konzept (Stand 11.10.2026: SCHATTENNETZ)
 
-Komplett neu aufgesetzte Lernplattform für **HTML, CSS und ein wenig JavaScript** – für die Klassen 11/12 (1BK1T, TG), 16–19 Jahre, ohne Vorkenntnisse. Diesmal **mit** Gamification, eigener Geschichte, Vorspann, animiertem Design und deutlich mehr Übung.
+Lernplattform für **HTML, CSS und ein wenig JavaScript** – für die Klassen 11/12 (1BK1T, TG), 16–19 Jahre, ohne Vorkenntnisse. Mit Gamification, eigener Geschichte, Vorspann-Video, dunklem flachem Design, viel Übung – und wahlweise einem Schulserver mit Pseudonym-Accounts.
 
-Abgrenzung zu PyQuest (gleicher Autor, Python): PyQuest spielt in einer Akademie über den Wolken, mit 16 Fantasie-Welten, Professor Null als Gegner, Leben, Flug-Minispiel und KI-generierten Figuren. **Nichts davon wird übernommen.** Die WebWerkstatt bekommt eine eigene, geerdete Geschichte mit Turnier-Dramaturgie, eigene Mechaniken und eigene Minispiele.
+Verhältnis zu PyQuest (gleicher Autor, Python): Dieselbe Grundidee – ein Gegner, mehrere Lakaien, Verbündete, die loben, Lakaien, die spotten, Schulmodus mit Pseudonymen – aber eine eigene Welt und eine eigene Geschichte. Nichts wird kopiert.
 
 ---
 
-## 1. Die Geschichte: „WEBCUP“
+## 1. Die Geschichte: SCHATTENNETZ
 
-**Ort:** Heilbronn, das alte Fabrikgelände am Neckar. In 42 Tagen steigt dort **FUNKEN**, das Schülerfestival der Stadt (zwei Bühnen, Foodtrucks, 3 000 Leute).
+**Rahmen:** Heilbronn, die alte Weberei am Neckar. Auf dem Gelände soll das Schülerfestival **FUNKEN** steigen, und in Sams Werkstatt entsteht die Website dafür. Im Keller steht der Große Webstuhl; zwischen seinen Fäden öffnet sich ein Tor nach **Hyperia**, dem Reich, das aus dem Netz gewoben ist: Jede Seite ein Ort, jeder Link eine Brücke aus Licht, jede Farbe ein Strahl aus Kaskadia, jeder Funke ein Stück Leben. Was im Netz gebaut wird, wird dort zu Land.
 
-**Der Anlass:** Über Nacht ist die Festival-Website verschwunden – die Agentur hat dichtgemacht, den Server abgeschaltet, keine Sicherung. Sam vom **Kollektiv FUNKEN** macht aus der Katastrophe ein Event: den **WEBCUP**. 18 Crews aus der ganzen Stadt treten im K.-o.-Modus gegeneinander an, 18 Runden, eine Jury (Sam). Die Gewinner-Website geht am Festival live.
+**Die Gegnerin:** **Seidra, die Spinnenkönigin** – einst die beste Weberin der Werkstatt, bis sie Fallen wob statt Brücken. Sie spinnt das **Schattennetz** über Hyperia: Brücken reißen, Farben verblassen, Funken erlöschen. Sie tritt an Schlüsselorten auf (Quellgrund, Lichtfälle, Siegelhalle, Uhrwerk) und beim Finale.
 
-**Deine Crew: die Nachtschicht.** Halle 7, zwei Leute, ein Bot, null Budget – der Underdog des Turniers. Du bist der **Rookie** mit eigener **Spielerkarte** (Rang, Level, Werte für HTML/CSS/JS, Trophäenwand).
+**Die Lakaien:** neun **Gespinste**, jedes verkörpert einen typischen Anfängerfehler und besetzt zwei Orte:
 
-**Die Gegner:** 18 Crews, jede steht für einen typischen Anfängerfehler – genau den lernst du in der jeweiligen Runde besser zu machen:
-
-| Runde | Crew (Captain) | Schwäche |
+| Gespinst | Falle | Orte |
 |---|---|---|
-| 1 | Die Offliner (Kev Kabel) | glauben, das Internet liegt auf ihrem Laptop |
-| 2 | Tag-Salat (Lui Löffel) | schließen keine Tags |
-| 3 | CAPSLOCK CREW (MAX LAUT) | alles ist h1, fett und in Großbuchstaben |
-| 4 | Kommakinder (Kim Komma) | Listen als endlose Komma-Sätze |
-| 5 | Hier-klicken-Gang (Hank Hier) | jeder Link heißt „hier klicken“ |
-| 6 | Team Ladefehler (Lea Leer) | kaputte Bilder, kein Alternativtext |
-| 7 | Tabellenritter (Sir Tab) | Layout aus Tabellen, keine Kopfzeile |
-| 8 | div-Division (Dave Div) | alles ist ein div |
-| 9 | Unlabeled (Nina Nix) | Formulare ohne Beschriftung |
-| 10 | Inline Kings (King Style) | CSS als style-Attribut an jedem Element |
-| 11 | Die Wichtigtuer (Ida Important) | !important statt Selektoren |
-| 12 | 17 Schriftarten (Fonta Fett) | siebzehn Schriften, zentriert, unterstrichen |
-| 13 | Randlos (Rita Rand) | Text klebt am Rahmen |
-| 14 | Absolut Positiv (Abs Olut) | alles absolut positioniert |
-| 15 | Copy & Paste Crew (Ctrl Vau) | klauen Bilder, kein Impressum |
-| 16 | Alert Alarm (Al Ert) | jede Ausgabe ein alert, jede Variable heißt x |
-| 17 | Team Popup (Poppy Up) | Popups überall, Knöpfe ohne Wirkung |
-| 18 | Team Template (GEN-1) | lassen alles generieren, verstehen nichts |
+| **Lücke** | zerreißt Brücken: Adressen ins Leere, Bilder, die nicht laden | Quellgrund (1), Brückenstadt (5), Spiegelsee (6) |
+| **Knoten** | lässt Runen offen und verschachtelt sie falsch | Runenfeld (2), Zonenmark (8) |
+| **Krakel** | kritzelt Überschriften, Absätze und Listen durcheinander | Schriftfels (3), Listental (4) |
+| **Zerr** | verschiebt Zellen und lässt Kopfzeilen weg | Rasterfeste (7) |
+| **Schwindel** | baut Formulare, die täuschen, und nimmt, was ihm nicht gehört | Zollhaus (9), Siegelhalle (15) |
+| **Blass** | wäscht Farben und Schriften aus | Lichtfälle (10), Letternkloster (12) |
+| **Streu** | streut Treffer: Selektoren treffen alles oder nichts | Spotwald (11) |
+| **Quetsch** | presst Boxen zusammen oder nagelt alles fest | Kistenhafen (13), Schwebegärten (14) |
+| **Starr** | lässt Funken erstarren: nichts reagiert, nichts rechnet | Funkenschmiede (16), Uhrwerk (17) |
+| **Seidra** | alle Fallen auf einmal | Funkenfest (18) |
 
-Jede Crew hat Farbe, Icon, Trash-Talk vor dem Match, Spott-Sprüche bei Fehlern und eine Niederlage-Zeile (`public/content/story/crews.json`). Der Endgegner Team Template ist bewusst gewählt: „Warum lernen, wenn man klicken kann?“ – die Nachtschicht gewinnt, weil sie versteht, was sie baut.
+**Die Werkstatt (Verbündete):**
 
-**Figuren der Nachtschicht**
 | Figur | Rolle | Ton |
 |---|---|---|
-| **Ayla** | Captain · Gerüst & Licht | ruhig, präzise, denkt in Struktur und Design |
-| **Jonas** | Strom & Backups | trockener Humor, Bastler |
-| **Robby** | Crew-Bot (Philipps Robby-Maskottchen) | prüft Code, gibt Tipps, feiert mit, zählt die rausgeflogenen Crews |
-| **Sam** | Kollektiv FUNKEN, Jury des WEBCUP | chaotische Energie, nimmt jedes Match ehrlich ab |
+| **Sam** | Meisterin der Werkstatt | warm und streng, prüft vor jedem Duell, lobt knapp („Hält. Genau so webt man.“) |
+| **Ayla** | Lichtweberin (CSS, Struktur) | ruhig, präzise |
+| **Jonas** | Brückenbauer (Links, JavaScript, Technik) | trockener Humor |
+| **Robby** | der Funke (Philipps Robby-Maskottchen) | leuchtet, wenn es dunkel wird; prüft, tippt, feiert |
+| **Du** | der neue Lehrling | – |
 
-**So läuft eine Runde:** **Training** (die Lektionen des Kapitels inkl. Etappe an der FUNKEN-Website) → **Match** (die Abnahme durch die Jury Sam: gemischte Aufgaben, jeder Punkt geht an die Nachtschicht oder an die Gegner-Crew; ab 80 % ist die Runde gewonnen, die Crew fliegt raus – RAUS-Stempel auf Turnierplan und Trophäenwand). Während des Trainings melden sich Gegner (Spott beim ersten Fehlversuch) und Crew (Trost beim zweiten, Jubel bei Serien und Comebacks) in kleinen Sprechblasen – dosiert, mit Abkühlzeit.
+**Die Welt:** fünf Regionen = fünf Blöcke des Curriculums – **Die Quelle** (Grundlagen, Violett), **Runenmark** (HTML, Orange), **Kaskadia** (CSS, Blau), **Funkenland** (JavaScript, Gold), **Festgelände** (Showtime, Grün). 18 Orte an der Lichtstraße, von Quellgrund unten links bis zum Funkenfest oben, wo Seidra sitzt.
 
-**Zwischenspiele (seit Oktober 2026):** Jede Runde hat drei kurze Story-Szenen mit Lernaufgabe (`public/content/story/szenen.json`, Route `#/szene/<kapitel>/<art>`): den **Anpfiff** vor dem Training (Sam eröffnet, der Captain tönt, Robby liefert den **Spähbericht**: Finde den Fehler im Code der Gegner-Crew), den **Crew-Funk** mitten im Training (Lagebesprechung aus Halle 7 mit Wiederholungsaufgabe) und den **Abpfiff** nach dem gewonnenen Match (Niederlage-Zeile, **Trophäenkarte** mit Fehler, Regel und Beispiel, Trophäen-Frage). Jede besiegte Crew hinterlässt damit eine Wiederholungskarte an der Wand der Spielerkarte. Alle Crews haben ein eigenes **Emblem** (prozedural erzeugtes SVG-Abzeichen).
+**So läuft ein Ort:** **Einleitung** (drei Sprechblasen: das Gespinst stellt seine Falle vor, Sam nennt das Lernziel, Robby gibt die erste Regel) → **Lektionen** (dazwischen nach jeder zweiten Lektion ein **Hinterhalt**, der die nächste freischaltet) → optional der **Sturm** (Aufwärmen) → **Duell** (Sam prüft, das Gespinst zieht am Netz: gemischte Aufgaben, ab 80 % reißt das Gespinst, Rückzugs-Zeile, der Ort leuchtet, die **Regel** des Ortes mit Beispiel wird freigeschaltet, der nächste Ort öffnet sich). In den Lektionen: beim ersten Fehler stellt sich das Gespinst vor und spottet, bei jedem weiteren Fehler der nächste Spruch seiner festen Reihe (der letzte wiederholt sich) – jeder Spott verrät nebenbei die Regel; bei Lösungen loben die Verbündeten (Robby mit Pose). Der Spott zielt auf den Fehler, nie auf die Person.
 
-**Der Turnier-Auftrag** bleibt die FUNKEN-Website: Alle bauen dieselbe Seite in 82 Etappen, gleicher Zwischenstand für alle (siehe `PROJEKT-BIBEL.md`). Erst im **Finale „Showtime“** baut jede:r eine eigene Website nach eigener Idee.
+**Finale:** Am Funkenfest hält das Netz, Seidra zieht sich in die Tiefe zurück („Aber ich webe weiter. Bis zum nächsten Netz.“), Robby macht das Licht an, die Website geht live – und in **Showtime** baut jede:r eine eigene.
+
+Alle Texte: `public/content/story/welt.json` (Regionen, Orte mit Einleitung, `befreit`, Regel, Beispiel; Seidra-Auftritte; Finale; sechs Vorspann-Bilder) und `figuren.json` (Verbündete mit Lob, Gespinste mit Vorstellung, Spott-Reihe, Rückzug). Story-Bibel mit Mockups: `VORSCHLAG-SCHATTENNETZ.md`.
 
 ---
 
@@ -59,94 +51,92 @@ Jede Crew hat Farbe, Icon, Trash-Talk vor dem Match, Spott-Sprüche bei Fehlern 
 
 | Mechanik | Was es ist | Warum |
 |---|---|---|
-| **XP** | Punkte für jede gelöste Aufgabe (Quiz 10, Lückentext 10, Sortieren/Paare 15, Code 30, Fehlerjagd 25, Etappe 40, Lektion +50, Match 150) | sichtbarer Fortschritt |
-| **Level & Rang** | Level aus XP; Ränge wie auf einer Spielerkarte: **Rookie → Starter → Pro → Captain → MVP → Legende** | motivierend, passt zum Turnier |
-| **Spielerkarte** | Sammelkarte mit Rang, Level, XP-Balken, **Werten für HTML/CSS/JS** (5–99, aus Lektionen und Leitner-Boxen), Trophäenwand der besiegten Crews, Abzeichen, Statistik; Hologramm-Optik | Identifikation ohne Konto |
-| **Sterne** | 1–3 Sterne pro Lektion: 3 = fehlerfrei und ohne Tipp, 2 = ein Fehler oder Tipp, 1 = mehr | Anreiz zum Wiederholen (bestes Ergebnis zählt) |
-| **Serie (Combo)** | mehrere richtige Antworten hintereinander → XP-Multiplikator (×1,25 ab 3, ×1,5 ab 6) | Flow, Aufmerksamkeit |
-| **Abzeichen** | 30 Abzeichen für Können (Listenmeister, Käferjäger …), Verhalten (Ohne Netz, Backup-Profi, Nachtschicht …) und Turnier (Erste Runde, Halbzeit, WEBCUP-Sieger) | Sammelanreiz, Humor |
-| **Soundcheck** | 3 Blitzfragen zu **früherem** Stoff am Anfang jeder Lektion (Leitner-System, siehe Didaktik) | Wiederholung, die sich nicht wie Wiederholung anfühlt |
-| **Match (Abnahme, Boss)** | am Kapitelende tritt die Nachtschicht gegen die Gegner-Crew an, Sam ist Jury: 8–12 gemischte Aufgaben, alt und neu, Spielstand „Nachtschicht 7 : 1 Tag-Salat“; ≥ 80 % → Runde gewonnen, Crew raus, nächste Runde frei; darunter Revanche | Sicherung, Spannung |
-| **Reaktionen** | Sprechblasen der Gegner-Crew (Spott beim ersten Fehlversuch, 70 %) und der eigenen Crew (Trost beim zweiten, Jubel bei jeder dritten Serie und bei Comebacks); nie mehr als eine zugleich, 20 s Abkühlzeit | Story im Spiel, Humor, Fehler entdramatisieren |
-| **Trainingslager (Minispiele)** | **Blitzrunde** (60 s, Combo), **Fehlerjagd** (den Fehler im Code finden), **Bühnenaufbau** (Code-Zeilen sortieren) – aus dem Fragenpool der bereits gelernten Kapitel, 150 XP Tagesdeckel | freiwilliges Üben, Highscores |
-| **Turnierplan** | Startseite: Karte des Festivalgeländes bei Nacht mit 18 Stationen (= Runden) plus Runden-Karten je Block mit Gegner-Crew, Status (gesperrt / jetzt / RAUS-Stempel), Sternen | Fortschritt auf einen Blick, „Ich räume das Turnier ab“ |
-| **Runden-Zähler** | „Aktuelle Runde 3 / 18 · 2 Crews rausgeworfen · 16 Runden bis zum Pokal“ | Dramaturgie |
-| **Sicherung** | Spielstand als Datei **herunterladen/laden** (Schulrechner!) – kein Konto, keine Server | Datenschutz, PyQuest-Prinzip |
-| **Zwischenspiele** | Anpfiff (Spähbericht), Crew-Funk, Abpfiff je Runde: Dialog + Aufgabe, 20/20/30 XP, **Volltreffer** +10 beim ersten Versuch | Story mit Lernanlass, Vorwissen aktivieren, wiederholen |
-| **Trophäenkarten** | umdrehbare Sammelkarte je besiegter Crew: vorne Emblem und RAUS-Stempel, hinten Fehler, Regel, Beispiel | Sammeln = Wiederholen |
-| **Tagesziel** | drei Ziele pro Tag (Lektion, 3 Soundcheck-Fragen, Zwischenspiel oder Training), alle drei: +60 XP | regelmäßiges, kurzes Üben |
-| **Tages-Serie** | Tage in Folge gespielt (Flamme in der Kopfzeile), beste Serie auf der Spielerkarte; kein Verlust-Mechanismus | Gewohnheit ohne Druck |
+| **XP & Level** | Quiz/Lückentext/Fehlerjagd 10, Sortieren/Paare 15, Code 30, Fehlerjagd-Code 25, Etappe 40, Lektion +50 (+25 fehlerfrei), Soundcheck 5, Duell 150 (+50 bei 100 %), Hinterhalt 10 + 5 je Stern (nur beim ersten Spielen eines Knotens); Level aus XP (100·(L−1)^1,5) | sichtbarer Fortschritt ohne Ränge |
+| **Karte von Hyperia** | Startseite: SVG-Karte mit Regionen, Netzfäden von Seidra, goldener Weg bis zum aktuellen Ort; Orte unter dem Netz / jetzt / offen / befreit | „Ich hole mir die Welt zurück“ auf einen Blick |
+| **Sterne** | 1–3 Sterne pro Lektion (3 = fehlerfrei und ohne Tipp) und 0–3 pro Hinterhalt (Trefferquote); bestes Ergebnis zählt | Anreiz zum Wiederholen |
+| **Spott & Lob** | Sprechblasen der Figuren in Lektionen und Duell (siehe Abschnitt 1) | Story im Spiel, Fehler entdramatisieren, Regel wiederholen |
+| **Hinterhalte** | fünf Spiele gegen die Uhr aus dem Fragenpool, Leitner-fällige Konzepte zuerst: Knotenjagd (Fehler finden, 8 Runden/60 s), Brückenbau (Zeilen ordnen, 5/90 s), Wahr oder Lüge (12/60 s), Runenpaare (3/90 s), Fäden flicken (Lückentexte, 8/90 s); Pflicht nach jeder zweiten Lektion, sonst frei spielbar mit Rekorden | Wiederholung mit Tempo und Spannung statt Dialog-Szenen |
+| **Soundcheck** | 3 Blitzfragen zu früherem Stoff am Anfang jeder Lektion (Leitner-System) | Wiederholung, die sich nicht wie Wiederholung anfühlt |
+| **Duell** | am Ortsende: 8–12 gemischte Aufgaben, alt und neu; ≥ 80 % → Gespinst reißt, Ort befreit, Regel freigeschaltet, nächster Ort offen; darunter Revanche; „beim ersten Versuch“ wird gezählt | Sicherung, Spannung |
+| **Meilensteine** | acht: Die Quelle fließt, Die Runenmark ist frei, Kaskadia leuchtet, Das Funkenland glüht, Funkenfest, Hundert Mal sicher (Soundcheck), Fünfzig Sterne (Hinterhalte), Beim ersten Mal (drei Duelle im ersten Versuch) | wenige, große Ziele statt 30 Abzeichen |
+| **Ich-Seite** | Name, Level/XP, Statistik, Meilensteine, „Was sitzt“ (Konzepte nach Leitner-Box), Hinterhalt-Rekorde, befreite Orte, Spielstand sichern/laden (Demo) bzw. Abmelden und Passwort ändern (Schulmodus), Einstellungen | Überblick ohne Spielerkarten-Kitsch |
+| **Regeln der Orte** | jede Befreiung schaltet Regel + Beispiel frei: auf der Ort-Seite, auf der Ich-Seite, unter „Nachlesen“ in jeder Aufgabe | Sammeln = Wiederholen |
+| **Spielstand** | Demo: `localStorage` + Datei-Export; Schulmodus: zentral auf dem Server je Account | Datenschutz, Schulrechner |
 
-**Kein Lebens-System, kein Ranglisten-Server, keine Zeitstrafen** – Druck kommt nur aus dem Spiel, nicht aus Verlusten. Der Spott der Gegner ist immer auf die Crew gemünzt („Wieder daneben? Willkommen im Salat.“), nie auf die Person.
+**Kein Lebens-System, kein Tagesziel, keine Serien, keine Ranglisten** – Druck kommt aus Seidra und der Uhr im Hinterhalt, nicht aus Verlusten.
 
 ---
 
 ## 3. Didaktische Leitplanken (Details: `DIDAKTIK.md`)
 
 1. **Wissen vor Aufgabe** – jede Aufgabe ist mit dem Text davor (und früheren Lektionen) lösbar.
-2. **Die Aufgabe verrät nie die Lösung** – sie beschreibt das Ziel (Operator + Gegenstand + Bedingung), nie die Syntax. Tipps sind gestuft (Denkanstoß → konkreter Hinweis → Struktur der Lösung). Die **komplette Lösung wird nicht angezeigt**; nach drei Fehlversuchen kann ein Lösungsvergleich freigeschaltet werden, der Sterne kostet (Frage an Philipp, siehe `FRAGEN.md`).
-3. **Viel Übung**: pro Lernlektion **2–3 Code-Aufgaben** (Grundübung, Variation, Transfer) statt einer, dazu Quiz/Lückentext/Sortieren/Paare.
-4. **Spiralprinzip**: Soundcheck (jede Lektion), Wiederholungslektion (jedes Kapitel, verknüpft 2–3 ältere Themen), Match (alt + neu), Etappen (nutzen alte Elemente weiter), Minispiele (gesamter Pool).
-5. **Ein Schritt pro Seite** – blättern statt scrollen, kurze Texte (max. 70 Wörter), eine Grafik pro Lernlektion.
-6. **Schülernähe**: Beispiele aus Gaming, Handy, Sneaker, Fußball, Streaming, Essen, Schule, Praktikum; die FUNKEN-Website als gemeinsames Projekt; die Gegner-Crews als Karikaturen echter Anfängerfehler.
+2. **Die Aufgabe verrät nie die Lösung** – sie beschreibt das Ziel (Operator + Gegenstand + Bedingung), nie die Syntax. Tipps sind gestuft (Denkanstoß → konkreter Hinweis → Struktur der Lösung). Die komplette Lösung wird nicht angezeigt; nach drei Fehlversuchen kann ein Lösungsvergleich freigeschaltet werden, der Sterne kostet.
+3. **Viel Übung**: pro Lernlektion 2–3 Code-Aufgaben (Grundübung, Variation, Transfer), dazu Quiz/Lückentext/Sortieren/Paare.
+4. **Spiralprinzip**: Soundcheck (jede Lektion), Hinterhalte (zwischen den Lektionen, Leitner-fällig zuerst), Wiederholungslektion (jedes Kapitel), Duell (alt + neu), Etappen (nutzen alte Elemente weiter).
+5. **Ein Schritt pro Seite** – blättern statt scrollen, kurze Texte (max. 70 Wörter), eine Grafik pro Lernlektion, Nachlesen jederzeit.
+6. **Schülernähe**: Beispiele aus Gaming, Handy, Sneaker, Fußball, Streaming, Essen, Schule, Praktikum; die FUNKEN-Website als gemeinsames Projekt; die Gespinste als Karikaturen echter Anfängerfehler.
 
 ---
 
 ## 4. Design
 
-**Richtung: „Werkstatt bei Nacht“** – dunkles Graphit, warme Bühnenlichter (Orange/Amber), ein kühler Akzent (Cyan). Kein Weltraum, kein Lila-Verlauf.
+**Richtung: flach, dunkel, violett.** Kein Hologramm, keine Verläufe als Dekoration – Flächen, klare Kanten, eine Farbe pro Bedeutung.
 
-- **Hintergrund:** drei langsam wandernde, weich gezeichnete Bühnenlichter (CSS-Animation), feines Raster, treibende Funken (Canvas), leichte Körnung. Respektiert `prefers-reduced-motion`.
-- **Schrift:** Display **Unbounded** (Titel, Ränge, Zahlen), Text **Atkinson Hyperlegible** (sehr gut lesbar, für Schule ideal), Code **JetBrains Mono**. Alle Schriften werden **selbst gehostet** (npm-Pakete, keine Google-Server – DSGVO).
-- **Farbcode der Blöcke:** Grundlagen Violett `#b48cff`, HTML Orange `#ff7a45`, CSS Cyan `#38c7ff`, JavaScript Gelb `#ffd84d`, Projekt Grün `#4ade80` – die klassischen Farben der drei Sprachen, damit sie sich einprägen. Jede Gegner-Crew hat zusätzlich eine eigene Farbe und ein Icon.
-- **Heller Modus** per Schalter (Beamer im Klassenzimmer).
-- **Bewegung:** ein orchestrierter Seitenaufbau (gestaffelte Einblendung), Micro-Feedback bei richtig/falsch, Konfetti bei Etappe/Lektion/Match, XP-Flieger, Level-up-Overlay, RAUS-Stempel, Reaktions-Sprechblasen.
-- **Klang:** synthetisch per Web Audio (richtig, falsch, XP, Fanfare, Level-up, Abzeichen), abschaltbar.
+- **Farben:** Hintergrund `#0f0c1f`, Panels `#1a1630`; **Gespinste Magenta** `#e23cff` (jedes Gespinst mit eigener Nuance), **Funke Gold** `#ffc53d`, Akzent `#ff6b35`; Regionen Violett `#9b8cff` (Quelle), Orange `#ff6b35` (Runenmark/HTML), Blau `#3fb0ff` (Kaskadia/CSS), Gold `#ffd166` (Funkenland/JS), Grün `#2ee59d` (Festgelände).
+- **Sigille:** jedes Gespinst und Seidra haben ein flaches SVG-Sigil (Kreis mit Zeichen in der Figurenfarbe), Verbündete einen Buchstaben-Avatar, Robby seine PNG-Posen. Liegen generierte Bilder vor (`public/figuren/<id>/<pose>.webp`, Manifest), zeigt die App die Bilder.
+- **Schrift:** Display **Unbounded**, Text **Atkinson Hyperlegible**, Code **JetBrains Mono** – selbst gehostet (DSGVO).
+- **Heller Modus** per Schalter (Beamer), reduzierte Bewegung wird respektiert.
+- **Bewegung:** Sprechblasen gleiten ein, Alarm-Streifen und Timer im Hinterhalt, Konfetti bei Etappe/Lektion/Duell, XP-Flieger, Level-up, Karte leuchtet auf.
+- **Klang:** synthetisch per Web Audio (richtig, falsch, XP, Fanfare, Level-up), abschaltbar.
 
 ---
 
 ## 5. Vorspann (Intro)
 
-**Video (Standard):** `public/intro/webcup-intro.mp4` (dazu `.webm` als Fallback) – 92 Sekunden, 1280×720, eigener synthetischer Soundtrack, Untertitel (`.vtt`). Gerendert aus `scripts/intro-video/storyboard.html` mit `scripts/render-intro-video.mjs` (Chromium + ffmpeg, keine externen Dienste). Elf Szenen: Vorhang, Skyline, 404, Sams Aufruf mit WEBCUP-Titel, die 18 Crews, Halle 7, der Plan (Gerüst/Licht/Strom), die Spielerkarte, die Karte mit 18 Stationen, Anpfiff Runde 1, Logo. Danach **Onboarding**: Name für die Spielerkarte, drei Crew-Regeln, „Anpfiff: Runde 1“ (führt zum ersten Zwischenspiel).
+**Video (Standard):** `public/intro/schattennetz-intro.mp4` (+ `.webm`, Poster, Untertitel `.vtt`) – 74 Sekunden, 1280×720, eigener synthetischer Soundtrack (d-Moll, 100 BPM). Sieben Szenen nach `welt.json → vorspann`: WebWerkstatt präsentiert → **Die alte Weberei** (Heilbronn, Neckar, Mitternacht, ein Fenster brennt) → **Der Große Webstuhl** (Sam öffnet den Keller, die Fäden leuchten, das Tor nach Hyperia) → **Hyperia** (fünf Regionen, Brücken aus Licht, Lichtfälle, Funken) → **Seidra** (vier rote Augen, Impact, das Schattennetz legt sich über die Karte, die Lichter gehen aus, neun Gespinste) → **Die Werkstatt** (Sam, Ayla, Jonas, Robby – und du) → **SCHATTENNETZ** (Titel, „Ort 1: Quellgrund. Los.“) → Logo.
 
-**Comic-Fassung (Alternative):** szenenbasiert, 18 Szenen in drei Akten, manuell weiterklicken, jederzeit überspringbar, aus der Spielerkarte erneut abspielbar:
+**Beim ersten Start läuft das Video vollständig** (kein Überspringen, bis `ended`); danach **Onboarding** (Name, drei Regeln: Fehler sind Fäden · Wiederholung hält das Netz · Jeder Ort leuchtet) und der Weg nach Quellgrund. Später: jederzeit überspringbar, aus den Einstellungen erneut abspielbar. **Lesefassung** (sechs Bilder mit Text aus `welt.json`) als Alternative und als Fallback ohne Video.
 
-1. **„Der Aufruf“** – Sam vor dem toten Bildschirm (404); statt zu heulen ruft Sam den WEBCUP aus; der Turnierplan; die ersten Gegner tönen (Kev Kabel, GEN-1).
-2. **„Die Nachtschicht“** – Ayla, Jonas, Robby in Halle 7; der Spielplan: Gerüst → Licht → Strom; du wirst in den Kader geholt; Sam erklärt die Jury-Regel (80 %).
-3. **„Deine Spielerkarte“** – die Karte wird ausgestellt (Rookie, Level 1), die drei Crew-Regeln, der Turnierplan geht an, Runde 1: die Offliner.
-
-Kulissen als animierte SVG/CSS-Szenen (Skyline bei Nacht, dunkles Festivalgelände, der tote Bildschirm, die Arena mit WEBCUP-Leinwand, der Turnierplan mit 18 Crew-Badges, Halle 7, die Spielerkarte, die Karte). Robby-Posen als PNG, Gegner-Captains als große Icon-Badges. Sprechblasen mit Schreibmaschinen-Effekt, Klangkulisse.
-
-**Bild-/Videogenerierung:** Das Skript `scripts/generate-intro-assets.mjs` erzeugt mit einem OpenAI-Schlüssel (`OPENAI_API_KEY` als Umgebungsvariable der Cloud-Umgebung) Szenenbilder und legt sie unter `public/intro/assets/` ab; der Vorspann nutzt sie automatisch, wenn sie vorhanden sind – sonst die SVG-Kulissen. In der Cloud-Sitzung, in der dieses Konzept entstand, war kein Schlüssel verfügbar (die Schlüssel liegen auf Philipps Rechner, nicht in der Cloud-Umgebung).
+**Produktion:** `scripts/intro-video/storyboard.html` (deterministischer Film, `seek(t)`), `musik.mjs` (Soundtrack), `render-intro-video.mjs` (Chromium + ffmpeg). Generierte Szenenbilder unter `public/intro/szenen/<n>.webp` ersetzen die SVG-Kulissen automatisch.
 
 ---
 
-## 6. Technik
+## 6. Bilder (Grafik-Pipeline)
 
-- **Vite + Vanilla JS (ES-Module)**, CodeMirror 6, canvas-confetti, JSZip (Website als ZIP herunterladen). Keine Frameworks, kein Server, kein Konto.
-- **Hosting:** GitHub Pages (`base: /webwerkstatt/`).
-- **Speicher:** `localStorage` (`webwerkstatt2.*`), Export/Import als JSON-Datei.
-- **Inhalte datengetrieben:** `public/content/curriculum.json`, `chapters/<id>/chapter.json`, `lessons/*.json`, `pool.json` (Fragenpool je Kapitel), `boss.json` (Match), `konzepte.json` (Konzept-Register + Spickzettel), `story/intro.json` (Comic-Vorspann), `story/crews.json` (Turnier, eigene Crew, 18 Gegner-Crews mit Trophäenkarte), `story/szenen.json` (Zwischenspiele).
-- **Qualitätssicherung:** `scripts/validiere-inhalte.mjs` (Schema + Lösungs-Leck + Turnierdaten), `scripts/pruefe-kette.mjs` (Etappen-Kette), `scripts/browser-test.mjs` (Playwright: jede Code-Aufgabe – Lösung besteht, Starter fällt durch), `e2e-lektion.mjs`/`e2e-abnahme.mjs` (Lektion und Match durchspielen), Route `#/pruefung` in der App.
-- **Lehrkraft-Modus:** Passwort (nur SHA-256-Hash im Repo), schaltet alle Runden frei, verändert keinen Lernstand.
+`scripts/grafiken-erzeugen.mjs` erzeugt über die OpenAI-Bild-API (`gpt-image-1`, WebP, transparente Figuren) 82 Bilder nach `scripts/grafiken/auftraege.mjs`: Seidra (neutral, action, defeated, portrait), neun Gespinste (neutral, action, defeated), Sam/Ayla/Jonas (neutral, happy, thoughtful), 18 Orte in zwei Zuständen (unter dem Netz, befreit), sechs Vorspann-Szenen. Ein gemeinsamer Stil-Prompt (flat vector, dark fantasy, Violett/Magenta/Gold) hält alles zusammen. Das Manifest `public/figuren/manifest.json` sagt der App, welche Bilder es gibt; fehlt eines, bleibt das Sigil. Voraussetzung: `OPENAI_API_KEY` und Netzzugang zu `api.openai.com` (in der Cloud-Umgebung als Secret und Freigabe hinterlegen – nie im Chat).
 
 ---
 
-## 7. Routen der App
+## 7. Technik
+
+- **Vite + Vanilla JS (ES-Module)**, CodeMirror 6, canvas-confetti, JSZip. Keine Frameworks.
+- **Hosting:** GitHub Pages (`base: /webwerkstatt/`) als Demo; Schulmodus mit `WEBWERKSTATT_BASE=/` gebaut und vom Flask-Server ausgeliefert.
+- **Speicher:** `localStorage` (`webwerkstatt2.spielstand.v1`, Version 3 mit Migration), Export/Import als JSON; im Schulmodus zusätzlich Sync mit dem Server (gebündelt alle 2 s, Beacon beim Verlassen, kontogebunden – fremde lokale Stände werden nicht hochgeladen).
+- **Schulmodus (`server/`):** Flask + SQLite, Tabellen `classes`, `users` (Pseudonym, Hash, Rolle, Klasse), `progress` (Spielstand als JSON je Account + Kennzahlen); Routen `/api/ping`, `/login`, `/logout`, `/password`, `/progress`, `/teacher/*`, `/admin/*`; Sitzung per Cookie (120 Tage); CLI `create-admin`/`create-user`; Dockerfile mit gunicorn. Details `server/README.md`.
+- **Inhalte datengetrieben:** `public/content/curriculum.json`, `chapters/<id>/{chapter,pool,boss}.json` + `lessons/*.json` (generiert aus `content-src/kapitel-NN.mjs`), `projekt/etappen.json` (generiert), `konzepte.json`, `story/welt.json`, `story/figuren.json`.
+- **Qualitätssicherung:** `scripts/validiere-inhalte.mjs` (Schema, Lösungs-Leck, Welt, Figuren, alte Begriffe), `browser-test.mjs`, `e2e-lektion.mjs`/`e2e-abnahme.mjs`, `smoke-test.mjs`, `schulmodus-test.mjs`, Route `#/pruefung`.
+- **Lehrkraft-Modus:** Passwort (SHA-256-Hash im Repo), schaltet alle Orte frei, verändert keinen Lernstand.
+
+---
+
+## 8. Routen der App
 
 | Route | Ansicht |
 |---|---|
-| `#/` | Turnierplan (Startseite) |
-| `#/intro` | Vorspann |
-| `#/kapitel/<id>` | Runde: Gegner-Crew, Training (Lektionen, Sterne), Match |
-| `#/lektion/<kapitel>/<id>` | Lektions-Player (Soundcheck → Schritte → Abschluss, Reaktionen) |
-| `#/abnahme/<kapitel>` | Match (Boss-Level) |
-| `#/backstage` | Trainingslager (Minispiele) |
-| `#/keycard` | Spielerkarte: Rang, Werte, Trophäenwand, Abzeichen, Statistik, Sicherung, Einstellungen |
+| `#/` | Karte von Hyperia (Startseite): Weiter-Karte, Seidra-Auftritt, Regionen mit Orten |
+| `#/intro` | Vorspann (Video, Lesefassung, Onboarding) |
+| `#/ort/<id>` | Ort: Einleitung, Weg (Lektionen, Hinterhalte, Sturm, Duell), Regel nach der Befreiung |
+| `#/lektion/<kapitel>/<id>` | Lektions-Player (Soundcheck → Schritte → Abschluss, Spott und Lob) |
+| `#/hinterhalt/<kapitel>/<spiel>/<knoten>` | Hinterhalt (fünf Spiele); `#/hinterhalt` = freies Spielen |
+| `#/duell/<kapitel>` | Duell gegen das Gespinst des Ortes |
+| `#/ich` | Ich: Statistik, Meilensteine, Was sitzt, Rekorde, Orte, Spielstand, Einstellungen |
 | `#/projekt` | die FUNKEN-Website (alle Seiten, Vorschau, ZIP-Download) |
 | `#/showtime` | Finale: eigene Website mit Checkliste |
-| `#/pruefung` | interne Prüfung aller Code-Aufgaben |
+| `#/spickzettel` | alle Konzept-Karten mit Lernstand |
+| `#/bericht` | druckbarer Lernbericht (Orte, Sterne, Duelle, Konzepte, Meilensteine) |
+| `#/pruefung` | interne Prüfung aller Code-Aufgaben (Lehrkraft-Modus) |
 | `#/lehrkraft` | Lehrkraft-Modus |
-| `#/bericht` | druckbarer Lernbericht (Runden, Sterne, Matches, Konzepte, Abzeichen) |
-| `#/szene/<kapitel>/<anpfiff\|funk\|abpfiff>` | Zwischenspiel einer Runde (Dialog + Aufgabe, Trophäenkarte) |
-| `#/spickzettel` | alle Konzept-Karten (Regel, Beispiel, Merksatz) mit Lernstand |
+| `#/login` | Anmeldung (Schulmodus) |
+| `#/klasse` | Klassen-Dashboard für Lehrkräfte und Admins (Schulmodus) |
+
+Alte Adressen (`#/kapitel/…`, `#/abnahme/…`, `#/backstage`, `#/keycard`) leiten auf die neuen Ansichten um.

@@ -1,6 +1,6 @@
 {
   "chapter": "17-javascript-dom",
-  "title": "Abnahme: Schaltpult",
+  "title": "Prüfung: Schaltpult",
   "intro": "Leute, die Seite reagiert! Ich hab zwanzigmal auf „Ich bin dabei!“ gedrückt, sorry dafür. Bevor ich das dem Kollektiv zeige: Beweist mir, dass ihr das Schaltpult im Griff habt – Knöpfe, Zähler, Nachtmodus, alles.",
   "bestanden": 0.8,
   "aufgaben": [
@@ -168,7 +168,7 @@
     {
       "konzept": "css.padding",
       "type": "pair",
-      "text": "Station 13 – ordne die Eigenschaften zu.",
+      "text": "Ort 13 – ordne die Eigenschaften zu.",
       "pairs": [
         [
           "`padding`",
@@ -203,7 +203,7 @@
     {
       "konzept": "js.verkettung",
       "type": "fill",
-      "text": "Station 16: Verbinde Text und Variable zu einem Satz.",
+      "text": "Ort 16: Verbinde Text und Variable zu einem Satz.",
       "template": "const meldung = \"Noch \" + tage ___ \" Tage\";",
       "accept": [
         "+"

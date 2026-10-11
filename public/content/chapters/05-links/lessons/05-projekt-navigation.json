@@ -34,7 +34,7 @@
     },
     {
       "type": "explain",
-      "text": "Ab zur FUNKEN-Website: Die Hauptüberschrift bekommt die id `oben`, und vor dem Kontakt-Kommentar kommt ein Absatz mit dem Link „Nach oben“.\n\nDanach lohnt sich der Knopf **FUNKEN-Website ansehen** (`#/projekt`): Die Sprungmarken funktionieren dort schon. Die Links zu Programm, Galerie und Tickets warten noch auf ihre Seiten – die entstehen an den nächsten Stationen."
+      "text": "Ab zur FUNKEN-Website: Die Hauptüberschrift bekommt die id `oben`, und vor dem Kontakt-Kommentar kommt ein Absatz mit dem Link „Nach oben“.\n\nDanach lohnt sich der Knopf **FUNKEN-Website ansehen** (`#/projekt`): Die Sprungmarken funktionieren dort schon. Die Links zu Programm, Galerie und Tickets warten noch auf ihre Seiten – die entstehen an den nächsten Orten."
     },
     {
       "type": "code",

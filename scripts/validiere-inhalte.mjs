@@ -252,37 +252,83 @@ for (const chId of ziel) {
     if (!kapitel.lessons.includes(e.lesson)) melde('FEHLER', chId, `Etappe ${e.id} gehört zu keiner Lektion in chapter.json`);
   }
 }
-// Turnierdaten (story/crews.json): jedes Kapitel hat genau eine Gegner-Crew mit allen Feldern
+// Welt (story/welt.json): fünf Regionen, achtzehn Orte in Curriculum-Reihenfolge, Seidra-Auftritte, Finale, Vorspann
+const STORY = path.join(WURZEL, 'story');
+let figuren = {};
 try {
-  const crews = lade(path.join(WURZEL, 'story', 'crews.json'));
-  const gesehen = new Set();
-  for (const r of crews.runden || []) {
-    const wo = `story/crews/${r.chapter || '?'}`;
-    if (!alleKapitel.includes(r.chapter)) melde('FEHLER', wo, 'Runde verweist auf unbekanntes Kapitel');
-    if (gesehen.has(r.chapter)) melde('FEHLER', wo, 'Kapitel hat mehrere Runden');
-    gesehen.add(r.chapter);
-    for (const feld of ['crew', 'captain', 'farbe', 'icon', 'schwaeche', 'niederlage']) if (!r[feld]) melde('FEHLER', wo, `Feld ${feld} fehlt`);
-    for (const liste of ['trash', 'spott']) if (!Array.isArray(r[liste]) || r[liste].length < 2) melde('FEHLER', wo, `${liste} braucht mindestens 2 Sprüche`);
-    if (r.runde !== alleKapitel.indexOf(r.chapter) + 1) melde('WARNUNG', wo, `runde ${r.runde} ≠ Position im Curriculum (${alleKapitel.indexOf(r.chapter) + 1})`);
+  figuren = lade(path.join(STORY, 'figuren.json')).figuren || {};
+  const ROBBY_POSEN = fs.readdirSync(path.join(WURZEL, '..', 'figuren', 'robby')).map((f) => f.replace(/\.png$/, ''));
+  for (const [id, f] of Object.entries(figuren)) {
+    const wo = `story/figuren/${id}`;
+    for (const feld of ['name', 'rolle', 'titel', 'farbe']) if (!f[feld]) melde('FEHLER', wo, `Feld ${feld} fehlt`);
+    if (!/^#[0-9a-f]{6}$/i.test(f.farbe || '')) melde('FEHLER', wo, `farbe ${f.farbe} ist kein Hex-Wert`);
+    if (f.rolle === 'verbuendet') {
+      if (!Array.isArray(f.lob) || f.lob.length < 3) melde('FEHLER', wo, 'lob braucht mindestens 3 Einträge');
+      for (const l of f.lob || []) {
+        if (!l?.text) melde('FEHLER', wo, 'lob-Eintrag ohne text');
+        if (id === 'robby' && l?.pose && !ROBBY_POSEN.includes(l.pose)) melde('FEHLER', wo, `unbekannte Robby-Pose ${l.pose}`);
+      }
+    } else if (f.rolle === 'gespinst') {
+      if (!f.fallenart) melde('FEHLER', wo, 'fallenart fehlt');
+      if (!f.vorstellung) melde('FEHLER', wo, 'vorstellung fehlt');
+      if (!Array.isArray(f.spott) || f.spott.length < 3) melde('FEHLER', wo, 'spott braucht mindestens 3 Sprüche (feste Reihenfolge)');
+      if (!Array.isArray(f.rueckzug) || !f.rueckzug.length) melde('FEHLER', wo, 'rueckzug fehlt');
+      for (const t of [f.vorstellung, ...(f.spott || []), ...(f.rueckzug || [])]) if (t && woerter(t) > 40) melde('WARNUNG', wo, `Spruch hat ${woerter(t)} Wörter (Regel: max. 40)`);
+    } else melde('FEHLER', wo, `unbekannte rolle ${f.rolle}`);
   }
-  for (const chId of alleKapitel) if (!gesehen.has(chId)) melde('FEHLER', 'story/crews', `keine Gegner-Crew für ${chId}`);
-  for (const liste of ['jubel', 'trost']) if (!Array.isArray(crews.crew?.[liste]) || crews.crew[liste].length < 3) melde('FEHLER', 'story/crews/crew', `${liste} braucht mindestens 3 Einträge`);
-  for (const e of [...(crews.crew?.jubel || []), ...(crews.crew?.trost || [])]) if (!crews.crew?.mitglieder?.[e.wer]) melde('FEHLER', 'story/crews/crew', `unbekanntes Mitglied ${e.wer}`);
 } catch (e) {
-  melde('FEHLER', 'story/crews', `crews.json fehlt oder ungültig: ${e.message}`);
+  melde('FEHLER', 'story/figuren', `figuren.json fehlt oder ungültig: ${e.message}`);
 }
-// Vorspann (story/intro.json): Pflichtfelder und Textlänge je Szene
 try {
-  const intro = lade(path.join(WURZEL, 'story', 'intro.json'));
-  (intro.szenen || []).forEach((sz, i) => {
-    const wo = `story/intro/szene[${i + 1}]`;
-    for (const feld of ['akt', 'kulisse', 'sprecher', 'ton', 'text']) if (sz[feld] == null) melde('FEHLER', wo, `Feld ${feld} fehlt`);
-    if (woerter(sz.text || '') > 70) melde('WARNUNG', wo, `Szenentext hat ${woerter(sz.text)} Wörter (Regel: max. 70)`);
-    if (!intro.akte?.[String(sz.akt)]) melde('FEHLER', wo, `Akt ${sz.akt} ohne Titel in akte`);
+  const welt = lade(path.join(STORY, 'welt.json'));
+  for (const feld of ['titel', 'untertitel', 'werkstatt', 'regionen', 'orte', 'seidra', 'finale', 'vorspann']) if (welt[feld] == null) melde('FEHLER', 'story/welt', `Feld ${feld} fehlt`);
+  const regionen = new Set();
+  const BLOECKE = new Set(lade(path.join(WURZEL, 'curriculum.json')).blocks.map((b) => b.id));
+  for (const r of welt.regionen || []) {
+    const wo = `story/welt/regionen/${r.id || '?'}`;
+    for (const feld of ['id', 'name', 'farbe', 'block', 'text']) if (!r[feld]) melde('FEHLER', wo, `Feld ${feld} fehlt`);
+    if (r.block && !BLOECKE.has(r.block)) melde('FEHLER', wo, `block ${r.block} gibt es im Curriculum nicht`);
+    regionen.add(r.id);
+  }
+  if ((welt.regionen || []).length !== 5) melde('FEHLER', 'story/welt', `${(welt.regionen || []).length} Regionen statt 5`);
+  const gesehen = new Set();
+  const verbuendete = Object.keys(figuren).filter((id) => figuren[id].rolle === 'verbuendet');
+  (welt.orte || []).forEach((o, i) => {
+    const wo = `story/welt/orte/${o.nr || i + 1}`;
+    for (const feld of ['nr', 'chapter', 'name', 'region', 'gespinst', 'verbuendete', 'fallenart', 'einleitung', 'befreit', 'regel', 'beispiel', 'sprache']) if (o[feld] == null) melde('FEHLER', wo, `Feld ${feld} fehlt`);
+    if (o.nr !== i + 1) melde('FEHLER', wo, `nr ${o.nr} ≠ Position ${i + 1}`);
+    if (alleKapitel[i] !== o.chapter) melde('FEHLER', wo, `Ort ${i + 1} gehört zu ${o.chapter}, im Curriculum steht dort ${alleKapitel[i]}`);
+    if (gesehen.has(o.chapter)) melde('FEHLER', wo, 'Kapitel hat mehrere Orte');
+    gesehen.add(o.chapter);
+    if (!regionen.has(o.region)) melde('FEHLER', wo, `unbekannte Region ${o.region}`);
+    if (figuren[o.gespinst]?.rolle !== 'gespinst') melde('FEHLER', wo, `gespinst ${o.gespinst} ist keine Gespinst-Figur`);
+    for (const v of o.verbuendete || []) if (!verbuendete.includes(v)) melde('FEHLER', wo, `unbekannte*r Verbündete*r ${v}`);
+    if (!Array.isArray(o.einleitung) || o.einleitung.length < 2) melde('FEHLER', wo, 'einleitung braucht mindestens 2 Sprechblasen');
+    for (const z of [...(o.einleitung || []), o.befreit].filter(Boolean)) {
+      if (!figuren[z.wer]) melde('FEHLER', wo, `unbekannter Sprecher ${z.wer}`);
+      if (!z.text) melde('FEHLER', wo, 'Sprechblase ohne text');
+      else if (woerter(z.text) > 45) melde('WARNUNG', wo, `Sprechblase hat ${woerter(z.text)} Wörter (Regel: max. 45)`);
+    }
+    if (o.regel && woerter(o.regel) > 45) melde('WARNUNG', wo, `regel hat ${woerter(o.regel)} Wörter (Regel: max. 45)`);
+    if (o.sprache && !['html', 'css', 'js', 'text'].includes(o.sprache)) melde('FEHLER', wo, `unbekannte sprache ${o.sprache}`);
   });
-  if (!intro.szenen?.length) melde('FEHLER', 'story/intro', 'keine Szenen');
+  for (const chId of alleKapitel) if (!gesehen.has(chId)) melde('FEHLER', 'story/welt', `kein Ort für ${chId}`);
+  for (const [chId, a] of Object.entries(welt.seidra || {})) {
+    if (!alleKapitel.includes(chId)) melde('FEHLER', `story/welt/seidra/${chId}`, 'unbekanntes Kapitel');
+    if (!['start', 'befreit'].includes(a.wann)) melde('FEHLER', `story/welt/seidra/${chId}`, `wann muss start oder befreit sein, nicht ${a.wann}`);
+    if (!a.text) melde('FEHLER', `story/welt/seidra/${chId}`, 'text fehlt');
+  }
+  if (!welt.finale?.titel || !Array.isArray(welt.finale?.text) || welt.finale.text.length < 3) melde('FEHLER', 'story/welt/finale', 'titel und mindestens 3 Zeilen nötig');
+  for (const z of welt.finale?.text || []) if (!figuren[z.wer]) melde('FEHLER', 'story/welt/finale', `unbekannter Sprecher ${z.wer}`);
+  (welt.vorspann || []).forEach((b, i) => {
+    const wo = `story/welt/vorspann/${i + 1}`;
+    if (b.bild !== i + 1) melde('FEHLER', wo, `bild ${b.bild} ≠ ${i + 1}`);
+    if (!b.titel || !b.text) melde('FEHLER', wo, 'titel und text nötig');
+    else if (woerter(b.text) > 70) melde('WARNUNG', wo, `Text hat ${woerter(b.text)} Wörter (Regel: max. 70)`);
+  });
+  if ((welt.vorspann || []).length !== 6) melde('FEHLER', 'story/welt', `${(welt.vorspann || []).length} Vorspann-Bilder statt 6`);
 } catch (e) {
-  melde('FEHLER', 'story/intro', `intro.json fehlt oder ungültig: ${e.message}`);
+  melde('FEHLER', 'story/welt', `welt.json fehlt oder ungültig: ${e.message}`);
 }
 // Spickzettel (konzepte.json): jede Karte hat kurz, beispiel, sprache, merke – Wortlimits
 try {
@@ -297,62 +343,18 @@ try {
 } catch (e) {
   melde('FEHLER', 'konzepte', `konzepte.json ungültig: ${e.message}`);
 }
-// Trophäenkarten (crews.json): regel + beispiel je Runde
-try {
-  const crews = lade(path.join(WURZEL, 'story', 'crews.json'));
-  for (const r of crews.runden || []) {
-    const wo = `story/crews/${r.chapter}`;
-    if (!r.regel) melde('FEHLER', wo, 'Trophäenkarte: regel fehlt');
-    if (!r.beispiel) melde('FEHLER', wo, 'Trophäenkarte: beispiel fehlt');
-    if (r.regel && woerter(r.regel) > 45) melde('WARNUNG', wo, `regel hat ${woerter(r.regel)} Wörter (Regel: max. 45)`);
-  }
-} catch {
-  /* oben schon gemeldet */
-}
-// Zwischenspiele (story/szenen.json): je Kapitel anpfiff, funk (mit gültigem `nach`), abpfiff; Zeilen, Aufgabe, Lösungs-Leck
-try {
-  const szenen = lade(path.join(WURZEL, 'story', 'szenen.json'));
-  const SPRECHER_SZENE = ['sam', 'ayla', 'jonas', 'robby', 'gegner', 'erzaehler'];
-  const ROBBY_POSEN = fs.readdirSync(path.join(WURZEL, '..', 'figuren', 'robby')).map((f) => f.replace(/\.png$/, ''));
-  for (const chId of alleKapitel) {
-    const r = szenen.runden?.[chId];
-    if (!r) {
-      melde('FEHLER', `story/szenen/${chId}`, 'keine Zwischenspiele');
-      continue;
-    }
-    const kapitel = lade(path.join(WURZEL, 'chapters', chId, 'chapter.json'));
-    for (const art of ['anpfiff', 'funk', 'abpfiff']) {
-      const sz = r[art];
-      const wo = `story/szenen/${chId}/${art}`;
-      if (!sz) {
-        melde('FEHLER', wo, 'fehlt');
-        continue;
-      }
-      if (!Array.isArray(sz.zeilen) || sz.zeilen.length < 2) melde('FEHLER', wo, 'mindestens 2 Zeilen');
-      if (!Array.isArray(sz.ausklang) || !sz.ausklang.length) melde('FEHLER', wo, 'ausklang fehlt');
-      for (const z of [...(sz.zeilen || []), ...(sz.ausklang || [])]) {
-        if (!SPRECHER_SZENE.includes(z.wer)) melde('FEHLER', wo, `unbekannter Sprecher ${z.wer}`);
-        if (!z.text) melde('FEHLER', wo, 'Zeile ohne text');
-        else if (!z.text.startsWith('@') && woerter(z.text) > 45) melde('WARNUNG', wo, `Zeile hat ${woerter(z.text)} Wörter (Regel: max. 45)`);
-        if (z.wer === 'robby' && z.pose && !ROBBY_POSEN.includes(z.pose)) melde('FEHLER', wo, `unbekannte Robby-Pose ${z.pose}`);
-        if (z.text && z.text.startsWith('@') && !['@niederlage', '@trash', '@spott', '@schwaeche'].includes(z.text)) melde('FEHLER', wo, `unbekannter Platzhalter ${z.text}`);
-      }
-      if (art === 'funk' && !kapitel.lessons.includes(sz.nach)) melde('FEHLER', wo, `nach="${sz.nach}" ist keine Lektion dieses Kapitels`);
-      const a = sz.aufgabe;
-      if (!a) {
-        melde('FEHLER', wo, 'aufgabe fehlt');
-        continue;
-      }
-      if (!['quiz', 'fill', 'order', 'pair', 'bug'].includes(a.type)) melde('FEHLER', wo, `Aufgabentyp ${a.type} ist in Szenen nicht erlaubt`);
-      if (a.type === 'quiz' && (!Array.isArray(a.options) || a.options.length < 3 || typeof a.correct !== 'number' || !a.explanation)) melde('FEHLER', wo, 'quiz unvollständig (options ≥ 3, correct, explanation)');
-      if (a.type === 'bug' && (!Array.isArray(a.lines) || typeof a.line !== 'number' || a.line >= a.lines.length || !a.explanation)) melde('FEHLER', wo, 'bug unvollständig');
-      if (a.type === 'pair' && (!Array.isArray(a.pairs) || a.pairs.length < 3)) melde('FEHLER', wo, 'pair braucht mindestens 3 Paare');
-      if (a.type === 'fill' && (!a.template || !a.template.includes('___') || !a.accept)) melde('FEHLER', wo, 'fill unvollständig');
-      if (a.type === 'order' && (!Array.isArray(a.lines) || a.lines.length < 3)) melde('FEHLER', wo, 'order braucht mindestens 3 Zeilen');
+// Alte Turnier-Begriffe dürfen in den Inhalten nicht mehr auftauchen
+{
+  const ALT = /WEBCUP|Gegner-Crew|Nachtschicht-Crew|Trainingslager|\bRookie\b|Turnierplan|Abpfiff|Anpfiff/;
+  for (const f of fs.readdirSync(path.join(WURZEL, 'chapters'))) {
+    const dir = path.join(WURZEL, 'chapters', f);
+    if (!fs.statSync(dir).isDirectory()) continue;
+    for (const datei of ['chapter.json', 'pool.json', 'boss.json', ...fs.readdirSync(path.join(dir, 'lessons')).map((l) => `lessons/${l}`)]) {
+      const text = fs.readFileSync(path.join(dir, datei), 'utf8');
+      const m = text.match(ALT);
+      if (m) melde('WARNUNG', `${f}/${datei}`, `alter Turnier-Begriff „${m[0]}“ – Welt ist jetzt Hyperia (Orte, Duell, Ich)`);
     }
   }
-} catch (e) {
-  melde('FEHLER', 'story/szenen', `szenen.json fehlt oder ungültig: ${e.message}`);
 }
 console.log(`\n${ziel.length} Kapitel, ${lektionen} Lektionen geprüft — ${fehler} Fehler, ${warnungen} Warnungen`);
 process.exit(fehler ? 1 : 0);

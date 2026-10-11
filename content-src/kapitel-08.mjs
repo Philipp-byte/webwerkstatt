@@ -533,7 +533,7 @@ schreibe('lessons/05-projekt-seitenstruktur.json', {
     {
       type: 'explain',
       sprecher: 'robby',
-      text: 'Ab zur FUNKEN-Website – letzte Etappe der Station Zonen: Die Galerie bekommt Kopf, Navigation mit drei Links (Startseite, Programm, Tickets), Hauptbereich mit allen Abschnitten und einen Fuß mit der Adresse. Der alte Rück-Link-Absatz entfällt.\n\nDanach lohnt sich ein Klick auf „FUNKEN-Website ansehen“: Blättere durch alle drei Seiten – sie haben jetzt dasselbe Gerüst.',
+      text: 'Ab zur FUNKEN-Website – letzte Etappe in der Zonenmark: Die Galerie bekommt Kopf, Navigation mit drei Links (Startseite, Programm, Tickets), Hauptbereich mit allen Abschnitten und einen Fuß mit der Adresse. Der alte Rück-Link-Absatz entfällt.\n\nDanach lohnt sich ein Klick auf „FUNKEN-Website ansehen“: Blättere durch alle drei Seiten – sie haben jetzt dasselbe Gerüst.',
     },
     { type: 'code', etappe: '08-struktur-und-attribute/05-projekt-seitenstruktur' },
   ],
@@ -569,7 +569,7 @@ schreibe('pool.json', {
 /* ================= Abnahme ================= */
 schreibe('boss.json', {
   chapter: KAPITEL,
-  title: 'Abnahme: Zonen',
+  title: 'Prüfung: Zonen',
   intro: 'Ayla sagt, unsere Seiten haben jetzt „Zonen“ – Kopf, Navigation, Hauptteil, Fuß. Ich seh davon nichts, aber angeblich merkt es jeder Screenreader. Zeig mir, dass du weißt, was wohin gehört!',
   bestanden: 0.8,
   aufgaben: [

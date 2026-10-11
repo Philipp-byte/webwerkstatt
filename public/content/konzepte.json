@@ -130,7 +130,7 @@
     "titel": "Kommentare",
     "block": "html",
     "kurz": "Kommentare sind Notizen im Code, die der Browser nicht anzeigt. Sie stehen zwischen <!-- und -->.",
-    "beispiel": "<!-- Kontakt kommt in Runde 5 -->",
+    "beispiel": "<!-- Kontakt kommt an Ort 5 -->",
     "sprache": "html",
     "merke": "<!-- unsichtbar für Besucher -->"
   },

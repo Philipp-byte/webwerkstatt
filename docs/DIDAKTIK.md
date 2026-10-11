@@ -4,11 +4,11 @@ Grundlage: Bildungsplan 1BK1T (KB 5 Seitenbeschreibungssprache, KB 3 Netzwerk-Au
 
 ## 1. Curriculum: 5 Blöcke, 18 Kapitel, 86 Lektionen
 
-Jedes Kapitel ist eine **Station auf dem Festivalgelände**. Jede Lernlektion endet mit einer Etappe an der FUNKEN-Website (`PROJEKT-BIBEL.md`). Jedes Kapitel hat eine **Wiederholungslektion** (ab Kapitel 02), einen **Fragenpool** (`pool.json`, 12–20 Fragen) und eine **Abnahme** (`boss.json`).
+Jedes Kapitel ist ein **Ort in Hyperia**, besetzt von einem Gespinst (siehe `KONZEPT.md`). Jede Lernlektion endet mit einer Etappe an der FUNKEN-Website (`PROJEKT-BIBEL.md`). Jedes Kapitel hat eine **Wiederholungslektion** (ab Kapitel 02), einen **Fragenpool** (`pool.json`, 12–20 Fragen) und eine **Abnahme** (`boss.json`).
 
 | Kapitel | Station | Lektionen |
 |---|---|---|
-| **Block A · Backstage (Grundlagen)** | | |
+| **Block A · Die Quelle (Grundlagen)** | | |
 | 01 Wie das Web funktioniert | Info-Point | 01 was-passiert-beim-seitenaufruf · 02 url-und-http · 03 browser-editor-standards |
 | **Block B · Das Gerüst (HTML)** | | |
 | 02 HTML: Erste Schritte | Fundament | 01 was-ist-html · 02 tags-und-attribute · 03 grundgeruest · 04 wiederholung · 05 projekt-startseite |
@@ -54,7 +54,7 @@ Projekt-Lektion (Meilenstein): Intro + Kontrolle + 1–2 größere Etappen + Hin
 
 ## 3. Wiederholungsplan (Spiralcurriculum)
 
-Jede Wiederholungslektion und jede Abnahme greift Themen mit **wachsendem Abstand** wieder auf (n−1, n−2, n−4, n−8):
+Jede Wiederholungslektion und jedes Duell greift Themen mit **wachsendem Abstand** wieder auf (n−1, n−2, n−4, n−8):
 
 | Kapitel | wiederholt aus |
 |---|---|
@@ -78,10 +78,10 @@ Jede Wiederholungslektion und jede Abnahme greift Themen mit **wachsendem Abstan
 
 Zusätzlich:
 - **Soundcheck** vor jeder Lektion: 3 Fragen aus dem Fragenpool nach dem **Leitner-Prinzip** (Abschnitt 5). Nach einer falschen Antwort: Link zur passenden Spickzettel-Karte.
-- **Zwischenspiele** je Runde (Abschnitt 8): Spähbericht im Anpfiff (Vorwissen), Crew-Funk nach der zweiten Lektion (Wiederholung der ersten Lektionen), Trophäen-Frage im Abpfiff (Kernregel der Runde).
-- **Trophäenkarten**: Jede besiegte Crew bleibt als Karte mit Fehler, Regel und Beispiel auf der Spielerkarte – und im Nachlesen jeder späteren Aufgabe erreichbar.
+- **Hinterhalte** zwischen den Lektionen (Abschnitt 9): kurze Spiele gegen die Uhr aus dem Pool, Leitner-fällige Konzepte zuerst – verteilte Wiederholung mitten im Ort.
+- **Regeln der Orte**: Jede Befreiung schaltet Regel und Beispiel des Ortes frei – auf der Ort-Seite, auf der Ich-Seite und im Nachlesen jeder späteren Aufgabe.
 - **Etappen** verwenden alte Elemente weiter (z. B. bekommt die Tabelle aus 07 in 13 ihren Rahmen).
-- **Backstage-Minispiele** ziehen aus dem Pool aller freigeschalteten Kapitel.
+- **Freies Spielen** (`#/hinterhalt`) zieht aus dem Pool aller freigeschalteten Kapitel.
 
 ## 4. Konzept-Register
 
@@ -125,9 +125,9 @@ js.getElementById  js.textContent  js.addEventListener  js.zaehler  js.classList
 | Etappe bestanden | 40 |
 | Lektion abgeschlossen | 50 (+ 25 bei 3 Sternen) |
 | Soundcheck-Frage richtig | 5 |
-| Abnahme bestanden | 150 (+ 50 bei 100 %) |
-| Backstage: Blitzrunde / Fehlerjagd / Bühnenaufbau | 5 je richtige Frage / 10 je Runde / 15 je Runde, max. 150 XP pro Tag |
-| Serie (Combo) | ab 3 richtig in Folge ×1,25, ab 6 ×1,5 (nur Lektions- und Trainingslager-Aufgaben) |
+| Duell gewonnen | 150 (+ 50 bei 100 %) |
+| Hinterhalt | 10 je Knoten + 5 je Stern, nur beim ersten Spielen eines Knotens (freies Spielen: 0 XP, Rekorde) |
+| Serie | – (keine Multiplikatoren mehr) |
 
 XP gibt es **einmal** pro Schritt. Lektion wiederholen: keine neuen XP, aber die Sterne können sich verbessern (bestes Ergebnis zählt).
 
@@ -135,7 +135,7 @@ XP gibt es **einmal** pro Schritt. Lektion wiederholen: keine neuen XP, aber die
 
 **Level:** `xpFürLevel(n) = round(100 · (n−1)^1,5)` → Level 10 bei 2 700, Level 20 bei 8 280, Level 30 bei 15 600 XP. Gesamt sind rund 24 000 XP erreichbar (≈ Level 38).
 
-**Ränge (Spielerkarte):** Rookie 0 · Starter 1 500 · Pro 4 500 · Captain 9 000 · MVP 15 000 · Legende 22 000.
+**Keine Ränge:** Level und XP stehen auf der Ich-Seite; Ziele sind die acht Meilensteine (Regionen befreien, Funkenfest, 100 Soundcheck-Fragen, 50 Hinterhalt-Sterne, drei Duelle im ersten Versuch).
 
 ## 7. Regeln für Aufgaben (Kurzfassung, verbindlich in `AUTOREN-HANDBUCH.md`)
 
@@ -154,25 +154,29 @@ Lernende sollen Texte kurz lesen – und sie **während der Aufgabe** wieder auf
 | Tab | Inhalt | Nie enthalten |
 |---|---|---|
 | Diese Lektion | alle `explain`- und `example`-Schritte **bis zum aktuellen Schritt**, Beispiele mit Code und aufklappbarer Vorschau | Aufgaben, Tipps, `solution`, spätere Schritte |
-| Spickzettel | Konzept-Karten dieser Lektion (hervorgehoben) und aller gelernten Konzepte, Suche | Karten noch nicht gelernter Konzepte (nur Titel, „kommt in Runde X“) |
-| Trophäen | gesammelte Trophäenkarten (Fehler, Regel, Beispiel der besiegten Crews) | – |
+| Spickzettel | Konzept-Karten dieser Lektion (hervorgehoben) und aller gelernten Konzepte, Suche | Karten noch nicht gelernter Konzepte (nur Titel, „kommt an Ort X“) |
+| Befreite Orte | Regel und Beispiel jedes befreiten Ortes (der Fehler des Gespinsts und was stattdessen gilt) | – |
 
 Regeln dazu:
 1. Beispiele in `example`-Schritten und auf Spickzettel-Karten sind **Anwendungsbeispiele** in einem anderen Kontext – nie der Lösungscode einer Aufgabe (Validator: Lösungs-Leck-Prüfung bleibt; Autor:innen prüfen beim Schreiben, dass das Beispiel nicht die Etappe vorwegnimmt).
 2. Die **Aufgaben-Leiste** hält den Aufgabentext sichtbar, wenn er bei Code-Aufgaben aus dem Bild scrollt.
 3. Nach dem **ersten Fehlversuch** erscheint unter der Rückmeldung „Nachlesen: Erklärung und Beispiele“ – Lesen vor Raten.
-4. Im **Match** gibt es kein Nachlesen (Sicherung des Gelernten); vor der Revanche wird auf Spickzettel und Lektionen verwiesen.
+4. Im **Duell** gibt es kein Nachlesen (Sicherung des Gelernten); vor der Revanche wird auf Spickzettel und Lektionen verwiesen.
 5. Am **Lektionsende** stehen die Merksätze (`merke`) der eingeführten Konzepte: ein Satz pro Konzept, maximal 14 Wörter.
 
-## 9. Zwischenspiele als Lernanlässe
+## 9. Hinterhalte als Lernanlässe
 
-| Zwischenspiel | Wann | Aufgabe | Didaktische Funktion |
+Zwischen den Lektionen eines Ortes lauern **Hinterhalte**: kurze Spiele gegen die Uhr aus dem Fragenpool – bevorzugt mit Konzepten, die im Leitner-System fällig sind, gemischt mit dem Stoff des aktuellen Ortes.
+
+| Spiel | Aufgabentyp | Runden / Zeit | Didaktische Funktion |
 |---|---|---|---|
-| Anpfiff | vor Lektion 1 der Runde | Spähbericht: Fehler im Code der Gegner-Crew erkennen (bug/quiz/fill) – die Dialogzeilen davor nennen die Regel | Vorwissen aktivieren, Lernziel durch Negativbeispiel setzen |
-| Crew-Funk | nach einer festgelegten Lektion (`nach`, meist Lektion 2) | Zuordnen/Quiz/Lückentext zum Stoff der ersten Lektionen | verteilte Wiederholung mitten im Training |
-| Abpfiff | nach dem gewonnenen Match | Trophäen-Frage zur Kernregel, Trophäenkarte | Sicherung, Transfer, Belohnung |
+| Knotenjagd | Fehler in Codezeilen finden (`bug`) | 8 · 60 s | Fehler lesen lernen, schnelles Erkennen |
+| Brückenbau | Zeilen in die richtige Reihenfolge bringen (`order`) | 5 · 90 s | Struktur und Verschachtelung |
+| Wahr oder Lüge | Aussagen aus Quizfragen bewerten | 12 · 60 s | Begriffe sichern, Fehlvorstellungen aufdecken |
+| Runenpaare | Zuordnen (`pair`) | 3 · 90 s | Begriff ↔ Bedeutung |
+| Fäden flicken | Lückentext (`fill`) | 8 · 90 s | Syntax aktiv abrufen |
 
-Alle Szenen-Aufgaben sind **niedrigschwellig** (keine Sterne, Fehlversuche kosten nichts, XP gibt es beim Lösen; Volltreffer +10). Sie sind empfohlen, nicht gesperrt – die Lehrkraft entscheidet, ob sie im Unterricht gespielt werden.
+Regeln: Nach jeder zweiten Lektion ist der Hinterhalt Pflicht (er schaltet die nächste Lektion frei – das Ergebnis ist egal, gespielt muss er sein), der **Sturm** vor dem Duell ist freiwillig; jedes Spiel ist außerdem frei spielbar (Rekorde). Sterne (0–3) nach Trefferquote, XP nur beim ersten Spielen eines Knotens. Fehlversuche kosten nichts; nach jedem Hinterhalt steht unter „Das hast du verteidigt“ die Liste der Konzepte mit Link zum Nachlesen. Die Lehrkraft kann im Lehrkraft-Modus alles freischalten.
 
 ## 10. Spickzettel (Konzept-Karten)
 

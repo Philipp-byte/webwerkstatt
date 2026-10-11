@@ -832,7 +832,7 @@ schreibe('pool.json', {
 /* ---------- Abnahme ---------- */
 schreibe('boss.json', {
   chapter: '12-schrift-und-text',
-  title: 'Abnahme: Schriftzug',
+  title: 'Prüfung: Schriftzug',
   intro: 'Meine Oma hat die Seite gesehen und gesagt: „Endlich kann man das lesen!“ Bevor ich die Tickets freigebe, zeig mir, dass Schrift und Text wirklich sitzen – und dass ihr die alten Sachen nicht vergessen habt.',
   bestanden: 0.8,
   aufgaben: [

@@ -493,7 +493,7 @@ schreibe('pool.json', {
 /* ---------- Abnahme ---------- */
 schreibe('boss.json', {
   chapter: '06-bilder-und-medien',
-  title: 'Abnahme: Foto-Wand',
+  title: 'Prüfung: Foto-Wand',
   intro: 'Die Foto-Wand steht! Endlich sieht man, wie FUNKEN aussieht – und man hört es sogar. Bevor ich das dem Kollektiv zeige: Beweis mir, dass Bilder, Ton und Film sitzen und du Links und Listen nicht vergessen hast.',
   bestanden: 0.8,
   aufgaben: [

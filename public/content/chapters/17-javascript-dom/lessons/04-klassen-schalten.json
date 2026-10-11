@@ -216,7 +216,7 @@
       ],
       "hints": [
         "Drei Dateien, drei Änderungen: Knopf im HTML, Regel im CSS, Zuhörer im JS.",
-        "Die CSS-Regel: Klassenselektor mit Punkt, darin die Farbe – wie in Station 10.",
+        "Die CSS-Regel: Klassenselektor mit Punkt, darin die Farbe – wie in Ort 10.",
         "Im Skript: Knopf holen, Zuhörer anmelden, in der Funktion `status.classList.toggle(\"…\");`"
       ],
       "solution": {

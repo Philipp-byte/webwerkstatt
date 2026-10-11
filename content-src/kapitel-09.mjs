@@ -392,7 +392,7 @@ schreibe('lessons/04-wiederholung.json', {
     {
       type: 'explain',
       sprecher: 'robby',
-      text: 'Rundgang vor der Abnahme: Ich frage Formulare aus diesem Kapitel ab, dazu die Seitenzonen aus Kapitel 8, Tabellen mit Kopfzeile aus Kapitel 7, Links aus Kapitel 5 – und aus Kapitel 1 die Anfrage an den Server. Denn genau dorthin gehen die Formulardaten beim Absenden.',
+      text: 'Rundgang vor dem Duell: Ich frage Formulare aus diesem Kapitel ab, dazu die Seitenzonen aus Kapitel 8, Tabellen mit Kopfzeile aus Kapitel 7, Links aus Kapitel 5 – und aus Kapitel 1 die Anfrage an den Server. Denn genau dorthin gehen die Formulardaten beim Absenden.',
     },
     {
       type: 'quiz',
@@ -556,7 +556,7 @@ schreibe('pool.json', {
 /* ---------- Abnahme ---------- */
 schreibe('boss.json', {
   chapter: '09-formulare',
-  title: 'Abnahme: Ticket-Schalter',
+  title: 'Prüfung: Ticket-Schalter',
   intro: 'Der Ticket-Schalter ist offen! Bevor ich den Link rausschicke, will ich sehen, dass ihr Formulare wirklich könnt – Felder, Beschriftungen, Auswahl, Knopf, alles. Und dass die Preistabelle nicht aus Versehen wieder verschwindet.',
   bestanden: 0.8,
   aufgaben: [

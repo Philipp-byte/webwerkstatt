@@ -1,6 +1,6 @@
 {
   "chapter": "01-wie-das-web-funktioniert",
-  "title": "Abnahme: Info-Point",
+  "title": "Prüfung: Info-Point",
   "intro": "Okay, bevor ihr irgendwas baut: Erklär mir, was da eigentlich passiert, wenn jemand unsere Adresse eintippt. Ich will das verstehen, bevor ich Tickets verkaufe.",
   "bestanden": 0.8,
   "aufgaben": [
@@ -50,7 +50,7 @@
     {
       "konzept": "web.http",
       "type": "quiz",
-      "question": "Der Server der Agentur ist abgeschaltet. Was passiert mit Sams Anfrage?",
+      "question": "Der Server der FUNKEN-Seite ist abgeschaltet. Was passiert mit Sams Anfrage?",
       "options": [
         "Es kommt keine Antwort – der Browser meldet, dass der Server nicht erreichbar ist",
         "Der Server antwortet mit 200",

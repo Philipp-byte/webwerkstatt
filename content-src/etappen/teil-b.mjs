@@ -602,7 +602,7 @@ export function teilB(etappe) {
     page: 'index',
     titel: 'Ich bin dabei!',
     task: '**Ergänze** unter der Line-up-Liste einen Absatz mit einem Knopf (id `dabei-knopf`, Text „Ich bin dabei!“), danach ein Inline-Element mit der id `dabei` und dem Text 0 und den Text „ Leute sind dabei“. **Erweitere** das Skript: Bei jedem Klick wird die Variable `reservierungen` um 1 erhöht und im Element `dabei` angezeigt.',
-    hints: ['Der Zähler ist die Variable aus Station 16 – sie wird mit + 1 erhöht und neu zugewiesen.', 'Nach dem Erhöhen den neuen Wert in textContent des Anzeige-Elements schreiben.', 'Der Absatz kommt direkt nach der schließenden Line-up-Liste.'],
+    hints: ['Der Zähler ist die Variable aus Ort 16 – sie wird mit + 1 erhöht und neu zugewiesen.', 'Nach dem Erhöhen den neuen Wert in textContent des Anzeige-Elements schreiben.', 'Der Absatz kommt direkt nach der schließenden Line-up-Liste.'],
     tests: [
       { type: 'text', selector: 'button#dabei-knopf', expected: 'Ich bin dabei!', label: 'Der Knopf „Ich bin dabei!“ ist da' },
       { type: 'text', selector: '#dabei', expected: '0', label: 'Der Zähler startet bei 0' },

@@ -538,7 +538,7 @@ schreibe('pool.json', {
 /* ---------- Abnahme ---------- */
 schreibe('boss.json', {
   chapter: '03-text',
-  title: 'Abnahme: Textbanner',
+  title: 'Prüfung: Textbanner',
   intro: 'Okay, die Startseite liest sich jetzt wie eine echte Festival-Seite – Das Festival, Die Bühnen, Foodtrucks, unten unsere Adresse. Bevor ich das den anderen zeige: Zeig mir, dass das kein Zufall war.',
   bestanden: 0.8,
   aufgaben: [

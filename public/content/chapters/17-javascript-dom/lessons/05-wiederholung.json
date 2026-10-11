@@ -5,7 +5,7 @@
   "steps": [
     {
       "type": "explain",
-      "text": "Schaltpult-Check: Finden, Klick, Zähler, Klassen – dazu Variablen und Textverbindung aus Station 16, das Box-Modell aus 13, Formulare aus 09 und Recht aus 15. Sieben Aufgaben, dann baust du Sam noch ein Dankeschön in die Startseite."
+      "text": "Schaltpult-Check: Finden, Klick, Zähler, Klassen – dazu Variablen und Textverbindung aus Ort 16, das Box-Modell aus 13, Formulare aus 09 und Recht aus 15. Sieben Aufgaben, dann baust du Sam noch ein Dankeschön in die Startseite."
     },
     {
       "type": "quiz",
@@ -20,7 +20,7 @@
     },
     {
       "type": "fill",
-      "text": "Station 09: Verbinde die Beschriftung mit dem Eingabefeld, damit ein Klick auf den Text das Feld aktiviert.",
+      "text": "Ort 09: Verbinde die Beschriftung mit dem Eingabefeld, damit ein Klick auf den Text das Feld aktiviert.",
       "template": "<label ___=\"email\">E-Mail</label>\n<input type=\"email\" id=\"email\">",
       "accept": [
         "for"
@@ -39,7 +39,7 @@
       ],
       "hints": [
         "Zuhörer am Knopf; in der Funktion wird gerechnet und angezeigt.",
-        "Mal ist der Stern; Text und Zahl verbindest du mit Plus – wie in Station 16.",
+        "Mal ist der Stern; Text und Zahl verbindest du mit Plus – wie in Ort 16.",
         "Struktur: `summe.textContent = \"Summe: \" + … + \" €\";` – in die Lücke kommt die Rechnung."
       ],
       "solution": {
@@ -73,7 +73,7 @@
     },
     {
       "type": "pair",
-      "text": "Station 13 – das Box-Modell. Ordne die Eigenschaften zu.",
+      "text": "Ort 13 – das Box-Modell. Ordne die Eigenschaften zu.",
       "pairs": [
         [
           "`padding`",
@@ -111,7 +111,7 @@
     },
     {
       "type": "quiz",
-      "question": "Station 15: Ihr wollt ein Foto aus dem Netz auf der Festival-Seite zeigen. Was gilt?",
+      "question": "Ort 15: Ihr wollt ein Foto aus dem Netz auf der Festival-Seite zeigen. Was gilt?",
       "options": [
         "Nur mit Erlaubnis oder passender Lizenz, etwa Creative Commons",
         "Alles, was im Netz steht, darf frei verwendet werden",
@@ -133,7 +133,7 @@
         "js"
       ],
       "hints": [
-        "Rahmen: Dicke, Art und Farbe in einer Eigenschaft; runde Ecken haben eine eigene Eigenschaft (Station 13).",
+        "Rahmen: Dicke, Art und Farbe in einer Eigenschaft; runde Ecken haben eine eigene Eigenschaft (Ort 13).",
         "Zuhörer am Knopf, geschaltet wird an der Karte – mit toggle.",
         "Die Regel beginnt mit `.gewaehlt {` und braucht zwei Deklarationen."
       ],

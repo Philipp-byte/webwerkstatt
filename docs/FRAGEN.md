@@ -2,24 +2,24 @@
 
 Antworten bitte einfach in den Chat – ich passe Konzept und Inhalte dann an. Bis dahin gelten die genannten Annahmen.
 
-1. **Story:** Nach deiner Rückmeldung („mehr spielerisch, schülernäher“) ist die Geschichte jetzt der **WEBCUP**: ein Turnier mit 18 Gegner-Crews (Tag-Salat, CAPSLOCK CREW, Kommakinder … Team Template im Finale), deine Crew ist die Underdog-Truppe **Nachtschicht** (Ayla, Jonas, Robby), du bist der Rookie mit Spielerkarte, Sam ist Jury. Das gemeinsame Projekt bleibt die FUNKEN-Festival-Website. Passt die Richtung? Sollen die Gegner **frecher** oder **braver** sein (der Spott ist bisher auf die Crew gemünzt, nie auf die Person)? Alternative Pitches, falls nicht: (a) „Neon City“ – eine Stadt, deren Websites vom Schurken BLANK gelöscht werden, du baust sie Viertel für Viertel zurück; (b) „Die Liga“ – Saison mit Tabelle statt K.-o.; (c) die ruhige Werkstatt-Variante ohne Gegner (die alte Fassung).
-2. **Robby als Crew-Bot:** Ich nutze dein Robby-Maskottchen (aus dem Arbeitsblatt-Material) als Crew-Bot der Nachtschicht in der App. Gut so, oder lieber eine neue Figur?
-3. **Lösungen:** Du willst keine versteckten Lösungen. Aktuell: gestufte Tipps ohne Komplettlösung; nach **drei Fehlversuchen** kann ein „Lösungsvergleich“ freigeschaltet werden, der die Lektion auf 1 Stern setzt. Alternativen: (a) gar keine Lösung in der App, (b) Lösung nur im Lehrkraft-Modus sichtbar. Was möchtest du?
-4. **Match als Sperre:** Die nächste Runde wird erst nach gewonnenem Match (≥ 80 %) frei. Soll das so sein, oder sollen alle Runden offen bleiben (das Match dann nur als Bonus)?
-5. **Trainingslager-XP-Deckel:** Minispiele bringen maximal 150 XP pro Tag, damit niemand XP „farmt“. Okay?
-6. **Umfang:** 18 Kapitel, 86 Lektionen (ca. 1 000 Schritte, davon ca. 250 Code-Aufgaben). Reicht die Zeit im Schuljahr dafür (ca. 45–55 Unterrichtsstunden)? Soll ich etwas straffen (z. B. Kapitel 15 Recht oder 17 JavaScript kürzer)?
-7. **JavaScript-Tiefe:** Weiterhin „wenig JavaScript“ (Variablen, Rechnen, Klick, Zähler, Klasse umschalten) – keine if/Schleifen? *Annahme: ja, wie bisher.*
-8. **API-Schlüssel für Bilder/Videos:** In der Cloud-Sitzung habe ich keinen Zugriff auf die Schlüssel auf deinem Rechner. Wenn du sie als Umgebungsvariablen `OPENAI_API_KEY` (und optional `GEMINI_API_KEY`) in den Einstellungen der Cloud-Umgebung hinterlegst (Menü der Umgebung → Bearbeiten → API-Zugangsdaten/Umgebungsvariablen), kann ich in einer neuen Sitzung Szenenbilder und kurze Clips für den Vorspann generieren (`scripts/generate-intro-assets.mjs`). Bitte den Schlüssel **nicht** in den Chat schreiben.
-9. **Arbeitsblätter:** Die alten PDF-Arbeitsblätter (Skill-Layout) habe ich nicht neu gebaut. Willst du sie wieder (aus den neuen Lektionen generiert), oder reicht die App plus „Spickzettel“ pro Kapitel?
-10. **Lehrkraft-Passwort:** Standard ist `Werkstatt-2026` (nur der Hash liegt im Repo). Soll ich ein anderes setzen?
-11. **Heller Modus:** Standard ist dunkel („Werkstatt bei Nacht“); ein heller Modus ist per Schalter da. Soll für den Beamer eher hell Standard sein?
-12. **Lernbericht:** Es gibt einen druckbaren Lernbericht (`#/bericht`, Spielerkarte → Lernbericht), den die Lernenden dir ausgedruckt oder als PDF geben können. Reicht das als Rückmeldung, oder brauchst du etwas anderes (z. B. Export als CSV)?
-13. **Klasseninterne Rangliste:** Ohne Server geht keine echte Rangliste. Möglich wäre eine „Turniertafel“, auf der die Lehrkraft exportierte Spielstände einliest und die Klasse anonym (Pseudonym) vergleicht – Runden gewonnen, Sterne, Werte. Wunsch?
+## SCHATTENNETZ (seit 11.10.2026)
 
-## Neu (Überarbeitung Oktober 2026)
+1. **Bilder erzeugen:** Die Grafik-Pipeline (`npm run grafiken`, 82 Bilder über die OpenAI-Bild-API) ist fertig, konnte in der Cloud-Sitzung aber nicht laufen: Es fehlen der Schlüssel und die Netzfreigabe. Bitte in den Einstellungen der Cloud-Umgebung (Umgebung → Bearbeiten) unter **Netzwerk** die Domain `api.openai.com` freigeben und unter **Umgebungsvariablen/Secrets** `OPENAI_API_KEY` hinterlegen – nicht in den Chat schreiben. In einer neuen Sitzung erzeuge ich dann alle Bilder und rendere den Vorspann mit den gezeichneten Szenen. Alternativ läuft `OPENAI_API_KEY=… npm run grafiken` auch auf deinem Rechner (ca. 20–40 Minuten, Kosten je nach Qualität; `--qualitaet low` zum Ausprobieren).
+2. **Server:** Wo soll der Schulserver laufen – im Schulnetz, auf einem eigenen Rechner oder bei einem Hoster? `server/README.md` beschreibt beides (direkt mit Python oder per Docker). Für Zugriff von außen gehört HTTPS davor (Reverse-Proxy); im Schulnetz reicht HTTP. Soll ich eine `docker-compose.yml` mit Caddy (automatisches HTTPS) dazulegen?
+3. **Accounts:** Pseudonyme sehen so aus: `HellerFunke17`, Startpasswörter haben acht Zeichen (`kx7mp4qz`). Lernende können das Passwort unter „Ich“ ändern. Sollen Lehrkräfte stattdessen eigene Pseudonyme vergeben dürfen (z. B. Vornamen-Kürzel)?
+4. **Vorspann-Pflicht:** Beim ersten Start läuft das Video ohne Überspringen (74 s). „Lieber lesen“ bleibt als Ausweg (Lesefassung mit sechs Bildern). Soll auch das verschwinden, oder passt es so?
+5. **Spott-Härte:** Die Gespinste spotten in fester Reihenfolge und werden mit jedem Fehler frecher („Hihi, ein Knoten. Mein Werk.“ …). Frecher oder braver? Seidras Sätze („Noch ein Lehrling. Noch ein Knoten, den ich lösen werde.“) genauso?
+6. **Hinterhalt-Pflicht:** Nach jeder zweiten Lektion sperrt ein Hinterhalt die nächste Lektion, bis er einmal gespielt wurde (Ergebnis egal). Zu viel? Alternative: nur empfohlen, nicht gesperrt.
+7. **Duell als Sperre:** Der nächste Ort öffnet sich erst nach gewonnenem Duell (≥ 80 %). So lassen, oder alle Orte offen (Duell nur als Bonus)? Lehrkräfte können im Lehrkraft-Modus alles freischalten.
+8. **Stimmen im Vorspann:** Das Video läuft mit Untertiteln und Soundtrack, ohne Sprecherstimme. Mit einem TTS-Schlüssel ließen sich Stimmen für Sam, Seidra, Robby und die Erzählung erzeugen – oder ihr nehmt sie selbst auf (Schülerprojekt). Wunsch?
+9. **Welt-Texte gegenlesen:** Orts-Einleitungen, Regeln und Beispiele je Ort (`public/content/story/welt.json`) und die Sprüche der Figuren (`figuren.json`) bitte einmal fachlich und vom Ton her gegenlesen – besonders Siegelhalle (Recht im Web, Ort 15).
 
-14. **Vorspann-Video:** Das Video läuft ohne Sprecherstimme (Typo-Animation + Untertitel + Soundtrack). Soll ich mit einem TTS-Schlüssel (`OPENAI_API_KEY` in der Cloud-Umgebung) Stimmen für Sam, Ayla, Jonas, Robby und die Erzählung erzeugen – oder nehmt ihr die Stimmen selbst auf (Schülerprojekt)?
-15. **Anpfiff verpflichtend?** Aktuell ist der Anpfiff (Spähbericht) der empfohlene erste Schritt jeder Runde, Lektionen sind aber nicht dahinter gesperrt. Soll er Pflicht werden?
-16. **Standard-Einstieg:** Video oder Comic zuerst anbieten? (Aktuell Video, Comic als zweite Option.)
-17. **Tagesziel/Serie:** 60 XP Bonus pro Tag und die Serien-Flamme – richtig dosiert, oder zu viel Druck?
-18. **Trophäenkarten-Texte:** Regel und Beispiel je Crew stehen in `crews.json` – bitte einmal fachlich gegenlesen (besonders Recht im Web, Runde 15).
+## Weiterhin offen
+
+10. **Lösungen:** Aktuell gestufte Tipps ohne Komplettlösung; nach **drei Fehlversuchen** kann ein „Lösungsvergleich“ freigeschaltet werden, der die Lektion auf 1 Stern setzt. Alternativen: (a) gar keine Lösung in der App, (b) Lösung nur im Lehrkraft-Modus sichtbar.
+11. **Umfang:** 18 Orte, 86 Lektionen (889 Schritte, 266 Code-Aufgaben). Reicht die Zeit im Schuljahr (ca. 45–55 Unterrichtsstunden)? Soll ich straffen (z. B. Siegelhalle/Recht oder Uhrwerk/JavaScript kürzer)?
+12. **JavaScript-Tiefe:** Weiterhin „wenig JavaScript“ (Variablen, Rechnen, Klick, Zähler, Klasse umschalten) – keine if/Schleifen? *Annahme: ja.*
+13. **Arbeitsblätter:** Die alten PDF-Arbeitsblätter habe ich nicht neu gebaut. Willst du sie (aus den Lektionen generiert), oder reicht die App plus Spickzettel?
+14. **Lehrkraft-Passwort:** Standard `Werkstatt-2026` (nur der Hash liegt im Repo). Anderes setzen? Im Schulmodus braucht es das nicht – dort gibt es echte Lehrkraft-Accounts.
+15. **Heller Modus:** Standard ist dunkel; hell per Schalter. Für den Beamer eher hell als Standard?
+16. **Lernbericht:** Der druckbare Lernbericht (`#/bericht`) bleibt; im Schulmodus sieht die Lehrkraft die Klasse direkt unter `#/klasse` (Orte, Lektionen, Sterne, XP, zuletzt aktiv). Brauchst du zusätzlich einen CSV-Export?

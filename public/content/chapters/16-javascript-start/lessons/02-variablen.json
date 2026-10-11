@@ -208,7 +208,7 @@
     {
       "type": "explain",
       "sprecher": "ayla",
-      "text": "Ab zur FUNKEN-Website! Das Skript bekommt seine ersten beiden Kisten: den Festivalnamen, der sich nie ändert, und einen Zähler für Reservierungen, der bei 0 startet – in Station 17 zählt er bei jedem Klick hoch.\n\nAchte auf die Schreibweise der Namen aus der Aufgabe (camelCase) und gib den Namen über die Variable aus, nicht als Text."
+      "text": "Ab zur FUNKEN-Website! Das Skript bekommt seine ersten beiden Kisten: den Festivalnamen, der sich nie ändert, und einen Zähler für Reservierungen, der bei 0 startet – in Ort 17 zählt er bei jedem Klick hoch.\n\nAchte auf die Schreibweise der Namen aus der Aufgabe (camelCase) und gib den Namen über die Variable aus, nicht als Text."
     },
     {
       "type": "code",

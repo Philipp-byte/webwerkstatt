@@ -1250,7 +1250,7 @@ schreibe('pool.json', {
 /* ================= Abnahme ================= */
 schreibe('boss.json', {
   chapter: '11-selektoren',
-  title: 'Abnahme: Spots',
+  title: 'Prüfung: Spots',
   intro: 'Okay, die Spots sitzen – der Einlass leuchtet, und die Navigation wird orange, wenn man drüberfährt. Aber ich hab gestern selbst so eine Regel getippt, und nichts ist passiert. Zeig mir, dass du weißt, wo Punkt, Raute und Komma hingehören.',
   bestanden: 0.8,
   aufgaben: [

@@ -55,7 +55,7 @@
     },
     {
       "type": "explain",
-      "text": "Und genau da liegt Sams Problem: Der Server der alten Agentur wurde **abgeschaltet**. Der Browser schickt seine Anfrage – und **niemand antwortet**.\n\nAnders ist der Fall **404**: Da antwortet der Server zwar, sagt aber „Diese Datei habe ich nicht“. Zwei Fehler, zwei Ursachen."
+      "text": "Genau das ist Lückes Falle in Quellgrund: Der Server, auf dem Sams Seite lag, wurde **abgeschaltet**. Der Browser schickt seine Anfrage – und **niemand antwortet**.\n\nAnders ist der Fall **404**: Da antwortet der Server zwar, sagt aber „Diese Datei habe ich nicht“. Zwei Fehler, zwei Ursachen."
     },
     {
       "type": "quiz",

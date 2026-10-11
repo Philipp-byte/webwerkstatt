@@ -177,7 +177,7 @@ schreibe('lessons/01-alles-zusammenfuegen.json', {
     {
       type: 'explain',
       sprecher: 'ayla',
-      text: 'Letzte Station. Die FUNKEN-Website ist fast fertig: fünf Seiten, ein Stylesheet, ein Skript. Bevor der letzte Knopf eingebaut wird, ein Blick auf das Ganze – **welche Datei macht was?**\n\n- `index.html`, `programm.html`, `galerie.html`, `tickets.html`, `impressum.html` – das **Gerüst**: Texte, Listen, Tabellen, Formular, Bilder.\n- `style.css` – **Licht und Farbe**: eine Datei für alle Seiten.\n- `script.js` – **Strom**: reagiert auf Klicks, nur auf der Startseite.',
+      text: 'Letzter Ort. Die FUNKEN-Website ist fast fertig: fünf Seiten, ein Stylesheet, ein Skript. Bevor der letzte Knopf eingebaut wird, ein Blick auf das Ganze – **welche Datei macht was?**\n\n- `index.html`, `programm.html`, `galerie.html`, `tickets.html`, `impressum.html` – das **Gerüst**: Texte, Listen, Tabellen, Formular, Bilder.\n- `style.css` – **Licht und Farbe**: eine Datei für alle Seiten.\n- `script.js` – **Strom**: reagiert auf Klicks, nur auf der Startseite.',
       figure: FIG_DATEIEN,
     },
     {
@@ -393,7 +393,7 @@ schreibe('lessons/02-grosse-wiederholung.json', {
     {
       type: 'explain',
       sprecher: 'robby',
-      text: 'Die große Wiederholung: einmal durch alle Stationen – Gerüst, Licht und Farbe, Strom. Zehn Aufgaben aus allen Blöcken, keine neuen Regeln. Am Ende bekommt die Tickets-Seite ihren letzten Abschnitt.',
+      text: 'Die große Wiederholung: einmal durch alle Orte – Gerüst, Licht und Farbe, Strom. Zehn Aufgaben aus allen Blöcken, keine neuen Regeln. Am Ende bekommt die Tickets-Seite ihren letzten Abschnitt.',
     },
     {
       type: 'quiz',
@@ -645,7 +645,7 @@ schreibe('lessons/03-eigene-website.json', {
     {
       type: 'explain',
       sprecher: 'ayla',
-      text: 'Alles vorbereitet. Im Finale findest du die Werkbank mit drei Dateien, die Checkliste mit den 15 Kriterien und den ZIP-Download. Dein Stand wird automatisch gespeichert – du kannst jederzeit weitermachen.\n\nDenk dran: eine HTML-Datei – das Impressum wird ein Abschnitt mit der id `impressum`. Die Übungsbilder (`katze.svg`, `pizza.svg`, `controller.svg` …) darfst du benutzen.\n\n[Showtime öffnen](#/showtime) – und danach nimmt Sam bei der Abnahme die FUNKEN-Website ab.',
+      text: 'Alles vorbereitet. Im Finale findest du die Werkbank mit drei Dateien, die Checkliste mit den 15 Kriterien und den ZIP-Download. Dein Stand wird automatisch gespeichert – du kannst jederzeit weitermachen.\n\nDenk dran: eine HTML-Datei – das Impressum wird ein Abschnitt mit der id `impressum`. Die Übungsbilder (`katze.svg`, `pizza.svg`, `controller.svg` …) darfst du benutzen.\n\n[Showtime öffnen](#/showtime) – und danach prüft Sam im letzten Duell die FUNKEN-Website.',
     },
   ],
 });
@@ -794,7 +794,7 @@ knopf.addEventListener("click", function () {
 
 schreibe('boss.json', {
   chapter: '18-showtime',
-  title: 'Abnahme: Showtime',
+  title: 'Prüfung: Showtime',
   intro: 'Das ist sie. Unsere Seite – Line-up, Tickets, Galerie, Impressum, sogar ein Nachtmodus. Bevor ich den Link an 3 000 Leute schicke, gehen wir einmal alles durch, von vorne bis hinten. Zeig mir, dass ihr das wirklich könnt.',
   bestanden: 0.8,
   aufgaben: [

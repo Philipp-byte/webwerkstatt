@@ -440,7 +440,7 @@ schreibe('lessons/05-projekt-lineup.json', {
     {
       type: 'explain',
       sprecher: 'sam',
-      text: 'Leute, die Tafel sieht richtig gut aus! Zwei Sachen kamen heute Nacht noch rein: **Lou & die Lichter** haben zugesagt – Zeltbühne, als dritter Act. Und bei der Anfahrt fehlt nach dem Ticket der wichtigste Schritt: **Feiern**.\n\nSchafft ihr das noch, bevor ich die Station abnehme?',
+      text: 'Leute, die Tafel sieht richtig gut aus! Zwei Sachen kamen heute Nacht noch rein: **Lou & die Lichter** haben zugesagt – Zeltbühne, als dritter Act. Und bei der Anfahrt fehlt nach dem Ticket der wichtigste Schritt: **Feiern**.\n\nSchafft ihr das noch, bevor das Duell beginnt?',
     },
     {
       type: 'quiz',
@@ -458,7 +458,7 @@ schreibe('lessons/05-projekt-lineup.json', {
     {
       type: 'explain',
       sprecher: 'robby',
-      text: 'Rückblick: Du kannst Punktelisten, nummerierte Listen und Listen in Listen – und weißt, dass die innere Liste vor dem schließenden Tag des Punkts steht.\n\nNach der Etappe klick unten auf **FUNKEN-Website ansehen**: Die Programm-Tafel ist damit komplett. Dann wartet Sam mit der Abnahme.',
+      text: 'Rückblick: Du kannst Punktelisten, nummerierte Listen und Listen in Listen – und weißt, dass die innere Liste vor dem schließenden Tag des Punkts steht.\n\nNach der Etappe klick unten auf **FUNKEN-Website ansehen**: Die Programm-Tafel ist damit komplett. Dann wartet das Duell.',
     },
     { type: 'code', etappe: '04-listen/05-projekt-lineup' },
   ],
@@ -492,7 +492,7 @@ schreibe('pool.json', {
 /* ---------- Abnahme ---------- */
 schreibe('boss.json', {
   chapter: '04-listen',
-  title: 'Abnahme: Programm-Tafel',
+  title: 'Prüfung: Programm-Tafel',
   intro: 'Zeig mir die Tafel! Line-up nach Bühnen, Foodtrucks, Anfahrt – wenn das alles sauber in Listen steht, kriegt ihr von mir einen Bubble Tea. Wenn nicht … auch, aber erst nach der Nachbesserung.',
   bestanden: 0.8,
   aufgaben: [

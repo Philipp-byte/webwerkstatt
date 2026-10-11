@@ -969,7 +969,7 @@ schreibe('lessons/05-projekt-layout.json', {
     {
       type: 'explain',
       sprecher: 'sam',
-      text: 'Meilenstein! Menü in einer Reihe, Foodtrucks als Kacheln, alles ausgerichtet – die Startseite hat jetzt ein echtes Layout. Zum Abschluss soll der **Kopfbereich leuchten**: dunkler Hintergrund, Luft rundum, gelbe Schrift für Überschrift und Absatz.\n\nDafür kombinierst du drei Stationen: Hintergrundfarbe (Lichtpult), Innenabstand (Container) und einen Gruppen-Selektor aus zwei Nachfahren-Selektoren (Spots).',
+      text: 'Meilenstein! Menü in einer Reihe, Foodtrucks als Kacheln, alles ausgerichtet – die Startseite hat jetzt ein echtes Layout. Zum Abschluss soll der **Kopfbereich leuchten**: dunkler Hintergrund, Luft rundum, gelbe Schrift für Überschrift und Absatz.\n\nDafür kombinierst du drei Orte: Hintergrundfarbe (Lichtpult), Innenabstand (Container) und einen Gruppen-Selektor aus zwei Nachfahren-Selektoren (Spots).',
     },
     {
       type: 'quiz',
@@ -1033,7 +1033,7 @@ schreibe('pool.json', {
    ============================================================ */
 schreibe('boss.json', {
   chapter: '14-flexbox',
-  title: 'Abnahme: Bühnen-Layout',
+  title: 'Prüfung: Bühnen-Layout',
   intro: 'Menü in einer Reihe, Foodtrucks als Kacheln, der Kopf leuchtet – jetzt sieht die Startseite endlich nach Festival aus! Bevor ich das dem Kollektiv zeige: Erklär mir, was da passiert, und bau mir so eine Kachel-Reihe einmal ohne Vorlage.',
   bestanden: 0.8,
   aufgaben: [

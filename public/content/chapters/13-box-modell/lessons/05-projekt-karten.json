@@ -53,7 +53,7 @@
     {
       "type": "explain",
       "sprecher": "robby",
-      "text": "Ab zur Galerie! Jedes `figure`-Element wird eine Karte: weißer Hintergrund, rundum 12 Pixel Innenabstand, 12 Pixel runde Ecken, kein Außenabstand. Dafür brauchst du eine **neue Regel** mit dem Element-Selektor.\n\nDanach lohnt sich ein Blick auf die ganze Website unter **#/projekt** – Station „Container“ geschafft, gleich nimmt Sam ab!"
+      "text": "Ab zur Galerie! Jedes `figure`-Element wird eine Karte: weißer Hintergrund, rundum 12 Pixel Innenabstand, 12 Pixel runde Ecken, kein Außenabstand. Dafür brauchst du eine **neue Regel** mit dem Element-Selektor.\n\nDanach lohnt sich ein Blick auf die ganze Website unter **#/projekt** – Kistenhafen ist fast befreit – gleich kommt das Duell!"
     },
     {
       "type": "code",

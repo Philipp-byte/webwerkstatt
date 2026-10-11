@@ -516,7 +516,7 @@ schreibe('lessons/05-projekt-timetable.json', {
     {
       type: 'explain',
       sprecher: 'ayla',
-      text: 'Meilenstein! Rückblick: Die Startseite hat den Abschnitt „Auf einen Blick“, die neue Programm-Seite zwei Timetables mit Pause und den Foodcourt. Damit steht die Station Timetable fast.\n\nEine Sache fehlt noch: Die Tabelle „Auf einen Blick“ hat keine Kopfzeile – und das Ende um 23:00 Uhr fehlt auch. Das baust du jetzt ein.',
+      text: 'Meilenstein! Rückblick: Die Startseite hat den Abschnitt „Auf einen Blick“, die neue Programm-Seite zwei Timetables mit Pause und den Foodcourt. Damit steht der Timetable fast.\n\nEine Sache fehlt noch: Die Tabelle „Auf einen Blick“ hat keine Kopfzeile – und das Ende um 23:00 Uhr fehlt auch. Das baust du jetzt ein.',
     },
     {
       type: 'quiz',
@@ -572,7 +572,7 @@ schreibe('pool.json', {
    ================================================================ */
 schreibe('boss.json', {
   chapter: '07-tabellen',
-  title: 'Abnahme: Timetable',
+  title: 'Prüfung: Timetable',
   intro: 'Der Timetable ist das Wichtigste auf der ganzen Seite! Wenn da eine Band in der falschen Spalte steht, stehen zweihundert Leute vor der falschen Bühne. Zeigt mir, dass Zeilen, Spalten und die Pause sitzen.',
   bestanden: 0.8,
   aufgaben: [

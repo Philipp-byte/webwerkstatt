@@ -55,7 +55,7 @@ schreibe('lessons/01-was-passiert-beim-seitenaufruf.json', {
     },
     {
       type: 'explain',
-      text: 'Und genau da liegt Sams Problem: Der Server der alten Agentur wurde **abgeschaltet**. Der Browser schickt seine Anfrage – und **niemand antwortet**.\n\nAnders ist der Fall **404**: Da antwortet der Server zwar, sagt aber „Diese Datei habe ich nicht“. Zwei Fehler, zwei Ursachen.',
+      text: 'Genau das ist Lückes Falle in Quellgrund: Der Server, auf dem Sams Seite lag, wurde **abgeschaltet**. Der Browser schickt seine Anfrage – und **niemand antwortet**.\n\nAnders ist der Fall **404**: Da antwortet der Server zwar, sagt aber „Diese Datei habe ich nicht“. Zwei Fehler, zwei Ursachen.',
     },
     {
       type: 'quiz',
@@ -218,7 +218,7 @@ schreibe('lessons/03-browser-editor-standards.json', {
     {
       type: 'explain',
       sprecher: 'robby',
-      text: 'Info-Point geschafft! Du weißt jetzt: Client fragt, Server antwortet, die URL sagt wo, und drei Sprachen bauen die Seite.\n\nGleich nimmt Sam die Station ab. Danach geht es ans **Fundament** – die ersten Zeilen HTML für die FUNKEN-Website.',
+      text: 'Info-Point geschafft! Du weißt jetzt: Client fragt, Server antwortet, die URL sagt wo, und drei Sprachen bauen die Seite.\n\nGleich kommt das Duell. Danach geht es ans **Fundament** – die ersten Zeilen HTML für die FUNKEN-Website.',
     },
   ],
 });
@@ -250,14 +250,14 @@ schreibe('pool.json', {
 /* ---------- Abnahme ---------- */
 schreibe('boss.json', {
   chapter: '01-wie-das-web-funktioniert',
-  title: 'Abnahme: Info-Point',
+  title: 'Prüfung: Info-Point',
   intro: 'Okay, bevor ihr irgendwas baut: Erklär mir, was da eigentlich passiert, wenn jemand unsere Adresse eintippt. Ich will das verstehen, bevor ich Tickets verkaufe.',
   bestanden: 0.8,
   aufgaben: [
     { konzept: 'web.client-server', type: 'quiz', question: 'Sam öffnet funken-festival.de auf dem Laptop. Was ist der Laptop mit dem Browser?', options: ['Der Client', 'Der Server', 'Das DNS'], correct: 0, explanation: 'Das Gerät, das anfragt, ist der Client.' },
     { konzept: 'web.http', type: 'order', text: 'Sortiere den Ablauf beim Seitenaufruf.', lines: ['Adresse eintippen', 'DNS liefert die IP-Adresse', 'Browser schickt die Anfrage', 'Server schickt die Antwort', 'Browser zeigt die Seite'] },
     { konzept: 'web.url', type: 'pair', text: 'Ordne die Teile von `https://funken-festival.de/tickets.html` zu.', pairs: [['`https://`', 'Protokoll'], ['`funken-festival.de`', 'Domain'], ['`/tickets.html`', 'Pfad']] },
-    { konzept: 'web.http', type: 'quiz', question: 'Der Server der Agentur ist abgeschaltet. Was passiert mit Sams Anfrage?', options: ['Es kommt keine Antwort – der Browser meldet, dass der Server nicht erreichbar ist', 'Der Server antwortet mit 200', 'Das DNS schickt die Seite stattdessen'], correct: 0, explanation: 'Ohne Server keine Antwort. 404 wäre eine Antwort – die gibt es hier nicht.' },
+    { konzept: 'web.http', type: 'quiz', question: 'Der Server der FUNKEN-Seite ist abgeschaltet. Was passiert mit Sams Anfrage?', options: ['Es kommt keine Antwort – der Browser meldet, dass der Server nicht erreichbar ist', 'Der Server antwortet mit 200', 'Das DNS schickt die Seite stattdessen'], correct: 0, explanation: 'Ohne Server keine Antwort. 404 wäre eine Antwort – die gibt es hier nicht.' },
     { konzept: 'web.url', type: 'fill', text: 'Welches Protokoll überträgt verschlüsselt?', template: '___://funken-festival.de', accept: ['https'] },
     { konzept: 'web.sprachen', type: 'pair', text: 'Welche Sprache übernimmt was?', pairs: [['HTML', 'Gerüst: Überschriften, Texte, Bilder'], ['CSS', 'Licht und Farbe: Aussehen'], ['JavaScript', 'Strom: reagiert auf Klicks']] },
     { konzept: 'web.browser', type: 'quiz', question: 'Was zeigt „Seitenquelltext anzeigen“ im Browser?', options: ['Den Text mit Markierungen, aus dem der Browser die Seite zeichnet', 'Die IP-Adresse des Servers', 'Das Passwort der Website'], correct: 0, explanation: 'Der Quelltext ist der HTML-Text, den der Server geschickt hat.' },

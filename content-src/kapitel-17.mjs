@@ -78,7 +78,7 @@ schreibe('lessons/01-elemente-aendern.json', {
     },
     {
       type: 'explain',
-      text: '**textContent** kannst du auch lesen – und mit Texten aus Station 16 zusammensetzen:\n\n```js\nconst schild = document.getElementById("preis");\nconsole.log(schild.textContent);\nconst preis = 89;\nschild.textContent = "Nur " + preis + " €";\n```\n\nWichtig ist die **Reihenfolge**: Das Skript kann nur finden, was der Browser schon gebaut hat. Deshalb steht `<script src="script.js">` ganz am Ende des body – erst die Elemente, dann das Skript.',
+      text: '**textContent** kannst du auch lesen – und mit Texten aus Ort 16 zusammensetzen:\n\n```js\nconst schild = document.getElementById("preis");\nconsole.log(schild.textContent);\nconst preis = 89;\nschild.textContent = "Nur " + preis + " €";\n```\n\nWichtig ist die **Reihenfolge**: Das Skript kann nur finden, was der Browser schon gebaut hat. Deshalb steht `<script src="script.js">` ganz am Ende des body – erst die Elemente, dann das Skript.',
     },
     {
       type: 'fill',
@@ -286,7 +286,7 @@ schreibe('lessons/03-zaehler.json', {
   steps: [
     {
       type: 'explain',
-      text: 'Likes unter einem Clip, Schritte in der Fitness-App, „12 Leute sind dabei“ – überall wird **gezählt**. Und Zählen heißt nur: sich eine Zahl merken und sie bei jedem Klick um eins erhöhen.\n\nDie Zahl lebt in einer **Variablen** aus Station 16. Weil sie sich ändert, muss es `let` sein, nicht `const`.',
+      text: 'Likes unter einem Clip, Schritte in der Fitness-App, „12 Leute sind dabei“ – überall wird **gezählt**. Und Zählen heißt nur: sich eine Zahl merken und sie bei jedem Klick um eins erhöhen.\n\nDie Zahl lebt in einer **Variablen** aus Ort 16. Weil sie sich ändert, muss es `let` sein, nicht `const`.',
       figure: FIG_ZAEHLER,
     },
     {
@@ -333,7 +333,7 @@ schreibe('lessons/03-zaehler.json', {
     },
     {
       type: 'explain',
-      text: 'Zählen geht auch **rückwärts** – etwa freie Plätze, die weniger werden:\n\n```js\nplaetze = plaetze - 1;\nanzeige.textContent = "Noch " + plaetze + " frei";\n```\n\nDie Anzeige darf ein zusammengesetzter Text sein: Text plus Variable plus Text, mit `+` verbunden – wie in Station 16.\n\nMerke: **Erst rechnen, dann anzeigen.** Andersherum zeigt die Seite noch den alten Wert.',
+      text: 'Zählen geht auch **rückwärts** – etwa freie Plätze, die weniger werden:\n\n```js\nplaetze = plaetze - 1;\nanzeige.textContent = "Noch " + plaetze + " frei";\n```\n\nDie Anzeige darf ein zusammengesetzter Text sein: Text plus Variable plus Text, mit `+` verbunden – wie in Ort 16.\n\nMerke: **Erst rechnen, dann anzeigen.** Andersherum zeigt die Seite noch den alten Wert.',
     },
     {
       type: 'fill',
@@ -405,7 +405,7 @@ schreibe('lessons/03-zaehler.json', {
     {
       type: 'explain',
       sprecher: 'robby',
-      text: 'Unter dem Line-up kommt der Knopf „Ich bin dabei!“ – und daneben zählt die Seite mit: „0 Leute sind dabei“, dann 1, dann 2 …\n\nDie Variable dafür gibt es schon: `reservierungen` aus Station 16, mit `let` angelegt und auf 0 gesetzt. Du brauchst also nur den Knopf, ein Inline-Element mit id für die Zahl und den Zuhörer, der erhöht und anzeigt.',
+      text: 'Unter dem Line-up kommt der Knopf „Ich bin dabei!“ – und daneben zählt die Seite mit: „0 Leute sind dabei“, dann 1, dann 2 …\n\nDie Variable dafür gibt es schon: `reservierungen` aus Ort 16, mit `let` angelegt und auf 0 gesetzt. Du brauchst also nur den Knopf, ein Inline-Element mit id für die Zahl und den Zuhörer, der erhöht und anzeigt.',
     },
     { type: 'code', etappe: '17-javascript-dom/03-zaehler' },
   ],
@@ -527,7 +527,7 @@ schreibe('lessons/04-klassen-schalten.json', {
       editable: ['html', 'css', 'js'],
       hints: [
         'Drei Dateien, drei Änderungen: Knopf im HTML, Regel im CSS, Zuhörer im JS.',
-        'Die CSS-Regel: Klassenselektor mit Punkt, darin die Farbe – wie in Station 10.',
+        'Die CSS-Regel: Klassenselektor mit Punkt, darin die Farbe – wie in Ort 10.',
         'Im Skript: Knopf holen, Zuhörer anmelden, in der Funktion `status.classList.toggle("…");`',
       ],
       solution: {
@@ -561,7 +561,7 @@ schreibe('lessons/05-wiederholung.json', {
   steps: [
     {
       type: 'explain',
-      text: 'Schaltpult-Check: Finden, Klick, Zähler, Klassen – dazu Variablen und Textverbindung aus Station 16, das Box-Modell aus 13, Formulare aus 09 und Recht aus 15. Sieben Aufgaben, dann baust du Sam noch ein Dankeschön in die Startseite.',
+      text: 'Schaltpult-Check: Finden, Klick, Zähler, Klassen – dazu Variablen und Textverbindung aus Ort 16, das Box-Modell aus 13, Formulare aus 09 und Recht aus 15. Sieben Aufgaben, dann baust du Sam noch ein Dankeschön in die Startseite.',
     },
     {
       type: 'quiz',
@@ -572,7 +572,7 @@ schreibe('lessons/05-wiederholung.json', {
     },
     {
       type: 'fill',
-      text: 'Station 09: Verbinde die Beschriftung mit dem Eingabefeld, damit ein Klick auf den Text das Feld aktiviert.',
+      text: 'Ort 09: Verbinde die Beschriftung mit dem Eingabefeld, damit ein Klick auf den Text das Feld aktiviert.',
       template: '<label ___="email">E-Mail</label>\n<input type="email" id="email">',
       accept: ['for'],
       hint: 'Das Attribut am label nennt die id des Feldes.',
@@ -587,7 +587,7 @@ schreibe('lessons/05-wiederholung.json', {
       editable: ['js'],
       hints: [
         'Zuhörer am Knopf; in der Funktion wird gerechnet und angezeigt.',
-        'Mal ist der Stern; Text und Zahl verbindest du mit Plus – wie in Station 16.',
+        'Mal ist der Stern; Text und Zahl verbindest du mit Plus – wie in Ort 16.',
         'Struktur: `summe.textContent = "Summe: " + … + " €";` – in die Lücke kommt die Rechnung.',
       ],
       solution: {
@@ -602,7 +602,7 @@ schreibe('lessons/05-wiederholung.json', {
     },
     {
       type: 'pair',
-      text: 'Station 13 – das Box-Modell. Ordne die Eigenschaften zu.',
+      text: 'Ort 13 – das Box-Modell. Ordne die Eigenschaften zu.',
       pairs: [
         ['`padding`', 'Innenabstand – Luft zwischen Inhalt und Rahmen'],
         ['`margin`', 'Außenabstand – Luft zu den Nachbarn'],
@@ -619,7 +619,7 @@ schreibe('lessons/05-wiederholung.json', {
     },
     {
       type: 'quiz',
-      question: 'Station 15: Ihr wollt ein Foto aus dem Netz auf der Festival-Seite zeigen. Was gilt?',
+      question: 'Ort 15: Ihr wollt ein Foto aus dem Netz auf der Festival-Seite zeigen. Was gilt?',
       options: ['Nur mit Erlaubnis oder passender Lizenz, etwa Creative Commons', 'Alles, was im Netz steht, darf frei verwendet werden', 'Es reicht, die Quelle in einem HTML-Kommentar zu nennen'],
       correct: 0,
       explanation: 'Fotos sind urheberrechtlich geschützt. Ohne Erlaubnis oder Lizenz (z. B. CC BY mit Namensnennung) dürfen sie nicht auf die Seite.',
@@ -634,7 +634,7 @@ schreibe('lessons/05-wiederholung.json', {
       },
       editable: ['css', 'js'],
       hints: [
-        'Rahmen: Dicke, Art und Farbe in einer Eigenschaft; runde Ecken haben eine eigene Eigenschaft (Station 13).',
+        'Rahmen: Dicke, Art und Farbe in einer Eigenschaft; runde Ecken haben eine eigene Eigenschaft (Ort 13).',
         'Zuhörer am Knopf, geschaltet wird an der Karte – mit toggle.',
         'Die Regel beginnt mit `.gewaehlt {` und braucht zwei Deklarationen.',
       ],
@@ -670,7 +670,7 @@ schreibe('lessons/06-projekt-interaktiv.json', {
     {
       type: 'explain',
       sprecher: 'ayla',
-      text: 'Meilenstein! Die Startseite reagiert: Status auf Knopfdruck, ein Zähler unter dem Line-up, ein Nachtmodus. Vor fünfzehn Stationen stand hier eine einzige Überschrift.\n\nJetzt kommt der **Countdown** in den Kopfbereich: „Noch 42 Tage bis FUNKEN“ – die Zahl aus einer Variablen, der Text per Skript ins Element geschrieben. Ohne Klick, direkt beim Laden.',
+      text: 'Meilenstein! Die Startseite reagiert: Status auf Knopfdruck, ein Zähler unter dem Line-up, ein Nachtmodus. Fünfzehn Orte zurück stand hier eine einzige Überschrift.\n\nJetzt kommt der **Countdown** in den Kopfbereich: „Noch 42 Tage bis FUNKEN“ – die Zahl aus einer Variablen, der Text per Skript ins Element geschrieben. Ohne Klick, direkt beim Laden.',
     },
     {
       type: 'quiz',
@@ -692,7 +692,7 @@ schreibe('lessons/06-projekt-interaktiv.json', {
     {
       type: 'explain',
       sprecher: 'robby',
-      text: 'Ab zur Etappe: Im Kopfbereich kommt nach dem Willkommens-Absatz ein leerer Absatz mit id für den Countdown. Im Skript: eine Konstante mit 42 und eine Zeile, die Text, Zahl und Text zusammensetzt und ins Element schreibt.\n\nDanach lohnt sich ein Blick auf die ganze Website: [FUNKEN-Website ansehen](#/projekt). Klick dich durch Status, Zähler und Nachtmodus – das ist deine Arbeit. Gleich nimmt Sam die Station ab.',
+      text: 'Ab zur Etappe: Im Kopfbereich kommt nach dem Willkommens-Absatz ein leerer Absatz mit id für den Countdown. Im Skript: eine Konstante mit 42 und eine Zeile, die Text, Zahl und Text zusammensetzt und ins Element schreibt.\n\nDanach lohnt sich ein Blick auf die ganze Website: [FUNKEN-Website ansehen](#/projekt). Klick dich durch Status, Zähler und Nachtmodus – das ist deine Arbeit. Gleich kommt das Duell.',
     },
     { type: 'code', etappe: '17-javascript-dom/06-projekt-interaktiv' },
   ],
@@ -726,7 +726,7 @@ schreibe('pool.json', {
 /* ---------- Abnahme ---------- */
 schreibe('boss.json', {
   chapter: '17-javascript-dom',
-  title: 'Abnahme: Schaltpult',
+  title: 'Prüfung: Schaltpult',
   intro: 'Leute, die Seite reagiert! Ich hab zwanzigmal auf „Ich bin dabei!“ gedrückt, sorry dafür. Bevor ich das dem Kollektiv zeige: Beweist mir, dass ihr das Schaltpult im Griff habt – Knöpfe, Zähler, Nachtmodus, alles.',
   bestanden: 0.8,
   aufgaben: [
@@ -773,9 +773,9 @@ schreibe('boss.json', {
         { type: 'text', selector: '#teams', expected: '2', label: 'Nach zwei Klicks steht 2' },
       ],
     },
-    { konzept: 'css.padding', type: 'pair', text: 'Station 13 – ordne die Eigenschaften zu.', pairs: [['`padding`', 'Innenabstand'], ['`margin`', 'Außenabstand'], ['`border`', 'Rahmen'], ['`box-shadow`', 'Schatten']] },
+    { konzept: 'css.padding', type: 'pair', text: 'Ort 13 – ordne die Eigenschaften zu.', pairs: [['`padding`', 'Innenabstand'], ['`margin`', 'Außenabstand'], ['`border`', 'Rahmen'], ['`box-shadow`', 'Schatten']] },
     { konzept: 'js.textContent', type: 'quiz', question: 'Was macht die Zeile `anzeige.textContent = 5;`?', options: ['Sie zeigt im Element anzeige den Text 5', 'Sie zählt anzeige um 5 hoch', 'Sie erstellt ein neues Element mit der id 5'], correct: 0, explanation: 'textContent setzt den sichtbaren Text – eine Zahl wird dabei automatisch zu Text.' },
-    { konzept: 'js.verkettung', type: 'fill', text: 'Station 16: Verbinde Text und Variable zu einem Satz.', template: 'const meldung = "Noch " + tage ___ " Tage";', accept: ['+'], hint: 'Das Zeichen, das Texte und Zahlen zu einem Text verbindet.' },
+    { konzept: 'js.verkettung', type: 'fill', text: 'Ort 16: Verbinde Text und Variable zu einem Satz.', template: 'const meldung = "Noch " + tage ___ " Tage";', accept: ['+'], hint: 'Das Zeichen, das Texte und Zahlen zu einem Text verbindet.' },
     { konzept: 'html.button', type: 'quiz', question: 'Womit erzeugst du im HTML einen klickbaren Knopf mit der Aufschrift „Absenden“?', options: ['`<button>Absenden</button>`', '`<knopf>Absenden</knopf>`', '`<p>Absenden</p>`'], correct: 0, explanation: 'Knöpfe sind button-Elemente; der Text dazwischen ist die Aufschrift.' },
   ],
 });

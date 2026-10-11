@@ -245,7 +245,7 @@ schreibe('lessons/02-variablen.json', {
     {
       type: 'explain',
       sprecher: 'ayla',
-      text: 'Ab zur FUNKEN-Website! Das Skript bekommt seine ersten beiden Kisten: den Festivalnamen, der sich nie ändert, und einen Zähler für Reservierungen, der bei 0 startet – in Station 17 zählt er bei jedem Klick hoch.\n\nAchte auf die Schreibweise der Namen aus der Aufgabe (camelCase) und gib den Namen über die Variable aus, nicht als Text.',
+      text: 'Ab zur FUNKEN-Website! Das Skript bekommt seine ersten beiden Kisten: den Festivalnamen, der sich nie ändert, und einen Zähler für Reservierungen, der bei 0 startet – in Ort 17 zählt er bei jedem Klick hoch.\n\nAchte auf die Schreibweise der Namen aus der Aufgabe (camelCase) und gib den Namen über die Variable aus, nicht als Text.',
     },
     { type: 'code', etappe: '16-javascript-start/02-variablen' },
   ],
@@ -369,7 +369,7 @@ schreibe('lessons/04-wiederholung.json', {
   steps: [
     {
       type: 'explain',
-      text: 'Kurz durchatmen: Diese Runde mischt den neuen Strom (Skript, Konsole, Variablen, Rechnen) mit der Sicherheitszentrale, dem Bühnen-Layout, dem Schriftzug und den Zonen der Seite. Am Ende bekommt das FUNKEN-Skript eine Einlass-Meldung.',
+      text: 'Kurz durchatmen: Dieser Ort mischt den neuen Strom (Skript, Konsole, Variablen, Rechnen) mit der Sicherheitszentrale, dem Bühnen-Layout, dem Schriftzug und den Zonen der Seite. Am Ende bekommt das FUNKEN-Skript eine Einlass-Meldung.',
     },
     {
       type: 'quiz',
@@ -472,7 +472,7 @@ schreibe('lessons/05-projekt-erstes-skript.json', {
     {
       type: 'explain',
       sprecher: 'robby',
-      text: 'Meilenstein Stromkasten! Rückblick: Die Startseite bindet script.js ein, das Skript kennt Variablen mit Text und Zahlen, rechnet mit ihnen und baut Sätze aus Text und Werten. Alles landet noch in der Konsole – ab Station 17 auf der Seite selbst.\n\nZum Abschluss meldet das Skript, wie lange FUNKEN dauert: Name, Text, Zahl, Text – vier Teile, drei Pluszeichen.',
+      text: 'Meilenstein Stromkasten! Rückblick: Die Startseite bindet script.js ein, das Skript kennt Variablen mit Text und Zahlen, rechnet mit ihnen und baut Sätze aus Text und Werten. Alles landet noch in der Konsole – ab Ort 17 auf der Seite selbst.\n\nZum Abschluss meldet das Skript, wie lange FUNKEN dauert: Name, Text, Zahl, Text – vier Teile, drei Pluszeichen.',
     },
     {
       type: 'quiz',
@@ -489,7 +489,7 @@ schreibe('lessons/05-projekt-erstes-skript.json', {
     },
     {
       type: 'explain',
-      text: 'Jetzt die Etappe – und danach lohnt sich der Klick auf **FUNKEN-Website ansehen**: Neben index.html und style.css liegt dort jetzt dein script.js. Von außen sieht man noch nichts, doch die Konsole des Browsers zeigt schon jede Meldung.\n\nDer Stromkasten ist angeschlossen – gleich nimmt Sam die Station ab.',
+      text: 'Jetzt die Etappe – und danach lohnt sich der Klick auf **FUNKEN-Website ansehen**: Neben index.html und style.css liegt dort jetzt dein script.js. Von außen sieht man noch nichts, doch die Konsole des Browsers zeigt schon jede Meldung.\n\nDer Stromkasten ist angeschlossen – gleich kommt das Duell.',
     },
     { type: 'code', etappe: '16-javascript-start/05-projekt-erstes-skript' },
   ],
@@ -524,7 +524,7 @@ schreibe('pool.json', {
 /* ---------- Abnahme ---------- */
 schreibe('boss.json', {
   chapter: KAPITEL,
-  title: 'Abnahme: Stromkasten',
+  title: 'Prüfung: Stromkasten',
   intro: 'Strom! Ich hab die Konsole aufgemacht, und da stand wirklich „FUNKEN – Startseite geladen“. Zeig mir, dass das kein Zufall war – und dass ihr wirklich rechnet, statt nur Zahlen hinzutippen.',
   bestanden: 0.8,
   aufgaben: [

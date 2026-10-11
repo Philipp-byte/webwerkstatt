@@ -248,7 +248,7 @@ schreibe('lessons/02-interne-links-und-sprungmarken.json', {
     {
       type: 'explain',
       sprecher: 'ayla',
-      text: 'Navigation zuerst – dann weiß jede Seite, wo sie hingehört. Direkt unter die Hauptüberschrift kommt eine Linkzeile zu Programm, Galerie und Tickets. Die Seiten selbst bauen wir in den nächsten Stationen, die Links legen wir jetzt schon an.\n\nDazu eine Sprungmarke „Direkt zum Line-up“ – die Line-up-Überschrift braucht dafür eine id.',
+      text: 'Navigation zuerst – dann weiß jede Seite, wo sie hingehört. Direkt unter die Hauptüberschrift kommt eine Linkzeile zu Programm, Galerie und Tickets. Die Seiten selbst bauen wir an den nächsten Orten, die Links legen wir jetzt schon an.\n\nDazu eine Sprungmarke „Direkt zum Line-up“ – die Line-up-Überschrift braucht dafür eine id.',
     },
     { type: 'code', etappe: '05-links/02-interne-links-und-sprungmarken' },
   ],
@@ -382,7 +382,7 @@ schreibe('lessons/04-wiederholung.json', {
     {
       type: 'explain',
       sprecher: 'robby',
-      text: 'Kurzer Rundgang vor der Abnahme: Ich frage Links aus diesem Kapitel ab, dazu Listen aus Kapitel 4, Textelemente aus Kapitel 3 – und den Aufbau einer URL aus Kapitel 1. Denn ohne Protokoll und Domain führt kein Link nach draußen.',
+      text: 'Kurzer Rundgang vor dem Duell: Ich frage Links aus diesem Kapitel ab, dazu Listen aus Kapitel 4, Textelemente aus Kapitel 3 – und den Aufbau einer URL aus Kapitel 1. Denn ohne Protokoll und Domain führt kein Link nach draußen.',
     },
     {
       type: 'quiz',
@@ -502,7 +502,7 @@ schreibe('lessons/05-projekt-navigation.json', {
     },
     {
       type: 'explain',
-      text: 'Ab zur FUNKEN-Website: Die Hauptüberschrift bekommt die id `oben`, und vor dem Kontakt-Kommentar kommt ein Absatz mit dem Link „Nach oben“.\n\nDanach lohnt sich der Knopf **FUNKEN-Website ansehen** (`#/projekt`): Die Sprungmarken funktionieren dort schon. Die Links zu Programm, Galerie und Tickets warten noch auf ihre Seiten – die entstehen an den nächsten Stationen.',
+      text: 'Ab zur FUNKEN-Website: Die Hauptüberschrift bekommt die id `oben`, und vor dem Kontakt-Kommentar kommt ein Absatz mit dem Link „Nach oben“.\n\nDanach lohnt sich der Knopf **FUNKEN-Website ansehen** (`#/projekt`): Die Sprungmarken funktionieren dort schon. Die Links zu Programm, Galerie und Tickets warten noch auf ihre Seiten – die entstehen an den nächsten Orten.',
     },
     { type: 'code', etappe: '05-links/05-projekt-navigation' },
   ],
@@ -536,7 +536,7 @@ schreibe('pool.json', {
 /* ---------- Abnahme ---------- */
 schreibe('boss.json', {
   chapter: '05-links',
-  title: 'Abnahme: Wegweiser',
+  title: 'Prüfung: Wegweiser',
   intro: 'Wegweiser-Check! Meine Mutter hat gestern die Seite auf dem Handy aufgemacht und gefragt, wo man denn hinklickt. Zeig mir, dass jetzt jeder Link da hinführt, wo er soll – und dass die Mail bei uns ankommt.',
   bestanden: 0.8,
   aufgaben: [

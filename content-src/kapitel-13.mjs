@@ -550,7 +550,7 @@ schreibe('lessons/05-projekt-karten.json', {
     {
       type: 'explain',
       sprecher: 'robby',
-      text: 'Ab zur Galerie! Jedes `figure`-Element wird eine Karte: weißer Hintergrund, rundum 12 Pixel Innenabstand, 12 Pixel runde Ecken, kein Außenabstand. Dafür brauchst du eine **neue Regel** mit dem Element-Selektor.\n\nDanach lohnt sich ein Blick auf die ganze Website unter **#/projekt** – Station „Container“ geschafft, gleich nimmt Sam ab!',
+      text: 'Ab zur Galerie! Jedes `figure`-Element wird eine Karte: weißer Hintergrund, rundum 12 Pixel Innenabstand, 12 Pixel runde Ecken, kein Außenabstand. Dafür brauchst du eine **neue Regel** mit dem Element-Selektor.\n\nDanach lohnt sich ein Blick auf die ganze Website unter **#/projekt** – Kistenhafen ist fast befreit – gleich kommt das Duell!',
     },
     { type: 'code', etappe: '13-box-modell/05-projekt-karten' },
   ],
@@ -584,7 +584,7 @@ schreibe('pool.json', {
 /* ---------- Abnahme ---------- */
 schreibe('boss.json', {
   chapter: '13-box-modell',
-  title: 'Abnahme: Container',
+  title: 'Prüfung: Container',
   intro: 'Okay, die Kästen! Der Einlass-Hinweis sieht endlich aus wie ein Schild, die Tabellen haben Luft, die Galerie hat Karten – ich hab’s meiner Oma gezeigt, sie war begeistert. Zeig mir, dass du das Box-Ding wirklich drauf hast.',
   bestanden: 0.8,
   aufgaben: [
