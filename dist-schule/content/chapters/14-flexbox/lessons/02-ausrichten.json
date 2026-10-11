@@ -1,0 +1,232 @@
+{
+  "id": "02-ausrichten",
+  "title": "Ausrichten",
+  "konzepte": [
+    "css.justify-content",
+    "css.align-items"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Die Menüleiste ist eine Reihe – aber alle Links kleben am linken Rand. Um Kinder zu **verteilen** und **auszurichten**, brauchst du zwei Achsen:\n\n- **Hauptachse** – die Richtung von `flex-direction`; bei `row` von links nach rechts.\n- **Querachse** – quer dazu; bei `row` von oben nach unten.\n\n`justify-content` verteilt die Kinder entlang der Hauptachse, `align-items` richtet sie auf der Querachse aus. Beide Eigenschaften stehen am Container.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"22\" text-anchor=\"middle\" fill=\"#ffd84d\" font-weight=\"bold\">Hauptachse → justify-content</text><rect x=\"20\" y=\"34\" width=\"280\" height=\"96\" rx=\"6\" fill=\"#0f1320\" stroke=\"#38c7ff\" stroke-width=\"2\"/><path d=\"M34 50 H262 M254 44 L262 50 L254 56\" stroke=\"#ffd84d\" stroke-width=\"2\" fill=\"none\"/><rect x=\"62\" y=\"66\" width=\"48\" height=\"40\" rx=\"3\" fill=\"#ff7a45\"/><rect x=\"136\" y=\"66\" width=\"48\" height=\"40\" rx=\"3\" fill=\"#ff7a45\"/><rect x=\"210\" y=\"66\" width=\"48\" height=\"40\" rx=\"3\" fill=\"#ff7a45\"/><path d=\"M282 44 V118 M276 110 L282 118 L288 110\" stroke=\"#4ade80\" stroke-width=\"2\" fill=\"none\"/><text x=\"40\" y=\"122\" fill=\"#38c7ff\">flex-direction: row</text><text x=\"160\" y=\"150\" text-anchor=\"middle\" fill=\"#4ade80\" font-weight=\"bold\">Querachse → align-items</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Werkbank: `justify-content: center;` verteilt die Links mittig. **Ändere** `center` nacheinander in `space-between`, `space-around`, `flex-end` und `flex-start` – und beobachte, wo die Links landen.",
+      "html": "<nav class=\"menue\">\n  <a href=\"#start\">Start</a>\n  <a href=\"#spiele\">Spiele</a>\n  <a href=\"#ranglisten\">Ranglisten</a>\n  <a href=\"#profil\">Profil</a>\n</nav>\n",
+      "css": ".menue {\n  display: flex;\n  gap: 16px;\n  justify-content: center;\n  background-color: #1b1b2f;\n  padding: 12px;\n}\n\n.menue a {\n  color: #ffd23f;\n  text-decoration: none;\n}\n",
+      "editable": [
+        "css"
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Vier Links in einer Reihe: Der erste soll ganz links, der letzte ganz rechts stehen, der Rest gleichmäßig dazwischen. Welcher Wert von `justify-content`?",
+      "options": [
+        "`space-between`",
+        "`space-around`",
+        "`center`"
+      ],
+      "correct": 0,
+      "explanation": "`space-between` schiebt das erste und das letzte Kind an die Ränder und verteilt den Rest gleichmäßig. `space-around` lässt auch an den Rändern Luft, `center` sammelt alles in der Mitte."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Menüleiste: Die vier Links werden in der Mitte der Leiste verteilt, statt am linken Rand zu kleben.",
+      "starter": {
+        "html": "<nav class=\"menue\">\n  <a href=\"#start\">Start</a>\n  <a href=\"#spiele\">Spiele</a>\n  <a href=\"#ranglisten\">Ranglisten</a>\n  <a href=\"#profil\">Profil</a>\n</nav>\n",
+        "css": ".menue {\n  display: flex;\n  gap: 16px;\n  background-color: #1b1b2f;\n  padding: 12px;\n  /* hier verteilen */\n}\n\n.menue a {\n  color: #ffd23f;\n  text-decoration: none;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Verteilen entlang der Hauptachse – welche Eigenschaft war das?",
+        "`justify-content` kennt zum Beispiel `space-between` für die Ränder – hier soll es aber die Mitte sein.",
+        "Eine Zeile in der Regel `.menue`: `justify-content: …;` mit dem Wert für „Mitte“."
+      ],
+      "solution": {
+        "css": ".menue {\n  display: flex;\n  gap: 16px;\n  background-color: #1b1b2f;\n  padding: 12px;\n  justify-content: center;\n}\n\n.menue a {\n  color: #ffd23f;\n  text-decoration: none;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".menue",
+          "prop": "justify-content",
+          "expected": "center",
+          "label": "Die Links sind in der Mitte verteilt"
+        },
+        {
+          "type": "style",
+          "selector": ".menue",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Die Menüleiste bleibt ein Flex-Container"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Auf der **Querachse** richtet `align-items` aus. Standard ist `stretch`: Alle Kinder werden gleich hoch gezogen. Weitere Werte:\n\n- `center` – mittig\n- `flex-start` – am Anfang (bei `row` oben)\n- `flex-end` – am Ende (bei `row` unten)\n\nTypisch für eine Kopfzeile mit Logo und Menü auf gleicher Höhe:\n\n```css\n.kopf {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n```"
+    },
+    {
+      "type": "fill",
+      "text": "Kopfzeile: Logo ganz links, Menü ganz rechts, beide auf gleicher Höhe (mittig). **Vervollständige** die Regel.",
+      "template": ".kopf {\n  display: flex;\n  justify-content: ___;\n  align-items: ___;\n}",
+      "accept": [
+        [
+          "space-between"
+        ],
+        [
+          "center"
+        ]
+      ],
+      "hint": "Links und rechts an den Rand = „Platz dazwischen“ auf Englisch; mittig auf der Querachse."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Kopfzeile der Gaming-Seite: Das Logo steht ganz links, das Menü ganz rechts, und beide sind auf der Querachse mittig ausgerichtet.",
+      "starter": {
+        "html": "<header class=\"kopf\">\n  <img class=\"logo\" src=\"controller.svg\" alt=\"Logo der Gaming-Seite\">\n  <nav class=\"menue\">\n    <a href=\"#spiele\">Spiele</a>\n    <a href=\"#ranglisten\">Ranglisten</a>\n    <a href=\"#profil\">Profil</a>\n  </nav>\n</header>\n",
+        "css": ".kopf {\n  display: flex;\n  background-color: #1b1b2f;\n  padding: 12px 24px;\n  /* verteilen und ausrichten */\n}\n\n.logo {\n  width: 64px;\n}\n\n.menue a {\n  color: #ffd23f;\n  text-decoration: none;\n  margin-left: 16px;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Zwei Eigenschaften, zwei Achsen: Verteilen auf der Hauptachse, Ausrichten auf der Querachse.",
+        "Für „ganz links und ganz rechts“ gibt es bei `justify-content` einen Wert mit *between*. Für „mittig“ auf der Querachse den Wert `center` bei `align-items`.",
+        "Beide Zeilen kommen in die Regel `.kopf`: `justify-content: …;` und `align-items: …;`."
+      ],
+      "solution": {
+        "css": ".kopf {\n  display: flex;\n  background-color: #1b1b2f;\n  padding: 12px 24px;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.logo {\n  width: 64px;\n}\n\n.menue a {\n  color: #ffd23f;\n  text-decoration: none;\n  margin-left: 16px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".kopf",
+          "prop": "justify-content",
+          "expected": "space-between",
+          "label": "Logo ganz links, Menü ganz rechts"
+        },
+        {
+          "type": "style",
+          "selector": ".kopf",
+          "prop": "align-items",
+          "expected": "center",
+          "label": "Logo und Menü sind auf gleicher Höhe mittig"
+        },
+        {
+          "type": "style",
+          "selector": ".kopf",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Die Kopfzeile bleibt ein Flex-Container"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Bei `flex-direction: column` **drehen sich die Achsen**: Die Hauptachse zeigt nach unten, die Querachse nach rechts. Willst du gestapelte Kinder **horizontal zentrieren**, brauchst du deshalb `align-items: center` – nicht `justify-content`.\n\nSo zentriert eine Profilkarte Bild, Name und Level übereinander:\n\n```css\n.profil {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n```"
+    },
+    {
+      "type": "pair",
+      "text": "**Ordne** jeder Zeile ihre Wirkung zu (Container mit `flex-direction: row`).",
+      "pairs": [
+        [
+          "`justify-content: center`",
+          "Kinder mittig auf der Hauptachse (waagerecht)"
+        ],
+        [
+          "`justify-content: space-between`",
+          "erstes Kind links, letztes rechts, Rest gleichmäßig"
+        ],
+        [
+          "`justify-content: space-around`",
+          "gleich viel Luft um jedes Kind"
+        ],
+        [
+          "`align-items: center`",
+          "Kinder mittig auf der Querachse (senkrecht)"
+        ],
+        [
+          "`align-items: flex-start`",
+          "Kinder oben, am Anfang der Querachse"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Profilseite: Die Profilkarte stapelt Bild, Name und Level untereinander und zentriert sie horizontal. Die Aktionsleiste darunter verteilt ihre drei Knöpfe mittig, mit 12 Pixel Abstand.",
+      "starter": {
+        "html": "<div class=\"profil\">\n  <img src=\"katze.svg\" alt=\"Avatar: Katze mit Kopfhörern\">\n  <h2>Nova</h2>\n  <p>Level 42 · 9 870 Punkte</p>\n</div>\n\n<div class=\"aktionen\">\n  <button>Folgen</button>\n  <button>Nachricht</button>\n  <button>Duell</button>\n</div>\n",
+        "css": ".profil {\n  width: 320px;\n  padding: 16px;\n  border: 2px solid #b48cff;\n  border-radius: 12px;\n  /* stapeln und zentrieren */\n}\n\n.profil img {\n  width: 96px;\n}\n\n.aktionen {\n  width: 320px;\n  margin-top: 12px;\n  /* verteilen */\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Zwei Container, zwei Regeln. Bei der Profilkarte drehen sich die Achsen, weil die Richtung Spalte ist.",
+        "Gestapelt und horizontal zentriert heißt: Richtung Spalte plus Ausrichten auf der Querachse mit `center` – wie im Profil-Beispiel der Lektion. Die Leiste braucht das Verteilen auf der Hauptachse und `gap`.",
+        "Struktur: `.profil` bekommt drei Zeilen (Flexbox an, Richtung, Ausrichtung), `.aktionen` drei Zeilen (Flexbox an, Verteilen, Abstand)."
+      ],
+      "solution": {
+        "css": ".profil {\n  width: 320px;\n  padding: 16px;\n  border: 2px solid #b48cff;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n.profil img {\n  width: 96px;\n}\n\n.aktionen {\n  width: 320px;\n  margin-top: 12px;\n  display: flex;\n  justify-content: center;\n  gap: 12px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".profil",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Die Profilkarte ist ein Flex-Container"
+        },
+        {
+          "type": "style",
+          "selector": ".profil",
+          "prop": "flex-direction",
+          "expected": "column",
+          "label": "Bild, Name und Level stehen untereinander"
+        },
+        {
+          "type": "style",
+          "selector": ".profil",
+          "prop": "align-items",
+          "expected": "center",
+          "label": "Bild, Name und Level sind horizontal zentriert"
+        },
+        {
+          "type": "style",
+          "selector": ".aktionen",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Die Aktionsleiste ist ein Flex-Container"
+        },
+        {
+          "type": "style",
+          "selector": ".aktionen",
+          "prop": "justify-content",
+          "expected": "center",
+          "label": "Die Knöpfe sind mittig verteilt"
+        },
+        {
+          "type": "style",
+          "selector": ".aktionen",
+          "prop": "column-gap",
+          "expected": "12px",
+          "label": "Zwischen den Knöpfen sind 12 Pixel Abstand"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Zwei Wünsche für die FUNKEN-Startseite: Die Navigations-Links sollen in der Mitte verteilt sein – dafür bekommt die vorhandene nav-Regel eine Zeile mehr.\n\nUnd der Kopfbereich (header) soll ein Flex-Container mit Spaltenrichtung werden, in dem Überschrift, Absatz und Bühnenfoto horizontal zentriert sind. Dafür brauchst du eine neue Regel mit drei Eigenschaften – genau wie bei der Profilkarte."
+    },
+    {
+      "type": "code",
+      "etappe": "14-flexbox/02-ausrichten"
+    }
+  ]
+}

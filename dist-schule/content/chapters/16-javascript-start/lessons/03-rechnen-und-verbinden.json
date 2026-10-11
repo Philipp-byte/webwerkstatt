@@ -1,0 +1,196 @@
+{
+  "id": "03-rechnen-und-verbinden",
+  "title": "Rechnen und verbinden",
+  "konzepte": [
+    "js.operator",
+    "js.verkettung"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Vier Leute, je ein Döner für 6,50 € – wie viel zusammen? Solche Rechnungen erledigt JavaScript mit **Operatoren**:\n\n- `+` plus, `-` minus\n- `*` mal (der Stern, kein ×)\n- `/` geteilt (der Schrägstrich, kein ÷)\n\n```js\nconsole.log(6.5 * 4);   // 26\n```\n\nDas Ergebnis landet direkt in der Konsole – ohne Anführungszeichen, denn es ist eine Zahl.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"28\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\" font-size=\"13\">Das Plus hat zwei Jobs</text><rect x=\"12\" y=\"50\" width=\"296\" height=\"40\" rx=\"8\" fill=\"#1b2135\"/><text x=\"24\" y=\"76\" fill=\"#38c7ff\" font-family=\"monospace\" font-size=\"15\">5 + 3</text><path d=\"M96 70 H128\" stroke=\"#4ade80\" stroke-width=\"2\" marker-end=\"url(#gr)\"/><text x=\"138\" y=\"76\" fill=\"#4ade80\" font-family=\"monospace\" font-size=\"15\" font-weight=\"bold\">8</text><text x=\"186\" y=\"76\" fill=\"#eef2ff\">Zahl + Zahl: rechnen</text><rect x=\"12\" y=\"100\" width=\"296\" height=\"40\" rx=\"8\" fill=\"#1b2135\"/><text x=\"24\" y=\"126\" fill=\"#b48cff\" font-family=\"monospace\" font-size=\"15\">\"5\" + 3</text><path d=\"M96 120 H128\" stroke=\"#ffd84d\" stroke-width=\"2\" marker-end=\"url(#ge)\"/><text x=\"138\" y=\"126\" fill=\"#ffd84d\" font-family=\"monospace\" font-size=\"15\" font-weight=\"bold\">\"53\"</text><text x=\"186\" y=\"126\" fill=\"#eef2ff\">Text + Zahl: kleben</text><defs><marker id=\"gr\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#4ade80\"/></marker><marker id=\"ge\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#ffd84d\"/></marker></defs></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Meistens rechnest du mit Variablen – und JavaScript hält sich an **Punkt vor Strich**:\n\n```js\nconst tagesticket = 12;\nconst personen = 3;\nconsole.log(tagesticket * personen);        // 36\nconsole.log(tagesticket * personen + 5);    // 41\nconsole.log((tagesticket + 5) * personen);  // 51\n```\n\nKlammern gelten wie in Mathe. Das Ergebnis kannst du auch in eine neue Variable legen: `const summe = tagesticket * personen;`."
+    },
+    {
+      "type": "example",
+      "text": "Der Taschenrechner der Werkstatt. **Ändere** die Zahlen, **tausche** die Operatoren und **setze** Klammern – die Konsole zeigt jedes Ergebnis sofort.",
+      "js": "console.log(7 + 3);\nconsole.log(7 - 3);\nconsole.log(7 * 3);\nconsole.log(7 / 2);\nconsole.log(2 + 3 * 4);\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Was zeigt die Konsole bei `console.log(20 - 4 * 2);`?",
+      "options": [
+        "12",
+        "32",
+        "16"
+      ],
+      "correct": 0,
+      "explanation": "Punkt vor Strich: erst `4 * 2` = 8, dann 20 − 8 = 12. Für 32 bräuchtest du Klammern: `(20 - 4) * 2`."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** eine Konsolenausgabe mit den Gesamtpunkten aus beiden Leveln – berechnet aus den Variablen, nicht abgeschrieben.",
+      "starter": {
+        "js": "// Punktestand nach zwei Leveln\nconst level1 = 350;\nconst level2 = 420;\n"
+      },
+      "hints": [
+        "Plus verbindet die beiden Variablen zu einer Summe.",
+        "Muster: `console.log(a + b);` – mit den Namen der beiden Variablen.",
+        "Struktur: `console.log(… + …);` – in die Lücken kommen die Variablennamen, keine Zahlen."
+      ],
+      "solution": {
+        "js": "// Punktestand nach zwei Leveln\nconst level1 = 350;\nconst level2 = 420;\nconsole.log(level1 + level2);\n"
+      },
+      "tests": [
+        {
+          "type": "console",
+          "expected": "770",
+          "label": "Die Konsole zeigt 770"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "level1\\s*\\+\\s*level2|level2\\s*\\+\\s*level1",
+          "label": "Die Summe wird aus beiden Variablen berechnet"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Jetzt das Aha: Das Plus macht bei **Text** etwas anderes als bei Zahlen.\n\n```js\nconsole.log(5 + 3);            // 8  – Zahl plus Zahl: rechnen\nconsole.log(\"5\" + 3);          // 53 – Text plus Zahl: kleben\nconsole.log(\"Punkte: \" + 8);   // Punkte: 8\n```\n\nSobald ein Text dabei ist, **verkettet** das Plus: Es hängt die Teile aneinander. Das ist kein Fehler, sondern das Werkzeug, um Sätze aus Text und Werten zu bauen – solange du weißt, was Text und was Zahl ist."
+    },
+    {
+      "type": "fill",
+      "text": "Vier Bubble Teas zu 4,50 € – die Variablen `preis` (4.5) und `anzahl` (4) sind angelegt. Vervollständige die Ausgabe, damit die Konsole „Preis: 18“ zeigt.",
+      "template": "console.log(\"Preis: \" ___ preis ___ anzahl);",
+      "accept": [
+        [
+          "+"
+        ],
+        [
+          "*"
+        ]
+      ],
+      "hint": "Verbinden ist das Plus, malnehmen der Stern – Punkt vor Strich sorgt für die richtige Reihenfolge."
+    },
+    {
+      "type": "explain",
+      "text": "Mit Variablen baust du ganze Sätze – achte auf die **Leerzeichen** im Text:\n\n```js\nconst act = \"Neonpuls\";\nconst buehne = \"Hauptbühne\";\nconsole.log(act + \" spielt auf der \" + buehne);\n// Neonpuls spielt auf der Hauptbühne\n```\n\nRechnung und Text mischen geht auch: `\"Preis: \" + preis * anzahl` – erst mal (Punkt vor Strich), dann kleben. Und eine Zahl mitten im Satz? `\"Noch \" + tage + \" Tage\"` – funktioniert genauso."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** eine Konsolenausgabe „Hallo Lena aus Heilbronn!“ – Vorname und Stadt kommen aus den Variablen, nicht aus dem Text.",
+      "starter": {
+        "js": "// Begrüßung in der Lern-App\nconst vorname = \"Lena\";\nconst stadt = \"Heilbronn\";\n"
+      },
+      "hints": [
+        "Drei Textstücke und zwei Variablen, alle mit Plus verbunden.",
+        "Muster: `console.log(\"Hi \" + name + \"!\");` – die Leerzeichen gehören in den Text.",
+        "Struktur: `\"Hallo \" + … + \" aus \" + … + \"!\"` – in die Lücken kommen die Variablennamen."
+      ],
+      "solution": {
+        "js": "// Begrüßung in der Lern-App\nconst vorname = \"Lena\";\nconst stadt = \"Heilbronn\";\nconsole.log(\"Hallo \" + vorname + \" aus \" + stadt + \"!\");\n"
+      },
+      "tests": [
+        {
+          "type": "console",
+          "expected": "Hallo Lena aus Heilbronn!",
+          "label": "Die Konsole zeigt „Hallo Lena aus Heilbronn!“"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "\\+\\s*vorname\\s*\\+",
+          "label": "Der Vorname kommt aus der Variablen"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "\\+\\s*stadt\\s*\\+",
+          "label": "Die Stadt kommt aus der Variablen"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "Hallo Lena",
+          "absent": true,
+          "label": "Der Name steht nicht fest im Text"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Was zeigt die Konsole? Ordne zu.",
+      "pairs": [
+        [
+          "`5 + 3`",
+          "8"
+        ],
+        [
+          "`\"5\" + 3`",
+          "53"
+        ],
+        [
+          "`10 / 4`",
+          "2.5"
+        ],
+        [
+          "`\"Tor \" + 2`",
+          "Tor 2"
+        ],
+        [
+          "`2 + 3 * 4`",
+          "14"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** für die Bestellung eine Konsolenausgabe „Zu zahlen: 26 Euro“. Der Betrag wird aus Preis und Anzahl berechnet – die 26 darf nirgends im Skript stehen.",
+      "starter": {
+        "js": "// Bestellung an der Döner-Ecke\nconst preis = 6.5;\nconst anzahl = 4;\n"
+      },
+      "hints": [
+        "Text, Rechnung, Text – alles mit Plus verbunden; die Rechnung ist Preis mal Anzahl.",
+        "Muster: `console.log(\"Summe: \" + a * b + \" Punkte\");` – Punkt vor Strich rechnet erst, dann wird geklebt.",
+        "Struktur: `\"Zu zahlen: \" + … * … + \" Euro\"` – die Variablennamen in die Lücken."
+      ],
+      "solution": {
+        "js": "// Bestellung an der Döner-Ecke\nconst preis = 6.5;\nconst anzahl = 4;\nconsole.log(\"Zu zahlen: \" + preis * anzahl + \" Euro\");\n"
+      },
+      "tests": [
+        {
+          "type": "console",
+          "expected": "Zu zahlen: 26 Euro",
+          "label": "Die Konsole zeigt „Zu zahlen: 26 Euro“"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "preis\\s*\\*\\s*anzahl|anzahl\\s*\\*\\s*preis",
+          "label": "Der Betrag wird mit mal berechnet"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "\\b26\\b",
+          "absent": true,
+          "label": "Die 26 steht nicht im Skript"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "jonas",
+      "text": "Ab zur FUNKEN-Website! Drei Festivalpässe zu 20 € – das Skript rechnet die Summe aus und meldet sie als Satz in der Konsole. Zwei neue Konstanten, eine Ausgabe: Text plus Rechnung.\n\nSam wird fragen, ob wirklich gerechnet wird – also keine 60 hinschreiben. Später zeigt das Skript solche Summen direkt auf der Seite an."
+    },
+    {
+      "type": "code",
+      "etappe": "16-javascript-start/03-rechnen-und-verbinden"
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "id": "03-verschachtelte-selektoren",
+  "title": "Verschachtelte Selektoren",
+  "konzepte": [
+    "css.sel-nachfahre"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Auf der Startseite gibt es Links in der Navigation, im Text und im Fußbereich. Alle sind blau – im dunklen Fuß kaum lesbar. Die Regel `a` trifft eben **alle** Links.\n\nDu willst nur die Links **innerhalb** eines Bereichs treffen. Dafür gibt es den **Nachfahren-Selektor**: zwei Selektoren mit einem **Leerzeichen** dazwischen. Er heißt: „Elemente der zweiten Art, die irgendwo innerhalb der ersten liegen.“",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"24\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">nav a → nur die Links innerhalb von nav</text><rect x=\"14\" y=\"40\" width=\"140\" height=\"108\" rx=\"8\" fill=\"none\" stroke=\"#38c7ff\" stroke-width=\"2\"/><text x=\"24\" y=\"58\" fill=\"#38c7ff\" font-family=\"monospace\" font-size=\"13\">&lt;nav&gt;</text><rect x=\"26\" y=\"70\" width=\"116\" height=\"28\" rx=\"5\" fill=\"#ffd84d\"/><text x=\"84\" y=\"89\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\">&lt;a&gt; Programm</text><rect x=\"26\" y=\"108\" width=\"116\" height=\"28\" rx=\"5\" fill=\"#ffd84d\"/><text x=\"84\" y=\"127\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\">&lt;a&gt; Tickets</text><rect x=\"166\" y=\"40\" width=\"140\" height=\"108\" rx=\"8\" fill=\"none\" stroke=\"#b48cff\" stroke-width=\"2\"/><text x=\"176\" y=\"58\" fill=\"#b48cff\" font-family=\"monospace\" font-size=\"13\">&lt;main&gt;</text><rect x=\"178\" y=\"70\" width=\"116\" height=\"28\" rx=\"5\" fill=\"#e8ecf7\"/><text x=\"236\" y=\"89\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\">&lt;p&gt; Infos …</text><rect x=\"178\" y=\"108\" width=\"116\" height=\"28\" rx=\"5\" fill=\"#e8ecf7\"/><text x=\"236\" y=\"127\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\">&lt;a&gt; Fahrplan</text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "So sieht die Regel aus:\n\n```css\nheader a {\n  color: #fff7e8;\n}\n```\n\nLies von links nach rechts: „Suche den `header` – und darin alle `a`.“ Das Leerzeichen ist entscheidend: `header a` ist etwas völlig anderes als `header, a`. Mit Komma wäre es eine Gruppe – der ganze Kopfbereich **und** alle Links der Seite.\n\nKlassen und ids dürfen mitspielen: `.karte p` trifft alle Absätze in Elementen mit der Klasse karte."
+    },
+    {
+      "type": "example",
+      "text": "Nur die Links in der Navigation sind dunkel, der Link im Text bleibt blau. **Ersetze** `nav a` durch `main a` – jetzt trifft es den Link im Text. Und **probiere** `nav, a`: Was macht das Komma?",
+      "html": "<nav>\n  <a href=\"#\">Kader</a>\n  <a href=\"#\">Termine</a>\n  <a href=\"#\">Ergebnisse</a>\n</nav>\n<main>\n  <p>Nächstes Spiel am Samstag – Infos im <a href=\"#\">Team-Chat</a>.</p>\n</main>\n",
+      "css": "a {\n  color: #0b7dd6;\n}\n\nnav {\n  background-color: #e8ecf7;\n}\n\nnav a {\n  color: #1b1b2f;\n}\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Was trifft der Selektor `nav a`?",
+      "options": [
+        "Alle Links, die innerhalb der Navigation liegen",
+        "Die Navigation und alle Links der Seite",
+        "Alle Links mit der Klasse nav"
+      ],
+      "correct": 0,
+      "explanation": "Leerzeichen heißt „innerhalb von“. Die Navigation **und** alle Links wären `nav, a` – mit Komma. Eine Klasse hätte einen Punkt."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Links innerhalb der Turniertabelle: Sie bekommen die Farbe `#1a8f3c`. Der Link im Absatz über der Tabelle bleibt blau.",
+      "starter": {
+        "html": "<h2>Hallenturnier – Tabelle</h2>\n<p>Alle Spiele findest du im <a href=\"#\">Spielplan</a>.</p>\n<table>\n  <tr>\n    <th>Platz</th>\n    <th>Team</th>\n  </tr>\n  <tr>\n    <td>1</td>\n    <td><a href=\"#\">Team West</a></td>\n  </tr>\n  <tr>\n    <td>2</td>\n    <td><a href=\"#\">Team Nord</a></td>\n  </tr>\n  <tr>\n    <td>3</td>\n    <td><a href=\"#\">Team Süd</a></td>\n  </tr>\n</table>\n",
+        "css": "body {\n  color: #1b1b2f;\n}\n\na {\n  color: #0b7dd6;\n}\n\n/* Regel für die Links in der Tabelle */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Nicht alle Links – nur die innerhalb der Tabelle. Zwei Selektoren, ein Leerzeichen.",
+        "Muster aus einem anderen Kontext: `header a { color: red; }` färbt alle Links im Kopfbereich rot.",
+        "Erst das umschließende Element (die Tabelle), Leerzeichen, dann das Link-Element – dann die Klammern mit der Farbe."
+      ],
+      "solution": {
+        "css": "body {\n  color: #1b1b2f;\n}\n\na {\n  color: #0b7dd6;\n}\n\ntable a {\n  color: #1a8f3c;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "table a",
+          "prop": "color",
+          "expected": "#1a8f3c",
+          "label": "Die Team-Links in der Tabelle sind grün (#1a8f3c)"
+        },
+        {
+          "type": "style",
+          "selector": "p a",
+          "prop": "color",
+          "expected": "#0b7dd6",
+          "label": "Der Spielplan-Link im Absatz bleibt blau"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**Irgendwo innerhalb** heißt wirklich irgendwo: `table a` trifft den Link auch, wenn er in einer Zelle in einer Zeile in der Tabelle steckt. Der Browser prüft nur, ob irgendwo darüber ein `table` liegt.\n\nUnd der Streit mit der alten Regel? `nav a` ist **genauer** als `a`, weil es zwei Teile hat – und genauer gewinnt. Deshalb darf die allgemeine `a`-Regel stehen bleiben."
+    },
+    {
+      "type": "fill",
+      "text": "Alle Listenpunkte innerhalb der Navigation sollen fett werden. **Vervollständige** den Selektor.",
+      "template": "___ ___ {\n  font-weight: bold;\n}",
+      "accept": [
+        [
+          "nav"
+        ],
+        [
+          "li"
+        ]
+      ],
+      "hint": "Erst der Bereich (Navigation), dann das Element (Listenpunkt) – mit Leerzeichen."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Spielerkarten (Klasse `karte`): Überschriften innerhalb der Karten bekommen die Farbe `#0b7dd6`, Absätze innerhalb der Karten die Farbe `#6b6b7a`. Überschrift und Absatz über den Karten bleiben dunkel.",
+      "starter": {
+        "html": "<h2>Unser Kader</h2>\n<p>Klick auf eine Karte für die Statistik.</p>\n<div class=\"karte\">\n  <h3>Lena · Tor</h3>\n  <p>Seit 2024 im Team. 11 Spiele ohne Gegentor.</p>\n</div>\n<div class=\"karte\">\n  <h3>Mo · Mittelfeld</h3>\n  <p>Kapitän. 14 Vorlagen in dieser Saison.</p>\n</div>\n",
+        "css": "body {\n  color: #1b1b2f;\n}\n\n.karte {\n  background-color: #e8ecf7;\n}\n\n/* Regeln für Überschriften und Absätze in den Karten */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Zwei Regeln, beide beginnen mit der Klasse der Karte – dann Leerzeichen und das Element.",
+        "Muster: `.box li { color: red; }` färbt alle Listenpunkte in Elementen mit der Klasse box rot.",
+        "Erste Regel: Klassen-Selektor, Leerzeichen, h3. Zweite Regel: Klassen-Selektor, Leerzeichen, p. Jeweils die Farbe aus der Aufgabe."
+      ],
+      "solution": {
+        "css": "body {\n  color: #1b1b2f;\n}\n\n.karte {\n  background-color: #e8ecf7;\n}\n\n.karte h3 {\n  color: #0b7dd6;\n}\n\n.karte p {\n  color: #6b6b7a;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".karte h3",
+          "prop": "color",
+          "expected": "#0b7dd6",
+          "label": "Die Namen in den Karten sind blau"
+        },
+        {
+          "type": "style",
+          "selector": ".karte p",
+          "prop": "color",
+          "expected": "#6b6b7a",
+          "label": "Die Texte in den Karten sind grau"
+        },
+        {
+          "type": "style",
+          "selector": "body > h2",
+          "prop": "color",
+          "expected": "#1b1b2f",
+          "label": "Die Überschrift über den Karten bleibt dunkel"
+        },
+        {
+          "type": "style",
+          "selector": "body > p",
+          "prop": "color",
+          "expected": "#1b1b2f",
+          "label": "Der Absatz über den Karten bleibt dunkel"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Sortiere das HTML: zuerst die Navigation mit dem Start-Link, dann der Hauptbereich mit dem Hilfe-Link. So trifft `nav a` genau **einen** Link.",
+      "lines": [
+        "<nav>",
+        "  <a href=\"index.html\">Start</a>",
+        "</nav>",
+        "<main>",
+        "  <p>Fragen? <a href=\"hilfe.html\">Hilfe</a></p>",
+        "</main>"
+      ],
+      "explanation": "Nur der Start-Link liegt innerhalb von nav. Der Hilfe-Link steckt im main – `nav a` lässt ihn in Ruhe."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Behebe** den Fehler auf der Clan-Seite: Nur die Links in der dunklen Navigationsleiste sollen gelb sein. Stattdessen ist auch der Link im Text gelb – auf hellem Grund kaum lesbar.",
+      "starter": {
+        "html": "<header>\n  <h1>Clan Nachtfalke</h1>\n</header>\n<nav>\n  <a href=\"#\">Start</a>\n  <a href=\"#\">Kader</a>\n  <a href=\"#\">Termine</a>\n</nav>\n<main>\n  <p>Nächstes Scrim am Freitag – Details im <a href=\"#\">Team-Chat</a>.</p>\n</main>\n",
+        "css": "body {\n  color: #1b1b2f;\n  background-color: #fff7e8;\n}\n\na {\n  color: #0b7dd6;\n}\n\nnav {\n  background-color: #1b1b2f;\n}\n\nnav, a {\n  color: #ffd23f;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Schau dir die letzte Regel an: Trifft sie wirklich nur die Links innerhalb der Navigation?",
+        "Komma bedeutet Gruppe – „die Navigation und alle Links“. Für „Links innerhalb der Navigation“ brauchst du ein anderes Zeichen.",
+        "Muster: `footer p` trifft Absätze innerhalb des Fußbereichs – ohne Komma."
+      ],
+      "solution": {
+        "css": "body {\n  color: #1b1b2f;\n  background-color: #fff7e8;\n}\n\na {\n  color: #0b7dd6;\n}\n\nnav {\n  background-color: #1b1b2f;\n}\n\nnav a {\n  color: #ffd23f;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "nav a",
+          "prop": "color",
+          "expected": "#ffd23f",
+          "label": "Die Links in der Navigation sind gelb"
+        },
+        {
+          "type": "style",
+          "selector": "main a",
+          "prop": "color",
+          "expected": "#0b7dd6",
+          "label": "Der Link im Text ist wieder blau"
+        },
+        {
+          "type": "style",
+          "selector": "nav",
+          "prop": "background-color",
+          "expected": "#1b1b2f",
+          "label": "Die Navigationsleiste bleibt dunkel"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "jonas",
+      "text": "Auf der Startseite sind alle Links blau – auch im dunklen Fußbereich, wo Blau kaum zu erkennen ist, und in der Navigation, die bald ihren eigenen Look bekommt.\n\nZwei Nachfahren-Selektoren regeln das: Links in der Navigation werden dunkel, Links im Fuß gelb. Die Links im Hauptbereich behalten ihr Blau – die alte `a`-Regel bleibt einfach stehen."
+    },
+    {
+      "type": "code",
+      "etappe": "11-selektoren/03-verschachtelte-selektoren"
+    }
+  ]
+}

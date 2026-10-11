@@ -1,0 +1,223 @@
+{
+  "id": "01-externe-links",
+  "title": "Externe Links",
+  "konzepte": [
+    "html.a-extern"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Sam schreibt: „Die Leute fragen ständig nach dem Stadtbahn-Fahrplan – kann die Seite da nicht einfach hinführen?“ Kann sie. Dafür gibt es das **Link-Element** `<a>` – das a steht für *anchor*, Anker.\n\nEin Link hat zwei Teile: die **Zieladresse** im Attribut `href` und den **Linktext** zwischen den Tags – das, was man anklickt.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"224\" y=\"30\" text-anchor=\"middle\" fill=\"#ff7a45\" font-weight=\"bold\">Linktext: anklickbar</text><path d=\"M191 50 V40 H258 V50\" stroke=\"#ff7a45\" stroke-width=\"2\" fill=\"none\"/><rect x=\"12\" y=\"52\" width=\"296\" height=\"40\" rx=\"8\" fill=\"#1b2135\"/><text x=\"22\" y=\"78\" fill=\"#eef2ff\" font-family=\"monospace\" font-size=\"14\">&lt;a href=\"</text><text x=\"98\" y=\"78\" fill=\"#38c7ff\" font-family=\"monospace\" font-size=\"14\">https://…</text><text x=\"174\" y=\"78\" fill=\"#eef2ff\" font-family=\"monospace\" font-size=\"14\">\"&gt;</text><text x=\"191\" y=\"78\" fill=\"#ff7a45\" font-family=\"monospace\" font-size=\"14\">Fahrplan</text><text x=\"258\" y=\"78\" fill=\"#eef2ff\" font-family=\"monospace\" font-size=\"14\">&lt;/a&gt;</text><path d=\"M98 94 V104 H174 V94\" stroke=\"#38c7ff\" stroke-width=\"2\" fill=\"none\"/><text x=\"136\" y=\"122\" text-anchor=\"middle\" fill=\"#38c7ff\" font-weight=\"bold\">href: die Zieladresse</text><text x=\"22\" y=\"150\" fill=\"#eef2ff\">Im Browser sichtbar:</text><text x=\"170\" y=\"150\" fill=\"#ff7a45\" text-decoration=\"underline\">Fahrplan</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Ein Link mitten im Absatz. Der Browser zeigt ihn **blau und unterstrichen**, der Mauszeiger wird darüber zur Hand. **Ändere** den Linktext zwischen den Tags – das Ziel bleibt gleich. **Ändere** dann die Adresse in `https://www.example.org` – die Seite sieht gleich aus, aber der Klick führt woandershin.",
+      "html": "<h1>Anfahrt zum Turnier</h1>\n<p>Die Halle liegt direkt an der Stadtbahn. Alle Zeiten stehen im <a href=\"https://www.example.com\">Fahrplan der Stadtbahn</a>.</p>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Welches Attribut sagt dem Browser, **wohin** ein Link führt?",
+      "options": [
+        "`href`",
+        "`src`",
+        "`link`",
+        "`url`"
+      ],
+      "correct": 0,
+      "explanation": "`href` (hypertext reference) trägt die Zieladresse. `src` gehört zu Bildern – das kommt im nächsten Kapitel. `link` und `url` gibt es als Attribut nicht."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** im Absatz „Turnierplan:“ hinter dem Doppelpunkt einen Link: Der Linktext lautet „Alle Termine“ und führt zur Adresse https://www.example.com/turnier",
+      "starter": {
+        "html": "<h1>Clan Nachtwache</h1>\n<p>Wir spielen jeden Samstag ab 20 Uhr.</p>\n<p>Turnierplan: </p>\n"
+      },
+      "hints": [
+        "Ein Link ist ein `a`-Element mit dem Attribut für die Zieladresse. Der sichtbare Text steht zwischen öffnendem und schließendem Tag.",
+        "Muster aus einem anderen Kontext: `<a href=\"https://www.example.org\">Speisekarte</a>`",
+        "Der Link kommt in den vorhandenen Absatz, direkt hinter „Turnierplan: “ – Adresse und Text aus der Aufgabe einsetzen."
+      ],
+      "solution": {
+        "html": "<h1>Clan Nachtwache</h1>\n<p>Wir spielen jeden Samstag ab 20 Uhr.</p>\n<p>Turnierplan: <a href=\"https://www.example.com/turnier\">Alle Termine</a></p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "p a",
+          "count": 1,
+          "label": "Im Absatz steht genau ein Link"
+        },
+        {
+          "type": "attr",
+          "selector": "p a",
+          "attr": "href",
+          "expected": "https://www.example.com/turnier",
+          "label": "Der Link führt zu https://www.example.com/turnier"
+        },
+        {
+          "type": "text",
+          "selector": "p a",
+          "expected": "Alle Termine",
+          "label": "Der Linktext lautet „Alle Termine“"
+        },
+        {
+          "type": "text",
+          "selector": "p:nth-of-type(2)",
+          "expected": "Turnierplan: Alle Termine",
+          "label": "Das Wort „Turnierplan:“ steht vor dem Link"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Zu fremden Seiten führt immer die **komplette Adresse** – mit `https://` am Anfang. Fehlt das Protokoll, sucht der Browser eine eigene Datei mit diesem Namen.\n\n```html\n<p>Alle Regeln stehen im <a href=\"https://www.example.com/regeln\">Regelwerk des Verbands</a>.</p>\n```\n\nDer **Linktext** sagt, wohin es geht: „Regelwerk des Verbands“ statt „hier klicken“. Und der Link steht **im Text** – in einem Absatz oder Listenpunkt."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige den Link zur Website der Fahrschule.",
+      "template": "<___ ___=\"https://www.example.com/fahrschule\">Fahrschule am Neckar</a>",
+      "accept": [
+        [
+          "a"
+        ],
+        [
+          "href"
+        ]
+      ],
+      "hint": "Erst der Tag-Name des Link-Elements, dann das Attribut für die Zieladresse."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** den letzten Listenpunkt: Das Wort „Kalender“ wird zum Link und führt zu https://www.example.com/drops – der übrige Text des Listenpunkts bleibt stehen.",
+      "starter": {
+        "html": "<h2>Sneaker-Drops im Oktober</h2>\n<ul>\n  <li>3. Oktober: Retro Runner</li>\n  <li>17. Oktober: Court Classic</li>\n  <li>Alle Drops im Kalender</li>\n</ul>\n"
+      },
+      "hints": [
+        "Der Link kommt mitten in den Listenpunkt: Nur das eine Wort wird von den Link-Tags eingeschlossen.",
+        "So sieht das in einem Satz aus: `Mehr im <a href=\"https://www.example.org\">Regelwerk</a> des Verbands.`",
+        "Aufbau: `<li>Alle Drops im <a href=\"…\">…</a></li>` – Adresse und Wort aus der Aufgabe einsetzen."
+      ],
+      "solution": {
+        "html": "<h2>Sneaker-Drops im Oktober</h2>\n<ul>\n  <li>3. Oktober: Retro Runner</li>\n  <li>17. Oktober: Court Classic</li>\n  <li>Alle Drops im <a href=\"https://www.example.com/drops\">Kalender</a></li>\n</ul>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "li a",
+          "attr": "href",
+          "expected": "https://www.example.com/drops",
+          "label": "Der Link im Listenpunkt führt zu https://www.example.com/drops"
+        },
+        {
+          "type": "text",
+          "selector": "li a",
+          "expected": "Kalender",
+          "label": "Nur das Wort „Kalender“ ist der Link"
+        },
+        {
+          "type": "text",
+          "selector": "li:nth-child(3)",
+          "expected": "Alle Drops im Kalender",
+          "label": "Der Listenpunkt lautet weiterhin „Alle Drops im Kalender“"
+        },
+        {
+          "type": "selector",
+          "selector": "ul li",
+          "count": 3,
+          "label": "Die Liste hat noch drei Punkte"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Begriffe rund um den Link zu.",
+      "pairs": [
+        [
+          "`<a>`",
+          "das Link-Element – a wie Anker"
+        ],
+        [
+          "`href`",
+          "Attribut mit der Zieladresse"
+        ],
+        [
+          "Linktext",
+          "steht zwischen den Tags und ist anklickbar"
+        ],
+        [
+          "`https://`",
+          "Anfang jeder Adresse zu einer fremden Seite"
+        ],
+        [
+          "„hier klicken“",
+          "schlechter Linktext – sagt nicht, wohin es geht"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter dem Absatz eine Aufzählungsliste mit drei Links, ein Link pro Punkt – der Linktext ist jeweils der Serienname: „Nachtwache“ → https://www.example.com/nachtwache, „Kabelsalat“ → https://www.example.com/kabelsalat, „Neckar High“ → https://www.example.com/neckar-high",
+      "starter": {
+        "html": "<h1>Meine Top 3 Serien</h1>\n<p>Trailer und Infos zu meinen Lieblingsserien:</p>\n"
+      },
+      "hints": [
+        "Erst die Liste mit drei Punkten bauen, dann in jeden Punkt einen Link setzen.",
+        "Ein Listenpunkt mit Link sieht so aus: `<li><a href=\"https://www.example.org\">Fahrschule</a></li>`",
+        "Aufbau: `<ul>` mit drei `<li>`, darin jeweils `<a href=\"…\">…</a>` – Adressen und Seriennamen aus der Aufgabe."
+      ],
+      "solution": {
+        "html": "<h1>Meine Top 3 Serien</h1>\n<p>Trailer und Infos zu meinen Lieblingsserien:</p>\n<ul>\n  <li><a href=\"https://www.example.com/nachtwache\">Nachtwache</a></li>\n  <li><a href=\"https://www.example.com/kabelsalat\">Kabelsalat</a></li>\n  <li><a href=\"https://www.example.com/neckar-high\">Neckar High</a></li>\n</ul>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "ul li",
+          "count": 3,
+          "label": "Die Aufzählungsliste hat drei Punkte"
+        },
+        {
+          "type": "selector",
+          "selector": "li > a",
+          "count": 3,
+          "label": "In jedem Punkt steht ein Link"
+        },
+        {
+          "type": "text",
+          "selector": "a[href=\"https://www.example.com/nachtwache\"]",
+          "expected": "Nachtwache",
+          "label": "Der Link „Nachtwache“ führt zur richtigen Adresse"
+        },
+        {
+          "type": "text",
+          "selector": "a[href=\"https://www.example.com/kabelsalat\"]",
+          "expected": "Kabelsalat",
+          "label": "Der Link „Kabelsalat“ führt zur richtigen Adresse"
+        },
+        {
+          "type": "text",
+          "selector": "a[href=\"https://www.example.com/neckar-high\"]",
+          "expected": "Neckar High",
+          "label": "Der Link „Neckar High“ führt zur richtigen Adresse"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "p",
+            "ul"
+          ],
+          "label": "Die Liste steht unter dem Absatz"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Endlich! Ihr baut den Fahrplan-Link ein? Dann kann ich aufhören, jedem einzeln die Bahnzeiten zu schicken.\n\nDer kommt unter die Anfahrts-Liste, in einen eigenen Absatz. Fremde Seite, also komplette Adresse. Und bitte mit einem Text, der sagt, was das ist – nicht „hier klicken“."
+    },
+    {
+      "type": "code",
+      "etappe": "05-links/01-externe-links"
+    }
+  ]
+}

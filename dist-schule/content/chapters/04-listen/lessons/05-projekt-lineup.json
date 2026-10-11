@@ -1,0 +1,47 @@
+{
+  "id": "05-projekt-lineup",
+  "title": "Projekt: Line-up komplett",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Leute, die Tafel sieht richtig gut aus! Zwei Sachen kamen heute Nacht noch rein: **Lou & die Lichter** haben zugesagt – Zeltbühne, als dritter Act. Und bei der Anfahrt fehlt nach dem Ticket der wichtigste Schritt: **Feiern**.\n\nSchafft ihr das noch, bevor ich die Station abnehme?"
+    },
+    {
+      "type": "quiz",
+      "question": "Ein neuer Act soll als dritter Punkt in die innere Liste der Zeltbühne. Wo landet die neue Zeile?",
+      "options": [
+        "Nach „Die Kabelträger“, noch vor dem schließenden Tag der inneren Liste",
+        "Nach dem schließenden Tag der äußeren Liste",
+        "Als neuer Punkt der äußeren Liste, neben Hauptbühne und Zeltbühne"
+      ],
+      "correct": 0,
+      "explanation": "Der Act gehört zur Zeltbühne – also in deren innere Liste, als letzter Punkt vor deren schließendem Tag."
+    },
+    {
+      "type": "order",
+      "text": "**Bringe** den Festival-Rundgang in die richtige Reihenfolge: nummerierte Schritte, im ersten Schritt eine innere Liste.",
+      "lines": [
+        "<ol>",
+        "  <li>Einlass",
+        "    <ul>",
+        "      <li>Ticket &amp; Ausweis zeigen</li>",
+        "    </ul>",
+        "  </li>",
+        "  <li>Ab zur Hauptbühne</li>",
+        "</ol>"
+      ],
+      "explanation": "Innere Liste im ersten Schritt, dann dessen schließendes Tag, dann der zweite Schritt. Das &-Zeichen steht als Entity."
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Rückblick: Du kannst Punktelisten, nummerierte Listen und Listen in Listen – und weißt, dass die innere Liste vor dem schließenden Tag des Punkts steht.\n\nNach der Etappe klick unten auf **FUNKEN-Website ansehen**: Die Programm-Tafel ist damit komplett. Dann wartet Sam mit der Abnahme."
+    },
+    {
+      "type": "code",
+      "etappe": "04-listen/05-projekt-lineup"
+    }
+  ]
+}

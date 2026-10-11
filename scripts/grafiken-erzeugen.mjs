@@ -40,7 +40,7 @@ function manifestSchreiben() {
     for (const id of fs.readdirSync(figurenDir)) {
       const d = path.join(figurenDir, id);
       if (!fs.statSync(d).isDirectory()) continue;
-      for (const f of fs.readdirSync(d)) if (/\.(webp|png)$/.test(f)) bilder.push(`${id}/${f.replace(/\.(webp|png)$/, '')}`);
+      for (const f of fs.readdirSync(d)) if (f.endsWith('.webp')) bilder.push(`${id}/${f.slice(0, -5)}`); // Robbys PNG-Posen kennt die App selbst
     }
   }
   const orte = {};

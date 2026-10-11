@@ -1,0 +1,203 @@
+{
+  "id": "02-tags-und-attribute",
+  "title": "Tags und Attribute",
+  "konzepte": [
+    "html.attribut",
+    "html.verschachtelung"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Sam will ein Bild der Foodtrucks auf der Seite. Dafür gibt es das Tag `<img>` – aber `<img>` allein weiß nicht, *welches* Bild.\n\nDiese Zusatzinfo liefert ein **Attribut**. Es steht im öffnenden Tag, nach dem Tag-Namen, immer in der Form `name=\"wert\"`:\n\n```html\n<img src=\"foodtruck.svg\" alt=\"Foodtruck mit Warteschlange\">\n```\n\n`src` nennt die Bilddatei, `alt` einen **Ersatztext**, falls das Bild nicht lädt. `<img>` ist ein Leerelement – kein schließender Tag.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"26\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Attribut = Name + Wert</text><rect x=\"24\" y=\"44\" width=\"272\" height=\"46\" rx=\"8\" fill=\"#1b2135\"/><text x=\"40\" y=\"75\" fill=\"#ff7a45\" font-family=\"monospace\" font-size=\"18\">&lt;img</text><text x=\"94\" y=\"75\" fill=\"#38c7ff\" font-family=\"monospace\" font-size=\"18\">src</text><text x=\"127\" y=\"75\" fill=\"#eef2ff\" font-family=\"monospace\" font-size=\"18\">=</text><text x=\"138\" y=\"75\" fill=\"#ffd84d\" font-family=\"monospace\" font-size=\"18\">\"pizza.svg\"</text><text x=\"258\" y=\"75\" fill=\"#ff7a45\" font-family=\"monospace\" font-size=\"18\">&gt;</text><path d=\"M94 96 V104 H126 V96\" stroke=\"#38c7ff\" fill=\"none\"/><text x=\"110\" y=\"120\" text-anchor=\"middle\" fill=\"#38c7ff\">Name</text><path d=\"M138 96 V104 H257 V96\" stroke=\"#ffd84d\" fill=\"none\"/><text x=\"197\" y=\"120\" text-anchor=\"middle\" fill=\"#ffd84d\">Wert</text><text x=\"160\" y=\"148\" text-anchor=\"middle\" fill=\"#eef2ff\">Der Wert steht immer in Anführungszeichen.</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "**Ändere** `pizza.svg` in `katze.svg` und beobachte das Bild. Baue dann einen Tippfehler in den Dateinamen ein (`pizzza.svg`) – was zeigt der Browser stattdessen?",
+      "html": "<h1>Pizza-Ecke</h1>\n<p>Heute: Margherita, Funghi und Salami.</p>\n<img src=\"pizza.svg\" alt=\"Eine Pizza mit Salami\">\n"
+    },
+    {
+      "type": "quiz",
+      "question": "In `<img src=\"katze.svg\" alt=\"Katze\">` – was ist `katze.svg`?",
+      "options": [
+        "Der Wert des Attributs src",
+        "Der Name eines Attributs",
+        "Der Inhalt des Elements img"
+      ],
+      "correct": 0,
+      "explanation": "Ein Attribut hat Name und Wert: `src` ist der Name, `katze.svg` der Wert. Einen Inhalt hat `<img>` nicht – es ist ein Leerelement."
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** unter dem Absatz ein Bild: Es zeigt die Datei `sneaker.svg` und trägt den Ersatztext „Retro-Runner in Weiß“.",
+      "starter": {
+        "html": "<h1>Kick Lab</h1>\n<p>Neu im Store: der Retro-Runner in Weiß.</p>\n"
+      },
+      "hints": [
+        "Bilder holst du mit dem Leerelement img in die Seite. Es braucht zwei Attribute: eines für die Datei, eines für den Ersatztext.",
+        "Muster mit einem anderen Bild: `<img src=\"katze.svg\" alt=\"Eine Katze\">` – die Werte stehen in Anführungszeichen.",
+        "Tausche Dateiname und Ersatztext gegen die Angaben aus der Aufgabe – in einer eigenen Zeile unter dem Absatz."
+      ],
+      "solution": {
+        "html": "<h1>Kick Lab</h1>\n<p>Neu im Store: der Retro-Runner in Weiß.</p>\n<img src=\"sneaker.svg\" alt=\"Retro-Runner in Weiß\">\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "img",
+          "count": 1,
+          "label": "Es gibt genau ein Bild"
+        },
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "src",
+          "expected": "sneaker.svg",
+          "label": "Das Bild zeigt die Datei sneaker.svg"
+        },
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "alt",
+          "expected": "Retro-Runner in Weiß",
+          "label": "Der Ersatztext lautet „Retro-Runner in Weiß“"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "p",
+            "img"
+          ],
+          "label": "Das Bild steht unter dem Absatz"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Attribute gibt es auch bei Elementen mit Inhalt. Ein **Link** entsteht mit `<a>`; sein Attribut `href` sagt, wohin er führt – zu einer anderen Datei oder zu einer kompletten URL:\n\n```html\n<a href=\"regeln.html\">Unsere Clan-Regeln</a>\n<a href=\"https://sneaker-lager.de\">Zum Sneaker-Lager</a>\n```\n\nDer Inhalt zwischen den Tags ist der klickbare Text. Ohne `href` wäre `<a>` nur normaler Text – der Browser wüsste ja nicht, wohin."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige die beiden Attribute: das Ziel des Links und den Ersatztext des Bildes.",
+      "template": "<a ___=\"tickets.html\">Tickets kaufen</a>\n<img src=\"ticket.svg\" ___=\"Ein Festivalticket\">",
+      "accept": [
+        [
+          "href"
+        ],
+        [
+          "alt"
+        ]
+      ],
+      "hint": "Lücke 1: das Attribut, das dem Link sein Ziel gibt. Lücke 2: das Attribut für den Ersatztext, falls das Bild nicht lädt."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter dem Absatz einen Link mit dem Text „Zur Anmeldung“, der zur Datei anmeldung.html führt.",
+      "starter": {
+        "html": "<h1>Clan Nachtfalken</h1>\n<p>Nächstes Turnier: Samstag, 20 Uhr – jetzt anmelden!</p>\n"
+      },
+      "hints": [
+        "Ein Link ist ein a-Element mit Inhalt. Das Ziel steht als Attribut im öffnenden Tag.",
+        "Muster aus einem anderen Zusammenhang: `<a href=\"speisekarte.html\">Zur Speisekarte</a>`.",
+        "Setze als Ziel den Dateinamen aus der Aufgabe ein und als Inhalt den Linktext – in einer eigenen Zeile unter dem Absatz."
+      ],
+      "solution": {
+        "html": "<h1>Clan Nachtfalken</h1>\n<p>Nächstes Turnier: Samstag, 20 Uhr – jetzt anmelden!</p>\n<a href=\"anmeldung.html\">Zur Anmeldung</a>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "a",
+          "expected": "Zur Anmeldung",
+          "label": "Der Link heißt „Zur Anmeldung“"
+        },
+        {
+          "type": "attr",
+          "selector": "a",
+          "attr": "href",
+          "expected": "anmeldung.html",
+          "label": "Der Link führt zu anmeldung.html"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "p",
+            "a"
+          ],
+          "label": "Der Link steht unter dem Absatz"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Elemente können **ineinander** stecken – das heißt **Verschachtelung**. Ein Link mitten im Absatz:\n\n```html\n<p>Alle Termine stehen im <a href=\"plan.html\">Trainingsplan</a>.</p>\n```\n\nDie Regel: **Was zuletzt geöffnet wurde, wird zuerst geschlossen.** Der Link geht innerhalb des Absatzes auf und dort auch wieder zu. Falsch wäre `<p><a>…</p></a>` – die Tags überkreuzen sich wie verhakte Kopfhörerkabel."
+    },
+    {
+      "type": "order",
+      "text": "Bring die Zeilen in die richtige Reihenfolge – der Link steckt im Absatz.",
+      "lines": [
+        "<p>",
+        "  Lies vor dem Beitritt",
+        "  <a href=\"regeln.html\">unsere Regeln</a>",
+        "  – dann geht es los.",
+        "</p>"
+      ],
+      "explanation": "Der Absatz geht zuerst auf und zuletzt zu – der Link liegt komplett dazwischen."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Korrigiere** zwei Fehler auf der Clan-Seite: Statt des Controller-Bildes erscheint nur der Ersatztext, und der letzte Absatz ist plötzlich komplett ein Link – obwohl nur „Turnierplan“ verlinkt sein soll.",
+      "starter": {
+        "html": "<h1>Clan Nachtfalken</h1>\n<img scr=\"controller.svg\" alt=\"Ein Controller\">\n<p>Wir treten jeden Samstag in der Liga an.</p>\n<p>Alle Termine findest du im <a href=\"turniere.html\">Turnierplan.</p>\n<p>Neue Mitglieder sind jederzeit willkommen!</p>\n"
+      },
+      "hints": [
+        "Fehlendes Bild: Vergleiche den Namen des ersten Attributs im img-Tag Buchstabe für Buchstabe mit dem, was du gelernt hast.",
+        "Endloser Link: Der Link hat einen öffnenden Tag – wo ist sein schließender? Ohne ihn läuft der Link einfach weiter.",
+        "Muster: `<img src=\"…\" alt=\"…\">` und `<p>Text <a href=\"…\">Linktext</a> Text</p>` – zuletzt geöffnet, zuerst geschlossen."
+      ],
+      "solution": {
+        "html": "<h1>Clan Nachtfalken</h1>\n<img src=\"controller.svg\" alt=\"Ein Controller\">\n<p>Wir treten jeden Samstag in der Liga an.</p>\n<p>Alle Termine findest du im <a href=\"turniere.html\">Turnierplan</a>.</p>\n<p>Neue Mitglieder sind jederzeit willkommen!</p>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "src",
+          "expected": "controller.svg",
+          "label": "Das Controller-Bild wird geladen"
+        },
+        {
+          "type": "selector",
+          "selector": "a",
+          "count": 1,
+          "label": "Es gibt genau einen Link"
+        },
+        {
+          "type": "text",
+          "selector": "a",
+          "expected": [
+            "Turnierplan",
+            "Turnierplan."
+          ],
+          "label": "Verlinkt ist nur „Turnierplan“"
+        },
+        {
+          "type": "selector",
+          "selector": "a p",
+          "count": 0,
+          "label": "Der letzte Absatz ist kein Link mehr"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "„In der Überschrift steht jetzt FUNKEN – aber niemand weiß, was das ist! Schreibt einen Satz darunter: Schülerfestival, zwei Bühnen, Foodtrucks, Open Air am Neckar.“\n\nDas erledigst du mit einem Absatz direkt unter der Hauptüberschrift. Der Text muss **genau** stimmen, inklusive Gedankenstrich und Punkt – kopiere ihn am besten aus der Aufgabe."
+    },
+    {
+      "type": "code",
+      "etappe": "02-html-erste-schritte/02-tags-und-attribute"
+    }
+  ]
+}

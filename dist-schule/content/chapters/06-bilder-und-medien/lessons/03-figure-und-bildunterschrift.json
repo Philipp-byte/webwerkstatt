@@ -1,0 +1,208 @@
+{
+  "id": "03-figure-und-bildunterschrift",
+  "title": "figure und Bildunterschrift",
+  "konzepte": [
+    "html.figure"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Sam will unter jedem Foto lesen, was drauf ist – sichtbar für alle, nicht nur für Screenreader. Dafür gibt es einen eigenen Block: **figure** fasst ein Bild und seine Beschriftung zusammen, **figcaption** ist die sichtbare **Bildunterschrift**.\n\n```html\n<figure>\n  <img src=\"pizza.svg\" alt=\"Eine Pizza Margherita\">\n  <figcaption>Unsere Margherita – frisch aus dem Ofen</figcaption>\n</figure>\n```\n\nBeide haben einen schließenden Tag, das Bild bleibt ein Leerelement.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"18\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">figure hält Bild und Unterschrift zusammen</text><rect x=\"70\" y=\"30\" width=\"180\" height=\"122\" rx=\"10\" fill=\"none\" stroke=\"#b48cff\" stroke-width=\"2\"/><text x=\"82\" y=\"47\" fill=\"#b48cff\" font-family=\"monospace\">&lt;figure&gt;</text><rect x=\"84\" y=\"56\" width=\"152\" height=\"56\" rx=\"6\" fill=\"#e8ecf7\"/><text x=\"160\" y=\"88\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\">&lt;img src alt&gt;</text><rect x=\"84\" y=\"118\" width=\"152\" height=\"24\" rx=\"6\" fill=\"#ff7a45\"/><text x=\"160\" y=\"135\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\">&lt;figcaption&gt;</text><text x=\"286\" y=\"135\" text-anchor=\"middle\" fill=\"#ff7a45\">sichtbar</text><text x=\"34\" y=\"88\" text-anchor=\"middle\" fill=\"#38c7ff\">Bild</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "**Ändere** den Text in der Bildunterschrift. **Verschiebe** dann die figcaption-Zeile vor das Bild – die Unterschrift wandert nach oben. Beides ist erlaubt, solange sie innerhalb von figure bleibt.",
+      "html": "<h1>Mietz, die Werkstatt-Katze</h1>\n<figure>\n  <img src=\"katze.svg\" alt=\"Eine graue Katze mit gelben Augen\">\n  <figcaption>Mietz auf ihrem Lieblingsplatz: der Tastatur</figcaption>\n</figure>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Wo gehört die sichtbare Bildunterschrift hin?",
+      "options": [
+        "In ein figcaption-Element innerhalb von figure",
+        "In das alt-Attribut des Bildes",
+        "In das src-Attribut, hinter den Dateinamen"
+      ],
+      "correct": 0,
+      "explanation": "alt ist der unsichtbare Ersatz fürs Bild. Die sichtbare Unterschrift steht in figcaption – und figure hält beides zusammen."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter dem Absatz einen Bild-Block: das Bild sneaker.svg (Alternativtext „Ein blauer Sneaker mit weißen Streifen“) mit der Bildunterschrift „Sieger im März: der Blaue“.",
+      "starter": {
+        "html": "<h1>Sneaker des Monats</h1>\n<p>Die Wahl war knapp – hier ist der Sieger:</p>\n"
+      },
+      "hints": [
+        "Ein Bild-Block ist ein figure-Element; Bild und Unterschrift stehen darin.",
+        "Die Unterschrift ist ein eigenes Element mit schließendem Tag, direkt unter dem Bild: `<figcaption>Text</figcaption>`.",
+        "Struktur: `<figure>`, darin das Bild-Element, dann die Unterschrift, dann `</figure>`."
+      ],
+      "solution": {
+        "html": "<h1>Sneaker des Monats</h1>\n<p>Die Wahl war knapp – hier ist der Sieger:</p>\n<figure>\n  <img src=\"sneaker.svg\" alt=\"Ein blauer Sneaker mit weißen Streifen\">\n  <figcaption>Sieger im März: der Blaue</figcaption>\n</figure>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "figure img",
+          "attr": "src",
+          "expected": "sneaker.svg",
+          "label": "Im Bild-Block liegt sneaker.svg"
+        },
+        {
+          "type": "attr",
+          "selector": "figure img",
+          "attr": "alt",
+          "expected": "Ein blauer Sneaker mit weißen Streifen",
+          "label": "Der Alternativtext stimmt"
+        },
+        {
+          "type": "text",
+          "selector": "figure figcaption",
+          "expected": "Sieger im März: der Blaue",
+          "label": "Die Bildunterschrift lautet „Sieger im März: der Blaue“"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "p",
+            "figure"
+          ],
+          "label": "Der Block steht unter dem Absatz"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**alt** und **figcaption** sind keine Doppelung:\n\n- `alt` ersetzt das Bild, wenn es fehlt oder vorgelesen wird – er beschreibt, was zu sehen ist.\n- `figcaption` sehen alle. Sie ergänzt: Name, Ort, Anlass, Fotograf:in.\n\nEin figure-Block kann statt eines Bildes auch ein Video halten:\n\n```html\n<figure>\n  <video controls src=\"clip.webm\" width=\"320\"></video>\n  <figcaption>Das Finale – letzte Minute</figcaption>\n</figure>\n```"
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige den Bild-Block für ein Festivalticket.",
+      "template": "<___>\n  <img src=\"ticket.svg\" alt=\"Ein gelbes Festivalticket\">\n  <___>Mein Ticket für Samstag</figcaption>\n</___>",
+      "accept": [
+        [
+          "figure"
+        ],
+        [
+          "figcaption"
+        ],
+        [
+          "figure"
+        ]
+      ],
+      "hint": "Außen der Block, innen die Unterschrift – der schließende Tag passt zum öffnenden."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** die Fan-Seite: Die Bildunterschrift steht neben dem Foto statt darunter, und der Absatz mit dem nächsten Heimspiel ist nach rechts gerutscht. Beide Fehler stecken im Bild-Block.",
+      "starter": {
+        "html": "<h1>SV Neckarblick – Fans</h1>\n<figure>\n  <img src=\"crowd.svg\" alt=\"Der Fanblock beim Heimspiel\" width=\"200\">\n  <figcapton>Der Fanblock beim Derby</figcapton>\n<p>Nächstes Heimspiel: Samstag, 15 Uhr.</p>\n"
+      },
+      "hints": [
+        "Zwei Stellen: der Name des Unterschrift-Elements und das Ende des Blocks.",
+        "Jeder Block braucht seinen schließenden Tag, sonst gehört alles danach noch dazu. Lies den Tag-Namen der Unterschrift Buchstabe für Buchstabe.",
+        "Ziel-Struktur: `<figure>` – Bild – `<figcaption>…</figcaption>` – `</figure>` – dann erst der Absatz."
+      ],
+      "solution": {
+        "html": "<h1>SV Neckarblick – Fans</h1>\n<figure>\n  <img src=\"crowd.svg\" alt=\"Der Fanblock beim Heimspiel\" width=\"200\">\n  <figcaption>Der Fanblock beim Derby</figcaption>\n</figure>\n<p>Nächstes Heimspiel: Samstag, 15 Uhr.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "figure > figcaption",
+          "expected": "Der Fanblock beim Derby",
+          "label": "Die Unterschrift steht als figcaption unter dem Bild"
+        },
+        {
+          "type": "selector",
+          "selector": "figure + p",
+          "label": "Der Absatz steht wieder außerhalb des Bild-Blocks"
+        },
+        {
+          "type": "attr",
+          "selector": "figure img",
+          "attr": "alt",
+          "expected": "Der Fanblock beim Heimspiel",
+          "label": "Das Foto ist unverändert"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Sortiere den Abschnitt: Überschrift, dann der Bild-Block (Bild vor Unterschrift), zum Schluss der Absatz.",
+      "lines": [
+        "<h2>Foodtrucks</h2>",
+        "<figure>",
+        "  <img src=\"foodtruck.svg\" alt=\"Der Pizza-Truck\">",
+        "  <figcaption>Der Pizza-Truck am Abend</figcaption>",
+        "</figure>",
+        "<p>Ab 17 Uhr geöffnet.</p>"
+      ],
+      "explanation": "figure öffnet den Block, Bild und Unterschrift liegen darin, dann wird der Block geschlossen – erst danach kommt der Absatz."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** die Seite: 1. Unter der Hauptüberschrift ein Absatz mit dem Link „Zurück zur Übersicht“ → uebersicht.html. 2. Am Ende der Abschnitt „Mein Setup“ mit einem Bild-Block: controller.svg (Alternativtext „Ein grauer Controller“), Unterschrift „Mein Controller“. 3. Ein zweiter Block: Video clip.webm mit Bedienelementen, Unterschrift „Mein bestes Match“.",
+      "starter": {
+        "html": "<h1>Nicos Setup</h1>\n<p>Alles, womit ich zocke – und mein bestes Match.</p>\n"
+      },
+      "hints": [
+        "Drei Bausteine, die du kennst: interner Link (nur der Dateiname), Zwischenüberschrift, zwei figure-Blöcke.",
+        "Der Link liegt in einem eigenen Absatz direkt nach der h1 – Muster: `<p><a href=\"start.html\">Start</a></p>`. Ein figure-Block darf statt eines Bildes ein Video enthalten.",
+        "Jeder Block: `<figure>` – Bild oder Video – `<figcaption>…</figcaption>` – `</figure>`."
+      ],
+      "solution": {
+        "html": "<h1>Nicos Setup</h1>\n<p><a href=\"uebersicht.html\">Zurück zur Übersicht</a></p>\n<p>Alles, womit ich zocke – und mein bestes Match.</p>\n<h2>Mein Setup</h2>\n<figure>\n  <img src=\"controller.svg\" alt=\"Ein grauer Controller\">\n  <figcaption>Mein Controller</figcaption>\n</figure>\n<figure>\n  <video controls src=\"clip.webm\" width=\"320\"></video>\n  <figcaption>Mein bestes Match</figcaption>\n</figure>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "h1 + p a",
+          "attr": "href",
+          "expected": "uebersicht.html",
+          "label": "Der Rück-Link unter der Überschrift führt zu uebersicht.html"
+        },
+        {
+          "type": "text",
+          "selector": "h2",
+          "expected": "Mein Setup",
+          "label": "Die Zwischenüberschrift lautet „Mein Setup“"
+        },
+        {
+          "type": "attr",
+          "selector": "figure img",
+          "attr": "src",
+          "expected": "controller.svg",
+          "label": "Im ersten Block liegt controller.svg"
+        },
+        {
+          "type": "text",
+          "selector": "figure figcaption",
+          "expected": "Mein Controller",
+          "label": "Die erste Unterschrift lautet „Mein Controller“"
+        },
+        {
+          "type": "selector",
+          "selector": "figure video[controls][src=\"clip.webm\"]",
+          "label": "Das Video liegt mit Bedienelementen in einem Block"
+        },
+        {
+          "type": "text",
+          "selector": "figure:nth-of-type(2) figcaption",
+          "expected": "Mein bestes Match",
+          "label": "Die zweite Unterschrift lautet „Mein bestes Match“"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "„Die Galerie braucht Fotos – und einen Weg zurück! Ich habe mich gestern selbst auf der Seite verlaufen.“\n\nAlso zwei Dinge: Unter die Hauptüberschrift kommt ein Absatz mit dem Rück-Link zur Startseite – interne Links kennst du aus Kapitel 05. Danach entsteht der Abschnitt „Eindrücke“ mit dem ersten Bild-Block: die Menge vor der Hauptbühne, mit Bildunterschrift – **vor** dem Jingle-Abschnitt."
+    },
+    {
+      "type": "code",
+      "etappe": "06-bilder-und-medien/03-figure-und-bildunterschrift"
+    }
+  ]
+}

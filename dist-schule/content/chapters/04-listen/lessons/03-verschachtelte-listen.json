@@ -1,0 +1,215 @@
+{
+  "id": "03-verschachtelte-listen",
+  "title": "Verschachtelte Listen",
+  "konzepte": [
+    "html.liste-verschachtelt"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Packliste fürs Festival: „Snacks“ und „Technik“ – und unter Snacks noch Chips und Nachos. Eine Liste **in** einer Liste, wie Ordner in Ordnern.\n\nIn HTML heißt das **verschachteln**: Die innere Liste steht **innerhalb** eines `<li>` – nach dem Text des Punkts und **vor** seinem schließenden `</li>`. Der Browser rückt sie automatisch ein.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"18\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Die innere Liste steht IM Punkt</text><rect x=\"8\" y=\"26\" width=\"202\" height=\"128\" rx=\"8\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"16\" y=\"42\" fill=\"#ff7a45\" font-family=\"monospace\">&lt;ul&gt;</text><rect x=\"20\" y=\"48\" width=\"180\" height=\"74\" rx=\"6\" fill=\"#0f1320\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"28\" y=\"64\" fill=\"#ffd84d\" font-family=\"monospace\">&lt;li&gt;Snacks</text><rect x=\"32\" y=\"70\" width=\"160\" height=\"38\" rx=\"5\" fill=\"#1b2135\" stroke=\"#b48cff\" stroke-width=\"2\"/><text x=\"40\" y=\"85\" fill=\"#b48cff\" font-family=\"monospace\">&lt;ul&gt;&lt;li&gt;Chips&lt;/li&gt;</text><text x=\"40\" y=\"101\" fill=\"#b48cff\" font-family=\"monospace\">&lt;li&gt;Nachos&lt;/li&gt;&lt;/ul&gt;</text><text x=\"28\" y=\"118\" fill=\"#ffd84d\" font-family=\"monospace\">&lt;/li&gt;</text><text x=\"16\" y=\"146\" fill=\"#ff7a45\" font-family=\"monospace\">&lt;/ul&gt;</text><rect x=\"218\" y=\"26\" width=\"94\" height=\"128\" rx=\"8\" fill=\"#e8ecf7\"/><circle cx=\"232\" cy=\"60\" r=\"3\" fill=\"#0f1320\"/><text x=\"242\" y=\"64\" fill=\"#0f1320\">Snacks</text><circle cx=\"246\" cy=\"84\" r=\"3\" fill=\"none\" stroke=\"#0f1320\" stroke-width=\"1.5\"/><text x=\"256\" y=\"88\" fill=\"#0f1320\">Chips</text><circle cx=\"246\" cy=\"106\" r=\"3\" fill=\"none\" stroke=\"#0f1320\" stroke-width=\"1.5\"/><text x=\"256\" y=\"110\" fill=\"#0f1320\">Nachos</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Die Packliste mit zwei Ebenen. **Verschiebe** „Powerbank“ von „Technik“ zu „Snacks“ und beobachte die Einrückung. **Ergänze** dann eine dritte Kategorie „Kleidung“ mit eigener innerer Liste.",
+      "html": "<h2>Packliste</h2>\n<ul>\n  <li>Snacks\n    <ul>\n      <li>Chips</li>\n      <li>Nachos</li>\n    </ul>\n  </li>\n  <li>Technik\n    <ul>\n      <li>Powerbank</li>\n      <li>Kopfhörer</li>\n    </ul>\n  </li>\n</ul>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Wo genau steht eine innere Liste?",
+      "options": [
+        "Innerhalb eines Listenpunkts, vor dessen schließendem Tag",
+        "Direkt nach dem schließenden Tag des Listenpunkts",
+        "Zwischen zwei Listenpunkten, direkt in der äußeren Liste",
+        "In einem eigenen Absatz unter der Liste"
+      ],
+      "correct": 0,
+      "explanation": "Die innere Liste gehört zu einem Punkt – also in dessen `<li>` hinein. Erst nach der inneren Liste wird der Punkt geschlossen."
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** im Punkt „Getränke“ eine innere Liste mit Punkten: „Cola“ und „Wasser“. Die äußere Liste behält ihre zwei Punkte.",
+      "starter": {
+        "html": "<h2>Pizza-Abend: Einkauf</h2>\n<ul>\n  <li>Pizzateig</li>\n  <li>Getränke</li>\n</ul>\n"
+      },
+      "hints": [
+        "Die innere Liste ist ein ganz normales `<ul>` mit zwei Punkten – nur der Ort ist besonders.",
+        "Sie steht im Punkt „Getränke“: nach dem Wort, aber noch vor dessen schließendem Tag. Muster: `<li>Obst <ul> … </ul> </li>`.",
+        "Das schließende Tag von „Getränke“ muss also nach unten wandern – hinter das Ende der inneren Liste."
+      ],
+      "solution": {
+        "html": "<h2>Pizza-Abend: Einkauf</h2>\n<ul>\n  <li>Pizzateig</li>\n  <li>Getränke\n    <ul>\n      <li>Cola</li>\n      <li>Wasser</li>\n    </ul>\n  </li>\n</ul>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "ul > li > ul",
+          "count": 1,
+          "label": "Eine innere Liste liegt in einem Punkt"
+        },
+        {
+          "type": "selector",
+          "selector": "body > ul > li:last-child > ul",
+          "count": 1,
+          "label": "Die innere Liste gehört zu „Getränke“"
+        },
+        {
+          "type": "selector",
+          "selector": "body > ul > li",
+          "count": 2,
+          "label": "Die äußere Liste hat weiterhin zwei Punkte"
+        },
+        {
+          "type": "selector",
+          "selector": "ul ul > li",
+          "count": 2,
+          "label": "Die innere Liste hat zwei Getränke"
+        },
+        {
+          "type": "text",
+          "selector": "ul ul > li:first-child",
+          "expected": "Cola",
+          "label": "Das erste Getränk ist Cola"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Verschachteln geht auch gemischt: eine Punkteliste in einer nummerierten Liste – oder umgekehrt. Ein Rezept-Schritt mit seinen Zutaten:\n\n```html\n<ol>\n  <li>Soße kochen\n    <ul>\n      <li>Tomaten</li>\n      <li>Knoblauch</li>\n    </ul>\n  </li>\n  <li>Teig belegen</li>\n</ol>\n```\n\nTypischer Fehler: die innere Liste **nach** `</li>` zu setzen. Dann hängt sie lose in der äußeren Liste – kein gültiges HTML, auch wenn der Browser etwas anzeigt. Einrücken hilft dir, das zu sehen."
+    },
+    {
+      "type": "fill",
+      "text": "**Vervollständige** die Packliste: Zwei Tags fehlen – schreib sie mit spitzen Klammern.",
+      "template": "<ul>\n  <li>Technik\n    ___\n      <li>Powerbank</li>\n      <li>Ladekabel</li>\n    </ul>\n  ___\n</ul>",
+      "accept": [
+        [
+          "<ul>"
+        ],
+        [
+          "</li>"
+        ]
+      ],
+      "hint": "Erste Lücke: Hier wird die innere Liste eröffnet. Zweite Lücke: Nach der inneren Liste wird der Punkt „Technik“ geschlossen."
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** im Schritt „Krafttraining“ eine Liste mit Punkten für die drei Übungen: „Kniebeugen“, „Liegestütze“, „Plank“. Die drei Schritte bleiben nummeriert.",
+      "starter": {
+        "html": "<h2>Trainingsplan Dienstag</h2>\n<ol>\n  <li>Aufwärmen</li>\n  <li>Krafttraining</li>\n  <li>Dehnen</li>\n</ol>\n"
+      },
+      "hints": [
+        "Die Übungen sind eine Punkteliste – sie gehört in den zweiten Schritt hinein.",
+        "Wie beim Rezept in der Erklärung: nach dem Wort „Krafttraining“ die innere Liste öffnen, drei Punkte, schließen – und erst dann den Schritt beenden.",
+        "Struktur: `<li>Krafttraining` … innere Liste … `</li>` – die beiden anderen Schritte bleiben, wie sie sind."
+      ],
+      "solution": {
+        "html": "<h2>Trainingsplan Dienstag</h2>\n<ol>\n  <li>Aufwärmen</li>\n  <li>Krafttraining\n    <ul>\n      <li>Kniebeugen</li>\n      <li>Liegestütze</li>\n      <li>Plank</li>\n    </ul>\n  </li>\n  <li>Dehnen</li>\n</ol>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "ol > li",
+          "count": 3,
+          "label": "Der Plan hat weiterhin drei nummerierte Schritte"
+        },
+        {
+          "type": "selector",
+          "selector": "ol > li:nth-child(2) > ul",
+          "count": 1,
+          "label": "Die Übungen liegen im Schritt „Krafttraining“"
+        },
+        {
+          "type": "selector",
+          "selector": "ol > li > ul > li",
+          "count": 3,
+          "label": "Die innere Liste hat drei Übungen"
+        },
+        {
+          "type": "text",
+          "selector": "ol ul > li:first-child",
+          "expected": "Kniebeugen",
+          "label": "Die erste Übung ist Kniebeugen"
+        },
+        {
+          "type": "text",
+          "selector": "ol > li:last-child",
+          "expected": "Dehnen",
+          "label": "Der letzte Schritt ist Dehnen"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "**Bringe** das Rezept in die richtige Reihenfolge: nummerierte Schritte, im ersten Schritt eine innere Liste mit den Zutaten.",
+      "lines": [
+        "<ol>",
+        "  <li>Teig machen",
+        "    <ul>",
+        "      <li>Mehl, Wasser, Hefe</li>",
+        "    </ul>",
+        "  </li>",
+        "  <li>Belegen und backen</li>",
+        "</ol>"
+      ],
+      "explanation": "Die innere Liste steht im ersten Schritt – erst nach ihrem Ende wird der Schritt geschlossen, dann folgt der zweite Schritt."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Korrigiere** die Turnier-Gruppen: „Gruppe B“ rutscht als Unterpunkt unter Gruppe A, und „SV Sonnenberg“ hat keinen Aufzählungspunkt. Ziel: zwei Gruppen als Hauptpunkte, jede mit einer inneren Liste aus zwei Teams.",
+      "starter": {
+        "html": "<h2>Turnier-Gruppen</h2>\n<ul>\n  <li>Gruppe A\n    <ul>\n      <li>FC Neckar</li>\n      <p>SV Sonnenberg</p>\n    </ol>\n  </li>\n  <li>Gruppe B\n    <ul>\n      <li>Kickers Nord</li>\n      <li>TSV Hafen</li>\n    </ul>\n  </li>\n</ul>\n"
+      },
+      "hints": [
+        "Zwei Fehler: Bei Gruppe A wird die innere Liste mit dem falschen Tag geschlossen, und ein Team steht nicht in einem Listenpunkt.",
+        "Eine Punkteliste endet mit `</ul>`, nicht mit dem Tag der nummerierten Liste. Und Teams sind Listenpunkte, keine Absätze.",
+        "Prüfe Zeile für Zeile: Öffnet sich `<ul>`, muss es später `</ul>` geben – genau vor dem `</li>` der Gruppe."
+      ],
+      "solution": {
+        "html": "<h2>Turnier-Gruppen</h2>\n<ul>\n  <li>Gruppe A\n    <ul>\n      <li>FC Neckar</li>\n      <li>SV Sonnenberg</li>\n    </ul>\n  </li>\n  <li>Gruppe B\n    <ul>\n      <li>Kickers Nord</li>\n      <li>TSV Hafen</li>\n    </ul>\n  </li>\n</ul>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "body > ul > li",
+          "count": 2,
+          "label": "Die äußere Liste hat zwei Gruppen"
+        },
+        {
+          "type": "selector",
+          "selector": "body > ul > li > ul > li",
+          "count": 4,
+          "label": "Die inneren Listen haben zusammen vier Teams"
+        },
+        {
+          "type": "selector",
+          "selector": "ul p",
+          "count": 0,
+          "label": "Kein Absatz in einer Liste"
+        },
+        {
+          "type": "text",
+          "selector": "body > ul > li:first-child > ul > li:last-child",
+          "expected": "SV Sonnenberg",
+          "label": "„SV Sonnenberg“ ist das zweite Team von Gruppe A"
+        },
+        {
+          "type": "text",
+          "selector": "body > ul > li:nth-child(2) > ul > li:first-child",
+          "expected": "Kickers Nord",
+          "label": "„Kickers Nord“ eröffnet Gruppe B"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Das Line-up auf der Startseite ist eine flache Liste mit vier Acts. Sam will aber sehen, wer auf welcher Bühne spielt.\n\nDeshalb baust du die Liste um: nur noch zwei Hauptpunkte, „Hauptbühne“ und „Zeltbühne“. In jedem steckt eine eigene innere Liste – Neonpuls und Basslager auf der Hauptbühne, Kiki Volt und Die Kabelträger im Zelt."
+    },
+    {
+      "type": "code",
+      "etappe": "04-listen/03-verschachtelte-listen"
+    }
+  ]
+}

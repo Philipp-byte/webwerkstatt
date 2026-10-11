@@ -1,0 +1,226 @@
+{
+  "id": "01-schriftart-und-groesse",
+  "title": "Schriftart und Größe",
+  "konzepte": [
+    "css.font-family",
+    "css.font-size"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Sam schickt einen Screenshot der neuen Startseite: „Sieht aus wie ein Schulaufsatz.“ Stimmt – ohne Anweisung nimmt der Browser seine Standardschrift, meist eine **Serifenschrift** (Buchstaben mit Füßchen).\n\nDie Schriftart legst du mit **`font-family`** fest. Der Haken: Der Browser kann nur Schriften nutzen, die auf dem **Gerät der Besucher** installiert sind. Deshalb gibst du eine Liste an – Wunschschrift zuerst, Ersatz dahinter:\n\n```css\nbody {\n  font-family: Verdana, sans-serif;\n}\n```",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"26\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Der Browser prüft die Liste der Reihe nach</text><rect x=\"16\" y=\"56\" width=\"84\" height=\"48\" rx=\"8\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"58\" y=\"76\" text-anchor=\"middle\" fill=\"#eef2ff\">Trebuchet MS</text><text x=\"58\" y=\"94\" text-anchor=\"middle\" fill=\"#ff7a45\">fehlt</text><path d=\"M102 80 H116\" stroke=\"#ffd84d\" stroke-width=\"2\" marker-end=\"url(#pf12)\"/><rect x=\"118\" y=\"56\" width=\"84\" height=\"48\" rx=\"8\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"160\" y=\"76\" text-anchor=\"middle\" fill=\"#eef2ff\">Arial</text><text x=\"160\" y=\"94\" text-anchor=\"middle\" fill=\"#ff7a45\">fehlt</text><path d=\"M204 80 H218\" stroke=\"#ffd84d\" stroke-width=\"2\" marker-end=\"url(#pf12)\"/><rect x=\"220\" y=\"56\" width=\"84\" height=\"48\" rx=\"8\" fill=\"#1b2135\" stroke=\"#4ade80\" stroke-width=\"2\"/><text x=\"262\" y=\"76\" text-anchor=\"middle\" fill=\"#eef2ff\">sans-serif</text><text x=\"262\" y=\"94\" text-anchor=\"middle\" fill=\"#4ade80\">immer da</text><text x=\"160\" y=\"136\" text-anchor=\"middle\" fill=\"#38c7ff\">Die erste gefundene Schrift gewinnt</text><defs><marker id=\"pf12\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#ffd84d\"/></marker></defs></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Der Trainingsplan steht in Georgia, einer Serifenschrift. **Ändere** in `style.css` den Wert `Georgia, serif` zu `Arial, sans-serif` und beobachte die Füßchen. Probier danach `\"Courier New\", monospace` – so sieht Code aus.",
+      "html": "<h1>Trainingsplan</h1>\n<p>Montag: Beine und Rücken. Mittwoch: Brust und Arme. Freitag: 20 Minuten Laufband.</p>\n<p>Wasser nicht vergessen!</p>\n",
+      "css": "body {\n  font-family: Georgia, serif;\n}\n",
+      "editable": [
+        "css"
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "In `font-family: Arial, sans-serif;` steht am Ende `sans-serif`. Wozu?",
+      "options": [
+        "Falls Arial auf dem Gerät fehlt, nimmt der Browser irgendeine serifenlose Schrift",
+        "Arial wird dadurch ohne Serifen dargestellt",
+        "Der Browser zeigt beide Schriften abwechselnd",
+        "Ohne die Angabe meldet CSS einen Fehler"
+      ],
+      "correct": 0,
+      "explanation": "Die Liste ist eine Rangfolge: Der Browser nimmt die erste installierte Schrift. Die generische Familie am Ende gibt es auf jedem Gerät – sie ist das Sicherheitsnetz."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** den Spielbericht wie eine Zeitung: Der gesamte Text erscheint in der Schriftart Georgia, ersatzweise in einer Serifenschrift mit Füßchen.",
+      "starter": {
+        "html": "<h1>3:2 nach Verlängerung</h1>\n<p class=\"autor\">Von Lea Brandt, Sportredaktion</p>\n<p>Die Schulmannschaft dreht ein 0:2 aus der ersten Halbzeit – und gewinnt das Finale in der 118. Minute.</p>\n",
+        "css": "/* Spielbericht */\nbody {\n  color: #222;\n  /* Schriftart hier */\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Die Eigenschaft für die Schriftart heißt `font-family`. Für den gesamten Text ist die body-Regel zuständig – Überschrift und Absätze erben die Schrift.",
+        "Muster aus einem anderen Kontext: `font-family: Verdana, sans-serif;` – Wunschschrift, Komma, generische Familie.",
+        "In die body-Regel: `font-family: …, serif;` – vorne der Name der Zeitungsschrift aus der Aufgabe."
+      ],
+      "solution": {
+        "css": "/* Spielbericht */\nbody {\n  color: #222;\n  font-family: Georgia, serif;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "font-family",
+          "expected": "Georgia",
+          "contains": true,
+          "label": "Der Bericht nutzt Georgia"
+        },
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "font-family",
+          "expected": "serif",
+          "contains": true,
+          "label": "Ersatzweise eine Serifenschrift"
+        },
+        {
+          "type": "style",
+          "selector": "p",
+          "prop": "font-family",
+          "expected": "Georgia",
+          "contains": true,
+          "label": "Auch die Absätze erben die Schrift"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Drei **generische Familien** kennt jedes Gerät – eine davon steht immer am **Ende** der Liste:\n\n- `sans-serif` – ohne Füßchen, klar (Bildschirm)\n- `serif` – mit Füßchen (Zeitung, Buch)\n- `monospace` – alle Zeichen gleich breit (Code, z. B. Courier New)\n\nSchriftnamen mit Leerzeichen setzt du in Anführungszeichen:\n\n```css\nh1 {\n  font-family: \"Trebuchet MS\", Verdana, sans-serif;\n}\n```"
+    },
+    {
+      "type": "fill",
+      "text": "**Vervollständige** die Regel: Die Seite soll die Schrift Verdana nutzen, ersatzweise irgendeine Schrift ohne Füßchen.",
+      "template": "body {\n  ___: Verdana, ___;\n}",
+      "accept": [
+        [
+          "font-family"
+        ],
+        [
+          "sans-serif"
+        ]
+      ],
+      "hint": "Vorne die Eigenschaft für die Schriftart. Hinten die generische Familie – „ohne Serifen“ auf Englisch."
+    },
+    {
+      "type": "explain",
+      "text": "Ohne Angabe ist Text **16 Pixel** groß. Die Größe legt **`font-size`** fest, meist in **px**:\n\n```css\nbody {\n  font-size: 18px;\n}\n\nh1 {\n  font-size: 40px;\n}\n```\n\nWas du dem `body` gibst, **erben** alle Elemente – so stellst du die Grundschrift der ganzen Seite einmal ein. Überschriften bekommen eigene, größere Werte.\n\nProfis nutzen oft **`rem`**: `1rem` ist die Grundgröße (16px), `1.5rem` also 24px. Wir bleiben erst mal bei Pixeln."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Produktseite: Der Name des Sneakers (die Hauptüberschrift) wird 36 Pixel groß, der Preis (Klasse `preis`) 24 Pixel. Der Beschreibungstext bleibt in Standardgröße.",
+      "starter": {
+        "html": "<img src=\"sneaker.svg\" alt=\"Weißer Sneaker mit orangenem Streifen\" width=\"160\">\n<h1>Neonrunner 2</h1>\n<p class=\"preis\">89,90 €</p>\n<p>Leichter Laufschuh mit reflektierendem Streifen – für Nachtläufe am Neckar.</p>\n",
+        "css": "/* Sneaker-Produktseite */\nbody {\n  font-family: Arial, sans-serif;\n}\n\nh1 {\n  color: #ff7a45;\n}\n\n.preis {\n  color: #1b1b2f;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Die Schriftgröße ist die Eigenschaft `font-size`, der Wert steht in Pixeln. Beide Regeln gibt es schon – du ergänzt nur je eine Zeile.",
+        "Muster aus einem anderen Kontext: `font-size: 20px;` – für die Aufgabe brauchst du andere Zahlen.",
+        "In der h1-Regel `font-size: …px;` mit der großen Zahl, in der preis-Regel dieselbe Eigenschaft mit der kleineren."
+      ],
+      "solution": {
+        "css": "/* Sneaker-Produktseite */\nbody {\n  font-family: Arial, sans-serif;\n}\n\nh1 {\n  color: #ff7a45;\n  font-size: 36px;\n}\n\n.preis {\n  color: #1b1b2f;\n  font-size: 24px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "font-size",
+          "expected": "36px",
+          "label": "Der Sneaker-Name ist 36px groß"
+        },
+        {
+          "type": "style",
+          "selector": ".preis",
+          "prop": "font-size",
+          "expected": "24px",
+          "label": "Der Preis ist 24px groß"
+        },
+        {
+          "type": "style",
+          "selector": "p:not(.preis)",
+          "prop": "font-size",
+          "expected": "16px",
+          "label": "Der Beschreibungstext bleibt 16px"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "**Ordne** die Begriffe ihrer Bedeutung zu.",
+      "pairs": [
+        [
+          "`sans-serif`",
+          "generische Familie ohne Füßchen"
+        ],
+        [
+          "`serif`",
+          "generische Familie mit Füßchen"
+        ],
+        [
+          "`monospace`",
+          "alle Zeichen gleich breit – wie Code"
+        ],
+        [
+          "`font-size`",
+          "Eigenschaft für die Schriftgröße"
+        ],
+        [
+          "`\"Trebuchet MS\"`",
+          "Schriftname mit Leerzeichen – deshalb in Anführungszeichen"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Behebe** die zwei Fehler im Stylesheet der Speisekarte: Eigentlich soll der ganze Text in Verdana (ersatzweise serifenlos) stehen und der Name des Foodtrucks 40 Pixel groß sein – doch die Schrift bleibt Standard und die Überschrift klein.",
+      "starter": {
+        "html": "<h1>Pizza &amp; Mehr</h1>\n<p class=\"motto\">Ofenfrisch am Foodtruck – jeden Tag ab 17 Uhr.</p>\n<ul>\n  <li>Margherita – 7,50 €</li>\n  <li>Salami – 8,50 €</li>\n  <li>Veggie – 8,00 €</li>\n</ul>\n",
+        "css": "/* Speisekarte Foodtruck */\nbody {\n  font-familie: Verdana, sans-serif;\n}\n\nh1 {\n  color: #ff7a45;\n  font-size: 40;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Lies die Eigenschaftsnamen Buchstabe für Buchstabe – CSS ist Englisch, nicht Deutsch.",
+        "Eine Größe ohne Einheit ignoriert der Browser komplett. Muster: `font-size: 20px;`.",
+        "Fehler 1 steckt im Namen der Schrift-Eigenschaft in der body-Regel, Fehler 2 im Wert der Größe in der h1-Regel."
+      ],
+      "solution": {
+        "css": "/* Speisekarte Foodtruck */\nbody {\n  font-family: Verdana, sans-serif;\n}\n\nh1 {\n  color: #ff7a45;\n  font-size: 40px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "font-family",
+          "expected": "Verdana",
+          "contains": true,
+          "label": "Die Speisekarte nutzt Verdana"
+        },
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "font-family",
+          "expected": "sans-serif",
+          "contains": true,
+          "label": "Ersatzweise serifenlos"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "font-size",
+          "expected": "40px",
+          "label": "Der Name des Foodtrucks ist 40px groß"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Ab zur FUNKEN-Website! Sam will keine Schulaufsatz-Optik mehr: Die ganze Startseite bekommt die Schriftart **Arial** – mit einer serifenlosen Ersatzfamilie für Geräte ohne Arial. Und die Hauptüberschrift FUNKEN wächst auf **48 Pixel**, damit sie wie ein Schriftzug wirkt.\n\nBeides gehört in Regeln, die es im Stylesheet schon gibt: eine für die ganze Seite, eine für die Hauptüberschrift."
+    },
+    {
+      "type": "code",
+      "etappe": "12-schrift-und-text/01-schriftart-und-groesse"
+    }
+  ]
+}

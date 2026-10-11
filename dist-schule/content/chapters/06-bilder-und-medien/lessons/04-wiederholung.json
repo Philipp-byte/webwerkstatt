@@ -1,0 +1,188 @@
+{
+  "id": "04-wiederholung",
+  "title": "Wiederholung",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Zeit für den Rundgang durch die Foto-Wand: Bilder, Player und Bild-Blöcke aus diesem Kapitel – dazu Links aus Kapitel 05, Listen aus Kapitel 04 und das Grundgerüst aus Kapitel 02. Am Ende bekommt die Galerie ihren Foodtruck-Abschnitt."
+    },
+    {
+      "type": "quiz",
+      "question": "Welcher Alternativtext passt am besten zu einem Foto vom Foodtruck?",
+      "options": [
+        "Der Pizza-Truck mit beleuchteter Theke am Abend",
+        "Bild",
+        "foodtruck.svg",
+        "Hier klicken für Pizza"
+      ],
+      "correct": 0,
+      "explanation": "Der Alternativtext beschreibt, was zu sehen ist. „Bild“ und der Dateiname sagen nichts, „Hier klicken“ passt zu Links, nicht zu Bildern."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige den Listenpunkt: ein Link zur Startseite mit dem Text „Pizza & Mehr“.",
+      "template": "<li><a ___=\"index.html\">Pizza ___ Mehr</a></li>",
+      "accept": [
+        [
+          "href"
+        ],
+        [
+          "&amp;"
+        ]
+      ],
+      "hint": "Das Attribut mit dem Linkziel – und das &-Zeichen als Entity mit Semikolon."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter dem Absatz zuerst ein Bild: sneaker.svg mit dem Alternativtext „Meine Laufschuhe“, 200 Pixel breit. Darunter eine Aufzählungsliste mit drei Einträgen: Laufschuhe, Trinkflasche, Springseil.",
+      "starter": {
+        "html": "<h1>Mein Trainingsplan</h1>\n<h2>Ausrüstung</h2>\n<p>Das brauche ich für die Woche:</p>\n"
+      },
+      "hints": [
+        "Ein Bild-Element mit drei Attributen, dann eine ungeordnete Liste mit drei Listenpunkten.",
+        "Breite als Attribut wie `width=\"120\"`; die Liste nach dem Muster `<ul><li>…</li></ul>`.",
+        "Reihenfolge: Absatz, Bild, Liste – jeder Eintrag ein eigener Listenpunkt."
+      ],
+      "solution": {
+        "html": "<h1>Mein Trainingsplan</h1>\n<h2>Ausrüstung</h2>\n<p>Das brauche ich für die Woche:</p>\n<img src=\"sneaker.svg\" alt=\"Meine Laufschuhe\" width=\"200\">\n<ul>\n  <li>Laufschuhe</li>\n  <li>Trinkflasche</li>\n  <li>Springseil</li>\n</ul>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "src",
+          "expected": "sneaker.svg",
+          "label": "Das Bild lädt sneaker.svg"
+        },
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "alt",
+          "expected": "Meine Laufschuhe",
+          "label": "Der Alternativtext lautet „Meine Laufschuhe“"
+        },
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "width",
+          "expected": "200",
+          "label": "Das Bild ist 200 Pixel breit"
+        },
+        {
+          "type": "selector",
+          "selector": "ul > li",
+          "count": 3,
+          "label": "Die Liste hat drei Einträge"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:first-child",
+          "expected": "Laufschuhe",
+          "label": "Der erste Eintrag ist „Laufschuhe“"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "p",
+            "img",
+            "ul"
+          ],
+          "label": "Bild und Liste stehen in der richtigen Reihenfolge"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Teile des Grundgerüsts ihrer Aufgabe zu.",
+      "pairs": [
+        [
+          "`<!DOCTYPE html>`",
+          "sagt dem Browser: Das ist modernes HTML"
+        ],
+        [
+          "`<head>`",
+          "Infos über die Seite – unsichtbar"
+        ],
+        [
+          "`<meta charset=\"utf-8\">`",
+          "Zeichensatz, damit Umlaute stimmen"
+        ],
+        [
+          "`<title>`",
+          "Titel im Browser-Tab"
+        ],
+        [
+          "`<body>`",
+          "alles, was auf der Seite zu sehen ist"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** die Fan-Seite: Das Foto vom Fanblock fehlt – nur der Alternativtext erscheint – und „Der Kader“ sieht nicht aus wie ein Link und lässt sich nicht anklicken.",
+      "starter": {
+        "html": "<h2>Unsere Fans</h2>\n<img scr=\"crowd.svg\" alt=\"Der Fanblock beim Heimspiel\">\n<ul>\n  <li><a herf=\"kader.html\">Der Kader</a></li>\n  <li><a href=\"spiele.html\">Spielplan</a></li>\n</ul>\n"
+      },
+      "hints": [
+        "Beide Fehler sind Tippfehler in Attributnamen.",
+        "Die Quelle eines Bildes und das Ziel eines Links haben feste Attributnamen – vergleiche mit dem zweiten Listenpunkt und mit einem Bild aus dieser Lektion, Buchstabe für Buchstabe."
+      ],
+      "solution": {
+        "html": "<h2>Unsere Fans</h2>\n<img src=\"crowd.svg\" alt=\"Der Fanblock beim Heimspiel\">\n<ul>\n  <li><a href=\"kader.html\">Der Kader</a></li>\n  <li><a href=\"spiele.html\">Spielplan</a></li>\n</ul>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "src",
+          "expected": "crowd.svg",
+          "label": "Das Fan-Foto wird geladen"
+        },
+        {
+          "type": "attr",
+          "selector": "li:first-child a",
+          "attr": "href",
+          "expected": "kader.html",
+          "label": "„Der Kader“ ist ein Link zu kader.html"
+        },
+        {
+          "type": "text",
+          "selector": "li:first-child a",
+          "expected": "Der Kader",
+          "label": "Der Linktext lautet „Der Kader“"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Sortiere den Abschnitt: Überschrift, Bild, dann die Liste mit einem Link.",
+      "lines": [
+        "<h2>Foodcourt</h2>",
+        "<img src=\"foodtruck.svg\" alt=\"Der Waffelwagen\">",
+        "<ul>",
+        "  <li><a href=\"start.html\">Zur Übersicht</a></li>",
+        "</ul>"
+      ],
+      "explanation": "Das Bild ist ein Leerelement und steht allein; der Link liegt im Listenpunkt, der Listenpunkt in der Liste."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige den Player: Er soll Play und Pause zeigen.",
+      "template": "<audio ___ src=\"jingle.wav\"></audio>",
+      "accept": [
+        "controls"
+      ],
+      "hint": "Das Attribut für die Bedienelemente steht ohne Wert."
+    },
+    {
+      "type": "explain",
+      "text": "Jetzt bekommt die Galerie den Abschnitt „Foodtrucks“ – nach dem Bild-Block und vor dem Jingle. Zuerst das Foto vom Pizza-Truck, darunter eine Aufzählungsliste mit zwei Links, die beide zur Startseite führen.\n\nDenk beim Namen „Pizza & Mehr“ an die Entity für das &-Zeichen – genau wie in der Foodtruck-Liste der Startseite."
+    },
+    {
+      "type": "code",
+      "etappe": "06-bilder-und-medien/04-wiederholung"
+    }
+  ]
+}

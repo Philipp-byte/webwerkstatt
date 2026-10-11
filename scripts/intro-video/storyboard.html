@@ -2,15 +2,27 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<title>WEBCUP – Vorspann (Storyboard für den Video-Renderer)</title>
+<title>SCHATTENNETZ – Vorspann (Storyboard für den Video-Renderer)</title>
 <!--
   Dieses Storyboard ist ein deterministischer Film: window.__intro.seek(t) stellt den Zustand
   für die Sekunde t her (keine CSS-Animationen, keine Zufallszahlen pro Frame). Der Renderer
   (scripts/render-intro-video.mjs) ruft seek() Frame für Frame auf, fotografiert die Bühne
   und mischt die Bilder mit dem synthetischen Soundtrack (scripts/intro-video/musik.mjs).
   Die Seite wird über einen kleinen HTTP-Server aus dem Repo-Wurzelverzeichnis geladen,
-  damit Schriften (node_modules), Figuren (public/figuren), Crews (public/content) und die
-  Emblem-Engine (src/engine) erreichbar sind.
+  damit Schriften (node_modules), Figuren (public/figuren), Welt (public/content/story)
+  und die Karten-/Sigil-Engine (src/engine) erreichbar sind.
+
+  Szenen (welt.json → vorspann):
+    S0  0,0– 4,4  WebWerkstatt präsentiert
+    S1  3,6–13,4  Die alte Weberei (Heilbronn, Neckar, Mitternacht, ein Fenster brennt)
+    S2 12,8–22,6  Der Große Webstuhl (Sam öffnet den Keller, das Tor nach Hyperia)
+    S3 22,2–34,4  Hyperia (fünf Regionen, Brücken aus Licht, Lichtfälle, Funken)
+    S4 34,0–50,6  Seidra (erwacht, Impact, das Schattennetz legt sich über die Karte, neun Gespinste)
+    S5 50,2–62,6  Die Werkstatt (Sam, Ayla, Jonas, Robby – und du)
+    S6 62,2–70,6  SCHATTENNETZ (Titel, Ort 1: Quellgrund, Los.)
+    S7 70,0–74,0  WebWerkstatt-Logo
+  Liegen unter public/intro/szenen/<n>.webp gezeichnete Hintergründe (scripts/grafiken-erzeugen.mjs),
+  ersetzen sie die SVG-Kulissen der Szenen 1–6; sonst läuft alles mit den SVG-Kulissen hier.
 -->
 <style>
 @font-face { font-family: 'Unbounded Variable'; font-weight: 200 900; font-display: block; src: url('/node_modules/@fontsource-variable/unbounded/files/unbounded-latin-wght-normal.woff2') format('woff2-variations'); }
@@ -22,98 +34,93 @@
   --display: 'Unbounded Variable', sans-serif;
   --text: 'Atkinson Hyperlegible', sans-serif;
   --mono: 'JetBrains Mono Variable', monospace;
-  --spark: #ff8a3d; --spark2: #ffc857; --cool: #38c7ff; --js: #ffd84d; --ok: #4ade80; --fail: #fb7185;
+  --font-display: var(--display); --font-text: var(--text);
+  --bg: #0f0c1f; --gespinst: #e23cff; --funke: #ffc53d; --spark: #ff6b35; --cool: #3fb0ff; --basics: #9b8cff; --gruen: #2ee59d; --fail: #ff4d6d;
+  --ink: #f1eefc; --ink-2: #bdb6d9; --muted: #8b84ad; --panel-solid: #1a1630;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; background: #000; }
-body { width: 1280px; height: 720px; overflow: hidden; font-family: var(--text); color: #eef1f8; }
-#buehne { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #07080d; }
+body { width: 1280px; height: 720px; overflow: hidden; font-family: var(--text); color: var(--ink); }
+#buehne { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #07051a; }
 .szene { position: absolute; inset: 0; display: none; opacity: 0; overflow: hidden; }
-.szene svg.kulisse { position: absolute; inset: 0; width: 100%; height: 100%; transform-origin: 50% 60%; }
-.vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 45%, transparent 40%, rgba(0,0,0,0.72) 100%); }
+.szene svg.kulisse { position: absolute; inset: 0; width: 100%; height: 100%; transform-origin: 50% 50%; }
+.hintergrund { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 50%; }
+.vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 45%, transparent 40%, rgba(3,2,10,0.78) 100%); }
 .koernung { position: absolute; inset: 0; opacity: 0.07; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-.zeile { position: absolute; left: 90px; font-size: 30px; line-height: 1.35; max-width: 760px; text-shadow: 0 2px 18px rgba(0,0,0,0.8); }
+.band { position: absolute; left: 0; right: 0; bottom: 0; height: 330px; background: linear-gradient(transparent, rgba(7,5,26,0.92)); pointer-events: none; }
+.zeile { position: absolute; left: 90px; font-size: 30px; line-height: 1.35; max-width: 760px; text-shadow: 0 2px 18px rgba(0,0,0,0.85); }
 .zeile.gross { font-family: var(--display); font-weight: 800; font-size: 54px; line-height: 1.1; letter-spacing: -0.01em; }
+.zeile.mittel { font-family: var(--display); font-weight: 800; font-size: 40px; line-height: 1.12; }
 .w { display: inline-block; opacity: 0; transform: translateY(14px); margin-right: 0.28em; }
-.zeile.mittel { font-family: var(--display); font-weight: 800; font-size: 42px; line-height: 1.12; }
-.badge { position: absolute; border: 1px solid rgba(255,138,61,0.7); background: rgba(7,8,13,0.8); border-radius: 12px; padding: 10px 16px; font-family: var(--display); }
-.badge small { display: block; font-size: 12px; letter-spacing: 0.16em; color: var(--spark); }
-.badge strong { font-size: 20px; }
-.badge.alarm { border-color: var(--fail); }
-.badge.alarm small { color: var(--fail); }
-.blase { position: absolute; background: rgba(10,12,20,0.9); border: 1px solid rgba(255,255,255,0.16); border-radius: 18px; padding: 16px 22px; font-size: 26px; line-height: 1.4; max-width: 620px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
-.blase .wer { display: block; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; margin-bottom: 6px; }
-.avatar { position: absolute; width: 120px; height: 120px; border-radius: 34px; display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 56px; border: 3px solid currentColor; background: rgba(7,8,13,0.85); box-shadow: 0 0 40px currentColor; }
+.blase { position: absolute; background: rgba(15,12,31,0.92); border: 1px solid rgba(255,255,255,0.16); border-radius: 18px; padding: 16px 22px; font-size: 25px; line-height: 1.4; max-width: 620px; box-shadow: 0 20px 60px rgba(0,0,0,0.55); opacity: 0; }
+.blase .wer { display: block; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; margin-bottom: 6px; font-family: var(--display); }
+.blase.spott { border-color: rgba(226,60,255,0.6); box-shadow: 0 20px 60px rgba(0,0,0,0.55), 0 0 40px rgba(226,60,255,0.25); }
+.blase.lob { border-color: rgba(255,197,61,0.6); box-shadow: 0 20px 60px rgba(0,0,0,0.55), 0 0 40px rgba(255,197,61,0.2); }
+.avatar-k { display: inline-grid; place-items: center; border-radius: 50%; background: var(--f); color: #0f0c1f; font-family: var(--display); font-weight: 800; box-shadow: 0 0 40px var(--f); }
+.sigil { display: inline-grid; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--f, var(--gespinst)) 18%, var(--panel-solid)); border: 2px solid var(--f, var(--gespinst)); flex: none; box-sizing: border-box; }
+.sigil svg { width: 72%; height: 72%; display: block; }
+.sigil-licht { background: color-mix(in srgb, var(--funke) 16%, var(--panel-solid)); }
+.sigil-gross { border-width: 4px; }
+.figur-bild { display: block; filter: drop-shadow(0 16px 30px rgba(0,0,0,0.6)); }
 .flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
-.caption { position: absolute; left: 0; right: 0; text-align: center; font-size: 26px; color: #c9cfdd; text-shadow: 0 2px 14px rgba(0,0,0,0.8); }
-.chip { display: inline-block; font-family: var(--display); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; border-radius: 999px; padding: 6px 14px; background: rgba(255,138,61,0.18); color: var(--spark2); }
-.funke { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: var(--spark2); box-shadow: 0 0 10px var(--spark); opacity: 0; }
+.caption { position: absolute; left: 0; right: 0; text-align: center; font-size: 26px; color: var(--ink-2); text-shadow: 0 2px 14px rgba(0,0,0,0.8); }
+.chip { display: inline-block; font-family: var(--display); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; border-radius: 999px; padding: 7px 14px; background: rgba(255,197,61,0.16); color: var(--funke); border: 1px solid rgba(255,197,61,0.35); }
+.chip.region { position: absolute; opacity: 0; color: var(--f); background: rgba(15,12,31,0.85); border-color: var(--f); box-shadow: 0 0 24px color-mix(in srgb, var(--f) 50%, transparent); font-size: 15px; letter-spacing: 0.12em; }
+.funke { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: var(--funke); box-shadow: 0 0 10px var(--spark); opacity: 0; }
+.badge { position: absolute; border: 1px solid rgba(226,60,255,0.6); background: rgba(7,5,26,0.85); border-radius: 12px; padding: 10px 16px; font-family: var(--display); }
+.badge small { display: block; font-size: 12px; letter-spacing: 0.16em; color: var(--gespinst); }
+.badge strong { font-size: 20px; }
 
-/* S3 WEBCUP */
-.titel-webcup { position: absolute; left: 0; right: 0; top: 150px; text-align: center; font-family: var(--display); font-weight: 900; font-size: 190px; letter-spacing: 0.06em; line-height: 1; background: linear-gradient(120deg, #ff8a3d, #ffc857 55%, #fff 120%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 0 40px rgba(255,138,61,0.6)); opacity: 0; }
-.untertitel-webcup { position: absolute; left: 0; right: 0; top: 400px; text-align: center; font-family: var(--mono); font-size: 26px; letter-spacing: 0.3em; color: #c9cfdd; opacity: 0; }
+/* Karte (aus src/styles/hyperia.css, ohne Animationen) */
+.hyperia-karte { width: 100%; height: 100%; display: block; }
+.hyperia-karte .ort-kreis { fill: #3a1550; stroke: var(--gespinst); stroke-width: 2; }
+.hyperia-karte .ort-nr { fill: var(--gespinst); font-family: var(--display); font-weight: 800; }
+.hyperia-karte .ort-frei .ort-kreis { fill: var(--funke); stroke: var(--funke); }
+.hyperia-karte .ort-frei .ort-nr { fill: #1a1200; }
+.hyperia-karte .ort-offen .ort-kreis { fill: #2a2050; stroke: var(--funke); stroke-dasharray: 3 3; }
+.hyperia-karte .ort-offen .ort-nr { fill: var(--funke); }
+.hyperia-karte .ort-jetzt .ort-kreis { fill: var(--spark); stroke: #fff; stroke-width: 3; }
+.hyperia-karte .ort-jetzt .ort-nr { fill: #fff; }
+.hyperia-karte .ort-name { fill: var(--funke); font-family: var(--display); font-weight: 700; }
+.hyperia-karte .ort-jetzt .ort-name { fill: var(--spark); }
+.hyperia-karte .ort-puls { fill: none; stroke: var(--spark); stroke-width: 2; opacity: 0.6; transform-box: fill-box; transform-origin: center; }
+.kartenbox { position: absolute; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6)); }
 
-/* S4 Crews */
-.crew-raster { position: absolute; left: 110px; top: 128px; width: 1060px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 22px 10px; }
-.crew-zelle { text-align: center; opacity: 0; }
-.crew-zelle .name { font-family: var(--display); font-size: 13px; letter-spacing: 0.04em; margin-top: 4px; color: #c9cfdd; white-space: nowrap; }
-.crew-zelle .emblem { filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6)); }
+/* S4 Gespinste */
+.gespinst-reihe { position: absolute; left: 70px; right: 70px; bottom: 26px; display: flex; justify-content: space-between; }
+.gespinst-zelle { text-align: center; width: 112px; opacity: 0; }
+.gespinst-zelle .name { font-family: var(--display); font-size: 14px; letter-spacing: 0.04em; margin-top: 6px; color: var(--ink-2); white-space: nowrap; }
 
-/* S5 Halle 7 */
-.robby { position: absolute; right: 40px; bottom: 30px; width: 300px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.6)); }
-.mitglied { position: absolute; display: flex; align-items: center; gap: 14px; opacity: 0; }
-.mitglied .kreis { width: 76px; height: 76px; border-radius: 24px; display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 34px; border: 3px solid currentColor; background: rgba(7,8,13,0.85); box-shadow: 0 0 26px currentColor; }
-.mitglied .rolle { font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: #c9cfdd; }
-.mitglied strong { display: block; font-family: var(--display); font-size: 22px; color: #fff; }
+/* S5 Werkstatt */
+.team { position: absolute; left: 0; right: 0; top: 230px; display: flex; justify-content: center; gap: 46px; align-items: flex-end; }
+.mitglied { width: 190px; text-align: center; opacity: 0; }
+.mitglied .bild { height: 170px; display: grid; place-items: center; }
+.mitglied strong { display: block; font-family: var(--display); font-size: 24px; color: #fff; margin-top: 8px; }
+.mitglied .rolle { display: block; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); margin-top: 2px; }
+.du-rahmen { width: 150px; height: 150px; border-radius: 50%; border: 4px dashed var(--funke); display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 64px; color: var(--funke); position: relative; }
+.du-rahmen .sigil { position: absolute; inset: 0; margin: auto; opacity: 0; }
 
-/* S6 Plan */
-.schicht { position: absolute; left: 150px; width: 520px; height: 160px; opacity: 0; }
-.schicht svg { width: 100%; height: 100%; }
-.schicht .label { position: absolute; left: 0; right: 0; top: 58px; text-align: center; font-family: var(--display); font-weight: 800; font-size: 28px; }
+/* S6 Titel */
+.titel { position: absolute; left: 0; right: 0; top: 170px; text-align: center; font-family: var(--display); font-weight: 900; font-size: 98px; letter-spacing: 0.04em; line-height: 1; background: linear-gradient(120deg, #e23cff 0%, #ff6b35 45%, #ffc53d 70%, #fff 120%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 0 40px rgba(226,60,255,0.55)); opacity: 0; }
+.untertitel { position: absolute; left: 0; right: 0; top: 300px; text-align: center; font-family: var(--mono); font-size: 25px; letter-spacing: 0.3em; color: var(--ink-2); opacity: 0; }
 
-/* S7 Spielerkarte */
-.karte3d { position: absolute; left: 140px; top: 90px; width: 400px; height: 560px; perspective: 1400px; }
-.karte { position: absolute; inset: 0; border-radius: 30px; border: 3px solid #ff8a3d; background: linear-gradient(135deg, #2a1a0e 0%, #151827 50%, #0d1a22 100%); box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(255,138,61,0.25); overflow: hidden; transform-style: preserve-3d; }
-.karte .sheen { position: absolute; inset: -60%; background: conic-gradient(from 200deg, transparent 0 38%, rgba(255,138,61,0.28) 46%, rgba(56,199,255,0.26) 54%, transparent 62% 100%); }
-.karte .kopf { position: absolute; top: 0; left: 0; right: 0; padding: 12px 24px; font-family: var(--display); font-size: 12px; letter-spacing: 0.22em; color: #ffc857; background: rgba(0,0,0,0.3); display: flex; justify-content: space-between; }
-.karte .avatarbox { position: absolute; left: 70px; top: 70px; width: 260px; height: 190px; border-radius: 22px; background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.14); display: grid; place-items: center; }
-.karte .rang { position: absolute; left: 0; right: 0; top: 282px; text-align: center; font-family: var(--display); font-weight: 900; font-size: 46px; letter-spacing: 0.04em; }
-.karte .level { position: absolute; left: 0; right: 0; top: 342px; text-align: center; font-family: var(--mono); font-size: 18px; color: #c9cfdd; }
-.karte .werte { position: absolute; left: 50px; right: 50px; top: 390px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-.karte .wert { border-radius: 14px; background: rgba(0,0,0,0.4); border: 2px solid currentColor; text-align: center; padding: 10px 0; }
-.karte .wert small { display: block; font-family: var(--display); font-size: 12px; letter-spacing: 0.16em; }
-.karte .wert strong { font-family: var(--display); font-size: 30px; color: #fff; }
-.karte .xp { position: absolute; left: 50px; right: 50px; top: 500px; height: 12px; border-radius: 6px; background: rgba(0,0,0,0.5); overflow: hidden; }
-.karte .xp span { display: block; height: 100%; width: 4%; background: linear-gradient(90deg, #ff8a3d, #ffc857); }
-.raenge { position: absolute; left: 640px; top: 470px; display: flex; flex-wrap: wrap; gap: 10px; width: 560px; }
-.raenge .chip { opacity: 0.25; font-size: 15px; padding: 8px 16px; }
-
-/* S8 Karte */
-.station { opacity: 0; transform-box: fill-box; transform-origin: center; }
-
-/* S9 Anpfiff */
-.vs-seite { position: absolute; top: 170px; width: 420px; text-align: center; }
-.vs-seite .emblem { filter: drop-shadow(0 20px 40px rgba(0,0,0,0.7)); }
-.vs-seite .name { font-family: var(--display); font-weight: 800; font-size: 34px; margin-top: 10px; }
-.vs-seite .sub { font-size: 18px; color: #c9cfdd; letter-spacing: 0.1em; text-transform: uppercase; }
-.vs { position: absolute; left: 0; right: 0; top: 300px; text-align: center; font-family: var(--display); font-weight: 900; font-size: 110px; color: #fff; text-shadow: 0 0 50px rgba(255,138,61,0.7); opacity: 0; }
-
-/* S10 Logo */
-.logo { position: absolute; left: 0; right: 0; top: 240px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
-.logo .mark { width: 110px; height: 110px; border-radius: 30px; display: grid; place-items: center; background: linear-gradient(135deg, #ff8a3d, #ffc857); color: #1a0d05; font-family: var(--mono); font-weight: 800; font-size: 44px; box-shadow: 0 0 60px rgba(255,138,61,0.5); }
+/* S7 Logo */
+.logo { position: absolute; left: 0; right: 0; top: 230px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.logo .mark { width: 110px; height: 110px; border-radius: 30px; display: grid; place-items: center; background: linear-gradient(135deg, #ff6b35, #ffc53d); color: #1a0d05; font-family: var(--mono); font-weight: 800; font-size: 44px; box-shadow: 0 0 60px rgba(255,107,53,0.5); }
 .logo .wort { font-family: var(--display); font-weight: 800; font-size: 56px; letter-spacing: 0.02em; }
-.logo .claim { font-size: 24px; color: #c9cfdd; }
-.logo .url { font-family: var(--mono); font-size: 18px; color: #8f97ab; }
+.logo .claim { font-size: 24px; color: var(--ink-2); }
+.logo .url { font-family: var(--mono); font-size: 18px; color: var(--muted); }
 </style>
 </head>
 <body>
 <div id="buehne"></div>
 <script type="module">
-import { crewEmblem, nachtschichtEmblem } from '/src/engine/emblem.js';
+import { sigilSvg } from '/src/engine/sigil.js';
+import { karteSvg } from '/src/engine/karte.js';
 
-const DAUER = 92;
-const BEAT = 60 / 112;
-const BEAT_START = 25.6;
+const DAUER = 74;
+const BEAT = 60 / 100;
+const TITEL_IMPACT = 63.0;
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const E = {
   lin: (p) => p,
@@ -121,14 +128,16 @@ const E = {
   in: (p) => p * p * p,
   inout: (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2),
   back: (p) => { const c = 1.70158; return 1 + (c + 1) * Math.pow(p - 1, 3) + c * Math.pow(p - 1, 2); },
-  bounce: (p) => { const c = 2.4; return 1 + (c + 1) * Math.pow(p - 1, 3) + c * Math.pow(p - 1, 2); },
 };
 const tw = (t, start, dur, e = E.out) => e(clamp((t - start) / Math.max(0.0001, dur)));
 const fadeIO = (t, start, inDur, end, outDur) => Math.min(tw(t, start, inDur, E.out), 1 - tw(t, end - outDur, outDur, E.in));
-// deterministischer Pseudozufall
 const rnd = (i) => { const x = Math.sin(i * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
-const puls = (T) => (T < BEAT_START ? 0 : Math.max(0, 1 - ((T - BEAT_START) % BEAT) / 0.28));
+const puls = (T) => (T < TITEL_IMPACT ? 0 : Math.max(0, 1 - ((T - TITEL_IMPACT) % BEAT) / 0.28));
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const FARBEN = { sam: '#ffc53d', ayla: '#3fb0ff', jonas: '#9b8cff', robby: '#2ee59d' };
+const KURZ = { sam: 'S', ayla: 'A', jonas: 'J' };
+const GESPINSTE = ['knoten', 'krakel', 'luecke', 'zerr', 'schwindel', 'blass', 'streu', 'quetsch', 'starr'];
+const GESPINST_NAMEN = { knoten: 'Knoten', krakel: 'Krakel', luecke: 'Lücke', zerr: 'Zerr', schwindel: 'Schwindel', blass: 'Blass', streu: 'Streu', quetsch: 'Quetsch', starr: 'Starr' };
 
 const buehne = document.getElementById('buehne');
 const UNTERTITEL = [];
@@ -167,473 +176,532 @@ function setze(el, { x = 0, y = 0, s = 1, r = 0, o = null } = {}) {
   el.style.transform = `translate(${x}px, ${y}px) scale(${s}) rotate(${r}deg)`;
   if (o != null) el.style.opacity = o;
 }
-const sterne = (n, h = 260, w = 1280) => Array.from({ length: n }, (_, i) => `<circle cx="${(i * 173) % w}" cy="${(i * 89) % h}" r="${0.6 + (i % 3) * 0.5}" fill="#fff" opacity="${0.2 + (i % 4) * 0.15}"/>`).join('');
+const sterne = (n, h = 300, w = 1280) => Array.from({ length: n }, (_, i) => `<circle cx="${(i * 173) % w}" cy="${(i * 89) % h}" r="${0.6 + (i % 3) * 0.5}" fill="#fff" opacity="${0.15 + (i % 4) * 0.15}"/>`).join('');
+let manifest = new Set();
+function figurHtml(id, pose, groesse, klasse = '') {
+  if (manifest.has(`${id}/${pose}`)) return `<img class="figur-bild ${klasse}" src="/public/figuren/${id}/${pose}.webp" alt="" style="height:${groesse}px">`;
+  if (id === 'robby') return `<img class="figur-bild ${klasse}" src="/public/figuren/robby/${pose}.png" alt="" style="height:${groesse}px">`;
+  if (KURZ[id]) return `<span class="avatar-k ${klasse}" style="--f:${FARBEN[id]};width:${groesse}px;height:${groesse}px;font-size:${Math.round(groesse * 0.44)}px">${KURZ[id]}</span>`;
+  return sigilSvg(id, { groesse, klasse: `sigil-gross ${klasse}` });
+}
+const bildDa = (url) => new Promise((resolve) => { const img = new Image(); img.onload = () => resolve(true); img.onerror = () => resolve(false); img.src = url; });
+// Gezeichneter Hintergrund (public/intro/szenen/<n>.webp) statt SVG-Kulisse, wenn vorhanden
+async function hintergrund(s, n) {
+  const url = `/public/intro/szenen/${n}.webp`;
+  if (!(await bildDa(url))) return;
+  const img = document.createElement('img');
+  img.className = 'hintergrund';
+  img.src = url;
+  const kulisse = s.el.querySelector('svg.kulisse');
+  if (kulisse) { kulisse.style.opacity = 0.0; s.el.insertBefore(img, kulisse); } else s.el.prepend(img);
+  s.bild = img;
+}
+// Web aus Fäden um einen Mittelpunkt (für Seidra und den Titel)
+function netzSvg(cx, cy, ringe, speichen, rMax, farbe, { opacity = 0.35, id = '' } = {}) {
+  const sp = Array.from({ length: speichen }, (_, i) => { const a = (i / speichen) * Math.PI * 2; return `<line x1="${cx}" y1="${cy}" x2="${(cx + Math.cos(a) * rMax).toFixed(1)}" y2="${(cy + Math.sin(a) * rMax).toFixed(1)}"/>`; }).join('');
+  const ri = Array.from({ length: ringe }, (_, k) => { const r = (rMax * (k + 1)) / ringe; const pts = Array.from({ length: speichen }, (_, i) => { const a = (i / speichen) * Math.PI * 2; const rr = r * (0.92 + 0.08 * rnd(i + k * 7)); return `${(cx + Math.cos(a) * rr).toFixed(1)},${(cy + Math.sin(a) * rr).toFixed(1)}`; }).join(' '); return `<polygon points="${pts}"/>`; }).join('');
+  return `<g id="${id}" fill="none" stroke="${farbe}" stroke-width="1.2" opacity="${opacity}">${sp}${ri}</g>`;
+}
 
 /* ---------- S0 Vorhang ---------- */
 const s0 = szene('s0', 0, 4.4);
-s0.el.innerHTML = `<div class="caption" style="top:330px;font-family:var(--display);font-size:20px;letter-spacing:0.4em;text-transform:uppercase;color:#8f97ab" id="s0t">WebWerkstatt präsentiert</div><div class="koernung"></div>`;
+s0.el.innerHTML = `<svg class="kulisse" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg"><path id="faden0" d="M-20 40 C 300 120, 500 300, 640 330" fill="none" stroke="#e23cff" stroke-width="1.5" opacity="0.7"/></svg>
+  <div class="caption" style="top:330px;font-family:var(--display);font-size:20px;letter-spacing:0.4em;text-transform:uppercase;color:#8b84ad" id="s0t">WebWerkstatt präsentiert</div><div class="koernung"></div>`;
+const faden0 = s0.el.querySelector('#faden0');
+const faden0L = faden0.getTotalLength();
+faden0.style.strokeDasharray = `${faden0L}`;
 s0.render = (l) => {
   const t = s0.el.querySelector('#s0t');
-  const o = fadeIO(l, 0.6, 1.0, 4.0, 0.7);
-  t.style.opacity = o;
+  t.style.opacity = fadeIO(l, 0.6, 1.0, 4.0, 0.7);
   t.style.letterSpacing = `${0.4 + 0.1 * tw(l, 0.6, 3.4, E.lin)}em`;
+  faden0.style.strokeDashoffset = `${faden0L * (1 - tw(l, 0.2, 2.6, E.inout))}`;
+  faden0.style.opacity = 0.7 * (1 - tw(l, 3.4, 0.8, E.in));
 };
 
-/* ---------- S1 Skyline ---------- */
-const s1 = szene('s1', 3.6, 13.2);
-s1.el.innerHTML = `<svg class="kulisse" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-  <defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05060c"/><stop offset="0.7" stop-color="#121a33"/><stop offset="1" stop-color="#1c2540"/></linearGradient>
-  <radialGradient id="mond"><stop offset="0" stop-color="#fff5d6"/><stop offset="1" stop-color="#fff5d6" stop-opacity="0"/></radialGradient></defs>
-  <rect width="1280" height="720" fill="url(#sk)"/>${sterne(110)}
-  <circle cx="1040" cy="120" r="130" fill="url(#mond)" opacity="0.35"/><circle cx="1040" cy="120" r="36" fill="#fff3d0"/>
-  <g fill="#0a0d18">${Array.from({ length: 26 }, (_, i) => `<rect x="${i * 52 - 10}" y="${300 + ((i * 37) % 150)}" width="${40 + (i % 3) * 12}" height="420"/>`).join('')}</g>
-  <g id="fenster" fill="#ffc857">${Array.from({ length: 90 }, (_, i) => `<rect x="${((i * 61) % 1260) + 6}" y="${330 + ((i * 53) % 240)}" width="5" height="7"/>`).join('')}</g>
-  <path d="M0 540 L1280 540 L1280 720 L0 720Z" fill="#07090f"/>
-  <path d="M0 560 C 300 540, 600 590, 900 560 S 1230 550, 1280 565 L1280 720 L0 720Z" fill="#0d1526"/>
-  <path d="M0 580 C 300 560, 600 610, 900 580 S 1230 570, 1280 585" stroke="#1e2f55" stroke-width="2" fill="none"/>
-  ${Array.from({ length: 13 }, (_, i) => `<rect x="${80 + i * 95}" y="${598 + (i % 2) * 6}" width="60" height="2" fill="#ffc857" opacity="${0.15 + (i % 3) * 0.1}"/>`).join('')}
-  <g id="regen" stroke="#8fb3ff" stroke-opacity="0.2" stroke-width="1">${Array.from({ length: 70 }, (_, i) => `<line x1="${(i * 97) % 1280}" y1="${(i * 41) % 760 - 60}" x2="${(i * 97) % 1280 - 6}" y2="${(i * 41) % 760 - 30}"/>`).join('')}</g>
-</svg><div class="vignette"></div><div class="koernung"></div>
-<div style="position:absolute;left:0;right:0;bottom:0;height:380px;background:linear-gradient(transparent,rgba(5,6,12,0.85))"></div>`;
+/* ---------- S1 Die alte Weberei ---------- */
+const s1 = szene('s1', 3.6, 13.4);
+const FENSTER = [];
+for (let r = 0; r < 3; r++) for (let c = 0; c < 9; c++) FENSTER.push([40 + c * 62, 70 + r * 70, r === 1 && c === 5]);
+s1.el.innerHTML = `<svg class="kulisse" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="transform-origin:663px 410px">
+  <defs><linearGradient id="sk1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05030f"/><stop offset="0.6" stop-color="#140f2c"/><stop offset="1" stop-color="#1c1540"/></linearGradient>
+  <linearGradient id="fluss" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d0a1f"/><stop offset="1" stop-color="#040209"/></linearGradient>
+  <radialGradient id="mond1"><stop offset="0" stop-color="#e9e2ff"/><stop offset="1" stop-color="#e9e2ff" stop-opacity="0"/></radialGradient>
+  <radialGradient id="warm"><stop offset="0" stop-color="#ffc53d" stop-opacity="0.75"/><stop offset="1" stop-color="#ffc53d" stop-opacity="0"/></radialGradient></defs>
+  <rect width="1280" height="720" fill="url(#sk1)"/>${sterne(120, 420)}
+  <circle cx="1040" cy="110" r="120" fill="url(#mond1)" opacity="0.25"/><circle cx="1040" cy="110" r="30" fill="#efe9ff"/>
+  <path d="M0 400 Q 200 340 420 390 T 900 380 T 1280 360 L1280 560 L0 560Z" fill="#0a0718"/>
+  <g transform="translate(300 300)">
+    <rect x="560" y="-120" width="34" height="180" fill="#120e24"/><rect x="556" y="-126" width="42" height="10" fill="#1a1433"/>
+    <path d="M0 60 L0 10 L62 60 L62 10 L124 60 L124 10 L186 60 L186 10 L248 60 L248 10 L310 60 L310 10 L372 60 L372 10 L434 60 L434 10 L496 60 L496 10 L558 60 L620 60 Z" fill="#1a1433"/>
+    <rect x="0" y="60" width="620" height="270" fill="#130f26"/>
+    ${Array.from({ length: 12 }, (_, i) => `<line x1="0" y1="${80 + i * 22}" x2="620" y2="${80 + i * 22}" stroke="#1d1736" stroke-width="1" opacity="0.5"/>`).join('')}
+    <circle id="warmglow" cx="${FENSTER[14][0] + 13}" cy="${FENSTER[14][1] + 22}" r="90" fill="url(#warm)"/>
+    ${FENSTER.map(([x, y, an]) => `<path d="M${x} ${y + 44} L${x} ${y + 8} Q ${x + 13} ${y - 6} ${x + 26} ${y + 8} L${x + 26} ${y + 44} Z" fill="${an ? '#ffc53d' : '#070516'}" ${an ? 'id="fenster-an"' : ''}/>`).join('')}
+    <text x="310" y="300" text-anchor="middle" fill="#2a2250" font-family="Unbounded Variable, sans-serif" font-weight="800" font-size="34" letter-spacing="12">WEBEREI</text>
+  </g>
+  <rect x="0" y="570" width="1280" height="150" fill="url(#fluss)"/>
+  <g opacity="0.35" transform="translate(300 840) scale(1 -1)"><rect x="0" y="0" width="620" height="270" fill="#130f26"/></g>
+  <g id="wellen" stroke="#2a2250" stroke-width="1" fill="none" opacity="0.6">${Array.from({ length: 9 }, (_, i) => `<path d="M0 ${585 + i * 15} q 40 -4 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0"/>`).join('')}</g>
+  <ellipse id="spiegel" cx="663" cy="640" rx="40" ry="60" fill="url(#warm)" opacity="0.7"/>
+  <g id="nebel" fill="#9b8cff" opacity="0.06"><ellipse cx="200" cy="560" rx="300" ry="30"/><ellipse cx="900" cy="575" rx="380" ry="26"/></g>
+</svg><div class="vignette"></div><div class="koernung"></div><div class="band"></div>`;
 const s1z = [
-  woerterZeile(s1.el, 'Heilbronn. Freitagnacht.', { top: 392, gross: true, maxWidth: 1000 }),
-  woerterZeile(s1.el, 'In 42 Tagen steigt FUNKEN – das Schülerfestival der Stadt.', { top: 478, maxWidth: 900 }),
-  woerterZeile(s1.el, 'Zwei Bühnen. Foodtrucks. Dreitausend Leute.', { top: 530, maxWidth: 900 }),
-  woerterZeile(s1.el, 'Und genau eine Website, die alle brauchen.', { top: 582, farbe: '#ffc857', maxWidth: 900 }),
+  woerterZeile(s1.el, 'Heilbronn. Die alte Weberei am Neckar.', { top: 448, mittel: true, maxWidth: 1100 }),
+  woerterZeile(s1.el, 'Mitternacht.', { top: 508, maxWidth: 900 }),
+  woerterZeile(s1.el, 'Auf dem Gelände, wo FUNKEN steigen soll, brennt in einem Fenster Licht:', { top: 556, maxWidth: 1100 }),
+  woerterZeile(s1.el, 'die Werkstatt.', { top: 606, farbe: '#ffc53d', gross: true }),
 ];
-ut(4.3, 6.3, 'Heilbronn. Freitagnacht.');
-ut(6.3, 8.6, 'In 42 Tagen steigt FUNKEN – das Schülerfestival der Stadt.');
-ut(8.6, 10.6, 'Zwei Bühnen. Foodtrucks. Dreitausend Leute.');
-ut(10.6, 13.0, 'Und genau eine Website, die alle brauchen.');
+ut(4.4, 6.8, 'Heilbronn. Die alte Weberei am Neckar.');
+ut(6.8, 8.4, 'Mitternacht.');
+ut(8.4, 11.4, 'Auf dem Gelände, wo FUNKEN steigen soll, brennt in einem Fenster Licht:');
+ut(11.4, 13.2, 'die Werkstatt.');
 s1.render = (l, T) => {
-  const svg = s1.el.querySelector('svg');
-  svg.style.transform = `scale(${1.03 + 0.07 * tw(l, 0, 9.6, E.lin)}) translateX(${-6 * tw(l, 0, 9.6, E.lin)}px)`;
-  s1.el.querySelector('#regen').setAttribute('transform', `translate(0 ${(T * 240) % 40})`);
-  const f = s1.el.querySelector('#fenster');
-  f.querySelectorAll('rect').forEach((r, i) => r.setAttribute('opacity', rnd(i + Math.floor(T * 2)) < 0.12 ? 0.15 : 0.35 + (i % 3) * 0.25));
+  const z = 1.02 + 0.2 * tw(l, 0, 9.8, E.lin);
+  const k = s1.bild || s1.el.querySelector('svg');
+  k.style.transform = `scale(${z})`;
+  const flacker = 0.8 + 0.2 * Math.abs(Math.sin(T * 9) * Math.sin(T * 3.1));
+  const fa = s1.el.querySelector('#fenster-an');
+  fa.setAttribute('opacity', flacker);
+  s1.el.querySelector('#warmglow').setAttribute('opacity', 0.6 + 0.4 * flacker);
+  s1.el.querySelector('#spiegel').setAttribute('opacity', 0.45 + 0.3 * flacker);
+  s1.el.querySelector('#wellen').setAttribute('transform', `translate(${(T * 18) % 80} 0)`);
+  s1.el.querySelector('#nebel').setAttribute('transform', `translate(${-((T * 9) % 60)} 0)`);
   zeigeWoerter(s1z[0], l, 0.8, { proWort: 0.12 });
-  zeigeWoerter(s1z[1], l, 2.8);
-  zeigeWoerter(s1z[2], l, 5.0, { proWort: 0.1 });
-  zeigeWoerter(s1z[3], l, 7.0);
+  zeigeWoerter(s1z[1], l, 3.2, { proWort: 0.12 });
+  zeigeWoerter(s1z[2], l, 4.8, { proWort: 0.09 });
+  zeigeWoerter(s1z[3], l, 7.8, { proWort: 0.2, dur: 0.5 });
 };
 
-/* ---------- S2 404 ---------- */
-const s2 = szene('s2', 12.6, 21.2);
-const URL_TEXT = 'funken-festival.de';
-s2.el.innerHTML = `<div style="position:absolute;inset:0;background:#07080d"></div>
-  <div id="fenster404" style="position:absolute;left:140px;top:70px;width:760px;height:520px;border-radius:18px;background:#141826;border:4px solid #2a3150;box-shadow:0 40px 100px rgba(0,0,0,0.7);overflow:hidden">
-    <div style="height:44px;background:#161b2b;display:flex;align-items:center;gap:8px;padding:0 16px"><i style="width:12px;height:12px;border-radius:50%;background:#ff5f57"></i><i style="width:12px;height:12px;border-radius:50%;background:#febc2e"></i><i style="width:12px;height:12px;border-radius:50%;background:#28c840"></i>
-      <div style="margin-left:18px;flex:1;height:26px;border-radius:13px;background:#0b0d16;display:flex;align-items:center;padding:0 14px;font-family:var(--mono);font-size:15px;color:#c9cfdd"><span id="url"></span><span id="cursor" style="display:inline-block;width:8px;height:16px;background:#ffc857;margin-left:2px"></span></div></div>
-    <div id="laden" style="height:3px;background:#ff8a3d;width:0"></div>
-    <div id="inhalt" style="position:absolute;left:0;right:0;top:48px;bottom:0;background:#0b0d16;display:grid;place-items:center;text-align:center">
-      <div id="seite" style="opacity:0;width:100%;padding:40px 60px;text-align:left">
-        <div style="height:34px;width:260px;background:#ff8a3d;border-radius:6px;margin-bottom:18px"></div>
-        ${Array.from({ length: 7 }, (_, i) => `<div style="height:12px;width:${40 + ((i * 37) % 50)}%;background:#2a3150;border-radius:6px;margin-bottom:12px"></div>`).join('')}
-      </div>
-      <div id="f404" style="position:absolute;inset:0;display:grid;place-items:center;opacity:0">
-        <div><div style="font-family:var(--display);font-weight:900;font-size:170px;line-height:1;color:#fb7185;text-shadow:0 0 40px rgba(251,113,133,0.6)">404</div>
-        <div style="font-family:var(--mono);font-size:20px;color:#8f97ab;margin-top:10px">Seite nicht gefunden · Server antwortet nicht</div></div>
-      </div>
-    </div>
-  </div>
-  <div class="badge alarm" id="b404" style="left:140px;top:610px;opacity:0"><small>FEHLER 404</small><strong>SEITE NICHT GEFUNDEN</strong></div>
-  <div class="koernung"></div><div class="flash" id="rot" style="background:#fb7185"></div>`;
-const s2z = [
-  woerterZeile(s2.el, 'Die Website ist weg.', { top: 150, left: 940, mittel: true, maxWidth: 300 }),
-  woerterZeile(s2.el, 'Agentur dicht. Server aus.', { top: 300, left: 940, maxWidth: 300 }),
-  woerterZeile(s2.el, 'Keine Sicherung.', { top: 400, left: 940, maxWidth: 300, farbe: '#fb7185' }),
-];
-ut(16.6, 18.4, 'Die Website ist weg.');
-ut(18.4, 20.0, 'Agentur dicht. Server aus.');
-ut(20.0, 21.2, 'Keine Sicherung.');
-s2.render = (l, T) => {
-  const n = Math.floor(clamp(l / 1.5) * URL_TEXT.length);
-  s2.el.querySelector('#url').textContent = URL_TEXT.slice(0, n);
-  s2.el.querySelector('#cursor').style.opacity = Math.floor(T * 2.5) % 2 ? 0 : 1;
-  s2.el.querySelector('#laden').style.width = `${100 * tw(l, 1.6, 1.1, E.inout)}%`;
-  const seite = s2.el.querySelector('#seite');
-  seite.style.opacity = l > 2.7 && l < 3.4 ? (Math.floor(T * 14) % 2 ? 0.9 : 0.2) : 0;
-  const f404 = s2.el.querySelector('#f404');
-  const an = l >= 3.4;
-  f404.style.opacity = an ? 1 : 0;
-  const fenster = s2.el.querySelector('#fenster404');
-  if (an && rnd(Math.floor(T * 15)) < 0.4) {
-    fenster.style.transform = `translate(${(rnd(T * 7) - 0.5) * 10}px, ${(rnd(T * 3) - 0.5) * 6}px)`;
-    fenster.style.filter = `hue-rotate(${(rnd(T * 11) - 0.5) * 60}deg) contrast(1.2)`;
-  } else {
-    fenster.style.transform = 'none';
-    fenster.style.filter = 'none';
-  }
-  s2.el.querySelector('#rot').style.opacity = an ? 0.18 * tw(l, 3.4, 0.05) * (1 - tw(l, 3.45, 0.5)) : 0;
-  s2.el.querySelector('#b404').style.opacity = an ? (Math.floor(T * 1.6) % 2 ? 0.55 : 1) : 0;
-  zeigeWoerter(s2z[0], l, 4.0, { proWort: 0.14 });
-  zeigeWoerter(s2z[1], l, 5.8, { proWort: 0.12 });
-  zeigeWoerter(s2z[2], l, 7.4, { proWort: 0.16 });
-};
-
-/* ---------- S3 Sam & WEBCUP ---------- */
-const s3 = szene('s3', 20.6, 29.8);
-s3.el.innerHTML = `<svg class="kulisse" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-  <defs><linearGradient id="ar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05060c"/><stop offset="1" stop-color="#141a2e"/></linearGradient>
-  <radialGradient id="spot"><stop offset="0" stop-color="#ffc857" stop-opacity="0.6"/><stop offset="1" stop-color="#ffc857" stop-opacity="0"/></radialGradient></defs>
-  <rect width="1280" height="720" fill="url(#ar)"/>${sterne(70)}
-  <g id="spots"><path d="M260 90 L110 600 L430 600Z" fill="#ff8a3d" opacity="0.14"/><path d="M1020 90 L850 600 L1170 600Z" fill="#38c7ff" opacity="0.14"/><path d="M640 40 L500 600 L780 600Z" fill="#ffc857" opacity="0.1"/></g>
-  <g transform="translate(260 200)"><path d="M0 130 L45 0 H715 L760 130Z" fill="#161a2a"/><rect x="0" y="130" width="760" height="190" fill="#101422"/>
-    <rect x="70" y="30" width="620" height="210" rx="10" fill="#0b0d16" stroke="#2a3150" stroke-width="4"/>
-    <circle cx="60" cy="128" r="30" fill="url(#spot)"/><circle cx="700" cy="128" r="30" fill="url(#spot)"/></g>
-  <g fill="#07090f">${Array.from({ length: 70 }, (_, i) => `<circle cx="${((i * 37) % 1280) + 10}" cy="${590 + ((i * 13) % 40)}" r="${16 + (i % 3) * 4}"/><rect x="${((i * 37) % 1280) - 4}" y="${600 + ((i * 13) % 40)}" width="28" height="140"/>`).join('')}</g>
+/* ---------- S2 Der Große Webstuhl ---------- */
+const s2 = szene('s2', 12.8, 22.6);
+const FAEDEN = 28;
+s2.el.innerHTML = `<svg class="kulisse" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="transform-origin:640px 355px">
+  <defs><linearGradient id="keller" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#07051a"/><stop offset="1" stop-color="#15112b"/></linearGradient>
+  <radialGradient id="tor"><stop offset="0" stop-color="#fff"/><stop offset="0.25" stop-color="#ffc53d"/><stop offset="0.6" stop-color="#e23cff" stop-opacity="0.75"/><stop offset="1" stop-color="#e23cff" stop-opacity="0"/></radialGradient>
+  <radialGradient id="lampe"><stop offset="0" stop-color="#ffc53d" stop-opacity="0.35"/><stop offset="1" stop-color="#ffc53d" stop-opacity="0"/></radialGradient></defs>
+  <rect width="1280" height="720" fill="url(#keller)"/>
+  <g fill="none" stroke="#1f1838" stroke-width="1.2">${Array.from({ length: 14 }, (_, r) => Array.from({ length: 12 }, (_, c) => `<rect x="${(c * 110 + (r % 2) * 55) - 60}" y="${r * 52}" width="108" height="50"/>`).join('')).join('')}</g>
+  <rect x="0" y="600" width="1280" height="120" fill="#0a0718"/>
+  <ellipse cx="200" cy="130" rx="260" ry="160" fill="url(#lampe)"/>
+  <g id="webstuhl">
+    <rect x="296" y="110" width="30" height="500" fill="#2a1f45"/><rect x="954" y="110" width="30" height="500" fill="#2a1f45"/>
+    <rect x="296" y="110" width="688" height="30" fill="#352a55"/><rect x="296" y="556" width="688" height="30" fill="#352a55"/>
+    <rect x="330" y="140" width="620" height="12" fill="#1f1838"/><rect x="330" y="544" width="620" height="12" fill="#1f1838"/>
+    <g id="faeden-glow" stroke-width="7" stroke-linecap="round" opacity="0.5">${Array.from({ length: FAEDEN }, (_, i) => `<line x1="${344 + i * 22}" y1="152" x2="${344 + i * 22}" y2="544" stroke="${i % 2 ? '#e23cff' : '#ffc53d'}" opacity="0"/>`).join('')}</g>
+    <g id="faeden" stroke-width="2" stroke-linecap="round">${Array.from({ length: FAEDEN }, (_, i) => `<line x1="${344 + i * 22}" y1="152" x2="${344 + i * 22}" y2="544" stroke="#3a2d5c"/>`).join('')}</g>
+    <ellipse id="torkern" cx="640" cy="350" rx="0" ry="0" fill="url(#tor)"/>
+    <g id="strahlen" opacity="0">${Array.from({ length: 14 }, (_, i) => { const a = (i / 14) * Math.PI * 2; return `<path d="M640 350 L${640 + Math.cos(a) * 760} ${350 + Math.sin(a) * 760} L${640 + Math.cos(a + 0.09) * 760} ${350 + Math.sin(a + 0.09) * 760}Z" fill="#ffc53d" opacity="0.12"/>`; }).join('')}</g>
+  </g>
 </svg><div class="vignette"></div>
-<div class="avatar" id="sam" style="left:120px;top:330px;color:#4ade80;opacity:0">S</div>
-<div class="blase" id="samblase" style="left:270px;top:300px;opacity:0"><span class="wer" style="color:#4ade80">Sam · Kollektiv FUNKEN</span><span id="samtext"></span></div>
-<div class="titel-webcup" id="webcup">WEBCUP</div>
-<div class="untertitel-webcup" id="webcupsub">18 CREWS · 18 RUNDEN · EINE WEBSITE GEHT LIVE.</div>
-<div id="funken"></div>
-<div class="koernung"></div><div class="flash" id="blitz"></div>`;
-const SAM_TEXT = 'Okay. OKAY. Ich könnte jetzt heulen. Oder ich mache das, was ich am besten kann: ein Event daraus.';
-s3.el.querySelector('#samtext').innerHTML = SAM_TEXT.split(' ').map((w) => `<span class="w">${esc(w)}</span>`).join('');
-const funkenBox = s3.el.querySelector('#funken');
-const FUNKEN = Array.from({ length: 56 }, (_, i) => {
+<div id="sam2" style="position:absolute;left:110px;top:400px;opacity:0">${figurHtml('sam', 'neutral', 150)}</div>
+<div class="blase lob" id="samblase2" style="left:280px;top:420px;max-width:420px"><span class="wer" style="color:#ffc53d">Sam · Meisterin der Werkstatt</span>Komm runter. Ich zeig dir, woraus das Netz gewoben ist.</div>
+<div class="koernung"></div><div class="flash" id="blitz2"></div>`;
+const s2z = [
+  woerterZeile(s2.el, 'Sam öffnet den Keller.', { top: 60, maxWidth: 800 }),
+  woerterZeile(s2.el, 'Zwischen den Fäden des Großen Webstuhls öffnet sich ein Tor:', { top: 630, maxWidth: 1100 }),
+  woerterZeile(s2.el, 'HYPERIA', { top: 290, left: 0, gross: true, align: 'center', farbe: '#fff' }),
+];
+s2z[2].style.fontSize = '96px';
+s2z[2].style.letterSpacing = '0.12em';
+s2z[2].style.textShadow = '0 0 40px rgba(255,197,61,0.8), 0 0 90px rgba(226,60,255,0.6)';
+ut(13.4, 15.4, 'Sam öffnet den Keller.');
+ut(15.6, 18.2, 'Sam: Komm runter. Ich zeig dir, woraus das Netz gewoben ist.');
+ut(18.4, 21.6, 'Zwischen den Fäden des Großen Webstuhls öffnet sich ein Tor: Hyperia.');
+s2.render = (l, T) => {
+  const k = s2.bild || s2.el.querySelector('svg');
+  const z = 1 + 0.35 * tw(l, 7.6, 2.2, E.in);
+  k.style.transform = `scale(${z})`;
+  const faeden = s2.el.querySelectorAll('#faeden line');
+  const glow = s2.el.querySelectorAll('#faeden-glow line');
+  faeden.forEach((f, i) => {
+    const p = tw(l, 1.2 + i * 0.09, 0.4);
+    f.setAttribute('stroke', p > 0.5 ? (i % 2 ? '#e23cff' : '#ffc53d') : '#3a2d5c');
+    f.setAttribute('stroke-width', 2 + 1.5 * p);
+    glow[i].setAttribute('opacity', p * (0.35 + 0.25 * Math.sin(T * 4 + i)));
+  });
+  const tor = tw(l, 4.6, 2.6, E.inout);
+  const kern = s2.el.querySelector('#torkern');
+  kern.setAttribute('rx', 300 * tor + 10 * Math.sin(T * 5) * tor);
+  kern.setAttribute('ry', 190 * tor + 6 * Math.cos(T * 4) * tor);
+  const st = s2.el.querySelector('#strahlen');
+  st.setAttribute('opacity', tw(l, 5.2, 1.6));
+  st.setAttribute('transform', `rotate(${T * 10} 640 350)`);
+  s2.el.querySelector('#blitz2').style.opacity = l >= 7.0 ? 0.85 * (1 - tw(l, 7.0, 0.5)) : 0;
+  const sam = s2.el.querySelector('#sam2');
+  const sp = tw(l, 0.4, 0.7, E.back);
+  setze(sam, { y: (1 - sp) * 30, o: sp * (1 - tw(l, 6.0, 0.5, E.in)) });
+  const bl = s2.el.querySelector('#samblase2');
+  bl.style.opacity = fadeIO(l, 2.6, 0.35, 6.0, 0.4);
+  bl.style.transform = `translateY(${(1 - tw(l, 2.6, 0.5, E.back)) * 12}px)`;
+  zeigeWoerter(s2z[0], l, 0.6, { proWort: 0.14, ende: 5.0 });
+  zeigeWoerter(s2z[1], l, 5.6, { proWort: 0.07, ende: 9.4 });
+  zeigeWoerter(s2z[2], l, 7.2, { dur: 0.6 });
+};
+
+/* ---------- S3 Hyperia ---------- */
+const s3 = szene('s3', 22.2, 34.4);
+const INSELN = [
+  { id: 'quelle', x: 210, y: 540, w: 260, f: '#9b8cff', name: 'Quelle' },
+  { id: 'runenmark', x: 470, y: 330, w: 300, f: '#ff6b35', name: 'Runenmark' },
+  { id: 'kaskadia', x: 770, y: 450, w: 320, f: '#3fb0ff', name: 'Kaskadia' },
+  { id: 'funkenland', x: 1010, y: 230, w: 280, f: '#ffd166', name: 'Funkenland' },
+  { id: 'festgelaende', x: 1150, y: 560, w: 220, f: '#2ee59d', name: 'Festgelände' },
+];
+function inselSvg({ x, y, w, f }, i) {
+  const h = 70 + (i % 2) * 30;
+  const tuerme = Array.from({ length: 3 + (i % 3) }, (_, k) => `<rect x="${-w / 2 + 30 + k * (w - 60) / (3 + (i % 3))}" y="${-20 - 30 * rnd(i * 9 + k)}" width="${14 + 10 * rnd(k + i)}" height="${22 + 30 * rnd(i * 9 + k)}" fill="#1a1433" stroke="${f}" stroke-opacity="0.6" stroke-width="1.5"/>`).join('');
+  return `<g class="insel" id="insel-${i}" transform="translate(${x} ${y})">
+    <path d="M${-w / 2} 0 Q ${-w / 2 + 30} ${h * 0.8} 0 ${h} Q ${w / 2 - 30} ${h * 0.8} ${w / 2} 0 Z" fill="#17122c"/>
+    <path d="M${-w / 2 + 10} 4 Q ${-w / 2 + 40} ${h * 0.55} 0 ${h * 0.7} Q ${w / 2 - 40} ${h * 0.55} ${w / 2 - 10} 4 Z" fill="${f}" opacity="0.12"/>
+    ${tuerme}
+    <ellipse cx="0" cy="0" rx="${w / 2}" ry="16" fill="${f}" opacity="0.85"/>
+    <ellipse cx="0" cy="-3" rx="${w / 2 - 20}" ry="9" fill="#fff" opacity="0.18"/>
+  </g>`;
+}
+const bruecken = INSELN.slice(1).map((b, i) => { const a = INSELN[i]; return `<line class="bruecke" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="#ffc53d" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 14"/><line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="#fff" stroke-width="1" opacity="0.5"/>`; }).join('');
+s3.el.innerHTML = `<svg class="kulisse" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="himmel3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#09061c"/><stop offset="0.55" stop-color="#1b1440"/><stop offset="1" stop-color="#2a1a4a"/></linearGradient>
+  <linearGradient id="fall-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fb0ff"/><stop offset="1" stop-color="#3fb0ff" stop-opacity="0"/></linearGradient>
+  <linearGradient id="fall-m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e23cff"/><stop offset="1" stop-color="#e23cff" stop-opacity="0"/></linearGradient>
+  <linearGradient id="fall-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd166"/><stop offset="1" stop-color="#ffd166" stop-opacity="0"/></linearGradient>
+  <radialGradient id="sonne3"><stop offset="0" stop-color="#ffc53d" stop-opacity="0.5"/><stop offset="1" stop-color="#ffc53d" stop-opacity="0"/></radialGradient></defs>
+  <rect width="1280" height="720" fill="url(#himmel3)"/>${sterne(140, 500)}
+  <circle cx="1010" cy="120" r="260" fill="url(#sonne3)" opacity="0.5"/>
+  <g id="faelle" opacity="0.85"><rect x="700" y="470" width="14" height="230" fill="url(#fall-b)"/><rect x="740" y="470" width="10" height="200" fill="url(#fall-m)"/><rect x="780" y="470" width="16" height="240" fill="url(#fall-g)"/><rect x="830" y="470" width="10" height="210" fill="url(#fall-b)"/><ellipse cx="760" cy="690" rx="120" ry="18" fill="#3fb0ff" opacity="0.25"/></g>
+  <g id="bruecken">${bruecken}</g>
+  ${INSELN.map(inselSvg).join('')}
+  <g id="funken3">${Array.from({ length: 46 }, (_, i) => `<circle cx="0" cy="0" r="${1.5 + 1.5 * rnd(i)}" fill="#ffc53d" opacity="0.8"/>`).join('')}</g>
+</svg><div class="vignette"></div><div class="koernung"></div>
+${INSELN.map((o) => `<span class="chip region" id="chip-${o.id}" style="--f:${o.f};left:${o.x - 70}px;top:${o.y - 70}px">${esc(o.name)}</span>`).join('')}`;
+const s3z = [
+  woerterZeile(s3.el, 'Jede Seite ein Ort.', { top: 50, mittel: true, maxWidth: 700 }),
+  woerterZeile(s3.el, 'Jeder Link eine Brücke aus Licht.', { top: 112, maxWidth: 700 }),
+  woerterZeile(s3.el, 'Jede Farbe ein Strahl aus Kaskadia.', { top: 160, maxWidth: 700, farbe: '#3fb0ff' }),
+  woerterZeile(s3.el, 'Jeder Funke ein Stück Leben.', { top: 208, maxWidth: 700, farbe: '#ffd166' }),
+  woerterZeile(s3.el, 'Was im Netz gebaut wird, wird hier zu Land.', { top: 50, mittel: true, maxWidth: 760, farbe: '#ffc53d' }),
+];
+ut(23.0, 25.2, 'Jede Seite ein Ort.');
+ut(25.2, 27.6, 'Jeder Link eine Brücke aus Licht.');
+ut(27.6, 29.8, 'Jede Farbe ein Strahl aus Kaskadia.');
+ut(29.8, 31.6, 'Jeder Funke ein Stück Leben.');
+ut(31.6, 34.2, 'Was im Netz gebaut wird, wird hier zu Land.');
+s3.render = (l, T) => {
+  const k = s3.bild || s3.el.querySelector('svg');
+  const p = tw(l, 0, 12.2, E.lin);
+  k.style.transform = `scale(${1.1 - 0.1 * p}) translateX(${-30 + 30 * p}px)`;
+  s3.el.querySelectorAll('.insel').forEach((g, i) => {
+    const o = INSELN[i];
+    g.setAttribute('transform', `translate(${o.x} ${o.y + Math.sin(T * 0.7 + i * 1.3) * 6})`);
+  });
+  s3.el.querySelectorAll('.bruecke').forEach((b) => b.setAttribute('stroke-dashoffset', -((T * 60) % 24)));
+  s3.el.querySelector('#bruecken').setAttribute('opacity', 0.35 + 0.65 * tw(l, 2.8, 1.2));
+  s3.el.querySelector('#faelle').setAttribute('opacity', 0.4 + 0.5 * tw(l, 5.2, 1.0));
+  s3.el.querySelectorAll('#funken3 circle').forEach((c, i) => {
+    const x = (rnd(i) * 1280 + T * (6 + 8 * rnd(i + 5))) % 1280;
+    const y = 720 - ((rnd(i + 3) * 720 + T * (18 + 22 * rnd(i + 9))) % 760);
+    c.setAttribute('cx', x);
+    c.setAttribute('cy', y);
+    c.setAttribute('opacity', (0.3 + 0.7 * Math.abs(Math.sin(T * 2 + i))) * (0.3 + 0.7 * tw(l, 7.4, 1.0)));
+  });
+  [['quelle', 0.8], ['runenmark', 1.5], ['kaskadia', 5.4], ['funkenland', 7.6], ['festgelaende', 9.6]].forEach(([id, a]) => {
+    const c = s3.el.querySelector(`#chip-${id}`);
+    const q = tw(l, a, 0.5, E.back);
+    c.style.opacity = q;
+    c.style.transform = `translateY(${(1 - q) * 14}px)`;
+  });
+  zeigeWoerter(s3z[0], l, 0.8, { proWort: 0.14, ende: 9.4 });
+  zeigeWoerter(s3z[1], l, 3.0, { proWort: 0.1, ende: 9.4 });
+  zeigeWoerter(s3z[2], l, 5.4, { proWort: 0.1, ende: 9.4 });
+  zeigeWoerter(s3z[3], l, 7.6, { proWort: 0.12, ende: 9.4 });
+  zeigeWoerter(s3z[4], l, 9.6, { proWort: 0.12 });
+};
+
+/* ---------- S4 Seidra ---------- */
+const s4 = szene('s4', 34.0, 50.6);
+const SEIDRA_X = 330;
+const SEIDRA_Y = 300;
+s4.el.innerHTML = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 26% 46%, #1a0a2e, #050310 60%)"></div>
+  <svg class="kulisse" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
+    <defs><radialGradient id="rot4"><stop offset="0" stop-color="#ff4d6d"/><stop offset="1" stop-color="#ff4d6d" stop-opacity="0"/></radialGradient></defs>
+    ${netzSvg(SEIDRA_X, SEIDRA_Y, 7, 16, 900, '#e23cff', { opacity: 0.0, id: 'netz4' })}
+    <g id="augen">${[[-30, -12, 11], [30, -12, 11], [-13, -30, 6], [13, -30, 6]].map(([dx, dy, r]) => `<g transform="translate(${SEIDRA_X + dx} ${SEIDRA_Y + dy})"><circle r="${r * 2.4}" fill="url(#rot4)" opacity="0.6"/><ellipse class="auge" rx="${r}" ry="0" fill="#ff4d6d"/></g>`).join('')}</g>
+    <g id="schattenfaeden" stroke="#e23cff" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.9">${Array.from({ length: 14 }, (_, i) => { const tx = 760 + rnd(i) * 470; const ty = 70 + rnd(i + 20) * 560; return `<path class="sf" d="M${SEIDRA_X} ${SEIDRA_Y - 40} Q ${(SEIDRA_X + tx) / 2} ${Math.min(SEIDRA_Y, ty) - 120 - 80 * rnd(i + 3)} ${tx} ${ty}"/>`; }).join('')}</g>
+  </svg>
+  <div id="seidra4" style="position:absolute;left:${SEIDRA_X - 150}px;top:${SEIDRA_Y - 150}px;width:300px;height:300px;display:grid;place-items:center;opacity:0"></div>
+  <div class="kartenbox" id="karte4" style="left:745px;top:70px;width:490px;height:560px;opacity:0"></div>
+  <div class="blase spott" id="seidrablase" style="left:120px;top:440px;max-width:600px;font-size:22px"><span class="wer" style="color:#e23cff">Seidra · Spinnenkönigin</span>Noch ein Lehrling. Noch ein Knoten, den ich lösen werde. Komm ruhig näher.</div>
+  <div class="gespinst-reihe" id="gespinste"></div>
+  <div class="vignette"></div><div class="koernung"></div><div class="flash" id="rot" style="background:#ff4d6d"></div>`;
+const s4z = [
+  woerterZeile(s4.el, 'In der Tiefe erwacht Seidra, die Spinnenkönigin.', { top: 50, mittel: true, maxWidth: 640 }),
+  woerterZeile(s4.el, 'Einst die beste Weberin der Werkstatt, bis sie Fallen wob statt Brücken.', { top: 50, maxWidth: 640 }),
+  woerterZeile(s4.el, 'Jetzt spinnt sie das Schattennetz:', { top: 50, mittel: true, maxWidth: 640, farbe: '#e23cff' }),
+  woerterZeile(s4.el, 'Brücken reißen.', { top: 120, maxWidth: 640, farbe: '#ff4d6d' }),
+  woerterZeile(s4.el, 'Farben verblassen.', { top: 168, maxWidth: 640, farbe: '#9a93b8' }),
+  woerterZeile(s4.el, 'Funken erlöschen.', { top: 216, maxWidth: 640, farbe: '#8b84ad' }),
+  woerterZeile(s4.el, 'Neun Gespinste besetzen die Orte.', { top: 50, mittel: true, maxWidth: 640 }),
+];
+ut(34.6, 37.0, 'In der Tiefe erwacht Seidra, die Spinnenkönigin.');
+ut(37.6, 40.4, 'Einst die beste Weberin der Werkstatt, bis sie Fallen wob statt Brücken.');
+ut(40.6, 42.4, 'Jetzt spinnt sie das Schattennetz:');
+ut(42.4, 45.2, 'Brücken reißen. Farben verblassen. Funken erlöschen.');
+ut(45.4, 47.6, 'Neun Gespinste besetzen die Orte.');
+ut(47.8, 50.4, 'Seidra: Noch ein Lehrling. Noch ein Knoten, den ich lösen werde. Komm ruhig näher.');
+let karte4Orte = [];
+let karte4Gold = null;
+let karte4Namen = [];
+let gespinstZellen = [];
+const sfL = [];
+s4.render = (l, T) => {
+  const auf = tw(l, 0.8, 1.6, E.inout);
+  s4.el.querySelectorAll('.auge').forEach((a, i) => a.setAttribute('ry', (i < 2 ? 11 : 6) * auf * (0.85 + 0.15 * Math.sin(T * 7 + i))));
+  s4.el.querySelector('#augen').setAttribute('opacity', 1 - tw(l, 3.0, 0.3));
+  // Impact bei 3,0 s: Seidra steigt auf
+  const sp = tw(l, 3.0, 0.7, E.back);
+  const seidra = s4.el.querySelector('#seidra4');
+  seidra.style.opacity = l >= 3.0 ? clamp(sp * 1.5) : 0;
+  seidra.style.transform = `translateY(${(1 - sp) * 120 + Math.sin(T * 1.4) * 5}px) scale(${0.6 + 0.4 * sp})`;
+  seidra.style.filter = `drop-shadow(0 0 ${30 + 20 * Math.sin(T * 3)}px rgba(226,60,255,0.6))`;
+  s4.el.querySelector('#rot').style.opacity = l >= 3.0 ? 0.55 * (1 - tw(l, 3.0, 0.6)) : 0;
+  const shake = l >= 3.0 && l < 3.5 ? (0.5 - (l - 3.0)) * 26 : 0;
+  s4.el.style.transform = `translate(${Math.sin(T * 90) * shake}px, ${Math.cos(T * 75) * shake}px)`;
+  s4.el.querySelector('#netz4').setAttribute('opacity', 0.32 * tw(l, 3.0, 2.0));
+  s4.el.querySelector('#netz4').setAttribute('transform', `rotate(${T * 2} ${SEIDRA_X} ${SEIDRA_Y})`);
+  // Karte erscheint, Fäden wandern hinüber, Lichter gehen aus
+  const kb = s4.el.querySelector('#karte4');
+  const kp = tw(l, 5.6, 0.9);
+  kb.style.opacity = kp;
+  kb.style.transform = `translateX(${(1 - kp) * 60}px)`;
+  s4.el.querySelectorAll('.sf').forEach((p, i) => {
+    const q = tw(l, 6.4 + i * 0.22, 0.9, E.inout);
+    p.style.strokeDasharray = `${sfL[i] || 2000}`;
+    p.style.strokeDashoffset = `${(sfL[i] || 2000) * (1 - q)}`;
+    p.setAttribute('opacity', 0.9 * (l >= 6.4 ? 1 : 0));
+  });
+  karte4Orte.forEach((o, i) => {
+    const aus = tw(l, 7.0 + (17 - i) * 0.21, 0.35);
+    const kreis = o.querySelector('.ort-kreis');
+    if (kreis) {
+      kreis.style.fill = aus > 0.5 ? '#3a1550' : '#ffc53d';
+      kreis.style.stroke = aus > 0.5 ? '#e23cff' : '#ffc53d';
+      kreis.style.opacity = 1 - 0.4 * aus + 0.4 * aus * (aus >= 1 ? 1 : Math.floor(T * 20) % 2);
+    }
+    const nr = o.querySelector('.ort-nr');
+    if (nr) nr.style.fill = aus > 0.5 ? '#e23cff' : '#1a1200';
+  });
+  karte4Namen.forEach((n, i) => (n.style.opacity = 1 - tw(l, 7.0 + (17 - i) * 0.21, 0.4)));
+  if (karte4Gold) karte4Gold.style.opacity = 0.95 * (1 - tw(l, 7.4, 3.6, E.lin));
+  // Neun Gespinste
+  gespinstZellen.forEach((z, i) => {
+    const q = tw(l, 11.4 + i * 0.26, 0.4, E.back);
+    const zitter = l >= 11.4 + i * 0.26 && l < 11.7 + i * 0.26 ? (rnd(Math.floor(T * 30) + i) - 0.5) * 8 : 0;
+    z.style.opacity = clamp(q * 1.4);
+    z.style.transform = `translate(${zitter}px, ${(1 - q) * 40}px) scale(${0.5 + 0.5 * q})`;
+  });
+  const bl = s4.el.querySelector('#seidrablase');
+  bl.style.opacity = fadeIO(l, 13.6, 0.3, 16.5, 0.4);
+  bl.style.transform = `translateY(${(1 - tw(l, 13.6, 0.5, E.back)) * 14}px)`;
+  zeigeWoerter(s4z[0], l, 0.6, { proWort: 0.12, ende: 3.4 });
+  zeigeWoerter(s4z[1], l, 3.6, { proWort: 0.1, ende: 6.5 });
+  zeigeWoerter(s4z[2], l, 6.6, { proWort: 0.12, ende: 11.3 });
+  zeigeWoerter(s4z[3], l, 8.4, { proWort: 0.14, ende: 11.3 });
+  zeigeWoerter(s4z[4], l, 9.3, { proWort: 0.14, ende: 11.3 });
+  zeigeWoerter(s4z[5], l, 10.2, { proWort: 0.14, ende: 11.3 });
+  zeigeWoerter(s4z[6], l, 11.4, { proWort: 0.12 });
+};
+
+/* ---------- S5 Die Werkstatt ---------- */
+const s5 = szene('s5', 50.2, 62.6);
+s5.el.innerHTML = `<svg class="kulisse" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <defs><radialGradient id="tor5" cx="0.5" cy="0.45"><stop offset="0" stop-color="#fff2c8"/><stop offset="0.2" stop-color="#ffc53d" stop-opacity="0.9"/><stop offset="0.55" stop-color="#e23cff" stop-opacity="0.35"/><stop offset="1" stop-color="#07051a" stop-opacity="0"/></radialGradient>
+  <linearGradient id="keller5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#07051a"/><stop offset="1" stop-color="#15112b"/></linearGradient></defs>
+  <rect width="1280" height="720" fill="url(#keller5)"/>
+  <g fill="none" stroke="#1f1838" stroke-width="1.2">${Array.from({ length: 14 }, (_, r) => Array.from({ length: 12 }, (_, c) => `<rect x="${(c * 110 + (r % 2) * 55) - 60}" y="${r * 52}" width="108" height="50"/>`).join('')).join('')}</g>
+  <ellipse id="tor5e" cx="640" cy="300" rx="420" ry="260" fill="url(#tor5)" opacity="0.8"/>
+  <g id="strahlen5" opacity="0.5">${Array.from({ length: 12 }, (_, i) => { const a = (i / 12) * Math.PI * 2; return `<path d="M640 300 L${640 + Math.cos(a) * 820} ${300 + Math.sin(a) * 820} L${640 + Math.cos(a + 0.08) * 820} ${300 + Math.sin(a + 0.08) * 820}Z" fill="#ffc53d" opacity="0.08"/>`; }).join('')}</g>
+  <rect x="0" y="600" width="1280" height="120" fill="#0a0718"/>
+</svg><div class="vignette"></div>
+<div class="team" id="team"></div>
+<div class="blase lob" id="samblase5" style="left:0;right:0;margin:0 auto;top:548px;max-width:900px;text-align:center;font-size:26px"><span class="wer" style="color:#ffc53d">Sam · Meisterin der Werkstatt</span>„Ein Netz hält, wenn jeder Knoten hält. Du lernst Knoten, die Seidra nicht lösen kann.“</div>
+<div class="koernung"></div>`;
+const s5z = [
+  woerterZeile(s5.el, 'Die Werkstatt.', { top: 60, left: 0, mittel: true, align: 'center' }),
+  woerterZeile(s5.el, 'Und du, der neue Lehrling.', { top: 120, left: 0, align: 'center', farbe: '#ffc53d' }),
+];
+ut(50.8, 52.4, 'Die Werkstatt.');
+ut(52.4, 56.6, 'Sam, die Meisterin. Ayla, die Lichtweberin. Jonas, der Brückenbauer. Robby, der Funke.');
+ut(56.8, 58.4, 'Und du, der neue Lehrling.');
+ut(58.6, 62.4, 'Sam: Ein Netz hält, wenn jeder Knoten hält. Du lernst Knoten, die Seidra nicht lösen kann.');
+let mitglieder = [];
+s5.render = (l, T) => {
+  s5.el.querySelector('#strahlen5').setAttribute('transform', `rotate(${T * 6} 640 300)`);
+  s5.el.querySelector('#tor5e').setAttribute('ry', 260 + 8 * Math.sin(T * 2));
+  mitglieder.forEach((m, i) => {
+    const p = tw(l, 1.8 + i * 1.0, 0.6, E.back);
+    m.style.opacity = clamp(p * 1.4);
+    m.style.transform = `translateY(${(1 - p) * 40}px)`;
+  });
+  const du = s5.el.querySelector('#du-funke');
+  if (du) du.style.opacity = tw(l, 7.2, 0.5, E.back);
+  const rahmen = s5.el.querySelector('.du-rahmen');
+  if (rahmen) { rahmen.style.borderStyle = l >= 7.2 ? 'solid' : 'dashed'; rahmen.style.boxShadow = l >= 7.2 ? `0 0 ${30 + 10 * Math.sin(T * 4)}px rgba(255,197,61,0.6)` : 'none'; }
+  const fz = s5.el.querySelector('#du-frage');
+  if (fz) fz.style.opacity = 1 - tw(l, 7.2, 0.3);
+  const bl = s5.el.querySelector('#samblase5');
+  bl.style.opacity = fadeIO(l, 8.4, 0.4, 12.4, 0.3);
+  bl.style.transform = `translateY(${(1 - tw(l, 8.4, 0.5, E.back)) * 14}px)`;
+  zeigeWoerter(s5z[0], l, 0.6, { proWort: 0.14 });
+  zeigeWoerter(s5z[1], l, 6.6, { proWort: 0.12 });
+};
+
+/* ---------- S6 Titel ---------- */
+const s6 = szene('s6', 62.2, 70.6);
+s6.el.innerHTML = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, #1c0f36, #07051a 70%)"></div>
+  <svg class="kulisse" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">${sterne(60, 720)}${netzSvg(640, 360, 9, 18, 980, '#e23cff', { opacity: 0.22, id: 'netz6' })}</svg>
+  <div class="titel" id="titel">SCHATTENNETZ</div>
+  <div class="untertitel" id="titelsub">ACHTZEHN ORTE · NEUN GESPINSTE · EINE KÖNIGIN</div>
+  <div class="kartenbox" id="karte6" style="left:420px;top:150px;width:440px;height:500px;opacity:0"></div>
+  <div id="funken6"></div>
+  <div class="vignette"></div><div class="koernung"></div><div class="flash" id="blitz6"></div>`;
+const s6z = [
+  woerterZeile(s6.el, 'Ort 1: Quellgrund.', { top: 300, left: 880, mittel: true, maxWidth: 360 }),
+  woerterZeile(s6.el, 'Los.', { top: 380, left: 880, gross: true, farbe: '#ffc53d' }),
+];
+s6z[1].style.fontSize = '110px';
+const funkenBox6 = s6.el.querySelector('#funken6');
+const FUNKEN6 = Array.from({ length: 64 }, (_, i) => {
   const el = document.createElement('i');
   el.className = 'funke';
-  funkenBox.appendChild(el);
-  const a = (i / 56) * Math.PI * 2 + rnd(i) * 0.3;
-  const v = 260 + rnd(i + 99) * 420;
-  return { el, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 120, g: 420, life: 1.1 + rnd(i + 7) * 0.7 };
+  funkenBox6.appendChild(el);
+  const a = (i / 64) * Math.PI * 2 + rnd(i) * 0.3;
+  const v = 260 + rnd(i + 99) * 460;
+  return { el, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 120, g: 420, life: 1.1 + rnd(i + 7) * 0.7, magenta: i % 3 === 0 };
 });
-ut(21.4, 25.4, 'Sam: Okay. OKAY. Ich könnte jetzt heulen. Oder ich mache das, was ich am besten kann: ein Event daraus.');
-ut(25.6, 29.6, 'WEBCUP – 18 Crews. 18 Runden. Eine Website geht live.');
-s3.render = (l, T) => {
-  s3.el.querySelector('#spots').querySelectorAll('path').forEach((p, i) => {
-    p.setAttribute('transform', `rotate(${Math.sin(T * 0.9 + i * 2.1) * 9} ${[260, 1020, 640][i]} 90)`);
-    p.setAttribute('opacity', 0.1 + 0.12 * puls(T) + 0.04 * Math.sin(T * 3 + i));
-  });
-  const sam = s3.el.querySelector('#sam');
-  const samP = tw(l, 0.3, 0.6, E.back);
-  setze(sam, { y: (1 - samP) * 30, s: 0.8 + 0.2 * samP, o: samP * (1 - tw(l, 4.6, 0.4, E.in)) });
-  const blase = s3.el.querySelector('#samblase');
-  blase.style.opacity = tw(l, 0.8, 0.4) * (1 - tw(l, 4.6, 0.4, E.in));
-  blase.style.transform = `translateY(${(1 - tw(l, 0.8, 0.5)) * 10}px)`;
-  zeigeWoerter(s3.el.querySelector('#samtext'), l, 1.0, { proWort: 0.16, dur: 0.25 });
-  // WEBCUP
-  const w = s3.el.querySelector('#webcup');
-  const wp = tw(l, 5.0, 0.55, E.back);
-  w.style.opacity = l >= 5.0 ? 1 : 0;
-  w.style.transform = `scale(${2.6 - 1.6 * wp})`;
-  w.style.letterSpacing = `${0.06 + 0.04 * (1 - wp)}em`;
-  s3.el.querySelector('#blitz').style.opacity = l >= 5.0 ? 0.9 * (1 - tw(l, 5.0, 0.35, E.out)) : 0;
-  const sub = s3.el.querySelector('#webcupsub');
-  sub.style.opacity = tw(l, 6.4, 0.6);
-  sub.style.letterSpacing = `${0.3 + 0.15 * (1 - tw(l, 6.4, 1.2))}em`;
-  const shake = l >= 5.0 && l < 5.4 ? (0.4 - (l - 5.0)) * 24 : 0;
-  s3.el.querySelector('svg').style.transform = `translate(${Math.sin(T * 80) * shake}px, ${Math.cos(T * 70) * shake}px) scale(${1.02 + 0.04 * puls(T)})`;
-  const age = l - 5.0;
-  FUNKEN.forEach((f) => {
+FUNKEN6.forEach((f) => { if (f.magenta) { f.el.style.background = '#e23cff'; f.el.style.boxShadow = '0 0 10px #e23cff'; } });
+ut(63.2, 66.4, 'SCHATTENNETZ – achtzehn Orte, neun Gespinste, eine Königin.');
+ut(67.0, 69.0, 'Ort 1: Quellgrund.');
+ut(69.2, 70.4, 'Los.');
+s6.render = (l, T) => {
+  const impact = l >= 0.8;
+  s6.el.querySelector('#netz6').setAttribute('transform', `rotate(${T * 1.5} 640 360)`);
+  s6.el.querySelector('#netz6').setAttribute('opacity', 0.22 + 0.1 * puls(T));
+  const t = s6.el.querySelector('#titel');
+  const tp = tw(l, 0.8, 0.55, E.back);
+  const weg = tw(l, 4.4, 0.8, E.inout);
+  t.style.opacity = impact ? 1 - 0.75 * weg : 0;
+  t.style.transform = `scale(${(2.6 - 1.6 * tp) * (1 - 0.45 * weg)}) translateY(${-180 * weg}px)`;
+  s6.el.querySelector('#blitz6').style.opacity = impact ? 0.9 * (1 - tw(l, 0.8, 0.4)) : 0;
+  const sub = s6.el.querySelector('#titelsub');
+  sub.style.opacity = tw(l, 1.8, 0.6) * (1 - weg);
+  sub.style.letterSpacing = `${0.3 + 0.15 * (1 - tw(l, 1.8, 1.2))}em`;
+  const shake = l >= 0.8 && l < 1.2 ? (0.4 - (l - 0.8)) * 26 : 0;
+  s6.el.querySelector('svg').style.transform = `translate(${Math.sin(T * 80) * shake}px, ${Math.cos(T * 70) * shake}px) scale(${1.02 + 0.04 * puls(T)})`;
+  const age = l - 0.8;
+  FUNKEN6.forEach((f) => {
     if (age < 0 || age > f.life) { f.el.style.opacity = 0; return; }
     const x = 640 + f.vx * age;
-    const y = 250 + f.vy * age + 0.5 * f.g * age * age;
+    const y = 220 + f.vy * age + 0.5 * f.g * age * age;
     f.el.style.transform = `translate(${x}px, ${y}px) scale(${1.4 - age / f.life})`;
     f.el.style.opacity = 1 - age / f.life;
   });
+  const kb = s6.el.querySelector('#karte6');
+  const kp = tw(l, 4.6, 0.8, E.back);
+  kb.style.opacity = clamp(kp * 1.3);
+  kb.style.transform = `translateX(${(1 - kp) * -60}px) scale(${0.8 + 0.2 * kp})`;
+  const pulsKreis = s6.el.querySelector('#karte6 .ort-puls');
+  if (pulsKreis) { const q = (T * 0.8) % 1; pulsKreis.style.transform = `scale(${0.6 + 0.9 * q})`; pulsKreis.style.opacity = 0.7 * (1 - q); }
+  zeigeWoerter(s6z[0], l, 4.9, { proWort: 0.16 });
+  zeigeWoerter(s6z[1], l, 7.0, { dur: 0.45 });
 };
 
-/* ---------- S4 Crews ---------- */
-const s4 = szene('s4', 29.6, 41.4);
-s4.el.innerHTML = `<div style="position:absolute;inset:0;background:#07080d"></div>
-  <svg class="kulisse" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg"><g stroke="#161a28" stroke-width="1">${Array.from({ length: 27 }, (_, i) => `<line x1="${i * 50}" y1="0" x2="${i * 50}" y2="720"/>`).join('')}${Array.from({ length: 15 }, (_, i) => `<line x1="0" y1="${i * 50}" x2="1280" y2="${i * 50}"/>`).join('')}</g>${sterne(40, 100)}</svg>
-  <div class="caption" style="top:40px;font-family:var(--display);font-size:30px;letter-spacing:0.22em;color:#ffc857;font-weight:800" id="s4titel">WEBCUP · TURNIERPLAN</div>
-  <div class="crew-raster" id="raster"></div>
-  <div class="blase" id="bl1" style="left:110px;top:572px;opacity:0;font-size:21px;max-width:420px;padding:12px 18px"><span class="wer" style="color:#8f97ab">Kev Kabel · Die Offliner</span>Server? Die Seite liegt auf meinem Laptop.</div>
-  <div class="blase" id="bl2" style="left:430px;top:572px;opacity:0;font-size:21px;max-width:420px;padding:12px 18px"><span class="wer" style="color:#e11d48">MAX LAUT · CAPSLOCK CREW</span>ALLES IST WICHTIG, ALSO IST ALLES H1!</div>
-  <div class="blase" id="bl3" style="left:750px;top:572px;opacity:0;font-size:21px;max-width:420px;padding:12px 18px"><span class="wer" style="color:#e5e7eb">GEN-1 · Team Template</span>Warum lernen, wenn man klicken kann?</div>
-  <div class="caption" id="s4cap" style="top:672px;opacity:0;font-size:22px">Jede Crew steht für einen Fehler – den du nie wieder machen wirst.</div>
-  <div class="vignette"></div><div class="koernung"></div>`;
-ut(30.4, 33.4, '18 Crews aus der ganzen Stadt treten an.');
-ut(33.4, 35.6, 'Kev Kabel: Server? Die Seite liegt auf meinem Laptop.');
-ut(35.8, 38.0, 'MAX LAUT: ALLES IST WICHTIG, ALSO IST ALLES H1!');
-ut(38.2, 40.4, 'GEN-1: Warum lernen, wenn man klicken kann?');
-ut(39.4, 41.4, 'Jede Crew steht für einen Fehler – den du nie wieder machen wirst.');
-let zellen = [];
-s4.render = (l) => {
-  zellen.forEach((z, i) => {
-    const p = tw(l, 0.6 + i * 0.36, 0.5, E.back);
-    z.style.opacity = clamp(p * 1.4);
-    z.style.transform = `translateY(${(1 - p) * 50}px) scale(${0.3 + 0.7 * p})`;
-  });
-  const bl = (id, a) => {
-    const b = s4.el.querySelector(id);
-    const o = fadeIO(l, a, 0.3, a + 2.4, 0.3);
-    b.style.opacity = o;
-    b.style.transform = `translateY(${(1 - tw(l, a, 0.4, E.back)) * 16}px)`;
-  };
-  bl('#bl1', 3.8);
-  bl('#bl2', 6.2);
-  bl('#bl3', 8.6);
-  s4.el.querySelector('#s4cap').style.opacity = tw(l, 9.8, 0.6);
-};
-
-/* ---------- S5 Halle 7 ---------- */
-const s5 = szene('s5', 41.2, 52.4);
-s5.el.innerHTML = `<svg class="kulisse" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-  <defs><linearGradient id="w1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0d14"/><stop offset="1" stop-color="#171a24"/></linearGradient>
-  <radialGradient id="ww"><stop offset="0" stop-color="#ffb066" stop-opacity="0.5"/><stop offset="1" stop-color="#ffb066" stop-opacity="0"/></radialGradient>
-  <radialGradient id="wc"><stop offset="0" stop-color="#5fd6ff" stop-opacity="0.5"/><stop offset="1" stop-color="#5fd6ff" stop-opacity="0"/></radialGradient></defs>
-  <rect width="1280" height="720" fill="url(#w1)"/>
-  <g stroke="#1f2333" stroke-width="2">${Array.from({ length: 8 }, (_, i) => `<line x1="${i * 200}" y1="0" x2="${i * 200}" y2="720"/>`).join('')}<line x1="0" y1="90" x2="1280" y2="90"/><line x1="0" y1="180" x2="1280" y2="180"/></g>
-  <rect x="80" y="60" width="300" height="130" fill="#0e1119" stroke="#2a3150"/><rect x="900" y="60" width="300" height="130" fill="#0e1119" stroke="#2a3150"/>
-  <ellipse cx="300" cy="120" rx="170" ry="60" fill="url(#ww)"/><ellipse cx="980" cy="120" rx="170" ry="60" fill="url(#wc)"/>
-  <rect x="0" y="470" width="1280" height="250" fill="#0c0e15"/>
-  <rect x="140" y="390" width="1000" height="24" fill="#2a2f45"/><rect x="160" y="414" width="20" height="200" fill="#1f2333"/><rect x="1100" y="414" width="20" height="200" fill="#1f2333"/>
-  <g id="mon1"><rect x="220" y="275" width="210" height="125" rx="6" fill="#0b0d16" stroke="#2f3756" stroke-width="3"/><rect x="232" y="287" width="186" height="101" fill="#1a1208"/><g fill="#ff8a3d" opacity="0.85">${Array.from({ length: 6 }, (_, i) => `<rect x="${244 + (i % 2) * 14}" y="${297 + i * 14}" width="${50 + ((i * 53) % 110)}" height="5"/>`).join('')}</g></g>
-  <g id="mon2"><rect x="520" y="258" width="230" height="142" rx="6" fill="#0b0d16" stroke="#2f3756" stroke-width="3"/><rect x="532" y="270" width="206" height="118" fill="#101a2b"/><g fill="#38c7ff" opacity="0.8">${Array.from({ length: 7 }, (_, i) => `<rect x="${544 + (i % 2) * 14}" y="${280 + i * 14}" width="${60 + ((i * 37) % 100)}" height="5"/>`).join('')}</g></g>
-  <g id="mon3"><rect x="830" y="280" width="190" height="120" rx="6" fill="#0b0d16" stroke="#2f3756" stroke-width="3"/><rect x="842" y="292" width="166" height="96" fill="#141a12"/><g fill="#ffd84d" opacity="0.85">${Array.from({ length: 5 }, (_, i) => `<rect x="852" y="${302 + i * 15}" width="${40 + ((i * 41) % 90)}" height="5"/>`).join('')}</g></g>
-  <text x="640" y="660" text-anchor="middle" fill="#2a3150" font-family="Unbounded Variable, sans-serif" font-weight="800" font-size="40" letter-spacing="10">HALLE 7</text>
-</svg><div class="vignette"></div>
-<img class="robby" id="robby" src="/public/figuren/robby/hallo-einstieg.png" alt="">
-<div class="mitglied" id="ayla" style="left:120px;top:440px;color:#38c7ff"><div class="kreis">A</div><div><strong>Ayla</strong><span class="rolle">Captain · Gerüst &amp; Licht</span></div></div>
-<div class="mitglied" id="jonas" style="left:470px;top:440px;color:#ffd84d"><div class="kreis">J</div><div><strong>Jonas</strong><span class="rolle">Strom &amp; Backups</span></div></div>
-<div class="koernung"></div>`;
-const s5z = [
-  woerterZeile(s5.el, 'Halle 7, 23:58 Uhr.', { top: 60, farbe: '#c9cfdd' }),
-  woerterZeile(s5.el, 'Zwei Leute. Ein Bot. Null Budget.', { top: 110 }),
-  woerterZeile(s5.el, 'DIE NACHTSCHICHT', { top: 165, gross: true, farbe: '#ffc857', maxWidth: 1000 }),
-  woerterZeile(s5.el, 'Uns fehlt genau eine Person:', { top: 560 }),
-  woerterZeile(s5.el, 'Du.', { top: 600, gross: true, farbe: '#ffc857' }),
-];
-const rookieTag = document.createElement('span');
-rookieTag.className = 'chip';
-rookieTag.style.cssText = 'position:absolute;left:190px;top:616px;opacity:0;font-size:16px';
-rookieTag.textContent = 'Rookie · Level 1 · 0 XP';
-s5.el.appendChild(rookieTag);
-ut(42.0, 44.0, 'Halle 7, 23:58 Uhr. Zwei Leute. Ein Bot. Null Budget.');
-ut(45.8, 48.0, 'Die Nachtschicht.');
-ut(48.6, 52.2, 'Uns fehlt genau eine Person: du.');
-s5.render = (l, T) => {
-  ['#mon1', '#mon2', '#mon3'].forEach((id, i) => s5.el.querySelector(id).setAttribute('opacity', 0.8 + 0.2 * Math.sin(T * 2.2 + i)));
-  const robby = s5.el.querySelector('#robby');
-  const rp = tw(l, 0.5, 0.9, E.back);
-  robby.style.transform = `translateX(${(1 - rp) * 360}px) translateY(${Math.sin(T * 2) * 4}px)`;
-  robby.style.opacity = clamp(rp * 1.5);
-  [['#ayla', 2.6], ['#jonas', 3.2]].forEach(([id, a]) => {
-    const m = s5.el.querySelector(id);
-    const p = tw(l, a, 0.5, E.back);
-    m.style.opacity = clamp(p * 1.4);
-    m.style.transform = `translateY(${(1 - p) * 30}px)`;
-  });
-  zeigeWoerter(s5z[0], l, 0.8, { proWort: 0.12 });
-  zeigeWoerter(s5z[1], l, 2.4, { proWort: 0.14 });
-  zeigeWoerter(s5z[2], l, 4.6, { proWort: 0.18, dur: 0.45 });
-  zeigeWoerter(s5z[3], l, 7.4, { proWort: 0.12 });
-  zeigeWoerter(s5z[4], l, 9.0, { dur: 0.5 });
-  rookieTag.style.opacity = tw(l, 9.8, 0.5);
-};
-
-/* ---------- S6 Plan ---------- */
-const s6 = szene('s6', 52.2, 61.4);
-s6.el.innerHTML = `<div style="position:absolute;inset:0;background:#0b0d14"></div>
-  <svg class="kulisse" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg"><g stroke="#1a1e2e" stroke-width="1">${Array.from({ length: 27 }, (_, i) => `<line x1="${i * 50}" y1="0" x2="${i * 50}" y2="720"/>`).join('')}${Array.from({ length: 15 }, (_, i) => `<line x1="0" y1="${i * 50}" x2="1280" y2="${i * 50}"/>`).join('')}</g></svg>
-  <div class="schicht" id="sch1" style="top:430px"><svg viewBox="0 0 520 160"><path d="M260 0 L20 80 L260 160 L500 80Z" fill="#1c1410" stroke="#ff7a45" stroke-width="3"/></svg><div class="label" style="color:#ff7a45">HTML · Gerüst</div></div>
-  <div class="schicht" id="sch2" style="top:300px"><svg viewBox="0 0 520 160"><path d="M260 0 L20 80 L260 160 L500 80Z" fill="#0f1b26" stroke="#38c7ff" stroke-width="3"/></svg><div class="label" style="color:#38c7ff">CSS · Licht &amp; Farbe</div></div>
-  <div class="schicht" id="sch3" style="top:170px"><svg viewBox="0 0 520 160"><path d="M260 0 L20 80 L260 160 L500 80Z" fill="#1f1c0c" stroke="#ffd84d" stroke-width="3"/></svg><div class="label" style="color:#ffd84d">JavaScript · Strom</div></div>
-  <div class="vignette"></div><div class="koernung"></div>`;
-const s6z = [
-  woerterZeile(s6.el, 'Erst das Gerüst.', { top: 190, left: 740, mittel: true, farbe: '#ff7a45', maxWidth: 500 }),
-  woerterZeile(s6.el, 'Dann Licht und Farbe.', { top: 300, left: 740, mittel: true, farbe: '#38c7ff', maxWidth: 500 }),
-  woerterZeile(s6.el, 'Zum Schluss Strom.', { top: 410, left: 740, mittel: true, farbe: '#ffd84d', maxWidth: 500 }),
-  woerterZeile(s6.el, 'Wer die Reihenfolge kann, gewinnt.', { top: 520, left: 740, maxWidth: 500 }),
-];
-ut(53.0, 55.0, 'Erst das Gerüst: HTML.');
-ut(55.0, 57.0, 'Dann Licht und Farbe: CSS.');
-ut(57.0, 59.0, 'Zum Schluss Strom: JavaScript.');
-ut(59.0, 61.4, 'Wer die Reihenfolge kann, gewinnt.');
-s6.render = (l) => {
-  [['#sch1', 0.8], ['#sch2', 2.8], ['#sch3', 4.8]].forEach(([id, a]) => {
-    const el = s6.el.querySelector(id);
-    const p = tw(l, a, 0.8, E.back);
-    el.style.opacity = clamp(p * 1.3);
-    el.style.transform = `translateY(${(1 - p) * 90}px)`;
-  });
-  zeigeWoerter(s6z[0], l, 0.9, { proWort: 0.14 });
-  zeigeWoerter(s6z[1], l, 2.9, { proWort: 0.14 });
-  zeigeWoerter(s6z[2], l, 4.9, { proWort: 0.14 });
-  zeigeWoerter(s6z[3], l, 6.9, { proWort: 0.1 });
-};
-
-/* ---------- S7 Spielerkarte ---------- */
-const s7 = szene('s7', 61.2, 71.4);
-s7.el.innerHTML = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%, #151827, #07080d 70%)"></div>
-  <svg class="kulisse" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">${sterne(70, 720)}</svg>
-  <div class="karte3d"><div class="karte" id="karte">
-    <div class="sheen" id="sheen"></div>
-    <div class="kopf"><span>NACHTSCHICHT · WEBCUP</span><span>WC-2027</span></div>
-    <div class="avatarbox"><img src="/public/figuren/robby/hallo-winken.png" alt="" style="height:170px"></div>
-    <div class="rang">ROOKIE</div>
-    <div class="level" id="level">LEVEL 1 · 0 XP</div>
-    <div class="werte">
-      <div class="wert" style="color:#ff7a45"><small>HTML</small><strong id="w1">0</strong></div>
-      <div class="wert" style="color:#38c7ff"><small>CSS</small><strong id="w2">0</strong></div>
-      <div class="wert" style="color:#ffd84d"><small>JS</small><strong id="w3">0</strong></div>
-    </div>
-    <div class="xp"><span id="xpbar"></span></div>
-  </div></div>
-  <div class="raenge" id="raenge">${['Rookie', 'Starter', 'Pro', 'Captain', 'MVP', 'Legende'].map((r) => `<span class="chip">${r}</span>`).join('')}</div>
-  <div class="vignette"></div><div class="koernung"></div>`;
-const s7z = [
-  woerterZeile(s7.el, 'Deine Spielerkarte.', { top: 120, left: 640, mittel: true, maxWidth: 600 }),
-  woerterZeile(s7.el, 'Jede Aufgabe: XP.', { top: 210, left: 640, maxWidth: 600 }),
-  woerterZeile(s7.el, 'Jede Lektion: Sterne.', { top: 260, left: 640, maxWidth: 600 }),
-  woerterZeile(s7.el, 'Jede Runde: ein Gegner weniger.', { top: 310, left: 640, maxWidth: 600, farbe: '#ffc857' }),
-  woerterZeile(s7.el, 'Die Ränge gibt es fürs Können:', { top: 410, left: 640, maxWidth: 600, farbe: '#8f97ab' }),
-];
-ut(62.4, 64.2, 'Deine Spielerkarte.');
-ut(64.2, 67.4, 'Jede Aufgabe: XP. Jede Lektion: Sterne. Jede Runde: ein Gegner weniger.');
-ut(67.6, 71.2, 'Die Ränge gibt es fürs Können: Rookie, Starter, Pro, Captain, MVP, Legende.');
-s7.render = (l, T) => {
-  const k = s7.el.querySelector('#karte');
-  const p = tw(l, 0.3, 1.3, E.out);
-  k.style.transform = `rotateY(${-95 + 87 * p + Math.sin(T * 0.8) * 3}deg) rotateX(${Math.cos(T * 0.6) * 3}deg)`;
-  k.style.opacity = clamp(p * 2);
-  s7.el.querySelector('#sheen').style.transform = `rotate(${T * 40}deg)`;
-  const w = Math.round(5 * tw(l, 1.8, 1.2, E.out));
-  ['#w1', '#w2', '#w3'].forEach((id) => (s7.el.querySelector(id).textContent = w));
-  s7.el.querySelector('#xpbar').style.width = `${4 + 10 * tw(l, 2.4, 1.0)}%`;
-  zeigeWoerter(s7z[0], l, 1.2, { proWort: 0.14 });
-  zeigeWoerter(s7z[1], l, 3.0, { proWort: 0.12 });
-  zeigeWoerter(s7z[2], l, 3.9, { proWort: 0.12 });
-  zeigeWoerter(s7z[3], l, 4.8, { proWort: 0.12 });
-  zeigeWoerter(s7z[4], l, 6.2, { proWort: 0.1 });
-  s7.el.querySelectorAll('#raenge .chip').forEach((c, i) => {
-    const q = tw(l, 6.6 + i * 0.5, 0.4, E.back);
-    c.style.opacity = 0.25 + 0.75 * q;
-    c.style.transform = `scale(${0.85 + 0.15 * q})`;
-    c.style.boxShadow = q > 0.5 ? '0 0 20px rgba(255,138,61,0.5)' : 'none';
-  });
-};
-
-/* ---------- S8 Karte ---------- */
-const s8 = szene('s8', 71.2, 80.4);
-const POS = [[110, 150], [245, 135], [380, 155], [515, 135], [650, 155], [785, 135], [930, 160], [930, 335], [785, 350], [650, 330], [515, 350], [380, 330], [245, 350], [110, 335], [110, 520], [300, 540], [500, 520], [740, 550]].map(([x, y]) => [x + 60, y + 30]);
-const FARBEN = ['#b48cff', '#ff7a45', '#ff7a45', '#ff7a45', '#ff7a45', '#ff7a45', '#ff7a45', '#ff7a45', '#ff7a45', '#38c7ff', '#38c7ff', '#38c7ff', '#38c7ff', '#38c7ff', '#38c7ff', '#ffd84d', '#ffd84d', '#4ade80'];
-const NAMEN = ['Info-Point', 'Fundament', 'Textbanner', 'Programm-Tafel', 'Wegweiser', 'Foto-Wand', 'Timetable', 'Zonen', 'Ticket-Schalter', 'Lichtpult', 'Spots', 'Schriftzug', 'Container', 'Bühnen-Layout', 'Sicherheitszentrale', 'Stromkasten', 'Schaltpult', 'Showtime'];
-let pfad = `M ${POS[0][0]} ${POS[0][1]}`;
-for (let i = 1; i < POS.length; i++) { const [x0, y0] = POS[i - 1]; const [x1, y1] = POS[i]; const cx = (x0 + x1) / 2; pfad += ` C ${cx} ${y0}, ${cx} ${y1}, ${x1} ${y1}`; }
-s8.el.innerHTML = `<svg class="kulisse" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
-  <defs><linearGradient id="hm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0c16"/><stop offset="1" stop-color="#151a2b"/></linearGradient><radialGradient id="gw2"><stop offset="0" stop-color="#ffb066" stop-opacity="0.6"/><stop offset="1" stop-color="#ffb066" stop-opacity="0"/></radialGradient></defs>
-  <rect width="1280" height="720" fill="url(#hm)"/>${sterne(60, 120)}
-  <path d="M0 110 Q 640 70 1280 110 L1280 720 L0 720Z" fill="#111627"/>
-  <path d="M0 660 C 300 630, 600 690, 900 650 S 1200 620, 1280 660 L1280 720 L0 720Z" fill="#101a2e"/>
-  <path id="pfadalle" d="${pfad}" fill="none" stroke="#2a3150" stroke-width="6" stroke-linecap="round" stroke-dasharray="1 12"/>
-  <path id="pfadan" d="${pfad}" fill="none" stroke="#ff8a3d" stroke-width="5" stroke-linecap="round"/>
-  <g id="stationen">${POS.map(([x, y], i) => `<g class="station" id="st${i}"><circle cx="${x}" cy="${y}" r="34" fill="url(#gw2)"/><circle cx="${x}" cy="${y}" r="15" fill="${FARBEN[i]}" stroke="#fff" stroke-width="2"/><text x="${x}" y="${y + (i >= 14 || i < 7 ? -26 : 36)}" text-anchor="middle" font-size="13" font-family="Atkinson Hyperlegible, sans-serif" fill="#eef1f8" font-weight="700">R${i + 1} · ${NAMEN[i]}</text></g>`).join('')}</g>
-  <g id="rad" transform="translate(1160 560)" opacity="0.3"><circle r="62" fill="none" stroke="#2f3756" stroke-width="3"/>${Array.from({ length: 8 }, (_, i) => { const a = (i / 8) * Math.PI * 2; return `<line x1="0" y1="0" x2="${(Math.cos(a) * 62).toFixed(1)}" y2="${(Math.sin(a) * 62).toFixed(1)}" stroke="#2f3756" stroke-width="2"/><circle cx="${(Math.cos(a) * 62).toFixed(1)}" cy="${(Math.sin(a) * 62).toFixed(1)}" r="5" fill="${i % 2 ? '#ff8a3d' : '#5fd6ff'}"/>`; }).join('')}</g>
-</svg><div class="vignette"></div><div class="koernung"></div>
-<div class="badge" style="right:60px;top:40px"><small>TURNIERPLAN</small><strong>18 STATIONEN</strong></div>`;
-const s8z = [
-  woerterZeile(s8.el, '18 Stationen. Vom Info-Point bis Showtime.', { top: 625, left: 60, farbe: '#fff' }),
-  woerterZeile(s8.el, 'Jede gewonnene Runde bringt ein Stück Festival zum Leuchten.', { top: 665, left: 60, farbe: '#ffc857' }),
-];
-ut(72.2, 75.4, '18 Stationen. Vom Info-Point bis Showtime.');
-ut(75.6, 80.2, 'Jede gewonnene Runde bringt ein Stück Festival zum Leuchten.');
-const pfadAn = s8.el.querySelector('#pfadan');
-const pfadLaenge = pfadAn.getTotalLength();
-pfadAn.style.strokeDasharray = `${pfadLaenge}`;
-s8.render = (l, T) => {
-  const p = tw(l, 0.8, 6.4, E.inout);
-  pfadAn.style.strokeDashoffset = `${pfadLaenge * (1 - p)}`;
-  POS.forEach((_, i) => {
-    const q = tw(l, 0.8 + i * 0.34, 0.45, E.back);
-    const st = s8.el.querySelector(`#st${i}`);
-    st.style.opacity = clamp(q * 1.5);
-    st.style.transform = `scale(${0.4 + 0.6 * q})`;
-  });
-  s8.el.querySelector('#rad').setAttribute('opacity', 0.3 + 0.7 * tw(l, 6.8, 1.0));
-  s8.el.querySelector('#rad').setAttribute('transform', `translate(1160 560) rotate(${T * 12})`);
-  zeigeWoerter(s8z[0], l, 1.0, { proWort: 0.1 });
-  zeigeWoerter(s8z[1], l, 4.4, { proWort: 0.09 });
-};
-
-/* ---------- S9 Anpfiff ---------- */
-const s9 = szene('s9', 80.2, 88.8);
-s9.el.innerHTML = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, #1a1f33, #07080d 70%)"></div>
-  <svg class="kulisse" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">${sterne(60, 720)}<g id="strahlen">${Array.from({ length: 10 }, (_, i) => `<path d="M640 360 L${640 + Math.cos((i / 10) * Math.PI * 2) * 900} ${360 + Math.sin((i / 10) * Math.PI * 2) * 900} L${640 + Math.cos(((i + 0.4) / 10) * Math.PI * 2) * 900} ${360 + Math.sin(((i + 0.4) / 10) * Math.PI * 2) * 900}Z" fill="#ff8a3d" opacity="0.05"/>`).join('')}</g></svg>
-  <div class="badge" id="r1" style="left:50%;top:50px;transform:translateX(-50%);text-align:center"><small>RUNDE 1 · INFO-POINT</small><strong>NACHTSCHICHT vs. DIE OFFLINER</strong></div>
-  <div class="vs-seite" id="links" style="left:60px"><div id="emb-n"></div><div class="name" style="color:#ffc857">Nachtschicht</div><div class="sub">Halle 7 · Rookie an Bord</div></div>
-  <div class="vs-seite" id="rechts" style="right:60px"><div id="emb-o"></div><div class="name" style="color:#8f97ab">Die Offliner</div><div class="sub">Captain Kev Kabel</div></div>
-  <div class="vs" id="vs">VS</div>
-  <div class="blase" id="b1" style="left:330px;top:540px;opacity:0;font-size:24px;max-width:620px"><span class="wer" style="color:#4ade80">Sam · Jury</span>Ab 80 Prozent ist die Runde gewonnen – und die Gegner-Crew fliegt raus.</div>
-  <div class="blase" id="b2" style="left:330px;top:540px;opacity:0;font-size:28px;max-width:620px"><span class="wer" style="color:#38c7ff">Ayla · Captain</span>Bereit? Anpfiff.</div>
-  <div class="vignette"></div><div class="koernung"></div><div class="flash" id="pfiff"></div>`;
-s9.el.querySelector('#emb-n').innerHTML = nachtschichtEmblem({ groesse: 220 });
-ut(81.4, 84.2, 'Sam: Ab 80 Prozent ist die Runde gewonnen – und die Gegner-Crew fliegt raus.');
-ut(84.4, 86.4, 'Ayla: Bereit? Anpfiff.');
-s9.render = (l, T) => {
-  s9.el.querySelector('#strahlen').setAttribute('transform', `rotate(${T * 6} 640 360)`);
-  const li = s9.el.querySelector('#links');
-  const re = s9.el.querySelector('#rechts');
-  const p = tw(l, 0.2, 0.9, E.back);
-  li.style.transform = `translateX(${(1 - p) * -500}px)`;
-  re.style.transform = `translateX(${(1 - p) * 500}px)`;
-  const vs = s9.el.querySelector('#vs');
-  const vp = tw(l, 0.9, 0.5, E.back);
-  vs.style.opacity = vp;
-  vs.style.transform = `scale(${2.5 - 1.5 * vp}) rotate(${(1 - vp) * -20}deg)`;
-  s9.el.querySelector('#r1').style.opacity = tw(l, 0.1, 0.5);
-  const b1 = s9.el.querySelector('#b1');
-  b1.style.opacity = fadeIO(l, 1.4, 0.3, 4.2, 0.3);
-  const b2 = s9.el.querySelector('#b2');
-  b2.style.opacity = fadeIO(l, 4.4, 0.3, 6.1, 0.2);
-  b2.style.transform = `scale(${1 + 0.08 * puls(T)})`;
-  const pf = s9.el.querySelector('#pfiff');
-  pf.style.opacity = l >= 6.0 ? 0.95 * (1 - tw(l, 6.0, 0.6, E.out)) : 0;
-  const z = l >= 6.0 ? 1 + 0.12 * tw(l, 6.0, 1.0, E.out) : 1;
-  s9.el.style.transform = `scale(${z})`;
-};
-
-/* ---------- S10 Logo ---------- */
-const s10 = szene('s10', 88.2, DAUER);
-s10.el.innerHTML = `<div style="position:absolute;inset:0;background:#07080d"></div>
-  <div class="logo" id="logo"><div class="mark">&lt;/&gt;</div><div class="wort">WebWerkstatt</div><div class="claim">HTML, CSS &amp; JavaScript – lernen, wie die Profis bauen.</div><div class="url">philipp-byte.github.io/webwerkstatt</div></div>
+/* ---------- S7 Logo ---------- */
+const s7 = szene('s7', 70.0, DAUER);
+s7.el.innerHTML = `<div style="position:absolute;inset:0;background:#07051a"></div>
+  <div class="logo" id="logo"><div class="mark">&lt;/&gt;</div><div class="wort">WebWerkstatt</div><div class="claim">HTML, CSS &amp; JavaScript – lernen, wie das Netz gewoben wird.</div><div class="url">philipp-byte.github.io/webwerkstatt</div></div>
   <div class="koernung"></div>`;
-ut(88.8, 91.6, 'WebWerkstatt – HTML, CSS & JavaScript lernen.');
-s10.render = (l) => {
-  const lg = s10.el.querySelector('#logo');
-  lg.querySelectorAll(':scope > *').forEach((el, i) => {
+ut(70.6, 73.4, 'WebWerkstatt – HTML, CSS & JavaScript lernen.');
+s7.render = (l) => {
+  s7.el.querySelectorAll('#logo > *').forEach((el, i) => {
     const p = tw(l, 0.4 + i * 0.3, 0.6, E.back);
     el.style.opacity = p;
     el.style.transform = `translateY(${(1 - p) * 20}px)`;
   });
 };
 
-/* ---------- Crews laden (für S4) ---------- */
-const bereit = fetch('/public/content/story/crews.json')
-  .then((r) => r.json())
-  .then((crews) => {
-    const raster = s4.el.querySelector('#raster');
-    zellen = crews.runden.map((r) => {
-      const z = document.createElement('div');
-      z.className = 'crew-zelle';
-      z.innerHTML = `${crewEmblem(r, { groesse: 104 })}<div class="name">${esc(r.crew)}</div>`;
-      raster.appendChild(z);
-      return z;
-    });
-    const offliner = crews.runden[0];
-    s9.el.querySelector('#emb-o').innerHTML = crewEmblem(offliner, { groesse: 220 });
-  })
-  .then(() => document.fonts.ready);
+/* ---------- Welt laden: Figuren, Karte, Gespinste, gezeichnete Hintergründe ---------- */
+const bereit = (async () => {
+  const [welt, mani] = await Promise.all([
+    fetch('/public/content/story/welt.json').then((r) => r.json()),
+    fetch('/public/figuren/manifest.json').then((r) => (r.ok ? r.json() : { bilder: [] })).catch(() => ({ bilder: [] })),
+  ]);
+  manifest = new Set(mani.bilder || []);
+  // S2 Sam, S4 Seidra
+  s2.el.querySelector('#sam2').innerHTML = figurHtml('sam', 'neutral', 150);
+  s4.el.querySelector('#seidra4').innerHTML = figurHtml('seidra', 'action', 250);
+  // S4: Karte, auf der noch alles leuchtet
+  const alleFrei = new Map(welt.orte.map((o) => [o.chapter, { befreit: true }]));
+  const k4 = s4.el.querySelector('#karte4');
+  k4.innerHTML = karteSvg(welt.orte, welt.regionen, alleFrei);
+  karte4Orte = [...k4.querySelectorAll('.ort')];
+  k4.querySelectorAll('.ort-name').forEach((n) => n.remove()); // Namen wären hier nur Gewimmel
+  karte4Namen = [];
+  karte4Gold = k4.querySelectorAll('svg > path')[1] || null;
+  k4.querySelectorAll('.ort-kreis').forEach((c) => (c.style.transition = 'none'));
+  // S4: neun Gespinste
+  const reihe = s4.el.querySelector('#gespinste');
+  gespinstZellen = GESPINSTE.map((id) => {
+    const z = document.createElement('div');
+    z.className = 'gespinst-zelle';
+    z.innerHTML = `${figurHtml(id, 'neutral', 86)}<div class="name">${GESPINST_NAMEN[id]}</div>`;
+    reihe.appendChild(z);
+    return z;
+  });
+  // S5: das Team
+  const team = s5.el.querySelector('#team');
+  const TEAM = [
+    ['sam', 'neutral', 'Sam', 'Meisterin der Werkstatt'],
+    ['ayla', 'neutral', 'Ayla', 'Lichtweberin'],
+    ['jonas', 'neutral', 'Jonas', 'Brückenbauer'],
+    ['robby', 'hallo-winken', 'Robby', 'Der Funke'],
+  ];
+  mitglieder = TEAM.map(([id, pose, name, rolle]) => {
+    const m = document.createElement('div');
+    m.className = 'mitglied';
+    m.innerHTML = `<div class="bild">${figurHtml(id, pose, 150)}</div><strong>${name}</strong><span class="rolle">${rolle}</span>`;
+    team.appendChild(m);
+    return m;
+  });
+  const du = document.createElement('div');
+  du.className = 'mitglied';
+  du.innerHTML = `<div class="bild"><div class="du-rahmen"><span id="du-frage">?</span><span id="du-funke" style="position:absolute;inset:0;display:grid;place-items:center;opacity:0">${sigilSvg('funke', { groesse: 120, klasse: 'sigil-gross' })}</span></div></div><strong>Du</strong><span class="rolle">Lehrling · Ort 1</span>`;
+  team.appendChild(du);
+  mitglieder.push(du);
+  // S6: Karte mit Ort 1 als Ziel
+  const start = new Map([[welt.orte[0].chapter, { jetzt: true, frei: true }]]);
+  s6.el.querySelector('#karte6').innerHTML = karteSvg(welt.orte, welt.regionen, start);
+  // Fadenlängen für S4
+  s4.el.querySelectorAll('.sf').forEach((p, i) => (sfL[i] = p.getTotalLength()));
+  // Gezeichnete Hintergründe, wenn vorhanden
+  await Promise.all([hintergrund(s1, 1), hintergrund(s2, 2), hintergrund(s3, 3), hintergrund(s4, 4), hintergrund(s5, 5), hintergrund(s6, 6)]);
+  await document.fonts.ready;
+  const bilder = [...document.images].filter((i) => !i.complete);
+  await Promise.all(bilder.map((i) => new Promise((r) => { i.onload = r; i.onerror = r; })));
+})();
 
 /* ---------- Seek ---------- */
-const SZENEN = [s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10];
+const SZENEN = [s0, s1, s2, s3, s4, s5, s6, s7];
 function seek(T) {
   for (const s of SZENEN) {
     const an = T >= s.start - 0.05 && T <= s.end + 0.05;
     s.el.style.display = an ? 'block' : 'none';
     if (!an) continue;
-    const istLetzte = s === s10;
+    const istLetzte = s === s7;
     const o = istLetzte ? Math.min(tw(T, s.start, 0.5), 1 - tw(T, DAUER - 0.8, 0.8, E.in)) : fadeIO(T, s.start, 0.55, s.end, 0.55);
     s.el.style.opacity = o;
     s.render(T - s.start, T);
   }
 }
-window.__intro = { dauer: DAUER, fps: 30, seek, bereit, untertitel: UNTERTITEL };
+window.__intro = { dauer: DAUER, fps: 30, seek, bereit, untertitel: UNTERTITEL, poster: 64.2 };
 // Zum Anschauen im Browser: ?play spielt den Film in Echtzeit ab
 if (location.search.includes('play')) {
   bereit.then(() => {

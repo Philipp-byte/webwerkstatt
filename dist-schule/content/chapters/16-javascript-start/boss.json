@@ -1,0 +1,187 @@
+{
+  "chapter": "16-javascript-start",
+  "title": "Abnahme: Stromkasten",
+  "intro": "Strom! Ich hab die Konsole aufgemacht, und da stand wirklich „FUNKEN – Startseite geladen“. Zeig mir, dass das kein Zufall war – und dass ihr wirklich rechnet, statt nur Zahlen hinzutippen.",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "js.script",
+      "type": "quiz",
+      "question": "Warum bindet die FUNKEN-Startseite script.js erst am Ende des body ein?",
+      "options": [
+        "Damit alle Elemente der Seite schon da sind, wenn das Skript läuft",
+        "Weil der Browser Skripte im head ignoriert",
+        "Damit das Stylesheet zuerst geladen wird"
+      ],
+      "correct": 0,
+      "explanation": "Der Browser liest von oben nach unten – am Ende des body ist die Seite komplett."
+    },
+    {
+      "konzept": "recht.impressum",
+      "type": "quiz",
+      "question": "Was muss im Impressum der FUNKEN-Website stehen?",
+      "options": [
+        "Name und Anschrift der Verantwortlichen sowie eine Kontaktmöglichkeit",
+        "Die Namen aller Acts",
+        "Nur eine E-Mail-Adresse, alles andere ist freiwillig"
+      ],
+      "correct": 0,
+      "explanation": "Ein Impressum nennt, wer für die Seite verantwortlich ist: Name, Anschrift und Kontakt."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** eine Konsolenausgabe „Gesamt: 48 Euro“ für vier Tagestickets – der Betrag wird aus den Variablen berechnet, die 48 steht nirgends im Skript.",
+      "starter": {
+        "js": "// Ticketkauf\nconst preisTicket = 12;\nconst anzahl = 4;\n"
+      },
+      "solution": {
+        "js": "// Ticketkauf\nconst preisTicket = 12;\nconst anzahl = 4;\nconsole.log(\"Gesamt: \" + preisTicket * anzahl + \" Euro\");\n"
+      },
+      "tests": [
+        {
+          "type": "console",
+          "expected": "Gesamt: 48 Euro",
+          "label": "Die Konsole zeigt „Gesamt: 48 Euro“"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "preisTicket\\s*\\*\\s*anzahl|anzahl\\s*\\*\\s*preisTicket",
+          "label": "Der Betrag wird aus Preis und Anzahl berechnet"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "\\b48\\b",
+          "absent": true,
+          "label": "Die 48 steht nicht im Skript"
+        }
+      ]
+    },
+    {
+      "konzept": "css.flex",
+      "type": "pair",
+      "text": "Ordne die Flexbox-Eigenschaften ihrer Wirkung zu.",
+      "pairs": [
+        [
+          "`display: flex;`",
+          "macht ein Element zum Flex-Container"
+        ],
+        [
+          "`gap: 16px;`",
+          "Abstand zwischen den Kindern"
+        ],
+        [
+          "`justify-content: center;`",
+          "verteilt die Kinder in der Mitte"
+        ],
+        [
+          "`flex-wrap: wrap;`",
+          "erlaubt den Umbruch in die nächste Zeile"
+        ]
+      ]
+    },
+    {
+      "konzept": "js.variable",
+      "type": "fill",
+      "text": "Der Profilname bleibt, die Likes ändern sich. Vervollständige.",
+      "template": "___ profil = \"sam_2027\";\n___ likes = 0;",
+      "accept": [
+        [
+          "const"
+        ],
+        [
+          "let"
+        ]
+      ]
+    },
+    {
+      "konzept": "html.semantik",
+      "type": "bug",
+      "text": "Die Zonen der Startseite: Eine Zeile ist fehlerhaft. Welche?",
+      "lines": [
+        "<header>",
+        "  <h1>FUNKEN</h1>",
+        "</heder>",
+        "<main>"
+      ],
+      "line": 2,
+      "explanation": "Der schließende Tag muss genauso heißen wie der öffnende: `</header>`."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** das Ticket-Skript: Es soll „FUNKEN: 350 Tickets verkauft“ und „Vorverkauf läuft“ ausgeben, die Konsole zeigt aber nur eine rote Fehlermeldung. Zwei Zeilen sind fehlerhaft.",
+      "starter": {
+        "js": "// Ticket-Zähler\nconst veranstaltung = \"FUNKEN\";\nlet verkauft = 350;\nconsole.log(Veranstaltung + \": \" + verkauft + \" Tickets verkauft\");\nconsole.log(Vorverkauf läuft);\n"
+      },
+      "solution": {
+        "js": "// Ticket-Zähler\nconst veranstaltung = \"FUNKEN\";\nlet verkauft = 350;\nconsole.log(veranstaltung + \": \" + verkauft + \" Tickets verkauft\");\nconsole.log(\"Vorverkauf läuft\");\n"
+      },
+      "tests": [
+        {
+          "type": "console",
+          "expected": "FUNKEN: 350 Tickets verkauft",
+          "label": "Die Konsole zeigt „FUNKEN: 350 Tickets verkauft“"
+        },
+        {
+          "type": "console",
+          "expected": "Vorverkauf läuft",
+          "label": "Die Konsole zeigt „Vorverkauf läuft“"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "flags": "",
+          "matches": "console\\.log\\(\\s*veranstaltung\\s*\\+",
+          "label": "Die Ausgabe nutzt die Variable veranstaltung"
+        }
+      ]
+    },
+    {
+      "konzept": "css.font-size",
+      "type": "quiz",
+      "question": "Mit welcher Eigenschaft machst du die Zwischenüberschriften 28 Pixel groß?",
+      "options": [
+        "`font-size`",
+        "`font-family`",
+        "`line-height`"
+      ],
+      "correct": 0,
+      "explanation": "`font-size` ist die Schriftgröße. `font-family` wählt die Schriftart, `line-height` den Zeilenabstand."
+    },
+    {
+      "konzept": "js.datentyp",
+      "type": "quiz",
+      "question": "Was zeigt `console.log(\"7\" + 1);`?",
+      "options": [
+        "71",
+        "8",
+        "Eine Fehlermeldung"
+      ],
+      "correct": 0,
+      "explanation": "„7“ ist Text – das Plus klebt die 1 dahinter: 71."
+    },
+    {
+      "konzept": "js.verkettung",
+      "type": "fill",
+      "text": "Die Variable `team` enthält „Heilbronn“. Vervollständige die Ausgabe, damit „Tor für Heilbronn“ erscheint.",
+      "template": "console.log(\"Tor für \" ___ team);",
+      "accept": [
+        "+"
+      ]
+    },
+    {
+      "konzept": "js.script",
+      "type": "order",
+      "text": "Sortiere die Zeilen: Überschrift, Absatz, das Skript zuletzt im body.",
+      "lines": [
+        "<body>",
+        "  <h1>Fahrschule Blitz</h1>",
+        "  <p>Nächster Kurs im August.</p>",
+        "  <script src=\"script.js\"></script>",
+        "</body>"
+      ]
+    }
+  ]
+}

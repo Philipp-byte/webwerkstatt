@@ -1,0 +1,249 @@
+{
+  "chapter": "15-recht-im-web",
+  "title": "Abnahme: Sicherheitszentrale",
+  "intro": "Kurz mal ernst, Leute: Meine Schwester meint, ohne Impressum kriegen wir Post vom Anwalt. Also zeigt mir, dass die Galerie sauber nachgewiesen ist und das Impressum steht – dann darf der Bass wieder rein!",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "recht.urheberrecht",
+      "type": "quiz",
+      "question": "Sam will einen bekannten Song unter den Aftermovie auf der Website legen. Was gilt?",
+      "options": [
+        "Nur mit Erlaubnis der Rechteinhaber – auch Musik ist urheberrechtlich geschützt",
+        "Erlaubt, weil der Song im Radio läuft",
+        "Erlaubt, wenn der Aftermovie kürzer als eine Minute ist"
+      ],
+      "correct": 0,
+      "explanation": "Musik ist genauso geschützt wie Fotos und Texte. Ohne Lizenz bleibt nur der eigene Jingle."
+    },
+    {
+      "konzept": "recht.lizenz",
+      "type": "pair",
+      "text": "Ordne die Lizenz-Kürzel zu.",
+      "pairs": [
+        [
+          "CC BY",
+          "Nutzung erlaubt, wenn der Name genannt wird"
+        ],
+        [
+          "CC BY-NC",
+          "Name nennen, nur nicht-kommerziell"
+        ],
+        [
+          "CC0",
+          "keine Bedingungen – Nennung freiwillig"
+        ],
+        [
+          "keine Lizenzangabe",
+          "alle Rechte vorbehalten – erst fragen"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "1. **Erstelle** aus dem vorhandenen Bild einen Bild-Block mit der Unterschrift „Zeltbühne am Abend (Foto: Kim Vogt, CC BY 4.0)“. 2. **Gestalte** den Block im Stylesheet als Karte: weißer Hintergrund, rundum 12 Pixel Innenabstand und 8 Pixel runde Ecken.",
+      "starter": {
+        "html": "<h2>Eindrücke</h2>\n<img src=\"buehne.svg\" alt=\"Zeltbühne am Abend\">\n",
+        "css": "figure {\n  /* Karte */\n}\n\nfigcaption {\n  color: #6b6b7a;\n}\n"
+      },
+      "solution": {
+        "html": "<h2>Eindrücke</h2>\n<figure>\n  <img src=\"buehne.svg\" alt=\"Zeltbühne am Abend\">\n  <figcaption>Zeltbühne am Abend (Foto: Kim Vogt, CC BY 4.0)</figcaption>\n</figure>\n",
+        "css": "figure {\n  background-color: white;\n  padding: 12px;\n  border-radius: 8px;\n}\n\nfigcaption {\n  color: #6b6b7a;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "figure img[src=\"buehne.svg\"]",
+          "count": 1,
+          "label": "Das Bild liegt im Bild-Block"
+        },
+        {
+          "type": "text",
+          "selector": "figure figcaption",
+          "expected": "Zeltbühne am Abend (Foto: Kim Vogt, CC BY 4.0)",
+          "label": "Die Unterschrift enthält den Nachweis"
+        },
+        {
+          "type": "style",
+          "selector": "figure",
+          "prop": "background-color",
+          "expected": "white",
+          "label": "Der Block hat einen weißen Hintergrund"
+        },
+        {
+          "type": "style",
+          "selector": "figure",
+          "prop": "padding-top",
+          "expected": "12px",
+          "label": "Der Block hat 12px Innenabstand"
+        },
+        {
+          "type": "style",
+          "selector": "figure",
+          "prop": "border-top-left-radius",
+          "expected": "8px",
+          "label": "Der Block hat 8px runde Ecken"
+        }
+      ]
+    },
+    {
+      "konzept": "recht.fotos",
+      "type": "quiz",
+      "question": "Auf einem Foto vom Einlass ist eine Besucherin groß und erkennbar zu sehen. Was brauchst du, bevor es online geht?",
+      "options": [
+        "Ihre Einwilligung – bei Minderjährigen zusätzlich die der Eltern",
+        "Nichts – auf einem Festival darf jede Person fotografiert werden",
+        "Nur den Namen der Fotografin in der Bildunterschrift"
+      ],
+      "correct": 0,
+      "explanation": "Das Recht am eigenen Bild: Wer erkennbar im Mittelpunkt steht, muss der Veröffentlichung zustimmen."
+    },
+    {
+      "konzept": "recht.impressum",
+      "type": "fill",
+      "text": "Vervollständige.",
+      "template": "Ein Impressum nennt Name, ___ und Kontakt des Anbieters – und ist von jeder Seite aus erreichbar.",
+      "accept": [
+        "Anschrift",
+        "Adresse",
+        "Postanschrift"
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** die Impressum-Seite: Der E-Mail-Link öffnet kein Mailprogramm, und der Text in der Hinweis-Box klebt am Rahmen, obwohl rundum 12 Pixel Innenabstand vorgesehen sind. Behebe beide Fehler.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Impressum – Fitness-Block</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <header>\n      <h1>Impressum</h1>\n    </header>\n\n    <main>\n      <h2>Angaben</h2>\n      <p>Fitness-Block Heilbronn (fiktiv)<br>Hafenstraße 9<br>74072 Heilbronn<br><a href=\"post@fitness-block-beispiel.de\">post@fitness-block-beispiel.de</a></p>\n\n      <h2>Datenschutzerklärung</h2>\n      <p>Beim Probetraining-Formular speichern wir Name und E-Mail nur, um den Termin zu bestätigen.</p>\n      <p class=\"hinweis\"><strong>Fiktiver Betrieb für Übungszwecke.</strong></p>\n    </main>\n  </body>\n</html>\n",
+        "css": "body {\n  font-family: Arial, sans-serif;\n}\n\nh2 {\n  color: #d94f00;\n}\n\n.hinweis {\n  border: 2px solid #ff6a00;\n  paddin: 12px;\n  width: 320px;\n}\n"
+      },
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Impressum – Fitness-Block</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <header>\n      <h1>Impressum</h1>\n    </header>\n\n    <main>\n      <h2>Angaben</h2>\n      <p>Fitness-Block Heilbronn (fiktiv)<br>Hafenstraße 9<br>74072 Heilbronn<br><a href=\"mailto:post@fitness-block-beispiel.de\">post@fitness-block-beispiel.de</a></p>\n\n      <h2>Datenschutzerklärung</h2>\n      <p>Beim Probetraining-Formular speichern wir Name und E-Mail nur, um den Termin zu bestätigen.</p>\n      <p class=\"hinweis\"><strong>Fiktiver Betrieb für Übungszwecke.</strong></p>\n    </main>\n  </body>\n</html>\n",
+        "css": "body {\n  font-family: Arial, sans-serif;\n}\n\nh2 {\n  color: #d94f00;\n}\n\n.hinweis {\n  border: 2px solid #ff6a00;\n  padding: 12px;\n  width: 320px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "main a",
+          "attr": "href",
+          "expected": "mailto:post@fitness-block-beispiel.de",
+          "label": "Der E-Mail-Link öffnet das Mailprogramm"
+        },
+        {
+          "type": "style",
+          "selector": ".hinweis",
+          "prop": "padding-top",
+          "expected": "12px",
+          "label": "Die Hinweis-Box hat 12px Innenabstand"
+        },
+        {
+          "type": "style",
+          "selector": ".hinweis",
+          "prop": "border-top-width",
+          "expected": "2px",
+          "label": "Der Rahmen der Hinweis-Box bleibt"
+        },
+        {
+          "type": "text",
+          "selector": "main strong",
+          "expected": "Fiktiver Betrieb für Übungszwecke.",
+          "label": "Der Hinweis ist weiterhin stark betont"
+        }
+      ]
+    },
+    {
+      "konzept": "recht.datenschutz",
+      "type": "quiz",
+      "question": "Was ist der Grundgedanke der DSGVO?",
+      "options": [
+        "So wenig Daten wie möglich, klarer Zweck, offen sagen, was passiert",
+        "Alles darf gespeichert werden, solange die Seite HTTPS nutzt",
+        "Daten dürfen weitergegeben werden, solange niemand widerspricht"
+      ],
+      "correct": 0,
+      "explanation": "Datensparsamkeit, Zweckbindung und Transparenz – dafür steht die Datenschutzerklärung."
+    },
+    {
+      "konzept": "recht.impressum",
+      "type": "order",
+      "text": "Sortiere den Hauptbereich der Impressum-Seite: erst die Angaben, dann die Datenschutzerklärung mit dem Hinweis auf den fiktiven Betrieb am Ende.",
+      "lines": [
+        "<main>",
+        "  <h2>Angaben</h2>",
+        "  <p>Sneaker-Lager GmbH<br>Marktstraße 4<br>70173 Stuttgart</p>",
+        "  <h2>Datenschutzerklärung</h2>",
+        "  <p><strong>Fiktiver Betrieb für Übungszwecke.</strong></p>",
+        "</main>"
+      ]
+    },
+    {
+      "konzept": "css.flex",
+      "type": "quiz",
+      "question": "Die Links in der Navigation sollen nebeneinander stehen, mit 16 Pixel Abstand. Welche Regel?",
+      "options": [
+        "`nav { display: flex; gap: 16px; }`",
+        "`nav { display: block; gap: 16px; }`",
+        "`nav { flex: 16px; }`",
+        "`nav { margin: 16px; }`"
+      ],
+      "correct": 0,
+      "explanation": "Flexbox schaltest du mit `display: flex` ein, der Abstand zwischen den Kindern ist `gap`."
+    },
+    {
+      "konzept": "css.sel-nachfahre",
+      "type": "pair",
+      "text": "Welcher Selektor trifft was?",
+      "pairs": [
+        [
+          "`footer a`",
+          "Links im Fußbereich"
+        ],
+        [
+          "`.highlight`",
+          "alle Elemente mit der Klasse highlight"
+        ],
+        [
+          "`#lineup`",
+          "das Element mit der id lineup"
+        ],
+        [
+          "`nav a:hover`",
+          "Navigations-Links beim Überfahren mit der Maus"
+        ],
+        [
+          "`h1, h2`",
+          "alle h1- und alle h2-Überschriften"
+        ]
+      ]
+    },
+    {
+      "konzept": "html.th",
+      "type": "bug",
+      "text": "Die erste Zeile soll eine Kopfzeile sein, ist aber weder fett noch zentriert. Welche Zeile ist falsch?",
+      "lines": [
+        "<table>",
+        "  <tr>",
+        "    <td>Truck</td><td>Highlight</td>",
+        "  </tr>",
+        "  <tr>",
+        "    <td>Pizza-Truck</td><td>Margherita</td>",
+        "  </tr>",
+        "</table>"
+      ],
+      "line": 2,
+      "explanation": "Kopfzellen sind `th`, nicht `td` – der Browser stellt sie fett und zentriert dar."
+    },
+    {
+      "konzept": "html.colspan",
+      "type": "quiz",
+      "question": "Die Zelle „Pause – Foodtrucks öffnen“ soll über beide Bühnen-Spalten gehen. Welches Attribut?",
+      "options": [
+        "colspan mit dem Wert 2",
+        "rowspan mit dem Wert 2",
+        "width mit dem Wert 2"
+      ],
+      "correct": 0,
+      "explanation": "colspan verbindet Spalten (col = column), rowspan würde Zeilen verbinden."
+    }
+  ]
+}

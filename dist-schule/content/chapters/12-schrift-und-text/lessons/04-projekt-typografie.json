@@ -1,0 +1,45 @@
+{
+  "id": "04-projekt-typografie",
+  "title": "Projekt: Typografie",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "**Meilenstein Typografie.** Rückblick: Die Startseite hat eine Schriftart mit Ersatzfamilie, eine 48-Pixel-Überschrift in der Mitte, Menü-Links ohne Unterstreichung und Zeilenabstand 1,5 – und die Tickets-Seite hängt jetzt am Stylesheet.\n\nZwei Dinge fehlen für ein rundes Bild: Die Zwischenüberschriften haben noch Standardgröße, und die Navigation klebt links. Erst zwei kurze Kontrollfragen, dann die Etappe."
+    },
+    {
+      "type": "quiz",
+      "question": "Ein `<footer>` enthält drei Links, die gemeinsam mittig stehen sollen. Was ist der kürzeste Weg?",
+      "options": [
+        "Dem footer die Textausrichtung `center` geben – die Links darin rücken mit",
+        "Jedem Link einzeln eine zentrierte Textausrichtung geben",
+        "Vor jeden Link Leerzeichen tippen, bis es passt",
+        "Die Links größer machen, bis sie die Zeile füllen"
+      ],
+      "correct": 0,
+      "explanation": "Die Textausrichtung wirkt auf den Inhalt eines Kastens – also auch auf Links und Bilder darin. Ein einzelner Link ist kein Kasten mit eigener Zeile, bei ihm passiert nichts."
+    },
+    {
+      "type": "order",
+      "text": "**Sortiere** die Schriftgrößen von klein nach groß (1rem = 16px).",
+      "lines": [
+        "font-size: 14px;",
+        "font-size: 1rem;",
+        "font-size: 1.5rem;",
+        "font-size: 28px;",
+        "font-size: 48px;"
+      ],
+      "explanation": "1rem ist die Grundgröße 16px, 1.5rem sind 24px – damit ist die Reihe eindeutig."
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Ab zur FUNKEN-Website – Meilenstein! Die Zwischenüberschriften wachsen auf 28 Pixel: groß genug, um sich vom Fließtext abzuheben, klein genug, um dem 48-Pixel-Schriftzug nicht die Show zu stehlen. Die Größe kommt in die vorhandene Regel.\n\nDann wird die Navigation als Ganzes zentriert – mit einer neuen Regel für den Navigationskasten, nicht für die einzelnen Links. Danach lohnt ein Klick auf **„FUNKEN-Website ansehen“**: Sam wartet schon."
+    },
+    {
+      "type": "code",
+      "etappe": "12-schrift-und-text/04-projekt-typografie"
+    }
+  ]
+}

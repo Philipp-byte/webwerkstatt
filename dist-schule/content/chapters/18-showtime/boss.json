@@ -1,0 +1,288 @@
+{
+  "chapter": "18-showtime",
+  "title": "Abnahme: Showtime",
+  "intro": "Das ist sie. Unsere Seite – Line-up, Tickets, Galerie, Impressum, sogar ein Nachtmodus. Bevor ich den Link an 3 000 Leute schicke, gehen wir einmal alles durch, von vorne bis hinten. Zeig mir, dass ihr das wirklich könnt.",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "web.client-server",
+      "type": "quiz",
+      "question": "Sam schickt den Link an alle. 3 000 Handys rufen die Seite auf – wo liegt sie?",
+      "options": [
+        "Auf dem Server – jedes Handy bekommt sie als Antwort",
+        "Auf Sams Handy – von dort wird sie weitergereicht",
+        "Auf jedem Handy, seit es den Link bekommen hat"
+      ],
+      "correct": 0,
+      "explanation": "Client fragt, Server antwortet – 3 000 Mal. Die Seite liegt nur auf dem Server."
+    },
+    {
+      "konzept": "html.form",
+      "type": "order",
+      "text": "Sortiere das Formular: beschriftetes Namensfeld, dann der Absende-Knopf.",
+      "lines": [
+        "<form>",
+        "  <label for=\"name\">Name</label>",
+        "  <input type=\"text\" id=\"name\" name=\"name\">",
+        "  <button type=\"submit\">Absenden</button>",
+        "</form>"
+      ]
+    },
+    {
+      "konzept": "html.grundgeruest",
+      "type": "fill",
+      "text": "Vervollständige das Grundgerüst: Dokumenttyp und Zeichensatz, damit Umlaute richtig erscheinen.",
+      "template": "<!DOCTYPE ___>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"___\">",
+      "accept": [
+        [
+          "html"
+        ],
+        [
+          "utf-8",
+          "UTF-8"
+        ]
+      ]
+    },
+    {
+      "konzept": "css.sel-nachfahre",
+      "type": "pair",
+      "text": "Ordne jedem Selektor zu, was er trifft.",
+      "pairs": [
+        [
+          "`.karte`",
+          "alle Elemente mit der Klasse karte"
+        ],
+        [
+          "`#logo`",
+          "das Element mit der id logo"
+        ],
+        [
+          "`nav a`",
+          "Links innerhalb der Navigation"
+        ],
+        [
+          "`h1, h2`",
+          "alle h1 und alle h2"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** im Hauptbereich der Vereinsseite nach dem Willkommens-Absatz den Abschnitt „Training“: eine Zwischenüberschrift und eine Tabelle mit der Kopfzeile Tag | Uhrzeit und zwei Zeilen: Dienstag | 18:00 und Freitag | 17:30.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>SV Neckarblitz</title>\n  </head>\n  <body>\n    <header>\n      <h1>SV Neckarblitz</h1>\n    </header>\n    <nav>\n      <a href=\"index.html\">Start</a>\n      <a href=\"team.html\">Team</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n    </nav>\n    <main>\n      <h2>Willkommen</h2>\n      <p>Fußball für alle ab 14 – zwei Teams, ein Platz am Neckar.</p>\n    </main>\n    <footer>\n      <p>SV Neckarblitz · Heilbronn</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>SV Neckarblitz</title>\n  </head>\n  <body>\n    <header>\n      <h1>SV Neckarblitz</h1>\n    </header>\n    <nav>\n      <a href=\"index.html\">Start</a>\n      <a href=\"team.html\">Team</a>\n      <a href=\"kontakt.html\">Kontakt</a>\n    </nav>\n    <main>\n      <h2>Willkommen</h2>\n      <p>Fußball für alle ab 14 – zwei Teams, ein Platz am Neckar.</p>\n\n      <h2>Training</h2>\n      <table>\n        <tr>\n          <th>Tag</th>\n          <th>Uhrzeit</th>\n        </tr>\n        <tr>\n          <td>Dienstag</td>\n          <td>18:00</td>\n        </tr>\n        <tr>\n          <td>Freitag</td>\n          <td>17:30</td>\n        </tr>\n      </table>\n    </main>\n    <footer>\n      <p>SV Neckarblitz · Heilbronn</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "main h2:last-of-type",
+          "expected": "Training",
+          "label": "Der Abschnitt „Training“ ist da"
+        },
+        {
+          "type": "selector",
+          "selector": "table th",
+          "count": 2,
+          "label": "Die Kopfzeile hat zwei Kopfzellen"
+        },
+        {
+          "type": "selector",
+          "selector": "table tr",
+          "count": 3,
+          "label": "Die Tabelle hat drei Zeilen"
+        },
+        {
+          "type": "text",
+          "selector": "table tr:nth-child(2) td:first-child",
+          "expected": "Dienstag",
+          "label": "Die erste Datenzeile beginnt mit Dienstag"
+        },
+        {
+          "type": "text",
+          "selector": "table tr:last-child td:last-child",
+          "expected": "17:30",
+          "label": "Freitag endet mit 17:30"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "main p",
+            "main h2:last-of-type",
+            "table"
+          ],
+          "label": "Der Abschnitt steht nach dem Willkommens-Absatz"
+        }
+      ]
+    },
+    {
+      "konzept": "css.margin",
+      "type": "quiz",
+      "question": "Zwei Karten stehen direkt aneinander. Womit bekommst du Luft **außerhalb** ihres Rahmens, zwischen den Karten?",
+      "options": [
+        "`margin`",
+        "`padding`",
+        "`border`"
+      ],
+      "correct": 0,
+      "explanation": "`margin` ist der Außenabstand. `padding` wirkt innen, zwischen Inhalt und Rahmen."
+    },
+    {
+      "konzept": "css.hover",
+      "type": "fill",
+      "text": "Vervollständige: Navigations-Links werden orange, solange die Maus darüber ist.",
+      "template": "nav a___ {\n  color: #ff6a00;\n}",
+      "accept": [
+        ":hover"
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Repariere** das Stylesheet der Angebots-Karte: Sie hat weder Rahmen noch Innenabstand, und die Überschrift bleibt schwarz statt dunkelorange.",
+      "starter": {
+        "html": "<div class=\"angebot\">\n  <h2>Pizza-Freitag</h2>\n  <p>Jede Pizza 6 € – nur am Freitag, nur am Foodtruck.</p>\n</div>\n",
+        "css": ".angebot {\n  background-color: #fff7e8;\n  border: 2px solid #ff6a00\n  padding: 12px;\n  border-radius: 8px;\n}\n\n.angebot h2 {\n  colour: #d94f00;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "solution": {
+        "css": ".angebot {\n  background-color: #fff7e8;\n  border: 2px solid #ff6a00;\n  padding: 12px;\n  border-radius: 8px;\n}\n\n.angebot h2 {\n  color: #d94f00;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".angebot",
+          "prop": "border-top-width",
+          "expected": "2px",
+          "label": "Die Karte hat einen 2px dicken Rahmen"
+        },
+        {
+          "type": "style",
+          "selector": ".angebot",
+          "prop": "border-top-color",
+          "expected": "#ff6a00",
+          "label": "Der Rahmen ist orange"
+        },
+        {
+          "type": "style",
+          "selector": ".angebot",
+          "prop": "padding-top",
+          "expected": "12px",
+          "label": "Die Karte hat 12px Innenabstand"
+        },
+        {
+          "type": "style",
+          "selector": ".angebot h2",
+          "prop": "color",
+          "expected": "#d94f00",
+          "label": "Die Überschrift ist dunkelorange"
+        }
+      ]
+    },
+    {
+      "konzept": "css.justify-content",
+      "type": "quiz",
+      "question": "Die Links einer Flex-Navigation sollen mittig verteilt sein. Welche Deklaration gehört in die nav-Regel?",
+      "options": [
+        "`justify-content: center;`",
+        "`align-items: center;`",
+        "`flex-direction: center;`"
+      ],
+      "correct": 0,
+      "explanation": "`justify-content` verteilt entlang der Hauptachse – bei einer Zeile also waagerecht. `align-items` richtet quer dazu aus."
+    },
+    {
+      "konzept": "js.variable",
+      "type": "pair",
+      "text": "Ordne die JavaScript-Bausteine zu.",
+      "pairs": [
+        [
+          "`const`",
+          "Variable, die sich nicht mehr ändert"
+        ],
+        [
+          "`let`",
+          "Variable, die sich ändern darf"
+        ],
+        [
+          "`console.log(…)`",
+          "gibt etwas in der Konsole aus"
+        ],
+        [
+          "`textContent`",
+          "der Text eines Elements"
+        ],
+        [
+          "`classList.toggle(…)`",
+          "schaltet eine Klasse ein oder aus"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Skript: Bei jedem Klick auf den Knopf `plus` steigt die Zahl im Element `anzahl` um 1, und der Absatz `summe` zeigt „Summe: “, dann Anzahl mal Preis, dann „ €“ – nach zwei Klicks also „Summe: 24 €“.",
+      "starter": {
+        "html": "<h1>Tickets für den Kinoabend</h1>\n<p><button id=\"plus\">Noch ein Ticket</button> <span id=\"anzahl\">0</span> Tickets</p>\n<p id=\"summe\"></p>\n",
+        "js": "let tickets = 0;\nconst preis = 12;\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "solution": {
+        "js": "let tickets = 0;\nconst preis = 12;\nconst knopf = document.getElementById(\"plus\");\nknopf.addEventListener(\"click\", function () {\n  tickets = tickets + 1;\n  document.getElementById(\"anzahl\").textContent = tickets;\n  document.getElementById(\"summe\").textContent = \"Summe: \" + tickets * preis + \" €\";\n});\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "#anzahl",
+          "expected": "0",
+          "label": "Vor dem Klick steht die Anzahl auf 0"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#plus"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#plus"
+        },
+        {
+          "type": "text",
+          "selector": "#anzahl",
+          "expected": "2",
+          "label": "Nach zwei Klicks steht die Anzahl auf 2"
+        },
+        {
+          "type": "text",
+          "selector": "#summe",
+          "expected": "Summe: 24 €",
+          "label": "Die Summe lautet „Summe: 24 €“"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "tickets\\s*\\*\\s*preis|preis\\s*\\*\\s*tickets",
+          "label": "Die Summe wird aus Anzahl und Preis berechnet"
+        }
+      ]
+    },
+    {
+      "konzept": "recht.urheberrecht",
+      "type": "quiz",
+      "question": "Du findest im Netz ein tolles Foto für die Galerie. Darfst du es benutzen?",
+      "options": [
+        "Nur mit Erlaubnis oder passender Lizenz – und mit Nachweis",
+        "Ja, alles im Netz ist frei",
+        "Ja, wenn du die Quelle nennst"
+      ],
+      "correct": 0,
+      "explanation": "Fotos sind urheberrechtlich geschützt. Die Quelle zu nennen ersetzt keine Erlaubnis – eine Lizenz wie CC BY schon, wenn du den Nachweis dazuschreibst."
+    }
+  ]
+}

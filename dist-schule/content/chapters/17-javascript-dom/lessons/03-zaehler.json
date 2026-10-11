@@ -1,0 +1,242 @@
+{
+  "id": "03-zaehler",
+  "title": "Zähler",
+  "konzepte": [
+    "js.zaehler"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Likes unter einem Clip, Schritte in der Fitness-App, „12 Leute sind dabei“ – überall wird **gezählt**. Und Zählen heißt nur: sich eine Zahl merken und sie bei jedem Klick um eins erhöhen.\n\nDie Zahl lebt in einer **Variablen** aus Station 16. Weil sie sich ändert, muss es `let` sein, nicht `const`.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"28\" text-anchor=\"middle\" fill=\"#ffd84d\" font-family=\"monospace\" font-size=\"13\">zaehler = zaehler + 1</text><rect x=\"24\" y=\"56\" width=\"56\" height=\"48\" rx=\"8\" fill=\"#ffd84d\" fill-opacity=\"0.12\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"52\" y=\"88\" text-anchor=\"middle\" fill=\"#eef2ff\" font-size=\"22\" font-weight=\"bold\">0</text><path d=\"M84 80 H126\" stroke=\"#ff7a45\" stroke-width=\"2\" marker-end=\"url(#pz)\"/><text x=\"105\" y=\"72\" text-anchor=\"middle\" fill=\"#ff7a45\" font-size=\"11\">Klick</text><rect x=\"132\" y=\"56\" width=\"56\" height=\"48\" rx=\"8\" fill=\"#ffd84d\" fill-opacity=\"0.12\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"160\" y=\"88\" text-anchor=\"middle\" fill=\"#eef2ff\" font-size=\"22\" font-weight=\"bold\">1</text><path d=\"M192 80 H234\" stroke=\"#ff7a45\" stroke-width=\"2\" marker-end=\"url(#pz)\"/><text x=\"213\" y=\"72\" text-anchor=\"middle\" fill=\"#ff7a45\" font-size=\"11\">Klick</text><rect x=\"240\" y=\"56\" width=\"56\" height=\"48\" rx=\"8\" fill=\"#4ade80\" fill-opacity=\"0.15\" stroke=\"#4ade80\" stroke-width=\"2\"/><text x=\"268\" y=\"88\" text-anchor=\"middle\" fill=\"#eef2ff\" font-size=\"22\" font-weight=\"bold\">2</text><text x=\"160\" y=\"128\" text-anchor=\"middle\" fill=\"#eef2ff\">let zaehler steht außerhalb der Funktion</text><text x=\"160\" y=\"148\" text-anchor=\"middle\" fill=\"#4ade80\">anzeige.textContent = zaehler</text><defs><marker id=\"pz\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#ff7a45\"/></marker></defs></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Ein Zähler hat drei Teile: anlegen, erhöhen, anzeigen.\n\n```js\nlet likes = 0;\nknopf.addEventListener(\"click\", function () {\n  likes = likes + 1;\n  anzeige.textContent = likes;\n});\n```\n\n`likes = likes + 1` heißt: Nimm den alten Wert, rechne eins dazu, speichere das Ergebnis wieder in `likes`. Danach schreibst du den neuen Wert in die Anzeige – eine Zahl wird dabei automatisch zu Text."
+    },
+    {
+      "type": "example",
+      "text": "Klicke mehrmals auf den Knopf. **Ändere** dann `+ 1` in `+ 10`. Und probier aus, was passiert, wenn du die erste Zeile in die Funktion verschiebst.",
+      "html": "<button id=\"knopf\">+1 Punkt</button>\n<p>Punkte: <span id=\"punkte\">0</span></p>\n",
+      "js": "let punkte = 0;\nconst knopf = document.getElementById(\"knopf\");\nconst anzeige = document.getElementById(\"punkte\");\nknopf.addEventListener(\"click\", function () {\n  punkte = punkte + 1;\n  anzeige.textContent = punkte;\n});\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Ein Zähler soll bei jedem Klick weiterzählen. Warum steht `let zaehler = 0;` **außerhalb** der Funktion?",
+      "options": [
+        "Sonst würde der Zähler bei jedem Klick wieder bei 0 starten",
+        "Innerhalb einer Funktion sind keine Variablen erlaubt",
+        "Damit der Zähler beim Laden schon 1 anzeigt"
+      ],
+      "correct": 0,
+      "explanation": "Alles in der Funktion läuft bei jedem Klick neu – eine Variable dort würde jedes Mal frisch mit 0 angelegt. Außerhalb merkt sie sich den Stand zwischen den Klicks."
+    },
+    {
+      "type": "code",
+      "task": "**Vervollständige** den Zuhörer: Bei jedem Klick auf den Like-Knopf steigt der Zähler `likes` um 1, und die Zahl vor „Likes“ zeigt den neuen Stand.",
+      "starter": {
+        "html": "<h2>Neuer Clip: Skatepark bei Nacht</h2>\n<button id=\"like-knopf\">♥ Like</button>\n<p><span id=\"likes\">0</span> Likes</p>\n",
+        "js": "let likes = 0;\nconst likeKnopf = document.getElementById(\"like-knopf\");\nconst anzeige = document.getElementById(\"likes\");\nlikeKnopf.addEventListener(\"click\", function () {\n  // Zähler erhöhen und anzeigen\n});\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "hints": [
+        "Zwei Zeilen in der Funktion: erst rechnen, dann anzeigen.",
+        "Erhöhen nach dem Muster `punkte = punkte + 1;` – mit deiner Variablen.",
+        "Anzeigen mit `anzeige.textContent = …;` – die Variable einsetzen, keine feste Zahl."
+      ],
+      "solution": {
+        "js": "let likes = 0;\nconst likeKnopf = document.getElementById(\"like-knopf\");\nconst anzeige = document.getElementById(\"likes\");\nlikeKnopf.addEventListener(\"click\", function () {\n  likes = likes + 1;\n  anzeige.textContent = likes;\n});\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "#likes",
+          "expected": "0",
+          "label": "Der Zähler startet bei 0"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#like-knopf"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#like-knopf"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#like-knopf"
+        },
+        {
+          "type": "text",
+          "selector": "#likes",
+          "expected": "3",
+          "label": "Nach drei Klicks steht der Zähler auf 3"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "likes\\s*=\\s*likes\\s*\\+\\s*1",
+          "label": "Die Variable likes wird um 1 erhöht"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Zählen geht auch **rückwärts** – etwa freie Plätze, die weniger werden:\n\n```js\nplaetze = plaetze - 1;\nanzeige.textContent = \"Noch \" + plaetze + \" frei\";\n```\n\nDie Anzeige darf ein zusammengesetzter Text sein: Text plus Variable plus Text, mit `+` verbunden – wie in Station 16.\n\nMerke: **Erst rechnen, dann anzeigen.** Andersherum zeigt die Seite noch den alten Wert."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige den Zähler: Bei jedem Klick soll `treffer` um 1 steigen.",
+      "template": "___ treffer = 0;\nknopf.addEventListener(\"click\", function () {\n  treffer = ___ + 1;\n  anzeige.textContent = treffer;\n});",
+      "accept": [
+        [
+          "let"
+        ],
+        [
+          "treffer"
+        ]
+      ],
+      "hint": "Erste Lücke: das Schlüsselwort für eine Variable, die sich ändern darf. Zweite Lücke: der alte Wert, zu dem eins dazukommt."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Skript: Jeder Klick auf „Platz buchen“ verringert `plaetze` um 1, und die Anzeige zeigt danach „Noch 4 Plätze frei“, „Noch 3 Plätze frei“ und so weiter.",
+      "starter": {
+        "html": "<h2>Theorie-Kurs Klasse B</h2>\n<button id=\"buchen-knopf\">Platz buchen</button>\n<p id=\"anzeige\">Noch 5 Plätze frei</p>\n",
+        "js": "let plaetze = 5;\nconst buchenKnopf = document.getElementById(\"buchen-knopf\");\nconst anzeige = document.getElementById(\"anzeige\");\n// Zuhörer: Platz buchen\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "hints": [
+        "Diesmal wird abgezogen statt dazugezählt.",
+        "Die Anzeige ist ein zusammengesetzter Text: Text + Variable + Text.",
+        "Struktur: Zuhörer am Knopf, darin `plaetze = … - 1;` und danach die Anzeige setzen."
+      ],
+      "solution": {
+        "js": "let plaetze = 5;\nconst buchenKnopf = document.getElementById(\"buchen-knopf\");\nconst anzeige = document.getElementById(\"anzeige\");\nbuchenKnopf.addEventListener(\"click\", function () {\n  plaetze = plaetze - 1;\n  anzeige.textContent = \"Noch \" + plaetze + \" Plätze frei\";\n});\n"
+      },
+      "tests": [
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#buchen-knopf"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#buchen-knopf"
+        },
+        {
+          "type": "text",
+          "selector": "#anzeige",
+          "expected": "Noch 3 Plätze frei",
+          "label": "Nach zwei Klicks steht „Noch 3 Plätze frei“"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "plaetze\\s*=\\s*plaetze\\s*-\\s*1",
+          "label": "plaetze wird um 1 verringert"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "\\+\\s*plaetze\\s*\\+",
+          "label": "Die Zahl in der Anzeige kommt aus der Variablen"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Was macht welche Zeile? Ordne zu.",
+      "pairs": [
+        [
+          "`let treffer = 0;`",
+          "legt den Zähler mit dem Startwert 0 an"
+        ],
+        [
+          "`treffer = treffer + 1;`",
+          "erhöht den Zähler um eins"
+        ],
+        [
+          "`anzeige.textContent = treffer;`",
+          "zeigt den aktuellen Stand auf der Seite"
+        ],
+        [
+          "`treffer = treffer - 1;`",
+          "verringert den Zähler um eins"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "Der Zähler rührt sich nicht: Egal wie oft man klickt, es bleibt bei 0. **Überprüfe** das Skript und behebe die Fehler, sodass nach drei Klicks „3“ angezeigt wird.",
+      "starter": {
+        "html": "<h2>Anwesenheit Klasse 11B</h2>\n<button id=\"da-knopf\">Ich bin da</button>\n<p><span id=\"anwesend\">0</span> von 24 anwesend</p>\n",
+        "js": "const daKnopf = document.getElementById(\"da-knopf\");\nconst anzeige = document.getElementById(\"anwesend\");\ndaKnopf.addEventListener(\"click\", function () {\n  let anwesend = 0;\n  anwesend + 1;\n  anzeige.textContent = anwesend;\n});\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "hints": [
+        "Ein Zähler braucht zwei Dinge: Das Ergebnis der Rechnung muss gespeichert werden – und die Variable muss außerhalb der Funktion leben.",
+        "Vergleiche mit dem Muster `punkte = punkte + 1;` – wird hier wirklich etwas zugewiesen?",
+        "Wo steht die Zeile mit `let`? Bei jedem Klick läuft die ganze Funktion von vorn."
+      ],
+      "solution": {
+        "js": "let anwesend = 0;\nconst daKnopf = document.getElementById(\"da-knopf\");\nconst anzeige = document.getElementById(\"anwesend\");\ndaKnopf.addEventListener(\"click\", function () {\n  anwesend = anwesend + 1;\n  anzeige.textContent = anwesend;\n});\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "#anwesend",
+          "expected": "0",
+          "label": "Vor dem Klick steht 0"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#da-knopf"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#da-knopf"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#da-knopf"
+        },
+        {
+          "type": "text",
+          "selector": "#anwesend",
+          "expected": "3",
+          "label": "Nach drei Klicks steht 3"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "anwesend\\s*=\\s*anwesend\\s*\\+\\s*1",
+          "label": "Die Rechnung wird in anwesend gespeichert"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Unter dem Line-up kommt der Knopf „Ich bin dabei!“ – und daneben zählt die Seite mit: „0 Leute sind dabei“, dann 1, dann 2 …\n\nDie Variable dafür gibt es schon: `reservierungen` aus Station 16, mit `let` angelegt und auf 0 gesetzt. Du brauchst also nur den Knopf, ein Inline-Element mit id für die Zahl und den Zuhörer, der erhöht und anzeigt."
+    },
+    {
+      "type": "code",
+      "etappe": "17-javascript-dom/03-zaehler"
+    }
+  ]
+}

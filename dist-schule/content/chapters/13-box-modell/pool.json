@@ -1,0 +1,250 @@
+{
+  "chapter": "13-box-modell",
+  "fragen": [
+    {
+      "id": "13-01",
+      "konzept": "css.border",
+      "type": "quiz",
+      "question": "Welche Zeile ergibt einen 2 Pixel dicken, gestrichelten grauen Rahmen?",
+      "options": [
+        "`border: 2px dashed gray;`",
+        "`border: 2px gray;`",
+        "`border: dashed;`"
+      ],
+      "correct": 0,
+      "explanation": "Dicke, Linienart und Farbe – alle drei Angaben in einer Zeile."
+    },
+    {
+      "id": "13-02",
+      "konzept": "css.border",
+      "type": "fill",
+      "text": "Ein durchgezogener Rahmen, 3 Pixel dick, blau.",
+      "template": "border: 3px ___ blue;",
+      "accept": [
+        "solid"
+      ],
+      "hint": "Die Linienart für „durchgezogen“."
+    },
+    {
+      "id": "13-03",
+      "konzept": "css.border",
+      "type": "bug",
+      "text": "Der Rahmen wird nicht angezeigt. Welche Zeile ist falsch?",
+      "lines": [
+        ".karte {",
+        "  background-color: white;",
+        "  border: 2px #333333;",
+        "  padding: 12px;",
+        "}"
+      ],
+      "line": 2,
+      "explanation": "Die Linienart fehlt (z. B. solid) – ohne sie zeichnet der Browser keinen Rahmen."
+    },
+    {
+      "id": "13-04",
+      "konzept": "css.padding",
+      "type": "quiz",
+      "question": "Der Text klebt innen am Rahmen der Box. Welche Eigenschaft hilft?",
+      "options": [
+        "`padding`",
+        "`margin`",
+        "`border`"
+      ],
+      "correct": 0,
+      "explanation": "padding ist der Innenabstand zwischen Inhalt und Rahmen."
+    },
+    {
+      "id": "13-05",
+      "konzept": "css.padding",
+      "type": "fill",
+      "text": "Nur oben 20 Pixel Innenabstand.",
+      "template": "___: 20px;",
+      "accept": [
+        "padding-top"
+      ],
+      "hint": "Innenabstand, nur für die obere Seite."
+    },
+    {
+      "id": "13-06",
+      "konzept": "css.padding",
+      "type": "pair",
+      "text": "Ordne die Kurzschreibweisen zu.",
+      "pairs": [
+        [
+          "`padding: 10px;`",
+          "alle vier Seiten 10px"
+        ],
+        [
+          "`padding: 10px 20px;`",
+          "oben/unten 10px, links/rechts 20px"
+        ],
+        [
+          "`padding: 1px 2px 3px 4px;`",
+          "oben 1px, rechts 2px, unten 3px, links 4px"
+        ]
+      ]
+    },
+    {
+      "id": "13-07",
+      "konzept": "css.margin",
+      "type": "quiz",
+      "question": "Zwei Boxen kleben aneinander. Welche Eigenschaft schafft Abstand zwischen ihnen?",
+      "options": [
+        "`margin`",
+        "`padding`",
+        "`border-radius`"
+      ],
+      "correct": 0,
+      "explanation": "margin ist der Außenabstand – der Abstand zu anderen Boxen."
+    },
+    {
+      "id": "13-08",
+      "konzept": "css.margin",
+      "type": "order",
+      "text": "Sortiere die Schichten einer Box von innen nach außen.",
+      "lines": [
+        "Inhalt",
+        "padding",
+        "border",
+        "margin"
+      ]
+    },
+    {
+      "id": "13-09",
+      "konzept": "css.margin",
+      "type": "bug",
+      "text": "Der Außenabstand nach unten wirkt nicht. Welche Zeile ist falsch?",
+      "lines": [
+        ".blase {",
+        "  padding: 10px;",
+        "  margin-bottom: 12;",
+        "  border: 1px solid #38c7ff;",
+        "}"
+      ],
+      "line": 2,
+      "explanation": "Längen brauchen eine Einheit: 12px."
+    },
+    {
+      "id": "13-10",
+      "konzept": "css.width",
+      "type": "quiz",
+      "question": "Eine Box soll auf großen Bildschirmen 700 Pixel breit sein, auf dem Handy schmaler. Welche Eigenschaft?",
+      "options": [
+        "`max-width`",
+        "`width`",
+        "`padding`"
+      ],
+      "correct": 0,
+      "explanation": "max-width ist eine Höchstbreite – auf schmalen Bildschirmen schrumpft die Box mit."
+    },
+    {
+      "id": "13-11",
+      "konzept": "css.width",
+      "type": "fill",
+      "text": "Die Box steht mittig: Außenabstand oben/unten 0, links/rechts automatisch verteilt.",
+      "template": "margin: 0 ___;",
+      "accept": [
+        "auto"
+      ],
+      "hint": "Das englische Wort für „automatisch“."
+    },
+    {
+      "id": "13-12",
+      "konzept": "css.width",
+      "type": "bug",
+      "text": "Die Box soll 300 Pixel breit sein, ist es aber nicht. Welche Zeile ist falsch?",
+      "lines": [
+        ".karte {",
+        "  widht: 300px;",
+        "  padding: 16px;",
+        "}"
+      ],
+      "line": 1,
+      "explanation": "Tippfehler: Die Eigenschaft heißt width."
+    },
+    {
+      "id": "13-13",
+      "konzept": "css.border-radius",
+      "type": "quiz",
+      "question": "Ein quadratisches Bild soll rund werden. Welcher Wert für `border-radius`?",
+      "options": [
+        "`50%`",
+        "`0`",
+        "`round`"
+      ],
+      "correct": 0,
+      "explanation": "Die Hälfte der Breite als Radius ergibt bei einem Quadrat einen Kreis."
+    },
+    {
+      "id": "13-14",
+      "konzept": "css.border-radius",
+      "type": "fill",
+      "text": "Runde Ecken mit 8 Pixel Radius.",
+      "template": "___: 8px;",
+      "accept": [
+        "border-radius"
+      ],
+      "hint": "Die Eigenschaft für runde Ecken – zwei Wörter mit Bindestrich."
+    },
+    {
+      "id": "13-15",
+      "konzept": "css.border-radius",
+      "type": "pair",
+      "text": "Ordne die Werte ihrer Wirkung zu.",
+      "pairs": [
+        [
+          "`border-radius: 0;`",
+          "scharfe Ecken"
+        ],
+        [
+          "`border-radius: 8px;`",
+          "leicht gerundete Ecken"
+        ],
+        [
+          "`border-radius: 50%;`",
+          "Kreis (bei einem Quadrat)"
+        ]
+      ]
+    },
+    {
+      "id": "13-16",
+      "konzept": "css.box-shadow",
+      "type": "quiz",
+      "question": "In `box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.4);` – wofür stehen die `10px`?",
+      "options": [
+        "Weichzeichnung des Schattens",
+        "Verschiebung nach rechts",
+        "Verschiebung nach unten"
+      ],
+      "correct": 0,
+      "explanation": "Reihenfolge: rechts (2px), unten (6px), Weichzeichnung (10px), Farbe."
+    },
+    {
+      "id": "13-17",
+      "konzept": "css.box-shadow",
+      "type": "fill",
+      "text": "Der Schatten ist Schwarz mit 30 % Deckkraft.",
+      "template": "box-shadow: 0 4px 8px rgba(0, 0, 0, ___);",
+      "accept": [
+        "0.3",
+        ".3",
+        "30%"
+      ],
+      "hint": "Die Deckkraft als Zahl zwischen 0 und 1."
+    },
+    {
+      "id": "13-18",
+      "konzept": "css.box-shadow",
+      "type": "bug",
+      "text": "Weder Schatten noch runde Ecken erscheinen. Welche Zeile ist falsch?",
+      "lines": [
+        ".karte {",
+        "  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3)",
+        "  border-radius: 8px;",
+        "}"
+      ],
+      "line": 1,
+      "explanation": "Das Semikolon fehlt – die nächste Zeile klebt am Schatten, und der Browser verwirft beides."
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "id": "02-audio-und-video",
+  "title": "Audio und Video",
+  "konzepte": [
+    "html.audio-video"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "jonas",
+      "text": "Sam hat noch mehr geschickt: den **FUNKEN-Jingle** als Audiodatei und einen kurzen Clip fürs **Aftermovie**. Für Ton gibt es das **audio**-Element, für Film **video**.\n\nAnders als `img` haben beide einen **schließenden Tag**. Die Datei steht wieder in `src`. Ganz wichtig ist das Attribut **controls**: Erst damit zeigt der Browser Play, Pause und Lautstärke – ohne controls bleibt der Player unsichtbar.\n\n```html\n<audio controls src=\"jingle.wav\"></audio>\n```",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"18\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Erst controls macht den Player sichtbar</text><text x=\"84\" y=\"44\" text-anchor=\"middle\" fill=\"#4ade80\" font-family=\"monospace\">&lt;audio controls&gt;</text><rect x=\"16\" y=\"54\" width=\"136\" height=\"36\" rx=\"18\" fill=\"#e8ecf7\"/><path d=\"M34 63 L48 72 L34 81Z\" fill=\"#0f1320\"/><rect x=\"58\" y=\"70\" width=\"70\" height=\"4\" rx=\"2\" fill=\"#0f1320\" opacity=\"0.3\"/><rect x=\"58\" y=\"70\" width=\"30\" height=\"4\" rx=\"2\" fill=\"#ff7a45\"/><circle cx=\"139\" cy=\"72\" r=\"5\" fill=\"#0f1320\"/><text x=\"84\" y=\"110\" text-anchor=\"middle\" fill=\"#4ade80\">Play, Zeit, Lautstärke</text><text x=\"236\" y=\"44\" text-anchor=\"middle\" fill=\"#ff7a45\" font-family=\"monospace\">&lt;audio&gt;</text><rect x=\"168\" y=\"54\" width=\"136\" height=\"36\" rx=\"18\" fill=\"none\" stroke=\"#ff7a45\" stroke-width=\"2\" stroke-dasharray=\"6 4\"/><text x=\"236\" y=\"76\" text-anchor=\"middle\" fill=\"#ff7a45\">nichts zu sehen</text><text x=\"236\" y=\"110\" text-anchor=\"middle\" fill=\"#ff7a45\">Ton da, Knöpfe fehlen</text><text x=\"160\" y=\"146\" text-anchor=\"middle\" fill=\"#38c7ff\">src = die Datei, die abgespielt wird</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Klick auf Play beim Jingle. **Lösche** dann das Wort `controls` im audio-Element – der Player verschwindet, obwohl das Element noch da ist. Setz es wieder ein und **ändere** beim Video `width` auf 160.",
+      "html": "<h1>Klassen-Podcast</h1>\n<h2>Intro-Jingle</h2>\n<audio controls src=\"jingle.wav\"></audio>\n<h2>Folge 1 als Video</h2>\n<video controls src=\"clip.webm\" width=\"320\"></video>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Im Code steht `<audio src=\"jingle.wav\"></audio>`, aber auf der Seite ist kein Player zu sehen. Warum?",
+      "options": [
+        "Das Attribut controls fehlt – ohne Bedienelemente bleibt der Player unsichtbar",
+        "Die Datei muss zwischen den Tags stehen, nicht in src",
+        "audio braucht wie img keinen schließenden Tag"
+      ],
+      "correct": 0,
+      "explanation": "Der Browser lädt den Ton, zeigt aber nichts an. Erst controls blendet Play, Pause und Lautstärke ein."
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** unter dem Absatz einen Audio-Player mit Bedienelementen für die Datei jingle.wav.",
+      "starter": {
+        "html": "<h1>Schulradio Neckarblick</h1>\n<p>Unser neuer Jingle – hör mal rein:</p>\n"
+      },
+      "hints": [
+        "Ton braucht das audio-Element – mit öffnendem und schließendem Tag.",
+        "Zwei Attribute im öffnenden Tag: eines für die Bedienelemente, eines für die Datei. Bei einem Video sieht das so aus: `<video controls src=\"film.webm\"></video>`.",
+        "Gleiches Muster mit audio und der Datei aus der Aufgabe: `<audio … src=\"…\"></audio>`."
+      ],
+      "solution": {
+        "html": "<h1>Schulradio Neckarblick</h1>\n<p>Unser neuer Jingle – hör mal rein:</p>\n<audio controls src=\"jingle.wav\"></audio>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "audio",
+          "attr": "src",
+          "expected": "jingle.wav",
+          "label": "Der Player lädt jingle.wav"
+        },
+        {
+          "type": "attr",
+          "selector": "audio",
+          "attr": "controls",
+          "present": true,
+          "label": "Der Player hat Bedienelemente"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "p",
+            "audio"
+          ],
+          "label": "Der Player steht unter dem Absatz"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Für Film nimmst du **video** – gleiches Prinzip, und wie beim Bild passt `width` dazu:\n\n```html\n<video controls src=\"clip.webm\" width=\"320\"></video>\n```\n\n**Formate:** Audio meist `.mp3` oder `.wav`, Video `.mp4` oder `.webm`. Der Browser spielt nur ab, was er kennt – diese vier sind die sichere Wahl. Große Filme liegen meist auf Videoplattformen, ein kurzer Clip darf auf dem eigenen Server bleiben."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige den Video-Player: Bedienelemente und 320 Pixel Breite.",
+      "template": "<video ___ src=\"clip.webm\" ___=\"320\"></video>",
+      "accept": [
+        [
+          "controls"
+        ],
+        [
+          "width"
+        ]
+      ],
+      "hint": "Das erste Attribut steht allein, ohne Wert. Das zweite bekommt die Zahl."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** die Workout-Seite: Unter „Warm-up-Track“ ist kein Player zu sehen, und der Absatz „Drei Runden, dann Pause.“ ist verschwunden. Beide Fehler stecken in den Medien-Elementen.",
+      "starter": {
+        "html": "<h1>Workout-Mix</h1>\n<h2>Warm-up-Track</h2>\n<audio src=\"jingle.wav\"></audio>\n<h2>Übungs-Video</h2>\n<video controls src=\"clip.webm\" width=\"320\">\n<p>Drei Runden, dann Pause.</p>\n"
+      },
+      "hints": [
+        "Ein Player ohne Bedienelemente ist unsichtbar – welches Attribut fehlt beim Audio?",
+        "Audio und Video haben – anders als img – einen schließenden Tag. Fehlt er, verschluckt das Element alles, was danach kommt.",
+        "Vergleiche beide Zeilen mit dem Muster `<audio controls src=\"…\"></audio>`."
+      ],
+      "solution": {
+        "html": "<h1>Workout-Mix</h1>\n<h2>Warm-up-Track</h2>\n<audio controls src=\"jingle.wav\"></audio>\n<h2>Übungs-Video</h2>\n<video controls src=\"clip.webm\" width=\"320\"></video>\n<p>Drei Runden, dann Pause.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "audio[controls]",
+          "label": "Der Warm-up-Player ist sichtbar"
+        },
+        {
+          "type": "attr",
+          "selector": "audio",
+          "attr": "src",
+          "expected": "jingle.wav",
+          "label": "Der Warm-up-Player spielt jingle.wav"
+        },
+        {
+          "type": "selector",
+          "selector": "video + p",
+          "label": "Der Absatz steht wieder unter dem Video"
+        },
+        {
+          "type": "attr",
+          "selector": "video",
+          "attr": "controls",
+          "present": true,
+          "label": "Das Video behält seine Bedienelemente"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Die Galerie wird eine **neue Seite** – also eine neue Datei mit komplettem **Grundgerüst**. Zur Erinnerung: Dokumenttyp, `html` mit Sprache, `head` mit Zeichensatz und Titel, `body` mit allem Sichtbaren.\n\n```html\n<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Katzen-Blog</title>\n  </head>\n  <body>\n    <h1>Mietz</h1>\n    <video controls src=\"clip.webm\"></video>\n  </body>\n</html>\n```\n\nDer Titel erscheint im Browser-Tab, nicht auf der Seite."
+    },
+    {
+      "type": "order",
+      "text": "Sortiere die Zeilen einer kompletten Seite mit einem Audio-Player.",
+      "lines": [
+        "<!DOCTYPE html>",
+        "<html lang=\"de\">",
+        "<head>",
+        "<meta charset=\"utf-8\">",
+        "<title>Pizza-Abend</title>",
+        "</head>",
+        "<body>",
+        "<audio controls src=\"jingle.wav\"></audio>",
+        "</body>",
+        "</html>"
+      ],
+      "explanation": "Dokumenttyp, dann html. Darin zuerst der head (unsichtbar), dann der body (sichtbar)."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** die komplette Seite: Grundgerüst (Deutsch, UTF-8, Titel „Meine Clips“), Hauptüberschrift „Meine Clips“, darunter ein Video-Player für clip.webm und danach ein Audio-Player für jingle.wav – beide mit Bedienelementen.",
+      "starter": {
+        "html": "<!-- Meine Clips – Seite von Nico -->\n"
+      },
+      "hints": [
+        "Erst das Grundgerüst wie im Katzen-Blog, dann der Inhalt in den body. Der Kommentar darf bleiben oder weg.",
+        "Sprache und Zeichensatz stehen im Gerüst, der Titel im head, die Überschrift im body.",
+        "Reihenfolge im body: h1, dann `<video controls src=\"…\"></video>`, dann das audio-Element nach gleichem Muster."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Meine Clips</title>\n  </head>\n  <body>\n    <h1>Meine Clips</h1>\n    <video controls src=\"clip.webm\" width=\"320\"></video>\n    <audio controls src=\"jingle.wav\"></audio>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<!doctype html>",
+          "label": "Die Seite beginnt mit dem Dokumenttyp"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<html[^>]*\\slang=[\"']de[\"']",
+          "label": "Die Seite ist als Deutsch gekennzeichnet"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "<meta[^>]*charset=[\"']?utf-8",
+          "label": "Der Zeichensatz UTF-8 ist angegeben"
+        },
+        {
+          "type": "text",
+          "selector": "title",
+          "expected": "Meine Clips",
+          "label": "Der Titel lautet „Meine Clips“"
+        },
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "Meine Clips",
+          "label": "Die Hauptüberschrift lautet „Meine Clips“"
+        },
+        {
+          "type": "selector",
+          "selector": "video[controls][src=\"clip.webm\"] ~ audio[controls][src=\"jingle.wav\"]",
+          "label": "Video-Player (clip.webm), danach Audio-Player (jingle.wav), beide mit Bedienelementen"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Zeit für die zweite Seite der FUNKEN-Website: die **Galerie**. Sie startet mit dem Jingle und dem Aftermovie, die Fotos folgen in der nächsten Lektion.\n\nWeil es eine neue Datei ist, baust du das Grundgerüst komplett selbst: Titel „Galerie – FUNKEN“, dann die Hauptüberschrift und zwei Abschnitte mit je einem Player. Die Startseite verlinkt schon auf galerie.html – ab jetzt führt der Link irgendwohin."
+    },
+    {
+      "type": "code",
+      "etappe": "06-bilder-und-medien/02-audio-und-video"
+    }
+  ]
+}

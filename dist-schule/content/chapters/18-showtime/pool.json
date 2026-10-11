@@ -1,0 +1,233 @@
+{
+  "chapter": "18-showtime",
+  "fragen": [
+    {
+      "id": "18-01",
+      "konzept": "web.sprachen",
+      "type": "quiz",
+      "question": "Ein Link soll beim Überfahren mit der Maus orange werden. Welche Sprache brauchst du?",
+      "options": [
+        "CSS",
+        "HTML",
+        "JavaScript"
+      ],
+      "correct": 0,
+      "explanation": "Aussehen – auch beim Überfahren (hover) – ist CSS. JavaScript wäre nur für Klicks nötig."
+    },
+    {
+      "id": "18-02",
+      "konzept": "html.grundgeruest",
+      "type": "fill",
+      "text": "Vervollständige die erste Zeile jeder HTML-Datei.",
+      "template": "<!DOCTYPE ___>",
+      "accept": [
+        "html"
+      ],
+      "hint": "Der Dokumenttyp ist einfach der Name der Sprache."
+    },
+    {
+      "id": "18-03",
+      "konzept": "html.ul",
+      "type": "bug",
+      "text": "Die Liste zeigt „Döner“ und „Waffeln“ in einer Zeile. Welche Zeile ist fehlerhaft?",
+      "lines": [
+        "<ul>",
+        "  <li>Pizza</li>",
+        "  <li>Döner",
+        "  <li>Waffeln</li>",
+        "</ul>"
+      ],
+      "line": 2,
+      "explanation": "Dem Eintrag „Döner“ fehlt der schließende Tag `</li>`."
+    },
+    {
+      "id": "18-04",
+      "konzept": "html.semantik",
+      "type": "pair",
+      "text": "Ordne die semantischen Elemente zu.",
+      "pairs": [
+        [
+          "`header`",
+          "Kopfbereich mit Titel und Einleitung"
+        ],
+        [
+          "`nav`",
+          "Navigation mit den Links"
+        ],
+        [
+          "`main`",
+          "der eigentliche Hauptinhalt"
+        ],
+        [
+          "`footer`",
+          "Fußbereich mit Adresse und Impressum"
+        ]
+      ]
+    },
+    {
+      "id": "18-05",
+      "konzept": "html.table",
+      "type": "order",
+      "text": "Sortiere die Tabelle mit ihrer Kopfzeile.",
+      "lines": [
+        "<table>",
+        "  <tr>",
+        "    <th>Zeit</th>",
+        "    <th>Act</th>",
+        "  </tr>",
+        "</table>"
+      ]
+    },
+    {
+      "id": "18-06",
+      "konzept": "html.label",
+      "type": "quiz",
+      "question": "Wie verbindest du ein Label mit seinem Eingabefeld?",
+      "options": [
+        "Das Attribut `for` am Label bekommt die `id` des Feldes",
+        "Beide bekommen dieselbe Klasse",
+        "Das Label steht einfach direkt vor dem Feld"
+      ],
+      "correct": 0,
+      "explanation": "`for` zeigt auf die `id` des Feldes. Ein Klick auf das Label setzt dann den Cursor ins Feld."
+    },
+    {
+      "id": "18-07",
+      "konzept": "css.regel",
+      "type": "bug",
+      "text": "Die Schriftgröße wird nicht übernommen. Welche Zeile ist fehlerhaft?",
+      "lines": [
+        "p {",
+        "  color: #0b7dd6",
+        "  font-size: 18px;",
+        "}"
+      ],
+      "line": 1,
+      "explanation": "Nach `#0b7dd6` fehlt das Semikolon – der Browser liest die nächste Zeile als Teil des Farbwerts und verwirft beides."
+    },
+    {
+      "id": "18-08",
+      "konzept": "css.sel-klasse",
+      "type": "fill",
+      "text": "Alle Elemente mit der Klasse `karte` bekommen Innenabstand. Vervollständige den Selektor.",
+      "template": "___ {\n  padding: 12px;\n}",
+      "accept": [
+        ".karte"
+      ],
+      "hint": "Klassen-Selektor: ein Punkt, dann der Klassenname."
+    },
+    {
+      "id": "18-09",
+      "konzept": "css.padding",
+      "type": "pair",
+      "text": "Ordne die Eigenschaften des Box-Modells zu.",
+      "pairs": [
+        [
+          "`padding`",
+          "Innenabstand – zwischen Inhalt und Rahmen"
+        ],
+        [
+          "`margin`",
+          "Außenabstand – zu anderen Elementen"
+        ],
+        [
+          "`border`",
+          "der Rahmen selbst"
+        ],
+        [
+          "`border-radius`",
+          "runde Ecken"
+        ]
+      ]
+    },
+    {
+      "id": "18-10",
+      "konzept": "css.flex",
+      "type": "quiz",
+      "question": "Die Links in einer `nav` sollen nebeneinander stehen. Welche Deklaration?",
+      "options": [
+        "`display: flex;`",
+        "`flex: nebeneinander;`",
+        "`text-align: row;`"
+      ],
+      "correct": 0,
+      "explanation": "`display: flex;` macht die nav zum Flex-Container – ihre Kinder stehen dann in einer Reihe."
+    },
+    {
+      "id": "18-11",
+      "konzept": "js.addEventListener",
+      "type": "bug",
+      "text": "Die Konsole meldet einen Syntaxfehler. Welche Zeile ist fehlerhaft?",
+      "lines": [
+        "const knopf = document.getElementById(\"start\");",
+        "knopf.addEventListener(\"click\", function () {",
+        "  zahl = zahl + 1;",
+        "};"
+      ],
+      "line": 3,
+      "explanation": "Die Funktion wird mit `}` geschlossen, aber der Aufruf von addEventListener braucht noch die schließende Klammer: `});`."
+    },
+    {
+      "id": "18-12",
+      "konzept": "js.textContent",
+      "type": "quiz",
+      "question": "Welche Zeile schreibt „Hallo“ in das Element mit der id `gruss`?",
+      "options": [
+        "`document.getElementById(\"gruss\").textContent = \"Hallo\";`",
+        "`document.getElementById(\"gruss\") = \"Hallo\";`",
+        "`document.textContent(\"gruss\", \"Hallo\");`"
+      ],
+      "correct": 0,
+      "explanation": "Erst das Element finden, dann seine Eigenschaft `textContent` setzen."
+    },
+    {
+      "id": "18-13",
+      "konzept": "js.variable",
+      "type": "fill",
+      "text": "Die Variable soll sich später ändern dürfen. Vervollständige.",
+      "template": "___ punkte = 0;\npunkte = punkte + 1;",
+      "accept": [
+        "let"
+      ],
+      "hint": "Mit const wäre die zweite Zeile ein Fehler."
+    },
+    {
+      "id": "18-14",
+      "konzept": "js.addEventListener",
+      "type": "order",
+      "text": "Sortiere das Skript: Beim Klick auf den Knopf erscheint ein Text.",
+      "lines": [
+        "const knopf = document.getElementById(\"mehr\");",
+        "knopf.addEventListener(\"click\", function () {",
+        "  document.getElementById(\"info\").textContent = \"Mehr Infos!\";",
+        "});"
+      ]
+    },
+    {
+      "id": "18-15",
+      "konzept": "recht.impressum",
+      "type": "quiz",
+      "question": "Wann braucht eine Website ein Impressum?",
+      "options": [
+        "Sobald sie nicht rein privat ist – z. B. Verein, Festival, Firma",
+        "Nur wenn sie etwas verkauft",
+        "Nie – das ist freiwillig"
+      ],
+      "correct": 0,
+      "explanation": "In Deutschland ist das Impressum Pflicht für alle Seiten, die nicht rein privat sind: Name, Anschrift, Kontakt."
+    },
+    {
+      "id": "18-16",
+      "konzept": "html.img",
+      "type": "bug",
+      "text": "Ein Bild wird nicht angezeigt. Welche Zeile ist fehlerhaft?",
+      "lines": [
+        "<img src=\"pizza.svg\" alt=\"Pizza Margherita\">",
+        "<img href=\"katze.svg\" alt=\"Katze auf dem Sofa\">",
+        "<img src=\"ticket.svg\" alt=\"Ein Festivalticket\">"
+      ],
+      "line": 1,
+      "explanation": "Die Bildquelle heißt `src`, nicht `href` – `href` gibt es nur bei Links."
+    }
+  ]
+}

@@ -81,8 +81,8 @@ export async function renderKlasse(app) {
       const anzahl = Number(detail.querySelector('#anzahl').value) || 1;
       try {
         const d = await accountsErzeugen(k.id, anzahl);
-        zeigeNeueListe(detail.querySelector('#neu-liste'), k, d.accounts);
-        await ladeKlassen();
+        await zeigeKlasse(k); // Tabelle und Zähler neu laden …
+        zeigeNeueListe(app.querySelector('#neu-liste'), k, d.accounts); // … und die Zugangsdaten einmal zum Drucken zeigen
       } catch (err) {
         toast({ titel: 'Fehler', text: err.message, icon: '⚠️', art: 'fehler' });
       }

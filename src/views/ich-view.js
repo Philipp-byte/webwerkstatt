@@ -11,7 +11,8 @@ import { sound } from '../gamification/sound.js';
 import { meldeMeilensteine } from './lesson-view.js';
 import { SPIELE } from '../engine/hinterhalt.js';
 import { figurBild, sigilSvg } from '../engine/sigil.js';
-import { istSchulmodus, abmelden, aktuellerNutzer } from '../api.js';
+import { istSchulmodus, abmelden, aktuellerNutzer, passwortAendern } from '../api.js';
+import { spielstandLokalVergessen } from '../progress-remote.js';
 
 function datum(ms) {
   return ms ? new Date(ms).toLocaleDateString('de-DE') : '–';
@@ -108,6 +109,7 @@ export async function renderIch(app) {
           ${nutzer ? '<button class="btn btn-geist" type="button" id="abmelden" style="margin-left:auto">Abmelden</button>' : '<button class="btn btn-geist" type="button" id="reset" style="margin-left:auto">Alles zurücksetzen</button>'}
         </div>
         <p style="color:var(--muted);font-size:0.8rem;margin:0.6rem 0 0">Zuletzt aktiv: ${datum(s.stats.lastActive)} · Sicherungen bisher: ${s.stats.exports}</p>
+        ${nutzer ? `<form id="pw-form" class="klasse-form" style="margin-top:0.9rem;flex-wrap:wrap"><span style="color:var(--ink-2);font-size:0.9rem;flex-basis:100%">Angemeldet als <strong>${escapeHtml(nutzer.pseudonym)}</strong> · Passwort ändern:</span><input id="pw-alt" type="password" placeholder="Altes Passwort" autocomplete="current-password" required><input id="pw-neu" type="password" placeholder="Neues Passwort (mind. 6 Zeichen)" minlength="6" autocomplete="new-password" required><button class="btn btn-sekundaer btn-klein" type="submit">🔑 Ändern</button></form>` : ''}
       </div>
 
       <div class="sektion karte">
@@ -161,7 +163,18 @@ export async function renderIch(app) {
     spielstandLoeschen();
     location.reload();
   });
+  app.querySelector('#pw-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+      await passwortAendern(app.querySelector('#pw-alt').value, app.querySelector('#pw-neu').value);
+      toast({ titel: 'Passwort geändert', text: 'Beim nächsten Anmelden gilt das neue.', icon: '✅', art: 'ok' });
+      e.target.reset();
+    } catch (err) {
+      toast({ titel: 'Fehler', text: err.message, icon: '⚠️', art: 'fehler' });
+    }
+  });
   app.querySelector('#abmelden')?.addEventListener('click', async () => {
+    spielstandLokalVergessen();
     await abmelden();
     location.hash = '#/login';
     location.reload();

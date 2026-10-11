@@ -1,0 +1,210 @@
+{
+  "chapter": "02-html-erste-schritte",
+  "title": "Abnahme: Fundament",
+  "intro": "Okay, ihr sagt, das Fundament steht. Ich hab die Seite gesehen – FUNKEN, Termin, Uhrzeiten, sieht sauber aus. Aber bevor wir weiterbauen, will ich wissen, dass ihr das auch versteht.",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "html.tag",
+      "type": "quiz",
+      "question": "Was zeigt der Browser für `<h1>FUNKEN</h1>` an?",
+      "options": [
+        "FUNKEN als große Überschrift – ohne die Tags",
+        "`<h1>FUNKEN</h1>` mit Klammern",
+        "Nichts – h1 ist unbekannt"
+      ],
+      "correct": 0,
+      "explanation": "Tags sind Anweisungen an den Browser. Angezeigt wird nur der Inhalt – als Überschrift der Ebene 1."
+    },
+    {
+      "konzept": "web.url",
+      "type": "pair",
+      "text": "Ordne die Teile von `https://funken-festival.de/tickets.html` zu.",
+      "pairs": [
+        [
+          "`https://`",
+          "Protokoll – verschlüsselt"
+        ],
+        [
+          "`funken-festival.de`",
+          "Domain – Name des Servers"
+        ],
+        [
+          "`/tickets.html`",
+          "Pfad – Datei auf dem Server"
+        ]
+      ]
+    },
+    {
+      "konzept": "html.attribut",
+      "type": "fill",
+      "text": "Vervollständige das Bild der Hauptbühne: Dateiname und Ersatztext.",
+      "template": "<img ___=\"buehne.svg\" ___=\"Die Hauptbühne bei Nacht\">",
+      "accept": [
+        [
+          "src"
+        ],
+        [
+          "alt"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** die Seite eines Foodtrucks: Hauptüberschrift „Waffelwagen“, darunter ein Absatz „Süße und herzhafte Waffeln – frisch vom Blech.“ und ein Bild der Datei foodtruck.svg mit dem Ersatztext „Der Waffelwagen“.",
+      "starter": {
+        "html": "<!-- Flyer: Waffelwagen -->\n"
+      },
+      "solution": {
+        "html": "<!-- Flyer: Waffelwagen -->\n<h1>Waffelwagen</h1>\n<p>Süße und herzhafte Waffeln – frisch vom Blech.</p>\n<img src=\"foodtruck.svg\" alt=\"Der Waffelwagen\">\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "Waffelwagen",
+          "label": "Die Überschrift lautet „Waffelwagen“"
+        },
+        {
+          "type": "text",
+          "selector": "p",
+          "expected": "Süße und herzhafte Waffeln – frisch vom Blech.",
+          "label": "Der Absatz hat den richtigen Text"
+        },
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "src",
+          "expected": "foodtruck.svg",
+          "label": "Das Bild zeigt foodtruck.svg"
+        },
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "alt",
+          "expected": "Der Waffelwagen",
+          "label": "Der Ersatztext lautet „Der Waffelwagen“"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "h1",
+            "p",
+            "img"
+          ],
+          "label": "Reihenfolge: Überschrift, Absatz, Bild"
+        }
+      ]
+    },
+    {
+      "konzept": "web.client-server",
+      "type": "quiz",
+      "question": "Der Server hat die Datei index.html geschickt. Wer zeichnet daraus die sichtbare Seite?",
+      "options": [
+        "Der Browser auf Sams Gerät – der Client",
+        "Der Server",
+        "Das DNS"
+      ],
+      "correct": 0,
+      "explanation": "Der Server liefert nur die Datei. Zeichnen ist Sache des Browsers – also des Clients."
+    },
+    {
+      "konzept": "html.grundgeruest",
+      "type": "order",
+      "text": "Sortiere das Grundgerüst der Startseite.",
+      "lines": [
+        "<!DOCTYPE html>",
+        "<html lang=\"de\">",
+        "  <head>",
+        "    <title>FUNKEN – Das Schülerfestival</title>",
+        "  </head>",
+        "  <body>",
+        "  </body>",
+        "</html>"
+      ]
+    },
+    {
+      "konzept": "web.sprachen",
+      "type": "quiz",
+      "question": "Welche Sprache legt fest, *dass* die Startseite eine Überschrift und drei Absätze hat?",
+      "options": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "correct": 0,
+      "explanation": "Inhalt und Struktur sind HTML. CSS bestimmt das Aussehen, JavaScript das Verhalten."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Korrigiere** zwei Fehler auf der Ticket-Seite: Der ganze Text ist riesig wie eine Überschrift, und statt des Ticket-Bildes erscheint nur der Ersatztext.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Ticket-Info</title>\n  </head>\n  <body>\n    <h1>Ticket-Info<h1>\n    <p>Tagesticket 12 Euro, Festivalpass 20 Euro, Helfer:innen kostenlos.</p>\n    <img scr=\"ticket.svg\" alt=\"Ein Festivalticket\">\n  </body>\n</html>\n"
+      },
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Ticket-Info</title>\n  </head>\n  <body>\n    <h1>Ticket-Info</h1>\n    <p>Tagesticket 12 Euro, Festivalpass 20 Euro, Helfer:innen kostenlos.</p>\n    <img src=\"ticket.svg\" alt=\"Ein Festivalticket\">\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "h1",
+          "count": 1,
+          "label": "Es gibt genau eine Überschrift"
+        },
+        {
+          "type": "selector",
+          "selector": "h1 p",
+          "count": 0,
+          "label": "Der Absatz steckt nicht mehr in der Überschrift"
+        },
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "src",
+          "expected": "ticket.svg",
+          "label": "Das Ticket-Bild wird geladen"
+        },
+        {
+          "type": "text",
+          "selector": "title",
+          "expected": "Ticket-Info",
+          "label": "Der Titel ist unverändert"
+        }
+      ]
+    },
+    {
+      "konzept": "html.verschachtelung",
+      "type": "bug",
+      "text": "Eine Zeile verstößt gegen „zuletzt geöffnet, zuerst geschlossen“. Welche?",
+      "lines": [
+        "<h1>Foodtrucks</h1>",
+        "<p>Pizza, Döner, Bubble Tea und <a href=\"waffeln.html\">Waffeln</p></a>",
+        "<p>Ab 16 Uhr geöffnet.</p>"
+      ],
+      "line": 1,
+      "explanation": "Der Link wurde im Absatz geöffnet und muss dort auch geschlossen werden: erst `</a>`, dann `</p>`."
+    },
+    {
+      "konzept": "web.http",
+      "type": "quiz",
+      "question": "Sam tippt eine alte Adresse ein und sieht „404“. Was bedeutet das?",
+      "options": [
+        "Der Server antwortet: Diese Datei gibt es hier nicht",
+        "Der Server ist abgeschaltet",
+        "Das Handy hat kein Internet"
+      ],
+      "correct": 0,
+      "explanation": "404 ist eine Antwort des Servers – er läuft, kennt aber die angefragte Datei nicht."
+    },
+    {
+      "konzept": "html.grundgeruest",
+      "type": "fill",
+      "text": "Vervollständige das Wurzelelement – die Seite ist auf Deutsch.",
+      "template": "<html ___=\"de\">",
+      "accept": [
+        "lang"
+      ]
+    }
+  ]
+}

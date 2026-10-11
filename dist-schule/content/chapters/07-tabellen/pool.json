@@ -1,0 +1,270 @@
+{
+  "chapter": "07-tabellen",
+  "fragen": [
+    {
+      "id": "07-01",
+      "konzept": "html.table",
+      "type": "quiz",
+      "question": "Welches Element ist eine **Zeile** in einer Tabelle?",
+      "options": [
+        "`<tr>`",
+        "`<td>`",
+        "`<table>`",
+        "`<li>`"
+      ],
+      "correct": 0,
+      "explanation": "`<tr>` = table row. `<td>` ist eine Zelle, `<table>` die ganze Tabelle."
+    },
+    {
+      "id": "07-02",
+      "konzept": "html.table",
+      "type": "fill",
+      "text": "Vervollständige die Tabelle: Welches Element umschließt die Zellen?",
+      "template": "<table>\n  <___>\n    <td>Kakao</td>\n    <td>1,20 €</td>\n  </tr>\n</table>",
+      "accept": [
+        "tr"
+      ],
+      "hint": "Zellen stehen immer in einer Zeile – table row."
+    },
+    {
+      "id": "07-03",
+      "konzept": "html.table",
+      "type": "order",
+      "text": "Sortiere die Preisliste: Tabelle, Zeile, Zellen – erst der Snack, dann der Preis.",
+      "lines": [
+        "<table>",
+        "  <tr>",
+        "    <td>Brezel</td>",
+        "    <td>0,80 €</td>",
+        "  </tr>",
+        "</table>"
+      ],
+      "explanation": "Tabelle → Zeile → Zellen, geschlossen von innen nach außen."
+    },
+    {
+      "id": "07-04",
+      "konzept": "html.table",
+      "type": "pair",
+      "text": "Ordne die Tabellen-Elemente zu.",
+      "pairs": [
+        [
+          "`<table>`",
+          "die ganze Tabelle"
+        ],
+        [
+          "`<tr>`",
+          "eine Zeile"
+        ],
+        [
+          "`<td>`",
+          "eine Zelle mit Daten"
+        ]
+      ]
+    },
+    {
+      "id": "07-05",
+      "konzept": "html.table",
+      "type": "bug",
+      "text": "Das Wort „Deutsch“ steht über der Tabelle statt in seiner Zelle. Welche Zeile ist schuld?",
+      "lines": [
+        "<table>",
+        "  <tr>",
+        "    <td>9:45</td>",
+        "    <dt>Deutsch</dt>",
+        "  </tr>",
+        "</table>"
+      ],
+      "line": 3,
+      "explanation": "Der Tag für eine Zelle heißt `td`, nicht `dt`. Vertippte Zellen-Tags landen über der Tabelle."
+    },
+    {
+      "id": "07-06",
+      "konzept": "html.table",
+      "type": "quiz",
+      "question": "Drei Zeilen mit je zwei Zellen – wie viele `<td>`-Elemente sind das?",
+      "options": [
+        "6",
+        "3",
+        "2",
+        "5"
+      ],
+      "correct": 0,
+      "explanation": "Drei Zeilen × zwei Zellen = sechs Zellen."
+    },
+    {
+      "id": "07-07",
+      "konzept": "html.table",
+      "type": "quiz",
+      "question": "Wofür sind Tabellen in HTML gedacht?",
+      "options": [
+        "Für Daten in Zeilen und Spalten – Stundenplan, Preise, Ergebnisse",
+        "Für das Seitenlayout – Navigation links, Inhalt rechts",
+        "Für lange Texte mit vielen Absätzen"
+      ],
+      "correct": 0,
+      "explanation": "Tabellen sind für Daten. Layout regelt CSS, Texte gehören in Absätze."
+    },
+    {
+      "id": "07-08",
+      "konzept": "html.th",
+      "type": "quiz",
+      "question": "Was unterscheidet `<th>` von `<td>`?",
+      "options": [
+        "`<th>` ist eine Kopfzelle: beschriftet die Spalte, fett und zentriert",
+        "`<th>` macht die Zelle breiter",
+        "`<th>` bekommt automatisch einen Rahmen"
+      ],
+      "correct": 0,
+      "explanation": "`th` = table header: eine Beschriftung, keine Daten. Der Browser zeigt sie fett und zentriert."
+    },
+    {
+      "id": "07-09",
+      "konzept": "html.th",
+      "type": "fill",
+      "text": "Vervollständige die Kopfzeile der Liga-Tabelle.",
+      "template": "<tr>\n  <___>Team</th>\n  <th>Punkte</th>\n</tr>",
+      "accept": [
+        "th"
+      ],
+      "hint": "Kopfzelle = table header."
+    },
+    {
+      "id": "07-10",
+      "konzept": "html.th",
+      "type": "bug",
+      "text": "In der Kopfzeile ist „Punkte“ nicht fett und nicht zentriert. Welche Zeile ist falsch?",
+      "lines": [
+        "<tr>",
+        "  <th>Team</th>",
+        "  <td>Punkte</td>",
+        "</tr>"
+      ],
+      "line": 2,
+      "explanation": "In der Kopfzeile gehören alle Zellen als `th` geschrieben – „Punkte“ steht in einer Datenzelle."
+    },
+    {
+      "id": "07-11",
+      "konzept": "html.th",
+      "type": "pair",
+      "text": "Ordne die Begriffe zu.",
+      "pairs": [
+        [
+          "Kopfzeile",
+          "erste Zeile der Tabelle – beschriftet die Spalten"
+        ],
+        [
+          "Kopfzelle",
+          "`<th>` – fett und zentriert"
+        ],
+        [
+          "Datenzelle",
+          "`<td>` – ein einzelner Wert"
+        ]
+      ]
+    },
+    {
+      "id": "07-12",
+      "konzept": "html.th",
+      "type": "order",
+      "text": "Sortiere die Preisliste: Kopfzeile zuerst, dann die Datenzeile.",
+      "lines": [
+        "<table>",
+        "<tr>",
+        "<th>Snack</th>",
+        "<th>Preis</th>",
+        "</tr>",
+        "<tr><td>Brezel</td><td>0,80 €</td></tr>",
+        "</table>"
+      ],
+      "explanation": "Die Kopfzeile mit den Kopfzellen steht ganz oben, danach folgen die Datenzeilen."
+    },
+    {
+      "id": "07-13",
+      "konzept": "html.colspan",
+      "type": "quiz",
+      "question": "Eine Zelle soll über **zwei Spalten** reichen. Welches Attribut brauchst du?",
+      "options": [
+        "`colspan=\"2\"`",
+        "`rowspan=\"2\"`",
+        "`span=\"2\"`",
+        "`width=\"2\"`"
+      ],
+      "correct": 0,
+      "explanation": "colspan = column span, verbindet Spalten nach rechts. rowspan verbindet Zeilen nach unten."
+    },
+    {
+      "id": "07-14",
+      "konzept": "html.colspan",
+      "type": "fill",
+      "text": "Diese Zelle soll über zwei Spalten gehen. Welches Attribut fehlt?",
+      "template": "<td ___=\"2\">Pause</td>",
+      "accept": [
+        "colspan"
+      ],
+      "hint": "Spalten heißen columns."
+    },
+    {
+      "id": "07-15",
+      "konzept": "html.colspan",
+      "type": "bug",
+      "text": "Die Pause soll über beide Spalten gehen, hängt aber nach unten in die nächste Zeile. Welche Zeile ist falsch?",
+      "lines": [
+        "<tr>",
+        "  <td>12:00</td>",
+        "  <td rowspan=\"2\">Pause</td>",
+        "</tr>"
+      ],
+      "line": 2,
+      "explanation": "rowspan verbindet nach unten über Zeilen. Für zwei Spalten nebeneinander brauchst du colspan."
+    },
+    {
+      "id": "07-16",
+      "konzept": "html.colspan",
+      "type": "quiz",
+      "question": "Eine Tabelle hat drei Spalten. Eine Zelle in der Zeile hat `colspan=\"2\"`. Wie viele Zellen stehen in dieser Zeile?",
+      "options": [
+        "2",
+        "3",
+        "4"
+      ],
+      "correct": 0,
+      "explanation": "Die verbundene Zelle belegt zwei Spalten, eine normale Zelle die dritte: zwei Zellen."
+    },
+    {
+      "id": "07-17",
+      "konzept": "html.colspan",
+      "type": "pair",
+      "text": "Ordne die Attribute ihrer Wirkung zu.",
+      "pairs": [
+        [
+          "`colspan=\"2\"`",
+          "Zelle reicht über zwei Spalten – nach rechts"
+        ],
+        [
+          "`rowspan=\"2\"`",
+          "Zelle reicht über zwei Zeilen – nach unten"
+        ],
+        [
+          "`colspan=\"3\"`",
+          "Zelle reicht über drei Spalten"
+        ]
+      ]
+    },
+    {
+      "id": "07-18",
+      "konzept": "html.table",
+      "type": "bug",
+      "text": "Der Absatz „Preise in Euro“ erscheint über der Tabelle statt darunter. Welche Zeile ist falsch?",
+      "lines": [
+        "<table>",
+        "  <tr>",
+        "    <td>Kakao</td>",
+        "  </tr>",
+        "</tabel>",
+        "<p>Preise in Euro</p>"
+      ],
+      "line": 4,
+      "explanation": "Der schließende Tag ist vertippt. Solange die Tabelle nicht geschlossen ist, schiebt der Browser den Absatz davor."
+    }
+  ]
+}

@@ -33,7 +33,8 @@ export async function renderLogin(app) {
     try {
       await anmelden(app.querySelector('#pseudonym').value.trim(), app.querySelector('#passwort').value);
       sound.fanfare();
-      location.hash = '#/';
+      // Ohne Hash neu laden: beim ersten Start dieses Accounts läuft dann der Vorspann, sonst die Karte
+      history.replaceState(null, '', location.pathname + location.search);
       location.reload();
     } catch (err) {
       fehler.hidden = false;

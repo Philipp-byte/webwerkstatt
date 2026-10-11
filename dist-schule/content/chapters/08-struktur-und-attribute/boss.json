@@ -1,0 +1,206 @@
+{
+  "chapter": "08-struktur-und-attribute",
+  "title": "Abnahme: Zonen",
+  "intro": "Ayla sagt, unsere Seiten haben jetzt „Zonen“ – Kopf, Navigation, Hauptteil, Fuß. Ich seh davon nichts, aber angeblich merkt es jeder Screenreader. Zeig mir, dass du weißt, was wohin gehört!",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "html.semantik",
+      "type": "quiz",
+      "question": "Welche Zone nimmt die Links zu Programm, Galerie und Tickets auf?",
+      "options": [
+        "`nav`",
+        "`header`",
+        "`footer`"
+      ],
+      "correct": 0,
+      "explanation": "Die Navigation ist das Element für die Links zu den Seiten."
+    },
+    {
+      "konzept": "html.th",
+      "type": "fill",
+      "text": "Vervollständige die Kopfzeile der Tabelle.",
+      "template": "<tr>\n  <___>Zeit</___>\n  <th>Act</th>\n</tr>",
+      "accept": [
+        [
+          "th"
+        ],
+        [
+          "th"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "1. **Gruppiere** Überschrift und beide Absätze in einem Container mit der Klasse `karte`. 2. **Ergänze** an der Überschrift die id `court-low`. 3. **Markiere** den Preis „89 €“ mit einem Inline-Element der Klasse `preis`.",
+      "starter": {
+        "html": "<h2>Court Low</h2>\n<p>Klassischer Sneaker in Weiß, Größe 36 bis 47.</p>\n<p>Preis: 89 €</p>\n"
+      },
+      "solution": {
+        "html": "<div class=\"karte\">\n  <h2 id=\"court-low\">Court Low</h2>\n  <p>Klassischer Sneaker in Weiß, Größe 36 bis 47.</p>\n  <p>Preis: <span class=\"preis\">89 €</span></p>\n</div>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "div.karte > h2",
+          "expected": "Court Low",
+          "label": "Die Überschrift liegt im Container"
+        },
+        {
+          "type": "selector",
+          "selector": "div.karte > p",
+          "count": 2,
+          "label": "Beide Absätze liegen im Container"
+        },
+        {
+          "type": "selector",
+          "selector": "h2#court-low",
+          "count": 1,
+          "label": "Die Überschrift hat die id „court-low“"
+        },
+        {
+          "type": "text",
+          "selector": "div.karte p span.preis",
+          "expected": "89 €",
+          "label": "Der Preis ist als Etikett markiert"
+        },
+        {
+          "type": "text",
+          "selector": "div.karte > p:last-child",
+          "expected": "Preis: 89 €",
+          "label": "Der Preis-Absatz liest sich unverändert"
+        }
+      ]
+    },
+    {
+      "konzept": "html.img",
+      "type": "pair",
+      "text": "Ordne zu.",
+      "pairs": [
+        [
+          "`<img>`",
+          "Bild – ein Leerelement ohne schließenden Tag"
+        ],
+        [
+          "`alt`",
+          "Alternativtext, wenn das Bild fehlt"
+        ],
+        [
+          "`<figcaption>`",
+          "Bildunterschrift im Bild-Block"
+        ],
+        [
+          "`controls`",
+          "Bedienelemente für Audio und Video"
+        ]
+      ]
+    },
+    {
+      "konzept": "html.liste-verschachtelt",
+      "type": "order",
+      "text": "Sortiere das Line-up der Zeltbühne – innen eine nummerierte Liste.",
+      "lines": [
+        "<ul>",
+        "  <li>Zeltbühne",
+        "    <ol>",
+        "      <li>Kiki Volt</li>",
+        "    </ol>",
+        "  </li>",
+        "</ul>"
+      ]
+    },
+    {
+      "konzept": "html.id",
+      "type": "quiz",
+      "question": "Zwei Überschriften tragen dieselbe id. Was passiert beim Klick auf die Sprungmarke?",
+      "options": [
+        "Der Browser springt zur ersten – die zweite ist nicht erreichbar",
+        "Der Browser zeigt eine Fehlermeldung",
+        "Beide Überschriften werden markiert"
+      ],
+      "correct": 0,
+      "explanation": "Eine id muss einmalig sein. Bei Doppelung gewinnt das erste Element, das zweite ist per Sprungmarke nicht erreichbar."
+    },
+    {
+      "konzept": "html.div-span",
+      "type": "bug",
+      "text": "Eine Zeile verstößt gegen die Block-Inline-Regel. Welche?",
+      "lines": [
+        "<div class=\"karte\">",
+        "  <h2>Neon Runner</h2>",
+        "  <span><p>129 €</p></span>",
+        "</div>"
+      ],
+      "line": 2,
+      "explanation": "Ein Block-Element (p) darf nicht in einem Inline-Element (span) liegen – das span gehört in den Absatz."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Korrigiere** zwei Fehler auf der Vereinsseite: Die gelbe Navigation umschließt den blauen Hauptbereich, statt davor zu enden – und der dunkle Fußbereich klebt im Hauptbereich statt darunter.",
+      "starter": {
+        "html": "<header>\n  <h1>SV Hafenkick</h1>\n</header>\n<nav>\n  <a href=\"index.html\">Start</a>\n  <a href=\"spiele.html\">Spiele</a>\n</div>\n<main>\n  <h2>Nächste Spiele</h2>\n  <table>\n    <tr>\n      <th>Datum</th>\n      <th>Gegner</th>\n    </tr>\n    <tr>\n      <td>So, 12. Juli</td>\n      <td>Neckarpiraten</td>\n    </tr>\n  </table>\n  <footer>\n    <p>SV Hafenkick · Hafenstraße 12 · 74072 Heilbronn</p>\n  </footer>\n</main>\n",
+        "css": "header { background: #ffe0cc; }\nnav { background: #fff3b0; }\nmain { background: #e3f2ff; }\nfooter { background: #1b1b2f; color: #fff7e8; }\nheader, nav, main, footer { padding: 8px 12px; }\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "solution": {
+        "html": "<header>\n  <h1>SV Hafenkick</h1>\n</header>\n<nav>\n  <a href=\"index.html\">Start</a>\n  <a href=\"spiele.html\">Spiele</a>\n</nav>\n<main>\n  <h2>Nächste Spiele</h2>\n  <table>\n    <tr>\n      <th>Datum</th>\n      <th>Gegner</th>\n    </tr>\n    <tr>\n      <td>So, 12. Juli</td>\n      <td>Neckarpiraten</td>\n    </tr>\n  </table>\n</main>\n<footer>\n  <p>SV Hafenkick · Hafenstraße 12 · 74072 Heilbronn</p>\n</footer>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "body > main",
+          "count": 1,
+          "label": "Der Hauptbereich steht direkt im body, nicht in der Navigation"
+        },
+        {
+          "type": "selector",
+          "selector": "main footer",
+          "count": 0,
+          "label": "Der Fußbereich liegt nicht im Hauptbereich"
+        },
+        {
+          "type": "selector",
+          "selector": "body > footer",
+          "count": 1,
+          "label": "Der Fußbereich steht direkt im body"
+        },
+        {
+          "type": "selector",
+          "selector": "nav > a",
+          "count": 2,
+          "label": "Die zwei Links bleiben in der Navigation"
+        },
+        {
+          "type": "selector",
+          "selector": "main table tr",
+          "count": 2,
+          "label": "Die Spieltabelle bleibt im Hauptbereich"
+        }
+      ]
+    },
+    {
+      "konzept": "html.colspan",
+      "type": "quiz",
+      "question": "Eine Tabellenzelle soll über zwei Spalten gehen. Welches Attribut?",
+      "options": [
+        "`colspan`",
+        "`rowspan`",
+        "`width`"
+      ],
+      "correct": 0,
+      "explanation": "colspan verbindet Spalten (columns), rowspan Zeilen. width ist keine Lösung dafür."
+    },
+    {
+      "konzept": "html.class",
+      "type": "fill",
+      "text": "Der Absatz soll zwei Klassen tragen: hinweis und wichtig. Vervollständige den Attributnamen.",
+      "template": "<p ___=\"hinweis wichtig\">Einlass ab 16 Uhr</p>",
+      "accept": [
+        "class"
+      ]
+    }
+  ]
+}

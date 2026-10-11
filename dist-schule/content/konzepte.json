@@ -1,0 +1,794 @@
+[
+  {
+    "id": "web.client-server",
+    "titel": "Client und Server",
+    "block": "web",
+    "kurz": "Dein Browser ist der Client: Er schickt eine Anfrage. Der Server ist ein Rechner, der Tag und Nacht läuft und die angefragte Datei zurückschickt.",
+    "beispiel": "Browser  →  Anfrage: GET /index.html  →  Server\nBrowser  ←  Antwort: die Datei       ←  Server",
+    "sprache": "text",
+    "merke": "Browser fragt, Server antwortet."
+  },
+  {
+    "id": "web.url",
+    "titel": "Aufbau einer URL",
+    "block": "web",
+    "kurz": "Eine Adresse besteht aus Protokoll, Domain und Pfad. Die Domain ist der Name des Servers, der Pfad die Datei darauf.",
+    "beispiel": "https://funken-festival.de/tickets.html\n  ↑ Protokoll   ↑ Domain           ↑ Pfad",
+    "sprache": "text",
+    "merke": "Protokoll · Domain · Pfad."
+  },
+  {
+    "id": "web.http",
+    "titel": "HTTP: Anfrage und Antwort",
+    "block": "web",
+    "kurz": "HTTP ist die Sprache zwischen Browser und Server: Anfrage hin, Antwort mit Statuscode zurück. 200 heißt okay, 404 heißt Datei nicht gefunden.",
+    "beispiel": "GET /programm.html  →  200 OK\nGET /alt.html       →  404 Not Found",
+    "sprache": "text",
+    "merke": "404 heißt: Server läuft, Datei fehlt."
+  },
+  {
+    "id": "web.browser",
+    "titel": "Browser und Quelltext",
+    "block": "web",
+    "kurz": "Der Browser liest HTML, CSS und JavaScript und zeichnet daraus die Seite. Mit „Seitenquelltext anzeigen“ (Strg+U) siehst du den Code jeder Seite.",
+    "beispiel": "Strg + U  →  Quelltext der Seite\nF12       →  Entwicklerwerkzeuge",
+    "sprache": "text",
+    "merke": "Der Code beschreibt, der Browser zeichnet."
+  },
+  {
+    "id": "web.standards",
+    "titel": "Standards (W3C)",
+    "block": "web",
+    "kurz": "Damit jede Seite in jedem Browser gleich funktioniert, legt das W3C Standards für HTML und CSS fest. Gültiger Code hält sich daran und bleibt lange lesbar.",
+    "beispiel": "W3C   →  HTML, CSS\nEcma  →  JavaScript (ECMAScript)",
+    "sprache": "text",
+    "merke": "Standards sorgen dafür, dass es überall läuft."
+  },
+  {
+    "id": "web.sprachen",
+    "titel": "HTML, CSS, JavaScript – die drei Sprachen",
+    "block": "web",
+    "kurz": "Drei Sprachen, drei Aufgaben: HTML ist die Struktur (das Gerüst), CSS das Aussehen (Licht und Farbe), JavaScript das Verhalten (Strom).",
+    "beispiel": "HTML:  <h1>FUNKEN</h1>\nCSS:   h1 { color: orange; }\nJS:    knopf.addEventListener(\"click\", …)",
+    "sprache": "text",
+    "merke": "Gerüst, Licht, Strom."
+  },
+  {
+    "id": "html.tag",
+    "titel": "Tags und Elemente",
+    "block": "html",
+    "kurz": "Ein Tag steht in spitzen Klammern. Öffnender Tag, Inhalt und schließender Tag (mit Schrägstrich) ergeben ein Element. Tag-Namen schreibst du klein.",
+    "beispiel": "<p>Bis morgen!</p>\n ↑ öffnend   ↑ Inhalt  ↑ schließend",
+    "sprache": "html",
+    "merke": "Tag auf, Inhalt, Tag zu."
+  },
+  {
+    "id": "html.attribut",
+    "titel": "Attribute",
+    "block": "html",
+    "kurz": "Attribute geben einem Tag zusätzliche Angaben: Name=\"Wert\", immer im öffnenden Tag, der Wert immer in Anführungszeichen.",
+    "beispiel": "<img src=\"pizza.svg\" alt=\"Eine Pizza\">\n     ↑ Name  ↑ Wert",
+    "sprache": "html",
+    "merke": "name=\"wert\" – mit Anführungszeichen."
+  },
+  {
+    "id": "html.grundgeruest",
+    "titel": "Grundgerüst",
+    "block": "html",
+    "kurz": "Jede Seite hat dasselbe Gerüst: Dokumenttyp, html mit Sprache, head (unsichtbar: Zeichensatz, Titel) und body (alles Sichtbare).",
+    "beispiel": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>FUNKEN</title>\n  </head>\n  <body>\n  </body>\n</html>",
+    "sprache": "html",
+    "merke": "head unsichtbar, body sichtbar."
+  },
+  {
+    "id": "html.verschachtelung",
+    "titel": "Verschachtelung",
+    "block": "html",
+    "kurz": "Elemente stecken ineinander. Was zuletzt geöffnet wurde, wird zuerst geschlossen. Einrücken macht die Verschachtelung sichtbar.",
+    "beispiel": "<p>Pizza und <a href=\"waffeln.html\">Waffeln</a></p>\n   ↑ a wird im p geöffnet – und darin geschlossen",
+    "sprache": "html",
+    "merke": "Zuletzt geöffnet, zuerst geschlossen."
+  },
+  {
+    "id": "html.ueberschrift",
+    "titel": "Überschriften h1–h6",
+    "block": "html",
+    "kurz": "Sechs Ebenen h1 bis h6. Eine h1 pro Seite (der Titel), h2 für Abschnitte, h3 für Unterpunkte. Ebenen nicht überspringen.",
+    "beispiel": "<h1>Programm</h1>\n<h2>Freitag</h2>\n<h3>Hauptbühne</h3>",
+    "sprache": "html",
+    "merke": "Eine h1, dann h2, dann h3."
+  },
+  {
+    "id": "html.absatz",
+    "titel": "Absätze",
+    "block": "html",
+    "kurz": "Ein Absatz p ist ein eigener Gedanke. Der Browser setzt davor und danach Abstand.",
+    "beispiel": "<p>Zwei Bühnen, Foodtrucks, Open Air am Neckar.</p>\n<p>Der Erlös geht an Schulprojekte.</p>",
+    "sprache": "html",
+    "merke": "Neuer Gedanke, neuer Absatz."
+  },
+  {
+    "id": "html.br-hr",
+    "titel": "Zeilenumbruch und Linie",
+    "block": "html",
+    "kurz": "br bricht die Zeile mitten im Text um (Adresse, Gedicht). hr zieht eine Trennlinie zwischen Abschnitten. Beide sind Leerelemente ohne schließenden Tag.",
+    "beispiel": "<p>Hafenstraße 9<br>74072 Heilbronn</p>\n<hr>",
+    "sprache": "html",
+    "merke": "br = Umbruch, hr = Linie."
+  },
+  {
+    "id": "html.strong-em",
+    "titel": "Betonung strong/em",
+    "block": "html",
+    "kurz": "strong betont stark (wichtig, meist fett), em leicht (meist kursiv). Sparsam einsetzen: Was überall betont ist, ist nirgends betont.",
+    "beispiel": "<p>Einlass <strong>ab 16 Uhr</strong>, <em>bitte pünktlich</em>.</p>",
+    "sprache": "html",
+    "merke": "strong = wichtig, em = Betonung."
+  },
+  {
+    "id": "html.kommentar",
+    "titel": "Kommentare",
+    "block": "html",
+    "kurz": "Kommentare sind Notizen im Code, die der Browser nicht anzeigt. Sie stehen zwischen <!-- und -->.",
+    "beispiel": "<!-- Kontakt kommt in Runde 5 -->",
+    "sprache": "html",
+    "merke": "<!-- unsichtbar für Besucher -->"
+  },
+  {
+    "id": "html.entity",
+    "titel": "Sonderzeichen (Entities)",
+    "block": "html",
+    "kurz": "Zeichen mit Sonderbedeutung schreibst du als Entity: &amp; für &, &lt; für <, &gt; für >, &copy; für ©.",
+    "beispiel": "<p>Pizza &amp; Mehr</p>\n<p>&copy; 2027 Kollektiv FUNKEN</p>",
+    "sprache": "html",
+    "merke": "&amp; statt & im Text."
+  },
+  {
+    "id": "html.ul",
+    "titel": "Ungeordnete Liste",
+    "block": "html",
+    "kurz": "Eine ungeordnete Liste ul zeigt Punkte. Jeder Eintrag ist ein eigenes li. Für Aufzählungen ohne feste Reihenfolge.",
+    "beispiel": "<ul>\n  <li>Neonpuls</li>\n  <li>Basslager</li>\n</ul>",
+    "sprache": "html",
+    "merke": "ul = Punkte, li = Eintrag."
+  },
+  {
+    "id": "html.ol",
+    "titel": "Geordnete Liste",
+    "block": "html",
+    "kurz": "Eine geordnete Liste ol nummeriert ihre Einträge. Für Schritte, Ranglisten und Reihenfolgen.",
+    "beispiel": "<ol>\n  <li>Stadtbahn bis Hafenstraße</li>\n  <li>Den Lichtern folgen</li>\n</ol>",
+    "sprache": "html",
+    "merke": "ol = nummeriert."
+  },
+  {
+    "id": "html.liste-verschachtelt",
+    "titel": "Verschachtelte Listen",
+    "block": "html",
+    "kurz": "Eine Liste in einer Liste: Die innere ul oder ol steht innerhalb eines li – nach dessen Text, vor dem schließenden li.",
+    "beispiel": "<ul>\n  <li>Hauptbühne\n    <ul>\n      <li>Neonpuls</li>\n    </ul>\n  </li>\n</ul>",
+    "sprache": "html",
+    "merke": "Die innere Liste gehört ins li."
+  },
+  {
+    "id": "html.a-extern",
+    "titel": "Externe Links",
+    "block": "html",
+    "kurz": "Ein Link a führt mit href zu einem Ziel. Externe Ziele bekommen die komplette Adresse mit https://. Der Linktext sagt, wohin es geht.",
+    "beispiel": "<a href=\"https://www.example.com\">Fahrplan der Stadtbahn</a>",
+    "sprache": "html",
+    "merke": "href = Ziel, Text = wohin."
+  },
+  {
+    "id": "html.a-intern",
+    "titel": "Interne Links",
+    "block": "html",
+    "kurz": "Seiten im selben Ordner verlinkst du nur mit dem Dateinamen – kein https, kein Laufwerksbuchstabe.",
+    "beispiel": "<a href=\"programm.html\">Programm</a>",
+    "sprache": "html",
+    "merke": "Gleicher Ordner: nur der Dateiname."
+  },
+  {
+    "id": "html.a-sprungmarke",
+    "titel": "Sprungmarken",
+    "block": "html",
+    "kurz": "Ein Link auf #name springt zum Element mit der id name auf derselben Seite.",
+    "beispiel": "<a href=\"#lineup\">Zum Line-up</a>\n…\n<h2 id=\"lineup\">Line-up</h2>",
+    "sprache": "html",
+    "merke": "#id springt innerhalb der Seite."
+  },
+  {
+    "id": "html.a-mailto",
+    "titel": "E-Mail-Links",
+    "block": "html",
+    "kurz": "href=\"mailto:adresse\" öffnet das Mailprogramm mit der Adresse als Empfänger.",
+    "beispiel": "<a href=\"mailto:hallo@funken-festival-beispiel.de\">Schreib uns</a>",
+    "sprache": "html",
+    "merke": "mailto: öffnet die Mail-App."
+  },
+  {
+    "id": "html.a-target",
+    "titel": "Neuer Tab (target)",
+    "block": "html",
+    "kurz": "target=\"_blank\" öffnet den Link in einem neuen Tab. Sinnvoll für externe Seiten, damit die eigene offen bleibt.",
+    "beispiel": "<a href=\"https://www.example.com\" target=\"_blank\">Fahrplan</a>",
+    "sprache": "html",
+    "merke": "_blank = neuer Tab."
+  },
+  {
+    "id": "html.img",
+    "titel": "Bilder",
+    "block": "html",
+    "kurz": "img bindet ein Bild ein: src ist die Datei – Name exakt, Groß- und Kleinschreibung zählt. Leerelement ohne schließenden Tag.",
+    "beispiel": "<img src=\"buehne.svg\" alt=\"Die Hauptbühne bei Nacht\">",
+    "sprache": "html",
+    "merke": "src = Datei, exakt geschrieben."
+  },
+  {
+    "id": "html.alt",
+    "titel": "Alternativtext",
+    "block": "html",
+    "kurz": "alt beschreibt das Bild in Worten. Es erscheint, wenn das Bild fehlt, und wird von Screenreadern vorgelesen. Immer setzen.",
+    "beispiel": "<img src=\"crowd.svg\" alt=\"Die Menge vor der Hauptbühne\">",
+    "sprache": "html",
+    "merke": "alt immer – was zeigt das Bild?"
+  },
+  {
+    "id": "html.audio-video",
+    "titel": "Audio und Video",
+    "block": "html",
+    "kurz": "audio und video spielen Medien ab. src ist die Datei, controls zeigt Play, Pause und Lautstärke. Ohne controls kann niemand starten.",
+    "beispiel": "<audio src=\"jingle.wav\" controls></audio>\n<video src=\"clip.webm\" controls></video>",
+    "sprache": "html",
+    "merke": "controls nicht vergessen."
+  },
+  {
+    "id": "html.figure",
+    "titel": "figure und figcaption",
+    "block": "html",
+    "kurz": "figure fasst ein Bild mit seiner Unterschrift zusammen; figcaption ist der Text dazu.",
+    "beispiel": "<figure>\n  <img src=\"plakat.svg\" alt=\"Das Plakat 2027\">\n  <figcaption>Das Plakat 2027</figcaption>\n</figure>",
+    "sprache": "html",
+    "merke": "figure = Bild + figcaption."
+  },
+  {
+    "id": "html.table",
+    "titel": "Tabellen",
+    "block": "html",
+    "kurz": "Eine Tabelle besteht aus Zeilen tr, die Zellen td enthalten. Nur für Daten in Zeilen und Spalten, nie fürs Layout.",
+    "beispiel": "<table>\n  <tr><td>Wann</td><td>17. Juli</td></tr>\n  <tr><td>Wo</td><td>Fabrikgelände</td></tr>\n</table>",
+    "sprache": "html",
+    "merke": "table → tr → td."
+  },
+  {
+    "id": "html.th",
+    "titel": "Kopfzellen",
+    "block": "html",
+    "kurz": "Kopfzellen th stehen in der ersten Zeile und benennen die Spalten. Der Browser zeigt sie fett und zentriert.",
+    "beispiel": "<tr><th>Zeit</th><th>Hauptbühne</th></tr>",
+    "sprache": "html",
+    "merke": "th = Kopfzelle."
+  },
+  {
+    "id": "html.colspan",
+    "titel": "Verbundene Zellen",
+    "block": "html",
+    "kurz": "colspan=\"2\" lässt eine Zelle zwei Spalten breit werden – zum Beispiel für eine Pause über beide Bühnen.",
+    "beispiel": "<tr><td>18:00</td><td colspan=\"2\">Pause</td></tr>",
+    "sprache": "html",
+    "merke": "colspan verbindet Spalten."
+  },
+  {
+    "id": "html.class",
+    "titel": "Klassen",
+    "block": "html",
+    "kurz": "class gibt Elementen einen Gruppennamen, den mehrere teilen dürfen. CSS spricht sie mit .name an.",
+    "beispiel": "<div class=\"karte\">…</div>\n<div class=\"karte\">…</div>",
+    "sprache": "html",
+    "merke": "class für viele."
+  },
+  {
+    "id": "html.id",
+    "titel": "IDs",
+    "block": "html",
+    "kurz": "id ist ein eindeutiger Name – pro Seite genau einmal. Für Sprungmarken, CSS (#name) und JavaScript.",
+    "beispiel": "<h2 id=\"lineup\">Line-up</h2>",
+    "sprache": "html",
+    "merke": "id für genau eins."
+  },
+  {
+    "id": "html.div-span",
+    "titel": "div und span",
+    "block": "html",
+    "kurz": "div ist ein Block-Container ohne Bedeutung (eigene Zeile), span ein Inline-Container für Textstücke. Erst nehmen, wenn kein passendes Element existiert.",
+    "beispiel": "<div class=\"karte\">\n  <p>Ticket <span class=\"preis\">12 €</span></p>\n</div>",
+    "sprache": "html",
+    "merke": "div = Block, span = inline."
+  },
+  {
+    "id": "html.semantik",
+    "titel": "Semantische Elemente",
+    "block": "html",
+    "kurz": "Elemente mit Bedeutung: header (Kopf), nav (Navigation), main (Hauptinhalt), section (Abschnitt), footer (Fuß). Besser als namenlose divs.",
+    "beispiel": "<header>…</header>\n<nav>…</nav>\n<main>…</main>\n<footer>…</footer>",
+    "sprache": "html",
+    "merke": "header, nav, main, footer."
+  },
+  {
+    "id": "html.form",
+    "titel": "Formulare",
+    "block": "html",
+    "kurz": "form umschließt Eingabefelder und den Absende-Knopf. action sagt, wohin die Daten gehen.",
+    "beispiel": "<form action=\"#\">\n  …\n  <button>Absenden</button>\n</form>",
+    "sprache": "html",
+    "merke": "form umschließt alle Felder."
+  },
+  {
+    "id": "html.input",
+    "titel": "Eingabefelder",
+    "block": "html",
+    "kurz": "input ist ein Eingabefeld. type bestimmt die Art (text, email, number, date), name den Namen der Angabe, required macht sie zur Pflicht.",
+    "beispiel": "<input type=\"email\" name=\"mail\" required>",
+    "sprache": "html",
+    "merke": "type, name, bei Bedarf required."
+  },
+  {
+    "id": "html.label",
+    "titel": "Labels",
+    "block": "html",
+    "kurz": "label beschriftet ein Feld. for enthält die id des Feldes – ein Klick aufs Label springt ins Feld.",
+    "beispiel": "<label for=\"name\">Name</label>\n<input id=\"name\" name=\"name\" type=\"text\">",
+    "sprache": "html",
+    "merke": "for = id des Feldes."
+  },
+  {
+    "id": "html.select",
+    "titel": "Auswahllisten",
+    "block": "html",
+    "kurz": "select ist eine Auswahlliste zum Aufklappen, jede Möglichkeit ein option.",
+    "beispiel": "<select name=\"ticket\">\n  <option>Tagesticket</option>\n  <option>Festivalpass</option>\n</select>",
+    "sprache": "html",
+    "merke": "select mit options."
+  },
+  {
+    "id": "html.radio-checkbox",
+    "titel": "Radio und Checkbox",
+    "block": "html",
+    "kurz": "Radio-Buttons mit gleichem name erlauben genau eine Wahl, Checkboxen mehrere gleichzeitig.",
+    "beispiel": "<input type=\"radio\" name=\"tag\" value=\"fr\"> Freitag\n<input type=\"radio\" name=\"tag\" value=\"sa\"> Samstag\n<input type=\"checkbox\" name=\"news\"> Newsletter",
+    "sprache": "html",
+    "merke": "radio = eins, checkbox = mehrere."
+  },
+  {
+    "id": "html.textarea",
+    "titel": "Textbereich",
+    "block": "html",
+    "kurz": "textarea ist ein mehrzeiliges Textfeld, zum Beispiel für Nachrichten. rows legt die sichtbaren Zeilen fest.",
+    "beispiel": "<textarea name=\"nachricht\" rows=\"4\"></textarea>",
+    "sprache": "html",
+    "merke": "textarea für mehrere Zeilen."
+  },
+  {
+    "id": "html.button",
+    "titel": "Knöpfe",
+    "block": "html",
+    "kurz": "button ist ein Knopf. Im Formular sendet er ab (type=\"submit\" ist Standard); type=\"button\" tut nichts von selbst – für JavaScript.",
+    "beispiel": "<button type=\"submit\">Ticket bestellen</button>",
+    "sprache": "html",
+    "merke": "button sendet oder reagiert."
+  },
+  {
+    "id": "css.regel",
+    "titel": "CSS-Regel: Selektor, Eigenschaft, Wert",
+    "block": "css",
+    "kurz": "Eine CSS-Regel: Der Selektor wählt Elemente, in geschweiften Klammern stehen Deklarationen Eigenschaft: Wert; – jede endet mit Semikolon.",
+    "beispiel": "h1 {\n  color: #ff6a00;\n  font-size: 2rem;\n}",
+    "sprache": "css",
+    "merke": "Selektor { Eigenschaft: Wert; }"
+  },
+  {
+    "id": "css.orte",
+    "titel": "Die drei Orte für CSS",
+    "block": "css",
+    "kurz": "CSS kann an drei Orten stehen: inline im style-Attribut (vermeiden), im style-Element im head oder in einer externen Datei – die beste Wahl für alle Seiten.",
+    "beispiel": "<!-- 1 --> <p style=\"color: red\">\n<!-- 2 --> <style> p { color: red; } </style>\n<!-- 3 --> <link rel=\"stylesheet\" href=\"style.css\">",
+    "sprache": "html",
+    "merke": "Extern ist der Standard."
+  },
+  {
+    "id": "css.link",
+    "titel": "Externe CSS-Datei einbinden",
+    "block": "css",
+    "kurz": "Die CSS-Datei bindest du im head mit link ein. rel sagt „Stylesheet“, href nennt die Datei.",
+    "beispiel": "<link rel=\"stylesheet\" href=\"style.css\">",
+    "sprache": "html",
+    "merke": "link im head, href = Datei."
+  },
+  {
+    "id": "css.farbe",
+    "titel": "Farben",
+    "block": "css",
+    "kurz": "Farben als Name (orange), Hex (#ff6a00) oder rgb(). color färbt den Text, background-color den Hintergrund.",
+    "beispiel": "h1 {\n  color: #ff6a00;\n}",
+    "sprache": "css",
+    "merke": "color = Text, background-color = Fläche."
+  },
+  {
+    "id": "css.background",
+    "titel": "Hintergrund",
+    "block": "css",
+    "kurz": "background-color färbt die Fläche eines Elements. Mit background-image kommt ein Bild dahinter.",
+    "beispiel": "body {\n  background-color: #1b1b2f;\n}",
+    "sprache": "css",
+    "merke": "background-color für Flächen."
+  },
+  {
+    "id": "css.sel-element",
+    "titel": "Element-Selektor",
+    "block": "css",
+    "kurz": "Der Element-Selektor ist der Tag-Name ohne Klammern und trifft alle Elemente dieser Art.",
+    "beispiel": "p {\n  line-height: 1.6;\n}",
+    "sprache": "css",
+    "merke": "p trifft jeden Absatz."
+  },
+  {
+    "id": "css.sel-klasse",
+    "titel": "Klassen-Selektor",
+    "block": "css",
+    "kurz": "Der Klassen-Selektor beginnt mit einem Punkt und trifft alle Elemente mit dieser class.",
+    "beispiel": ".karte {\n  padding: 20px;\n}",
+    "sprache": "css",
+    "merke": ".name für class=\"name\"."
+  },
+  {
+    "id": "css.sel-id",
+    "titel": "ID-Selektor",
+    "block": "css",
+    "kurz": "Der ID-Selektor beginnt mit einer Raute und trifft das eine Element mit dieser id.",
+    "beispiel": "#logo {\n  width: 120px;\n}",
+    "sprache": "css",
+    "merke": "#name für id=\"name\"."
+  },
+  {
+    "id": "css.sel-gruppe",
+    "titel": "Gruppen-Selektor",
+    "block": "css",
+    "kurz": "Mehrere Selektoren, mit Komma getrennt, teilen sich eine Regel.",
+    "beispiel": "h1, h2, h3 {\n  font-family: Georgia, serif;\n}",
+    "sprache": "css",
+    "merke": "Komma = dieselbe Regel für alle."
+  },
+  {
+    "id": "css.sel-nachfahre",
+    "titel": "Nachfahren-Selektor",
+    "block": "css",
+    "kurz": "Ein Leerzeichen zwischen zwei Selektoren trifft Elemente, die irgendwo im ersten stecken – zum Beispiel nur Links in der Navigation.",
+    "beispiel": "nav a {\n  color: white;\n}",
+    "sprache": "css",
+    "merke": "nav a = Links in nav."
+  },
+  {
+    "id": "css.hover",
+    "titel": "hover",
+    "block": "css",
+    "kurz": ":hover gilt, solange die Maus über dem Element ist. Für Rückmeldung bei Links und Knöpfen.",
+    "beispiel": "a:hover {\n  text-decoration: underline;\n}",
+    "sprache": "css",
+    "merke": ":hover = Maus drüber."
+  },
+  {
+    "id": "css.font-family",
+    "titel": "Schriftart",
+    "block": "css",
+    "kurz": "font-family legt die Schrift fest – mit Ersatzschriften, falls die erste fehlt. Zum Schluss eine Familie: sans-serif oder serif.",
+    "beispiel": "body {\n  font-family: Arial, Helvetica, sans-serif;\n}",
+    "sprache": "css",
+    "merke": "Erste Wahl, Ersatz, Familie."
+  },
+  {
+    "id": "css.font-size",
+    "titel": "Schriftgröße",
+    "block": "css",
+    "kurz": "font-size setzt die Schriftgröße. px sind feste Pixel, rem ist relativ zur Standardgröße (1rem ≈ 16px).",
+    "beispiel": "h1 { font-size: 2.5rem; }\np  { font-size: 1.1rem; }",
+    "sprache": "css",
+    "merke": "rem skaliert, px ist fest."
+  },
+  {
+    "id": "css.text-align",
+    "titel": "Textausrichtung",
+    "block": "css",
+    "kurz": "text-align richtet Text aus: left, center, right. Lange Texte linksbündig, Überschriften dürfen zentriert sein.",
+    "beispiel": "h1 {\n  text-align: center;\n}",
+    "sprache": "css",
+    "merke": "Lesen geht links."
+  },
+  {
+    "id": "css.font-weight-style",
+    "titel": "Fett und Kursiv",
+    "block": "css",
+    "kurz": "font-weight: bold macht fett (normal zurück), font-style: italic kursiv.",
+    "beispiel": ".preis {\n  font-weight: bold;\n}\n.hinweis {\n  font-style: italic;\n}",
+    "sprache": "css",
+    "merke": "weight = fett, style = kursiv."
+  },
+  {
+    "id": "css.text-decoration",
+    "titel": "Unterstreichung",
+    "block": "css",
+    "kurz": "text-decoration: underline unterstreicht, none entfernt die Unterstreichung – typisch bei Links in der Navigation.",
+    "beispiel": "nav a {\n  text-decoration: none;\n}",
+    "sprache": "css",
+    "merke": "none nimmt Links den Strich."
+  },
+  {
+    "id": "css.line-height",
+    "titel": "Zeilenabstand",
+    "block": "css",
+    "kurz": "line-height ist der Zeilenabstand als Faktor der Schriftgröße. 1.5 bis 1.6 liest sich gut.",
+    "beispiel": "p {\n  line-height: 1.6;\n}",
+    "sprache": "css",
+    "merke": "1.5 – die Augen finden die Zeile."
+  },
+  {
+    "id": "css.border",
+    "titel": "Rahmen",
+    "block": "css",
+    "kurz": "border zeichnet einen Rahmen: Dicke, Art (solid, dashed, dotted) und Farbe in einer Angabe.",
+    "beispiel": ".karte {\n  border: 2px solid #ff6a00;\n}",
+    "sprache": "css",
+    "merke": "Dicke Art Farbe."
+  },
+  {
+    "id": "css.padding",
+    "titel": "Innenabstand",
+    "block": "css",
+    "kurz": "padding ist der Innenabstand – Luft zwischen Inhalt und Rahmen. Ein Wert für alle Seiten, zwei Werte für oben/unten und links/rechts.",
+    "beispiel": ".karte {\n  padding: 16px 24px;\n}",
+    "sprache": "css",
+    "merke": "padding = innen."
+  },
+  {
+    "id": "css.margin",
+    "titel": "Außenabstand",
+    "block": "css",
+    "kurz": "margin ist der Außenabstand – Luft zu anderen Elementen. margin: 0 auto zentriert eine Box mit fester Breite.",
+    "beispiel": ".karte {\n  margin: 16px;\n}\nmain {\n  margin: 0 auto;\n}",
+    "sprache": "css",
+    "merke": "margin = außen."
+  },
+  {
+    "id": "css.width",
+    "titel": "Breite",
+    "block": "css",
+    "kurz": "width setzt die Breite, max-width eine Höchstbreite – auf kleinen Bildschirmen schrumpft die Box dann mit.",
+    "beispiel": "main {\n  max-width: 800px;\n  margin: 0 auto;\n}",
+    "sprache": "css",
+    "merke": "max-width statt fester Breite."
+  },
+  {
+    "id": "css.border-radius",
+    "titel": "Runde Ecken",
+    "block": "css",
+    "kurz": "border-radius rundet die Ecken. Große Werte machen aus einem Quadrat einen Kreis.",
+    "beispiel": ".karte {\n  border-radius: 12px;\n}",
+    "sprache": "css",
+    "merke": "border-radius = runde Ecken."
+  },
+  {
+    "id": "css.box-shadow",
+    "titel": "Schatten",
+    "block": "css",
+    "kurz": "box-shadow wirft einen Schatten: Versatz x, Versatz y, Weichzeichnung, Farbe.",
+    "beispiel": ".karte {\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);\n}",
+    "sprache": "css",
+    "merke": "x y Weichzeichnung Farbe."
+  },
+  {
+    "id": "css.flex",
+    "titel": "Flexbox einschalten",
+    "block": "css",
+    "kurz": "display: flex am Elternelement ordnet seine Kinder in einer Reihe an und macht sie verteilbar und ausrichtbar.",
+    "beispiel": "nav {\n  display: flex;\n}",
+    "sprache": "css",
+    "merke": "flex am Elternelement."
+  },
+  {
+    "id": "css.flex-direction",
+    "titel": "Richtung",
+    "block": "css",
+    "kurz": "flex-direction: row (Standard) legt die Kinder nebeneinander, column untereinander.",
+    "beispiel": ".liste {\n  display: flex;\n  flex-direction: column;\n}",
+    "sprache": "css",
+    "merke": "row = nebeneinander, column = untereinander."
+  },
+  {
+    "id": "css.gap",
+    "titel": "Abstand (gap)",
+    "block": "css",
+    "kurz": "gap setzt den Abstand zwischen Flex-Kindern – ohne margin an jedem einzelnen Kind.",
+    "beispiel": "nav {\n  display: flex;\n  gap: 16px;\n}",
+    "sprache": "css",
+    "merke": "gap = Lücke zwischen Kindern."
+  },
+  {
+    "id": "css.justify-content",
+    "titel": "Verteilen (justify-content)",
+    "block": "css",
+    "kurz": "justify-content verteilt die Kinder entlang der Hauptachse: flex-start, center, space-between, space-around.",
+    "beispiel": "nav {\n  display: flex;\n  justify-content: space-between;\n}",
+    "sprache": "css",
+    "merke": "justify = verteilen."
+  },
+  {
+    "id": "css.align-items",
+    "titel": "Ausrichten (align-items)",
+    "block": "css",
+    "kurz": "align-items richtet die Kinder quer zur Hauptachse aus: center setzt sie mittig untereinander in der Zeile.",
+    "beispiel": "header {\n  display: flex;\n  align-items: center;\n}",
+    "sprache": "css",
+    "merke": "align = quer ausrichten."
+  },
+  {
+    "id": "css.flex-wrap",
+    "titel": "Umbrechen",
+    "block": "css",
+    "kurz": "flex-wrap: wrap lässt die Kinder in die nächste Zeile umbrechen, wenn der Platz nicht reicht – wichtig fürs Handy.",
+    "beispiel": ".karten {\n  display: flex;\n  flex-wrap: wrap;\n}",
+    "sprache": "css",
+    "merke": "wrap = umbrechen statt quetschen."
+  },
+  {
+    "id": "css.flex-grow",
+    "titel": "Wachsen (flex)",
+    "block": "css",
+    "kurz": "flex: 1 am Kind lässt es den freien Platz füllen. Mehrere Kinder mit flex: 1 teilen ihn gleichmäßig.",
+    "beispiel": ".karte {\n  flex: 1;\n}",
+    "sprache": "css",
+    "merke": "flex: 1 = wächst mit."
+  },
+  {
+    "id": "recht.urheberrecht",
+    "titel": "Urheberrecht",
+    "block": "recht",
+    "kurz": "Jedes Foto, jeder Text, jede Musik hat einen Urheber. Nutzen darfst du Werke nur mit Erlaubnis oder passender Lizenz – auch aus der Bildersuche.",
+    "beispiel": "Foto gefunden → Wer ist Urheber? → Lizenz? → sonst fragen oder weglassen",
+    "sprache": "text",
+    "merke": "Gefunden heißt nicht frei."
+  },
+  {
+    "id": "recht.lizenz",
+    "titel": "Lizenzen",
+    "block": "recht",
+    "kurz": "Lizenzen erlauben die Nutzung unter Bedingungen. Creative Commons: BY (Namen nennen), NC (nicht kommerziell), SA (gleiche Lizenz weitergeben), CC0 (frei).",
+    "beispiel": "Bildnachweis: „Bühne bei Nacht“ von Lena M., CC BY 4.0",
+    "sprache": "text",
+    "merke": "BY = Namen nennen."
+  },
+  {
+    "id": "recht.impressum",
+    "titel": "Impressum",
+    "block": "recht",
+    "kurz": "Websites mit nicht rein privatem Zweck brauchen ein Impressum: Name, Anschrift und Kontakt der Verantwortlichen – von jeder Seite leicht erreichbar.",
+    "beispiel": "<footer><a href=\"impressum.html\">Impressum</a></footer>",
+    "sprache": "html",
+    "merke": "Wer ist verantwortlich? Steht im Impressum."
+  },
+  {
+    "id": "recht.datenschutz",
+    "titel": "Datenschutz",
+    "block": "recht",
+    "kurz": "Wer Daten erhebt (Formular, Analyse-Tools), muss informieren: welche Daten, wozu, wie lange. Nur erheben, was nötig ist.",
+    "beispiel": "Ticketformular → Name, E-Mail → Zweck: Bestellung → Datenschutzerklärung verlinken",
+    "sprache": "text",
+    "merke": "So wenig Daten wie möglich, immer informieren."
+  },
+  {
+    "id": "recht.fotos",
+    "titel": "Fotos von Personen",
+    "block": "recht",
+    "kurz": "Fotos zeigen Gesichter – das Recht am eigenen Bild. Vor der Veröffentlichung fragen, bei Minderjährigen die Eltern.",
+    "beispiel": "Gruppenfoto fürs Festival → Einverständnis einholen → erst dann online",
+    "sprache": "text",
+    "merke": "Erst fragen, dann posten."
+  },
+  {
+    "id": "js.script",
+    "titel": "script-Element",
+    "block": "js",
+    "kurz": "JavaScript steht im script-Element – meist am Ende des body oder als externe Datei mit src, damit das HTML schon geladen ist.",
+    "beispiel": "<script src=\"script.js\"></script>",
+    "sprache": "html",
+    "merke": "script am Ende des body."
+  },
+  {
+    "id": "js.console",
+    "titel": "Konsole",
+    "block": "js",
+    "kurz": "console.log schreibt in die Konsole der Entwicklerwerkzeuge (F12). Zum Prüfen beim Entwickeln – Besucher sehen nichts davon.",
+    "beispiel": "console.log(\"Hallo FUNKEN\");\nconsole.log(12 * 3);",
+    "sprache": "js",
+    "merke": "console.log statt alert."
+  },
+  {
+    "id": "js.variable",
+    "titel": "Variablen",
+    "block": "js",
+    "kurz": "Variablen speichern Werte unter einem Namen. let für Werte, die sich ändern, const für feste. Namen sagen, was drinsteckt.",
+    "beispiel": "const ticketpreis = 12;\nlet anzahl = 0;\nanzahl = anzahl + 1;",
+    "sprache": "js",
+    "merke": "const fest, let veränderlich."
+  },
+  {
+    "id": "js.datentyp",
+    "titel": "Zahlen und Texte",
+    "block": "js",
+    "kurz": "Zahlen schreibst du ohne Anführungszeichen (12), Texte (Strings) mit (\"zwölf\"). Text plus Zahl ergibt Text.",
+    "beispiel": "const preis = 12;            // Zahl\nconst name = \"Tagesticket\";  // Text",
+    "sprache": "js",
+    "merke": "Anführungszeichen machen Text."
+  },
+  {
+    "id": "js.operator",
+    "titel": "Rechnen",
+    "block": "js",
+    "kurz": "Rechenzeichen + − * / rechnen mit Zahlen, Klammern wie in Mathe.",
+    "beispiel": "const gesamt = ticketpreis * anzahl;\nconsole.log(gesamt);",
+    "sprache": "js",
+    "merke": "* ist mal, / ist geteilt."
+  },
+  {
+    "id": "js.verkettung",
+    "titel": "Texte verbinden",
+    "block": "js",
+    "kurz": "Mit + hängst du Texte zusammen (Verkettung). Zahlen werden dabei zu Text.",
+    "beispiel": "console.log(\"Gesamt: \" + gesamt + \" Euro\");",
+    "sprache": "js",
+    "merke": "+ verbindet Texte."
+  },
+  {
+    "id": "js.getElementById",
+    "titel": "Elemente finden",
+    "block": "js",
+    "kurz": "document.getElementById(\"id\") holt das Element mit dieser id aus der Seite – exakt geschrieben. Gibt es keins, kommt null zurück.",
+    "beispiel": "const anzeige = document.getElementById(\"anzeige\");",
+    "sprache": "js",
+    "merke": "id exakt, sonst null."
+  },
+  {
+    "id": "js.textContent",
+    "titel": "Inhalt ändern",
+    "block": "js",
+    "kurz": "textContent liest oder setzt den Text eines Elements.",
+    "beispiel": "anzeige.textContent = \"3 Tickets\";",
+    "sprache": "js",
+    "merke": "textContent = der Text im Element."
+  },
+  {
+    "id": "js.addEventListener",
+    "titel": "Auf Klick reagieren",
+    "block": "js",
+    "kurz": "addEventListener hängt eine Reaktion an ein Ereignis: Beim Klick wird die Funktion ausgeführt.",
+    "beispiel": "knopf.addEventListener(\"click\", () => {\n  anzeige.textContent = \"Geklickt!\";\n});",
+    "sprache": "js",
+    "merke": "Ereignis + Funktion."
+  },
+  {
+    "id": "js.zaehler",
+    "titel": "Zähler",
+    "block": "js",
+    "kurz": "Ein Zähler ist eine let-Variable, die bei jedem Klick um 1 erhöht und danach angezeigt wird.",
+    "beispiel": "let zaehler = 0;\nknopf.addEventListener(\"click\", () => {\n  zaehler = zaehler + 1;\n  anzeige.textContent = zaehler;\n});",
+    "sprache": "js",
+    "merke": "Erhöhen, dann anzeigen."
+  },
+  {
+    "id": "js.classList",
+    "titel": "Klassen umschalten",
+    "block": "js",
+    "kurz": "classList.add, remove und toggle schalten CSS-Klassen an einem Element – so steuert JavaScript das Aussehen über CSS.",
+    "beispiel": "karte.classList.toggle(\"offen\");",
+    "sprache": "js",
+    "merke": "toggle schaltet an und aus."
+  }
+]

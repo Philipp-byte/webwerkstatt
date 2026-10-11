@@ -1,0 +1,193 @@
+{
+  "id": "04-wiederholung",
+  "title": "Wiederholung: Wegweiser",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Kurzer Rundgang vor der Abnahme: Ich frage Links aus diesem Kapitel ab, dazu Listen aus Kapitel 4, Textelemente aus Kapitel 3 – und den Aufbau einer URL aus Kapitel 1. Denn ohne Protokoll und Domain führt kein Link nach draußen."
+    },
+    {
+      "type": "quiz",
+      "question": "Ein Link hat die Adresse `www.example.com/karte` – ohne Protokoll. Was macht der Browser beim Klick?",
+      "options": [
+        "Er sucht eine eigene Datei mit diesem Namen – und findet keine",
+        "Er ergänzt https:// von selbst und öffnet die fremde Seite",
+        "Er öffnet das Mailprogramm"
+      ],
+      "correct": 0,
+      "explanation": "Ohne `https://` behandelt der Browser die Angabe wie einen Dateinamen – genau wie bei `galerie.html`. Für fremde Seiten immer die komplette URL: Protokoll, Domain, Pfad."
+    },
+    {
+      "type": "fill",
+      "text": "Der Linktext soll „Pizza & Mehr“ anzeigen. Vervollständige das Sonderzeichen.",
+      "template": "<a href=\"essen.html\">Pizza ___ Mehr</a>",
+      "accept": [
+        "&amp;"
+      ],
+      "hint": "Sonderzeichen wie das Und-Zeichen haben in HTML eine eigene Schreibweise, die mit & beginnt und mit ; endet."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** am Ende der Seite den Abschnitt „Links“ (Zwischenüberschrift) mit einer Aufzählungsliste aus zwei Links: „Verband“ → https://www.example.com/verband in einem neuen Tab, und „Unser Team“ → eigene Datei `team.html`.",
+      "starter": {
+        "html": "<h1>SV Neckarblick</h1>\n<p>Der Verein aus dem Heilbronner Osten – seit 1921.</p>\n<h2>Spielplan</h2>\n<p>Alle Spiele der Saison 2026/27.</p>\n"
+      },
+      "hints": [
+        "Erst die Überschrift der Ebene 2, dann die Liste – jeder Listenpunkt enthält genau einen Link.",
+        "Nur der externe Link braucht das Attribut für den neuen Tab, die eigene Datei nicht. Muster: `<li><a href=\"https://www.example.org\" target=\"_blank\">Regeln</a></li>`",
+        "Aufbau: `<h2>…</h2>`, dann `<ul>` mit zwei `<li>`, jeweils mit einem `<a>` – Texte und Adressen aus der Aufgabe."
+      ],
+      "solution": {
+        "html": "<h1>SV Neckarblick</h1>\n<p>Der Verein aus dem Heilbronner Osten – seit 1921.</p>\n<h2>Spielplan</h2>\n<p>Alle Spiele der Saison 2026/27.</p>\n<h2>Links</h2>\n<ul>\n  <li><a href=\"https://www.example.com/verband\" target=\"_blank\">Verband</a></li>\n  <li><a href=\"team.html\">Unser Team</a></li>\n</ul>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "h2",
+          "expected": "Links",
+          "any": true,
+          "label": "Die Zwischenüberschrift „Links“ ist da"
+        },
+        {
+          "type": "attr",
+          "selector": "a[href=\"https://www.example.com/verband\"]",
+          "attr": "target",
+          "expected": "_blank",
+          "label": "„Verband“ öffnet in einem neuen Tab"
+        },
+        {
+          "type": "text",
+          "selector": "a[href=\"https://www.example.com/verband\"]",
+          "expected": "Verband",
+          "label": "Der Linktext lautet „Verband“"
+        },
+        {
+          "type": "text",
+          "selector": "li a[href=\"team.html\"]",
+          "expected": "Unser Team",
+          "label": "„Unser Team“ führt zur eigenen Datei team.html"
+        },
+        {
+          "type": "selector",
+          "selector": "li > a",
+          "count": 2,
+          "label": "Beide Links stehen in Listenpunkten"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "h2:nth-of-type(2)",
+            "ul"
+          ],
+          "label": "Die Liste steht unter der Überschrift „Links“"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Bring den Abschnitt „Mehr“ in die richtige Reihenfolge: Überschrift, Einleitung, Liste, „Nach oben“.",
+      "lines": [
+        "<h2>Mehr</h2>",
+        "<p>Noch mehr vom Verein:</p>",
+        "<ul>",
+        "  <li><a href=\"https://www.example.com/verband\" target=\"_blank\">Verband</a></li>",
+        "</ul>",
+        "<p><a href=\"#oben\">Nach oben</a></p>"
+      ],
+      "explanation": "Der Listenpunkt liegt zwischen öffnendem und schließendem Listen-Tag, der Sprungmarken-Link kommt zum Schluss."
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Bausteine zu.",
+      "pairs": [
+        [
+          "`<br>`",
+          "Zeilenumbruch innerhalb eines Absatzes"
+        ],
+        [
+          "`<hr>`",
+          "Trennlinie"
+        ],
+        [
+          "`<em>`",
+          "leichte Betonung"
+        ],
+        [
+          "`mailto:`",
+          "Anfang der Adresse eines E-Mail-Links"
+        ],
+        [
+          "`#oben`",
+          "Sprungmarke zum Element mit der id oben"
+        ],
+        [
+          "`_blank`",
+          "Wert für den neuen Tab"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** den Speiseplan der Kantine: Unter „Montag“ erscheint ein leerer dritter Punkt, und der Link „Direkt zu Freitag“ springt nicht, sondern führt ins Leere. Am Ende gibt es genau vier Gerichte, und der Link springt zur Freitag-Überschrift.",
+      "starter": {
+        "html": "<h1 id=\"oben\">Kantine am Bildungscampus</h1>\n<p><a href=\"freitag\">Direkt zu Freitag</a></p>\n<h2>Montag</h2>\n<ul>\n  <li>Pasta mit Tomatensoße</li>\n  <li>Salatteller<li>\n</ul>\n<h2 id=\"freitag\">Freitag</h2>\n<ul>\n  <li>Pizza Margherita</li>\n  <li>Gemüsecurry</li>\n</ul>\n<p><a href=\"#oben\">Nach oben</a></p>\n"
+      },
+      "hints": [
+        "Zwei Fehler: einer in der Montags-Liste, einer im Sprungmarken-Link oben. Wie endet ein Listenpunkt? Womit beginnt die Adresse einer Sprungmarke?",
+        "Ein Listenpunkt braucht einen schließenden Tag mit Schrägstrich – sonst öffnet der Browser einen neuen, leeren Punkt.",
+        "Beim Link „Direkt zu Freitag“ fehlt vor dem Namen der id ein einzelnes Zeichen. Vergleiche mit dem Link „Nach oben“."
+      ],
+      "solution": {
+        "html": "<h1 id=\"oben\">Kantine am Bildungscampus</h1>\n<p><a href=\"#freitag\">Direkt zu Freitag</a></p>\n<h2>Montag</h2>\n<ul>\n  <li>Pasta mit Tomatensoße</li>\n  <li>Salatteller</li>\n</ul>\n<h2 id=\"freitag\">Freitag</h2>\n<ul>\n  <li>Pizza Margherita</li>\n  <li>Gemüsecurry</li>\n</ul>\n<p><a href=\"#oben\">Nach oben</a></p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "ul li",
+          "count": 4,
+          "label": "Genau vier Gerichte, kein leerer Punkt"
+        },
+        {
+          "type": "attr",
+          "selector": "h1 + p a",
+          "attr": "href",
+          "expected": "#freitag",
+          "label": "„Direkt zu Freitag“ springt zur Freitag-Überschrift"
+        },
+        {
+          "type": "selector",
+          "selector": "h2#freitag",
+          "label": "Die Freitag-Überschrift hat die id freitag"
+        },
+        {
+          "type": "text",
+          "selector": "a[href=\"#oben\"]",
+          "expected": "Nach oben",
+          "label": "Der Link „Nach oben“ ist noch da"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Ein Link auf der Vereinsseite führt zu `https://www.example.com/spielplan-2025` – der Server antwortet mit **404**. Was bedeutet das?",
+      "options": [
+        "Der Server ist erreichbar, aber diese Datei gibt es dort nicht mehr",
+        "Im Link fehlt das Protokoll",
+        "Der Server ist abgeschaltet und antwortet nicht"
+      ],
+      "correct": 0,
+      "explanation": "404 ist eine **Antwort** des Servers: „Diese Datei kenne ich nicht.“ Der Link ist also technisch richtig aufgebaut, nur das Ziel existiert nicht mehr – ein toter Link. Wäre der Server aus, käme gar keine Antwort."
+    },
+    {
+      "type": "explain",
+      "text": "Ab zur FUNKEN-Website: Vor dem Kontakt-Kommentar entsteht der Abschnitt „Mehr“ – eine Linkliste mit der Schule (fremde Seite, neuer Tab) und den Fotos vom letzten Jahr (unsere Galerie-Seite). Genau die Kombination von eben: Liste plus Links."
+    },
+    {
+      "type": "code",
+      "etappe": "05-links/04-wiederholung"
+    }
+  ]
+}

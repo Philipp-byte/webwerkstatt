@@ -1,0 +1,54 @@
+{
+  "id": "06-projekt-interaktiv",
+  "title": "Projekt: Interaktive Startseite",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Meilenstein! Die Startseite reagiert: Status auf Knopfdruck, ein Zähler unter dem Line-up, ein Nachtmodus. Vor fünfzehn Stationen stand hier eine einzige Überschrift.\n\nJetzt kommt der **Countdown** in den Kopfbereich: „Noch 42 Tage bis FUNKEN“ – die Zahl aus einer Variablen, der Text per Skript ins Element geschrieben. Ohne Klick, direkt beim Laden."
+    },
+    {
+      "type": "quiz",
+      "question": "Der Countdown-Text soll direkt beim Laden erscheinen, nicht erst beim Klick. Wo gehört die Zeile mit `textContent` hin?",
+      "options": [
+        "Direkt ins Skript, außerhalb jeder Funktion",
+        "In die Funktion eines Klick-Zuhörers",
+        "In den head, vor dem body"
+      ],
+      "correct": 0,
+      "explanation": "Was beim Laden passieren soll, steht außerhalb der Funktionen – das Skript am Ende des body führt es sofort aus. In einer Klick-Funktion würde es erst beim Klick laufen."
+    },
+    {
+      "type": "pair",
+      "text": "Alles, was der Countdown braucht – ordne zu.",
+      "pairs": [
+        [
+          "`const`",
+          "Variable, die sich nicht mehr ändert"
+        ],
+        [
+          "`let`",
+          "Variable, die sich ändern darf – z. B. ein Zähler"
+        ],
+        [
+          "`+`",
+          "verbindet Text und Zahl zu einem Text"
+        ],
+        [
+          "`textContent`",
+          "schreibt den Text sichtbar ins Element"
+        ]
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Ab zur Etappe: Im Kopfbereich kommt nach dem Willkommens-Absatz ein leerer Absatz mit id für den Countdown. Im Skript: eine Konstante mit 42 und eine Zeile, die Text, Zahl und Text zusammensetzt und ins Element schreibt.\n\nDanach lohnt sich ein Blick auf die ganze Website: [FUNKEN-Website ansehen](#/projekt). Klick dich durch Status, Zähler und Nachtmodus – das ist deine Arbeit. Gleich nimmt Sam die Station ab."
+    },
+    {
+      "type": "code",
+      "etappe": "17-javascript-dom/06-projekt-interaktiv"
+    }
+  ]
+}

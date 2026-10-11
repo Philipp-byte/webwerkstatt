@@ -1,0 +1,197 @@
+{
+  "id": "04-wiederholung",
+  "title": "Wiederholung: Fundament",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Kurzer Rückblick, bevor die Startseite weiterwächst: Client und Server, der Aufbau einer URL – und alles aus diesem Kapitel: Tags, Attribute, Verschachtelung, Grundgerüst. Acht Aufgaben, dann geht es zurück zur FUNKEN-Website."
+    },
+    {
+      "type": "quiz",
+      "question": "Du öffnest die Seite des Sneaker-Stores auf dem Handy. Wer schickt die HTML-Datei?",
+      "options": [
+        "Der Server des Stores – als Antwort auf die Anfrage des Browsers",
+        "Das Handy – die Seite ist darauf gespeichert",
+        "Das DNS – es hat alle Seiten gespeichert"
+      ],
+      "correct": 0,
+      "explanation": "Client fragt, Server antwortet: Der Browser auf dem Handy schickt die Anfrage, der Server liefert die Datei. Das DNS kennt nur die IP-Adresse zur Domain."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige das Bild-Element des Steckbriefs.",
+      "template": "<___ src=\"katze.svg\" ___=\"Meine Katze Mochi\">",
+      "accept": [
+        [
+          "img"
+        ],
+        [
+          "alt"
+        ]
+      ],
+      "hint": "Lücke 1: der Tag-Name für Bilder. Lücke 2: das Attribut mit dem Ersatztext."
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Teile von `https://kick-lab.de/neu/retro-runner.html` zu.",
+      "pairs": [
+        [
+          "`https://`",
+          "Protokoll – verschlüsselte Übertragung"
+        ],
+        [
+          "`kick-lab.de`",
+          "Domain – Name des Servers"
+        ],
+        [
+          "`/neu/retro-runner.html`",
+          "Pfad – Ordner und Datei auf dem Server"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** den Steckbrief: eine Hauptüberschrift „Mochi“, darunter ein Absatz „Katze, 3 Jahre, schläft am liebsten auf der Tastatur.“ und darunter ein Bild der Datei katze.svg mit dem Ersatztext „Mochi auf der Tastatur“.",
+      "starter": {
+        "html": "<!-- Steckbrief von Mochi -->\n"
+      },
+      "hints": [
+        "Drei Elemente in dieser Reihenfolge: Überschrift, Absatz, Bild – jedes in einer eigenen Zeile unter dem Kommentar.",
+        "Überschrift und Absatz haben öffnenden und schließenden Tag; das Bild ist ein Leerelement mit zwei Attributen.",
+        "Muster: `<h1>…</h1>`, `<p>…</p>`, `<img src=\"…\" alt=\"…\">` – Texte und Dateiname aus der Aufgabe."
+      ],
+      "solution": {
+        "html": "<!-- Steckbrief von Mochi -->\n<h1>Mochi</h1>\n<p>Katze, 3 Jahre, schläft am liebsten auf der Tastatur.</p>\n<img src=\"katze.svg\" alt=\"Mochi auf der Tastatur\">\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "Mochi",
+          "label": "Die Überschrift lautet „Mochi“"
+        },
+        {
+          "type": "text",
+          "selector": "p",
+          "expected": "Katze, 3 Jahre, schläft am liebsten auf der Tastatur.",
+          "label": "Der Absatz hat den richtigen Text"
+        },
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "src",
+          "expected": "katze.svg",
+          "label": "Das Bild zeigt katze.svg"
+        },
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "alt",
+          "expected": "Mochi auf der Tastatur",
+          "label": "Der Ersatztext lautet „Mochi auf der Tastatur“"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "h1",
+            "p",
+            "img"
+          ],
+          "label": "Reihenfolge: Überschrift, Absatz, Bild"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Welche Zeile ist richtig verschachtelt?",
+      "options": [
+        "`<p>Alle Termine im <a href=\"plan.html\">Turnierplan</a>.</p>`",
+        "`<p>Alle Termine im <a href=\"plan.html\">Turnierplan</p></a>`",
+        "`<a href=\"plan.html\"><p>Alle Termine im Turnierplan</a></p>`"
+      ],
+      "correct": 0,
+      "explanation": "Zuletzt geöffnet, zuerst geschlossen: Der Link wird im Absatz geöffnet und muss dort auch wieder zugehen – erst `</a>`, dann `</p>`."
+    },
+    {
+      "type": "order",
+      "text": "Bring das Grundgerüst der Steckbrief-Seite in die richtige Reihenfolge.",
+      "lines": [
+        "<!DOCTYPE html>",
+        "<html lang=\"de\">",
+        "  <head>",
+        "    <meta charset=\"utf-8\">",
+        "  </head>",
+        "  <body>",
+        "  </body>",
+        "</html>"
+      ],
+      "explanation": "Dokumenttyp, dann html – darin erst der head (mit dem Zeichensatz), dann der body."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige die ersten beiden Zeilen einer deutschen Seite.",
+      "template": "<!___ html>\n<html ___=\"de\">",
+      "accept": [
+        [
+          "DOCTYPE"
+        ],
+        [
+          "lang"
+        ]
+      ],
+      "hint": "Lücke 1: das Wort für den Dokumenttyp. Lücke 2: das Attribut für die Sprache."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Korrigiere** zwei Fehler auf der Sneaker-Seite: Der gesamte Text ist so groß wie die Überschrift, und statt des Sneaker-Bildes erscheint nur der Ersatztext.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Kick Lab – Sneaker in Heilbronn</title>\n  </head>\n  <body>\n    <h1>Kick Lab<h1>\n    <p>Neu im Store: der Retro-Runner in Weiß.</p>\n    <img src=sneaker.svg\" alt=\"Retro-Runner in Weiß\">\n    <p>Öffnungszeiten: Montag bis Samstag, 10 bis 19 Uhr.</p>\n  </body>\n</html>\n"
+      },
+      "hints": [
+        "Riesiger Text: Der schließende Tag der Überschrift ist gar keiner – ihm fehlt ein Zeichen.",
+        "Fehlendes Bild: Zähle die Anführungszeichen im img-Tag. Jeder Wert braucht eines vorne und eines hinten.",
+        "Muster: `<h1>…</h1>` und `<img src=\"…\" alt=\"…\">`."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Kick Lab – Sneaker in Heilbronn</title>\n  </head>\n  <body>\n    <h1>Kick Lab</h1>\n    <p>Neu im Store: der Retro-Runner in Weiß.</p>\n    <img src=\"sneaker.svg\" alt=\"Retro-Runner in Weiß\">\n    <p>Öffnungszeiten: Montag bis Samstag, 10 bis 19 Uhr.</p>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "h1",
+          "count": 1,
+          "label": "Es gibt genau eine Überschrift"
+        },
+        {
+          "type": "selector",
+          "selector": "h1 p",
+          "count": 0,
+          "label": "Die Absätze stecken nicht mehr in der Überschrift"
+        },
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "src",
+          "expected": "sneaker.svg",
+          "label": "Das Sneaker-Bild wird geladen"
+        },
+        {
+          "type": "text",
+          "selector": "title",
+          "expected": "Kick Lab – Sneaker in Heilbronn",
+          "label": "Der Titel ist unverändert"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Zurück zur Startseite: Sam will den Termin sichtbar haben – Freitag, 17. und Samstag, 18. Juli 2027 auf dem alten Fabrikgelände am Neckar. Das wird ein zweiter Absatz direkt unter dem ersten, innerhalb des Körpers. Denk an den schließenden Tag – und daran, dass der Text genau stimmen muss."
+    },
+    {
+      "type": "code",
+      "etappe": "02-html-erste-schritte/04-wiederholung"
+    }
+  ]
+}

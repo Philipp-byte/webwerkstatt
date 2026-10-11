@@ -1,0 +1,46 @@
+{
+  "id": "05-projekt-ueber-das-festival",
+  "title": "Projekt: Über das Festival",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Ich hab die Startseite gesehen – das sieht schon nach Festival aus! Überschriften, Text, unsere Adresse … Fehlt nur noch das Essen. Ohne Foodtrucks kommt keiner.\n\nAlso: dritter Abschnitt „Foodtrucks“, mit einem Satz, was es alles gibt. Und danach zeigt ihr mir bitte die ganze Seite!"
+    },
+    {
+      "type": "quiz",
+      "question": "Die Startseite hat die Hauptüberschrift „FUNKEN“ und die Abschnitte „Das Festival“ und „Die Bühnen“. Welche Ebene bekommt „Foodtrucks“?",
+      "options": [
+        "Ebene 2 – gleichrangig mit den anderen Abschnitten",
+        "Ebene 1 – Essen ist am wichtigsten",
+        "Ebene 3 – weil es der dritte Abschnitt ist"
+      ],
+      "correct": 0,
+      "explanation": "Gleichrangige Abschnitte bekommen dieselbe Ebene. Die h1 gibt es nur einmal, und die Zahl zählt nicht die Abschnitte."
+    },
+    {
+      "type": "order",
+      "text": "So soll der untere Teil der Startseite aussehen. Sortiere: die Bühnen, dann die Foodtrucks, dann Kontakt-Kommentar, Linie und Adresse.",
+      "lines": [
+        "<h2>Die Bühnen</h2>",
+        "<p>Auf der <strong>Hauptbühne</strong> spielen die Headliner.</p>",
+        "<h2>Foodtrucks</h2>",
+        "<p>Pizza, Döner, Bubble Tea und Waffeln.</p>",
+        "<!-- Kontakt -->",
+        "<hr>",
+        "<p>Kollektiv FUNKEN<br>Hafenstraße 9<br>74072 Heilbronn</p>"
+      ],
+      "explanation": "Jede Zwischenüberschrift eröffnet ihren Abschnitt, der Absatz folgt direkt. Ganz unten: Kommentar, Linie, Adresse."
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Meilenstein! Der Abschnitt „Foodtrucks“ bekommt eine Zwischenüberschrift und einen Absatz, in dem „alles“ leicht betont ist. Er kommt hinter „Die Bühnen“ und vor den Kontakt-Kommentar. Prüf danach die Reihenfolge: Das Festival, Die Bühnen, Foodtrucks, dann die Linie.\n\nWenn die Etappe steht, klick unten auf „FUNKEN-Website ansehen“ – dort siehst du die ganze Startseite, so wie Sam sie sieht."
+    },
+    {
+      "type": "code",
+      "etappe": "03-text/05-projekt-ueber-das-festival"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "05-projekt-galerie",
+  "title": "Projekt: Galerie",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Meilenstein! Die Galerie hat Grundgerüst, Rück-Link, einen Bild-Block, den Foodtruck-Abschnitt, Jingle und Aftermovie.\n\n„Fehlt noch das Plakat – und ein Rundgang, damit die Leute wissen, wo es langgeht!“\n\nDafür brauchst du nur, was du schon kannst: einen zweiten Bild-Block und eine nummerierte Liste aus Kapitel 04."
+    },
+    {
+      "type": "quiz",
+      "question": "Der Rundgang hat vier Stationen in fester Reihenfolge. Welche Liste passt?",
+      "options": [
+        "Eine geordnete Liste – der Browser nummeriert selbst",
+        "Eine ungeordnete Liste mit Punkten",
+        "Ein Bild-Block pro Station"
+      ],
+      "correct": 0,
+      "explanation": "Feste Reihenfolge = geordnete Liste (ol). Punkte (ul) passen, wenn die Reihenfolge egal ist."
+    },
+    {
+      "type": "order",
+      "text": "Sortiere: erst der Bild-Block (Bild vor Unterschrift), dann die nummerierte Liste mit einem Eintrag.",
+      "lines": [
+        "<figure>",
+        "  <img src=\"ticket.svg\" alt=\"Mein Ticket\">",
+        "  <figcaption>Ticket für Samstag</figcaption>",
+        "</figure>",
+        "<ol>",
+        "  <li>Einlass um 16 Uhr</li>",
+        "</ol>"
+      ],
+      "explanation": "Der Bild-Block wird geschlossen, bevor die Liste beginnt – zwei getrennte Blöcke nacheinander."
+    },
+    {
+      "type": "explain",
+      "text": "Zwei Ergänzungen: Im Abschnitt „Eindrücke“ kommt direkt nach dem ersten Bild-Block ein zweiter mit dem Plakat 2027 – Bild und Unterschrift. Ganz am Ende der Seite entsteht der Abschnitt „Rundgang“: eine nummerierte Liste mit vier Stationen – Einlass, Hauptbühne, Zeltbühne, Foodcourt.\n\nDanach lohnt sich ein Blick auf die fertige Galerie unter [FUNKEN-Website](#/projekt)."
+    },
+    {
+      "type": "code",
+      "etappe": "06-bilder-und-medien/05-projekt-galerie"
+    }
+  ]
+}

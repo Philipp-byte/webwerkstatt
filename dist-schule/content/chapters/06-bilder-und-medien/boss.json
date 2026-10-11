@@ -1,0 +1,215 @@
+{
+  "chapter": "06-bilder-und-medien",
+  "title": "Abnahme: Foto-Wand",
+  "intro": "Die Foto-Wand steht! Endlich sieht man, wie FUNKEN aussieht – und man hört es sogar. Bevor ich das dem Kollektiv zeige: Beweis mir, dass Bilder, Ton und Film sitzen und du Links und Listen nicht vergessen hast.",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "html.img",
+      "type": "quiz",
+      "question": "Wie kommt das Bild plakat.svg auf die Seite?",
+      "options": [
+        "Mit einem img-Element, der Dateiname steht im Attribut src",
+        "Mit einem img-Element, der Dateiname steht zwischen den Tags",
+        "Mit einem Link, dessen Text der Dateiname ist"
+      ],
+      "correct": 0,
+      "explanation": "img ist ein Leerelement – die Datei steht im Attribut src."
+    },
+    {
+      "konzept": "html.alt",
+      "type": "pair",
+      "text": "Ordne zu.",
+      "pairs": [
+        [
+          "alt",
+          "Ersatztext, falls das Bild fehlt oder vorgelesen wird"
+        ],
+        [
+          "src",
+          "Datei, die geladen wird"
+        ],
+        [
+          "controls",
+          "Play, Pause und Lautstärke am Player"
+        ],
+        [
+          "figcaption",
+          "sichtbare Bildunterschrift"
+        ]
+      ]
+    },
+    {
+      "konzept": "html.a-intern",
+      "type": "fill",
+      "text": "Vervollständige den Link zur Galerie-Seite.",
+      "template": "<a ___=\"galerie.html\">Fotos</a>",
+      "accept": [
+        "href"
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter dem Absatz ein Bild: pizza.svg mit dem Alternativtext „Pizza vom Stand der 11b“, 160 Pixel breit. Darunter eine Aufzählungsliste mit drei Einträgen: Pizza, Waffeln, Limo.",
+      "starter": {
+        "html": "<h1>Schulfest am Freitag</h1>\n<h2>Essen</h2>\n<p>Das gibt es am Stand der 11b:</p>\n"
+      },
+      "solution": {
+        "html": "<h1>Schulfest am Freitag</h1>\n<h2>Essen</h2>\n<p>Das gibt es am Stand der 11b:</p>\n<img src=\"pizza.svg\" alt=\"Pizza vom Stand der 11b\" width=\"160\">\n<ul>\n  <li>Pizza</li>\n  <li>Waffeln</li>\n  <li>Limo</li>\n</ul>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "src",
+          "expected": "pizza.svg",
+          "label": "Das Bild lädt pizza.svg"
+        },
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "alt",
+          "expected": "Pizza vom Stand der 11b",
+          "label": "Der Alternativtext stimmt"
+        },
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "width",
+          "expected": "160",
+          "label": "Das Bild ist 160 Pixel breit"
+        },
+        {
+          "type": "selector",
+          "selector": "ul > li",
+          "count": 3,
+          "label": "Die Liste hat drei Einträge"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:last-child",
+          "expected": "Limo",
+          "label": "Der letzte Eintrag ist „Limo“"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "p",
+            "img",
+            "ul"
+          ],
+          "label": "Absatz, Bild, Liste – in dieser Reihenfolge"
+        }
+      ]
+    },
+    {
+      "konzept": "html.audio-video",
+      "type": "quiz",
+      "question": "Der Aftermovie soll Play und Pause bekommen. Welches Attribut braucht das video-Element?",
+      "options": [
+        "controls",
+        "src",
+        "width",
+        "alt"
+      ],
+      "correct": 0,
+      "explanation": "controls blendet die Bedienelemente ein; src nennt nur die Datei."
+    },
+    {
+      "konzept": "html.grundgeruest",
+      "type": "order",
+      "text": "Sortiere das Grundgerüst einer leeren Seite.",
+      "lines": [
+        "<!DOCTYPE html>",
+        "<html lang=\"de\">",
+        "<head>",
+        "<meta charset=\"utf-8\">",
+        "<title>Galerie</title>",
+        "</head>",
+        "<body>",
+        "</body>",
+        "</html>"
+      ]
+    },
+    {
+      "konzept": "html.figure",
+      "type": "bug",
+      "text": "Ein Bild-Block ist fehlerhaft. Welche Zeile?",
+      "lines": [
+        "<figure>",
+        "  <img src=\"crowd.svg\" alt=\"Die Menge vor der Bühne\">",
+        "  <caption>Die Menge vor der Bühne</caption>",
+        "</figure>"
+      ],
+      "line": 2,
+      "explanation": "Die Bildunterschrift heißt figcaption."
+    },
+    {
+      "konzept": "html.a-mailto",
+      "type": "quiz",
+      "question": "Welcher Link öffnet das Mailprogramm?",
+      "options": [
+        "`<a href=\"mailto:hallo@funken-festival-beispiel.de\">Mail</a>`",
+        "`<a href=\"hallo@funken-festival-beispiel.de\">Mail</a>`",
+        "`<a href=\"https://hallo@funken-festival-beispiel.de\">Mail</a>`"
+      ],
+      "correct": 0,
+      "explanation": "E-Mail-Links beginnen in der Adresse mit mailto:."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** die Skate-Seite: Das Schuh-Foto fehlt – es erscheint nur sein Alternativtext – und das Video hat keine Play-Taste.",
+      "starter": {
+        "html": "<h1>Skate-Session</h1>\n<img scr=\"sneaker.svg\" alt=\"Meine Skate-Schuhe\">\n<h2>Der Clip</h2>\n<video src=\"clip.webm\" width=\"320\"></video>\n"
+      },
+      "solution": {
+        "html": "<h1>Skate-Session</h1>\n<img src=\"sneaker.svg\" alt=\"Meine Skate-Schuhe\">\n<h2>Der Clip</h2>\n<video controls src=\"clip.webm\" width=\"320\"></video>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "img",
+          "attr": "src",
+          "expected": "sneaker.svg",
+          "label": "Das Schuh-Foto wird geladen"
+        },
+        {
+          "type": "attr",
+          "selector": "video",
+          "attr": "controls",
+          "present": true,
+          "label": "Das Video hat Bedienelemente"
+        },
+        {
+          "type": "attr",
+          "selector": "video",
+          "attr": "src",
+          "expected": "clip.webm",
+          "label": "Das Video lädt weiterhin clip.webm"
+        }
+      ]
+    },
+    {
+      "konzept": "html.alt",
+      "type": "fill",
+      "text": "Vervollständige das Bild-Element um den Alternativtext.",
+      "template": "<img src=\"buehne.svg\" ___=\"Die Hauptbühne bei Nacht\">",
+      "accept": [
+        "alt"
+      ]
+    },
+    {
+      "konzept": "html.ol",
+      "type": "quiz",
+      "question": "Die Anfahrt hat drei Schritte in fester Reihenfolge. Welche Liste passt?",
+      "options": [
+        "Eine geordnete Liste – ol",
+        "Eine ungeordnete Liste – ul",
+        "Ein Absatz mit Zeilenumbrüchen"
+      ],
+      "correct": 0,
+      "explanation": "Feste Reihenfolge = ol, der Browser nummeriert selbst."
+    }
+  ]
+}

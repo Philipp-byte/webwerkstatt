@@ -1,0 +1,306 @@
+{
+  "chapter": "03-text",
+  "fragen": [
+    {
+      "id": "03-01",
+      "konzept": "html.ueberschrift",
+      "type": "quiz",
+      "question": "Wie viele Hauptüberschriften (h1) hat eine gut gegliederte Seite?",
+      "options": [
+        "Genau eine",
+        "Eine pro Abschnitt",
+        "Mindestens drei"
+      ],
+      "correct": 0,
+      "explanation": "Die h1 nennt das Thema der ganzen Seite – deshalb nur einmal. Abschnitte bekommen h2."
+    },
+    {
+      "id": "03-02",
+      "konzept": "html.ueberschrift",
+      "type": "bug",
+      "text": "Die Gliederung überspringt eine Ebene. Welche Zeile ist falsch?",
+      "lines": [
+        "<h1>Sneaker-Blog</h1>",
+        "<h2>Neu im Regal</h2>",
+        "<h4>Laufschuhe</h4>",
+        "<p>Leicht und weich gedämpft.</p>"
+      ],
+      "line": 2,
+      "explanation": "Nach h2 kommt h3 – keine Ebene überspringen."
+    },
+    {
+      "id": "03-03",
+      "konzept": "html.ueberschrift",
+      "type": "fill",
+      "text": "Vervollständige: Unter der Hauptüberschrift folgt die nächste Ebene.",
+      "template": "<h1>Fitness-Plan</h1>\n<___>Montag</___>",
+      "accept": [
+        [
+          "h2"
+        ],
+        [
+          "h2"
+        ]
+      ],
+      "hint": "Ebene 1, dann Ebene 2 – in beiden Tags."
+    },
+    {
+      "id": "03-04",
+      "konzept": "html.ueberschrift",
+      "type": "order",
+      "text": "Sortiere die Gliederung: Hauptüberschrift, dann jede Ebene eine Stufe tiefer, zuletzt der Text.",
+      "lines": [
+        "<h1>Führerschein-Tagebuch</h1>",
+        "<h2>Theorie</h2>",
+        "<h3>Erste Stunde</h3>",
+        "<p>Verkehrszeichen, Vorfahrt, viel Kaffee.</p>"
+      ],
+      "explanation": "h1, h2, h3 – keine Ebene überspringen. Der Text gehört zur untersten Überschrift."
+    },
+    {
+      "id": "03-05",
+      "konzept": "html.absatz",
+      "type": "quiz",
+      "question": "Du drückst im Editor dreimal Enter zwischen zwei Sätzen. Was zeigt der Browser?",
+      "options": [
+        "Beide Sätze hintereinander – Umbrüche im Quelltext zählen nicht",
+        "Drei Leerzeilen zwischen den Sätzen",
+        "Einen Zeilenumbruch"
+      ],
+      "correct": 0,
+      "explanation": "Der Browser ignoriert Zeilenumbrüche im Quelltext. Umbrüche entstehen nur durch Absätze oder `<br>`."
+    },
+    {
+      "id": "03-06",
+      "konzept": "html.absatz",
+      "type": "bug",
+      "text": "Ein Absatz ist nicht richtig abgeschlossen. Welche Zeile?",
+      "lines": [
+        "<p>Wir liefern bis 22 Uhr.</p>",
+        "<p>Mindestbestellwert: 10 Euro.",
+        "<p>Bar oder Karte.</p>"
+      ],
+      "line": 1,
+      "explanation": "Der schließende Tag `</p>` fehlt."
+    },
+    {
+      "id": "03-07",
+      "konzept": "html.absatz",
+      "type": "fill",
+      "text": "Fließtext gehört in ein Absatz-Element. Vervollständige.",
+      "template": "<___>Pommes gibt es ab 17 Uhr.</___>",
+      "accept": [
+        [
+          "p"
+        ],
+        [
+          "p"
+        ]
+      ],
+      "hint": "Ein Buchstabe – wie paragraph."
+    },
+    {
+      "id": "03-08",
+      "konzept": "html.br-hr",
+      "type": "pair",
+      "text": "Ordne zu.",
+      "pairs": [
+        [
+          "`<br>`",
+          "Zeilenumbruch innerhalb eines Absatzes"
+        ],
+        [
+          "`<hr>`",
+          "Trennlinie zwischen zwei Themen"
+        ],
+        [
+          "`<p>`",
+          "Absatz – ein Textblock"
+        ],
+        [
+          "`<h2>`",
+          "Zwischenüberschrift"
+        ]
+      ]
+    },
+    {
+      "id": "03-09",
+      "konzept": "html.br-hr",
+      "type": "quiz",
+      "question": "Welche Aussage über `<br>` stimmt?",
+      "options": [
+        "Es ist ein Leerelement ohne schließenden Tag",
+        "Es braucht `</br>` als schließenden Tag",
+        "Es zeichnet eine sichtbare Linie"
+      ],
+      "correct": 0,
+      "explanation": "`<br>` hat keinen Inhalt und keinen schließenden Tag. Die Linie ist `<hr>`."
+    },
+    {
+      "id": "03-10",
+      "konzept": "html.br-hr",
+      "type": "bug",
+      "text": "Ein Leerelement ist falsch geschrieben. Welche Zeile?",
+      "lines": [
+        "<p>Pizza Luna<br>",
+        "Bahnhofstraße 4<br>",
+        "74072 Heilbronn</p>",
+        "<hr></hr>"
+      ],
+      "line": 3,
+      "explanation": "Die Trennlinie ist ein Leerelement: nur `<hr>`, kein schließender Tag."
+    },
+    {
+      "id": "03-11",
+      "konzept": "html.strong-em",
+      "type": "quiz",
+      "question": "„Ausverkauft“ ist die wichtigste Information im Satz. Welches Element markiert das?",
+      "options": [
+        "`<strong>`",
+        "`<em>`",
+        "`<h6>`"
+      ],
+      "correct": 0,
+      "explanation": "`<strong>` bedeutet wichtig. `<em>` betont nur wie beim Sprechen, h6 ist eine Überschrift."
+    },
+    {
+      "id": "03-12",
+      "konzept": "html.strong-em",
+      "type": "pair",
+      "text": "Ordne zu.",
+      "pairs": [
+        [
+          "`<strong>`",
+          "wichtig – fett dargestellt"
+        ],
+        [
+          "`<em>`",
+          "betont – kursiv dargestellt"
+        ],
+        [
+          "`<h1>`",
+          "Hauptüberschrift"
+        ],
+        [
+          "`<!-- … -->`",
+          "Kommentar, unsichtbar"
+        ]
+      ]
+    },
+    {
+      "id": "03-13",
+      "konzept": "html.strong-em",
+      "type": "fill",
+      "text": "Das Wort „ausverkauft“ soll als wichtig markiert werden. Vervollständige.",
+      "template": "<p>Samstag ist <___>ausverkauft</___>.</p>",
+      "accept": [
+        [
+          "strong"
+        ],
+        [
+          "strong"
+        ]
+      ],
+      "hint": "Das Element für wichtige Information – nicht das für Betonung beim Sprechen."
+    },
+    {
+      "id": "03-14",
+      "konzept": "html.strong-em",
+      "type": "bug",
+      "text": "Eine Betonung wird nicht geschlossen. Welche Zeile?",
+      "lines": [
+        "<p>Bitte <strong>pünktlich</strong> kommen.</p>",
+        "<p>Der Einlass ist <em>wirklich<em> streng.</p>",
+        "<p>Danke!</p>"
+      ],
+      "line": 1,
+      "explanation": "Der zweite Tag muss der schließende sein: `</em>` mit Schrägstrich."
+    },
+    {
+      "id": "03-15",
+      "konzept": "html.kommentar",
+      "type": "fill",
+      "text": "Vervollständige den Kommentar.",
+      "template": "___ Hier kommt das Programm hin ___",
+      "accept": [
+        [
+          "<!--"
+        ],
+        [
+          "-->"
+        ]
+      ],
+      "hint": "Anfang mit spitzer Klammer, Ausrufezeichen und zwei Strichen – Ende mit zwei Strichen und Klammer."
+    },
+    {
+      "id": "03-16",
+      "konzept": "html.kommentar",
+      "type": "quiz",
+      "question": "Was passiert mit dem Text in einem Kommentar?",
+      "options": [
+        "Der Browser zeigt ihn nicht – er steht nur im Quelltext",
+        "Er erscheint kursiv",
+        "Er erscheint als Überschrift"
+      ],
+      "correct": 0,
+      "explanation": "Kommentare sind Notizen im Quelltext. Besucher der Seite sehen sie nicht."
+    },
+    {
+      "id": "03-17",
+      "konzept": "html.kommentar",
+      "type": "bug",
+      "text": "Ein Kommentar ist nicht richtig beendet. Welche Zeile?",
+      "lines": [
+        "<h1>Team</h1>",
+        "<!-- Fotos folgen --",
+        "<p>Wir sind zu fünft.</p>"
+      ],
+      "line": 1,
+      "explanation": "Ein Kommentar endet mit `-->` – hier fehlt die spitze Klammer, und der Rest der Seite verschwindet."
+    },
+    {
+      "id": "03-18",
+      "konzept": "html.entity",
+      "type": "quiz",
+      "question": "Wie schreibst du das Zeichen & im Text einer HTML-Seite?",
+      "options": [
+        "`&amp;`",
+        "`&and;`",
+        "`&&`"
+      ],
+      "correct": 0,
+      "explanation": "Das &-Zeichen leitet Sonderzeichen ein – als Text schreibst du es `&amp;`."
+    },
+    {
+      "id": "03-19",
+      "konzept": "html.entity",
+      "type": "pair",
+      "text": "Ordne die Sonderzeichen zu.",
+      "pairs": [
+        [
+          "`&lt;`",
+          "<"
+        ],
+        [
+          "`&gt;`",
+          ">"
+        ],
+        [
+          "`&amp;`",
+          "&"
+        ]
+      ]
+    },
+    {
+      "id": "03-20",
+      "konzept": "html.entity",
+      "type": "fill",
+      "text": "Der Text soll „Pommes & Currywurst“ anzeigen. Vervollständige mit dem Sonderzeichen.",
+      "template": "<p>Pommes ___ Currywurst</p>",
+      "accept": [
+        "&amp;"
+      ],
+      "hint": "Beginnt mit &, endet mit Semikolon – die Abkürzung für ampersand."
+    }
+  ]
+}

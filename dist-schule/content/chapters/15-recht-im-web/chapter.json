@@ -1,0 +1,13 @@
+{
+  "id": "15-recht-im-web",
+  "title": "Recht im Web",
+  "station": "Sicherheitszentrale",
+  "icon": "⚖️",
+  "color": "#38c7ff",
+  "description": "Urheberrecht, Lizenzen, Bildquellen, Impressum und Datenschutz – was eine echte Website braucht.",
+  "lessons": [
+    "01-urheberrecht-und-bilder",
+    "02-impressum-und-datenschutz",
+    "03-projekt-impressum"
+  ]
+}

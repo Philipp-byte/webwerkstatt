@@ -1,0 +1,261 @@
+{
+  "id": "02-id-und-gruppen-selektor",
+  "title": "ID- und Gruppen-Selektor",
+  "konzepte": [
+    "css.sel-id",
+    "css.sel-gruppe"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Eine **id** vergibt ein Element genau **einmal** pro Seite – wie `<h1 id=\"oben\">` auf der Startseite. Im CSS sprichst du sie mit der **Raute** an:\n\n```css\n#oben {\n  color: #ff6a00;\n}\n```\n\nMerk dir die zwei Zeichen: **Punkt** für die Klasse, **Raute** für die id. Eine id-Regel trifft immer genau ein Element – ein Spot für einen einzigen Star.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"26\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">HTML-Attribut → CSS-Zeichen</text><rect x=\"14\" y=\"44\" width=\"150\" height=\"32\" rx=\"6\" fill=\"#e8ecf7\"/><text x=\"89\" y=\"65\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\" font-size=\"13\">class=\"hinweis\"</text><path d=\"M170 60 H196\" stroke=\"#ffd84d\" stroke-width=\"3\"/><rect x=\"200\" y=\"44\" width=\"106\" height=\"32\" rx=\"6\" fill=\"none\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"253\" y=\"65\" text-anchor=\"middle\" fill=\"#ffd84d\" font-family=\"monospace\" font-size=\"14\">.hinweis</text><text x=\"253\" y=\"92\" text-anchor=\"middle\" fill=\"#ffd84d\">Punkt = Klasse</text><rect x=\"14\" y=\"104\" width=\"150\" height=\"32\" rx=\"6\" fill=\"#e8ecf7\"/><text x=\"89\" y=\"125\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\" font-size=\"13\">id=\"lineup\"</text><path d=\"M170 120 H196\" stroke=\"#ff7a45\" stroke-width=\"3\"/><rect x=\"200\" y=\"104\" width=\"106\" height=\"32\" rx=\"6\" fill=\"none\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"253\" y=\"125\" text-anchor=\"middle\" fill=\"#ff7a45\" font-family=\"monospace\" font-size=\"14\">#lineup</text><text x=\"253\" y=\"152\" text-anchor=\"middle\" fill=\"#ff7a45\">Raute = id</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Drei Überschriften, eine id. Nur `#live` ist orange. **Ändere** die Farbe – und dann **ersetze** die Raute durch einen Punkt. Was passiert? Nichts mehr: Der Punkt sucht eine Klasse, die es hier nicht gibt.",
+      "html": "<h2 id=\"live\">Jetzt live: Finale Hallenturnier</h2>\n<p>Team West gegen Team Nord.</p>\n<h2>Später</h2>\n<p>Interviews mit den Teams.</p>\n<h2>Morgen</h2>\n<p>Zusammenfassung des Turniers.</p>\n",
+      "css": "h2 {\n  color: #6b6b7a;\n}\n\n#live {\n  color: #d94f00;\n}\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Im HTML steht `<h2 id=\"finale\">Finale</h2>`. Welcher Selektor trifft genau diese Überschrift?",
+      "options": [
+        "`#finale`",
+        "`.finale`",
+        "`finale`"
+      ],
+      "correct": 0,
+      "explanation": "Die Raute steht für die id. Der Punkt wäre für eine Klasse – die hat diese Überschrift nicht. Ohne Zeichen sucht der Browser ein Element namens finale."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** den Spielplan: Der Listenpunkt mit der id `finale` bekommt die Farbe `#d94f00` und fette Schrift. Die anderen Spiele bleiben normal.",
+      "starter": {
+        "html": "<h2>Spielplan Hallenturnier</h2>\n<ul>\n  <li>10:00 – Team Nord gegen Team Süd</li>\n  <li>11:00 – Team West gegen Team Ost</li>\n  <li>12:00 – Spiel um Platz 3</li>\n  <li id=\"finale\">14:00 – Finale</li>\n</ul>\n",
+        "css": "body {\n  color: #1b1b2f;\n}\n\n/* Regel für das Finale */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Genau ein Element mit einer id – welches Zeichen kommt vor den Namen?",
+        "Muster aus einem anderen Kontext: `#oben { color: red; }` färbt das Element mit der id oben rot.",
+        "Raute + id, in den Klammern zwei Deklarationen: Farbe und Schriftstärke (bold)."
+      ],
+      "solution": {
+        "css": "body {\n  color: #1b1b2f;\n}\n\n#finale {\n  color: #d94f00;\n  font-weight: bold;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "#finale",
+          "prop": "color",
+          "expected": "#d94f00",
+          "label": "Das Finale ist dunkelorange (#d94f00)"
+        },
+        {
+          "type": "style",
+          "selector": "#finale",
+          "prop": "font-weight",
+          "expected": [
+            "700",
+            "bold"
+          ],
+          "label": "Das Finale ist fett"
+        },
+        {
+          "type": "style",
+          "selector": "li:not(#finale)",
+          "prop": "font-weight",
+          "expected": [
+            "400",
+            "normal"
+          ],
+          "label": "Die anderen Spiele bleiben normal"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Oft sollen mehrere Elemente **gleich** aussehen – etwa alle Überschriften in einer Farbe. Statt drei Regeln zu kopieren, schreibst du **eine** Regel mit mehreren Selektoren, getrennt durch **Komma**:\n\n```css\nh1, h2, h3 {\n  color: #ff6a00;\n}\n```\n\nDas ist der **Gruppen-Selektor**. Mischen ist erlaubt: `h1, .titel, #oben` funktioniert genauso. Jeder Teil der Gruppe wird für sich geprüft."
+    },
+    {
+      "type": "fill",
+      "text": "Die Überschriften mit den ids `start` und `ende` sollen in **einer** Regel blau werden. **Vervollständige** die fehlenden Zeichen.",
+      "template": "#start___ ___ende {\n  color: #0b7dd6;\n}",
+      "accept": [
+        [
+          ","
+        ],
+        [
+          "#"
+        ]
+      ],
+      "hint": "Ein Komma trennt die Selektoren einer Gruppe; jede id braucht ihre Raute."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** den Trainingsplan mit EINER gemeinsamen Regel: Hauptüberschrift und alle Zwischenüberschriften bekommen die Farbe `#0b7dd6`. Die Absätze bleiben dunkel.",
+      "starter": {
+        "html": "<h1>Mein Trainingsplan</h1>\n<h2>Montag – Beine</h2>\n<p>Kniebeugen, Ausfallschritte, 3 Sätze.</p>\n<h2>Mittwoch – Rücken</h2>\n<p>Klimmzüge, Rudern, 3 Sätze.</p>\n<h2>Freitag – Ausdauer</h2>\n<p>30 Minuten laufen.</p>\n",
+        "css": "body {\n  color: #1b1b2f;\n}\n\n/* Eine Regel für alle Überschriften */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Zwei Selektoren, eine Regel – welches Zeichen trennt sie?",
+        "Muster: `h2, h3 { color: red; }` färbt zweite und dritte Ebene rot.",
+        "Beide Elementnamen, Komma dazwischen, dann die Klammern mit der Farbe aus der Aufgabe."
+      ],
+      "solution": {
+        "css": "body {\n  color: #1b1b2f;\n}\n\nh1, h2 {\n  color: #0b7dd6;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "color",
+          "expected": "#0b7dd6",
+          "label": "Die Hauptüberschrift ist blau"
+        },
+        {
+          "type": "style",
+          "selector": "h2",
+          "prop": "color",
+          "expected": "#0b7dd6",
+          "label": "Die Zwischenüberschriften sind blau"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "h1\\s*,\\s*h2\\s*\\{|h2\\s*,\\s*h1\\s*\\{",
+          "label": "Beide Überschriftenebenen stehen als Gruppe in einer Regel"
+        },
+        {
+          "type": "style",
+          "selector": "p",
+          "prop": "color",
+          "expected": "#1b1b2f",
+          "label": "Die Absätze bleiben dunkel"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Was, wenn zwei Regeln dasselbe Element treffen? Dann entscheidet eine einfache **Rangfolge**:\n\n1. **id** schlägt Klasse.\n2. **Klasse** schlägt Element.\n3. Bei **Gleichstand** gewinnt die **spätere** Regel.\n\n`#finale` ist also stärker als `.sieg`, und `.sieg` stärker als `li` – egal, in welcher Reihenfolge sie im Stylesheet stehen. Nur wenn zwei gleich starke Regeln streiten, zählt der Platz: Wer weiter unten steht, gewinnt."
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Selektoren ihrer Wirkung zu.",
+      "pairs": [
+        [
+          "`#oben`",
+          "genau das eine Element mit der id oben"
+        ],
+        [
+          "`.neu`",
+          "alle Elemente mit der Klasse neu"
+        ],
+        [
+          "`h1, h2`",
+          "Gruppe: alle h1 und alle h2"
+        ],
+        [
+          "`h2`",
+          "alle Zwischenüberschriften der Ebene 2"
+        ],
+        [
+          "`#oben` gegen `.neu`",
+          "die id gewinnt"
+        ]
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Oben steht `li { color: red; }`, darunter `.sieg { color: green; }`. Welche Farbe hat `<li class=\"sieg\">`?",
+      "options": [
+        "Grün – die Klasse ist stärker als das Element",
+        "Rot – die erste Regel gewinnt immer",
+        "Rot – Element schlägt Klasse"
+      ],
+      "correct": 0,
+      "explanation": "Klasse schlägt Element, egal in welcher Reihenfolge. Die Reihenfolge zählt nur bei Gleichstand, etwa bei zwei li-Regeln."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** den Endstand des Hallenturniers: 1. Überschrift und Kopfzellen bekommen in EINER gemeinsamen Regel die Farbe `#d94f00`. 2. Die Zeile mit der id `erster` wird fett und grün `#1a8f3c`.",
+      "starter": {
+        "html": "<h2>Endstand Hallenturnier</h2>\n<table>\n  <tr>\n    <th>Platz</th>\n    <th>Team</th>\n    <th>Punkte</th>\n  </tr>\n  <tr id=\"erster\">\n    <td>1</td>\n    <td>Team West</td>\n    <td>9</td>\n  </tr>\n  <tr>\n    <td>2</td>\n    <td>Team Nord</td>\n    <td>6</td>\n  </tr>\n  <tr>\n    <td>3</td>\n    <td>Team Süd</td>\n    <td>1</td>\n  </tr>\n</table>\n",
+        "css": "body {\n  color: #1b1b2f;\n}\n\ntable {\n  background-color: white;\n}\n\n/* Deine Regeln */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Zwei neue Regeln: eine Gruppe für Überschrift und Kopfzellen, eine id-Regel für die Zeile.",
+        "Gruppe: Elementnamen mit Komma trennen, wie `h1, h3 { color: red; }`. Die id bekommt die Raute.",
+        "Zeile: Raute + id, in den Klammern Farbe und Schriftstärke (bold) – jede in einer eigenen Zeile."
+      ],
+      "solution": {
+        "css": "body {\n  color: #1b1b2f;\n}\n\ntable {\n  background-color: white;\n}\n\nh2, th {\n  color: #d94f00;\n}\n\n#erster {\n  color: #1a8f3c;\n  font-weight: bold;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "h2",
+          "prop": "color",
+          "expected": "#d94f00",
+          "label": "Die Überschrift ist dunkelorange"
+        },
+        {
+          "type": "style",
+          "selector": "th",
+          "prop": "color",
+          "expected": "#d94f00",
+          "label": "Die Kopfzellen sind dunkelorange"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "(h2\\s*,\\s*th|th\\s*,\\s*h2)\\s*\\{",
+          "label": "Überschrift und Kopfzellen stehen als Gruppe in einer Regel"
+        },
+        {
+          "type": "style",
+          "selector": "#erster td",
+          "prop": "color",
+          "expected": "#1a8f3c",
+          "label": "Die erste Zeile ist grün"
+        },
+        {
+          "type": "style",
+          "selector": "#erster td",
+          "prop": "font-weight",
+          "expected": [
+            "700",
+            "bold"
+          ],
+          "label": "Die erste Zeile ist fett"
+        },
+        {
+          "type": "style",
+          "selector": "tr:not(#erster) td",
+          "prop": "color",
+          "expected": "#1b1b2f",
+          "label": "Die anderen Zeilen bleiben dunkel"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Auf der Startseite tragen zwei Überschriften eine id: `lineup` und `anfahrt` – die Sprungziele aus der Navigation. Sam will sie blau, damit man sieht: Hier landet man, wenn man springt.\n\nEine Regel, zwei ids, ein Komma. Die übrigen Zwischenüberschriften bleiben dunkelorange – die id-Regel ist stärker als die alte `h2`-Regel."
+    },
+    {
+      "type": "code",
+      "etappe": "11-selektoren/02-id-und-gruppen-selektor"
+    }
+  ]
+}

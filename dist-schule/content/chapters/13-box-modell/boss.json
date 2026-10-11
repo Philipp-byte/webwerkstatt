@@ -1,0 +1,234 @@
+{
+  "chapter": "13-box-modell",
+  "title": "Abnahme: Container",
+  "intro": "Okay, die Kästen! Der Einlass-Hinweis sieht endlich aus wie ein Schild, die Tabellen haben Luft, die Galerie hat Karten – ich hab’s meiner Oma gezeigt, sie war begeistert. Zeig mir, dass du das Box-Ding wirklich drauf hast.",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "css.border",
+      "type": "quiz",
+      "question": "Was bewirkt `border: 3px dotted #1b1b2f;`?",
+      "options": [
+        "Einen 3 Pixel dicken, gepunkteten dunklen Rahmen",
+        "3 Pixel Innenabstand in dunkler Farbe",
+        "Einen gestrichelten Rahmen mit 3 Pixel Außenabstand"
+      ],
+      "correct": 0,
+      "explanation": "Dicke 3px, Linienart dotted (gepunktet), Farbe #1b1b2f."
+    },
+    {
+      "konzept": "css.margin",
+      "type": "pair",
+      "text": "Ordne die Eigenschaften zu.",
+      "pairs": [
+        [
+          "`padding`",
+          "Innenabstand – zwischen Inhalt und Rahmen"
+        ],
+        [
+          "`margin`",
+          "Außenabstand – zu anderen Boxen"
+        ],
+        [
+          "`border`",
+          "Rahmen um die Box"
+        ],
+        [
+          "`max-width`",
+          "Höchstbreite der Box"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Chat-Blasen (Klasse `blase`): 1 Pixel dicker, durchgezogener Rahmen in `#38c7ff`, rundum 12 Pixel Innenabstand, 12 Pixel Außenabstand nach unten und 16 Pixel runde Ecken.",
+      "starter": {
+        "html": "<div class=\"chat\">\n  <div class=\"blase\">Seid ihr schon da?</div>\n  <div class=\"blase\">Ja, Zeltbühne, ganz vorne!</div>\n  <div class=\"blase\">Komme sofort.</div>\n</div>\n",
+        "css": ".blase {\n  background-color: #e6f7ff;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "solution": {
+        "css": ".blase {\n  background-color: #e6f7ff;\n  border: 1px solid #38c7ff;\n  padding: 12px;\n  margin-bottom: 12px;\n  border-radius: 16px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".blase",
+          "prop": "border-top-style",
+          "expected": "solid",
+          "label": "Die Blasen haben einen durchgezogenen Rahmen"
+        },
+        {
+          "type": "style",
+          "selector": ".blase",
+          "prop": "border-top-color",
+          "expected": "#38c7ff",
+          "label": "Der Rahmen ist blau (#38c7ff)"
+        },
+        {
+          "type": "style",
+          "selector": ".blase",
+          "prop": "padding-top",
+          "expected": "12px",
+          "label": "Die Blasen haben 12px Innenabstand"
+        },
+        {
+          "type": "style",
+          "selector": ".blase",
+          "prop": "margin-bottom",
+          "expected": "12px",
+          "label": "Unter jeder Blase sind 12px Luft"
+        },
+        {
+          "type": "style",
+          "selector": ".blase",
+          "prop": "border-top-left-radius",
+          "expected": "16px",
+          "label": "Die Ecken sind 16px rund"
+        }
+      ]
+    },
+    {
+      "konzept": "css.width",
+      "type": "fill",
+      "text": "Der Hauptbereich soll höchstens 800 Pixel breit werden.",
+      "template": "main {\n  ___: 800px;\n}",
+      "accept": [
+        "max-width"
+      ]
+    },
+    {
+      "konzept": "css.text-decoration",
+      "type": "quiz",
+      "question": "Die Links in der Navigation sollen keine Unterstreichung haben. Welche Deklaration passt?",
+      "options": [
+        "`text-decoration: none;`",
+        "`underline: false;`",
+        "`font-style: none;`"
+      ],
+      "correct": 0,
+      "explanation": "text-decoration steuert die Unterstreichung, none schaltet sie ab."
+    },
+    {
+      "konzept": "html.form",
+      "type": "order",
+      "text": "Bringe das Formular in die richtige Reihenfolge: Beschriftung, Feld, Knopf.",
+      "lines": [
+        "<form>",
+        "  <label for=\"name\">Name</label>",
+        "  <input type=\"text\" id=\"name\" name=\"name\">",
+        "  <button type=\"submit\">Reservieren</button>",
+        "</form>"
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Behebe** den Fehler: Die Produktkachel (Klasse `kachel`) soll einen 3 Pixel dicken, durchgezogenen Rahmen in `#ff6a00` haben – im Browser ist aber kein Rahmen zu sehen.",
+      "starter": {
+        "html": "<div class=\"kachel\">\n  <img src=\"ticket.svg\" alt=\"Festivalpass\">\n  <h2>Festivalpass</h2>\n  <p>20 €</p>\n</div>\n",
+        "css": ".kachel {\n  background-color: white;\n  padding: 16px;\n  width: 300px;\n  border: 3px #ff6a00;\n}\n\nimg {\n  width: 100%;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "solution": {
+        "css": ".kachel {\n  background-color: white;\n  padding: 16px;\n  width: 300px;\n  border: 3px solid #ff6a00;\n}\n\nimg {\n  width: 100%;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".kachel",
+          "prop": "border-top-style",
+          "expected": "solid",
+          "label": "Der Rahmen ist zu sehen (durchgezogen)"
+        },
+        {
+          "type": "style",
+          "selector": ".kachel",
+          "prop": "border-top-width",
+          "expected": "3px",
+          "label": "Der Rahmen ist 3px dick"
+        },
+        {
+          "type": "style",
+          "selector": ".kachel",
+          "prop": "border-top-color",
+          "expected": "#ff6a00",
+          "label": "Der Rahmen ist orange (#ff6a00)"
+        },
+        {
+          "type": "style",
+          "selector": ".kachel",
+          "prop": "padding-top",
+          "expected": "16px",
+          "label": "Der Innenabstand bleibt erhalten"
+        }
+      ]
+    },
+    {
+      "konzept": "css.sel-nachfahre",
+      "type": "quiz",
+      "question": "Welcher Selektor trifft nur Links, die im Fußbereich stehen?",
+      "options": [
+        "`footer a`",
+        "`footer, a`",
+        "`a footer`",
+        "`footer.a`"
+      ],
+      "correct": 0,
+      "explanation": "Nachfahren-Selektor: erst der Bereich, dann das Element – mit Leerzeichen. Das Komma wäre eine Gruppe aus footer und allen Links."
+    },
+    {
+      "konzept": "html.a-intern",
+      "type": "pair",
+      "text": "Ordne die Link-Adressen zu.",
+      "pairs": [
+        [
+          "`href=\"#oben\"`",
+          "Sprungmarke auf derselben Seite"
+        ],
+        [
+          "`href=\"mailto:hallo@beispiel.de\"`",
+          "E-Mail-Link"
+        ],
+        [
+          "`target=\"_blank\"`",
+          "öffnet in einem neuen Tab"
+        ],
+        [
+          "`href=\"tickets.html\"`",
+          "eigene Unterseite"
+        ]
+      ]
+    },
+    {
+      "konzept": "css.box-shadow",
+      "type": "bug",
+      "text": "Der Schatten fehlt. Welche Zeile ist falsch?",
+      "lines": [
+        ".karte {",
+        "  border-radius: 8px;",
+        "  box-shadwo: 0 4px 12px rgba(0, 0, 0, 0.2);",
+        "  padding: 16px;",
+        "}"
+      ],
+      "line": 2,
+      "explanation": "Tippfehler: Die Eigenschaft heißt box-shadow."
+    },
+    {
+      "konzept": "css.border-radius",
+      "type": "quiz",
+      "question": "Ein Button soll komplett runde Enden bekommen (Pillenform). Welche Eigenschaft?",
+      "options": [
+        "`border-radius`",
+        "`border`",
+        "`box-shadow`"
+      ],
+      "correct": 0,
+      "explanation": "border-radius rundet die Ecken – ein großer Wert wie 999px ergibt die Pillenform."
+    }
+  ]
+}

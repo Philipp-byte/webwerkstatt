@@ -1,0 +1,102 @@
+{
+  "id": "02-url-und-http",
+  "title": "URL und HTTP",
+  "konzepte": [
+    "web.url"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Die Adresse einer Seite heißt **URL** (Uniform Resource Locator). Sie besteht aus drei Teilen:\n\n- **Protokoll** – die „Sprache“ der Übertragung: `https://`\n- **Domain** – der Name des Servers: `funken-festival.de`\n- **Pfad** – welche Datei auf dem Server: `/tickets.html`\n\nOhne Pfad liefert der Server die Startseite.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><rect x=\"12\" y=\"58\" width=\"296\" height=\"40\" rx=\"8\" fill=\"#1b2135\"/><text x=\"24\" y=\"84\" fill=\"#b48cff\" font-family=\"monospace\" font-size=\"15\">https://</text><text x=\"92\" y=\"84\" fill=\"#ff7a45\" font-family=\"monospace\" font-size=\"15\">funken-festival.de</text><text x=\"251\" y=\"84\" fill=\"#38c7ff\" font-family=\"monospace\" font-size=\"15\">/tickets.html</text><path d=\"M24 100 V112 H84 V100\" stroke=\"#b48cff\" fill=\"none\"/><text x=\"54\" y=\"128\" text-anchor=\"middle\" fill=\"#b48cff\">Protokoll</text><path d=\"M96 100 V112 H244 V100\" stroke=\"#ff7a45\" fill=\"none\"/><text x=\"170\" y=\"128\" text-anchor=\"middle\" fill=\"#ff7a45\">Domain</text><path d=\"M252 100 V112 H306 V100\" stroke=\"#38c7ff\" fill=\"none\"/><text x=\"279\" y=\"128\" text-anchor=\"middle\" fill=\"#38c7ff\">Pfad</text><text x=\"160\" y=\"36\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Eine URL hat drei Teile</text></svg>"
+    },
+    {
+      "type": "quiz",
+      "question": "In der URL `https://sneaker-lager.de/neu/angebote.html` – welcher Teil ist die **Domain**?",
+      "options": [
+        "`sneaker-lager.de`",
+        "`https://`",
+        "`/neu/angebote.html`"
+      ],
+      "correct": 0,
+      "explanation": "Die Domain ist der Name des Servers. `https://` ist das Protokoll, `/neu/angebote.html` der Pfad zur Datei."
+    },
+    {
+      "type": "explain",
+      "text": "**HTTP** ist das Protokoll, mit dem Browser und Server sich unterhalten – die Regeln für Anfrage und Antwort.\n\n**HTTPS** ist dasselbe **mit Verschlüsselung**: Niemand im WLAN kann mitlesen, was du eingibst. Du erkennst es am **Schloss** in der Adresszeile. Für Ticketformulare mit Namen und E-Mail ist HTTPS Pflicht."
+    },
+    {
+      "type": "fill",
+      "text": "Wie heißt die verschlüsselte Variante des Protokolls?",
+      "template": "___://funken-festival.de",
+      "accept": [
+        "https"
+      ],
+      "hint": "Das S am Ende steht für „secure“ – sicher."
+    },
+    {
+      "type": "explain",
+      "sprecher": "jonas",
+      "text": "Computer finden sich nicht über Namen, sondern über **IP-Adressen** – Zahlenfolgen wie `93.184.216.34`. Merken kann sich das niemand.\n\nDeshalb gibt es **DNS**, das Telefonbuch des Internets: Der Browser fragt „Welche IP-Adresse hat funken-festival.de?“ – erst dann schickt er die Anfrage an den richtigen Server."
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Teile der Adresse ihren Namen zu.",
+      "pairs": [
+        [
+          "`https://`",
+          "Protokoll (verschlüsselt)"
+        ],
+        [
+          "`funken-festival.de`",
+          "Domain – Name des Servers"
+        ],
+        [
+          "`/programm.html`",
+          "Pfad – Datei auf dem Server"
+        ],
+        [
+          "`93.184.216.34`",
+          "IP-Adresse – Nummer des Servers"
+        ]
+      ]
+    },
+    {
+      "type": "order",
+      "text": "Was passiert nach dem Eintippen von `funken-festival.de`? Sortiere.",
+      "lines": [
+        "Der Browser fragt das DNS nach der IP-Adresse der Domain",
+        "Das DNS antwortet mit der IP-Adresse",
+        "Der Browser schickt die Anfrage an diese IP-Adresse",
+        "Der Server schickt die Seite zurück"
+      ],
+      "explanation": "Erst den Namen auflösen, dann anfragen."
+    },
+    {
+      "type": "quiz",
+      "question": "Welche URL zeigt auf die Datei `tickets.html` im Ordner `info` auf dem Server `funken-festival.de`?",
+      "options": [
+        "`https://funken-festival.de/info/tickets.html`",
+        "`https://info/funken-festival.de/tickets.html`",
+        "`https://tickets.html/funken-festival.de/info`"
+      ],
+      "correct": 0,
+      "explanation": "Nach der Domain kommt der Pfad: erst der Ordner `info`, dann die Datei `tickets.html`."
+    },
+    {
+      "type": "explain",
+      "text": "Jede Antwort des Servers hat einen **Statuscode**:\n\n- **200** – alles gut, hier ist die Seite\n- **404** – Datei nicht gefunden\n- **500** – der Server hat einen Fehler\n\nDie Codes siehst du normalerweise nicht – außer wenn etwas schiefgeht. Sam kennt 404 jetzt leider sehr gut."
+    },
+    {
+      "type": "quiz",
+      "question": "Welchen Statuscode schickt der Server, wenn alles geklappt hat?",
+      "options": [
+        "200",
+        "404",
+        "500"
+      ],
+      "correct": 0,
+      "explanation": "200 heißt „OK“. 404 bedeutet „nicht gefunden“, 500 „Fehler auf dem Server“."
+    }
+  ]
+}

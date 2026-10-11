@@ -1,0 +1,243 @@
+{
+  "chapter": "01-wie-das-web-funktioniert",
+  "fragen": [
+    {
+      "id": "01-01",
+      "konzept": "web.client-server",
+      "type": "quiz",
+      "question": "Wo liegt eine Website, die du auf dem Handy öffnest?",
+      "options": [
+        "Auf einem Server, der sie bei jedem Aufruf schickt",
+        "Auf deinem Handy, seit du sie einmal geöffnet hast",
+        "Im WLAN-Router"
+      ],
+      "correct": 0,
+      "explanation": "Die Seite liegt auf dem Server und wird bei jedem Aufruf neu übertragen."
+    },
+    {
+      "id": "01-02",
+      "konzept": "web.client-server",
+      "type": "fill",
+      "text": "Vervollständige.",
+      "template": "Der Browser ist der ___, der die Seite anfragt.",
+      "accept": [
+        "Client"
+      ],
+      "hint": "Das Gegenstück zum Server."
+    },
+    {
+      "id": "01-03",
+      "konzept": "web.client-server",
+      "type": "pair",
+      "text": "Ordne zu.",
+      "pairs": [
+        [
+          "Client",
+          "fragt an"
+        ],
+        [
+          "Server",
+          "antwortet"
+        ],
+        [
+          "Browser",
+          "zeichnet die Seite"
+        ]
+      ]
+    },
+    {
+      "id": "01-04",
+      "konzept": "web.http",
+      "type": "order",
+      "text": "Sortiere den Seitenaufruf.",
+      "lines": [
+        "Adresse eintippen",
+        "Anfrage an den Server",
+        "Antwort vom Server",
+        "Browser zeigt die Seite"
+      ]
+    },
+    {
+      "id": "01-05",
+      "konzept": "web.http",
+      "type": "quiz",
+      "question": "Was bedeutet der Statuscode 404?",
+      "options": [
+        "Der Server hat die Datei nicht gefunden",
+        "Alles in Ordnung",
+        "Der Server ist abgeschaltet"
+      ],
+      "correct": 0,
+      "explanation": "404 ist eine Antwort des Servers: Datei nicht gefunden."
+    },
+    {
+      "id": "01-06",
+      "konzept": "web.http",
+      "type": "quiz",
+      "question": "Welcher Statuscode bedeutet „alles OK“?",
+      "options": [
+        "200",
+        "404",
+        "500"
+      ],
+      "correct": 0,
+      "explanation": "200 = OK."
+    },
+    {
+      "id": "01-07",
+      "konzept": "web.url",
+      "type": "quiz",
+      "question": "Welcher Teil von `https://pizza-express.de/menu.html` ist der Pfad?",
+      "options": [
+        "`/menu.html`",
+        "`pizza-express.de`",
+        "`https://`"
+      ],
+      "correct": 0,
+      "explanation": "Der Pfad kommt nach der Domain und zeigt auf die Datei."
+    },
+    {
+      "id": "01-08",
+      "konzept": "web.url",
+      "type": "pair",
+      "text": "Ordne die URL-Teile zu.",
+      "pairs": [
+        [
+          "`https://`",
+          "Protokoll"
+        ],
+        [
+          "`fitness-block.de`",
+          "Domain"
+        ],
+        [
+          "`/kurse.html`",
+          "Pfad"
+        ]
+      ]
+    },
+    {
+      "id": "01-09",
+      "konzept": "web.url",
+      "type": "bug",
+      "text": "Eine dieser URL-Zeilen ist fehlerhaft. Welche?",
+      "lines": [
+        "https://funken-festival.de/programm.html",
+        "https://funken-festival.de/tickets.html",
+        "https:/funken-festival.de/galerie.html",
+        "https://funken-festival.de/impressum.html"
+      ],
+      "line": 2,
+      "explanation": "Nach `https:` gehören zwei Schrägstriche."
+    },
+    {
+      "id": "01-10",
+      "konzept": "web.url",
+      "type": "fill",
+      "text": "Wie heißt das Telefonbuch des Internets, das Domains in IP-Adressen übersetzt?",
+      "template": "Das ___ übersetzt funken-festival.de in eine IP-Adresse.",
+      "accept": [
+        "DNS"
+      ],
+      "hint": "Drei Buchstaben, Domain Name System."
+    },
+    {
+      "id": "01-11",
+      "konzept": "web.sprachen",
+      "type": "pair",
+      "text": "Welche Sprache macht was?",
+      "pairs": [
+        [
+          "HTML",
+          "Gerüst und Inhalt"
+        ],
+        [
+          "CSS",
+          "Aussehen"
+        ],
+        [
+          "JavaScript",
+          "Verhalten bei Klicks"
+        ]
+      ]
+    },
+    {
+      "id": "01-12",
+      "konzept": "web.sprachen",
+      "type": "quiz",
+      "question": "Ein Knopf soll beim Klick eine Zahl hochzählen. Welche Sprache?",
+      "options": [
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "correct": 0,
+      "explanation": "Alles, was auf Klicks reagiert, ist JavaScript."
+    },
+    {
+      "id": "01-13",
+      "konzept": "web.browser",
+      "type": "quiz",
+      "question": "Womit schreibst du HTML-Dateien?",
+      "options": [
+        "Mit einem Editor für reinen Text",
+        "Mit einem Schreibprogramm für Briefe",
+        "Mit einer Tabellenkalkulation"
+      ],
+      "correct": 0,
+      "explanation": "HTML ist reiner Text – ein Editor speichert nichts Verstecktes."
+    },
+    {
+      "id": "01-14",
+      "konzept": "web.browser",
+      "type": "bug",
+      "text": "Welche Dateiendung ist falsch?",
+      "lines": [
+        "index.html",
+        "style.css",
+        "script.js",
+        "galerie.htm l"
+      ],
+      "line": 3,
+      "explanation": "Dateiendungen haben keine Leerzeichen: `galerie.html`."
+    },
+    {
+      "id": "01-15",
+      "konzept": "web.standards",
+      "type": "quiz",
+      "question": "Wozu gibt es Web-Standards?",
+      "options": [
+        "Damit jede Seite in jedem Browser gleich funktioniert",
+        "Damit Websites schneller laden",
+        "Damit nur Profis Websites bauen dürfen"
+      ],
+      "correct": 0,
+      "explanation": "Standards legen fest, was HTML, CSS und JavaScript bedeuten – für alle Browser gleich."
+    },
+    {
+      "id": "01-16",
+      "konzept": "web.standards",
+      "type": "fill",
+      "text": "Abkürzung der Standard-Organisation?",
+      "template": "Web-Standards legt das ___ fest.",
+      "accept": [
+        "W3C"
+      ],
+      "hint": "World Wide Web Consortium."
+    },
+    {
+      "id": "01-17",
+      "konzept": "web.http",
+      "type": "bug",
+      "text": "Eine Aussage ist falsch. Welche?",
+      "lines": [
+        "Der Browser schickt eine Anfrage.",
+        "Der Server schickt eine Antwort.",
+        "Die Antwort enthält die Datei.",
+        "Der Server zeichnet die Seite auf deinem Bildschirm."
+      ],
+      "line": 3,
+      "explanation": "Zeichnen ist Sache des Browsers – der Server schickt nur Dateien."
+    }
+  ]
+}

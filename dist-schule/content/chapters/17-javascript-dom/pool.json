@@ -1,0 +1,255 @@
+{
+  "chapter": "17-javascript-dom",
+  "fragen": [
+    {
+      "id": "17-01",
+      "konzept": "js.getElementById",
+      "type": "quiz",
+      "question": "Wie findest du das Element `<p id=\"preis\">` per JavaScript?",
+      "options": [
+        "`document.getElementById(\"preis\")`",
+        "`document.getElementById(\"#preis\")`",
+        "`document.getElement(\"preis\")`"
+      ],
+      "correct": 0,
+      "explanation": "Die id kommt als Text in Anführungszeichen in die Klammern – ohne Raute."
+    },
+    {
+      "id": "17-02",
+      "konzept": "js.getElementById",
+      "type": "fill",
+      "text": "Vervollständige: Der Knopf mit der id `start` wird in einer Konstante gespeichert.",
+      "template": "const knopf = document.___(\"start\");",
+      "accept": [
+        "getElementById"
+      ],
+      "exact": true,
+      "hint": "get…Element…By…Id – auf die Groß- und Kleinschreibung achten."
+    },
+    {
+      "id": "17-03",
+      "konzept": "js.getElementById",
+      "type": "bug",
+      "text": "Die Konsole meldet, ein Befehl sei „not a function“. Welche Zeile ist falsch?",
+      "lines": [
+        "const anzeige = document.getElementById(\"anzeige\");",
+        "const knopf = document.getElementByID(\"knopf\");",
+        "anzeige.textContent = \"Hallo\";"
+      ],
+      "line": 1,
+      "explanation": "Der Befehl heißt `getElementById` – mit kleinem d am Ende. JavaScript unterscheidet Groß- und Kleinschreibung."
+    },
+    {
+      "id": "17-04",
+      "konzept": "js.textContent",
+      "type": "quiz",
+      "question": "Welche Zeile ändert den sichtbaren Text des Elements `titel` auf „Neu“?",
+      "options": [
+        "`titel.textContent = \"Neu\";`",
+        "`titel.text = \"Neu\";`",
+        "`titel = \"Neu\";`"
+      ],
+      "correct": 0,
+      "explanation": "Der sichtbare Text eines Elements ist seine Eigenschaft `textContent`. `titel = \"Neu\"` würde nur die Konstante überschreiben – und geht bei const gar nicht."
+    },
+    {
+      "id": "17-05",
+      "konzept": "js.textContent",
+      "type": "fill",
+      "text": "Vervollständige: Die Anzeige soll „Fertig“ zeigen.",
+      "template": "anzeige.___ = \"Fertig\";",
+      "accept": [
+        "textContent"
+      ],
+      "exact": true,
+      "hint": "text… – die Eigenschaft für den sichtbaren Text, mit großem C."
+    },
+    {
+      "id": "17-06",
+      "konzept": "js.textContent",
+      "type": "pair",
+      "text": "Ordne die Bausteine zu.",
+      "pairs": [
+        [
+          "`document`",
+          "die ganze Seite – der Einstieg in den DOM-Baum"
+        ],
+        [
+          "`getElementById(\"x\")`",
+          "findet das Element mit der id x"
+        ],
+        [
+          "`textContent`",
+          "der sichtbare Text eines Elements"
+        ]
+      ]
+    },
+    {
+      "id": "17-07",
+      "konzept": "js.addEventListener",
+      "type": "quiz",
+      "question": "Was bewirkt `knopf.addEventListener(\"click\", function () { … })`?",
+      "options": [
+        "Der Code in den geschweiften Klammern läuft bei jedem Klick",
+        "Der Knopf wird einmal automatisch angeklickt",
+        "Der Code läuft sofort beim Laden der Seite"
+      ],
+      "correct": 0,
+      "explanation": "addEventListener meldet einen Zuhörer an. Die Funktion läuft erst, wenn das Ereignis eintritt – hier bei jedem Klick."
+    },
+    {
+      "id": "17-08",
+      "konzept": "js.addEventListener",
+      "type": "fill",
+      "text": "Vervollständige: Der Zuhörer soll auf einen Klick reagieren.",
+      "template": "knopf.addEventListener(\"___\", function () {",
+      "accept": [
+        "click"
+      ],
+      "exact": true,
+      "hint": "Der englische Name des Ereignisses, klein geschrieben."
+    },
+    {
+      "id": "17-09",
+      "konzept": "js.addEventListener",
+      "type": "order",
+      "text": "Sortiere: Beim Klick auf den Knopf soll die Anzeige „Los!“ zeigen.",
+      "lines": [
+        "const knopf = document.getElementById(\"start\");",
+        "knopf.addEventListener(\"click\", function () {",
+        "  document.getElementById(\"anzeige\").textContent = \"Los!\";",
+        "});"
+      ]
+    },
+    {
+      "id": "17-10",
+      "konzept": "js.addEventListener",
+      "type": "bug",
+      "text": "Der Knopf reagiert nicht auf Klicks. Welche Zeile ist falsch?",
+      "lines": [
+        "const knopf = document.getElementById(\"knopf\");",
+        "knopf.addEventListener(\"klick\", function () {",
+        "  anzeige.textContent = \"Danke!\";",
+        "});"
+      ],
+      "line": 1,
+      "explanation": "Das Ereignis heißt englisch `\"click\"` – „klick“ kennt der Browser nicht, und der Zuhörer wartet vergeblich."
+    },
+    {
+      "id": "17-11",
+      "konzept": "js.zaehler",
+      "type": "quiz",
+      "question": "Ein Zähler soll bei jedem Klick um 1 steigen. Welche Zeile erhöht die Variable `likes` richtig?",
+      "options": [
+        "`likes = likes + 1;`",
+        "`likes + 1;`",
+        "`const likes = likes + 1;`"
+      ],
+      "correct": 0,
+      "explanation": "Alter Wert plus eins – und das Ergebnis wieder in `likes` speichern. `likes + 1;` rechnet nur, speichert aber nichts."
+    },
+    {
+      "id": "17-12",
+      "konzept": "js.zaehler",
+      "type": "fill",
+      "text": "Der Zähler soll sich bei jedem Klick ändern dürfen. Welches Schlüsselwort legt ihn an?",
+      "template": "___ punkte = 0;",
+      "accept": [
+        "let"
+      ],
+      "hint": "Nicht const – der Wert ändert sich ja."
+    },
+    {
+      "id": "17-13",
+      "konzept": "js.zaehler",
+      "type": "bug",
+      "text": "Der Zähler bleibt bei 0 stehen. Welche Zeile ist falsch?",
+      "lines": [
+        "let treffer = 0;",
+        "knopf.addEventListener(\"click\", function () {",
+        "  treffer + 1;",
+        "  anzeige.textContent = treffer;",
+        "});"
+      ],
+      "line": 2,
+      "explanation": "Die Rechnung wird nicht gespeichert. Richtig: `treffer = treffer + 1;`"
+    },
+    {
+      "id": "17-14",
+      "konzept": "js.zaehler",
+      "type": "order",
+      "text": "Sortiere den Zähler: `let zaehler = 0;` und die Konstante `anzeige` stehen schon weiter oben.",
+      "lines": [
+        "const knopf = document.getElementById(\"plus\");",
+        "knopf.addEventListener(\"click\", function () {",
+        "  zaehler = zaehler + 1;",
+        "  anzeige.textContent = zaehler;",
+        "});"
+      ]
+    },
+    {
+      "id": "17-15",
+      "konzept": "js.classList",
+      "type": "quiz",
+      "question": "Welche Zeile schaltet die Klasse `nacht` am body ein oder aus?",
+      "options": [
+        "`document.body.classList.toggle(\"nacht\");`",
+        "`document.body.classList.toggle(\".nacht\");`",
+        "`document.body.class = \"nacht\";`"
+      ],
+      "correct": 0,
+      "explanation": "`classList.toggle` schaltet eine Klasse um. Im Skript steht der Name ohne Punkt – der Punkt gehört zum CSS-Selektor."
+    },
+    {
+      "id": "17-16",
+      "konzept": "js.classList",
+      "type": "pair",
+      "text": "Ordne die classList-Befehle zu.",
+      "pairs": [
+        [
+          "`classList.toggle(\"x\")`",
+          "schaltet die Klasse x ein oder aus"
+        ],
+        [
+          "`classList.add(\"x\")`",
+          "fügt die Klasse x hinzu"
+        ],
+        [
+          "`classList.remove(\"x\")`",
+          "entfernt die Klasse x"
+        ],
+        [
+          "`document.body`",
+          "das body-Element der Seite"
+        ]
+      ]
+    },
+    {
+      "id": "17-17",
+      "konzept": "js.classList",
+      "type": "bug",
+      "text": "Die Seite wird beim Klick nicht dunkel, obwohl im CSS `.dunkel { … }` steht. Welche Zeile ist falsch?",
+      "lines": [
+        "const knopf = document.getElementById(\"modus\");",
+        "knopf.addEventListener(\"click\", function () {",
+        "  document.body.classList.toggle(\".dunkel\");",
+        "});"
+      ],
+      "line": 2,
+      "explanation": "Im Skript steht der Klassenname ohne Punkt: `toggle(\"dunkel\")`. Mit Punkt sucht der Browser eine Klasse, die „.dunkel“ heißt."
+    },
+    {
+      "id": "17-18",
+      "konzept": "js.getElementById",
+      "type": "quiz",
+      "question": "Warum steht das script-Element am Ende des body?",
+      "options": [
+        "Damit die Elemente schon existieren, wenn das Skript sie sucht",
+        "Weil JavaScript im head verboten ist",
+        "Damit die Seite langsamer lädt"
+      ],
+      "correct": 0,
+      "explanation": "Der Browser baut die Seite von oben nach unten. Steht das Skript am Ende, findet getElementById alle Elemente – davor wären sie noch nicht da."
+    }
+  ]
+}

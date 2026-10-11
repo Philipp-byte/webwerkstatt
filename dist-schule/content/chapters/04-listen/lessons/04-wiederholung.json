@@ -1,0 +1,199 @@
+{
+  "id": "04-wiederholung",
+  "title": "Wiederholung",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Kurzer Check, bevor Sam die Programm-Tafel abnimmt: Listen aus diesem Kapitel, dazu Text-Elemente vom Textbanner und die Grundlagen vom Fundament – Tags, Attribute, Grundgerüst.\n\nAm Ende bekommt die Startseite ihre Foodtruck-Liste."
+    },
+    {
+      "type": "quiz",
+      "question": "In `<ol start=\"4\">` – was ist `start=\"4\"`?",
+      "options": [
+        "Ein Attribut mit dem Wert 4",
+        "Ein eigenes Element",
+        "Der Inhalt der Liste",
+        "Ein Kommentar"
+      ],
+      "correct": 0,
+      "explanation": "Attribute stehen im öffnenden Tag: Name, Gleichheitszeichen, Wert in Anführungszeichen. Sie geben dem Element Zusatzinformationen."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** unter dem Absatz eine Liste mit Punkten: „Retro Runner“, „Street Low“, „Court & Field“ – beim ersten Eintrag steht davor das stark betonte Wort „Favorit:“ und dann der Name.",
+      "starter": {
+        "html": "<h2>Sneaker-Wunschliste</h2>\n<p>Drei Paare, die ich mir für den Sommer wünsche:</p>\n"
+      },
+      "hints": [
+        "Punkteliste mit drei Einträgen; die Betonung liegt nur um das eine Wort im ersten Punkt.",
+        "Starke Betonung kennst du aus dem Textbanner – das Element darf im Listenpunkt stehen. Das &-Zeichen braucht seine Entity-Schreibweise.",
+        "Struktur des ersten Punkts: `<li>` + betontes Wort + Leerzeichen + Name + `</li>`. Beim dritten Namen das & als `&amp;`."
+      ],
+      "solution": {
+        "html": "<h2>Sneaker-Wunschliste</h2>\n<p>Drei Paare, die ich mir für den Sommer wünsche:</p>\n<ul>\n  <li><strong>Favorit:</strong> Retro Runner</li>\n  <li>Street Low</li>\n  <li>Court &amp; Field</li>\n</ul>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "ul > li",
+          "count": 3,
+          "label": "Die Liste hat drei Paare"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:first-child strong",
+          "expected": "Favorit:",
+          "label": "„Favorit:“ ist stark betont"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:first-child",
+          "expected": "Favorit: Retro Runner",
+          "label": "Der erste Eintrag lautet „Favorit: Retro Runner“"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:last-child",
+          "expected": "Court & Field",
+          "label": "Der letzte Eintrag ist „Court & Field“"
+        },
+        {
+          "type": "source",
+          "file": "html",
+          "matches": "&amp;",
+          "label": "Das &-Zeichen ist als Entity geschrieben"
+        }
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "**Vervollständige** die Adresszeile des Foodtrucks: ein korrekt geschriebenes &-Zeichen und ein Zeilenumbruch ohne neuen Absatz.",
+      "template": "<p>Pizza ___ Pasta<___>Hafenstraße 9</p>",
+      "accept": [
+        [
+          "&amp;"
+        ],
+        [
+          "br"
+        ]
+      ],
+      "hint": "Das &-Zeichen beginnt mit & und endet mit Semikolon; der Umbruch ist ein Leerelement mit zwei Buchstaben."
+    },
+    {
+      "type": "pair",
+      "text": "**Ordne** Element und Bedeutung zu.",
+      "pairs": [
+        [
+          "`<ol>`",
+          "nummerierte Liste"
+        ],
+        [
+          "`<ul>`",
+          "Liste mit Punkten"
+        ],
+        [
+          "`<li>`",
+          "ein Listenpunkt"
+        ],
+        [
+          "`<hr>`",
+          "Trennlinie"
+        ],
+        [
+          "`<em>`",
+          "leichte Betonung"
+        ],
+        [
+          "`<!-- … -->`",
+          "Kommentar – nur im Quelltext sichtbar"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Korrigiere** den Trainingsplan: Ab „Beintag“ ist plötzlich alles kursiv – sogar die Liste – und „Ausfallschritte“ bekommt keine Nummer. Zwei Fehler in zwei Zeilen.",
+      "starter": {
+        "html": "<h2>Trainingsplan Freitag</h2>\n<p>Heute ist <em>Beintag – kein Mogeln!</p>\n<ol>\n  <li>Aufwärmen</li>\n  <li>Kniebeugen</li>\n  <p>Ausfallschritte</p>\n  <li>Dehnen</li>\n</ol>\n"
+      },
+      "hints": [
+        "Ein Element aus dem Textbanner wird nie geschlossen; in der Liste steckt ein Element, das dort nicht hingehört.",
+        "Eine leichte Betonung braucht ein schließendes Tag – sonst läuft sie bis zum Ende der Seite weiter. Nummerierte Schritte sind Listenpunkte, keine Absätze.",
+        "Zeile 2: Betonung nach „Mogeln!“ schließen. Zeile 6: das Element von „Ausfallschritte“ an die Nachbarzeilen angleichen."
+      ],
+      "solution": {
+        "html": "<h2>Trainingsplan Freitag</h2>\n<p>Heute ist <em>Beintag – kein Mogeln!</em></p>\n<ol>\n  <li>Aufwärmen</li>\n  <li>Kniebeugen</li>\n  <li>Ausfallschritte</li>\n  <li>Dehnen</li>\n</ol>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "em",
+          "count": 1,
+          "label": "Genau ein Text ist leicht betont"
+        },
+        {
+          "type": "text",
+          "selector": "em",
+          "expected": "Beintag – kein Mogeln!",
+          "label": "Kursiv ist nur „Beintag – kein Mogeln!“"
+        },
+        {
+          "type": "selector",
+          "selector": "ol > li",
+          "count": 4,
+          "label": "Der Plan hat vier nummerierte Schritte"
+        },
+        {
+          "type": "selector",
+          "selector": "ol p",
+          "count": 0,
+          "label": "Kein Absatz in der Liste"
+        },
+        {
+          "type": "text",
+          "selector": "ol > li:nth-child(3)",
+          "expected": "Ausfallschritte",
+          "label": "Schritt 3 ist „Ausfallschritte“"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "text": "**Bringe** das Grundgerüst der Playlist-Seite in die richtige Reihenfolge (der Dokumenttyp steht schon darüber).",
+      "lines": [
+        "<html lang=\"de\">",
+        "<head>",
+        "  <title>Meine Playlist</title>",
+        "</head>",
+        "<body>",
+        "  <h1>Meine Playlist</h1>",
+        "</body>",
+        "</html>"
+      ],
+      "explanation": "html umschließt alles; im head steht der Titel für den Browser-Tab, im body alles Sichtbare."
+    },
+    {
+      "type": "bug",
+      "text": "Die Snack-Liste zeigt „Nachos“ ohne Aufzählungspunkt. **Finde** die fehlerhafte Zeile.",
+      "lines": [
+        "<ul>",
+        "  <li>Chips</li>",
+        "  <p>Nachos</p>",
+        "  <li>Dip</li>",
+        "</ul>"
+      ],
+      "line": 2,
+      "explanation": "In einer Liste sind alle Einträge `<li>` – ein `<p>` bekommt keinen Punkt."
+    },
+    {
+      "type": "explain",
+      "text": "Auf der Startseite fehlt unter dem Foodtrucks-Absatz noch die Liste der vier Trucks. Der erste Truck ist neu dabei – das Wort „Neu:“ soll stark betont davorstehen.\n\nUnd im Namen „Pizza & Mehr“ steckt ein Zeichen, das in HTML eine besondere Schreibweise braucht – du kennst sie aus dem Textbanner."
+    },
+    {
+      "type": "code",
+      "etappe": "04-listen/04-wiederholung"
+    }
+  ]
+}

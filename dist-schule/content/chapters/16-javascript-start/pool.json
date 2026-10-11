@@ -1,0 +1,280 @@
+{
+  "chapter": "16-javascript-start",
+  "fragen": [
+    {
+      "id": "16-01",
+      "konzept": "js.script",
+      "type": "quiz",
+      "question": "Wo steht das script-Element, das script.js einbindet, am besten?",
+      "options": [
+        "Am Ende des body, direkt vor dem schließenden body-Tag",
+        "Ganz oben im head vor dem Titel",
+        "Außerhalb von html, ganz unten in der Datei"
+      ],
+      "correct": 0,
+      "explanation": "Am Ende des body ist die Seite schon komplett geladen, wenn das Skript läuft."
+    },
+    {
+      "id": "16-02",
+      "konzept": "js.script",
+      "type": "fill",
+      "text": "Vervollständige das Einbinden der Datei script.js.",
+      "template": "<script ___=\"script.js\"></script>",
+      "accept": [
+        "src"
+      ],
+      "hint": "Dasselbe Attribut wie beim Bild: Es nennt die Quelle."
+    },
+    {
+      "id": "16-03",
+      "konzept": "js.script",
+      "type": "bug",
+      "text": "Eine Zeile bindet das Skript falsch ein. Welche?",
+      "lines": [
+        "<p>Bis bald!</p>",
+        "<script href=\"script.js\"></script>",
+        "</body>",
+        "</html>"
+      ],
+      "line": 1,
+      "explanation": "Das script-Element nutzt `src`, nicht `href` – href ist für Links und Stylesheets."
+    },
+    {
+      "id": "16-04",
+      "konzept": "js.script",
+      "type": "order",
+      "text": "Sortiere: Überschrift, Absatz – und das Skript ganz ans Ende des body.",
+      "lines": [
+        "<body>",
+        "  <h1>Sneaker-Drop</h1>",
+        "  <p>Freitag, 10 Uhr</p>",
+        "  <script src=\"script.js\"></script>",
+        "</body>"
+      ]
+    },
+    {
+      "id": "16-05",
+      "konzept": "js.console",
+      "type": "quiz",
+      "question": "Wer sieht die Ausgaben von console.log?",
+      "options": [
+        "Nur wer die Konsole der Entwicklerwerkzeuge öffnet",
+        "Alle Besucher der Seite, direkt im Text",
+        "Niemand – die Ausgabe wird sofort gelöscht"
+      ],
+      "correct": 0,
+      "explanation": "Die Konsole ist ein Werkzeug für Entwickler. Besucher sehen sie nur, wenn sie die Entwicklerwerkzeuge öffnen."
+    },
+    {
+      "id": "16-06",
+      "konzept": "js.console",
+      "type": "fill",
+      "text": "Vervollständige die Konsolenausgabe.",
+      "template": "console.___(\"Halbzeit\");",
+      "accept": [
+        "log"
+      ],
+      "hint": "Der Befehl zum Schreiben in die Konsole, drei Buchstaben."
+    },
+    {
+      "id": "16-07",
+      "konzept": "js.console",
+      "type": "bug",
+      "text": "Eine Zeile führt zu einer roten Fehlermeldung. Welche?",
+      "lines": [
+        "// Spielstart",
+        "console.log(\"Anpfiff\");",
+        "console.log(Tor für Heilbronn);",
+        "console.log(\"Halbzeit\");"
+      ],
+      "line": 2,
+      "explanation": "Text braucht Anführungszeichen – ohne sie hält der Browser die Wörter für Befehle."
+    },
+    {
+      "id": "16-08",
+      "konzept": "js.variable",
+      "type": "quiz",
+      "question": "Der Preis eines Tickets bleibt den ganzen Abend gleich. Womit legst du die Variable an?",
+      "options": [
+        "`const`",
+        "`let`",
+        "Mit Anführungszeichen"
+      ],
+      "correct": 0,
+      "explanation": "Werte, die bleiben, bekommen `const`. `let` ist für Werte, die sich ändern."
+    },
+    {
+      "id": "16-09",
+      "konzept": "js.variable",
+      "type": "pair",
+      "text": "Ordne zu.",
+      "pairs": [
+        [
+          "`const`",
+          "Wert bleibt"
+        ],
+        [
+          "`let`",
+          "Wert darf sich ändern"
+        ],
+        [
+          "`=`",
+          "legt den Wert in die Variable"
+        ],
+        [
+          "`//`",
+          "beginnt einen Kommentar"
+        ]
+      ]
+    },
+    {
+      "id": "16-10",
+      "konzept": "js.variable",
+      "type": "bug",
+      "text": "Die Konsole meldet „pukte is not defined“. Welche Zeile ist falsch?",
+      "lines": [
+        "let punkte = 0;",
+        "const bonus = 10;",
+        "console.log(pukte);",
+        "console.log(bonus);"
+      ],
+      "line": 2,
+      "explanation": "Tippfehler: Die Variable heißt `punkte` – der Name muss überall gleich geschrieben sein."
+    },
+    {
+      "id": "16-11",
+      "konzept": "js.datentyp",
+      "type": "quiz",
+      "question": "Welcher Wert ist eine **Zahl**, mit der JavaScript rechnen kann?",
+      "options": [
+        "`17`",
+        "`\"17\"`",
+        "`\"siebzehn\"`"
+      ],
+      "correct": 0,
+      "explanation": "Ohne Anführungszeichen ist es eine Zahl. `\"17\"` ist Text, auch wenn Ziffern drinstehen."
+    },
+    {
+      "id": "16-12",
+      "konzept": "js.datentyp",
+      "type": "pair",
+      "text": "Text oder Zahl? Ordne zu.",
+      "pairs": [
+        [
+          "`\"12\"`",
+          "Text – obwohl Ziffern drinstehen"
+        ],
+        [
+          "`12`",
+          "ganze Zahl"
+        ],
+        [
+          "`12.5`",
+          "Kommazahl (Punkt statt Komma)"
+        ],
+        [
+          "`\"Neonpuls\"`",
+          "Text aus Buchstaben"
+        ]
+      ]
+    },
+    {
+      "id": "16-13",
+      "konzept": "js.datentyp",
+      "type": "bug",
+      "text": "Das Skript soll 20 ausgeben, zeigt aber 173. Welche Zeile ist schuld?",
+      "lines": [
+        "const alter = \"17\";",
+        "const inJahren = 3;",
+        "console.log(alter + inJahren);"
+      ],
+      "line": 0,
+      "explanation": "„17“ in Anführungszeichen ist Text – das Plus klebt statt zu rechnen. Ohne Anführungszeichen wird gerechnet."
+    },
+    {
+      "id": "16-14",
+      "konzept": "js.operator",
+      "type": "quiz",
+      "question": "Was zeigt `console.log(2 + 3 * 4);`?",
+      "options": [
+        "14",
+        "20",
+        "24"
+      ],
+      "correct": 0,
+      "explanation": "Punkt vor Strich: erst `3 * 4` = 12, dann 2 + 12 = 14."
+    },
+    {
+      "id": "16-15",
+      "konzept": "js.operator",
+      "type": "fill",
+      "text": "Der Gesamtpreis ist Preis mal Anzahl. Vervollständige.",
+      "template": "const gesamt = preis ___ anzahl;",
+      "accept": [
+        "*"
+      ],
+      "hint": "Malnehmen ist in JavaScript der Stern."
+    },
+    {
+      "id": "16-16",
+      "konzept": "js.operator",
+      "type": "pair",
+      "text": "Ordne die Operatoren zu.",
+      "pairs": [
+        [
+          "`+`",
+          "plus"
+        ],
+        [
+          "`-`",
+          "minus"
+        ],
+        [
+          "`*`",
+          "mal"
+        ],
+        [
+          "`/`",
+          "geteilt durch"
+        ]
+      ]
+    },
+    {
+      "id": "16-17",
+      "konzept": "js.verkettung",
+      "type": "quiz",
+      "question": "Was zeigt `console.log(\"5\" + 3);`?",
+      "options": [
+        "53",
+        "8",
+        "Eine Fehlermeldung"
+      ],
+      "correct": 0,
+      "explanation": "Sobald ein Text dabei ist, klebt das Plus: „5“ und 3 werden zu 53."
+    },
+    {
+      "id": "16-18",
+      "konzept": "js.verkettung",
+      "type": "fill",
+      "text": "Die Variable `name` enthält „Sam“. Vervollständige die Ausgabe, damit „Hallo Sam“ erscheint.",
+      "template": "console.log(\"Hallo \" ___ name);",
+      "accept": [
+        "+"
+      ],
+      "hint": "Text und Variable verbindet dasselbe Zeichen, mit dem du auch addierst."
+    },
+    {
+      "id": "16-19",
+      "konzept": "js.verkettung",
+      "type": "bug",
+      "text": "Die Konsole zeigt „Noch tage Tage“ statt „Noch 2 Tage“. Welche Zeile ist schuld?",
+      "lines": [
+        "const tage = 2;",
+        "console.log(\"Noch tage Tage\");",
+        "console.log(\"Bis bald!\");"
+      ],
+      "line": 1,
+      "explanation": "Der Variablenname steht in den Anführungszeichen und ist damit nur Text. Er muss mit Plus zwischen die Textstücke: `\"Noch \" + tage + \" Tage\"`."
+    }
+  ]
+}

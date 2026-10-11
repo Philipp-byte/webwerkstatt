@@ -1,0 +1,279 @@
+{
+  "id": "04-klassen-schalten",
+  "title": "Klassen schalten",
+  "konzepte": [
+    "js.classList"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Dunkler Modus in der Gaming-App, ein markierter Sneaker auf der Merkliste, der hervorgehobene Tag im Kalender: alles Umschalter – und alle funktionieren gleich.\n\nJavaScript ändert dabei **keine Farben**. Es schaltet nur eine **Klasse** am Element ein oder aus. Wie die Klasse aussieht, steht wie immer im CSS. Arbeitsteilung: JS schaltet, CSS gestaltet.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"26\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">JS schaltet – CSS gestaltet</text><rect x=\"10\" y=\"48\" width=\"98\" height=\"52\" rx=\"8\" fill=\"#ffd84d\" fill-opacity=\"0.12\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"59\" y=\"68\" text-anchor=\"middle\" fill=\"#ffd84d\" font-weight=\"bold\">script.js</text><text x=\"59\" y=\"88\" text-anchor=\"middle\" fill=\"#eef2ff\" font-family=\"monospace\" font-size=\"10\">toggle(\"nacht\")</text><path d=\"M110 74 H130\" stroke=\"#eef2ff\" stroke-width=\"2\" marker-end=\"url(#pk)\"/><rect x=\"134\" y=\"48\" width=\"98\" height=\"52\" rx=\"8\" fill=\"#ff7a45\" fill-opacity=\"0.15\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"183\" y=\"68\" text-anchor=\"middle\" fill=\"#ff7a45\" font-weight=\"bold\">index.html</text><text x=\"183\" y=\"88\" text-anchor=\"middle\" fill=\"#eef2ff\" font-family=\"monospace\" font-size=\"10\">body class=\"nacht\"</text><path d=\"M234 74 H254\" stroke=\"#eef2ff\" stroke-width=\"2\" marker-end=\"url(#pk)\"/><rect x=\"258\" y=\"48\" width=\"54\" height=\"52\" rx=\"8\" fill=\"#38c7ff\" fill-opacity=\"0.15\" stroke=\"#38c7ff\" stroke-width=\"2\"/><text x=\"285\" y=\"68\" text-anchor=\"middle\" fill=\"#38c7ff\" font-weight=\"bold\">CSS</text><text x=\"285\" y=\"88\" text-anchor=\"middle\" fill=\"#eef2ff\" font-family=\"monospace\" font-size=\"10\">.nacht {}</text><rect x=\"96\" y=\"116\" width=\"56\" height=\"32\" rx=\"4\" fill=\"#e8ecf7\"/><text x=\"124\" y=\"137\" text-anchor=\"middle\" fill=\"#0f1320\" font-size=\"11\">hell</text><text x=\"160\" y=\"137\" text-anchor=\"middle\" fill=\"#eef2ff\" font-size=\"14\">⇄</text><rect x=\"168\" y=\"116\" width=\"56\" height=\"32\" rx=\"4\" fill=\"#0f1320\" stroke=\"#e8ecf7\"/><text x=\"196\" y=\"137\" text-anchor=\"middle\" fill=\"#eef2ff\" font-size=\"11\">dunkel</text><defs><marker id=\"pk\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#eef2ff\"/></marker></defs></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Die Klassen eines Elements erreichst du über **classList**. Drei Befehle reichen:\n\n```js\nconst karte = document.getElementById(\"karte\");\nkarte.classList.add(\"markiert\");\nkarte.classList.remove(\"markiert\");\nkarte.classList.toggle(\"markiert\");\n```\n\n`add` fügt hinzu, `remove` entfernt, `toggle` schaltet um: Ist die Klasse da, geht sie weg – und umgekehrt. Im Skript steht der Klassenname **ohne Punkt**; der Punkt gehört nur zum CSS-Selektor `.markiert`. Den body erreichst du ohne id: `document.body`."
+    },
+    {
+      "type": "example",
+      "text": "Klicke mehrmals auf den Knopf. **Ändere** im CSS die Farben der Klasse `nacht`. Was passiert, wenn du im Skript aus `toggle` ein `add` machst?",
+      "html": "<button id=\"nacht-knopf\">Nachtmodus</button>\n<h1>Arena-Liga</h1>\n<p>Die Liga für Hobby-Teams.</p>\n",
+      "css": "body {\n  background-color: #ffffff;\n  color: #222222;\n  font-family: Arial, sans-serif;\n}\n\n.nacht {\n  background-color: #0f1320;\n  color: #eef2ff;\n}\n",
+      "js": "const nachtKnopf = document.getElementById(\"nacht-knopf\");\nnachtKnopf.addEventListener(\"click\", function () {\n  document.body.classList.toggle(\"nacht\");\n});\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Im CSS gibt es die Regel `.dunkel { … }`. Welche Zeile schaltet diese Klasse am body ein oder aus?",
+      "options": [
+        "`document.body.classList.toggle(\"dunkel\");`",
+        "`document.body.classList.toggle(\".dunkel\");`",
+        "`document.body.textContent = \"dunkel\";`"
+      ],
+      "correct": 0,
+      "explanation": "`toggle` schaltet um. Im Skript steht der Klassenname ohne Punkt – der Punkt gehört nur zum CSS-Selektor. `textContent` würde nur den Text der Seite ersetzen."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Skript: Jeder Klick auf den Knopf schaltet die Klasse `dunkel` am body ein oder aus – die Seite wechselt so zwischen hell und dunkel.",
+      "starter": {
+        "html": "<button id=\"modus-knopf\">Dunkler Modus</button>\n<h1>Arena-Liga</h1>\n<p>Spielplan, Tabelle und Ergebnisse deiner Hobby-Liga.</p>\n",
+        "css": "body {\n  background-color: #f4f4f5;\n  color: #1b1b2f;\n  font-family: Arial, sans-serif;\n}\n\n.dunkel {\n  background-color: #111827;\n  color: #f9fafb;\n}\n",
+        "js": "const modusKnopf = document.getElementById(\"modus-knopf\");\n// Beim Klick: Klasse am body umschalten\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "hints": [
+        "Der Zuhörer kommt an den Knopf, geschaltet wird aber am body.",
+        "Den body erreichst du ohne id über document.body.",
+        "In der Funktion: `….classList.toggle(\"…\");` – mit dem body und dem Klassennamen aus dem CSS."
+      ],
+      "solution": {
+        "js": "const modusKnopf = document.getElementById(\"modus-knopf\");\nmodusKnopf.addEventListener(\"click\", function () {\n  document.body.classList.toggle(\"dunkel\");\n});\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "background-color",
+          "expected": "#f4f4f5",
+          "label": "Vor dem Klick ist die Seite hell"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#modus-knopf"
+        },
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "background-color",
+          "expected": "#111827",
+          "label": "Nach dem Klick ist die Seite dunkel"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#modus-knopf"
+        },
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "background-color",
+          "expected": "#f4f4f5",
+          "label": "Ein zweiter Klick macht sie wieder hell"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "classList\\.toggle\\(\\s*[\"']dunkel[\"']",
+          "label": "Das Skript schaltet die Klasse dunkel um"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "`toggle` ist der Umschalter. `add` und `remove` brauchst du, wenn ein Knopf nur **eine** Richtung kennt: „Merken“ setzt die Klasse, „Entfernen“ nimmt sie weg.\n\nZwei Fehlerquellen: Der Name im Skript muss **genau** dem Namen im CSS entsprechen (`markiert` ist nicht `Markiert`). Und ohne passende CSS-Regel passiert beim Schalten sichtbar – nichts."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige das Skript: Beim Klick auf „Merken“ bekommt die Karte die Klasse `gemerkt` – und behält sie auch bei weiteren Klicks.",
+      "template": "merkenKnopf.addEventListener(\"click\", function () {\n  karte.___.___(\"gemerkt\");\n});",
+      "accept": [
+        [
+          "classList"
+        ],
+        [
+          "add"
+        ]
+      ],
+      "exact": true,
+      "hint": "Erste Lücke: die Klassenliste des Elements. Zweite Lücke: der Befehl, der eine Klasse nur hinzufügt."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Skript: Ein Klick auf „Merken“ gibt der Karte die Klasse `gemerkt` (sie wird gelb), ein Klick auf „Entfernen“ nimmt die Klasse wieder weg.",
+      "starter": {
+        "html": "<div id=\"karte\" class=\"karte\">\n  <h2>Runner X2</h2>\n  <p>89 €</p>\n</div>\n<button id=\"merken-knopf\">Merken</button>\n<button id=\"entfernen-knopf\">Entfernen</button>\n",
+        "css": ".karte {\n  padding: 12px;\n  background-color: #ffffff;\n  border: 2px solid #d4d4d8;\n}\n\n.gemerkt {\n  background-color: #ffd84d;\n  border-color: #ff7a45;\n}\n",
+        "js": "const karte = document.getElementById(\"karte\");\nconst merkenKnopf = document.getElementById(\"merken-knopf\");\nconst entfernenKnopf = document.getElementById(\"entfernen-knopf\");\n// Zwei Zuhörer\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "hints": [
+        "Zwei Knöpfe, zwei Zuhörer – beide arbeiten an der Karte.",
+        "Einer fügt hinzu, einer entfernt: add und remove.",
+        "Struktur: `merkenKnopf.addEventListener(\"click\", function () { karte.classList.…(\"…\"); });` – und dasselbe für den anderen Knopf."
+      ],
+      "solution": {
+        "js": "const karte = document.getElementById(\"karte\");\nconst merkenKnopf = document.getElementById(\"merken-knopf\");\nconst entfernenKnopf = document.getElementById(\"entfernen-knopf\");\nmerkenKnopf.addEventListener(\"click\", function () {\n  karte.classList.add(\"gemerkt\");\n});\nentfernenKnopf.addEventListener(\"click\", function () {\n  karte.classList.remove(\"gemerkt\");\n});\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "#karte",
+          "prop": "background-color",
+          "expected": "#ffffff",
+          "label": "Anfangs ist die Karte weiß"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#merken-knopf"
+        },
+        {
+          "type": "style",
+          "selector": "#karte",
+          "prop": "background-color",
+          "expected": "#ffd84d",
+          "label": "Nach „Merken“ ist die Karte gelb"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#entfernen-knopf"
+        },
+        {
+          "type": "style",
+          "selector": "#karte",
+          "prop": "background-color",
+          "expected": "#ffffff",
+          "label": "Nach „Entfernen“ ist sie wieder weiß"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "classList\\.add\\(\\s*[\"']gemerkt[\"']",
+          "label": "„Merken“ fügt die Klasse gemerkt hinzu"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "classList\\.remove\\(\\s*[\"']gemerkt[\"']",
+          "label": "„Entfernen“ entfernt die Klasse gemerkt"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Bausteine zu.",
+      "pairs": [
+        [
+          "`classList.add(\"x\")`",
+          "fügt die Klasse x hinzu"
+        ],
+        [
+          "`classList.remove(\"x\")`",
+          "entfernt die Klasse x"
+        ],
+        [
+          "`classList.toggle(\"x\")`",
+          "schaltet x ein oder aus"
+        ],
+        [
+          "`document.body`",
+          "das body-Element – ohne id erreichbar"
+        ],
+        [
+          "`.x { … }`",
+          "CSS-Regel: so sieht die Klasse aus"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** unter dem Status einen Knopf mit der id `offen-knopf` und dem Text „Jetzt geöffnet“. **Erstelle** im CSS eine Regel für die Klasse `offen` mit der Textfarbe `#4ade80`. **Erweitere** das Skript: Der Klick schaltet die Klasse `offen` am Status ein oder aus.",
+      "starter": {
+        "html": "<h1>Waffelwagen</h1>\n<p id=\"status\">Heute ab 16 Uhr am Neckar</p>\n<!-- Hier kommt der Knopf hin -->\n",
+        "css": "body {\n  font-family: Arial, sans-serif;\n}\n\np {\n  color: #1b1b2f;\n  font-weight: bold;\n}\n\n/* Regel für die Klasse offen */\n",
+        "js": "const status = document.getElementById(\"status\");\n"
+      },
+      "editable": [
+        "html",
+        "css",
+        "js"
+      ],
+      "hints": [
+        "Drei Dateien, drei Änderungen: Knopf im HTML, Regel im CSS, Zuhörer im JS.",
+        "Die CSS-Regel: Klassenselektor mit Punkt, darin die Farbe – wie in Station 10.",
+        "Im Skript: Knopf holen, Zuhörer anmelden, in der Funktion `status.classList.toggle(\"…\");`"
+      ],
+      "solution": {
+        "html": "<h1>Waffelwagen</h1>\n<p id=\"status\">Heute ab 16 Uhr am Neckar</p>\n<button id=\"offen-knopf\">Jetzt geöffnet</button>\n",
+        "css": "body {\n  font-family: Arial, sans-serif;\n}\n\np {\n  color: #1b1b2f;\n  font-weight: bold;\n}\n\n.offen {\n  color: #4ade80;\n}\n",
+        "js": "const status = document.getElementById(\"status\");\nconst offenKnopf = document.getElementById(\"offen-knopf\");\noffenKnopf.addEventListener(\"click\", function () {\n  status.classList.toggle(\"offen\");\n});\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "button#offen-knopf",
+          "expected": "Jetzt geöffnet",
+          "label": "Der Knopf „Jetzt geöffnet“ ist da"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "#status",
+            "#offen-knopf"
+          ],
+          "label": "Der Knopf steht unter dem Status"
+        },
+        {
+          "type": "style",
+          "selector": "#status",
+          "prop": "color",
+          "expected": "#1b1b2f",
+          "label": "Vor dem Klick ist der Status dunkel"
+        },
+        {
+          "type": "action",
+          "action": "click",
+          "selector": "#offen-knopf"
+        },
+        {
+          "type": "style",
+          "selector": "#status",
+          "prop": "color",
+          "expected": "#4ade80",
+          "label": "Nach dem Klick ist der Status grün"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "classList\\.toggle\\(\\s*[\"']offen[\"']",
+          "label": "Das Skript schaltet die Klasse offen um"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "jonas",
+      "text": "Sam will einen **Nachtmodus** für die FUNKEN-Seite – passt zu einem Festival bei Nacht. Drei kleine Änderungen, eine pro Datei:\n\n- HTML: ein Knopf „Nachtmodus“ als letztes Element in der Navigation\n- CSS: eine Regel für die Klasse `nacht` mit dunklem Hintergrund und heller Schrift\n- JS: ein Zuhörer, der die Klasse am body umschaltet\n\nDie Farbwerte stehen in der Aufgabe."
+    },
+    {
+      "type": "code",
+      "etappe": "17-javascript-dom/04-klassen-schalten"
+    }
+  ]
+}

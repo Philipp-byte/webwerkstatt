@@ -1,0 +1,15 @@
+{
+  "id": "14-flexbox",
+  "title": "Flexbox",
+  "station": "Bühnen-Layout",
+  "icon": "📐",
+  "color": "#38c7ff",
+  "description": "Elemente nebeneinander anordnen, ausrichten, verteilen und umbrechen – das Layout der Seite.",
+  "lessons": [
+    "01-flex-grundlagen",
+    "02-ausrichten",
+    "03-umbrechen-und-wachsen",
+    "04-wiederholung",
+    "05-projekt-layout"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "12-schrift-und-text",
+  "title": "Schrift & Text",
+  "station": "Schriftzug",
+  "icon": "🔤",
+  "color": "#38c7ff",
+  "description": "Schriftarten, Größen, Ausrichtung, Fett und Kursiv, Unterstreichung, Zeilenabstand – Typografie für das Festival.",
+  "lessons": [
+    "01-schriftart-und-groesse",
+    "02-textgestaltung",
+    "03-wiederholung",
+    "04-projekt-typografie"
+  ]
+}

@@ -1,0 +1,300 @@
+{
+  "chapter": "08-struktur-und-attribute",
+  "fragen": [
+    {
+      "id": "08-01",
+      "konzept": "html.class",
+      "type": "quiz",
+      "question": "Welches Attribut darf auf beliebig vielen Elementen denselben Wert haben?",
+      "options": [
+        "`class`",
+        "`id`",
+        "`href`"
+      ],
+      "correct": 0,
+      "explanation": "Eine Klasse ist wie ein Bändchen – viele Elemente dürfen dieselbe tragen. Eine id gibt es nur einmal."
+    },
+    {
+      "id": "08-02",
+      "konzept": "html.class",
+      "type": "fill",
+      "text": "Der Absatz soll die Klasse hinweis bekommen. Vervollständige.",
+      "template": "<p ___=\"hinweis\">Einlass ab 16 Uhr</p>",
+      "accept": [
+        "class"
+      ],
+      "hint": "Das Attribut für Klassen – auf Englisch."
+    },
+    {
+      "id": "08-03",
+      "konzept": "html.class",
+      "type": "bug",
+      "text": "Ein Listenpunkt hat einen Fehler bei den Klassen. Welche Zeile?",
+      "lines": [
+        "<li class=\"neu\">Neon Runner</li>",
+        "<li class=\"neu sale\">Court Low</li>",
+        "<li class=\"neu,sale\">Air Step</li>",
+        "<li>Retro Wave</li>"
+      ],
+      "line": 2,
+      "explanation": "Mehrere Klassen trennt ein Leerzeichen, kein Komma: `class=\"neu sale\"`."
+    },
+    {
+      "id": "08-04",
+      "konzept": "html.class",
+      "type": "quiz",
+      "question": "Ein Element soll die Klassen karte **und** gross tragen. Wie schreibst du das?",
+      "options": [
+        "`class=\"karte gross\"`",
+        "`class=\"karte\" class=\"gross\"`",
+        "`class=\"karte,gross\"`"
+      ],
+      "correct": 0,
+      "explanation": "Ein class-Attribut, mehrere Namen mit Leerzeichen. Ein Attribut darf nur einmal pro Tag stehen, Kommas gehören nicht dazu."
+    },
+    {
+      "id": "08-05",
+      "konzept": "html.class",
+      "type": "bug",
+      "text": "Ein Absatz hat einen Fehler im Attribut. Welche Zeile?",
+      "lines": [
+        "<p class=\"hinweis\">Einlass ab 16 Uhr</p>",
+        "<p class=hinweis wichtig>Ende 23 Uhr</p>",
+        "<p class=\"hinweis\">Kein Glas auf dem Gelände</p>"
+      ],
+      "line": 1,
+      "explanation": "Ohne Anführungszeichen endet der Wert am Leerzeichen – „wichtig“ wird dann als eigenes Attribut gelesen."
+    },
+    {
+      "id": "08-06",
+      "konzept": "html.id",
+      "type": "quiz",
+      "question": "Wie oft darf eine bestimmte id auf einer Seite vorkommen?",
+      "options": [
+        "Genau einmal",
+        "So oft wie nötig",
+        "Höchstens zweimal"
+      ],
+      "correct": 0,
+      "explanation": "Die id ist die Ticketnummer eines Elements – einmalig pro Seite. Sonst wüsste eine Sprungmarke nicht, wohin."
+    },
+    {
+      "id": "08-07",
+      "konzept": "html.id",
+      "type": "bug",
+      "text": "Eine Zeile verstößt gegen die id-Regel. Welche?",
+      "lines": [
+        "<h2 id=\"preis\">Preis</h2>",
+        "<p>129 €</p>",
+        "<h2 id=\"preis\">Farben</h2>",
+        "<p>Schwarz, Weiß</p>"
+      ],
+      "line": 2,
+      "explanation": "Die id preis ist doppelt. Die Farben-Überschrift braucht eine eigene id, z. B. farben."
+    },
+    {
+      "id": "08-08",
+      "konzept": "html.id",
+      "type": "fill",
+      "text": "Der Link `#anfahrt` soll zu dieser Überschrift springen. Vervollständige das Attribut.",
+      "template": "<h2 ___=\"anfahrt\">So kommst du hin</h2>",
+      "accept": [
+        "id"
+      ],
+      "hint": "Sprungmarken zielen auf das einmalige Namensschild."
+    },
+    {
+      "id": "08-09",
+      "konzept": "html.id",
+      "type": "pair",
+      "text": "Ordne zu.",
+      "pairs": [
+        [
+          "`id=\"oben\"`",
+          "genau einmal pro Seite"
+        ],
+        [
+          "`class=\"neu\"`",
+          "auf vielen Elementen erlaubt"
+        ],
+        [
+          "`href=\"#oben\"`",
+          "springt zum Element mit der id oben"
+        ]
+      ]
+    },
+    {
+      "id": "08-10",
+      "konzept": "html.div-span",
+      "type": "quiz",
+      "question": "Du willst nur das Wort „ausverkauft“ in einem Satz markieren. Welches Element?",
+      "options": [
+        "`span`",
+        "`div`",
+        "`p`"
+      ],
+      "correct": 0,
+      "explanation": "span ist der Inline-Container – er bleibt in der Zeile. div und p sind Block-Elemente."
+    },
+    {
+      "id": "08-11",
+      "konzept": "html.div-span",
+      "type": "fill",
+      "text": "Außen die Block-Kiste, innen das Inline-Etikett. Vervollständige.",
+      "template": "<___ class=\"karte\">\n  <h2>Court Low</h2>\n  <p>Preis: <___ class=\"preis\">89 €</___></p>\n</___>",
+      "accept": [
+        [
+          "div"
+        ],
+        [
+          "span"
+        ],
+        [
+          "span"
+        ],
+        [
+          "div"
+        ]
+      ],
+      "hint": "Block-Container außen, Inline-Container im Absatz."
+    },
+    {
+      "id": "08-12",
+      "konzept": "html.div-span",
+      "type": "order",
+      "text": "Sortiere die Sneaker-Karte: Kiste, Name, Preis.",
+      "lines": [
+        "<div class=\"karte\">",
+        "  <h2>Court Low</h2>",
+        "  <p>Preis: <span class=\"preis\">89 €</span></p>",
+        "</div>"
+      ]
+    },
+    {
+      "id": "08-13",
+      "konzept": "html.div-span",
+      "type": "bug",
+      "text": "Eine Zeile verstößt gegen die Block-Inline-Regel. Welche?",
+      "lines": [
+        "<p>Preis: <span class=\"preis\">89 €</span></p>",
+        "<span><p>Lieferung in zwei Tagen.</p></span>",
+        "<div class=\"karte\"><p>Größe 42</p></div>"
+      ],
+      "line": 1,
+      "explanation": "Ein Block-Element (p) darf nicht in einem Inline-Element (span) stehen. Richtig wäre div außen oder span im Absatz."
+    },
+    {
+      "id": "08-14",
+      "konzept": "html.div-span",
+      "type": "quiz",
+      "question": "Was unterscheidet div und span?",
+      "options": [
+        "div ist ein Block-Container, span ein Inline-Container",
+        "div ist für Text, span für Bilder",
+        "span erzeugt immer eine neue Zeile"
+      ],
+      "correct": 0,
+      "explanation": "div beginnt eine neue Zeile und fasst ganze Blöcke, span bleibt im Text und markiert ein Stück davon."
+    },
+    {
+      "id": "08-15",
+      "konzept": "html.semantik",
+      "type": "quiz",
+      "question": "Welches Element enthält den Hauptinhalt einer Seite und darf nur einmal vorkommen?",
+      "options": [
+        "`main`",
+        "`header`",
+        "`section`"
+      ],
+      "correct": 0,
+      "explanation": "Genau ein main pro Seite. header ist der Kopf, section ein Abschnitt – davon darf es mehrere geben."
+    },
+    {
+      "id": "08-16",
+      "konzept": "html.semantik",
+      "type": "pair",
+      "text": "Ordne die Zonen ihrer Bedeutung zu.",
+      "pairs": [
+        [
+          "`<header>`",
+          "Kopf: Titel, Logo"
+        ],
+        [
+          "`<nav>`",
+          "Navigation mit Links"
+        ],
+        [
+          "`<main>`",
+          "Hauptinhalt, genau einmal"
+        ],
+        [
+          "`<footer>`",
+          "Fuß: Adresse, Impressum"
+        ],
+        [
+          "`<article>`",
+          "in sich abgeschlossener Beitrag"
+        ]
+      ]
+    },
+    {
+      "id": "08-17",
+      "konzept": "html.semantik",
+      "type": "order",
+      "text": "Sortiere die Zonen in die übliche Reihenfolge.",
+      "lines": [
+        "<header>",
+        "  <h1>Pixelpiraten</h1>",
+        "</header>",
+        "<main>",
+        "  <p>Wir spielen fair.</p>",
+        "</main>"
+      ]
+    },
+    {
+      "id": "08-18",
+      "konzept": "html.semantik",
+      "type": "bug",
+      "text": "Eine Zeile passt nicht. Welche?",
+      "lines": [
+        "<header>",
+        "  <h1>Programm</h1>",
+        "</header>",
+        "<nav>",
+        "  <a href=\"index.html\">Start</a>",
+        "</div>"
+      ],
+      "line": 5,
+      "explanation": "Die Navigation wurde mit `</div>` geschlossen – es muss `</nav>` sein."
+    },
+    {
+      "id": "08-19",
+      "konzept": "html.semantik",
+      "type": "quiz",
+      "question": "Warum `nav` statt `div` für die Linkzeile?",
+      "options": [
+        "Screenreader und Suchmaschinen erkennen die Navigation",
+        "Die Links stehen dann nebeneinander",
+        "Die Links werden dann unterstrichen"
+      ],
+      "correct": 0,
+      "explanation": "Semantische Elemente tragen Bedeutung, kein Aussehen – das Aussehen regelt CSS."
+    },
+    {
+      "id": "08-20",
+      "konzept": "html.semantik",
+      "type": "fill",
+      "text": "In welche Zone gehört die Adresse am Seitenende? Vervollständige.",
+      "template": "<___>\n  <p>Kollektiv FUNKEN · Hafenstraße 9 · 74072 Heilbronn</p>\n</___>",
+      "accept": [
+        [
+          "footer"
+        ],
+        [
+          "footer"
+        ]
+      ],
+      "hint": "Das Element für den Fuß der Seite – auf Englisch."
+    }
+  ]
+}

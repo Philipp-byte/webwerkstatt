@@ -1,0 +1,44 @@
+{
+  "id": "05-projekt-ticketformular",
+  "title": "Projekt: Ticketformular",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Meilenstein! Der Ticket-Schalter steht: Preise, Name, E-Mail, Ticketart, Newsletter, Nachricht, Datenschutz, Knopf. Ich habe es ausprobiert – und gleich ein Ticket ohne Namen reserviert. Das darf nicht passieren.\n\nAußerdem wollen manche vier Tickets auf einmal, andere tippen 40. Vier ist Schluss, mindestens eins muss es sein."
+    },
+    {
+      "type": "quiz",
+      "question": "Name und E-Mail sind Pflichtfelder. Jemand lässt den Namen leer und klickt auf „Ticket reservieren“. Was passiert?",
+      "options": [
+        "Der Browser markiert das leere Feld und schickt nichts ab",
+        "Der Browser schickt das Formular ohne Namen ab",
+        "Der Server ruft die Person an",
+        "Die Seite lädt neu und löscht alle Eingaben"
+      ],
+      "correct": 0,
+      "explanation": "Pflichtfelder prüft der Browser vor dem Absenden. Ist eins leer, erscheint ein Hinweis am Feld – die Anfrage geht nicht raus."
+    },
+    {
+      "type": "order",
+      "text": "Bring den Ausschnitt eines Bestellformulars in die richtige Reihenfolge: E-Mail, dann Stückzahl, dann der Knopf – Beschriftung jeweils vor dem Feld.",
+      "lines": [
+        "<label for=\"email\">E-Mail</label>",
+        "<input type=\"email\" id=\"email\" name=\"email\" required>",
+        "<label for=\"stueck\">Stück</label>",
+        "<input type=\"number\" id=\"stueck\" name=\"stueck\" min=\"1\" max=\"6\">",
+        "<button type=\"submit\">Bestellen</button>"
+      ],
+      "explanation": "Beschriftung vor dem Feld, Felder in der genannten Reihenfolge, der Knopf zuletzt."
+    },
+    {
+      "type": "explain",
+      "text": "Ab zur FUNKEN-Website: Name und E-Mail werden Pflichtfelder, und nach der E-Mail kommt das Zahlenfeld „Anzahl Tickets“ mit den Grenzen 1 bis 4.\n\nDanach lohnt sich der Knopf **FUNKEN-Website ansehen** (`#/projekt`): Klick auf eine Beschriftung, lass ein Pflichtfeld leer und drück auf „Ticket reservieren“ – der Browser meckert, genau wie er soll. Das Impressum folgt später in der Sicherheitszentrale."
+    },
+    {
+      "type": "code",
+      "etappe": "09-formulare/05-projekt-ticketformular"
+    }
+  ]
+}

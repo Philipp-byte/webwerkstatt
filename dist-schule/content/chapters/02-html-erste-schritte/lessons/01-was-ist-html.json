@@ -1,0 +1,204 @@
+{
+  "id": "01-was-ist-html",
+  "title": "Was ist HTML?",
+  "konzepte": [
+    "html.tag"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Sams Website ist weg – also bauen wir sie neu, Zeile für Zeile. Die Sprache dafür kennst du schon dem Namen nach: **HTML**, das Gerüst jeder Seite.\n\nHTML ist reiner Text mit **Markierungen**. Jede Markierung heißt **Tag** und steht in spitzen Klammern: `<h1>` sagt dem Browser „Hier beginnt eine Überschrift der Ebene 1“, `</h1>` sagt „Hier endet sie“. Tag, Text und Tag zusammen ergeben ein **Element**.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"28\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Ein Element = Tag + Inhalt + Tag</text><rect x=\"18\" y=\"48\" width=\"284\" height=\"46\" rx=\"8\" fill=\"#1b2135\"/><text x=\"34\" y=\"79\" fill=\"#ff7a45\" font-family=\"monospace\" font-size=\"18\">&lt;h1&gt;</text><text x=\"94\" y=\"79\" fill=\"#eef2ff\" font-family=\"monospace\" font-size=\"18\">Steckbrief</text><text x=\"218\" y=\"79\" fill=\"#ff7a45\" font-family=\"monospace\" font-size=\"18\">&lt;/h1&gt;</text><path d=\"M34 100 V108 H78 V100\" stroke=\"#ff7a45\" fill=\"none\"/><text x=\"56\" y=\"124\" text-anchor=\"middle\" fill=\"#ff7a45\">öffnender Tag</text><path d=\"M94 100 V108 H202 V100\" stroke=\"#38c7ff\" fill=\"none\"/><text x=\"148\" y=\"124\" text-anchor=\"middle\" fill=\"#38c7ff\">Inhalt</text><path d=\"M218 100 V108 H272 V100\" stroke=\"#ff7a45\" fill=\"none\"/><text x=\"245\" y=\"124\" text-anchor=\"middle\" fill=\"#ff7a45\">schließender Tag</text><text x=\"160\" y=\"150\" text-anchor=\"middle\" fill=\"#eef2ff\">Der Browser zeigt nur den Inhalt an.</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Links steht HTML, rechts zeichnet der Browser daraus die Seite. `<h1>` ist die Hauptüberschrift, `<p>` ein Absatz (englisch *paragraph*).\n\n**Ändere** den Text zwischen den Tags. Dann **lösche** testweise den schließenden Tag `</h1>` – und beobachte, was mit dem Absatz passiert.",
+      "html": "<h1>Steckbrief</h1>\n<p>Lena, 17, aus Heilbronn. Spielt Basketball und zeichnet Comics.</p>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Was zeigt der Browser für die Zeile `<p>Bis morgen!</p>` an?",
+      "options": [
+        "„Bis morgen!“ als Absatz – ohne die Tags",
+        "`<p>Bis morgen!</p>` – genau so, mit Klammern",
+        "Nichts – der Browser kennt kein p"
+      ],
+      "correct": 0,
+      "explanation": "Tags sind Anweisungen an den Browser, kein Text. Er zeigt nur den Inhalt an und richtet ihn nach dem Tag aus – hier als Absatz."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** über dem Absatz eine Hauptüberschrift mit dem Spielernamen „PixelPirat“. Der Absatz bleibt stehen.",
+      "starter": {
+        "html": "<p>Level 42 · 1.337 Siege · Lieblingsspiel: Kartrennen</p>\n"
+      },
+      "hints": [
+        "Die Hauptüberschrift ist die Überschrift der Ebene 1. Sie bekommt eine eigene Zeile vor dem Absatz.",
+        "Ein Element besteht aus öffnendem Tag, Inhalt und schließendem Tag – wie `<p>Hallo</p>`, nur mit dem Tag für die Überschrift.",
+        "Muster: `<h1>…</h1>` in der ersten Zeile – zwischen den Tags steht genau der Spielername."
+      ],
+      "solution": {
+        "html": "<h1>PixelPirat</h1>\n<p>Level 42 · 1.337 Siege · Lieblingsspiel: Kartrennen</p>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "PixelPirat",
+          "label": "Die Hauptüberschrift lautet „PixelPirat“"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "h1",
+            "p"
+          ],
+          "label": "Die Überschrift steht über dem Absatz"
+        },
+        {
+          "type": "text",
+          "selector": "p",
+          "expected": "Level 42 · 1.337 Siege · Lieblingsspiel: Kartrennen",
+          "label": "Der Absatz ist noch da"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Drei Regeln für Tags:\n\n- Tag-Namen schreibst du **klein**: `<p>`, nicht `<P>`.\n- Der schließende Tag hat einen **Schrägstrich**: `</p>`.\n- Fast jedes Element braucht beide Tags – sonst weiß der Browser nicht, wo es endet.\n\nAusnahme: **Leerelemente** haben keinen Inhalt und keinen schließenden Tag. `<br>` erzwingt einen Zeilenumbruch mitten im Text:\n\n```html\n<p>Training: Dienstag<br>Spiel: Samstag</p>\n```"
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige den Anfang der Clan-Seite: erst der Tag-Name der Hauptüberschrift, dann der komplette schließende Tag des Absatzes.",
+      "template": "<___>Clan Nachtfalken</h1>\n<p>Wir suchen neue Mitglieder.___",
+      "accept": [
+        [
+          "h1"
+        ],
+        [
+          "</p>"
+        ]
+      ],
+      "hint": "Lücke 1: nur der Name, ohne Klammern. Lücke 2: mit spitzen Klammern und Schrägstrich."
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** unter dem ersten Absatz einen zweiten Absatz mit dem Text „Öffnungszeiten: Montag bis Samstag, 10 bis 19 Uhr.“ Nach dem Doppelpunkt soll der Text in einer neuen Zeile weitergehen.",
+      "starter": {
+        "html": "<h1>Kick Lab</h1>\n<p>Neu im Store: der Retro-Runner in Weiß.</p>\n"
+      },
+      "hints": [
+        "Ein zweiter Absatz ist dasselbe Element wie der erste – in einer eigenen Zeile darunter.",
+        "Für die neue Zeile mitten im Text gibt es das Leerelement für Zeilenumbrüche. Es hat keinen schließenden Tag.",
+        "Muster: `<p>Erster Teil<br>zweiter Teil</p>` – mit dem Text aus der Aufgabe."
+      ],
+      "solution": {
+        "html": "<h1>Kick Lab</h1>\n<p>Neu im Store: der Retro-Runner in Weiß.</p>\n<p>Öffnungszeiten:<br>Montag bis Samstag, 10 bis 19 Uhr.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "p",
+          "count": 2,
+          "label": "Es gibt zwei Absätze"
+        },
+        {
+          "type": "text",
+          "selector": "p:nth-of-type(2)",
+          "expected": "Öffnungszeiten: Montag bis Samstag, 10 bis 19 Uhr.",
+          "label": "Der zweite Absatz nennt die Öffnungszeiten"
+        },
+        {
+          "type": "selector",
+          "selector": "p br",
+          "min": 1,
+          "label": "Nach dem Doppelpunkt beginnt eine neue Zeile"
+        },
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "Kick Lab",
+          "label": "Die Überschrift ist noch da"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Bausteine zu.",
+      "pairs": [
+        [
+          "`<p>`",
+          "öffnender Tag – hier beginnt ein Absatz"
+        ],
+        [
+          "`</p>`",
+          "schließender Tag – hier endet der Absatz"
+        ],
+        [
+          "Bis morgen!",
+          "Inhalt – das, was der Browser anzeigt"
+        ],
+        [
+          "`<br>`",
+          "Leerelement – Zeilenumbruch ohne schließenden Tag"
+        ],
+        [
+          "Element",
+          "öffnender Tag + Inhalt + schließender Tag"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Korrigiere** zwei Fehler auf der Clan-Seite: Der komplette Text ist riesig, obwohl nur der Clan-Name eine Überschrift sein soll – und der zweite Absatz fehlt in der Vorschau.",
+      "starter": {
+        "html": "<h1>Clan Nachtfalken<h1>\n<p>Wir zocken seit 2023 zusammen – Ranked, Turniere und Spaß.</p>\n<p Wir suchen zwei neue Spielerinnen oder Spieler.</p>\n"
+      },
+      "hints": [
+        "Riesiger Text: Vergleiche den öffnenden und den schließenden Tag der Überschrift Zeichen für Zeichen – was fehlt dem zweiten?",
+        "Fehlender Absatz: Jeder öffnende Tag endet mit einer spitzen Klammer. Lies die Zeile des zweiten Absatzes ganz genau.",
+        "Muster für einen Absatz: `<p>Text</p>` – der schließende Tag hat den Schrägstrich direkt nach der ersten Klammer."
+      ],
+      "solution": {
+        "html": "<h1>Clan Nachtfalken</h1>\n<p>Wir zocken seit 2023 zusammen – Ranked, Turniere und Spaß.</p>\n<p>Wir suchen zwei neue Spielerinnen oder Spieler.</p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "h1",
+          "count": 1,
+          "label": "Es gibt genau eine Überschrift"
+        },
+        {
+          "type": "selector",
+          "selector": "h1 p",
+          "count": 0,
+          "label": "Die Absätze stecken nicht mehr in der Überschrift"
+        },
+        {
+          "type": "text",
+          "selector": "h1",
+          "expected": "Clan Nachtfalken",
+          "label": "Die Überschrift lautet „Clan Nachtfalken“"
+        },
+        {
+          "type": "text",
+          "selector": "p:nth-of-type(2)",
+          "expected": "Wir suchen zwei neue Spielerinnen oder Spieler.",
+          "label": "Der zweite Absatz ist wieder sichtbar"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Ab zur FUNKEN-Website! Die Startseite `index.html` ist noch fast leer. Ihre erste Zeile ist ein **Kommentar**: Er steht zwischen `<!--` und `-->`, ist eine Notiz für Entwickler:innen und wird vom Browser nicht angezeigt. Lass ihn stehen.\n\nDarunter kommt jetzt das Wichtigste der Seite: die Hauptüberschrift mit dem Namen des Festivals. Alles Weitere folgt Lektion für Lektion."
+    },
+    {
+      "type": "code",
+      "etappe": "02-html-erste-schritte/01-was-ist-html"
+    }
+  ]
+}

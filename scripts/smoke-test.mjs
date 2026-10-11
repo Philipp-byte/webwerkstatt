@@ -96,6 +96,7 @@ try {
   await shot('ort-1-einleitung');
   await page.click('#los');
   await page.waitForSelector('.lektion-seite', { timeout: 10000 });
+  await page.waitForSelector('.schritt:not([hidden])', { timeout: 10000 });
   await shot('lektion-schritt-1');
 
   // Lektion: zur ersten Quizfrage blättern, falsch antworten → Gespinst spottet, dann Nachlesen

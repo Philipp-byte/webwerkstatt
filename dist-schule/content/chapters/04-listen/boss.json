@@ -1,0 +1,222 @@
+{
+  "chapter": "04-listen",
+  "title": "Abnahme: Programm-Tafel",
+  "intro": "Zeig mir die Tafel! Line-up nach Bühnen, Foodtrucks, Anfahrt – wenn das alles sauber in Listen steht, kriegt ihr von mir einen Bubble Tea. Wenn nicht … auch, aber erst nach der Nachbesserung.",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "html.ul",
+      "type": "quiz",
+      "question": "Sam will die vier Foodtrucks als Punkte ohne Nummern zeigen. Welche Elemente braucht die Liste?",
+      "options": [
+        "`<ul>` als Behälter, `<li>` für jeden Truck",
+        "`<ol>` als Behälter, `<p>` für jeden Truck",
+        "`<li>` als Behälter, `<ul>` für jeden Truck"
+      ],
+      "correct": 0,
+      "explanation": "Behälter `<ul>`, darin ein `<li>` pro Truck."
+    },
+    {
+      "konzept": "html.entity",
+      "type": "fill",
+      "text": "Vervollständige den Truck-Namen – das &-Zeichen in HTML-Schreibweise.",
+      "template": "<li>Pizza ___ Mehr</li>",
+      "accept": [
+        "&amp;"
+      ]
+    },
+    {
+      "konzept": "html.liste-verschachtelt",
+      "type": "order",
+      "text": "Sortiere die verschachtelte Liste.",
+      "lines": [
+        "<ul>",
+        "  <li>Zeltbühne",
+        "    <ol>",
+        "      <li>Kiki Volt</li>",
+        "    </ol>",
+        "  </li>",
+        "</ul>"
+      ]
+    },
+    {
+      "type": "code",
+      "task": "Die Tafel für den Pizza-Abend: 1. **Erstelle** unter „Einkaufen“ eine Liste mit Punkten: „Mehl“, „Tomaten“, „Mozzarella“. 2. **Erstelle** unter „So geht es“ eine nummerierte Liste: „Teig kneten“, „Belegen“, „Backen“.",
+      "starter": {
+        "html": "<h1>Pizza-Abend</h1>\n<h2>Einkaufen</h2>\n\n<h2>So geht es</h2>\n\n"
+      },
+      "solution": {
+        "html": "<h1>Pizza-Abend</h1>\n<h2>Einkaufen</h2>\n<ul>\n  <li>Mehl</li>\n  <li>Tomaten</li>\n  <li>Mozzarella</li>\n</ul>\n\n<h2>So geht es</h2>\n<ol>\n  <li>Teig kneten</li>\n  <li>Belegen</li>\n  <li>Backen</li>\n</ol>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "ul > li",
+          "count": 3,
+          "label": "Die Einkaufsliste hat drei Punkte"
+        },
+        {
+          "type": "selector",
+          "selector": "ol > li",
+          "count": 3,
+          "label": "Die Anleitung hat drei nummerierte Schritte"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "h2:nth-of-type(1)",
+            "ul",
+            "h2:nth-of-type(2)",
+            "ol"
+          ],
+          "label": "Einkaufsliste unter „Einkaufen“, Anleitung unter „So geht es“"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:first-child",
+          "expected": "Mehl",
+          "label": "Die erste Zutat ist Mehl"
+        },
+        {
+          "type": "text",
+          "selector": "ol > li:last-child",
+          "expected": "Backen",
+          "label": "Der letzte Schritt ist Backen"
+        }
+      ]
+    },
+    {
+      "konzept": "html.grundgeruest",
+      "type": "quiz",
+      "question": "Welcher Text erscheint im Browser-Tab – und wo steht er im Quelltext?",
+      "options": [
+        "Der Inhalt von `<title>` – im `<head>`",
+        "Die `<h1>`-Überschrift – im `<body>`",
+        "Der erste Absatz – im `<body>`"
+      ],
+      "correct": 0,
+      "explanation": "Der Titel im Kopfbereich landet im Tab; die `<h1>` steht sichtbar auf der Seite."
+    },
+    {
+      "konzept": "html.ol",
+      "type": "bug",
+      "text": "Die Anfahrt soll nummeriert sein, doch die Liste endet falsch. Welche Zeile?",
+      "lines": [
+        "<ol>",
+        "  <li>Stadtbahn nehmen</li>",
+        "  <li>Lichtern folgen</li>",
+        "</ul>"
+      ],
+      "line": 3,
+      "explanation": "`<ol>` wird mit `</ol>` geschlossen."
+    },
+    {
+      "konzept": "html.strong-em",
+      "type": "pair",
+      "text": "Ordne zu.",
+      "pairs": [
+        [
+          "`<strong>`",
+          "starke Betonung"
+        ],
+        [
+          "`<em>`",
+          "leichte Betonung"
+        ],
+        [
+          "`<br>`",
+          "Zeilenumbruch im Absatz"
+        ],
+        [
+          "`<hr>`",
+          "Trennlinie"
+        ],
+        [
+          "`<!-- … -->`",
+          "Kommentar, nur im Quelltext"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Korrigiere** die Packliste: Ab dem ersten Eintrag ist die ganze Liste fett, und „Powerbank“ hat keinen Aufzählungspunkt. Am Ende: vier Punkte, fett ist nur das Wort „Wichtig:“.",
+      "starter": {
+        "html": "<h2>Packliste</h2>\n<ul>\n  <li><strong>Wichtig: Ticket</li>\n  <li>Zelt</li>\n  <p>Powerbank</p>\n  <li>Regenjacke</li>\n</ul>\n"
+      },
+      "solution": {
+        "html": "<h2>Packliste</h2>\n<ul>\n  <li><strong>Wichtig:</strong> Ticket</li>\n  <li>Zelt</li>\n  <li>Powerbank</li>\n  <li>Regenjacke</li>\n</ul>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "strong",
+          "count": 1,
+          "label": "Nur eine Stelle ist fett"
+        },
+        {
+          "type": "text",
+          "selector": "strong",
+          "expected": "Wichtig:",
+          "label": "Fett ist genau „Wichtig:“"
+        },
+        {
+          "type": "selector",
+          "selector": "ul > li",
+          "count": 4,
+          "label": "Die Liste hat vier Punkte"
+        },
+        {
+          "type": "selector",
+          "selector": "ul p",
+          "count": 0,
+          "label": "Kein Absatz in der Liste"
+        },
+        {
+          "type": "text",
+          "selector": "ul > li:first-child",
+          "expected": "Wichtig: Ticket",
+          "label": "Der erste Punkt lautet „Wichtig: Ticket“"
+        }
+      ]
+    },
+    {
+      "konzept": "html.ol",
+      "type": "fill",
+      "text": "Die Schritte sollen nummeriert erscheinen.",
+      "template": "<___>\n  <li>Ticket kaufen</li>\n  <li>Hinfahren</li>\n</___>",
+      "accept": [
+        [
+          "ol"
+        ],
+        [
+          "ol"
+        ]
+      ]
+    },
+    {
+      "konzept": "html.attribut",
+      "type": "quiz",
+      "question": "In `<html lang=\"de\">` – welcher Teil ist der **Wert** des Attributs?",
+      "options": [
+        "`de`",
+        "`lang`",
+        "`html`"
+      ],
+      "correct": 0,
+      "explanation": "`lang` ist der Attributname, `de` sein Wert, `html` der Tag."
+    },
+    {
+      "konzept": "html.liste-verschachtelt",
+      "type": "quiz",
+      "question": "Die Hauptbühne bekommt eine eigene Liste ihrer Acts. Wo steht diese innere Liste?",
+      "options": [
+        "Im Listenpunkt „Hauptbühne“, vor dessen schließendem Tag",
+        "Direkt nach dem schließenden Tag von „Hauptbühne“",
+        "In einem Absatz unter der äußeren Liste"
+      ],
+      "correct": 0,
+      "explanation": "Die innere Liste gehört in das `<li>` hinein – erst danach wird der Punkt geschlossen."
+    }
+  ]
+}

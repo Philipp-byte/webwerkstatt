@@ -1,0 +1,13 @@
+{
+  "id": "18-showtime",
+  "title": "Showtime",
+  "station": "Showtime",
+  "icon": "🎆",
+  "color": "#4ade80",
+  "description": "Alles zusammenfügen, die große Wiederholung – und dann deine eigene Website.",
+  "lessons": [
+    "01-alles-zusammenfuegen",
+    "02-grosse-wiederholung",
+    "03-eigene-website"
+  ]
+}

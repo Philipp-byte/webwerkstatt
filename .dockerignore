@@ -1,0 +1,9 @@
+node_modules
+dist
+dist-schule
+server/instance
+server/__pycache__
+server/venv
+.git
+docs
+arbeitsblaetter

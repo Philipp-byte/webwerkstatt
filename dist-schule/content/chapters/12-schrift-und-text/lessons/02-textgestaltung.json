@@ -1,0 +1,254 @@
+{
+  "id": "02-textgestaltung",
+  "title": "Textgestaltung",
+  "konzepte": [
+    "css.text-align",
+    "css.font-weight-style",
+    "css.text-decoration",
+    "css.line-height"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Sam meldet sich: „Die Überschrift klebt links, die Menü-Links sind unterstrichen wie 1999, und die Absätze sind so eng, dass ich beim Lesen die Zeile verliere.“\n\nDrei Wünsche, drei Eigenschaften. Die erste: **`text-align`** richtet Text in seinem Kasten aus – `left` (links, Standard), `center` (mittig) oder `right` (rechts). Der Kasten bleibt, wo er ist; nur der Text rutscht.\n\n```css\nh2 {\n  text-align: center;\n}\n```",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"26\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Der Text rutscht im Kasten – der Kasten bleibt</text><rect x=\"16\" y=\"44\" width=\"88\" height=\"60\" rx=\"6\" fill=\"#1b2135\" stroke=\"#38c7ff\" stroke-width=\"2\"/><rect x=\"26\" y=\"58\" width=\"60\" height=\"6\" rx=\"3\" fill=\"#eef2ff\"/><rect x=\"26\" y=\"74\" width=\"40\" height=\"6\" rx=\"3\" fill=\"#eef2ff\"/><rect x=\"116\" y=\"44\" width=\"88\" height=\"60\" rx=\"6\" fill=\"#1b2135\" stroke=\"#38c7ff\" stroke-width=\"2\"/><rect x=\"130\" y=\"58\" width=\"60\" height=\"6\" rx=\"3\" fill=\"#eef2ff\"/><rect x=\"140\" y=\"74\" width=\"40\" height=\"6\" rx=\"3\" fill=\"#eef2ff\"/><rect x=\"216\" y=\"44\" width=\"88\" height=\"60\" rx=\"6\" fill=\"#1b2135\" stroke=\"#38c7ff\" stroke-width=\"2\"/><rect x=\"234\" y=\"58\" width=\"60\" height=\"6\" rx=\"3\" fill=\"#eef2ff\"/><rect x=\"254\" y=\"74\" width=\"40\" height=\"6\" rx=\"3\" fill=\"#eef2ff\"/><text x=\"60\" y=\"128\" text-anchor=\"middle\" fill=\"#38c7ff\" font-family=\"monospace\" font-size=\"13\">left</text><text x=\"160\" y=\"128\" text-anchor=\"middle\" fill=\"#38c7ff\" font-family=\"monospace\" font-size=\"13\">center</text><text x=\"260\" y=\"128\" text-anchor=\"middle\" fill=\"#38c7ff\" font-family=\"monospace\" font-size=\"13\">right</text><text x=\"160\" y=\"150\" text-anchor=\"middle\" fill=\"#eef2ff\">text-align</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Der Aushang fürs Konsolen-Turnier: **Ändere** in `style.css` bei `h1` den Wert `center` zu `right` oder `left` – der Text rutscht im Kasten, der Kasten bleibt. Ändere dann bei `.ort` den Wert `right` zu `center`.",
+      "html": "<h1>Konsolen-Turnier</h1>\n<p>Freitag, 14 Uhr in der Aula – Anmeldung bis Mittwoch im Sekretariat.</p>\n<p class=\"ort\">Raum A 204</p>\n",
+      "css": "h1 {\n  text-align: center;\n}\n\n.ort {\n  text-align: right;\n}\n",
+      "editable": [
+        "css"
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Ein Absatz bekommt `text-align: center;`. Was passiert?",
+      "options": [
+        "Der Text steht mittig in seinem Kasten – der Kasten selbst bleibt",
+        "Der ganze Kasten wird schmaler und rutscht in die Seitenmitte",
+        "Der Text wird größer und fett",
+        "Nur die erste Zeile wird zentriert"
+      ],
+      "correct": 0,
+      "explanation": "Die Textausrichtung wirkt auf den Inhalt eines Kastens. Den Kasten selbst zu verschieben ist Sache des Box-Modells – das kommt im nächsten Kapitel."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** den Flyer: Die Überschrift und der Absatz mit der Klasse `info` stehen zentriert, die Kontaktzeile (Klasse `kontakt`) steht rechtsbündig.",
+      "starter": {
+        "html": "<h1>Abschlussparty</h1>\n<p class=\"info\">Samstag, 21 Uhr – Jugendhaus am Park</p>\n<p>Musik von DJ Kabelsalat, Getränke gibt es vor Ort. Eintritt frei für alle Jahrgänge.</p>\n<p class=\"kontakt\">Fragen an: party@schule-beispiel.de</p>\n",
+        "css": "/* Flyer */\nh1 {\n  color: #b48cff;\n  /* Ausrichtung hier */\n}\n\n.info {\n  color: #1b1b2f;\n}\n\n.kontakt {\n  color: #555;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Die Eigenschaft für die Ausrichtung heißt `text-align`. Alle drei Regeln gibt es schon – je eine Zeile ergänzen.",
+        "Muster aus dem Beispiel: `text-align: left;` – hier brauchst du die Werte für mittig und für rechts.",
+        "Zweimal derselbe Wert (Überschrift und info-Regel), in der kontakt-Regel der Wert für rechts."
+      ],
+      "solution": {
+        "css": "/* Flyer */\nh1 {\n  color: #b48cff;\n  text-align: center;\n}\n\n.info {\n  color: #1b1b2f;\n  text-align: center;\n}\n\n.kontakt {\n  color: #555;\n  text-align: right;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "text-align",
+          "expected": "center",
+          "label": "Die Überschrift ist zentriert"
+        },
+        {
+          "type": "style",
+          "selector": ".info",
+          "prop": "text-align",
+          "expected": "center",
+          "label": "Die Info-Zeile ist zentriert"
+        },
+        {
+          "type": "style",
+          "selector": ".kontakt",
+          "prop": "text-align",
+          "expected": "right",
+          "label": "Die Kontaktzeile ist rechtsbündig"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Für **Betonung** gibt es zwei Eigenschaften:\n\n- **`font-weight`** – die Schriftstärke: `bold` (fett) oder `normal`. Kennst du vom Hinweis-Absatz der Startseite.\n- **`font-style`** – die Schriftlage: `italic` (kursiv) oder `normal`.\n\n```css\n.preis {\n  font-weight: bold;\n}\n\n.zitat {\n  font-style: italic;\n}\n```\n\nAnders als `<strong>` und `<em>` sagen sie nichts über die Bedeutung – sie ändern nur das Aussehen. Für wirklich Wichtiges bleibt `<strong>` richtig."
+    },
+    {
+      "type": "fill",
+      "text": "**Vervollständige** die Regel: Der Preis soll fett und kursiv erscheinen.",
+      "template": ".preis {\n  font-weight: ___;\n  font-style: ___;\n}",
+      "accept": [
+        [
+          "bold",
+          "700"
+        ],
+        [
+          "italic"
+        ]
+      ],
+      "hint": "Beide Werte sind englische Wörter – fett für die Stärke, kursiv für die Lage. Schau in der Erklärung davor nach."
+    },
+    {
+      "type": "explain",
+      "text": "Links unterstreicht der Browser von Haus aus. Im Fließtext hilft das – in einer Navigation wirkt es unruhig. Die Linie steuert **`text-decoration`**:\n\n```css\nfooter a {\n  text-decoration: none;\n}\n\n.alt {\n  text-decoration: line-through;\n}\n```\n\n- `none` – keine Linie\n- `underline` – unterstrichen\n- `line-through` – durchgestrichen, etwa für alte Preise\n\nNur die ausgewählten Links verlieren die Linie: `footer a` trifft allein den Fußbereich, `nav a` allein das Menü – alle anderen Links bleiben unterstrichen."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** den Shop-Ausschnitt: Die Menü-Links in der Navigation verlieren ihre Unterstreichung, der alte Preis (Klasse `alt`) wird durchgestrichen, der neue Preis (Klasse `neu`) fett. Der Link im Text bleibt unterstrichen.",
+      "starter": {
+        "html": "<nav>\n  <a href=\"controller.html\">Controller</a>\n  <a href=\"headsets.html\">Headsets</a>\n  <a href=\"sale.html\">Sale</a>\n</nav>\n<h1>Pro-Controller X</h1>\n<img src=\"controller.svg\" alt=\"Schwarzer Controller mit orangenen Tasten\" width=\"160\">\n<p><span class=\"alt\">69,99 €</span> <span class=\"neu\">49,99 €</span></p>\n<p>Nur bis Sonntag – <a href=\"sale.html\">alle Sale-Angebote ansehen</a>.</p>\n",
+        "css": "/* Gaming-Shop */\nbody {\n  font-family: Arial, sans-serif;\n}\n\nnav a {\n  color: #1b1b2f;\n}\n\n.alt {\n  color: #888;\n}\n\n.neu {\n  color: #ff7a45;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Linien regelt `text-decoration`, die Stärke `font-weight`. Alle drei Regeln existieren schon – je eine Zeile dazu.",
+        "Muster: `text-decoration: underline;` – du brauchst die Werte für „keine Linie“ und „durchgestrichen“.",
+        "nav-a-Regel: keine Linie · alt-Regel: durchgestrichen · neu-Regel: fette Stärke."
+      ],
+      "solution": {
+        "css": "/* Gaming-Shop */\nbody {\n  font-family: Arial, sans-serif;\n}\n\nnav a {\n  color: #1b1b2f;\n  text-decoration: none;\n}\n\n.alt {\n  color: #888;\n  text-decoration: line-through;\n}\n\n.neu {\n  color: #ff7a45;\n  font-weight: bold;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "nav a",
+          "prop": "text-decoration-line",
+          "expected": "none",
+          "label": "Menü-Links sind nicht unterstrichen"
+        },
+        {
+          "type": "style",
+          "selector": ".alt",
+          "prop": "text-decoration-line",
+          "expected": "line-through",
+          "label": "Der alte Preis ist durchgestrichen"
+        },
+        {
+          "type": "style",
+          "selector": ".neu",
+          "prop": "font-weight",
+          "expected": [
+            "700",
+            "bold"
+          ],
+          "label": "Der neue Preis ist fett"
+        },
+        {
+          "type": "style",
+          "selector": "p a",
+          "prop": "text-decoration-line",
+          "expected": "underline",
+          "label": "Der Link im Text bleibt unterstrichen"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "jonas",
+      "text": "Zu enge Zeilen sind wie zu wenig Beinfreiheit im Bus – man hält es nicht lange aus. Den **Zeilenabstand** regelt **`line-height`**, am besten als **Zahl ohne Einheit**. Sie wird mit der Schriftgröße multipliziert:\n\n```css\nbody {\n  line-height: 1.6;\n}\n```\n\nBeispiel: 16px Schrift mal 1.5 ergibt 24px Zeilenhöhe – der Browser rechnet. Im `body` gesetzt, erben alle Elemente den **Faktor**: Überschriften bekommen automatisch passend mehr. Angenehm für Fließtext: 1.4 bis 1.6."
+    },
+    {
+      "type": "pair",
+      "text": "**Ordne** jede Deklaration ihrer Wirkung zu.",
+      "pairs": [
+        [
+          "`text-align: right;`",
+          "Text steht rechts in seinem Kasten"
+        ],
+        [
+          "`font-style: italic;`",
+          "kursive Schrift"
+        ],
+        [
+          "`font-weight: bold;`",
+          "fette Schrift"
+        ],
+        [
+          "`text-decoration: none;`",
+          "keine Unterstreichung"
+        ],
+        [
+          "`line-height: 1.5;`",
+          "Zeilenhöhe = 1,5-fache Schriftgröße"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Zitat-Karte: Alles in der Karte (Klasse `karte`) steht zentriert mit Zeilenabstand 1.5, das Zitat (Klasse `zitat`) ist kursiv, der Name der Autorin (Klasse `autor`) fett, und der Link darunter ist nicht unterstrichen.",
+      "starter": {
+        "html": "<div class=\"karte\">\n  <p class=\"zitat\">„Man muss nicht alles können. Man muss nur anfangen.“</p>\n  <p class=\"autor\">Mia Sorgenfrei, Streamerin</p>\n  <a href=\"zitate.html\">Mehr Zitate</a>\n</div>\n",
+        "css": "/* Zitat-Karte */\n.karte {\n  background-color: #e8ecf7;\n  color: #0f1320;\n}\n\n.zitat {\n  font-size: 20px;\n}\n\n.autor {\n  color: #555;\n}\n\n.karte a {\n  color: #b48cff;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Vier Eigenschaften aus dieser Lektion: Ausrichtung, Zeilenabstand, Schriftlage, Schriftstärke – plus die Linie am Link. Alle Regeln gibt es schon.",
+        "Ausrichtung und Zeilenabstand gehören in die Regel der Karte – die Absätze darin erben beides. Muster: `text-align: left;` und `line-height: 2;`.",
+        "zitat-Regel → kursiv, autor-Regel → fett, Regel für den Link → keine Linie. Die Werte stehen in der Zuordnung davor."
+      ],
+      "solution": {
+        "css": "/* Zitat-Karte */\n.karte {\n  background-color: #e8ecf7;\n  color: #0f1320;\n  text-align: center;\n  line-height: 1.5;\n}\n\n.zitat {\n  font-size: 20px;\n  font-style: italic;\n}\n\n.autor {\n  color: #555;\n  font-weight: bold;\n}\n\n.karte a {\n  color: #b48cff;\n  text-decoration: none;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "text-align",
+          "expected": "center",
+          "label": "Der Inhalt der Karte ist zentriert"
+        },
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "line-height",
+          "expected": "24px",
+          "label": "Der Zeilenabstand ist 1.5 (24px bei 16px Schrift)"
+        },
+        {
+          "type": "style",
+          "selector": ".zitat",
+          "prop": "font-style",
+          "expected": "italic",
+          "label": "Das Zitat ist kursiv"
+        },
+        {
+          "type": "style",
+          "selector": ".autor",
+          "prop": "font-weight",
+          "expected": [
+            "700",
+            "bold"
+          ],
+          "label": "Der Name der Autorin ist fett"
+        },
+        {
+          "type": "style",
+          "selector": ".karte a",
+          "prop": "text-decoration-line",
+          "expected": "none",
+          "label": "Der Link ist nicht unterstrichen"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Ab zur FUNKEN-Website – Sams drei Wünsche werden erfüllt: Die Hauptüberschrift rückt in die Mitte, die Links **in der Navigation** verlieren ihre Unterstreichung, und die ganze Seite bekommt einen Zeilenabstand von 1,5.\n\nAchtung beim Menü: Alle anderen Links behalten ihre Linie – im Fließtext muss man Links erkennen. Alle drei Angaben passen in Regeln, die schon da sind."
+    },
+    {
+      "type": "code",
+      "etappe": "12-schrift-und-text/02-textgestaltung"
+    }
+  ]
+}

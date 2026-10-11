@@ -1,0 +1,207 @@
+{
+  "chapter": "12-schrift-und-text",
+  "title": "Abnahme: Schriftzug",
+  "intro": "Meine Oma hat die Seite gesehen und gesagt: „Endlich kann man das lesen!“ Bevor ich die Tickets freigebe, zeig mir, dass Schrift und Text wirklich sitzen – und dass ihr die alten Sachen nicht vergessen habt.",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "css.font-family",
+      "type": "quiz",
+      "question": "Welche Angabe nutzt Arial und fällt sonst auf irgendeine serifenlose Schrift zurück?",
+      "options": [
+        "`font-family: Arial, sans-serif;`",
+        "`font-family: sans-serif, Arial;`",
+        "`font-family: Arial + sans-serif;`",
+        "`font: Arial;`"
+      ],
+      "correct": 0,
+      "explanation": "Wunschschrift zuerst, dann Komma, dann die generische Familie als Ersatz."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Playlist-Seite: Der gesamte Text nutzt Verdana, ersatzweise eine serifenlose Schrift. Die Überschrift ist 36 Pixel groß und zentriert. Die Links in der Liste sind nicht unterstrichen.",
+      "starter": {
+        "html": "<h1>Late-Night-Playlist</h1>\n<p>Zwölf Tracks für die Heimfahrt – erst ruhig, dann lauter.</p>\n<ul>\n  <li><a href=\"track1.html\">Nachtfahrt</a></li>\n  <li><a href=\"track2.html\">Neonlicht</a></li>\n  <li><a href=\"track3.html\">Letzte Bahn</a></li>\n</ul>\n",
+        "css": "/* Playlist */\nbody {\n  color: #0f1320;\n  background-color: #e8ecf7;\n}\n\nh1 {\n  color: #b48cff;\n}\n\na {\n  color: #0f1320;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "solution": {
+        "css": "/* Playlist */\nbody {\n  color: #0f1320;\n  background-color: #e8ecf7;\n  font-family: Verdana, sans-serif;\n}\n\nh1 {\n  color: #b48cff;\n  font-size: 36px;\n  text-align: center;\n}\n\na {\n  color: #0f1320;\n  text-decoration: none;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "font-family",
+          "expected": "Verdana",
+          "contains": true,
+          "label": "Die Seite nutzt Verdana"
+        },
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "font-family",
+          "expected": "sans-serif",
+          "contains": true,
+          "label": "Ersatzweise serifenlos"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "font-size",
+          "expected": "36px",
+          "label": "Die Überschrift ist 36px groß"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "text-align",
+          "expected": "center",
+          "label": "Die Überschrift ist zentriert"
+        },
+        {
+          "type": "style",
+          "selector": "li a",
+          "prop": "text-decoration-line",
+          "expected": "none",
+          "label": "Die Listen-Links sind nicht unterstrichen"
+        }
+      ]
+    },
+    {
+      "konzept": "css.line-height",
+      "type": "fill",
+      "text": "Der Zeilenabstand soll das 1,5-Fache der Schriftgröße sein.",
+      "template": "body {\n  line-height: ___;\n}",
+      "accept": [
+        "1.5"
+      ]
+    },
+    {
+      "konzept": "css.sel-nachfahre",
+      "type": "pair",
+      "text": "Ordne die Selektoren zu.",
+      "pairs": [
+        [
+          "`nav a`",
+          "Links innerhalb der Navigation"
+        ],
+        [
+          "`footer p`",
+          "Absätze im Fußbereich"
+        ],
+        [
+          "`main h2`",
+          "Zwischenüberschriften im Hauptbereich"
+        ],
+        [
+          "`h1, h2`",
+          "Haupt- und Zwischenüberschriften gemeinsam"
+        ]
+      ]
+    },
+    {
+      "konzept": "css.font-weight-style",
+      "type": "quiz",
+      "question": "Ein Zitat soll kursiv erscheinen. Welche Deklaration stimmt?",
+      "options": [
+        "`font-style: italic;`",
+        "`font-weight: italic;`",
+        "`text-decoration: italic;`",
+        "`font-style: kursiv;`"
+      ],
+      "correct": 0,
+      "explanation": "Kursiv ist die Schriftlage (font-style), der Wert heißt italic."
+    },
+    {
+      "konzept": "html.liste-verschachtelt",
+      "type": "order",
+      "text": "Bringe die verschachtelte Liste in die richtige Reihenfolge: eine Kategorie mit einer nummerierten Rangliste darin.",
+      "lines": [
+        "<ul>",
+        "  <li>Laufschuhe",
+        "    <ol>",
+        "      <li>Neonrunner 2</li>",
+        "    </ol>",
+        "  </li>",
+        "</ul>"
+      ],
+      "explanation": "Die nummerierte Liste steckt komplett im Listenpunkt „Laufschuhe“ – erst danach wird der Punkt geschlossen."
+    },
+    {
+      "konzept": "html.class",
+      "type": "quiz",
+      "question": "Ein Absatz soll die Klasse `hinweis` bekommen. Welche Schreibweise stimmt?",
+      "options": [
+        "`<p class=\"hinweis\">`",
+        "`<p .hinweis>`",
+        "`<p id=\"hinweis\">`",
+        "`<class=\"hinweis\">`"
+      ],
+      "correct": 0,
+      "explanation": "Klassen kommen als Attribut class in den öffnenden Tag. Der Punkt gehört nur in den CSS-Selektor, id ist ein anderes Attribut."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Behebe** die zwei Fehler: Der Name der Bubble-Tea-Bar soll 40 Pixel groß und zentriert sein, die Sorten (Klasse `sorte`) kursiv. Doch die Überschrift ist unverändert, und nichts ist kursiv.",
+      "starter": {
+        "html": "<h1>Bubble Tea Bar</h1>\n<p class=\"sorte\">Mango-Passionsfrucht</p>\n<p class=\"sorte\">Matcha-Latte</p>\n<p class=\"sorte\">Brown Sugar</p>\n<p>Alle Sorten auch ohne Zucker.</p>\n",
+        "css": "/* Bubble Tea Bar */\nh1 {\n  color: #ff7a45;\n  font-size: 40px\n  text-align: center;\n}\n\n.sorte {\n  font-weight: italic;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "solution": {
+        "css": "/* Bubble Tea Bar */\nh1 {\n  color: #ff7a45;\n  font-size: 40px;\n  text-align: center;\n}\n\n.sorte {\n  font-style: italic;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "font-size",
+          "expected": "40px",
+          "label": "Der Name ist 40px groß"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "text-align",
+          "expected": "center",
+          "label": "Der Name ist zentriert"
+        },
+        {
+          "type": "style",
+          "selector": ".sorte",
+          "prop": "font-style",
+          "expected": "italic",
+          "label": "Die Sorten sind kursiv"
+        }
+      ]
+    },
+    {
+      "konzept": "css.link",
+      "type": "quiz",
+      "question": "Welche Zeile im Kopfbereich bindet die Datei style.css ein?",
+      "options": [
+        "`<link rel=\"stylesheet\" href=\"style.css\">`",
+        "`<style src=\"style.css\">`",
+        "`<css href=\"style.css\">`",
+        "`<link href=\"style.css\">`"
+      ],
+      "correct": 0,
+      "explanation": "Das Leerelement link braucht beide Attribute: rel=\"stylesheet\" sagt, was die Datei ist, href, wo sie liegt."
+    },
+    {
+      "konzept": "css.text-decoration",
+      "type": "fill",
+      "text": "Die Menü-Links sollen keine Unterstreichung haben.",
+      "template": "nav a {\n  text-decoration: ___;\n}",
+      "accept": [
+        "none"
+      ]
+    }
+  ]
+}

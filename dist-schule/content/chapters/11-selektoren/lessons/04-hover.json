@@ -1,0 +1,205 @@
+{
+  "id": "04-hover",
+  "title": "hover – Maus darüber",
+  "konzepte": [
+    "css.hover"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Fahr auf einer beliebigen Website mit der Maus über einen Link: Er wechselt die Farbe oder wird unterstrichen. Das ist kein JavaScript, sondern CSS – eine **Pseudoklasse**.\n\nEine Pseudoklasse beschreibt einen **Zustand**, der im HTML nicht steht. `:hover` heißt „die Maus ist gerade darüber“. Sie wird mit **Doppelpunkt** direkt an den Selektor gehängt – ohne Leerzeichen.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"24\" text-anchor=\"middle\" fill=\"#eef2ff\" font-weight=\"bold\">Ein Link, zwei Zustände</text><rect x=\"14\" y=\"42\" width=\"136\" height=\"46\" rx=\"8\" fill=\"#e8ecf7\"/><text x=\"82\" y=\"71\" text-anchor=\"middle\" fill=\"#38c7ff\" font-size=\"16\" text-decoration=\"underline\">Programm</text><text x=\"82\" y=\"114\" text-anchor=\"middle\" fill=\"#38c7ff\" font-family=\"monospace\" font-size=\"14\">a { }</text><text x=\"82\" y=\"136\" text-anchor=\"middle\" fill=\"#eef2ff\">ohne Maus</text><rect x=\"170\" y=\"42\" width=\"136\" height=\"46\" rx=\"8\" fill=\"#e8ecf7\"/><text x=\"238\" y=\"71\" text-anchor=\"middle\" fill=\"#ff7a45\" font-size=\"16\" text-decoration=\"underline\">Programm</text><path d=\"M262 60 v22 l5 -5 l4 9 l5 -2 l-4 -9 h7 z\" fill=\"#eef2ff\" stroke=\"#0f1320\" stroke-width=\"1.5\"/><text x=\"238\" y=\"114\" text-anchor=\"middle\" fill=\"#ff7a45\" font-family=\"monospace\" font-size=\"14\">a:hover { }</text><text x=\"238\" y=\"136\" text-anchor=\"middle\" fill=\"#eef2ff\">Maus darüber</text></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Zwei Regeln für einen Link:\n\n```css\na {\n  color: #0b7dd6;\n}\n\na:hover {\n  color: #d94f00;\n}\n```\n\nDie `:hover`-Regel steht **unter** der normalen Regel. Solange die Maus über dem Link ist, gilt sie – danach springt der Link zurück.\n\nZum Prüfen liest Robby deinen Quelltext, denn eine Maus kann er nicht bewegen. Ausprobieren musst du selbst: in der Vorschau über den Link fahren."
+    },
+    {
+      "type": "example",
+      "text": "**Fahr** in der Vorschau mit der Maus über die Links. **Ändere** die Farbe in `a:hover` – oder tausche `color` gegen `background-color` und beobachte, was beim Überfahren passiert.",
+      "html": "<nav>\n  <a href=\"#\">Start</a>\n  <a href=\"#\">Sneaker-Drops</a>\n  <a href=\"#\">Wunschliste</a>\n</nav>\n",
+      "css": "a {\n  color: #0b7dd6;\n}\n\na:hover {\n  color: #ff6a00;\n}\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Wann gilt die Regel `a:hover`?",
+      "options": [
+        "Solange die Maus über dem Link steht",
+        "Nachdem der Link angeklickt wurde",
+        "Immer – sie ersetzt die normale Link-Regel"
+      ],
+      "correct": 0,
+      "explanation": "hover = „darüber schweben“. Verlässt die Maus den Link, gilt sofort wieder die normale Regel."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Links der Navigationsleiste beim Überfahren mit der Maus: Sie werden dann gelb `#ffd23f`. Ohne Maus bleiben sie hell.",
+      "starter": {
+        "html": "<nav>\n  <a href=\"#\">Start</a>\n  <a href=\"#\">Kader</a>\n  <a href=\"#\">Termine</a>\n  <a href=\"#\">Ergebnisse</a>\n</nav>\n",
+        "css": "nav {\n  background-color: #1b1b2f;\n}\n\nnav a {\n  color: #fff7e8;\n}\n\n/* Regel für den Zustand „Maus darüber“ */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Der Zustand „Maus darüber“ ist eine Pseudoklasse – sie hängt mit Doppelpunkt am Selektor.",
+        "Muster: `button:hover { color: red; }` färbt Knöpfe rot, solange die Maus darüber ist.",
+        "Neue Regel unter der nav-a-Regel: gleicher Selektor plus Pseudoklasse, in den Klammern die Farbe aus der Aufgabe."
+      ],
+      "solution": {
+        "css": "nav {\n  background-color: #1b1b2f;\n}\n\nnav a {\n  color: #fff7e8;\n}\n\nnav a:hover {\n  color: #ffd23f;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "a:hover\\s*\\{(\\s*|[^}]*[\\s;])color\\s*:\\s*#ffd23f",
+          "label": "Es gibt eine hover-Regel für die Links mit der Farbe #ffd23f"
+        },
+        {
+          "type": "style",
+          "selector": "nav a",
+          "prop": "color",
+          "expected": "#fff7e8",
+          "label": "Ohne Maus bleiben die Links hell"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "`:hover` geht nicht nur bei Links – jedes Element kann den Zustand haben:\n\n```css\ntr:hover {\n  background-color: #fff7e8;\n}\n```\n\nSo leuchtet in einer Tabelle die Zeile auf, über der die Maus steht. Die Pseudoklasse hängt immer am **letzten** Teil des Selektors: `nav a:hover`, `.karte:hover`.\n\nAber: Auf dem Handy gibt es keine Maus und kein Darüberfahren. Nichts Wichtiges darf **nur** per hover erreichbar sein."
+    },
+    {
+      "type": "fill",
+      "text": "Der Knopf soll orange werden, sobald die Maus darüber ist. **Vervollständige** den Selektor.",
+      "template": "button___ {\n  background-color: #ff6a00;\n}",
+      "accept": [
+        ":hover"
+      ],
+      "hint": "Doppelpunkt und der Name des Zustands – direkt angehängt, ohne Leerzeichen."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Turniertabelle: Jede Zeile bekommt beim Überfahren mit der Maus die Hintergrundfarbe `#ffd23f`. Ohne Maus bleiben die Zeilen ohne Hintergrund.",
+      "starter": {
+        "html": "<h2>Hallenturnier – Tabelle</h2>\n<table>\n  <tr>\n    <th>Platz</th>\n    <th>Team</th>\n    <th>Punkte</th>\n  </tr>\n  <tr>\n    <td>1</td>\n    <td>Team West</td>\n    <td>9</td>\n  </tr>\n  <tr>\n    <td>2</td>\n    <td>Team Nord</td>\n    <td>6</td>\n  </tr>\n  <tr>\n    <td>3</td>\n    <td>Team Süd</td>\n    <td>1</td>\n  </tr>\n</table>\n",
+        "css": "body {\n  color: #1b1b2f;\n}\n\nth {\n  color: #d94f00;\n}\n\n/* Regel für Zeilen unter der Maus */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Zeilen sind das Element tr. Der Zustand „Maus darüber“ kommt mit Doppelpunkt dahinter.",
+        "Muster: `li:hover { color: red; }` – hier brauchst du statt der Textfarbe die Hintergrundfarbe.",
+        "tr, Doppelpunkt, hover, Klammern – darin die Hintergrund-Eigenschaft mit dem Wert aus der Aufgabe."
+      ],
+      "solution": {
+        "css": "body {\n  color: #1b1b2f;\n}\n\nth {\n  color: #d94f00;\n}\n\ntr:hover {\n  background-color: #ffd23f;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "tr:hover\\s*\\{(\\s*|[^}]*[\\s;])background-color\\s*:\\s*#ffd23f",
+          "label": "Zeilen haben eine hover-Regel mit der Hintergrundfarbe #ffd23f"
+        },
+        {
+          "type": "style",
+          "selector": "tr",
+          "prop": "background-color",
+          "expected": "transparent",
+          "label": "Ohne Maus haben die Zeilen keinen Hintergrund"
+        },
+        {
+          "type": "style",
+          "selector": "th",
+          "prop": "color",
+          "expected": "#d94f00",
+          "label": "Die Kopfzellen bleiben dunkelorange"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Ordne zu.",
+      "pairs": [
+        [
+          "`a`",
+          "Link im Normalzustand"
+        ],
+        [
+          "`a:hover`",
+          "Link, solange die Maus darüber ist"
+        ],
+        [
+          "`tr:hover`",
+          "Tabellenzeile unter der Maus"
+        ],
+        [
+          "`nav a:hover`",
+          "Navigations-Link unter der Maus"
+        ],
+        [
+          "hover auf dem Handy",
+          "funktioniert nicht – es gibt keine Maus"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Spielerkarten: 1. Karten (Klasse `karte`) bekommen beim Überfahren mit der Maus die Hintergrundfarbe `#ffd23f`. 2. Links innerhalb der Karten werden beim Überfahren orange `#ff6a00`. Ohne Maus ändert sich nichts.",
+      "starter": {
+        "html": "<h2>Unser Kader</h2>\n<p><a href=\"#\">Alle Statistiken</a></p>\n<div class=\"karte\">\n  <h3>Lena · Tor</h3>\n  <p><a href=\"#\">Profil ansehen</a></p>\n</div>\n<div class=\"karte\">\n  <h3>Mo · Mittelfeld</h3>\n  <p><a href=\"#\">Profil ansehen</a></p>\n</div>\n",
+        "css": "body {\n  color: #1b1b2f;\n}\n\na {\n  color: #0b7dd6;\n}\n\n.karte {\n  background-color: #e8ecf7;\n}\n\n/* Deine hover-Regeln */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Zwei neue Regeln: eine für die Karte selbst, eine für Links innerhalb der Karte – beide mit der Pseudoklasse.",
+        "Die Pseudoklasse hängt am letzten Teil: `.box:hover` bzw. `.box li:hover` – Muster aus einem anderen Kontext.",
+        "Regel 1: Klassen-Selektor plus hover, Hintergrundfarbe. Regel 2: Klassen-Selektor, Leerzeichen, a plus hover, Textfarbe."
+      ],
+      "solution": {
+        "css": "body {\n  color: #1b1b2f;\n}\n\na {\n  color: #0b7dd6;\n}\n\n.karte {\n  background-color: #e8ecf7;\n}\n\n.karte:hover {\n  background-color: #ffd23f;\n}\n\n.karte a:hover {\n  color: #ff6a00;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "\\.karte:hover\\s*\\{(\\s*|[^}]*[\\s;])background-color\\s*:\\s*#ffd23f",
+          "label": "Karten haben eine hover-Regel mit der Hintergrundfarbe #ffd23f"
+        },
+        {
+          "type": "source",
+          "file": "css",
+          "matches": "\\.karte\\s+a:hover\\s*\\{(\\s*|[^}]*[\\s;])color\\s*:\\s*#ff6a00",
+          "label": "Links in den Karten haben eine hover-Regel mit der Farbe #ff6a00"
+        },
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "background-color",
+          "expected": "#e8ecf7",
+          "label": "Ohne Maus bleiben die Karten hellgrau"
+        },
+        {
+          "type": "style",
+          "selector": ".karte a",
+          "prop": "color",
+          "expected": "#0b7dd6",
+          "label": "Ohne Maus bleiben die Links blau"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Die Navigation der Startseite hat seit der letzten Etappe dunkle Links. Jetzt bekommt sie Leben: Fährt jemand mit der Maus über einen Link, leuchtet er in Funken-Orange auf.\n\nDie hover-Regel kommt direkt unter die Regel für die Navigations-Links. Ich prüfe deinen Quelltext – eine Maus, die über den Link fährt, kann ich nicht simulieren. Ausprobieren darfst du selbst."
+    },
+    {
+      "type": "code",
+      "etappe": "11-selektoren/04-hover"
+    }
+  ]
+}

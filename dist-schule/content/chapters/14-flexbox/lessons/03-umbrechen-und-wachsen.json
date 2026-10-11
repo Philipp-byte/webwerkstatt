@@ -1,0 +1,223 @@
+{
+  "id": "03-umbrechen-und-wachsen",
+  "title": "Umbrechen und wachsen",
+  "konzepte": [
+    "css.flex-wrap",
+    "css.flex-grow"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "jonas",
+      "text": "Sams Preis-Kacheln – Tagesticket, Festivalpass, Helfer:in – stehen dank Flexbox in einer Reihe. Auf dem Handy werden sie aber **zusammengequetscht**: Flexbox zwingt alle Kinder in eine einzige Zeile.\n\nMit `flex-wrap: wrap;` am Container dürfen Kinder, die nicht mehr passen, in die **nächste Zeile** rutschen. `gap` hält dann auch zwischen den Zeilen Abstand.\n\n```css\n.kacheln {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 12px;\n}\n```",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"160\" y=\"22\" text-anchor=\"middle\" fill=\"#38c7ff\" font-weight=\"bold\">flex-wrap: wrap</text><rect x=\"20\" y=\"32\" width=\"280\" height=\"104\" rx=\"6\" fill=\"#0f1320\" stroke=\"#38c7ff\" stroke-width=\"2\"/><rect x=\"32\" y=\"44\" width=\"58\" height=\"34\" rx=\"3\" fill=\"#ff7a45\"/><rect x=\"100\" y=\"44\" width=\"58\" height=\"34\" rx=\"3\" fill=\"#ff7a45\"/><rect x=\"168\" y=\"44\" width=\"58\" height=\"34\" rx=\"3\" fill=\"#ff7a45\"/><rect x=\"236\" y=\"44\" width=\"58\" height=\"34\" rx=\"3\" fill=\"#ff7a45\"/><rect x=\"32\" y=\"88\" width=\"126\" height=\"34\" rx=\"3\" fill=\"#4ade80\"/><rect x=\"168\" y=\"88\" width=\"126\" height=\"34\" rx=\"3\" fill=\"#4ade80\"/><text x=\"95\" y=\"110\" text-anchor=\"middle\" fill=\"#0f1320\" font-weight=\"bold\">flex: 1</text><text x=\"231\" y=\"110\" text-anchor=\"middle\" fill=\"#0f1320\" font-weight=\"bold\">flex: 1</text><text x=\"160\" y=\"154\" text-anchor=\"middle\" fill=\"#ffd84d\">Zeile voll → Umbruch · Kinder mit flex: 1 wachsen</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Werkbank: Acht Spiele-Kacheln mit fester Breite in einem Flex-Container. `nowrap` ist der Standard – die Kacheln werden gequetscht. **Ändere** `nowrap` in `wrap` und beobachte die Kacheln. **Ändere** danach die Breite `120px` in `80px`.",
+      "html": "<div class=\"bibliothek\">\n  <div class=\"spiel\">Pixel Rush</div>\n  <div class=\"spiel\">Neon Drift</div>\n  <div class=\"spiel\">Kart Kings</div>\n  <div class=\"spiel\">Sky Farm</div>\n  <div class=\"spiel\">Dungeon Zwei</div>\n  <div class=\"spiel\">Beat Blitz</div>\n  <div class=\"spiel\">Raketenliga</div>\n  <div class=\"spiel\">Puzzle Park</div>\n</div>\n",
+      "css": ".bibliothek {\n  display: flex;\n  flex-wrap: nowrap;\n  gap: 10px;\n}\n\n.spiel {\n  width: 120px;\n  padding: 20px 0;\n  text-align: center;\n  background-color: #b48cff;\n  border-radius: 8px;\n}\n",
+      "editable": [
+        "css"
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Ein Flex-Container hat acht Kacheln, aber nur Platz für vier. Was passiert **ohne** `flex-wrap`?",
+      "options": [
+        "Die Kacheln werden schmaler gequetscht, alle bleiben in einer Zeile",
+        "Die Kacheln rutschen automatisch in die nächste Zeile",
+        "Der Browser zeigt nur die ersten vier Kacheln"
+      ],
+      "correct": 0,
+      "explanation": "Der Standard ist `nowrap`: Flexbox zwängt alles in eine Zeile und macht die Kinder schmaler. Erst `flex-wrap: wrap` erlaubt den Umbruch."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Spiele-Bibliothek: Die Kacheln stehen in einem Flex-Container mit 10 Pixel Abstand und dürfen in die nächste Zeile umbrechen, statt gequetscht zu werden.",
+      "starter": {
+        "html": "<div class=\"bibliothek\">\n  <div class=\"spiel\">Pixel Rush</div>\n  <div class=\"spiel\">Neon Drift</div>\n  <div class=\"spiel\">Kart Kings</div>\n  <div class=\"spiel\">Sky Farm</div>\n  <div class=\"spiel\">Dungeon Zwei</div>\n  <div class=\"spiel\">Beat Blitz</div>\n  <div class=\"spiel\">Raketenliga</div>\n  <div class=\"spiel\">Puzzle Park</div>\n</div>\n",
+        "css": ".bibliothek {\n  /* Flex-Container mit Umbruch */\n}\n\n.spiel {\n  width: 140px;\n  padding: 20px 0;\n  text-align: center;\n  background-color: #b48cff;\n  border-radius: 8px;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Drei Zeilen am Container `.bibliothek`: Flexbox einschalten, Umbruch erlauben, Abstand.",
+        "Umbrechen steuert `flex-wrap`; der Standard `nowrap` verbietet es. Abstand ist wie immer `gap`.",
+        "Struktur: `display: …;`, `flex-wrap: …;`, `gap: …;` – die Werte stehen in der Lektion und in der Aufgabe."
+      ],
+      "solution": {
+        "css": ".bibliothek {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n}\n\n.spiel {\n  width: 140px;\n  padding: 20px 0;\n  text-align: center;\n  background-color: #b48cff;\n  border-radius: 8px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".bibliothek",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Die Bibliothek ist ein Flex-Container"
+        },
+        {
+          "type": "style",
+          "selector": ".bibliothek",
+          "prop": "flex-wrap",
+          "expected": "wrap",
+          "label": "Die Kacheln dürfen in die nächste Zeile umbrechen"
+        },
+        {
+          "type": "style",
+          "selector": ".bibliothek",
+          "prop": "column-gap",
+          "expected": "10px",
+          "label": "Zwischen den Kacheln sind 10 Pixel Abstand"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Standardmäßig sind Flex-Kinder nur so breit wie ihr Inhalt – rechts bleibt Platz frei. Sollen sie ihn **ausfüllen**, bekommen die **Kinder** die Eigenschaft `flex-grow` (wachsen): `0` = nein (Standard), `1` = ja. Meist schreibt man kurz `flex: 1;` – so werden alle Kinder gleich breit. Ein Kind mit `flex: 2` bekommt doppelt so viel Platz.\n\n```css\n.karte {\n  flex: 1;\n}\n```\n\nMerke: `display: flex` an den Container, `flex: 1` an die Kinder."
+    },
+    {
+      "type": "fill",
+      "text": "Preis-Kacheln: Der Container bricht um, jede Kachel wächst gleichmäßig. **Vervollständige** beide Regeln.",
+      "template": ".preise {\n  display: flex;\n  flex-wrap: ___;\n  gap: 12px;\n}\n\n.preis {\n  flex: ___;\n}",
+      "accept": [
+        [
+          "wrap"
+        ],
+        [
+          "1"
+        ]
+      ],
+      "hint": "Umbruch auf Englisch – und der Wachstumsfaktor für „ja“ ist eine Zahl."
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** die Team-Übersicht: Alle Spielerkarten wachsen gleichmäßig, bis die Reihe voll ist. Die Karte der Kapitänin (Klasse `kapitaen`) bekommt doppelt so viel Platz wie jede andere Karte.",
+      "starter": {
+        "html": "<div class=\"team\">\n  <div class=\"kapitaen\">Nova · Kapitänin</div>\n  <div class=\"karte\">Blitz</div>\n  <div class=\"karte\">Kato</div>\n  <div class=\"karte\">Rey</div>\n</div>\n",
+        "css": ".team {\n  display: flex;\n  gap: 12px;\n}\n\n.karte, .kapitaen {\n  border: 2px solid #38c7ff;\n  border-radius: 8px;\n  padding: 12px;\n  text-align: center;\n}\n\n.karte {\n  /* wächst */\n}\n\n.kapitaen {\n  /* wächst doppelt */\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Wachsen ist eine Eigenschaft der Kinder, nicht des Containers.",
+        "Die Kurzform `flex` mit einer Zahl: 1 = normal wachsen. Für doppelt so viel Platz nimmst du die doppelte Zahl.",
+        "Zwei Regeln sind schon vorbereitet – in jede kommt genau eine Zeile `flex: …;`."
+      ],
+      "solution": {
+        "css": ".team {\n  display: flex;\n  gap: 12px;\n}\n\n.karte, .kapitaen {\n  border: 2px solid #38c7ff;\n  border-radius: 8px;\n  padding: 12px;\n  text-align: center;\n}\n\n.karte {\n  flex: 1;\n}\n\n.kapitaen {\n  flex: 2;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".karte",
+          "prop": "flex-grow",
+          "expected": "1",
+          "label": "Die Spielerkarten wachsen"
+        },
+        {
+          "type": "style",
+          "selector": ".kapitaen",
+          "prop": "flex-grow",
+          "expected": "2",
+          "label": "Die Kapitänskarte bekommt doppelt so viel Platz"
+        },
+        {
+          "type": "style",
+          "selector": ".team",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Das Team bleibt ein Flex-Container"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "**Ordne** zu.",
+      "pairs": [
+        [
+          "`flex-wrap: wrap`",
+          "Kinder dürfen in die nächste Zeile rutschen"
+        ],
+        [
+          "`flex-wrap: nowrap`",
+          "alles bleibt in einer Zeile (Standard)"
+        ],
+        [
+          "`flex: 1`",
+          "das Kind wächst und füllt freien Platz"
+        ],
+        [
+          "`flex: 2`",
+          "das Kind bekommt doppelt so viel Platz"
+        ],
+        [
+          "`gap: 12px`",
+          "12 Pixel Luft zwischen Kindern und Zeilen"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** die Preis-Kacheln des Fitnessstudios und behebe zwei Fehler: Die Kacheln sollen die ganze Breite ausfüllen und bei wenig Platz umbrechen – stattdessen bleiben sie schmal, und auf dem Handy werden sie zusammengequetscht.",
+      "starter": {
+        "html": "<h2>Mitgliedschaft</h2>\n<div class=\"preise\">\n  <div class=\"preis\">Schüler-Tarif<br>19 € im Monat</div>\n  <div class=\"preis\">Monatskarte<br>29 € im Monat</div>\n  <div class=\"preis\">Jahreskarte<br>249 € im Jahr</div>\n</div>\n",
+        "css": ".preise {\n  display: flex;\n  flexwrap: wrap;\n  gap: 12px;\n  flex: 1;\n}\n\n.preis {\n  border: 2px solid #4ade80;\n  border-radius: 8px;\n  padding: 16px;\n  text-align: center;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Ein Fehler ist ein Schreibfehler in einem Eigenschaftsnamen – der Browser ignoriert die Zeile. Der andere: Eine Eigenschaft steht am falschen Element.",
+        "Zusammengesetzte Eigenschaftsnamen brauchen einen Bindestrich (wie `flex-direction`). Und Wachsen gehört an die Kinder – hier die Klasse `preis`.",
+        "Struktur: `.preise` bekommt Flexbox, Umbruch und Abstand. `.preis` bekommt eine Zeile `flex: …;`."
+      ],
+      "solution": {
+        "css": ".preise {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 12px;\n}\n\n.preis {\n  border: 2px solid #4ade80;\n  border-radius: 8px;\n  padding: 16px;\n  text-align: center;\n  flex: 1;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".preise",
+          "prop": "flex-wrap",
+          "expected": "wrap",
+          "label": "Die Kacheln dürfen umbrechen"
+        },
+        {
+          "type": "style",
+          "selector": ".preis",
+          "prop": "flex-grow",
+          "expected": "1",
+          "label": "Jede Kachel wächst und füllt die Breite"
+        },
+        {
+          "type": "style",
+          "selector": ".preise",
+          "prop": "display",
+          "expected": "flex",
+          "label": "Die Preisliste bleibt ein Flex-Container"
+        },
+        {
+          "type": "style",
+          "selector": ".preise",
+          "prop": "column-gap",
+          "expected": "12px",
+          "label": "Zwischen den Kacheln bleiben 12 Pixel Abstand"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Die vier Foodtrucks stehen auf der FUNKEN-Startseite als Liste untereinander. Ich will Kacheln: nebeneinander, 12 Pixel Abstand, alle gleich breit – und auf dem Handy sollen sie umbrechen.\n\nDu brauchst zwei neue Regeln mit Nachfahren-Selektoren (kennst du von den Spots): eine für die Liste im Foodtruck-Bereich als Container, eine für ihre Listenpunkte als wachsende Kinder."
+    },
+    {
+      "type": "code",
+      "etappe": "14-flexbox/03-umbrechen-und-wachsen"
+    }
+  ]
+}

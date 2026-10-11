@@ -1,0 +1,46 @@
+{
+  "id": "05-projekt-erstes-skript",
+  "title": "Projekt: Erstes Skript",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Meilenstein Stromkasten! Rückblick: Die Startseite bindet script.js ein, das Skript kennt Variablen mit Text und Zahlen, rechnet mit ihnen und baut Sätze aus Text und Werten. Alles landet noch in der Konsole – ab Station 17 auf der Seite selbst.\n\nZum Abschluss meldet das Skript, wie lange FUNKEN dauert: Name, Text, Zahl, Text – vier Teile, drei Pluszeichen."
+    },
+    {
+      "type": "quiz",
+      "question": "Die Variable `tage` enthält die Zahl 2. Welche Zeile ergibt in der Konsole „Noch 2 Tage“?",
+      "options": [
+        "`console.log(\"Noch \" + tage + \" Tage\");`",
+        "`console.log(\"Noch tage Tage\");`",
+        "`console.log(Noch + tage + Tage);`"
+      ],
+      "correct": 0,
+      "explanation": "Der Variablenname steht ohne Anführungszeichen zwischen den Textstücken; die Leerzeichen gehören in den Text."
+    },
+    {
+      "type": "order",
+      "text": "Sortiere die Zeilen der Fahrschul-Seite: das Grundgerüst in der richtigen Reihenfolge, das Skript zuletzt im body.",
+      "lines": [
+        "<!DOCTYPE html>",
+        "<html lang=\"de\">",
+        "  <head><title>Fahrschule Blitz</title></head>",
+        "  <body>",
+        "    <h1>Fahrschule Blitz</h1>",
+        "    <script src=\"script.js\"></script>",
+        "  </body>",
+        "</html>"
+      ],
+      "explanation": "Dokumenttyp, html, head, body – und im body das Skript als letztes Element."
+    },
+    {
+      "type": "explain",
+      "text": "Jetzt die Etappe – und danach lohnt sich der Klick auf **FUNKEN-Website ansehen**: Neben index.html und style.css liegt dort jetzt dein script.js. Von außen sieht man noch nichts, doch die Konsole des Browsers zeigt schon jede Meldung.\n\nDer Stromkasten ist angeschlossen – gleich nimmt Sam die Station ab."
+    },
+    {
+      "type": "code",
+      "etappe": "16-javascript-start/05-projekt-erstes-skript"
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "chapter": "05-links",
+  "title": "Abnahme: Wegweiser",
+  "intro": "Wegweiser-Check! Meine Mutter hat gestern die Seite auf dem Handy aufgemacht und gefragt, wo man denn hinklickt. Zeig mir, dass jetzt jeder Link da hinführt, wo er soll – und dass die Mail bei uns ankommt.",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "html.a-extern",
+      "type": "quiz",
+      "question": "Ein Link soll zur fremden Seite mit dem Fahrplan führen. Welche Adresse ist richtig?",
+      "options": [
+        "`https://www.example.com/fahrplan`",
+        "`www.example.com/fahrplan`",
+        "`fahrplan.html`"
+      ],
+      "correct": 0,
+      "explanation": "Fremde Seiten brauchen die komplette Adresse mit Protokoll. `fahrplan.html` wäre eine eigene Datei."
+    },
+    {
+      "konzept": "html.a-intern",
+      "type": "pair",
+      "text": "Wohin führen diese Adressen? Ordne zu.",
+      "pairs": [
+        [
+          "`programm.html`",
+          "eigene Datei im selben Ordner"
+        ],
+        [
+          "`#lineup`",
+          "Sprungmarke zur id lineup"
+        ],
+        [
+          "`mailto:hallo@beispiel.de`",
+          "E-Mail-Link"
+        ],
+        [
+          "`https://www.example.com`",
+          "fremde Website"
+        ]
+      ]
+    },
+    {
+      "konzept": "html.a-sprungmarke",
+      "type": "fill",
+      "text": "Die Überschrift soll Ziel der Sprungmarke `#lineup` werden. Vervollständige.",
+      "template": "<h2 ___=\"lineup\">Line-up</h2>",
+      "accept": [
+        "id"
+      ]
+    },
+    {
+      "konzept": "html.a-target",
+      "type": "quiz",
+      "question": "Wann ist ein neuer Tab sinnvoll?",
+      "options": [
+        "Bei Links zu fremden Seiten, die man nebenbei ansieht",
+        "Bei jeder Sprungmarke",
+        "Bei Links zu eigenen Seiten"
+      ],
+      "correct": 0,
+      "explanation": "Fremde Seiten dürfen nebenbei aufgehen. Eigene Seiten und Sprungmarken bleiben im selben Tab."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** zwei Links: Im ersten Absatz „Schreib uns“ – öffnet das Mailprogramm mit info@sv-neckarblick-beispiel.de. Im zweiten Absatz „Spielplan“ – führt zu https://www.example.com/spielplan und öffnet in einem neuen Tab.",
+      "starter": {
+        "html": "<h1>SV Neckarblick</h1>\n<p>Fragen an den Verein? </p>\n<p>Der Spielplan des Verbands: </p>\n"
+      },
+      "solution": {
+        "html": "<h1>SV Neckarblick</h1>\n<p>Fragen an den Verein? <a href=\"mailto:info@sv-neckarblick-beispiel.de\">Schreib uns</a></p>\n<p>Der Spielplan des Verbands: <a href=\"https://www.example.com/spielplan\" target=\"_blank\">Spielplan</a></p>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "p:nth-of-type(1) a",
+          "attr": "href",
+          "expected": "mailto:info@sv-neckarblick-beispiel.de",
+          "label": "„Schreib uns“ öffnet das Mailprogramm mit der Vereinsadresse"
+        },
+        {
+          "type": "text",
+          "selector": "p:nth-of-type(1) a",
+          "expected": "Schreib uns",
+          "label": "Der erste Linktext lautet „Schreib uns“"
+        },
+        {
+          "type": "attr",
+          "selector": "p:nth-of-type(2) a",
+          "attr": "href",
+          "expected": "https://www.example.com/spielplan",
+          "label": "„Spielplan“ führt zur Verbandsseite"
+        },
+        {
+          "type": "attr",
+          "selector": "p:nth-of-type(2) a",
+          "attr": "target",
+          "expected": "_blank",
+          "label": "„Spielplan“ öffnet in einem neuen Tab"
+        },
+        {
+          "type": "text",
+          "selector": "p:nth-of-type(2) a",
+          "expected": "Spielplan",
+          "label": "Der zweite Linktext lautet „Spielplan“"
+        }
+      ]
+    },
+    {
+      "konzept": "html.a-mailto",
+      "type": "bug",
+      "text": "Der Kontakt-Link öffnet kein Mailprogramm. Welche Zeile ist falsch?",
+      "lines": [
+        "<h2>Kontakt</h2>",
+        "<p><a href=\"mail:hallo@festival-beispiel.de\">Schreib uns</a></p>",
+        "<p><a href=\"https://www.example.com\" target=\"_blank\">Zur Stadt</a></p>"
+      ],
+      "line": 1,
+      "explanation": "Der E-Mail-Link beginnt mit `mailto:` – `mail:` kennt der Browser nicht."
+    },
+    {
+      "konzept": "html.liste-verschachtelt",
+      "type": "order",
+      "text": "Sortiere die verschachtelte Liste: eine Aufzählungsliste mit dem Punkt „Hauptbühne“, darin eine nummerierte Liste mit dem ersten Act.",
+      "lines": [
+        "<ul>",
+        "  <li>Hauptbühne",
+        "    <ol>",
+        "      <li>Neonpuls</li>",
+        "    </ol>",
+        "  </li>",
+        "</ul>"
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** die Links der Sommerfest-Seite: „Zum Line-up“ springt nicht zur Line-up-Überschrift, sondern führt ins Leere, und „Tickets“ ist gar nicht anklickbar. Am Ende springt der erste Link, und der zweite führt zur eigenen Datei `tickets.html`.",
+      "starter": {
+        "html": "<h1 id=\"oben\">Sommerfest der Schule</h1>\n<p><a href=\"lineup\">Zum Line-up</a></p>\n<p><a herf=\"tickets.html\">Tickets</a></p>\n<h2 id=\"lineup\">Line-up</h2>\n<p>Schulband, Theater-AG, DJ Pausenhof.</p>\n<p><a href=\"#oben\">Nach oben</a></p>\n"
+      },
+      "solution": {
+        "html": "<h1 id=\"oben\">Sommerfest der Schule</h1>\n<p><a href=\"#lineup\">Zum Line-up</a></p>\n<p><a href=\"tickets.html\">Tickets</a></p>\n<h2 id=\"lineup\">Line-up</h2>\n<p>Schulband, Theater-AG, DJ Pausenhof.</p>\n<p><a href=\"#oben\">Nach oben</a></p>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "h1 + p a",
+          "attr": "href",
+          "expected": "#lineup",
+          "label": "„Zum Line-up“ springt zur Line-up-Überschrift"
+        },
+        {
+          "type": "selector",
+          "selector": "p a[href=\"tickets.html\"]",
+          "label": "„Tickets“ führt zur Datei tickets.html"
+        },
+        {
+          "type": "text",
+          "selector": "a[href=\"tickets.html\"]",
+          "expected": "Tickets",
+          "label": "Der Linktext „Tickets“ bleibt"
+        },
+        {
+          "type": "selector",
+          "selector": "h2#lineup",
+          "label": "Die Line-up-Überschrift behält ihre id"
+        }
+      ]
+    },
+    {
+      "konzept": "web.url",
+      "type": "quiz",
+      "question": "In `https://www.example.com/fahrplan.html` – welcher Teil ist der **Pfad**?",
+      "options": [
+        "`/fahrplan.html`",
+        "`www.example.com`",
+        "`https://`"
+      ],
+      "correct": 0,
+      "explanation": "Der Pfad zeigt auf die Datei auf dem Server. `www.example.com` ist die Domain, `https://` das Protokoll."
+    },
+    {
+      "konzept": "html.entity",
+      "type": "fill",
+      "text": "Die Überschrift soll „Laut & Lokal“ anzeigen. Vervollständige das Sonderzeichen.",
+      "template": "<h2>Laut ___ Lokal</h2>",
+      "accept": [
+        "&amp;"
+      ]
+    },
+    {
+      "konzept": "html.strong-em",
+      "type": "pair",
+      "text": "Ordne die Textelemente zu.",
+      "pairs": [
+        [
+          "`<strong>`",
+          "starke Betonung"
+        ],
+        [
+          "`<em>`",
+          "leichte Betonung"
+        ],
+        [
+          "`<br>`",
+          "Zeilenumbruch"
+        ],
+        [
+          "`<hr>`",
+          "Trennlinie"
+        ]
+      ]
+    },
+    {
+      "konzept": "html.ol",
+      "type": "bug",
+      "text": "Die nummerierte Liste zeigt nur zwei Nummern statt drei. Welche Zeile ist falsch?",
+      "lines": [
+        "<ol>",
+        "  <li>Stadtbahn bis Hafenstraße</li>",
+        "  <p>Den Lichtern folgen</p>",
+        "  <li>Ticket zeigen</li>",
+        "</ol>"
+      ],
+      "line": 2,
+      "explanation": "In einer Liste stehen nur Listenpunkte – ein Absatz bekommt keine Nummer."
+    }
+  ]
+}

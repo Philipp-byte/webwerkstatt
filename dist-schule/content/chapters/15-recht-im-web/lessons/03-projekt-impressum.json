@@ -1,0 +1,54 @@
+{
+  "id": "03-projekt-impressum",
+  "title": "Projekt: Impressum verlinken",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Meilenstein! Die Galerie hat einen sauberen Bildnachweis, und impressum.html steht. Nur: Bis jetzt kennt die Seite niemand – kein Link führt hin. Eine Seite ohne Link ist für Besucherinnen und Besucher unsichtbar.\n\nDeshalb bekommt der Fußbereich der Startseite einen zweiten Absatz mit zwei Links: „Impressum“ und „Tickets“. Der Fußbereich ist auf jeder Seite da – genau dort gehört der Impressum-Link hin."
+    },
+    {
+      "type": "quiz",
+      "question": "Warum gehört der Link zum Impressum in den Fußbereich?",
+      "options": [
+        "Weil das Impressum von jeder Seite aus leicht erreichbar sein muss",
+        "Weil Suchmaschinen die Seite sonst nicht finden",
+        "Weil Links nur im Fußbereich erlaubt sind",
+        "Weil der Fußbereich sonst leer wäre"
+      ],
+      "correct": 0,
+      "explanation": "Das Impressum muss leicht erkennbar und von jeder Seite aus erreichbar sein. Der Fußbereich erscheint auf allen Seiten – deshalb steht der Link dort."
+    },
+    {
+      "type": "pair",
+      "text": "Rückblick: Ordne jede Regel aus style.css ihrer Wirkung auf der Startseite zu.",
+      "pairs": [
+        [
+          "`footer a { color: #ffd23f; }`",
+          "Links im Fußbereich werden gelb – auch der neue Impressum-Link"
+        ],
+        [
+          "`nav { display: flex; gap: 16px; }`",
+          "Die Navigations-Links stehen nebeneinander mit Abstand"
+        ],
+        [
+          "`.hinweis { border-radius: 8px; }`",
+          "Die Hinweis-Box bekommt runde Ecken"
+        ],
+        [
+          "`th { color: #ff6a00; }`",
+          "Die Kopfzellen der Tabelle werden orange"
+        ]
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Gleich in der Etappe: Nach dem Adress-Absatz im Fußbereich kommt ein weiterer Absatz mit den Links „Impressum“ (zur neuen Seite) und „Tickets“, getrennt durch einen Punkt in der Mitte. Beide sind interne Links – der Dateiname ist die Adresse.\n\nDanach lohnt ein Blick auf das Ganze: [FUNKEN-Website ansehen](#/projekt) – klick dich vom Fußbereich ins Impressum."
+    },
+    {
+      "type": "code",
+      "etappe": "15-recht-im-web/03-projekt-impressum"
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "chapter": "10-css-grundlagen",
+  "title": "Abnahme: Lichtpult",
+  "intro": "Ich hab die Seite gesehen – ORANGE! Und der Fußbereich ist nachtblau. Endlich sieht das nach Festival aus. Aber bevor ich das Lichtpult freigebe: Zeig mir, dass du weißt, was du da tust.",
+  "bestanden": 0.8,
+  "aufgaben": [
+    {
+      "konzept": "css.regel",
+      "type": "quiz",
+      "question": "In `a { color: #0b7dd6; }` – was ist `#0b7dd6`?",
+      "options": [
+        "Der Wert",
+        "Der Selektor",
+        "Die Eigenschaft"
+      ],
+      "correct": 0,
+      "explanation": "`a` ist der Selektor, `color` die Eigenschaft, `#0b7dd6` der Wert."
+    },
+    {
+      "konzept": "css.link",
+      "type": "fill",
+      "text": "Vervollständige die Verknüpfung mit dem Stylesheet.",
+      "template": "<___ rel=\"stylesheet\" href=\"style.css\">",
+      "accept": [
+        "link"
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** den Steckbrief: Seite mit Hintergrund `#f6f0ff`, gesamter Text in `#2d2d2d`, Hauptüberschrift in `#6a1b9a`, Links in `#0b7dd6`. Nutze für den Text die Vererbung.",
+      "starter": {
+        "html": "<h1>Steckbrief: Lea</h1>\n<p>17 Jahre, Heilbronn, Praktikum in einer Fahrradwerkstatt.</p>\n<h2>Lieblingsdinge</h2>\n<ul>\n  <li>Bouldern am Wochenende</li>\n  <li>Pizza mit Pilzen</li>\n  <li>Katze Mo</li>\n</ul>\n<p>Mehr Fotos: <a href=\"galerie.html\">Galerie</a></p>\n<p>Motto: Erst machen, dann reden.</p>\n",
+        "css": "/* Steckbrief */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "solution": {
+        "css": "/* Steckbrief */\n\nbody {\n  background-color: #f6f0ff;\n  color: #2d2d2d;\n}\n\nh1 {\n  color: #6a1b9a;\n}\n\na {\n  color: #0b7dd6;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "background-color",
+          "expected": "#f6f0ff",
+          "label": "Die Seite hat einen hellen lila Hintergrund (#f6f0ff)"
+        },
+        {
+          "type": "style",
+          "selector": "li",
+          "prop": "color",
+          "expected": "#2d2d2d",
+          "label": "Die Listenpunkte erben die Textfarbe (#2d2d2d)"
+        },
+        {
+          "type": "style",
+          "selector": "h1",
+          "prop": "color",
+          "expected": "#6a1b9a",
+          "label": "Die Hauptüberschrift ist lila (#6a1b9a)"
+        },
+        {
+          "type": "style",
+          "selector": "a",
+          "prop": "color",
+          "expected": "#0b7dd6",
+          "label": "Die Links sind blau (#0b7dd6)"
+        }
+      ]
+    },
+    {
+      "konzept": "css.farbe",
+      "type": "pair",
+      "text": "Ordne die Farbwerte zu.",
+      "pairs": [
+        [
+          "`#ff0000`",
+          "Rot – Hex-Code"
+        ],
+        [
+          "`rgb(0, 0, 255)`",
+          "Blau – rgb-Wert"
+        ],
+        [
+          "`#fff`",
+          "Weiß – Hex-Kurzform"
+        ],
+        [
+          "`black`",
+          "Schwarz – Farbname"
+        ]
+      ]
+    },
+    {
+      "konzept": "html.label",
+      "type": "quiz",
+      "question": "Wie wird eine Beschriftung (label) fest mit einem Eingabefeld verbunden?",
+      "options": [
+        "for am label hat denselben Wert wie id am Feld",
+        "name am label hat denselben Wert wie name am Feld",
+        "Das label steht einfach direkt vor dem Feld"
+      ],
+      "correct": 0,
+      "explanation": "for zeigt auf die id des Feldes – ein Klick auf die Beschriftung springt dann ins Feld."
+    },
+    {
+      "konzept": "html.semantik",
+      "type": "bug",
+      "text": "Eine Zone der Seite ist falsch benannt. Welche Zeile?",
+      "lines": [
+        "<header>",
+        "  <h1>Mein Setup</h1>",
+        "</header>",
+        "<navigation>",
+        "  <a href=\"index.html\">Start</a>",
+        "</navigation>"
+      ],
+      "line": 3,
+      "explanation": "Das Element für die Navigation heißt `nav`."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** das Stylesheet der Setup-Seite: Der Kopfbereich sollte dunkel mit heller Schrift sein und die Absätze grau – aber der Kopfbereich ist weiß und die Absätze sind schwarz. Finde die zwei Fehler.",
+      "starter": {
+        "html": "<header>\n  <h1>Mein Gaming-Setup</h1>\n  <p>Selbst zusammengestellt, Stück für Stück.</p>\n</header>\n<main>\n  <h2>Monitor</h2>\n  <p>27 Zoll, 144 Hertz – ruckelfrei.</p>\n  <h2>Tastatur</h2>\n  <p>Mechanisch, mit roten Schaltern.</p>\n  <h2>Maus</h2>\n  <p>Leicht und kabellos. Tipps gibt es im <a href=\"https://www.example.com\" target=\"_blank\">Setup-Forum</a>.</p>\n</main>\n<footer>\n  <p>Setup-Liste von Deniz · <a href=\"mailto:deniz@example.com\">Schreib mir</a></p>\n</footer>\n",
+        "css": "/* Setup-Seite */\n\nheader {\n  background-color: #101828\n  color: #eef2ff;\n}\n\np {\n  colour: gray;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "solution": {
+        "css": "/* Setup-Seite */\n\nheader {\n  background-color: #101828;\n  color: #eef2ff;\n}\n\np {\n  color: gray;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "header",
+          "prop": "background-color",
+          "expected": "#101828",
+          "label": "Der Kopfbereich ist dunkel (#101828)"
+        },
+        {
+          "type": "style",
+          "selector": "header",
+          "prop": "color",
+          "expected": "#eef2ff",
+          "label": "Die Schrift im Kopfbereich ist hell (#eef2ff)"
+        },
+        {
+          "type": "style",
+          "selector": "main p",
+          "prop": "color",
+          "expected": "gray",
+          "label": "Die Absätze sind grau"
+        }
+      ]
+    },
+    {
+      "konzept": "html.alt",
+      "type": "quiz",
+      "question": "Wozu dient das alt-Attribut eines Bildes?",
+      "options": [
+        "Es beschreibt das Bild, falls es nicht geladen oder gesehen werden kann",
+        "Es legt die Größe des Bildes fest",
+        "Es nennt den Dateinamen des Bildes"
+      ],
+      "correct": 0,
+      "explanation": "Der Alternativtext ersetzt das Bild – für Screenreader und wenn die Datei fehlt. Die Datei nennt src."
+    },
+    {
+      "konzept": "html.grundgeruest",
+      "type": "order",
+      "text": "Sortiere das Grundgerüst einer Seite.",
+      "lines": [
+        "<!DOCTYPE html>",
+        "<html lang=\"de\">",
+        "<head>",
+        "<title>Mein Setup</title>",
+        "</head>",
+        "<body>",
+        "</body>",
+        "</html>"
+      ]
+    },
+    {
+      "konzept": "css.background",
+      "type": "quiz",
+      "question": "Welche Eigenschaft färbt die Fläche hinter dem Text?",
+      "options": [
+        "`background-color`",
+        "`color`",
+        "`bgcolor`"
+      ],
+      "correct": 0,
+      "explanation": "`color` ist die Schrift, `background-color` die Fläche. `bgcolor` ist kein CSS."
+    },
+    {
+      "konzept": "css.orte",
+      "type": "fill",
+      "text": "Vervollständige das Inline-CSS: Nur dieser Absatz wird rot.",
+      "template": "<p ___=\"color: red;\">Achtung!</p>",
+      "accept": [
+        "style"
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 // Rendert den Vorspann als Video: Das Storyboard (scripts/intro-video/storyboard.html) wird
 // in Chromium geladen, Frame für Frame per seek(t) gestellt und fotografiert; die Bilder
 // gehen direkt an ffmpeg, dazu der synthetische Soundtrack (scripts/intro-video/musik.mjs).
-// Ergebnis: public/intro/webcup-intro.mp4 (H.264 + AAC), dazu webcup-intro.webm (VP9 + Opus,
+// Ergebnis: public/intro/schattennetz-intro.mp4 (H.264 + AAC), dazu schattennetz-intro.webm (VP9 + Opus,
 // Fallback für Browser ohne H.264), ein Poster-Bild und Untertitel (VTT).
 // Aufruf: node scripts/render-intro-video.mjs [--fps 30] [--schnell] [--nur-poster] [--ohne-webm]
 //   --schnell  rendert mit 15 fps und niedrigerer Qualität (zum Ausprobieren)
@@ -17,6 +17,7 @@ import { erzeugeSoundtrack } from './intro-video/musik.mjs';
 
 const WURZEL = path.join(import.meta.dirname, '..');
 const ZIEL_DIR = path.join(WURZEL, 'public', 'intro');
+const NAME = 'schattennetz-intro';
 const args = process.argv.slice(2);
 const schnell = args.includes('--schnell');
 const nurPoster = args.includes('--nur-poster');
@@ -27,7 +28,7 @@ const BREITE = 1280;
 const HOEHE = 720;
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.woff': 'font/woff', '.webm': 'video/webm', '.wav': 'audio/wav' };
 
-// Kleiner statischer Server über dem Repo (Schriften, Figuren, Inhalte, Emblem-Engine)
+// Kleiner statischer Server über dem Repo (Schriften, Figuren, Welt, Karten- und Sigil-Engine)
 async function freierPort() {
   return new Promise((resolve) => {
     const srv = net.createServer();
@@ -79,11 +80,12 @@ const dauer = await page.evaluate(() => window.__intro.dauer);
 const untertitel = await page.evaluate(() => window.__intro.untertitel);
 log(`Storyboard bereit: ${dauer} s, ${FPS} fps`);
 
-// Poster (WEBCUP-Titel) und Untertitel
-await page.evaluate((t) => window.__intro.seek(t), 27.4);
+// Poster (Titelbild) und Untertitel
+const posterZeit = await page.evaluate(() => window.__intro.poster ?? 0);
+await page.evaluate((t) => window.__intro.seek(t), posterZeit);
 await page.waitForTimeout(80);
-await page.screenshot({ path: path.join(ZIEL_DIR, 'webcup-intro-poster.jpg'), type: 'jpeg', quality: 88 });
-fs.writeFileSync(path.join(ZIEL_DIR, 'webcup-intro.vtt'), vtt(untertitel));
+await page.screenshot({ path: path.join(ZIEL_DIR, `${NAME}-poster.jpg`), type: 'jpeg', quality: 88 });
+fs.writeFileSync(path.join(ZIEL_DIR, `${NAME}.vtt`), vtt(untertitel));
 log('Poster und Untertitel geschrieben');
 
 if (!nurPoster) {
@@ -94,7 +96,7 @@ if (!nurPoster) {
   log('Soundtrack erzeugt');
 
   // ffmpeg: Bilder über stdin, Ton aus der WAV
-  const ziel = path.join(ZIEL_DIR, 'webcup-intro.mp4');
+  const ziel = path.join(ZIEL_DIR, `${NAME}.mp4`);
   const ff = spawn('ffmpeg', [
     '-y', '-loglevel', 'error',
     '-f', 'image2pipe', '-framerate', String(FPS), '-i', 'pipe:0',
@@ -123,7 +125,7 @@ if (!nurPoster) {
     log(`Video geschrieben: ${path.relative(WURZEL, ziel)} (${mb} MB, ${frames} Frames)`);
     if (!ohneWebm) {
       // WebM-Fassung (VP9/Opus) aus dem MP4 – für Browser ohne H.264 (z. B. Chromium ohne proprietäre Codecs)
-      const webm = path.join(ZIEL_DIR, 'webcup-intro.webm');
+      const webm = path.join(ZIEL_DIR, `${NAME}.webm`);
       const vp9 = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-i', ziel, '-c:v', 'libvpx-vp9', '-crf', schnell ? '40' : '34', '-b:v', '0', '-row-mt', '1', '-deadline', 'good', '-cpu-used', schnell ? '5' : '2', '-pix_fmt', 'yuv420p', '-c:a', 'libopus', '-b:a', '96k', webm], { stdio: ['ignore', 'ignore', 'inherit'] });
       const code2 = await new Promise((resolve) => vp9.on('close', resolve));
       if (code2 === 0) log(`WebM geschrieben: ${path.relative(WURZEL, webm)} (${(fs.statSync(webm).size / 1024 / 1024).toFixed(2)} MB)`);

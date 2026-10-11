@@ -1,0 +1,273 @@
+{
+  "id": "02-impressum-und-datenschutz",
+  "title": "Impressum und Datenschutz",
+  "konzepte": [
+    "recht.impressum",
+    "recht.datenschutz"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Sam bekommt eine Mail von der Schulleitung: „Wer steht eigentlich hinter der Festival-Seite?“ Genau das muss jede Website beantworten, die nicht rein privat ist – Vereine, Schülerfirmen, Shops, Blogs. Die Antwort heißt **Impressum**: eine Seite, die sagt, wer die Website anbietet und wie man diese Person erreicht.\n\nDas Impressum muss von **jeder** Seite aus leicht zu finden sein – deshalb steht der Link fast immer im Fußbereich.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><rect x=\"14\" y=\"18\" width=\"84\" height=\"56\" rx=\"6\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"56\" y=\"40\" text-anchor=\"middle\" fill=\"#eef2ff\">Startseite</text><text x=\"56\" y=\"64\" text-anchor=\"middle\" fill=\"#ffd84d\">Impressum</text><rect x=\"14\" y=\"88\" width=\"84\" height=\"56\" rx=\"6\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"56\" y=\"110\" text-anchor=\"middle\" fill=\"#eef2ff\">Tickets</text><text x=\"56\" y=\"134\" text-anchor=\"middle\" fill=\"#ffd84d\">Impressum</text><path d=\"M102 60 H190\" stroke=\"#ffd84d\" stroke-width=\"2\" marker-end=\"url(#gelb)\"/><path d=\"M102 130 H190\" stroke=\"#ffd84d\" stroke-width=\"2\" marker-end=\"url(#gelb)\"/><rect x=\"196\" y=\"18\" width=\"110\" height=\"126\" rx=\"8\" fill=\"#1b2135\" stroke=\"#38c7ff\" stroke-width=\"2\"/><text x=\"251\" y=\"42\" text-anchor=\"middle\" fill=\"#38c7ff\" font-weight=\"bold\">impressum.html</text><text x=\"208\" y=\"68\" fill=\"#eef2ff\">Name, Anschrift</text><text x=\"208\" y=\"90\" fill=\"#eef2ff\">E-Mail, Telefon</text><text x=\"208\" y=\"112\" fill=\"#eef2ff\">Verantwortlich</text><text x=\"208\" y=\"134\" fill=\"#4ade80\">+ Datenschutz</text><defs><marker id=\"gelb\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#ffd84d\"/></marker></defs></svg>"
+    },
+    {
+      "type": "quiz",
+      "question": "Sam fragt: „Brauchen wir für die FUNKEN-Seite wirklich ein Impressum?“ Was stimmt?",
+      "options": [
+        "Ja, die Seite ist öffentlich und verkauft Tickets – nicht rein privat",
+        "Nein – ein Impressum brauchen nur große Firmen mit Onlineshop",
+        "Nein – die Adresse steht ja schon im Fußbereich",
+        "Nur, wenn auf der Seite Werbung läuft"
+      ],
+      "correct": 0,
+      "explanation": "Sobald eine Website nicht rein privat ist – und Ticketverkauf ist nicht privat –, gehört ein Impressum dazu. Die Adresszeile im Fußbereich allein reicht nicht: Es fehlen Kontakt und verantwortliche Person, und es muss klar als Impressum erkennbar sein."
+    },
+    {
+      "type": "explain",
+      "text": "Was ins Impressum gehört:\n\n- **Name** des Anbieters – bei Vereinen oder Firmen auch die Rechtsform und wer sie vertritt\n- **Anschrift**: Straße, Hausnummer, PLZ, Ort – ein Postfach reicht nicht\n- **Kontakt**: E-Mail-Adresse und ein weiterer schneller Weg, etwa Telefon\n- **Verantwortliche Person** für Texte und Berichte, mit Anschrift\n\nDas ist Grundwissen, keine Rechtsberatung: Eine echte Seite prüfst du mit einem Impressum-Generator, etwa von Verbraucherzentrale oder IHK."
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Angaben des Impressums zu.",
+      "pairs": [
+        [
+          "Anschrift",
+          "Straße, Hausnummer, PLZ und Ort – kein Postfach"
+        ],
+        [
+          "Kontakt",
+          "E-Mail und ein schneller zweiter Weg, etwa Telefon"
+        ],
+        [
+          "Verantwortliche Person",
+          "steht mit Namen für Texte und Berichte gerade"
+        ],
+        [
+          "Link im Fußbereich",
+          "macht das Impressum von jeder Seite aus erreichbar"
+        ]
+      ]
+    },
+    {
+      "type": "example",
+      "text": "So sieht der Kern eines Impressums in HTML aus: ein Absatz, in dem `<br>` die Zeilen umbricht (ein Leerelement ohne schließenden Tag), und ein E-Mail-Link, dessen Adresse mit `mailto:` beginnt. **Ändere** den Firmennamen, **ergänze** eine vierte Zeile mit einer Telefonnummer und beobachte, wie der Absatz wächst.",
+      "html": "<h2>Angaben</h2>\n<p>Sneaker-Lager GmbH (fiktiv)<br>Marktstraße 4<br>70173 Stuttgart<br><a href=\"mailto:post@sneaker-lager-beispiel.de\">post@sneaker-lager-beispiel.de</a></p>\n"
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** den Adress-Absatz: Der Name, die Straße und „74072 Heilbronn“ stehen in drei eigenen Zeilen. In einer vierten Zeile folgt ein E-Mail-Link zu post@pizza-kollektiv-beispiel.de, der das Mailprogramm öffnet – der sichtbare Text ist die Adresse selbst.",
+      "starter": {
+        "html": "<h2>Angaben</h2>\n<p>Pizza-Kollektiv Neckar e. V. Hafenweg 2 74072 Heilbronn</p>\n"
+      },
+      "hints": [
+        "Zeilenumbrüche innerhalb eines Absatzes machst du mit einem Leerelement – es hat keinen schließenden Tag.",
+        "Ein E-Mail-Link ist ein normaler Link, dessen Adresse mit mailto: beginnt, zum Beispiel mailto:info@waffelwagen-beispiel.de.",
+        "Struktur: Name, Umbruch, Straße, Umbruch, Ort, Umbruch, dann der Link mit der Adresse als Text – alles in dem einen Absatz."
+      ],
+      "solution": {
+        "html": "<h2>Angaben</h2>\n<p>Pizza-Kollektiv Neckar e. V.<br>Hafenweg 2<br>74072 Heilbronn<br><a href=\"mailto:post@pizza-kollektiv-beispiel.de\">post@pizza-kollektiv-beispiel.de</a></p>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "p br",
+          "count": 3,
+          "label": "Der Absatz hat drei Zeilenumbrüche"
+        },
+        {
+          "type": "attr",
+          "selector": "p a",
+          "attr": "href",
+          "expected": "mailto:post@pizza-kollektiv-beispiel.de",
+          "label": "Der Link öffnet das Mailprogramm"
+        },
+        {
+          "type": "text",
+          "selector": "p a",
+          "expected": "post@pizza-kollektiv-beispiel.de",
+          "label": "Der Linktext ist die E-Mail-Adresse"
+        },
+        {
+          "type": "text",
+          "selector": "p",
+          "expected": "Pizza-Kollektiv Neckar e. V. Hafenweg 2 74072 Heilbronn post@pizza-kollektiv-beispiel.de",
+          "label": "Alle vier Zeilen stehen im Absatz"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Das Ticketformular sammelt Namen und E-Mail-Adressen – **personenbezogene Daten**, also alles, was sich einer Person zuordnen lässt (auch IP-Adressen). Dafür gilt in der EU die **DSGVO**, die Datenschutz-Grundverordnung. Ihr Grundgedanke: so wenig Daten wie möglich erheben, nur für einen klaren Zweck nutzen, und offen sagen, was passiert.\n\nDieses „offen sagen“ ist die **Datenschutzerklärung**: welche Daten, wozu, wie lange – und dass die Person Auskunft und Löschung verlangen kann."
+    },
+    {
+      "type": "quiz",
+      "question": "Das Ticketformular fragt Name und E-Mail ab. Was muss die Datenschutzerklärung dazu sagen?",
+      "options": [
+        "Welche Daten gespeichert werden und wozu, etwa zur Bestätigung der Reservierung",
+        "Nichts – Name und E-Mail sind keine personenbezogenen Daten",
+        "Nur, dass die Seite Cookies verwendet",
+        "Nichts, solange die Daten nicht verkauft werden"
+      ],
+      "correct": 0,
+      "explanation": "Name und E-Mail sind personenbezogene Daten. Wer sie speichert, muss erklären, welche Daten es sind und wozu sie gebraucht werden – und darf sie nur für diesen Zweck nutzen."
+    },
+    {
+      "type": "explain",
+      "text": "Oft steht im Impressum noch ein **Disclaimer** (Haftungsausschluss): ein Hinweis, dass man für die Inhalte fremder Seiten, auf die man verlinkt, nicht verantwortlich ist. Er ersetzt weder Impressum noch Datenschutzerklärung – und für eigene Inhalte haftet man trotzdem.\n\nUnd weil unsere Übungsseiten Fantasie-Betriebe zeigen, kennzeichnen wir das deutlich, damit niemand sie für echt hält:\n\n```html\n<p><strong>Fiktiver Betrieb für Übungszwecke.</strong></p>\n```"
+    },
+    {
+      "type": "order",
+      "text": "Sortiere die Zeilen zur Impressum-Seite: Kopfbereich, dann der Hauptbereich mit den Angaben und danach der Datenschutz-Abschnitt.",
+      "lines": [
+        "<header>",
+        "  <h1>Impressum</h1>",
+        "</header>",
+        "<main>",
+        "  <h2>Angaben</h2>",
+        "  <p>Waffelwagen<br>Hafenstraße 9<br>74072 Heilbronn</p>",
+        "  <h2>Datenschutzerklärung</h2>",
+        "</main>"
+      ],
+      "explanation": "Erst der Kopfbereich mit der Hauptüberschrift, dann der Hauptbereich: Angaben, Adresse, Datenschutzerklärung."
+    },
+    {
+      "type": "code",
+      "task": "**Strukturiere** die Impressum-Seite mit Bedeutung: die Hauptüberschrift in einen Kopfbereich, der Link in eine Navigation, beide Abschnitte mit ihren Absätzen in einen Hauptbereich und die letzte Adresszeile in einen Fußbereich – in dieser Reihenfolge.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Impressum – Waffelwagen</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Impressum</h1>\n    <a href=\"index.html\">Startseite</a>\n    <h2>Angaben</h2>\n    <p>Waffelwagen Heilbronn (fiktiv)<br>Hafenstraße 9<br>74072 Heilbronn<br><a href=\"mailto:post@waffelwagen-beispiel.de\">post@waffelwagen-beispiel.de</a></p>\n    <h2>Datenschutzerklärung</h2>\n    <p>Beim Bestellformular speichern wir Name und E-Mail nur, um die Bestellung zu bestätigen.</p>\n    <p><strong>Fiktiver Betrieb für Übungszwecke.</strong></p>\n    <p>Waffelwagen Heilbronn · Hafenstraße 9 · 74072 Heilbronn</p>\n  </body>\n</html>\n",
+        "css": "header {\n  background-color: #1b1b2f;\n  color: #ffd23f;\n  padding: 16px;\n}\n\nnav {\n  display: flex;\n  gap: 16px;\n  padding: 8px 16px;\n}\n\nmain {\n  padding: 16px;\n}\n\nfooter {\n  background-color: #1b1b2f;\n  color: #fff7e8;\n  padding: 16px;\n  text-align: center;\n}\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "hints": [
+        "Vier semantische Elemente aus Kapitel 8: eins für den Kopf, eins für die Navigation, eins für den Hauptinhalt, eins für den Fuß.",
+        "Jedes umschließt seinen Teil: öffnender Tag davor, schließender Tag dahinter – die Inhalte selbst ändern sich nicht.",
+        "Reihenfolge im body: Kopf mit der h1, Navigation mit dem Link, Hauptbereich mit beiden h2-Abschnitten, Fußbereich mit dem letzten Absatz."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Impressum – Waffelwagen</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <header>\n      <h1>Impressum</h1>\n    </header>\n\n    <nav>\n      <a href=\"index.html\">Startseite</a>\n    </nav>\n\n    <main>\n      <h2>Angaben</h2>\n      <p>Waffelwagen Heilbronn (fiktiv)<br>Hafenstraße 9<br>74072 Heilbronn<br><a href=\"mailto:post@waffelwagen-beispiel.de\">post@waffelwagen-beispiel.de</a></p>\n\n      <h2>Datenschutzerklärung</h2>\n      <p>Beim Bestellformular speichern wir Name und E-Mail nur, um die Bestellung zu bestätigen.</p>\n      <p><strong>Fiktiver Betrieb für Übungszwecke.</strong></p>\n    </main>\n\n    <footer>\n      <p>Waffelwagen Heilbronn · Hafenstraße 9 · 74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "header h1",
+          "count": 1,
+          "label": "Die Hauptüberschrift liegt im Kopfbereich"
+        },
+        {
+          "type": "attr",
+          "selector": "nav a",
+          "attr": "href",
+          "expected": "index.html",
+          "label": "Der Link zur Startseite liegt in der Navigation"
+        },
+        {
+          "type": "selector",
+          "selector": "main h2",
+          "count": 2,
+          "label": "Beide Abschnitte liegen im Hauptbereich"
+        },
+        {
+          "type": "text",
+          "selector": "footer p",
+          "expected": "Waffelwagen Heilbronn · Hafenstraße 9 · 74072 Heilbronn",
+          "label": "Die Adresszeile liegt im Fußbereich"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "header",
+            "nav",
+            "main",
+            "footer"
+          ],
+          "label": "Kopf, Navigation, Hauptbereich, Fuß – in dieser Reihenfolge"
+        },
+        {
+          "type": "text",
+          "selector": "main strong",
+          "expected": "Fiktiver Betrieb für Übungszwecke.",
+          "label": "Der Hinweis bleibt stark betont"
+        }
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige das Impressum: Womit beginnt die Adresse des E-Mail-Links, und welches Element betont den Hinweis stark?",
+      "template": "<p><a href=\"___post@waffelwagen-beispiel.de\">post@waffelwagen-beispiel.de</a></p>\n<p><___>Fiktiver Betrieb für Übungszwecke.</strong></p>",
+      "accept": [
+        [
+          "mailto:"
+        ],
+        [
+          "strong"
+        ]
+      ],
+      "hint": "Der Link braucht das Schlüsselwort mit Doppelpunkt vor der Adresse. Das Element für starke Betonung ist das englische Wort für „stark“."
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** die fertige Impressum-Seite – zwei Dinge stimmen nicht: Der E-Mail-Link öffnet kein Mailprogramm, sondern führt ins Leere. Und ab der Überschrift „Datenschutzerklärung“ ist plötzlich der ganze Text riesig. Finde und behebe beide Fehler.",
+      "starter": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Impressum – Waffelwagen</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <header>\n      <h1>Impressum</h1>\n    </header>\n\n    <nav>\n      <a href=\"index.html\">Startseite</a>\n    </nav>\n\n    <main>\n      <h2>Angaben</h2>\n      <p>Waffelwagen Heilbronn (fiktiv)<br>Hafenstraße 9<br>74072 Heilbronn<br><a href=\"post@waffelwagen-beispiel.de\">post@waffelwagen-beispiel.de</a></p>\n\n      <h2>Datenschutzerklärung\n      <p>Beim Bestellformular speichern wir Name und E-Mail nur, um die Bestellung zu bestätigen.</p>\n      <p><strong>Fiktiver Betrieb für Übungszwecke.</strong></p>\n    </main>\n\n    <footer>\n      <p>Waffelwagen Heilbronn · Hafenstraße 9 · 74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n",
+        "css": "header {\n  background-color: #1b1b2f;\n  color: #ffd23f;\n  padding: 16px;\n}\n\nnav {\n  display: flex;\n  gap: 16px;\n  padding: 8px 16px;\n}\n\nmain {\n  padding: 16px;\n}\n\nfooter {\n  background-color: #1b1b2f;\n  color: #fff7e8;\n  padding: 16px;\n  text-align: center;\n}\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "hints": [
+        "Ein E-Mail-Link braucht in der Adresse das Schlüsselwort vor der E-Mail-Adresse – vergleiche mit dem Beispiel weiter oben in dieser Lektion.",
+        "Wenn nach einer Überschrift alles riesig wird, wurde die Überschrift nie geschlossen – der Browser hält den folgenden Text dann für einen Teil davon.",
+        "Zwei kleine Änderungen: ein Wort mit Doppelpunkt am Anfang der Link-Adresse, ein schließender Tag direkt hinter „Datenschutzerklärung“."
+      ],
+      "solution": {
+        "html": "<!DOCTYPE html>\n<html lang=\"de\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Impressum – Waffelwagen</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <header>\n      <h1>Impressum</h1>\n    </header>\n\n    <nav>\n      <a href=\"index.html\">Startseite</a>\n    </nav>\n\n    <main>\n      <h2>Angaben</h2>\n      <p>Waffelwagen Heilbronn (fiktiv)<br>Hafenstraße 9<br>74072 Heilbronn<br><a href=\"mailto:post@waffelwagen-beispiel.de\">post@waffelwagen-beispiel.de</a></p>\n\n      <h2>Datenschutzerklärung</h2>\n      <p>Beim Bestellformular speichern wir Name und E-Mail nur, um die Bestellung zu bestätigen.</p>\n      <p><strong>Fiktiver Betrieb für Übungszwecke.</strong></p>\n    </main>\n\n    <footer>\n      <p>Waffelwagen Heilbronn · Hafenstraße 9 · 74072 Heilbronn</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "tests": [
+        {
+          "type": "attr",
+          "selector": "main a",
+          "attr": "href",
+          "expected": "mailto:post@waffelwagen-beispiel.de",
+          "label": "Der E-Mail-Link öffnet das Mailprogramm"
+        },
+        {
+          "type": "text",
+          "selector": "main h2:nth-of-type(2)",
+          "expected": "Datenschutzerklärung",
+          "label": "Die zweite Überschrift enthält nur ihren Text"
+        },
+        {
+          "type": "text",
+          "selector": "main h2:nth-of-type(2) + p",
+          "expected": "Beim Bestellformular speichern wir Name und E-Mail nur, um die Bestellung zu bestätigen.",
+          "label": "Der Datenschutz-Absatz ist wieder ein normaler Absatz"
+        },
+        {
+          "type": "text",
+          "selector": "main strong",
+          "expected": "Fiktiver Betrieb für Übungszwecke.",
+          "label": "Der Hinweis ist stark betont"
+        },
+        {
+          "type": "selector",
+          "selector": "main p br",
+          "count": 3,
+          "label": "Die Adresse hat weiterhin drei Zeilenumbrüche"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "ayla",
+      "text": "Jetzt bekommt FUNKEN seine eigene Impressum-Seite – von Grund auf, wie programm.html und tickets.html: Grundgerüst mit der Verknüpfung zum Stylesheet, dann Kopfbereich, Navigation, Hauptbereich und Fußbereich.\n\nIm Hauptbereich zwei Abschnitte: die Angaben mit Adresse und E-Mail-Link, dann die Datenschutzerklärung mit dem Satz zum Ticketformular und dem stark betonten Hinweis auf den fiktiven Betrieb. Übernimm die Texte genau – auch die Zeichen – und ·."
+    },
+    {
+      "type": "code",
+      "etappe": "15-recht-im-web/02-impressum-und-datenschutz"
+    }
+  ]
+}

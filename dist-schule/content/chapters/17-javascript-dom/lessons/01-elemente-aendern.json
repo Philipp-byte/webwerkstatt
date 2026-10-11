@@ -1,0 +1,199 @@
+{
+  "id": "01-elemente-aendern",
+  "title": "Elemente ändern",
+  "konzepte": [
+    "js.getElementById",
+    "js.textContent"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Ein Like-Zähler in einer App springt um eins hoch – ohne dass die Seite neu lädt. Dahinter steckt JavaScript, das die Seite **verändert**.\n\nDer Browser baut aus deinem HTML einen Baum aus Elementen: das **DOM** (Document Object Model). JavaScript erreicht diesen Baum über `document` – und kann jedes Element darin anfassen: lesen, ändern, umschalten.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"80\" y=\"26\" text-anchor=\"middle\" fill=\"#b48cff\" font-weight=\"bold\">document</text><path d=\"M80 32 V52 M80 70 V84 M80 84 H28 V96 M80 84 V96 M80 84 H134 V96\" stroke=\"#eef2ff\" stroke-width=\"1.5\" fill=\"none\"/><text x=\"80\" y=\"66\" text-anchor=\"middle\" fill=\"#ff7a45\" font-weight=\"bold\">body</text><text x=\"28\" y=\"112\" text-anchor=\"middle\" fill=\"#ff7a45\">h1</text><text x=\"80\" y=\"112\" text-anchor=\"middle\" fill=\"#ff7a45\">p</text><text x=\"80\" y=\"130\" text-anchor=\"middle\" fill=\"#4ade80\" font-size=\"11\">id=\"status\"</text><text x=\"134\" y=\"112\" text-anchor=\"middle\" fill=\"#ff7a45\">button</text><rect x=\"178\" y=\"48\" width=\"130\" height=\"62\" rx=\"8\" fill=\"#ffd84d\" fill-opacity=\"0.12\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"243\" y=\"68\" text-anchor=\"middle\" fill=\"#ffd84d\" font-weight=\"bold\">JavaScript</text><text x=\"243\" y=\"86\" text-anchor=\"middle\" fill=\"#eef2ff\" font-family=\"monospace\" font-size=\"11\">getElementById</text><text x=\"243\" y=\"101\" text-anchor=\"middle\" fill=\"#eef2ff\" font-family=\"monospace\" font-size=\"11\">(\"status\")</text><path d=\"M178 92 L98 110\" stroke=\"#ffd84d\" stroke-width=\"2\" fill=\"none\" marker-end=\"url(#pf)\"/><text x=\"160\" y=\"150\" text-anchor=\"middle\" fill=\"#eef2ff\">Der Browser baut aus HTML einen Baum – das DOM</text><defs><marker id=\"pf\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#ffd84d\"/></marker></defs></svg>"
+    },
+    {
+      "type": "explain",
+      "text": "Zwei Schritte, immer gleich:\n\n1. **Finden:** `document.getElementById(\"…\")` liefert das Element mit dieser id. Speichere es in einer Konstante.\n2. **Ändern:** Die Eigenschaft **textContent** ist der sichtbare Text des Elements – du kannst sie neu setzen.\n\n```js\nconst preis = document.getElementById(\"preis\");\npreis.textContent = \"Nur 89 €\";\n```\n\nDie id steht in Anführungszeichen, genau wie im HTML geschrieben – ohne `#`."
+    },
+    {
+      "type": "example",
+      "text": "Probier es aus: **Ändere** den Text in den Anführungszeichen und schau in die Vorschau. Dann **ändere** die id im Skript zu `stand2` – und wirf einen Blick in die Konsole.",
+      "html": "<h2>Fußball-Turnier</h2>\n<p>Spielstand: <span id=\"stand\">0 : 0</span></p>\n",
+      "js": "const stand = document.getElementById(\"stand\");\nstand.textContent = \"2 : 1\";\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Im HTML steht `<p id=\"preis\">12 €</p>`. Welche Zeile findet dieses Element?",
+      "options": [
+        "`document.getElementById(\"preis\")`",
+        "`document.getElementById(\"#preis\")`",
+        "`document.getElementById(preis)`",
+        "`document.getElementById(\"p\")`"
+      ],
+      "correct": 0,
+      "explanation": "In die Klammern kommt die id als Text in Anführungszeichen – ohne Raute und ohne Tag-Namen. Ohne Anführungszeichen würde JavaScript nach einer Variablen `preis` suchen."
+    },
+    {
+      "type": "code",
+      "task": "**Ändere** per Skript den Text des Absatzes mit der id `status`: Nach dem Laden soll dort „Deine Pizza ist unterwegs“ stehen.",
+      "starter": {
+        "html": "<h1>Pizza-Express</h1>\n<p id=\"status\">Bestellung eingegangen</p>\n",
+        "js": "// Element finden, Text setzen\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "hints": [
+        "Erst das Element über seine id holen, dann seinen Text setzen.",
+        "Das Muster aus einem anderen Kontext: `const feld = document.getElementById(\"feld\");` – nur mit der id aus der Aufgabe.",
+        "Zweite Zeile: `feld.textContent = \"…\";` mit dem Text aus der Aufgabe."
+      ],
+      "solution": {
+        "js": "const status = document.getElementById(\"status\");\nstatus.textContent = \"Deine Pizza ist unterwegs\";\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "#status",
+          "expected": "Deine Pizza ist unterwegs",
+          "label": "Der Status lautet „Deine Pizza ist unterwegs“"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "getElementById\\(\\s*[\"']status[\"']\\s*\\)",
+          "label": "Das Skript sucht das Element mit der id status"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "\\.textContent\\s*=",
+          "label": "Der Text wird über textContent gesetzt"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "**textContent** kannst du auch lesen – und mit Texten aus Station 16 zusammensetzen:\n\n```js\nconst schild = document.getElementById(\"preis\");\nconsole.log(schild.textContent);\nconst preis = 89;\nschild.textContent = \"Nur \" + preis + \" €\";\n```\n\nWichtig ist die **Reihenfolge**: Das Skript kann nur finden, was der Browser schon gebaut hat. Deshalb steht `<script src=\"script.js\">` ganz am Ende des body – erst die Elemente, dann das Skript."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige das Skript: Die Überschrift mit der id `titel` soll „Neuer Drop“ anzeigen. Achte auf Groß- und Kleinschreibung.",
+      "template": "const titel = document.___(\"titel\");\ntitel.___ = \"Neuer Drop\";",
+      "accept": [
+        [
+          "getElementById"
+        ],
+        [
+          "textContent"
+        ]
+      ],
+      "exact": true,
+      "hint": "Zwei Wörter mit Großbuchstaben mittendrin: get…By… und text…"
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** das Skript: Der Absatz mit der id `schild` zeigt „Nur 89 €“ – die Zahl stammt aus der Variablen `preis`, nicht aus dem Text.",
+      "starter": {
+        "html": "<h2>Sneaker der Woche</h2>\n<p id=\"schild\">Preis wird geladen …</p>\n",
+        "js": "const preis = 89;\n// Preis anzeigen\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "hints": [
+        "Element holen, dann textContent setzen – wie in der Grundübung.",
+        "Text und Zahl verbindest du mit Plus, z. B. `\"Noch \" + tage + \" Tage\"`.",
+        "Struktur: `….textContent = \"Nur \" + … + \" €\";`"
+      ],
+      "solution": {
+        "js": "const preis = 89;\nconst schild = document.getElementById(\"schild\");\nschild.textContent = \"Nur \" + preis + \" €\";\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "#schild",
+          "expected": "Nur 89 €",
+          "label": "Das Schild zeigt „Nur 89 €“"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "\\+\\s*preis\\s*\\+",
+          "label": "Die Zahl kommt aus der Variablen preis"
+        },
+        {
+          "type": "source",
+          "file": "js",
+          "matches": "getElementById\\(\\s*[\"']schild[\"']\\s*\\)",
+          "label": "Das Skript sucht das Element mit der id schild"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Bausteine ihrer Bedeutung zu.",
+      "pairs": [
+        [
+          "`document`",
+          "die ganze Seite – der Einstieg in den DOM-Baum"
+        ],
+        [
+          "`getElementById(\"…\")`",
+          "findet das Element mit dieser id"
+        ],
+        [
+          "`textContent`",
+          "der sichtbare Text eines Elements"
+        ],
+        [
+          "`const feld = …`",
+          "speichert das gefundene Element unter einem Namen"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "Die Seite zeigt weiter „Serie wird geladen …“, und die Konsole meldet einen Fehler. **Überprüfe** das Skript und behebe die Fehler: Die Überschrift soll „Staffel 3 ist da“ zeigen, der Absatz „Jetzt streamen“.",
+      "starter": {
+        "html": "<h2 id=\"serie\">Serie wird geladen …</h2>\n<p id=\"hinweis\">Bitte warten.</p>\n",
+        "js": "const serie = document.getElementById(\"Serie\");\nserie.textContent = \"Staffel 3 ist da\";\nconst hinweis = document.getElementByID(\"hinweis\");\nhinweis.textContent = \"Jetzt streamen\";\n"
+      },
+      "editable": [
+        "js"
+      ],
+      "hints": [
+        "JavaScript unterscheidet Groß- und Kleinschreibung – bei ids und bei Befehlen.",
+        "Vergleiche jede id im Skript Buchstabe für Buchstabe mit dem HTML.",
+        "Der Befehl heißt getElementById – schau dir sein Ende genau an."
+      ],
+      "solution": {
+        "js": "const serie = document.getElementById(\"serie\");\nserie.textContent = \"Staffel 3 ist da\";\nconst hinweis = document.getElementById(\"hinweis\");\nhinweis.textContent = \"Jetzt streamen\";\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "#serie",
+          "expected": "Staffel 3 ist da",
+          "label": "Die Überschrift lautet „Staffel 3 ist da“"
+        },
+        {
+          "type": "text",
+          "selector": "#hinweis",
+          "expected": "Jetzt streamen",
+          "label": "Der Absatz lautet „Jetzt streamen“"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "jonas",
+      "text": "Jetzt zur FUNKEN-Startseite. Sam will ganz oben eine **Status-Zeile**: Solange die Seite lädt, steht dort ein Platzhalter – und das Skript ersetzt ihn sofort durch „Vorverkauf läuft!“.\n\nDu brauchst einen Absatz mit id im Hauptbereich und zwei Schritte im Skript: finden, Text setzen. Das Skript steht schon am Ende des body – die Reihenfolge stimmt also."
+    },
+    {
+      "type": "code",
+      "etappe": "17-javascript-dom/01-elemente-aendern"
+    }
+  ]
+}

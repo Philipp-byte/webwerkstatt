@@ -1,0 +1,220 @@
+{
+  "id": "05-wiederholung",
+  "title": "Wiederholung",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Großer Rückblick, bevor die Programm-Seite ans Lichtpult kommt: Ich prüfe, ob dein HTML-Gerüst noch sitzt – Grundgerüst, Bilder, Zonen, Formulare – und ob die neuen CSS-Regeln sitzen. Acht Aufgaben, dann die Etappe."
+    },
+    {
+      "type": "quiz",
+      "question": "Wo im HTML-Dokument steht die Verknüpfung mit dem Stylesheet?",
+      "options": [
+        "Im head – meist direkt nach dem title",
+        "Ganz am Ende des body",
+        "Vor dem Dokumenttyp, in der ersten Zeile"
+      ],
+      "correct": 0,
+      "explanation": "Der head enthält alles, was der Browser vorab wissen muss: Zeichensatz, Titel – und welches Stylesheet er laden soll."
+    },
+    {
+      "type": "order",
+      "text": "**Sortiere** die Zeilen zu einer Tabellenzeile: erst die Zeit, dann Hauptbühne, dann Zeltbühne.",
+      "lines": [
+        "<tr>",
+        "  <td>22:00</td>",
+        "  <td>Neonpuls</td>",
+        "  <td>Kiki Volt</td>",
+        "</tr>"
+      ],
+      "explanation": "Eine Zeile beginnt mit tr, darin die Datenzellen in der Reihenfolge der Spalten."
+    },
+    {
+      "type": "pair",
+      "text": "**Ordne** die Elemente ihrer Aufgabe zu.",
+      "pairs": [
+        [
+          "`<header>`",
+          "Kopfbereich der Seite"
+        ],
+        [
+          "`<nav>`",
+          "Navigation mit den Links"
+        ],
+        [
+          "`<main>`",
+          "Hauptinhalt"
+        ],
+        [
+          "`<footer>`",
+          "Fußbereich mit Adresse"
+        ],
+        [
+          "`<figcaption>`",
+          "Bildunterschrift in einem figure"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Erweitere** den Steckbrief: 1. Unter dem Katzenbild im Bild-Block kommt die Bildunterschrift „Mo, meine Katze“. 2. Im Kontaktformular folgt nach dem Namensfeld ein beschriftetes E-Mail-Feld „E-Mail“ mit id und name `email`.",
+      "starter": {
+        "html": "<h1>Steckbrief: Lea</h1>\n<p>17 Jahre, Heilbronn, Praktikum in einer Fahrradwerkstatt.</p>\n<figure>\n  <img src=\"katze.svg\" alt=\"Katze Mo auf dem Sofa\">\n</figure>\n<h2>Kontakt</h2>\n<form>\n  <label for=\"name\">Name</label>\n  <input type=\"text\" id=\"name\" name=\"name\">\n  <button type=\"submit\">Abschicken</button>\n</form>\n"
+      },
+      "editable": [
+        "html"
+      ],
+      "hints": [
+        "Bildunterschrift: eigenes Element innerhalb des figure, direkt nach dem Bild. E-Mail-Feld: Beschriftung plus Eingabefeld mit passendem Typ.",
+        "Die Beschriftung zeigt mit for auf die id des Feldes – genau wie beim Namensfeld.",
+        "Muster für das Feld: `<input type=\"text\" id=\"ort\" name=\"ort\">` – bei dir mit dem Typ für E-Mail-Adressen und der id aus der Aufgabe."
+      ],
+      "solution": {
+        "html": "<h1>Steckbrief: Lea</h1>\n<p>17 Jahre, Heilbronn, Praktikum in einer Fahrradwerkstatt.</p>\n<figure>\n  <img src=\"katze.svg\" alt=\"Katze Mo auf dem Sofa\">\n  <figcaption>Mo, meine Katze</figcaption>\n</figure>\n<h2>Kontakt</h2>\n<form>\n  <label for=\"name\">Name</label>\n  <input type=\"text\" id=\"name\" name=\"name\">\n  <label for=\"email\">E-Mail</label>\n  <input type=\"email\" id=\"email\" name=\"email\">\n  <button type=\"submit\">Abschicken</button>\n</form>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "figure figcaption",
+          "expected": "Mo, meine Katze",
+          "label": "Die Bildunterschrift lautet „Mo, meine Katze“"
+        },
+        {
+          "type": "attr",
+          "selector": "form input#email",
+          "attr": "type",
+          "expected": "email",
+          "label": "Das E-Mail-Feld hat den Typ email"
+        },
+        {
+          "type": "attr",
+          "selector": "input#email",
+          "attr": "name",
+          "expected": "email",
+          "label": "Das E-Mail-Feld heißt „email“"
+        },
+        {
+          "type": "text",
+          "selector": "label[for=\"email\"]",
+          "expected": "E-Mail",
+          "label": "Die Beschriftung „E-Mail“ gehört zum E-Mail-Feld"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "input#name",
+            "input#email",
+            "button"
+          ],
+          "label": "Das E-Mail-Feld steht zwischen Namensfeld und Knopf"
+        }
+      ]
+    },
+    {
+      "type": "fill",
+      "text": "**Vervollständige** das Bild: Alternativtext und Klasse.",
+      "template": "<img src=\"katze.svg\" ___=\"Katze Mo auf dem Sofa\" ___=\"foto\">",
+      "accept": [
+        [
+          "alt"
+        ],
+        [
+          "class"
+        ]
+      ],
+      "hint": "Der Alternativtext erscheint, wenn das Bild nicht lädt; die Klasse ist das Attribut, das mehrere Elemente teilen dürfen."
+    },
+    {
+      "type": "quiz",
+      "question": "Welche Angabe ist **keine** gültige CSS-Farbe?",
+      "options": [
+        "`#ff6a0`",
+        "`#ff6a00`",
+        "`rgb(255, 106, 0)`",
+        "`orange`"
+      ],
+      "correct": 0,
+      "explanation": "Ein Hex-Code hat drei oder sechs Zeichen nach der Raute – fünf gibt es nicht."
+    },
+    {
+      "type": "bug",
+      "text": "Das Formular zeigt die zweite Beschriftung nicht richtig an. Welche Zeile ist falsch?",
+      "lines": [
+        "<form>",
+        "  <label for=\"name\">Name</label>",
+        "  <input type=\"text\" id=\"name\" name=\"name\">",
+        "  <lable for=\"email\">E-Mail</lable>",
+        "  <input type=\"email\" id=\"email\" name=\"email\">",
+        "</form>"
+      ],
+      "line": 3,
+      "explanation": "Das Element heißt label. Ein Tippfehler im Tag-Namen – und der Browser kennt das Element nicht mehr."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Vereinsseite: Seite mit Hintergrund `#f3f7f4` und Textfarbe `#14321f`, Kopfbereich mit Hintergrund `#1e6f3c` und Textfarbe `#ffffff`, Links in `#0b7dd6`. Die Listenpunkte erben – keine eigene Regel.",
+      "starter": {
+        "html": "<header>\n  <h1>SV Neckarkick</h1>\n  <p>Fußball in Heilbronn seit 1921 – grün-weiß, seit immer.</p>\n</header>\n<main>\n  <h2>Nächstes Spiel</h2>\n  <p>Sonntag, 15 Uhr, Sportplatz Hafenstraße.</p>\n  <h2>Mannschaft</h2>\n  <ul>\n    <li>Tor: Sina</li>\n    <li>Abwehr: Malik, Jo, Deniz</li>\n    <li>Sturm: Ayşe, Tom</li>\n  </ul>\n  <p><a href=\"tickets.html\">Tickets</a> · <a href=\"anfahrt.html\">Anfahrt</a></p>\n</main>\n<footer>\n  <p>SV Neckarkick e. V. · Hafenstraße 9 · 74072 Heilbronn</p>\n</footer>\n",
+        "css": "/* Vereinsfarben */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Drei Regeln: body, header, a.",
+        "body und header bekommen je zwei Deklarationen (Fläche und Schrift), a nur die Schriftfarbe.",
+        "Muster: `footer { background-color: #222222; color: #ffffff; }` – Selektoren und Werte aus der Aufgabe."
+      ],
+      "solution": {
+        "css": "/* Vereinsfarben */\n\nbody {\n  background-color: #f3f7f4;\n  color: #14321f;\n}\n\nheader {\n  background-color: #1e6f3c;\n  color: #ffffff;\n}\n\na {\n  color: #0b7dd6;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "background-color",
+          "expected": "#f3f7f4",
+          "label": "Die Seite hat einen hellen Hintergrund (#f3f7f4)"
+        },
+        {
+          "type": "style",
+          "selector": "li",
+          "prop": "color",
+          "expected": "#14321f",
+          "label": "Die Listenpunkte erben die dunkelgrüne Textfarbe"
+        },
+        {
+          "type": "style",
+          "selector": "header",
+          "prop": "background-color",
+          "expected": "#1e6f3c",
+          "label": "Der Kopfbereich ist dunkelgrün (#1e6f3c)"
+        },
+        {
+          "type": "style",
+          "selector": "header",
+          "prop": "color",
+          "expected": "#ffffff",
+          "label": "Die Schrift im Kopfbereich ist weiß"
+        },
+        {
+          "type": "style",
+          "selector": "a",
+          "prop": "color",
+          "expected": "#0b7dd6",
+          "label": "Die Links sind blau (#0b7dd6)"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Die Programm-Seite kennt style.css noch nicht – deshalb sieht sie noch aus wie vorher. Verknüpfe sie im Kopfbereich, genau wie die Startseite.\n\nAußerdem hat Sam den Samstag verlängert: Um 22 Uhr spielen Neonpuls auf der Hauptbühne und Kiki Volt im Zelt. Dafür bekommt die Samstags-Tabelle ganz unten eine neue Zeile mit drei Zellen."
+    },
+    {
+      "type": "code",
+      "etappe": "10-css-grundlagen/05-wiederholung"
+    }
+  ]
+}

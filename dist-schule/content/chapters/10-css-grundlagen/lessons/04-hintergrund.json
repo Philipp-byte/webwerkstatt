@@ -1,0 +1,215 @@
+{
+  "id": "04-hintergrund",
+  "title": "Hintergrund",
+  "konzepte": [
+    "css.background"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Nachtmodus auf dem Handy: dunkle Fläche, helle Schrift. In CSS sind das zwei Eigenschaften:\n\n- `color` färbt die **Schrift**.\n- `background-color` färbt die **Fläche** dahinter.\n\n```css\nheader {\n  background-color: #101828;\n  color: #ffffff;\n}\n```\n\nBeide Deklarationen stehen im selben Block, untereinander, jede mit Semikolon. Die Fläche reicht so weit wie das Element – beim Kopfbereich über die ganze Breite.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#e8ecf7\"/><text x=\"160\" y=\"24\" text-anchor=\"middle\" fill=\"#0f1320\" font-weight=\"bold\">Schrift und Fläche</text><rect x=\"24\" y=\"44\" width=\"272\" height=\"56\" rx=\"8\" fill=\"#0f1320\"/><text x=\"160\" y=\"78\" text-anchor=\"middle\" fill=\"#ffd84d\" font-size=\"16\" font-weight=\"bold\">Kollektiv FUNKEN</text><path d=\"M84 100 V118\" stroke=\"#38c7ff\" stroke-width=\"2\"/><text x=\"84\" y=\"134\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\">background-color</text><text x=\"84\" y=\"150\" text-anchor=\"middle\" fill=\"#38c7ff\">die Fläche</text><path d=\"M240 84 V118\" stroke=\"#ffd84d\" stroke-width=\"2\"/><text x=\"240\" y=\"134\" text-anchor=\"middle\" fill=\"#0f1320\" font-family=\"monospace\">color</text><text x=\"240\" y=\"150\" text-anchor=\"middle\" fill=\"#0f1320\">die Schrift</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "**Ändere** die Hintergrundfarbe des header zu `gold` und die Schriftfarbe zu `black`. **Gib** dem footer eine eigene Regel mit dunkler Fläche. Dann **lösche** im header das Semikolon hinter dem Hintergrundwert – was passiert mit den beiden Deklarationen?",
+      "html": "<header>\n  <h1>Nachtschicht</h1>\n  <p>Ein Kopfbereich mit dunkler Fläche.</p>\n</header>\n<main>\n  <p>Der Hauptbereich behält den Seitenhintergrund.</p>\n</main>\n<footer>\n  <p>Fußbereich – noch ohne eigene Farbe.</p>\n</footer>\n",
+      "css": "body {\n  background-color: #fff7e8;\n}\n\nheader {\n  background-color: #101828;\n  color: #ffffff;\n}\n",
+      "editable": [
+        "css"
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Der Fußbereich soll eine dunkle Fläche bekommen. Welche Eigenschaft brauchst du?",
+      "options": [
+        "`background-color`",
+        "`color`",
+        "`bgcolor`",
+        "`background-text`"
+      ],
+      "correct": 0,
+      "explanation": "`color` färbt nur die Schrift. `bgcolor` war ein uraltes HTML-Attribut, kein CSS – und `background-text` gibt es nicht."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** den Steckbrief: Die ganze Seite bekommt die Hintergrundfarbe `#e0f2ff` (Hellblau). Der Text bleibt schwarz.",
+      "starter": {
+        "html": "<h1>Steckbrief: Lea</h1>\n<p>17 Jahre, Heilbronn, Praktikum in einer Fahrradwerkstatt.</p>\n<h2>Lieblingsdinge</h2>\n<ul>\n  <li>Bouldern am Wochenende</li>\n  <li>Pizza mit Pilzen</li>\n  <li>Katze Mo</li>\n</ul>\n<p>Mehr Fotos: <a href=\"galerie.html\">Galerie</a></p>\n<p>Motto: Erst machen, dann reden.</p>\n",
+        "css": "/* Steckbrief */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Die ganze Seite = der body.",
+        "Nicht color – die Eigenschaft für die Fläche besteht aus zwei Wörtern mit Bindestrich.",
+        "Muster: `main { background-color: #eeeeee; }` – bei dir der body und das Hellblau."
+      ],
+      "solution": {
+        "css": "/* Steckbrief */\n\nbody {\n  background-color: #e0f2ff;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "background-color",
+          "expected": "#e0f2ff",
+          "label": "Die Seite hat einen hellblauen Hintergrund"
+        },
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "color",
+          "expected": "black",
+          "label": "Der Text bleibt schwarz"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Eine Regel darf **mehrere Deklarationen** enthalten – untereinander, jede mit Semikolon. Gibt es für ein Element schon eine Regel, schreibst du die neue Deklaration einfach dazu, statt eine zweite Regel zu öffnen:\n\n```css\nnav {\n  color: #1b1b2f;\n  background-color: #ffd23f;\n}\n```\n\nAchte auf **Kontrast**: dunkle Fläche, helle Schrift – oder umgekehrt. Dunkelgrau auf Schwarz liest niemand."
+    },
+    {
+      "type": "fill",
+      "text": "**Vervollständige**: Die ganze Seite wird hell, der Fußbereich dunkel.",
+      "template": "___ {\n  background-color: #f4f4f4;\n}\n\nfooter {\n  ___: #222222;\n}",
+      "accept": [
+        [
+          "body"
+        ],
+        [
+          "background-color"
+        ]
+      ],
+      "hint": "Der Selektor für die ganze Seite ist das Element, in dem alles Sichtbare steht; die zweite Lücke ist die Eigenschaft für die Fläche."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Setup-Seite im Nachtmodus: Die Seite bekommt den Hintergrund `#0f1320` und die Textfarbe `#eef2ff`. Der Kopfbereich bekommt den Hintergrund `#38c7ff` und die Textfarbe `#0f1320`.",
+      "starter": {
+        "html": "<header>\n  <h1>Mein Gaming-Setup</h1>\n  <p>Selbst zusammengestellt, Stück für Stück.</p>\n</header>\n<main>\n  <h2>Monitor</h2>\n  <p>27 Zoll, 144 Hertz – ruckelfrei.</p>\n  <h2>Tastatur</h2>\n  <p>Mechanisch, mit roten Schaltern.</p>\n  <h2>Maus</h2>\n  <p>Leicht und kabellos. Tipps gibt es im <a href=\"https://www.example.com\" target=\"_blank\">Setup-Forum</a>.</p>\n</main>\n<footer>\n  <p>Setup-Liste von Deniz · <a href=\"mailto:deniz@example.com\">Schreib mir</a></p>\n</footer>\n",
+        "css": "/* Setup-Seite */\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Zwei Regeln: body und header, jede mit zwei Deklarationen.",
+        "Die Fläche ist background-color, die Schrift color – jede Deklaration mit Semikolon.",
+        "Muster: `footer { background-color: #222222; color: #ffffff; }` – Selektoren und Werte aus der Aufgabe einsetzen."
+      ],
+      "solution": {
+        "css": "/* Setup-Seite */\n\nbody {\n  background-color: #0f1320;\n  color: #eef2ff;\n}\n\nheader {\n  background-color: #38c7ff;\n  color: #0f1320;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "background-color",
+          "expected": "#0f1320",
+          "label": "Die Seite ist dunkel (#0f1320)"
+        },
+        {
+          "type": "style",
+          "selector": "body",
+          "prop": "color",
+          "expected": "#eef2ff",
+          "label": "Der Text ist hell (#eef2ff)"
+        },
+        {
+          "type": "style",
+          "selector": "header",
+          "prop": "background-color",
+          "expected": "#38c7ff",
+          "label": "Der Kopfbereich ist hellblau (#38c7ff)"
+        },
+        {
+          "type": "style",
+          "selector": "header",
+          "prop": "color",
+          "expected": "#0f1320",
+          "label": "Die Schrift im Kopfbereich ist dunkel (#0f1320)"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "**Ordne** zu.",
+      "pairs": [
+        [
+          "`color`",
+          "färbt die Schrift"
+        ],
+        [
+          "`background-color`",
+          "färbt die Fläche hinter dem Inhalt"
+        ],
+        [
+          "`body`",
+          "Selektor für die ganze Seite"
+        ],
+        [
+          "`;`",
+          "beendet jede Deklaration"
+        ],
+        [
+          "helle Schrift auf dunkler Fläche",
+          "guter Kontrast – gut lesbar"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "mode": "fix",
+      "task": "**Überprüfe** die Vereinsfarben: Der Kopfbereich sollte dunkelgrün mit weißer Schrift sein, der Fußbereich hellgrau. Stattdessen ist der Kopfbereich weiß mit schwarzer Schrift und der Fußbereich hat keine Fläche. Finde die zwei Fehler.",
+      "starter": {
+        "html": "<header>\n  <h1>SV Neckarkick</h1>\n  <p>Fußball in Heilbronn seit 1921 – grün-weiß, seit immer.</p>\n</header>\n<main>\n  <h2>Nächstes Spiel</h2>\n  <p>Sonntag, 15 Uhr, Sportplatz Hafenstraße.</p>\n  <h2>Mannschaft</h2>\n  <ul>\n    <li>Tor: Sina</li>\n    <li>Abwehr: Malik, Jo, Deniz</li>\n    <li>Sturm: Ayşe, Tom</li>\n  </ul>\n  <p><a href=\"tickets.html\">Tickets</a> · <a href=\"anfahrt.html\">Anfahrt</a></p>\n</main>\n<footer>\n  <p>SV Neckarkick e. V. · Hafenstraße 9 · 74072 Heilbronn</p>\n</footer>\n",
+        "css": "/* Vereinsfarben */\n\nheader {\n  background-color: #1e6f3c\n  color: white;\n}\n\nfooter {\n  backgroundcolor: #e5e5e5;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Fallen zwei Deklarationen gemeinsam aus, fehlt meist das Zeichen, das sie trennt.",
+        "Eigenschaften mit zwei Wörtern haben einen Bindestrich – vergleiche die footer-Regel mit der header-Regel.",
+        "Jede Deklaration endet mit einem Semikolon; die Eigenschaft für die Fläche ist genau so geschrieben wie in der Erklärung."
+      ],
+      "solution": {
+        "css": "/* Vereinsfarben */\n\nheader {\n  background-color: #1e6f3c;\n  color: white;\n}\n\nfooter {\n  background-color: #e5e5e5;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": "header",
+          "prop": "background-color",
+          "expected": "#1e6f3c",
+          "label": "Der Kopfbereich ist dunkelgrün (#1e6f3c)"
+        },
+        {
+          "type": "style",
+          "selector": "header",
+          "prop": "color",
+          "expected": "white",
+          "label": "Die Schrift im Kopfbereich ist weiß"
+        },
+        {
+          "type": "style",
+          "selector": "footer",
+          "prop": "background-color",
+          "expected": "#e5e5e5",
+          "label": "Der Fußbereich ist hellgrau (#e5e5e5)"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Sam findet die Startseite „so … weiß“. Also: Die ganze Seite bekommt Creme als Hintergrund, der Fußbereich wird nachtblau mit heller Schrift.\n\nDie Creme-Angabe kommt in die vorhandene body-Regel dazu. Für den Fußbereich brauchst du eine neue Regel mit zwei Deklarationen – Fläche und Schrift. Die Farbcodes stehen in der Aufgabe."
+    },
+    {
+      "type": "code",
+      "etappe": "10-css-grundlagen/04-hintergrund"
+    }
+  ]
+}

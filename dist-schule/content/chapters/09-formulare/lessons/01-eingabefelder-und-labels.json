@@ -1,0 +1,229 @@
+{
+  "id": "01-eingabefelder-und-labels",
+  "title": "Eingabefelder und Labels",
+  "konzepte": [
+    "html.form",
+    "html.input",
+    "html.label"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Sam stöhnt: „Die Leute wollen Tickets reservieren – und ich sammle ihre Namen per Sprachnachricht.“ Bis jetzt zeigt unsere Website nur Inhalte. Jetzt soll sie etwas **entgegennehmen**: Name, E-Mail, Ticketwunsch.\n\nDafür gibt es **Formulare**. Das Element `<form>` ist der Rahmen, darin liegen **Eingabefelder** – jedes ein `<input>`. Beim Absenden gehen die Eingaben an den Server.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><text x=\"22\" y=\"22\" fill=\"#ff7a45\" font-family=\"monospace\" font-size=\"13\">&lt;form&gt;</text><text x=\"298\" y=\"22\" text-anchor=\"end\" fill=\"#4ade80\" font-weight=\"bold\">Beschriftung ↔ Feld</text><rect x=\"16\" y=\"30\" width=\"288\" height=\"118\" rx=\"8\" fill=\"#1b2135\" stroke=\"#ff7a45\" stroke-width=\"2\"/><text x=\"30\" y=\"58\" fill=\"#38c7ff\" font-weight=\"bold\">Name</text><rect x=\"110\" y=\"40\" width=\"170\" height=\"26\" rx=\"4\" fill=\"#0f1320\" stroke=\"#38c7ff\" stroke-width=\"2\"/><text x=\"120\" y=\"58\" fill=\"#eef2ff\">Sam</text><path d=\"M46 64 V82 H196 V70\" stroke=\"#4ade80\" stroke-width=\"2\" fill=\"none\"/><text x=\"30\" y=\"98\" fill=\"#4ade80\" font-family=\"monospace\" font-size=\"12\">for=\"name\"</text><text x=\"150\" y=\"98\" fill=\"#4ade80\" font-family=\"monospace\" font-size=\"12\">id=\"name\"</text><text x=\"30\" y=\"128\" fill=\"#38c7ff\" font-weight=\"bold\">E-Mail</text><rect x=\"110\" y=\"110\" width=\"170\" height=\"26\" rx=\"4\" fill=\"#0f1320\" stroke=\"#38c7ff\" stroke-width=\"2\"/><text x=\"120\" y=\"128\" fill=\"#eef2ff\">sam@beispiel.de</text></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Ein Formular mit einem Textfeld. `<input>` ist ein **leeres Element** – es hat keinen schließenden Tag, genau wie `<img>` und `<br>`. **Tippe** etwas ins Feld. **Ändere** dann `type=\"text\"` in `type=\"number\"` und versuch, Buchstaben einzugeben. Probiere auch `type=\"password\"`.",
+      "html": "<h1>Anmeldung Hallenturnier</h1>\n<form>\n  <p>Wie heißt dein Team?</p>\n  <input type=\"text\" name=\"team\">\n</form>\n"
+    },
+    {
+      "type": "quiz",
+      "question": "Wie schreibst du ein Textfeld richtig?",
+      "options": [
+        "`<input type=\"text\" name=\"team\">`",
+        "`<input type=\"text\" name=\"team\"></input>`",
+        "`<text name=\"team\">`"
+      ],
+      "correct": 0,
+      "explanation": "`<input>` ist ein leeres Element ohne schließenden Tag. Ein Element `<text>` gibt es in HTML nicht – die Art des Feldes steht immer im Attribut `type`."
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** im Formular an der Stelle des Kommentars ein Textfeld für den Teamnamen; die Eingabe trägt den Namen `team`.",
+      "starter": {
+        "html": "<h1>Anmeldung Hallenturnier</h1>\n<p>Trag dein Team ein – Anmeldeschluss ist Freitag.</p>\n<form>\n  <p>Teamname:</p>\n  <!-- hier kommt das Textfeld -->\n</form>\n"
+      },
+      "hints": [
+        "Ein Eingabefeld ist ein `input`-Element. Die Art des Feldes steht im Attribut `type`, der Name der Eingabe im Attribut `name`.",
+        "Muster aus einem anderen Kontext: `<input type=\"text\" name=\"stadt\">` – ein Textfeld, dessen Eingabe stadt heißt.",
+        "Das Feld steht zwischen `<form>` und `</form>` an der Stelle des Kommentars – ohne schließenden Tag."
+      ],
+      "solution": {
+        "html": "<h1>Anmeldung Hallenturnier</h1>\n<p>Trag dein Team ein – Anmeldeschluss ist Freitag.</p>\n<form>\n  <p>Teamname:</p>\n  <input type=\"text\" name=\"team\">\n</form>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "form input",
+          "count": 1,
+          "label": "Im Formular steht genau ein Eingabefeld"
+        },
+        {
+          "type": "attr",
+          "selector": "form input",
+          "attr": "type",
+          "expected": "text",
+          "label": "Das Feld ist ein Textfeld"
+        },
+        {
+          "type": "attr",
+          "selector": "form input",
+          "attr": "name",
+          "expected": "team",
+          "label": "Die Eingabe heißt „team“"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Das Attribut **type** bestimmt, was das Feld annimmt – der Browser prüft die Eingabe gleich mit:\n\n- `text` – beliebiger Text\n- `email` – muss wie eine E-Mail-Adresse aussehen (mit @)\n- `number` – nur Zahlen; mit `min` und `max` setzt du Grenzen\n\n```html\n<input type=\"email\" name=\"mail\">\n<input type=\"number\" name=\"alter\" min=\"16\" max=\"19\">\n```\n\nDas Attribut **name** ist der Name der Eingabe: Beim Absenden bekommt der Server zum Beispiel `alter=17`."
+    },
+    {
+      "type": "fill",
+      "text": "Vervollständige die beiden Felder: Das erste prüft auf eine E-Mail-Adresse, das zweite nimmt nur Zahlen an.",
+      "template": "<input type=\"___\" name=\"mail\">\n<input type=\"___\" name=\"anzahl\" min=\"1\" max=\"5\">",
+      "accept": [
+        [
+          "email"
+        ],
+        [
+          "number"
+        ]
+      ],
+      "hint": "Die Feldtypen aus der Liste: einer für E-Mail-Adressen, einer für Zahlen."
+    },
+    {
+      "type": "explain",
+      "text": "Ein Feld ohne **Beschriftung** ist ein Rätsel: Was soll da rein? Dafür gibt es das Element `<label>`.\n\n```html\n<label for=\"stadt\">Stadt</label>\n<input type=\"text\" id=\"stadt\" name=\"stadt\">\n```\n\nDas Attribut `for` nennt die **id** des Feldes – so sind beide verbunden. Der Gewinn: Ein Klick auf die Beschriftung setzt den Cursor ins Feld, und Vorlese-Programme (**Screenreader**) sagen zum Feld die passende Beschriftung an."
+    },
+    {
+      "type": "code",
+      "task": "**Ergänze** im Formular unter dem Vornamen ein zweites Feld: die Beschriftung „E-Mail“, verbunden mit einem E-Mail-Feld, dessen id und Name `email` lauten.",
+      "starter": {
+        "html": "<h1>Fahrschule Neckarblick</h1>\n<p>Anmeldung zur Theorieprüfung</p>\n<form>\n  <label for=\"vorname\">Vorname</label>\n  <input type=\"text\" id=\"vorname\" name=\"vorname\">\n</form>\n"
+      },
+      "hints": [
+        "Beschriftung und Feld sind zwei Elemente: erst das `label`, dann das `input`. Verbunden werden sie über `for` und `id`.",
+        "Der Feldtyp für E-Mail-Adressen heißt `email`. Muster mit einem anderen Feld: `<label for=\"ort\">Ort</label>` und darunter `<input type=\"text\" id=\"ort\" name=\"ort\">`.",
+        "Aufbau: `<label for=\"…\">E-Mail</label>` und `<input type=\"…\" id=\"…\" name=\"…\">` – die Lücken mit Typ und id aus der Aufgabe füllen."
+      ],
+      "solution": {
+        "html": "<h1>Fahrschule Neckarblick</h1>\n<p>Anmeldung zur Theorieprüfung</p>\n<form>\n  <label for=\"vorname\">Vorname</label>\n  <input type=\"text\" id=\"vorname\" name=\"vorname\">\n\n  <label for=\"email\">E-Mail</label>\n  <input type=\"email\" id=\"email\" name=\"email\">\n</form>\n"
+      },
+      "tests": [
+        {
+          "type": "text",
+          "selector": "label[for=\"email\"]",
+          "expected": "E-Mail",
+          "label": "Die Beschriftung „E-Mail“ gehört zum Feld mit der id email"
+        },
+        {
+          "type": "attr",
+          "selector": "input#email",
+          "attr": "type",
+          "expected": "email",
+          "label": "Das Feld hat den Typ email"
+        },
+        {
+          "type": "attr",
+          "selector": "input#email",
+          "attr": "name",
+          "expected": "email",
+          "label": "Die Eingabe heißt „email“"
+        },
+        {
+          "type": "order",
+          "selectors": [
+            "input#vorname",
+            "label[for=\"email\"]",
+            "input#email"
+          ],
+          "label": "Das E-Mail-Feld steht unter dem Vornamen, die Beschriftung davor"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Attribute eines Eingabefelds ihrer Aufgabe zu.",
+      "pairs": [
+        [
+          "`type`",
+          "Art des Feldes: Text, E-Mail oder Zahl"
+        ],
+        [
+          "`name`",
+          "Name der Eingabe – so kommt sie beim Server an"
+        ],
+        [
+          "`id`",
+          "eindeutige Kennung des Feldes, Ziel für das Label"
+        ],
+        [
+          "`for`",
+          "steht im Label und nennt die id des Feldes"
+        ],
+        [
+          "`min`",
+          "kleinster erlaubter Wert im Zahlenfeld"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Erstelle** im Formular drei beschriftete Felder: „Name“ als Textfeld (id und Name `name`), „E-Mail“ als E-Mail-Feld (id und Name `email`) und „Alter“ als Zahlenfeld (id und Name `alter`), das nur Werte von 16 bis 19 zulässt.",
+      "starter": {
+        "html": "<h1>Probetraining im Kraftraum</h1>\n<p>Kostenlos für Schülerinnen und Schüler – trag dich ein.</p>\n<form>\n</form>\n"
+      },
+      "hints": [
+        "Drei Paare aus Beschriftung und Feld. Das Zahlenfeld bekommt zusätzlich die Attribute für den kleinsten und den größten Wert.",
+        "Muster für ein Zahlenfeld mit Grenzen aus einem anderen Kontext: `<input type=\"number\" id=\"anzahl\" name=\"anzahl\" min=\"1\" max=\"5\">`",
+        "Je Feld: `<label for=\"…\">…</label>` und `<input type=\"…\" id=\"…\" name=\"…\">` – Typen text, email, number; beim Alter zusätzlich die Grenzen."
+      ],
+      "solution": {
+        "html": "<h1>Probetraining im Kraftraum</h1>\n<p>Kostenlos für Schülerinnen und Schüler – trag dich ein.</p>\n<form>\n  <label for=\"name\">Name</label>\n  <input type=\"text\" id=\"name\" name=\"name\">\n\n  <label for=\"email\">E-Mail</label>\n  <input type=\"email\" id=\"email\" name=\"email\">\n\n  <label for=\"alter\">Alter</label>\n  <input type=\"number\" id=\"alter\" name=\"alter\" min=\"16\" max=\"19\">\n</form>\n"
+      },
+      "tests": [
+        {
+          "type": "selector",
+          "selector": "form label",
+          "count": 3,
+          "label": "Im Formular stehen drei Beschriftungen"
+        },
+        {
+          "type": "attr",
+          "selector": "input#name[name=\"name\"]",
+          "attr": "type",
+          "expected": "text",
+          "label": "Das Namensfeld ist ein Textfeld"
+        },
+        {
+          "type": "attr",
+          "selector": "input#email[name=\"email\"]",
+          "attr": "type",
+          "expected": "email",
+          "label": "Das E-Mail-Feld hat den Typ email"
+        },
+        {
+          "type": "text",
+          "selector": "label[for=\"alter\"]",
+          "expected": "Alter",
+          "label": "Die Beschriftung „Alter“ gehört zum Altersfeld"
+        },
+        {
+          "type": "attr",
+          "selector": "input#alter[name=\"alter\"][type=\"number\"]",
+          "attr": "min",
+          "expected": "16",
+          "label": "Das Zahlenfeld „Alter“ erlaubt mindestens 16"
+        },
+        {
+          "type": "attr",
+          "selector": "input#alter",
+          "attr": "max",
+          "expected": "19",
+          "label": "Das Altersfeld erlaubt höchstens 19"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Okay, jetzt wird es ernst: der Ticket-Schalter! Eine ganz neue Seite – tickets.html – mit allem, was die anderen Seiten auch haben: Kopfbereich, Navigation zu den drei anderen Seiten, Hauptbereich, Fußbereich mit unserer Adresse.\n\nUnd im Hauptbereich das Formular, erst mal nur Name und E-Mail. Beschriftet bitte, ich will keine Rätselfelder. Ticketart und Rest bauen wir danach."
+    },
+    {
+      "type": "code",
+      "etappe": "09-formulare/01-eingabefelder-und-labels"
+    }
+  ]
+}

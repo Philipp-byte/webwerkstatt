@@ -1,0 +1,244 @@
+{
+  "id": "03-ecken-und-schatten",
+  "title": "Runde Ecken und Schatten",
+  "konzepte": [
+    "css.border-radius",
+    "css.box-shadow"
+  ],
+  "steps": [
+    {
+      "type": "explain",
+      "text": "Buttons in Apps, Chat-Blasen, Profilbilder: Fast nichts im Web hat scharfe Ecken. **Runde Ecken** bekommt jede Box mit **`border-radius`** – auch ohne Rahmen:\n\n```css\n.knopf {\n  border-radius: 8px;\n}\n```\n\nJe größer der Wert, desto runder. `50%` macht aus einem Quadrat einen **Kreis** – perfekt für Profilbilder und Logos.",
+      "figure": "<svg viewBox=\"0 0 320 160\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"sans-serif\" font-size=\"12\"><rect width=\"320\" height=\"160\" fill=\"#0f1320\"/><rect x=\"66\" y=\"58\" width=\"130\" height=\"76\" rx=\"14\" fill=\"#b48cff\" fill-opacity=\"0.25\"/><rect x=\"60\" y=\"52\" width=\"130\" height=\"76\" rx=\"14\" fill=\"#b48cff\" fill-opacity=\"0.5\"/><rect x=\"40\" y=\"32\" width=\"130\" height=\"76\" rx=\"14\" fill=\"#e8ecf7\"/><text x=\"105\" y=\"75\" text-anchor=\"middle\" fill=\"#0f1320\" font-weight=\"bold\">Karte</text><path d=\"M170 24 H190\" stroke=\"#ffd84d\" stroke-width=\"2\" marker-end=\"url(#pf)\"/><text x=\"200\" y=\"28\" fill=\"#ffd84d\">x → rechts</text><path d=\"M28 108 V128\" stroke=\"#ffd84d\" stroke-width=\"2\" marker-end=\"url(#pf)\"/><text x=\"8\" y=\"146\" fill=\"#ffd84d\">y ↓ unten</text><text x=\"200\" y=\"76\" fill=\"#b48cff\">Weichzeichnung</text><text x=\"200\" y=\"100\" fill=\"#eef2ff\">rgba = Farbe</text><path d=\"M40 46 Q40 32 54 32\" stroke=\"#38c7ff\" stroke-width=\"3\" fill=\"none\"/><text x=\"8\" y=\"20\" fill=\"#38c7ff\">border-radius</text><defs><marker id=\"pf\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8Z\" fill=\"#ffd84d\"/></marker></defs></svg>"
+    },
+    {
+      "type": "example",
+      "text": "Ein Truck-Logo und ein Bestell-Knopf. **Ändere** bei `.logo` den Wert `12px` auf `50%` – das quadratische Bild wird ein Kreis. Setze dann bei `.knopf` den Radius auf `999px` und beobachte die Pillenform.",
+      "html": "<img class=\"logo\" src=\"pizza.svg\" alt=\"Logo des Pizza-Trucks\">\n<p><button class=\"knopf\">Jetzt bestellen</button></p>\n",
+      "css": ".logo {\n  width: 120px;\n  border: 3px solid #ff7a45;\n  border-radius: 12px;\n}\n\n.knopf {\n  padding: 10px 24px;\n  border: 2px solid #1b1b2f;\n  background-color: #ffd84d;\n  border-radius: 4px;\n}\n",
+      "editable": [
+        "css"
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Ein quadratisches Profilbild soll ein **Kreis** werden. Welcher Wert für `border-radius` passt?",
+      "options": [
+        "`50%`",
+        "`0`",
+        "`2px`",
+        "`round`"
+      ],
+      "correct": 0,
+      "explanation": "Die Hälfte der Breite als Radius – bei einem Quadrat ergibt das genau einen Kreis. 2px rundet nur minimal, und round gibt es als Wert nicht."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** den Knopf mit der Klasse `knopf`: 20 Pixel runde Ecken sowie oben und unten 10 Pixel, links und rechts 24 Pixel Innenabstand.",
+      "starter": {
+        "html": "<button class=\"knopf\">Ticket kaufen</button>\n",
+        "css": ".knopf {\n  background-color: #ff7a45;\n  color: white;\n  border: 2px solid #ff7a45;\n  font-size: 18px;\n  /* runde Ecken und Innenabstand */\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Runde Ecken sind eine eigene Eigenschaft mit einem Pixelwert.",
+        "Die Eigenschaft heißt border-radius – `border-radius: 3px;` rundet zum Beispiel nur ganz leicht.",
+        "Innenabstand mit zwei Werten: erst oben/unten, dann links/rechts."
+      ],
+      "solution": {
+        "css": ".knopf {\n  background-color: #ff7a45;\n  color: white;\n  border: 2px solid #ff7a45;\n  font-size: 18px;\n  border-radius: 20px;\n  padding: 10px 24px;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".knopf",
+          "prop": "border-top-left-radius",
+          "expected": "20px",
+          "label": "Die Ecken sind 20px rund"
+        },
+        {
+          "type": "style",
+          "selector": ".knopf",
+          "prop": "padding-top",
+          "expected": "10px",
+          "label": "Oben sind 10px Innenabstand"
+        },
+        {
+          "type": "style",
+          "selector": ".knopf",
+          "prop": "padding-left",
+          "expected": "24px",
+          "label": "Links sind 24px Innenabstand"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "text": "Ein **Schatten** lässt eine Box schweben – wie eine Karte, die auf dem Tisch liegt. Die Eigenschaft **`box-shadow`** bekommt vier Angaben:\n\n```css\n.karte {\n  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);\n}\n```\n\n1. Verschiebung nach **rechts** (x), 2. nach **unten** (y), 3. **Weichzeichnung** – je größer, desto weicher, 4. **Farbe**. Mit `0` als erstem Wert fällt der Schatten nur nach unten."
+    },
+    {
+      "type": "explain",
+      "text": "Warum `rgba(0, 0, 0, 0.3)` statt `black`? Ein echter Schatten ist **halbdurchsichtig**. `rgba` mischt **R**ot, **G**rün und **B**lau (je 0–255) – die vierte Zahl ist die **Deckkraft** (alpha): `0` unsichtbar, `1` voll deckend.\n\n`rgba(0, 0, 0, 0.3)` heißt also: Schwarz, zu 30 % sichtbar. Der Hintergrund scheint durch – der Schatten wirkt weich und natürlich."
+    },
+    {
+      "type": "fill",
+      "text": "**Vervollständige** den Schatten: 0 Pixel nach rechts, 6 Pixel nach unten, 10 Pixel weich, Schwarz mit 25 % Deckkraft.",
+      "template": ".karte {\n  box-shadow: 0 ___ 10px rgba(0, 0, 0, ___);\n}",
+      "accept": [
+        [
+          "6px"
+        ],
+        [
+          "0.25",
+          ".25",
+          "25%"
+        ]
+      ],
+      "hint": "Reihenfolge: rechts, unten, weich, Farbe. Die Deckkraft ist eine Zahl zwischen 0 und 1."
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Produktkachel mit der Klasse `kachel`: 12 Pixel runde Ecken und ein Schatten – 0 Pixel nach rechts, 4 Pixel nach unten, 12 Pixel weich, Schwarz mit 20 % Deckkraft.",
+      "starter": {
+        "html": "<div class=\"kachel\">\n  <img src=\"controller.svg\" alt=\"Controller Modell Pulse\">\n  <h2>Controller „Pulse“</h2>\n  <p>49,90 €</p>\n</div>\n",
+        "css": "body {\n  background-color: #f2f4f8;\n}\n\n.kachel {\n  background-color: white;\n  padding: 16px;\n  width: 220px;\n  /* runde Ecken und Schatten */\n}\n\nimg {\n  width: 100%;\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Zwei Eigenschaften: eine für die Ecken, eine für den Schatten.",
+        "Der Schatten hat vier Angaben: rechts, unten, Weichzeichnung, Farbe – etwa `box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);`.",
+        "Deckkraft 20 % schreibst du als 0.2 – die vierte Zahl in rgba."
+      ],
+      "solution": {
+        "css": "body {\n  background-color: #f2f4f8;\n}\n\n.kachel {\n  background-color: white;\n  padding: 16px;\n  width: 220px;\n  border-radius: 12px;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);\n}\n\nimg {\n  width: 100%;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".kachel",
+          "prop": "border-top-left-radius",
+          "expected": "12px",
+          "label": "Die Kachel hat 12px runde Ecken"
+        },
+        {
+          "type": "style",
+          "selector": ".kachel",
+          "prop": "box-shadow",
+          "expected": "rgba(0, 0, 0, 0.2) 0px 4px 12px",
+          "contains": true,
+          "label": "Die Kachel hat den Schatten (0 4px 12px, 20 % Schwarz)"
+        },
+        {
+          "type": "style",
+          "selector": ".kachel",
+          "prop": "padding-top",
+          "expected": "16px",
+          "label": "Der Innenabstand bleibt erhalten"
+        }
+      ]
+    },
+    {
+      "type": "pair",
+      "text": "Ordne die Angaben von `box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.4);` zu.",
+      "pairs": [
+        [
+          "`2px`",
+          "Verschiebung nach rechts (x)"
+        ],
+        [
+          "`6px`",
+          "Verschiebung nach unten (y)"
+        ],
+        [
+          "`10px`",
+          "Weichzeichnung – je größer, desto weicher"
+        ],
+        [
+          "`rgba(0, 0, 0, 0.4)`",
+          "Farbe: Schwarz mit 40 % Deckkraft"
+        ],
+        [
+          "`border-radius`",
+          "runde Ecken – gehört nicht zum Schatten"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "task": "**Gestalte** die Spielerkarte (Klasse `spieler`): 16 Pixel runde Ecken, 1 Pixel durchgezogener Rahmen in `#e0e4ee`, rundum 16 Pixel Innenabstand, Schatten 0 Pixel rechts, 8 Pixel unten, 16 Pixel weich, Schwarz mit 15 % Deckkraft. Das Profilbild (Klasse `profil`) wird ein Kreis.",
+      "starter": {
+        "html": "<div class=\"spieler\">\n  <img class=\"profil\" src=\"katze.svg\" alt=\"Profilbild von Neo_77\">\n  <h2>Neo_77</h2>\n  <p>Level 42 · 1.280 Punkte</p>\n</div>\n",
+        "css": "body {\n  background-color: #f2f4f8;\n}\n\n.spieler {\n  background-color: white;\n  width: 220px;\n  /* Karten-Look */\n}\n\n.profil {\n  width: 80px;\n  height: 80px;\n  /* rund */\n}\n"
+      },
+      "editable": [
+        "css"
+      ],
+      "hints": [
+        "Vier Eigenschaften für die Karte (Ecken, Rahmen, Innenabstand, Schatten), eine für das Bild.",
+        "Ein Kreis entsteht mit border-radius und einem Prozentwert – der Hälfte.",
+        "Schatten-Muster aus einem anderen Kontext: `box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);` – setze deine vier Werte ein."
+      ],
+      "solution": {
+        "css": "body {\n  background-color: #f2f4f8;\n}\n\n.spieler {\n  background-color: white;\n  width: 220px;\n  border-radius: 16px;\n  border: 1px solid #e0e4ee;\n  padding: 16px;\n  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);\n}\n\n.profil {\n  width: 80px;\n  height: 80px;\n  border-radius: 50%;\n}\n"
+      },
+      "tests": [
+        {
+          "type": "style",
+          "selector": ".spieler",
+          "prop": "border-top-left-radius",
+          "expected": "16px",
+          "label": "Die Karte hat 16px runde Ecken"
+        },
+        {
+          "type": "style",
+          "selector": ".spieler",
+          "prop": "border-top-style",
+          "expected": "solid",
+          "label": "Die Karte hat einen durchgezogenen Rahmen"
+        },
+        {
+          "type": "style",
+          "selector": ".spieler",
+          "prop": "border-top-color",
+          "expected": "#e0e4ee",
+          "label": "Der Rahmen ist hellgrau (#e0e4ee)"
+        },
+        {
+          "type": "style",
+          "selector": ".spieler",
+          "prop": "padding-top",
+          "expected": "16px",
+          "label": "Die Karte hat 16px Innenabstand"
+        },
+        {
+          "type": "style",
+          "selector": ".spieler",
+          "prop": "box-shadow",
+          "expected": "rgba(0, 0, 0, 0.15) 0px 8px 16px",
+          "contains": true,
+          "label": "Die Karte hat den Schatten (0 8px 16px, 15 % Schwarz)"
+        },
+        {
+          "type": "style",
+          "selector": ".profil",
+          "prop": "border-top-left-radius",
+          "expected": "50%",
+          "label": "Das Profilbild ist ein Kreis"
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Ab zur FUNKEN-Website! Zwei Dinge: Alle Bilder bekommen sanft gerundete Ecken – dafür brauchst du eine **neue Regel** für das Element `img`. Und der Hinweis-Kasten bekommt runde Ecken plus einen weichen Schatten nach unten, damit er über der Seite schwebt.\n\nDie Werte stehen in der Aufgabe. Die Hinweis-Zeilen kommen in die vorhandene Regel."
+    },
+    {
+      "type": "code",
+      "etappe": "13-box-modell/03-ecken-und-schatten"
+    }
+  ]
+}

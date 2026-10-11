@@ -1,0 +1,47 @@
+{
+  "id": "05-projekt-seitenstruktur",
+  "title": "Projekt: Seitenstruktur",
+  "konzepte": [],
+  "steps": [
+    {
+      "type": "explain",
+      "sprecher": "sam",
+      "text": "Ich seh von euren Zonen ehrlich gesagt nichts. Ayla sagt, das ist wie das Fundament der Bühne: unsichtbar, aber alles steht drauf. Okay, ich glaub euch.\n\nWas fehlt noch? Die Galerie! Startseite und Programm haben Kopf, Navigation, Hauptbereich und Fuß – die Galerie bekommt jetzt dieselbe Struktur, und statt dem einen Rück-Link eine echte Navigation."
+    },
+    {
+      "type": "quiz",
+      "question": "Die Galerie-Seite bekommt Zonen. Wohin gehören die beiden Bild-Blöcke mit den Fotos?",
+      "options": [
+        "In den Hauptbereich (main)",
+        "In den Kopfbereich (header)",
+        "In den Fußbereich (footer)"
+      ],
+      "correct": 0,
+      "explanation": "Die Fotos sind der eigentliche Inhalt der Seite – und Inhalt gehört in main. Kopf und Fuß rahmen ihn nur ein."
+    },
+    {
+      "type": "order",
+      "text": "Bring die Zonen der Galerie-Seite in die übliche Reihenfolge.",
+      "lines": [
+        "<header>",
+        "  <h1>Galerie</h1>",
+        "</header>",
+        "<nav>",
+        "  <a href=\"index.html\">Startseite</a>",
+        "</nav>",
+        "<main> … </main>",
+        "<footer> … </footer>"
+      ],
+      "explanation": "Kopf, Navigation, Hauptbereich, Fuß – die Reihenfolge, die Screenreader und Menschen erwarten."
+    },
+    {
+      "type": "explain",
+      "sprecher": "robby",
+      "text": "Ab zur FUNKEN-Website – letzte Etappe der Station Zonen: Die Galerie bekommt Kopf, Navigation mit drei Links (Startseite, Programm, Tickets), Hauptbereich mit allen Abschnitten und einen Fuß mit der Adresse. Der alte Rück-Link-Absatz entfällt.\n\nDanach lohnt sich ein Klick auf „FUNKEN-Website ansehen“: Blättere durch alle drei Seiten – sie haben jetzt dasselbe Gerüst."
+    },
+    {
+      "type": "code",
+      "etappe": "08-struktur-und-attribute/05-projekt-seitenstruktur"
+    }
+  ]
+}
