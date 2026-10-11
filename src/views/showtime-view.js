@@ -1,13 +1,13 @@
 // Showtime: die eigene Website. Werkbank mit allen drei Dateien, Checkliste
 // mit automatisch geprüften Pflicht-Kriterien, Download als ZIP.
 
-import { getShowtime, showtimeSpeichern, abzeichenPruefen, vergibXp } from '../store.js';
+import { getShowtime, showtimeSpeichern, meilensteinePruefen, vergibXp } from '../store.js';
 import { createWorkbench } from '../engine/workbench.js';
 import { runTests } from '../engine/checker.js';
 import { buildSrcdoc } from '../engine/preview.js';
 import { toast, konfetti } from '../gamification/celebrate.js';
 import { sound } from '../gamification/sound.js';
-import { meldeAbzeichen, verarbeiteXp } from './lesson-view.js';
+import { meldeMeilensteine, verarbeiteXp } from './lesson-view.js';
 
 const START_HTML = `<!DOCTYPE html>
 <html lang="de">
@@ -56,7 +56,7 @@ export async function renderShowtime(app) {
   const st = getShowtime();
   app.innerHTML = `
     <div class="auftritt">
-      <a class="zurueck" href="#/">← Zum Turnierplan</a>
+      <a class="zurueck" href="#/">← Hyperia</a>
       <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin:0.5rem 0 0.5rem">
         <h1 style="margin:0;flex:1">🎆 Showtime – deine eigene Website</h1>
         <span class="chip chip-farbe" id="stand" style="--farbe: var(--projekt)">0 / ${PFLICHT.length} Pflicht-Kriterien</span>
@@ -108,7 +108,7 @@ export async function renderShowtime(app) {
         sound.fanfare();
         toast({ titel: 'Alle Pflicht-Kriterien erfüllt!', text: 'Deine Website steht. Jetzt die Kür.', icon: '🎆', art: 'ok', dauer: 5000 });
       }
-      meldeAbzeichen(abzeichenPruefen({ ereignis: 'showtime' }));
+      meldeMeilensteine(meilensteinePruefen({ ereignis: 'showtime' }));
     } else if (!still) {
       sound.klick();
     }

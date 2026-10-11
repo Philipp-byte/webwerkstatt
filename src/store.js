@@ -1,9 +1,10 @@
-// Der Spielstand: alles in EINEM localStorage-Eintrag, kein Konto, kein Server.
-// Sichern/Laden als JSON-Datei (Spielerkarte). Die Views ändern den Zustand nur über
-// die Funktionen hier, damit XP, Abzeichen und Leitner konsistent bleiben.
+// Der Spielstand: alles in EINEM localStorage-Eintrag (Demo-Modus) bzw. als JSON auf dem
+// Server (Schulmodus, siehe progress-remote.js). Sichern/Laden als Datei unter „Ich“.
+// Die Views ändern den Zustand nur über die Funktionen hier, damit XP, Meilensteine und
+// Leitner konsistent bleiben.
 
-import { XP, levelAus, rangAus, comboFaktor } from './gamification/xp.js';
-import { pruefeAbzeichen } from './gamification/badges.js';
+import { levelAus } from './gamification/xp.js';
+import { pruefeMeilensteine } from './gamification/badges.js';
 import { lerneKonzepte } from './gamification/leitner.js';
 
 const KEY = 'webwerkstatt2.spielstand.v1';
@@ -12,7 +13,7 @@ const SETTINGS_KEY = 'webwerkstatt2.einstellungen';
 
 function leerer() {
   return {
-    version: 2,
+    version: 3,
     name: '',
     xp: 0,
     lessons: {},
@@ -22,18 +23,15 @@ function leerer() {
     leitner: {},
     lessonCounter: 0,
     recentQuestions: [],
-    backstage: { highscores: { blitz: 0, jagd: 0, aufbau: 0 }, tag: '', xpHeute: 0 },
-    stats: { correct: 0, wrong: 0, codePassed: 0, hintsUsed: 0, longestCombo: 0, comebacks: 0, soundcheckCorrect: 0, exports: 0, minuten: 0, lastActive: null, firstActive: null },
+    // Hinterhalte: gespielte Knoten je Ort, Rekorde je Spiel
+    hinterhalte: { knoten: {}, rekorde: {}, runden: 0 },
+    stats: { correct: 0, wrong: 0, codePassed: 0, hintsUsed: 0, comebacks: 0, soundcheckCorrect: 0, exports: 0, minuten: 0, lastActive: null, firstActive: null, hinterhaltSterne: 0 },
     project: { pages: {}, css: null, js: null, etappen: {} },
     showtime: { html: null, css: null, js: null, pflichtErfuellt: false },
     solutions: {},
-    intro: { seen: false, video: false },
-    // Story-Schicht: gesehene Zwischenspiele (anpfiff/funk/abpfiff je Runde) und gesammelte Trophäenkarten
-    story: { gesehen: {}, karten: {} },
-    // Tages-Serie: an wie vielen Tagen in Folge gespielt wurde
-    streak: { tage: 0, letzter: '', beste: 0 },
-    // Zähler für das heutige Tagesziel
-    tag: { datum: '', lektionen: 0, soundcheck: 0, training: 0, szenen: 0, bonus: false },
+    intro: { seen: false, video: false, komplett: false },
+    // Story: gesehene Orts-Einleitungen, vorgestellte Figuren, Seidras Auftritte
+    story: { einleitungen: {}, vorgestellt: {}, seidra: {} },
   };
 }
 
@@ -42,14 +40,19 @@ const listener = new Set();
 
 function migriere(s) {
   const basis = leerer();
-  const out = { ...basis, ...s };
+  const out = { ...basis };
   for (const k of Object.keys(basis)) {
+    if (!(k in (s || {}))) continue;
     if (typeof basis[k] === 'object' && basis[k] !== null && !Array.isArray(basis[k])) {
-      out[k] = { ...basis[k], ...(s?.[k] || {}) };
-    }
+      out[k] = { ...basis[k], ...(s[k] || {}) };
+    } else out[k] = s[k];
   }
-  out.backstage.highscores = { ...basis.backstage.highscores, ...(s?.backstage?.highscores || {}) };
+  out.hinterhalte = { ...basis.hinterhalte, ...(s?.hinterhalte || {}) };
   out.stats = { ...basis.stats, ...(s?.stats || {}) };
+  out.story = { ...basis.story, ...(s?.story || {}) };
+  delete out.story.gesehen;
+  delete out.story.karten;
+  out.version = 3;
   return out;
 }
 
@@ -80,6 +83,12 @@ export function getState() {
 export function onChange(fn) {
   listener.add(fn);
   return () => listener.delete(fn);
+}
+
+// Kompletten Spielstand ersetzen (Datei laden, Schulmodus)
+export function ersetzeSpielstand(daten) {
+  state = migriere(daten || {});
+  save();
 }
 
 export function heute() {
@@ -127,37 +136,17 @@ export function setLehrkraft(an) {
 
 /* ---------- XP ---------- */
 
-// Vergibt XP; mit `key` nur einmal. Liefert die vergebene Menge und Level-/Rangwechsel.
-export function vergibXp(betrag, { key = null, serie = 0 } = {}) {
+// Vergibt XP; mit `key` nur einmal. Liefert die vergebene Menge und den Level-Wechsel.
+export function vergibXp(betrag, { key = null } = {}) {
   const s = load();
-  if (key && s.granted[key]) return { xp: 0, levelup: null, rangup: null };
-  const menge = Math.round(betrag * comboFaktor(serie));
+  if (key && s.granted[key]) return { xp: 0, levelup: null };
+  const menge = Math.round(betrag);
   const levelVorher = levelAus(s.xp);
-  const rangVorher = rangAus(s.xp);
   s.xp += menge;
   if (key) s.granted[key] = true;
   const levelNachher = levelAus(s.xp);
-  const rangNachher = rangAus(s.xp);
   save();
-  return {
-    xp: menge,
-    levelup: levelNachher > levelVorher ? levelNachher : null,
-    rangup: rangNachher.id !== rangVorher.id ? rangNachher : null,
-  };
-}
-
-export function xpBackstage(betrag) {
-  const s = load();
-  if (s.backstage.tag !== heute()) {
-    s.backstage.tag = heute();
-    s.backstage.xpHeute = 0;
-  }
-  const frei = Math.max(0, XP.backstageTagesdeckel - s.backstage.xpHeute);
-  const menge = Math.min(frei, betrag);
-  s.backstage.xpHeute += menge;
-  save();
-  if (!menge) return { xp: 0, levelup: null, rangup: null, gedeckelt: true };
-  return { ...vergibXp(menge), gedeckelt: menge < betrag };
+  return { xp: menge, levelup: levelNachher > levelVorher ? levelNachher : null };
 }
 
 /* ---------- Statistik ---------- */
@@ -168,14 +157,6 @@ export function zaehle(feld, n = 1) {
   s.stats.lastActive = Date.now();
   if (!s.stats.firstActive) s.stats.firstActive = Date.now();
   save();
-}
-
-export function merkeCombo(serie) {
-  const s = load();
-  if (serie > (s.stats.longestCombo || 0)) {
-    s.stats.longestCombo = serie;
-    save();
-  }
 }
 
 /* ---------- Lektionen ---------- */
@@ -211,7 +192,7 @@ export function lektionAbschliessen(chapterId, lessonId, { stars, konzepte = [],
     s.lessonCounter++;
     lerneKonzepte(s, konzepte);
   }
-  tagZaehlen(s, 'lektionen');
+  s.stats.lastActive = Date.now();
   save();
   return { erster, eintrag };
 }
@@ -226,22 +207,18 @@ export function getLoesungen() {
   return load().solutions;
 }
 
-/* ---------- Abnahme ---------- */
+/* ---------- Duell (Abnahme) ---------- */
 
 export function abnahmeSpeichern(chapterId, { anteil, passed }) {
   const s = load();
-  const alt = s.boss[chapterId] || { best: 0, passed: false, versuche: 0 };
+  const alt = s.boss[chapterId] || { best: 0, passed: false, versuche: 0, ersterVersuch: false };
   s.boss[chapterId] = {
     best: Math.max(alt.best, anteil),
     passed: alt.passed || passed,
     versuche: alt.versuche + 1,
+    ersterVersuch: alt.ersterVersuch || (passed && alt.versuche === 0),
     at: Date.now(),
   };
-  if (passed) {
-    streakFortschreiben(s);
-    // Trophäenkarte der besiegten Crew kommt in die Sammlung
-    if (!s.story.karten[chapterId]) s.story.karten[chapterId] = Date.now();
-  }
   save();
   return s.boss[chapterId];
 }
@@ -250,11 +227,31 @@ export function getAbnahme(chapterId) {
   return load().boss[chapterId] || null;
 }
 
-/* ---------- Abzeichen ---------- */
+/* ---------- Hinterhalte ---------- */
 
-export function abzeichenPruefen(ctx = {}) {
+export function hinterhaltSpeichern(chapterId, knotenId, { spiel, punkte, max, sterne }) {
   const s = load();
-  const neu = pruefeAbzeichen(s, { level: levelAus(s.xp), ...ctx });
+  const key = `${chapterId}/${knotenId}`;
+  const alt = s.hinterhalte.knoten[key];
+  const neueSterne = Math.max(sterne, alt?.sterne || 0);
+  s.stats.hinterhaltSterne = (s.stats.hinterhaltSterne || 0) + Math.max(0, neueSterne - (alt?.sterne || 0));
+  s.hinterhalte.knoten[key] = { spiel, punkte: Math.max(punkte, alt?.punkte || 0), max, sterne: neueSterne, at: Date.now(), runden: (alt?.runden || 0) + 1 };
+  s.hinterhalte.rekorde[spiel] = Math.max(s.hinterhalte.rekorde[spiel] || 0, punkte);
+  s.hinterhalte.runden = (s.hinterhalte.runden || 0) + 1;
+  s.stats.lastActive = Date.now();
+  save();
+  return s.hinterhalte.knoten[key];
+}
+
+export function getHinterhalt(chapterId, knotenId) {
+  return load().hinterhalte.knoten[`${chapterId}/${knotenId}`] || null;
+}
+
+/* ---------- Meilensteine ---------- */
+
+export function meilensteinePruefen(ctx = {}) {
+  const s = load();
+  const neu = pruefeMeilensteine(s, { level: levelAus(s.xp), ...ctx });
   if (neu.length) save();
   return neu;
 }
@@ -300,7 +297,7 @@ export function showtimeSpeichern(daten) {
   save();
 }
 
-/* ---------- Intro, Name ---------- */
+/* ---------- Vorspann, Name ---------- */
 
 export function introGesehen() {
   return load().intro.seen;
@@ -318,97 +315,51 @@ export function setVideoGesehen(v = true) {
   save();
 }
 
+export function setVideoKomplett(v = true) {
+  const s = load();
+  s.intro.komplett = v;
+  s.intro.video = s.intro.video || v;
+  save();
+}
+
 export function setName(name) {
   const s = load();
   s.name = String(name || '').slice(0, 30);
   save();
 }
 
-/* ---------- Tages-Serie (Streak) und Tagesziel ---------- */
+/* ---------- Story: Einleitungen, Vorstellungen, Seidra ---------- */
 
-function gestern() {
-  const d = new Date();
-  d.setDate(d.getDate() - 1);
-  return d.toISOString().slice(0, 10);
+export function einleitungGesehen(chapterId) {
+  return !!load().story.einleitungen[chapterId];
 }
 
-// Zählt den heutigen Tag als gespielt; Tage in Folge ergeben die Serie.
-function streakFortschreiben(s) {
-  const h = heute();
-  if (s.streak.letzter === h) return s.streak;
-  s.streak.tage = s.streak.letzter === gestern() ? s.streak.tage + 1 : 1;
-  s.streak.letzter = h;
-  s.streak.beste = Math.max(s.streak.beste || 0, s.streak.tage);
-  return s.streak;
-}
-
-function tagZaehlen(s, feld, n = 1) {
-  const h = heute();
-  if (s.tag.datum !== h) s.tag = { datum: h, lektionen: 0, soundcheck: 0, training: 0, szenen: 0, bonus: false };
-  s.tag[feld] = (s.tag[feld] || 0) + n;
-  streakFortschreiben(s);
-}
-
-// Von außen: Aktivität melden (soundcheck, training, szenen). Lektionen und Matches zählen automatisch.
-export function aktivitaet(feld, n = 1) {
+export function setEinleitungGesehen(chapterId) {
   const s = load();
-  tagZaehlen(s, feld, n);
-  save();
-  return { streak: s.streak, tag: s.tag };
-}
-
-export function getStreak() {
-  const s = load();
-  // Serie ist nur „lebendig“, wenn heute oder gestern gespielt wurde
-  const lebendig = s.streak.letzter === heute() || s.streak.letzter === gestern();
-  return { ...s.streak, aktiv: lebendig ? s.streak.tage : 0, heuteGespielt: s.streak.letzter === heute() };
-}
-
-export const TAGESZIEL = [
-  { id: 'lektionen', ziel: 1, titel: 'Eine Lektion abschließen', icon: '🏁' },
-  { id: 'soundcheck', ziel: 3, titel: 'Drei Soundcheck-Fragen richtig', icon: '🎚️' },
-  { id: 'extra', ziel: 1, titel: 'Ein Zwischenspiel oder eine Trainings-Runde', icon: '🎬' },
-];
-export const TAGESZIEL_XP = 60;
-
-export function getTagesziel() {
-  const s = load();
-  const t = s.tag.datum === heute() ? s.tag : { lektionen: 0, soundcheck: 0, training: 0, szenen: 0, bonus: false };
-  const stand = TAGESZIEL.map((z) => {
-    const wert = z.id === 'extra' ? (t.szenen || 0) + (t.training || 0) : t[z.id] || 0;
-    return { ...z, wert: Math.min(wert, z.ziel), erfuellt: wert >= z.ziel };
-  });
-  return { stand, alle: stand.every((z) => z.erfuellt), bonus: !!t.bonus };
-}
-
-// Tagesbonus auszahlen, wenn alle drei Ziele erfüllt sind (einmal pro Tag).
-export function tagesbonusPruefen() {
-  const s = load();
-  const z = getTagesziel();
-  if (!z.alle || z.bonus || s.tag.datum !== heute()) return null;
-  s.tag.bonus = true;
-  s.stats.tagesziele = (s.stats.tagesziele || 0) + 1;
-  save();
-  return vergibXp(TAGESZIEL_XP);
-}
-
-/* ---------- Story: Zwischenspiele und Trophäenkarten ---------- */
-
-export function szeneGesehen(id) {
-  return !!load().story.gesehen[id];
-}
-
-export function setSzeneGesehen(id) {
-  const s = load();
-  const erste = !s.story.gesehen[id];
-  s.story.gesehen[id] = Date.now();
-  if (erste) tagZaehlen(s, 'szenen');
+  const erste = !s.story.einleitungen[chapterId];
+  s.story.einleitungen[chapterId] = Date.now();
   save();
   return erste;
 }
 
-export function getKarten() {
-  return load().story.karten;
+export function vorgestellt(figurId) {
+  return !!load().story.vorgestellt[figurId];
+}
+
+export function setVorgestellt(figurId) {
+  const s = load();
+  s.story.vorgestellt[figurId] = Date.now();
+  save();
+}
+
+export function seidraGesehen(key) {
+  return !!load().story.seidra[key];
+}
+
+export function setSeidraGesehen(key) {
+  const s = load();
+  s.story.seidra[key] = Date.now();
+  save();
 }
 
 /* ---------- Sichern & Laden ---------- */
@@ -417,7 +368,7 @@ export function exportSpielstand() {
   const s = load();
   s.stats.exports = (s.stats.exports || 0) + 1;
   save();
-  return { app: 'WebWerkstatt', version: 2, exportedAt: new Date().toISOString(), spielstand: s };
+  return { app: 'WebWerkstatt', version: 3, exportedAt: new Date().toISOString(), spielstand: s };
 }
 
 export function importSpielstand(daten) {

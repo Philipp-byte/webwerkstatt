@@ -3,20 +3,25 @@
 // eine langsame ältere Ansicht nie eine neuere (z. B. bei schnellen Klicks).
 
 const routen = {
-  '': () => import('./views/map-view.js').then((m) => m.renderMap),
+  '': () => import('./views/karte-view.js').then((m) => m.renderKarte),
   intro: () => import('./views/intro-view.js').then((m) => m.renderIntro),
-  kapitel: () => import('./views/chapter-view.js').then((m) => m.renderChapter),
+  ort: () => import('./views/ort-view.js').then((m) => m.renderOrt),
+  kapitel: () => import('./views/ort-view.js').then((m) => m.renderOrt),
   lektion: () => import('./views/lesson-view.js').then((m) => m.renderLesson),
-  abnahme: () => import('./views/boss-view.js').then((m) => m.renderBoss),
-  backstage: () => import('./views/backstage-view.js').then((m) => m.renderBackstage),
-  keycard: () => import('./views/keycard-view.js').then((m) => m.renderKeycard),
+  duell: () => import('./views/duell-view.js').then((m) => m.renderDuell),
+  abnahme: () => import('./views/duell-view.js').then((m) => m.renderDuell),
+  hinterhalt: () => import('./views/hinterhalt-view.js').then((m) => m.renderHinterhalt),
+  backstage: () => import('./views/hinterhalt-view.js').then((m) => m.renderHinterhalt),
+  ich: () => import('./views/ich-view.js').then((m) => m.renderIch),
+  keycard: () => import('./views/ich-view.js').then((m) => m.renderIch),
   projekt: () => import('./views/projekt-view.js').then((m) => m.renderProjekt),
   showtime: () => import('./views/showtime-view.js').then((m) => m.renderShowtime),
   pruefung: () => import('./views/pruefung-view.js').then((m) => m.renderPruefung),
   lehrkraft: () => import('./views/lehrkraft-view.js').then((m) => m.renderLehrkraft),
   bericht: () => import('./views/bericht-view.js').then((m) => m.renderBericht),
-  szene: () => import('./views/szene-view.js').then((m) => m.renderSzene),
   spickzettel: () => import('./views/spickzettel-view.js').then((m) => m.renderSpickzettel),
+  login: () => import('./views/login-view.js').then((m) => m.renderLogin),
+  klasse: () => import('./views/klasse-view.js').then((m) => m.renderKlasse),
 };
 
 let aktuelleView = null;
@@ -57,7 +62,7 @@ async function route() {
   } catch (e) {
     console.error(e);
     if (meine !== navigation) return;
-    wurzel.innerHTML = `<div class="karte gesperrt-karte"><h2>Ups!</h2><p>Diese Seite konnte nicht geladen werden.</p><p><a class="btn btn-sekundaer" href="#/">Zurück zum Turnierplan</a></p></div>`;
+    wurzel.innerHTML = `<div class="karte gesperrt-karte"><h2>Ups!</h2><p>Diese Seite konnte nicht geladen werden.</p><p><a class="btn btn-sekundaer" href="#/">Zurück nach Hyperia</a></p></div>`;
   }
   window.scrollTo(0, 0);
 }

@@ -24,9 +24,8 @@ export const loadLesson = (ch, l) => ladeJson(`chapters/${ch}/lessons/${l}.json`
 export const loadPool = (ch) => ladeJson(`chapters/${ch}/pool.json`).catch(() => ({ chapter: ch, fragen: [] }));
 export const loadBoss = (ch) => ladeJson(`chapters/${ch}/boss.json`).catch(() => null);
 export const loadEtappen = () => ladeJson('projekt/etappen.json');
-export const loadIntro = () => ladeJson('story/intro.json');
-export const loadCrews = () => ladeJson('story/crews.json');
-export const loadSzenen = () => ladeJson('story/szenen.json').catch(() => ({ runden: {} }));
+export const loadWelt = () => ladeJson('story/welt.json');
+export const loadFiguren = () => ladeJson('story/figuren.json');
 export const loadLehrkraft = () => ladeJson('lehrkraft.json').catch(() => ({ hash: '' }));
 
 export async function alleKapitelIds() {
@@ -97,12 +96,6 @@ export async function etappeAufloesen(id) {
   return { ...e, starter, solution, project: { page: e.page, save: e.save } };
 }
 
-// Zwischenspiele (Anpfiff, Crew-Funk, Abpfiff) einer Runde
-export async function szenenFuer(chapterId) {
-  const d = await loadSzenen();
-  return d.runden?.[chapterId] || null;
-}
-
 // Alle Konzepte, die eine Lektion und alle davor eingeführt haben (für Nachschlagen)
 export async function konzepteBis(chapterId, lessonId) {
   const flat = await flacheLektionen();
@@ -114,8 +107,21 @@ export async function konzepteBis(chapterId, lessonId) {
   return ids;
 }
 
-// Turnier-Runde (Gegner-Crew) zu einem Kapitel, dazu die eigene Crew und die Turnierdaten
-export async function rundeFuer(chapterId) {
-  const c = await loadCrews();
-  return { runde: c.runden.find((r) => r.chapter === chapterId) || null, crew: c.crew, turnier: c.turnier, runden: c.runden };
+/* ---------- Hyperia: Orte, Regionen, Figuren ---------- */
+
+// Der Ort (welt.json) zu einem Kapitel, mit Region und Gespinst-Name
+export async function ortFuer(chapterId) {
+  const [welt, figuren] = await Promise.all([loadWelt(), loadFiguren()]);
+  const ort = welt.orte.find((o) => o.chapter === chapterId);
+  if (!ort) return null;
+  const region = welt.regionen.find((r) => r.id === ort.region) || null;
+  return { ...ort, regionName: region?.name || '', regionFarbe: region?.farbe || '#9b8cff', gespinstName: figuren.figuren[ort.gespinst]?.name || ort.gespinst };
+}
+
+export async function alleOrte() {
+  const [welt, figuren] = await Promise.all([loadWelt(), loadFiguren()]);
+  return welt.orte.map((o) => {
+    const region = welt.regionen.find((r) => r.id === o.region) || null;
+    return { ...o, regionName: region?.name || '', regionFarbe: region?.farbe || '#9b8cff', gespinstName: figuren.figuren[o.gespinst]?.name || o.gespinst };
+  });
 }

@@ -1,4 +1,4 @@
-// XP, Level und Ränge. Zahlen siehe docs/DIDAKTIK.md Abschnitt 6.
+// XP und Level. Zahlen siehe docs/DIDAKTIK.md Abschnitt 6.
 
 export const XP = {
   quiz: 10,
@@ -14,21 +14,9 @@ export const XP = {
   soundcheck: 5,
   abnahme: 150,
   abnahmePerfekt: 50,
-  blitz: 5,
-  jagd: 10,
-  aufbau: 15,
-  backstageTagesdeckel: 150,
+  hinterhalt: 10, // je Runde, dazu je Stern:
+  hinterhaltStern: 5,
 };
-
-// Die Ränge im WEBCUP (Spielerkarte) – Schwellen siehe docs/DIDAKTIK.md Abschnitt 6.
-export const RAENGE = [
-  { id: 'rookie', titel: 'Rookie', ab: 0, icon: '🎽' },
-  { id: 'starter', titel: 'Starter', ab: 1500, icon: '⚡' },
-  { id: 'pro', titel: 'Pro', ab: 4500, icon: '💻' },
-  { id: 'captain', titel: 'Captain', ab: 9000, icon: '🧢' },
-  { id: 'mvp', titel: 'MVP', ab: 15000, icon: '🏅' },
-  { id: 'legende', titel: 'Legende', ab: 22000, icon: '🏆' },
-];
 
 export function xpFuerLevel(level) {
   return level <= 1 ? 0 : Math.round(100 * Math.pow(level - 1, 1.5));
@@ -45,20 +33,4 @@ export function levelFortschritt(xp) {
   const start = xpFuerLevel(level);
   const ende = xpFuerLevel(level + 1);
   return { level, start, ende, anteil: Math.min(1, (xp - start) / Math.max(1, ende - start)), fehlt: Math.max(0, ende - xp) };
-}
-
-export function rangAus(xp) {
-  let r = RAENGE[0];
-  for (const rang of RAENGE) if (xp >= rang.ab) r = rang;
-  return r;
-}
-
-export function naechsterRang(xp) {
-  return RAENGE.find((r) => r.ab > xp) || null;
-}
-
-export function comboFaktor(serie) {
-  if (serie >= 6) return 1.5;
-  if (serie >= 3) return 1.25;
-  return 1;
 }

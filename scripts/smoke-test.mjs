@@ -1,6 +1,7 @@
-// Rauchtest der App im Browser: ruft alle Ansichten auf (inkl. Zwischenspiele, Nachschlagen,
-// Spickzettel, Spielerkarte mit Trophäenkarten), spielt den Anpfiff der ersten Runde durch
-// und meldet jeden Seitenfehler. Mit --shots entstehen Screenshots unter /tmp/ww-shots.
+// Rauchtest der App im Browser: Vorspann (Lesefassung oder Video) → Onboarding → Quellgrund,
+// Lektion mit Gespinst-Spott und Nachlesen, Hinterhalt, Duell, Karte mit befreitem Ort,
+// Ich, Spickzettel, Website, Handy. Meldet jeden Seitenfehler. Mit --shots entstehen
+// Screenshots unter /tmp/ww-shots (oder --dir <ordner>).
 // Aufruf: npm run build && node scripts/smoke-test.mjs [--shots] [--dir <ordner>]
 
 import { spawn } from 'node:child_process';
@@ -8,7 +9,6 @@ import net from 'node:net';
 import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from 'playwright';
-import { loeseSchritt } from './lib/spieler.mjs';
 
 async function freierPort() {
   return new Promise((resolve) => {
@@ -53,93 +53,84 @@ const shot = async (name) => {
   if (!shots) return;
   await page.screenshot({ path: path.join(ordner, `${String(++nr).padStart(2, '0')}-${name}.png`), fullPage: false });
 };
-const geh = async (hash, warten = '#app .karte, #app .schritt, #app .gelaende, #app .intro, #app .spickzettel-seite') => {
+const geh = async (hash, warten = '#app .karte, #app .schritt, #app .hyperia-seite, #app .intro, #app .spickzettel-seite, #app .lektion-seite') => {
   await page.goto(preview.base + hash);
   await page.waitForSelector(warten, { timeout: 15000 });
   await page.waitForTimeout(400);
 };
-
+const KEY = 'webwerkstatt2.spielstand.v1';
 const KAP = '01-wie-das-web-funktioniert';
-const szenen = JSON.parse(fs.readFileSync('public/content/story/szenen.json', 'utf8'));
+const KAP2 = '02-html-erste-schritte';
+const lektion = JSON.parse(fs.readFileSync(`public/content/chapters/${KAP}/lessons/01-was-passiert-beim-seitenaufruf.json`, 'utf8'));
+const kapitel1 = JSON.parse(fs.readFileSync(`public/content/chapters/${KAP}/chapter.json`, 'utf8'));
 let exit = 0;
 try {
-  // Erster Besuch: Vorspann-Startbildschirm → Video → Onboarding (Name) → Anpfiff
+  // Erster Besuch: Vorspann (ohne Video die Lesefassung) → Onboarding → Quellgrund
   await page.goto(preview.base);
   await page.waitForSelector('.intro', { timeout: 15000 });
   await page.waitForTimeout(600);
-  await shot('intro-start');
-  if (await page.$('#video')) {
-    await page.click('#video');
-    await page.waitForSelector('video#film', { timeout: 10000 });
-    await page.waitForTimeout(1500);
-    const video = await page.$eval('video#film', (v) => ({ src: v.currentSrc, ready: v.readyState, dauer: v.duration }));
-    if (!(video.dauer > 80)) throw new Error(`Vorspann-Video lädt nicht: ${JSON.stringify(video)}`);
-    await shot('intro-video');
+  await shot('intro');
+  if (await page.$('video#film')) {
+    // Video vorhanden: beim ersten Start kein Überspringen – wir nehmen die Lesefassung
+    await page.click('#lesen');
+  }
+  await page.waitForSelector('.intro-lesen', { timeout: 10000 });
+  for (let i = 0; i < 6; i++) {
     await page.click('#weiter');
-  } else {
-    await page.click('#skip');
+    await page.waitForTimeout(150);
   }
   await page.waitForSelector('.intro-onboarding', { timeout: 10000 });
-  await page.fill('#name', 'Testspieler');
-  await shot('intro-onboarding');
+  await page.fill('#name', 'Testlehrling');
+  await page.waitForTimeout(500);
+  await shot('onboarding');
   await page.click('#los');
-  await page.waitForSelector('.szene-seite', { timeout: 10000 });
-  const name = await page.evaluate(() => JSON.parse(localStorage.getItem('webwerkstatt2.spielstand.v1')).name);
-  if (name !== 'Testspieler') throw new Error(`Onboarding: Name nicht gespeichert (${name})`);
+  await page.waitForSelector('.ort-seite', { timeout: 10000 });
+  await page.waitForTimeout(600);
+  const st = await page.evaluate((k) => JSON.parse(localStorage.getItem(k)), KEY);
+  if (st.name !== 'Testlehrling') throw new Error(`Onboarding: Name nicht gespeichert (${st.name})`);
+  if (!st.intro.komplett) throw new Error('Vorspann nicht als komplett gesehen markiert');
 
-  // Startseite (Vorspann als gesehen markieren)
-  await page.evaluate(() => {
-    const k = 'webwerkstatt2.spielstand.v1';
-    const s = JSON.parse(localStorage.getItem(k) || '{}');
-    s.intro = { seen: true, video: false };
-    localStorage.setItem(k, JSON.stringify(s));
-  });
-  await page.reload();
-  await geh('#/');
-  await shot('turnierplan');
-  const heroText = await page.$eval('.naechster-schritt', (el) => el.innerText);
-  if (!/Anpfiff/.test(heroText)) throw new Error(`Startseite: nächster Schritt sollte der Anpfiff sein, ist: ${heroText}`);
-
-  // Runde 1: Ablauf mit Zwischenspielen
-  await geh(`#/kapitel/${KAP}`);
-  await shot('runde-1');
-  const ablauf = await page.$$eval('.ablauf-eintrag', (els) => els.map((e) => e.innerText.replace(/\s+/g, ' ')));
-  if (!ablauf.some((t) => /Anpfiff/.test(t)) || !ablauf.some((t) => /Crew-Funk/.test(t)) || !ablauf.some((t) => /Abpfiff/.test(t))) throw new Error(`Ablauf unvollständig: ${ablauf.join(' | ')}`);
-
-  // Anpfiff durchspielen
-  await geh(`#/szene/${KAP}/anpfiff`, '.szene-seite');
-  for (let i = 0; i < 12; i++) {
-    const aufgabe = await page.$('.szene-aufgabe');
-    if (aufgabe) break;
-    await page.click('#weiter');
-    await page.waitForTimeout(150);
-  }
-  await shot('anpfiff-dialog');
-  const karte = await page.$('.szene-aufgabe');
-  if (!karte) throw new Error('Anpfiff: Aufgabe erscheint nicht');
-  await loeseSchritt(page, szenen.runden[KAP].anpfiff.aufgabe, karte);
-  await page.waitForSelector('.szene-aufgabe .rueckmeldung-ok', { timeout: 5000 });
-  await shot('anpfiff-geloest');
-  await page.click('.szene-aufgabe .schritt-buttons .btn-primaer');
-  for (let i = 0; i < 8; i++) {
-    if (await page.$('.szene-ende')) break;
-    await page.click('#weiter');
-    await page.waitForTimeout(150);
-  }
-  await page.waitForSelector('.szene-ende', { timeout: 5000 });
-  await shot('anpfiff-ende');
-  const xp = await page.evaluate(() => JSON.parse(localStorage.getItem('webwerkstatt2.spielstand.v1')).xp);
-  if (xp < 20) throw new Error(`Anpfiff: XP nicht vergeben (xp=${xp})`);
-
-  // Lektion: Nachlesen-Knopf und Aufgaben-Leiste
-  await geh(`#/lektion/${KAP}/01-was-passiert-beim-seitenaufruf`, '.lektion-seite');
+  // Quellgrund: Einleitung mit drei Blasen
+  const blasen = await page.$$('.einleitung .figur-blase');
+  if (blasen.length < 3) throw new Error(`Einleitung: ${blasen.length} Blasen statt 3`);
+  await shot('ort-1-einleitung');
+  await page.click('#los');
+  await page.waitForSelector('.lektion-seite', { timeout: 10000 });
   await shot('lektion-schritt-1');
-  // bis zur ersten Aufgabe blättern
-  for (let i = 0; i < 6; i++) {
+
+  // Lektion: zur ersten Quizfrage blättern, falsch antworten → Gespinst spottet, dann Nachlesen
+  const quizIndex = lektion.steps.findIndex((s) => s.type === 'quiz');
+  for (let i = 0; i < 12; i++) {
     const art = await page.$eval('.schritt:not([hidden])', (el) => el.className);
-    if (!/schritt-explain|schritt-example|schritt-soundcheck/.test(art)) break;
-    await page.click('.pager-weiter');
+    if (/schritt-quiz/.test(art)) break;
+    const btn = await page.$('.pager-weiter:not([disabled])');
+    if (!btn) break;
+    await btn.click();
     await page.waitForTimeout(200);
+  }
+  if (quizIndex >= 0) {
+    const step = lektion.steps[quizIndex];
+    const soll = String(step.options[step.correct]).replace(/[`*]/g, '').trim();
+    for (const b of await page.$$('.schritt:not([hidden]) .quiz-option')) {
+      const t = (await b.innerText()).replace(/^[A-D]\s*/, '').trim();
+      if (t !== soll) {
+        await b.click();
+        break;
+      }
+    }
+    await page.waitForSelector('.schritt:not([hidden]) .figur-blase-spott', { timeout: 5000 });
+    await page.waitForTimeout(500);
+    await shot('lektion-gespinst-spottet');
+    for (const b of await page.$$('.schritt:not([hidden]) .quiz-option:not([disabled])')) {
+      const t = (await b.innerText()).replace(/^[A-D]\s*/, '').trim();
+      if (t === soll) {
+        await b.click();
+        break;
+      }
+    }
+    await page.waitForSelector('.schritt:not([hidden]) .figur-blase-lob', { timeout: 5000 });
+    await page.waitForTimeout(500);
+    await shot('lektion-lob');
   }
   await page.click('#nachlesen');
   await page.waitForSelector('.nachschlagen.an', { timeout: 5000 });
@@ -148,68 +139,87 @@ try {
   if (!/Diese Lektion/.test(nsText)) throw new Error('Nachschlagen: Tab „Diese Lektion“ fehlt');
   if (/Musterlösung|solution/.test(nsText)) throw new Error('Nachschlagen zeigt eine Lösung!');
   await shot('lektion-nachlesen');
-  await page.click('.nachschlagen [data-tab="spickzettel"]');
-  await page.waitForTimeout(300);
-  await shot('lektion-spickzettel');
   await page.keyboard.press('Escape');
-  await page.waitForTimeout(400);
 
-  // Spickzettel-Seite
-  await geh('#/spickzettel', '.spickzettel-seite');
-  await shot('spickzettel');
-
-  // Gewonnene Runde simulieren → Spielerkarte mit Trophäenkarte, Abpfiff
-  await page.evaluate((kap) => {
-    const k = 'webwerkstatt2.spielstand.v1';
+  // Lektionen von Ort 1 als erledigt eintragen → Hinterhalt, Sturm, Duell
+  await page.evaluate(([k, kap, lessons]) => {
     const s = JSON.parse(localStorage.getItem(k));
-    s.boss[kap] = { best: 0.9, passed: true, versuche: 1, at: Date.now() };
-    s.story.karten[kap] = Date.now();
+    lessons.forEach((l) => { s.lessons[`${kap}/${l}`] = { done: true, stars: 3, completedAt: Date.now(), lastAt: Date.now(), versuche: 1, fehler: 0, tipps: 0 }; });
+    s.leitner = { 'web.browser': { box: 1, due: 0, seen: 0, ok: 0 }, 'web.url': { box: 1, due: 0, seen: 0, ok: 0 }, 'web.server': { box: 1, due: 0, seen: 0, ok: 0 } };
+    s.lessonCounter = lessons.length;
     localStorage.setItem(k, JSON.stringify(s));
-  }, KAP);
+  }, [KEY, KAP, kapitel1.lessons]);
   await page.reload();
-  await geh('#/keycard');
-  await page.click('.trophaeenkarte.gewonnen');
-  await page.waitForTimeout(900);
-  await shot('spielerkarte');
-  await geh(`#/szene/${KAP}/abpfiff`, '.szene-seite');
-  for (let i = 0; i < 12; i++) {
-    if (await page.$('.szene-aufgabe')) break;
-    await page.click('#weiter');
-    await page.waitForTimeout(150);
+  await geh(`#/ort/${KAP}`, '.ort-seite');
+  const weg = await page.$$eval('.weg-eintrag', (els) => els.map((e) => e.className));
+  if (!weg.some((c) => /hinterhalt/.test(c)) || !weg.some((c) => /duell/.test(c))) throw new Error(`Weg unvollständig: ${weg.join(' | ')}`);
+  await shot('ort-1-weg');
+  await geh(`#/hinterhalt/${KAP}/knotenjagd/h1`, '.hinterhalt-seite');
+  await page.click('#los');
+  await page.waitForSelector('.hinterhalt-karte', { timeout: 10000 });
+  await page.waitForTimeout(300);
+  await shot('hinterhalt-knotenjagd');
+  await geh(`#/hinterhalt/${KAP}/wahr-oder-luege/sturm`, '.hinterhalt-seite');
+  await page.click('#los');
+  await page.waitForSelector('.wahr-aussage', { timeout: 10000 });
+  await page.click('.wahr-knoepfe button');
+  await page.waitForTimeout(500);
+  await shot('hinterhalt-wahr-oder-luege');
+  // Runde zu Ende spielen (immer „Wahr“), bis die Ergebniskarte kommt
+  for (let i = 0; i < 20; i++) {
+    if (await page.$('.spiel-ergebnis')) break;
+    const b = await page.$('.wahr-knoepfe button:not([disabled])');
+    if (b) await b.click();
+    await page.waitForTimeout(1000);
   }
-  const karte2 = await page.$('.szene-aufgabe');
-  await loeseSchritt(page, szenen.runden[KAP].abpfiff.aufgabe, karte2);
-  await page.waitForSelector('.szene-aufgabe .rueckmeldung-ok', { timeout: 5000 });
-  await page.click('.szene-aufgabe .schritt-buttons .btn-primaer');
-  for (let i = 0; i < 8; i++) {
-    if (await page.$('.szene-ende')) break;
-    await page.click('#weiter');
-    await page.waitForTimeout(150);
-  }
-  await page.waitForSelector('.szene-ende .trophaeenkarte', { timeout: 5000 });
-  await page.waitForTimeout(2200);
-  await shot('abpfiff-trophaee');
+  await page.waitForSelector('.spiel-ergebnis', { timeout: 15000 });
+  await page.waitForTimeout(400);
+  await shot('hinterhalt-ergebnis');
+  const sturm = await page.evaluate(([k, kap]) => JSON.parse(localStorage.getItem(k)).hinterhalte.knoten[`${kap}/sturm`], [KEY, KAP]);
+  if (!sturm) throw new Error('Hinterhalt: Sturm nicht gespeichert');
 
-  // Runde 2 jetzt frei: Turnierplan mit Emblemen
-  await geh('#/');
-  await shot('turnierplan-nach-runde-1');
-  await geh('#/kapitel/02-html-erste-schritte');
-  await shot('runde-2');
+  // Duell
+  await geh(`#/duell/${KAP}`, '.duell-seite');
+  await shot('duell-intro');
+  await page.click('#start');
+  await page.waitForSelector('.duell-seite .schritt', { timeout: 10000 });
+  await page.waitForTimeout(300);
+  await shot('duell-aufgabe');
 
-  // Trainingslager und Projekt kurz anfassen
-  await geh('#/backstage');
+  // Ort 1 als befreit eintragen → Karte, Ort befreit, Ort 2 frei
+  await page.evaluate(([k, kap]) => {
+    const s = JSON.parse(localStorage.getItem(k));
+    s.boss[kap] = { best: 0.9, passed: true, versuche: 1, ersterVersuch: true, at: Date.now() };
+    localStorage.setItem(k, JSON.stringify(s));
+  }, [KEY, KAP]);
+  await page.reload();
+  await geh('#/', '.hyperia-seite');
+  const frei = await page.$$('.hyperia-karte .ort-frei');
+  if (frei.length !== 1) throw new Error(`Karte: ${frei.length} befreite Orte statt 1`);
+  await shot('hyperia-karte');
+  await geh(`#/ort/${KAP}`, '.ort-seite');
+  if (!(await page.$('.ort-befreit'))) throw new Error('Ort 1: Befreit-Karte fehlt');
+  await shot('ort-1-befreit');
+  await geh(`#/ort/${KAP2}`, '.ort-seite');
+  await shot('ort-2');
+  await page.click('#nachlesen').catch(() => {});
+
+  // Ich, Spickzettel, Website, Lehrkraft, Bericht
+  await geh('#/ich', '.ich-seite');
+  await shot('ich');
+  await geh('#/spickzettel', '.spickzettel-seite');
   await geh('#/projekt');
+  await geh('#/lehrkraft');
+  await geh('#/bericht');
 
-  // Mobil
+  // Handy
   await page.setViewportSize({ width: 390, height: 844 });
-  await geh('#/');
-  await shot('mobil-turnierplan');
-  await geh(`#/kapitel/${KAP}`);
-  await shot('mobil-runde');
-  await geh(`#/szene/${KAP}/funk`, '.szene-seite');
-  await page.click('#weiter');
-  await page.click('#weiter');
-  await shot('mobil-szene');
+  await geh('#/', '.hyperia-seite');
+  await shot('mobil-hyperia');
+  await geh(`#/ort/${KAP2}`, '.ort-seite');
+  await shot('mobil-ort');
+  await geh(`#/lektion/${KAP2}/${JSON.parse(fs.readFileSync(`public/content/chapters/${KAP2}/chapter.json`, 'utf8')).lessons[0]}`, '.lektion-seite');
+  await shot('mobil-lektion');
 } catch (e) {
   fehler.push(`TEST: ${e.message}`);
 }

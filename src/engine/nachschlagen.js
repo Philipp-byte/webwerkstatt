@@ -1,20 +1,19 @@
 // Nachschlagen: eine Seitenleiste, die während jeder Aufgabe geöffnet werden kann.
 // Zeigt (a) die Erklärungen und Beispiele der aktuellen Lektion bis zum aktuellen
 // Schritt – nie Aufgaben, Tipps oder Lösungen –, (b) die Spickzettel-Karten der
-// Konzepte dieser und früherer Lektionen und (c) die gesammelten Trophäenkarten.
+// Konzepte dieser und früherer Lektionen und (c) die Regeln der befreiten Orte.
 // Didaktik: Der Text bleibt kurz, aber während der Aufgabe jederzeit erreichbar.
 
-import { loadKonzepte, loadCrews } from '../content.js';
+import { loadKonzepte, alleOrte } from '../content.js';
 import { getState } from '../store.js';
 import { md, escapeHtml } from './markdown.js';
 import { buildSrcdoc } from './preview.js';
-import { trophaeenKarteHtml, trophaeenAktivieren } from './trophaee.js';
+import { sigilSvg } from './sigil.js';
 
 const BLOCK_NAMEN = { web: 'Web-Grundlagen', html: 'HTML', css: 'CSS', recht: 'Recht', js: 'JavaScript' };
 const BLOCK_FARBEN = { web: 'var(--basics)', html: 'var(--html)', css: 'var(--css)', recht: 'var(--projekt)', js: 'var(--js)' };
 
 let drawer = null;
-let letzteOptionen = null;
 
 export function nachschlagenSchliessen() {
   if (!drawer) return;
@@ -32,6 +31,15 @@ export function konzeptKarteHtml(k, { hervor = false } = {}) {
     ${k.kurz ? `<p>${escapeHtml(k.kurz)}</p>` : ''}
     ${k.beispiel ? `<pre class="codeblock lang-${escapeHtml(k.sprache || 'text')}"><code>${escapeHtml(k.beispiel)}</code></pre>` : ''}
     ${k.merke ? `<div class="konzept-merke">💡 ${escapeHtml(k.merke)}</div>` : ''}
+  </article>`;
+}
+
+export function ortRegelHtml(o) {
+  return `<article class="konzept-karte ort-regel-karte" style="--farbe:${escapeHtml(o.regionFarbe || 'var(--spark)')}">
+    <div class="konzept-kopf">${sigilSvg(o.gespinst, { groesse: 36, titel: o.gespinstName })}<h4>Ort ${o.nr} · ${escapeHtml(o.name)}</h4></div>
+    <p><b>${escapeHtml(o.gespinstName)}</b> ${escapeHtml(o.fallenart)}</p>
+    <p>${escapeHtml(o.regel)}</p>
+    ${o.beispiel ? `<pre class="codeblock lang-${escapeHtml(o.sprache || 'text')}"><code>${escapeHtml(o.beispiel)}</code></pre>` : ''}
   </article>`;
 }
 
@@ -59,21 +67,20 @@ function lektionsTeilHtml(lektion, bisIndex) {
 }
 
 /**
- * oeffneNachschlagen({ lektion, bisIndex, konzeptIds, gelernteIds, fokus, tab })
+ * oeffneNachschlagen({ lektion, bisIndex, konzeptIds, fokus, tab })
  * - lektion/bisIndex: Erklärungen dieser Lektion bis (ausschließlich) Schritt bisIndex
  * - konzeptIds: Konzepte dieser Lektion (werden oben hervorgehoben)
  * - fokus: Konzept-ID, zu der gescrollt wird
- * - tab: 'lektion' | 'spickzettel' | 'trophaeen'
+ * - tab: 'lektion' | 'spickzettel' | 'orte'
  */
 export async function oeffneNachschlagen(optionen = {}) {
-  letzteOptionen = optionen;
   const { lektion = null, bisIndex = Infinity, konzeptIds = [], fokus = null } = optionen;
-  const [konzepte, crews] = await Promise.all([loadKonzepte(), loadCrews().catch(() => ({ runden: [] }))]);
+  const [konzepte, orte] = await Promise.all([loadKonzepte(), alleOrte().catch(() => [])]);
   const s = getState();
   const gelernt = new Set([...Object.keys(s.leitner), ...konzeptIds]);
   const eigene = konzeptIds.map((id) => konzepte.find((k) => k.id === id)).filter(Boolean);
   const weitere = konzepte.filter((k) => gelernt.has(k.id) && !konzeptIds.includes(k.id));
-  const gewonnen = crews.runden.filter((r) => s.boss[r.chapter]?.passed);
+  const befreit = orte.filter((o) => s.boss[o.chapter]?.passed);
   const tab = optionen.tab || (lektion ? 'lektion' : 'spickzettel');
 
   nachschlagenSchliessen();
@@ -83,13 +90,13 @@ export async function oeffneNachschlagen(optionen = {}) {
   drawer.setAttribute('aria-label', 'Nachschlagen');
   drawer.innerHTML = `
     <div class="nachschlagen-kopf">
-      <div><div class="schritt-art">📖 Nachschlagen</div><strong>Erklärungen, Spickzettel, Trophäen – keine Lösungen</strong></div>
+      <div><div class="schritt-art">📖 Nachschlagen</div><strong>Erklärungen, Spickzettel, Regeln – keine Lösungen</strong></div>
       <button class="icon-btn" type="button" id="ns-zu" title="Schließen (Esc)">✕</button>
     </div>
     <div class="nachschlagen-tabs" role="tablist">
       ${lektion ? `<button type="button" role="tab" data-tab="lektion" class="${tab === 'lektion' ? 'aktiv' : ''}">Diese Lektion</button>` : ''}
       <button type="button" role="tab" data-tab="spickzettel" class="${tab === 'spickzettel' ? 'aktiv' : ''}">Spickzettel</button>
-      <button type="button" role="tab" data-tab="trophaeen" class="${tab === 'trophaeen' ? 'aktiv' : ''}">Trophäen <span class="chip">${gewonnen.length}</span></button>
+      <button type="button" role="tab" data-tab="orte" class="${tab === 'orte' ? 'aktiv' : ''}">Befreite Orte <span class="chip">${befreit.length}</span></button>
     </div>
     <div class="nachschlagen-inhalt">
       ${lektion ? `<div class="nachschlagen-tab" data-tab="lektion" ${tab === 'lektion' ? '' : 'hidden'}>
@@ -106,8 +113,8 @@ export async function oeffneNachschlagen(optionen = {}) {
         ${!eigene.length && !weitere.length ? '<p class="nachschlagen-leer">Noch keine Konzepte gelernt – nach der ersten Lektion füllt sich der Spickzettel.</p>' : ''}
         <p class="nachschlagen-leer" style="margin-top:1rem">Alle Karten auf einer Seite: <a href="#/spickzettel">Spickzettel öffnen</a></p>
       </div>
-      <div class="nachschlagen-tab" data-tab="trophaeen" ${tab === 'trophaeen' ? '' : 'hidden'}>
-        ${gewonnen.length ? `<p class="nachschlagen-leer">Jede besiegte Crew ist eine Karte: vorne das Emblem, hinten ihr Fehler und die Regel. Klick zum Umdrehen.</p><div class="trophaeen-wand klein">${gewonnen.map((r) => trophaeenKarteHtml(r, { gewonnen: true, klein: true })).join('')}</div>` : '<p class="nachschlagen-leer">Noch keine Trophäenkarte – die erste gibt es nach dem ersten gewonnenen Match.</p>'}
+      <div class="nachschlagen-tab" data-tab="orte" ${tab === 'orte' ? '' : 'hidden'}>
+        ${befreit.length ? `<p class="nachschlagen-leer">Jeder befreite Ort hat dir eine Regel gegeben: der Fehler des Gespinsts und was stattdessen gilt.</p>${befreit.map(ortRegelHtml).join('')}` : '<p class="nachschlagen-leer">Noch kein Ort befreit – die erste Regel gibt es nach dem ersten gewonnenen Duell.</p>'}
       </div>
     </div>`;
   document.body.appendChild(drawer);
@@ -128,11 +135,10 @@ export async function oeffneNachschlagen(optionen = {}) {
       if (d.open && f && !f.srcdoc) f.srcdoc = f.dataset.srcdoc;
     });
   });
-  trophaeenAktivieren(drawer);
   const suche = drawer.querySelector('.nachschlagen-suche');
   suche.addEventListener('input', () => {
     const q = suche.value.trim().toLowerCase();
-    drawer.querySelectorAll('.konzept-karte').forEach((k) => (k.hidden = q && !k.textContent.toLowerCase().includes(q)));
+    drawer.querySelectorAll('[data-tab="spickzettel"] .konzept-karte').forEach((k) => (k.hidden = q && !k.textContent.toLowerCase().includes(q)));
     drawer.querySelectorAll('.nachschlagen-gruppe').forEach((g) => (g.hidden = ![...g.querySelectorAll('.konzept-karte')].some((k) => !k.hidden)));
   });
   if (fokus) {

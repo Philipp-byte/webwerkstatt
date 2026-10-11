@@ -20,7 +20,7 @@ export async function renderSpickzettel(app) {
   const [konzepte, kapitel] = await Promise.all([loadKonzepte(), loadAlleKapitel()]);
   const s = getState();
   const lehrkraft = istLehrkraft();
-  // Wo wird ein Konzept eingeführt? (für den Hinweis „kommt in Runde X“)
+  // Wo wird ein Konzept eingeführt? (für den Hinweis „kommt an Ort X“)
   const einfuehrung = {};
   await Promise.all(
     kapitel.flatMap((k, i) =>
@@ -38,10 +38,10 @@ export async function renderSpickzettel(app) {
 
   app.innerHTML = `
     <div class="auftritt spickzettel-seite">
-      <a class="zurueck" href="#/">← Zum Turnierplan</a>
+      <a class="zurueck" href="#/">← Hyperia</a>
       <div class="spickzettel-kopf">
         <div>
-          <span class="chip chip-farbe" style="--farbe: var(--spark)">Crew-Handbuch</span>
+          <span class="chip chip-farbe" style="--farbe: var(--spark)">Werkstatt-Handbuch</span>
           <h1>📖 Spickzettel</h1>
           <p style="color:var(--ink-2);max-width:60ch">Jedes Konzept als kurze Karte: Regel, Beispiel, Merksatz. Die Karten füllen sich, sobald du die passende Lektion abgeschlossen hast – und bleiben während jeder Aufgabe über „Nachlesen“ erreichbar. Lösungen stehen hier nie, Beispiele immer.</p>
         </div>
@@ -59,7 +59,7 @@ export async function renderSpickzettel(app) {
             ${liste.map((k) => {
               if (gelernt(k.id)) return `<div class="konzept-zelle ${sicher(k.id) ? 'sicher' : ''}">${konzeptKarteHtml(k)}${sicher(k.id) ? '<span class="konzept-status">✔ sitzt</span>' : '<span class="konzept-status">gelernt</span>'}</div>`;
               const e = einfuehrung[k.id];
-              return `<div class="konzept-zelle gesperrt"><article class="konzept-karte" style="--farbe:${b.farbe}"><div class="konzept-kopf"><span class="chip">🔒</span><h4>${escapeHtml(k.titel)}</h4></div><p class="nachschlagen-leer">${e ? `Kommt in Runde ${e.runde} · <a href="#/kapitel/${e.kapitel.id}">${escapeHtml(e.kapitel.title)}</a>, Lektion „${escapeHtml(e.titel)}“.` : 'Wird in einer späteren Runde eingeführt.'}</p></article></div>`;
+              return `<div class="konzept-zelle gesperrt"><article class="konzept-karte" style="--farbe:${b.farbe}"><div class="konzept-kopf"><span class="chip">🔒</span><h4>${escapeHtml(k.titel)}</h4></div><p class="nachschlagen-leer">${e ? `Kommt in Ort ${e.runde} · <a href="#/kapitel/${e.kapitel.id}">${escapeHtml(e.kapitel.title)}</a>, Lektion „${escapeHtml(e.titel)}“.` : 'Wird in einer späteren Runde eingeführt.'}</p></article></div>`;
             }).join('')}
           </div>
         </section>`;

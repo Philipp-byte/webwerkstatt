@@ -3,8 +3,8 @@
 
 import { getState } from '../store.js';
 import { loadAlleKapitel, loadKonzepte, loadLesson } from '../content.js';
-import { levelAus, rangAus } from '../gamification/xp.js';
-import { ABZEICHEN } from '../gamification/badges.js';
+import { levelAus } from '../gamification/xp.js';
+import { MEILENSTEINE } from '../gamification/badges.js';
 import { escapeHtml } from '../engine/markdown.js';
 
 export async function renderBericht(app) {
@@ -22,12 +22,12 @@ export async function renderBericht(app) {
   app.innerHTML = `
     <div class="bericht auftritt">
       <div class="bericht-leiste">
-        <a class="zurueck" href="#/keycard">← Zur Spielerkarte</a>
+        <a class="zurueck" href="#/ich">← Ich</a>
         <button class="btn btn-primaer" type="button" id="drucken">🖨 Drucken / als PDF speichern</button>
       </div>
       <div class="karte bericht-blatt">
         <h1>Lernbericht WebWerkstatt</h1>
-        <p class="bericht-meta"><strong>${escapeHtml(s.name || '__________________')}</strong> · Stand ${datum} · ${rangAus(s.xp).titel} · Level ${levelAus(s.xp)} · ${s.xp} XP</p>
+        <p class="bericht-meta"><strong>${escapeHtml(s.name || '__________________')}</strong> · Stand ${datum} · Level ${levelAus(s.xp)} · ${s.xp} XP</p>
         <div class="statistik-grid bericht-stats">
           <div class="stat-kachel"><strong>${lektionen}/${gesamt}</strong><small>Lektionen</small></div>
           <div class="stat-kachel"><strong>${sterne}</strong><small>Sterne</small></div>
@@ -36,9 +36,9 @@ export async function renderBericht(app) {
           <div class="stat-kachel"><strong>${Object.values(s.boss).filter((b) => b.passed).length}/${kapitel.length}</strong><small>Abnahmen</small></div>
           <div class="stat-kachel"><strong>${sicher}/${konzepte.length}</strong><small>Konzepte sicher</small></div>
         </div>
-        <h2>Runden (Stationen)</h2>
+        <h2>Orte</h2>
         <table class="pruef-tabelle bericht-tabelle">
-          <thead><tr><th>Runde · Station</th><th>Lektionen</th><th>Sterne</th><th>Match (Abnahme)</th></tr></thead>
+          <thead><tr><th>Ort</th><th>Lektionen</th><th>Sterne</th><th>Duell</th></tr></thead>
           <tbody>
             ${kapitel.map((k, i) => {
               const done = k.lessons.filter((l) => s.lessons[`${k.id}/${l}`]?.done).length;
@@ -59,8 +59,8 @@ export async function renderBericht(app) {
             })).join('') || '<tr><td colspan="6">Noch keine Lektion abgeschlossen.</td></tr>'}
           </tbody>
         </table>
-        <h2>Abzeichen</h2>
-        <p>${ABZEICHEN.filter((a) => s.badges[a.id]).map((a) => `${a.icon} ${escapeHtml(a.titel)}`).join(' · ') || 'Noch keine.'}</p>
+        <h2>Meilensteine</h2>
+        <p>${MEILENSTEINE.filter((a) => s.badges[a.id]).map((a) => `${a.icon} ${escapeHtml(a.titel)}`).join(' · ') || 'Noch keine.'}</p>
         <h2>Was noch wackelt (Leitner-Box 1–2)</h2>
         <p>${Object.entries(s.leitner).filter(([, k]) => k.box <= 2).map(([id]) => escapeHtml(konzepte.find((k) => k.id === id)?.titel || id)).join(' · ') || 'Nichts – alles Gelernte sitzt bisher.'}</p>
         <p class="bericht-fuss">WebWerkstatt · Der Bericht stammt aus dem Browser-Spielstand der Lernenden und ist nicht fälschungssicher.</p>

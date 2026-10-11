@@ -1,25 +1,27 @@
 // Lektions-Player: Soundcheck (Wiederholung) → Schritte (ein Schritt pro Seite) → Abschluss.
-// XP pro Schritt (einmalig), Serie/Combo, Sterne, Abzeichen, Etappen-Speicherung.
+// XP pro Schritt (einmalig), Sterne, Meilensteine, Etappen-Speicherung.
 // Didaktik-Schicht: „Nachlesen“ (Erklärungen dieser Lektion + Spickzettel) ist in jedem
 // Aufgaben-Schritt erreichbar, die Aufgabe bleibt als Leiste sichtbar, wenn sie aus dem
 // Bild scrollt, und am Ende stehen die Merksätze der Lektion.
+// Figuren: Das Gespinst des Ortes spottet bei Fehlern (immer deutlicherer Hinweis), die
+// Verbündeten loben bei Lösungen.
 
-import { loadChapter, loadLesson, loadAlleKapitel, loadKonzepte, naechsteLektion, poolFuer, etappeAufloesen } from '../content.js';
+import { loadChapter, loadLesson, loadAlleKapitel, loadKonzepte, naechsteLektion, poolFuer, etappeAufloesen, ortFuer } from '../content.js';
 import {
-  getState, vergibXp, zaehle, merkeCombo, lektionAbschliessen, loesungMerken, abzeichenPruefen,
-  frageGestellt, getProjekt, projektSpeichern, lessonKey, aktivitaet, tagesbonusPruefen,
+  getState, vergibXp, zaehle, lektionAbschliessen, loesungMerken, meilensteinePruefen,
+  frageGestellt, getProjekt, projektSpeichern, lessonKey,
 } from '../store.js';
 import { antwort as leitnerAntwort, soundcheckAuswahl } from '../gamification/leitner.js';
-import { XP, comboFaktor } from '../gamification/xp.js';
-import { kapitelFrei, lektionFrei, kapitelFertig } from '../progress.js';
+import { XP } from '../gamification/xp.js';
+import { kapitelFrei, lektionFrei, kapitelFertig, hinterhaltKnotenId } from '../progress.js';
 import { renderStep, SCHRITT_NAMEN, SCHRITT_ICONS } from '../engine/steps.js';
 import { md, escapeHtml } from '../engine/markdown.js';
 import { sound } from '../gamification/sound.js';
 import { konfetti, toast, xpFlieger } from '../gamification/celebrate.js';
-import { erzeugeTicker, reaktionenEntfernen } from '../gamification/reaktionen.js';
 import { oeffneNachschlagen, nachschlagenSchliessen } from '../engine/nachschlagen.js';
-
-const robby = (pose) => new URL(`figuren/robby/${pose}.png`, document.baseURI).href;
+import { stimmeFuer, blaseEinhaengen } from '../engine/figuren.js';
+import { figurBild, sigilSvg } from '../engine/sigil.js';
+import { spielFuerKnoten } from '../engine/weg.js';
 
 function xpFuerStep(step) {
   if (step.etappe) return XP.etappe;
@@ -27,14 +29,14 @@ function xpFuerStep(step) {
   return XP[step.type] || 0;
 }
 
-export function zeigeLevelup(level, rang) {
+export function zeigeLevelup(level) {
   const overlay = document.createElement('div');
   overlay.className = 'overlay';
   overlay.innerHTML = `<div class="overlay-karte">
-    <img src="${robby('erfolg-pokal')}" alt="" style="width:120px;height:120px;object-fit:contain">
-    <div class="chip chip-farbe" style="--farbe: var(--spark)">${rang ? 'Neuer Rang' : 'Level-up'}</div>
-    <div class="gross">${rang ? rang.titel : `Level ${level}`}</div>
-    <p style="color:var(--muted)">${rang ? `Du bist jetzt ${rang.titel} der Nachtschicht.` : 'Weiter so – die Crew zählt auf dich.'}</p>
+    ${figurBild('robby', { pose: 'erfolg-pokal', groesse: 120 })}
+    <div class="chip chip-gold">Level-up</div>
+    <div class="gross">Level ${level}</div>
+    <p style="color:var(--muted)">Weiter so. Jeder Knoten hält.</p>
     <button class="btn btn-primaer" type="button">Weiter</button>
   </div>`;
   document.body.appendChild(overlay);
@@ -45,10 +47,10 @@ export function zeigeLevelup(level, rang) {
   overlay.addEventListener('click', (e) => e.target === overlay && weg());
 }
 
-export function meldeAbzeichen(neu) {
+export function meldeMeilensteine(neu) {
   neu.forEach((a, i) => {
     setTimeout(() => {
-      toast({ titel: `Abzeichen: ${a.titel}`, text: a.text, icon: a.icon, art: 'abzeichen', dauer: 5000 });
+      toast({ titel: `Meilenstein: ${a.titel}`, text: a.text, icon: a.icon, art: 'abzeichen', dauer: 5000 });
       sound.abzeichen();
     }, i * 700);
   });
@@ -58,16 +60,20 @@ export function verarbeiteXp(ergebnis, anker) {
   if (!ergebnis || !ergebnis.xp) return;
   xpFlieger(ergebnis.xp, anker);
   sound.xp();
-  if (ergebnis.rangup) setTimeout(() => zeigeLevelup(ergebnis.levelup, ergebnis.rangup), 500);
-  else if (ergebnis.levelup) setTimeout(() => zeigeLevelup(ergebnis.levelup), 500);
+  if (ergebnis.levelup) setTimeout(() => zeigeLevelup(ergebnis.levelup), 500);
 }
 
 export async function renderLesson(app, chapterId, lessonId) {
-  const [kapitel, lektion, alle] = await Promise.all([loadChapter(chapterId), loadLesson(chapterId, lessonId), loadAlleKapitel()]);
+  const [kapitel, lektion, alle, ort] = await Promise.all([loadChapter(chapterId), loadLesson(chapterId, lessonId), loadAlleKapitel(), ortFuer(chapterId).catch(() => null)]);
   const index = alle.findIndex((k) => k.id === chapterId);
+  const lessonIndex = kapitel.lessons.indexOf(lessonId);
   if (!lektionFrei(kapitel, lessonId, kapitelFrei(index, alle))) {
-    app.innerHTML = `<div class="lektion-seite"><a class="zurueck" href="#/kapitel/${chapterId}">← ${escapeHtml(kapitel.title)}</a>
-      <div class="karte gesperrt-karte"><h2>🔒 Noch gesperrt</h2><p>Erst die vorherige Lektion abschließen.</p></div></div>`;
+    const knoten = hinterhaltKnotenId(kapitel, lessonIndex - 1);
+    const s0 = getState();
+    const hinterhaltFehlt = knoten && !s0.hinterhalte.knoten[`${chapterId}/${knoten}`] && !!s0.lessons[`${chapterId}/${kapitel.lessons[lessonIndex - 1]}`]?.done;
+    const spiel = hinterhaltFehlt ? spielFuerKnoten(ort?.nr || 1, Math.floor((lessonIndex - 1) / 2)) : null;
+    app.innerHTML = `<div class="lektion-seite"><a class="zurueck" href="#/ort/${chapterId}">← ${escapeHtml(ort?.name || kapitel.title)}</a>
+      <div class="karte gesperrt-karte">${hinterhaltFehlt ? `${sigilSvg(ort?.gespinst || 'knoten', { groesse: 72 })}<h2>🕸 Hinterhalt!</h2><p>${escapeHtml(ort?.gespinstName || 'Das Gespinst')} lauert zwischen den Lektionen. Erst der Hinterhalt, dann geht es weiter.</p><a class="btn btn-primaer" href="#/hinterhalt/${chapterId}/${spiel.id}/${knoten}">${spiel.icon} ${escapeHtml(spiel.titel)} spielen →</a>` : '<h2>🔒 Noch gesperrt</h2><p>Erst die vorherige Lektion abschließen.</p>'}</div></div>`;
     return;
   }
 
@@ -87,9 +93,8 @@ export async function renderLesson(app, chapterId, lessonId) {
 
   const key = lessonKey(chapterId, lessonId);
   const schonErledigt = !!getState().lessons[key]?.done;
-  const ticker = await erzeugeTicker(chapterId);
-  const runde = ticker.runde;
-  const ctx = { fehler: 0, tipps: 0, loesungGesehen: false, serie: 0, xpGesamt: 0, xpListe: [], comebackKandidat: 0 };
+  const stimme = await stimmeFuer(chapterId);
+  const ctx = { fehler: 0, tipps: 0, loesungGesehen: false, xpGesamt: 0, xpListe: [] };
 
   // Nachschlagen: Erklärungen dieser Lektion bis zum aktuellen Schritt + Spickzettel
   let aktuellerStepIndex = 0;
@@ -99,10 +104,9 @@ export async function renderLesson(app, chapterId, lessonId) {
   app.innerHTML = `
     <div class="lektion-seite">
       <div class="lektion-kopf">
-        <a class="zurueck" href="#/kapitel/${chapterId}">← ${kapitel.icon} ${escapeHtml(kapitel.title)}</a>
+        <a class="zurueck" href="#/ort/${chapterId}">← ${escapeHtml(ort?.name || kapitel.title)}</a>
         <h1>${escapeHtml(lektion.title)}</h1>
-        ${runde ? `<span class="chip chip-farbe" style="--farbe:${escapeHtml(runde.farbe)}" title="Training für das Match gegen ${escapeHtml(runde.crew)}">${runde.icon} Runde ${runde.runde} · vs. ${escapeHtml(runde.crew)}</span>` : ''}
-        <span class="combo-anzeige" id="combo">🔥 Serie <span id="combo-zahl">0</span> · ×<span id="combo-faktor">1</span></span>
+        ${ort ? `<span class="chip chip-gespinst" title="${escapeHtml(ort.fallenart)}">${sigilSvg(ort.gespinst, { groesse: 18 })} ${escapeHtml(ort.gespinstName)} lauert</span>` : ''}
         <button class="btn btn-geist btn-klein nachschlagen-knopf" type="button" id="nachlesen" title="Erklärungen dieser Lektion und Spickzettel – ohne Lösung">📖 Nachlesen</button>
         <div class="pager-fortschritt">
           <span class="pager-zaehler"></span>
@@ -131,7 +135,6 @@ export async function renderLesson(app, chapterId, lessonId) {
   const btnZurueck = app.querySelector('.pager-zurueck');
   const btnWeiter = app.querySelector('.pager-weiter');
   const navEl = app.querySelector('.pager-nav');
-  const comboEl = app.querySelector('#combo');
   const leiste = app.querySelector('#aufgaben-leiste');
   app.querySelector('#nachlesen').addEventListener('click', () => nachlesen());
   app.querySelector('#al-nachlesen').addEventListener('click', () => nachlesen());
@@ -140,25 +143,25 @@ export async function renderLesson(app, chapterId, lessonId) {
     app.querySelector('#al-mehr').textContent = leiste.classList.contains('offen') ? 'Weniger' : 'Ganze Aufgabe';
   });
 
-  function comboAnzeigen() {
-    comboEl.classList.toggle('an', ctx.serie >= 2);
-    comboEl.querySelector('#combo-zahl').textContent = ctx.serie;
-    comboEl.querySelector('#combo-faktor').textContent = String(comboFaktor(ctx.serie)).replace('.', ',');
-  }
-
   function richtig() {
-    ctx.serie++;
-    merkeCombo(ctx.serie);
     zaehle('correct');
-    comboAnzeigen();
     sound.richtig();
   }
   function falsch() {
-    ctx.serie = 0;
     ctx.fehler++;
     zaehle('wrong');
-    comboAnzeigen();
     sound.falsch();
+  }
+  // Gespinst spottet beim n-ten Fehlversuch derselben Aufgabe; beim allerersten Auftritt stellt es sich vor
+  function gespinstSpottet(karte, n) {
+    const spott = stimme.fehler(n);
+    if (!spott) return;
+    const vorstellung = n === 1 ? stimme.vorstellung() : null;
+    blaseEinhaengen(karte, spott.id, vorstellung ? `${vorstellung} ${spott.text}` : spott.text, { art: 'spott', klein: true, meta: `${n}. Versuch` });
+  }
+  function verbuendeterLobt(karte) {
+    const lob = stimme.erfolg();
+    if (lob) blaseEinhaengen(karte, lob.id, lob.text, { art: 'lob', pose: lob.pose, klein: true });
   }
 
   // Kleiner „Nachlesen“-Link unter einer Rückmeldung (einmal pro Karte)
@@ -172,7 +175,7 @@ export async function renderLesson(app, chapterId, lessonId) {
     karte.appendChild(a);
   }
 
-  /* ---------- Blätter-Zustand (vor dem Rendern, weil Erklär-Schritte sich sofort als gelöst melden) ---------- */
+  /* ---------- Blätter-Zustand ---------- */
   const seiten = []; // { el, geloest, art, stepIndex }
   let dots = [];
   let aktuell = 0;
@@ -202,8 +205,8 @@ export async function renderLesson(app, chapterId, lessonId) {
     sc.className = 'schritt schritt-soundcheck pager-seite';
     sc.hidden = true;
     sc.innerHTML = `<div class="soundcheck-kopf">
-        <img src="${robby('erklaeren')}" alt="" style="width:64px;height:64px;object-fit:contain">
-        <div style="flex:1"><div class="schritt-art">🎚️ Soundcheck</div><strong>Kurz aufwärmen: ${soundcheckFragen.length} Fragen zu Dingen, die du schon kennst.</strong><div style="color:var(--muted);font-size:0.9rem">Jede richtige Antwort bringt ${XP.soundcheck} XP${schonErledigt ? ' (Lektion schon geschafft – diesmal ohne XP)' : ''} und zählt fürs Tagesziel. Falsch? Dann gibt es den passenden Spickzettel zum Nachlesen.</div></div>
+        ${figurBild('robby', { pose: 'erklaeren', groesse: 64 })}
+        <div style="flex:1"><div class="schritt-art">🎚️ Soundcheck</div><strong>Kurz aufwärmen: ${soundcheckFragen.length} Fragen zu Dingen, die du schon kennst.</strong><div style="color:var(--muted);font-size:0.9rem">Jede richtige Antwort bringt ${XP.soundcheck} XP${schonErledigt ? ' (Lektion schon geschafft – diesmal ohne XP)' : ''}. Falsch? Dann gibt es den passenden Spickzettel zum Nachlesen.</div></div>
         <button class="btn btn-geist btn-klein sc-skip" type="button">Überspringen</button>
       </div>
       <div class="sc-fragen"></div>`;
@@ -232,7 +235,6 @@ export async function renderLesson(app, chapterId, lessonId) {
           if (!versucht) {
             leitnerAntwort(getState(), f.konzept, true);
             zaehle('soundcheckCorrect');
-            aktivitaet('soundcheck');
             richtig();
             if (!schonErledigt) {
               const erg = vergibXp(XP.soundcheck, { key: `${key}#sc:${f.id}:${s0.lessonCounter}` });
@@ -257,6 +259,7 @@ export async function renderLesson(app, chapterId, lessonId) {
           if (!versucht) leitnerAntwort(getState(), f.konzept, false);
           versucht = true;
           falsch();
+          gespinstSpottet(box, 1);
           nachlesenLink(box, { tab: 'spickzettel', fokus: f.konzept, konzeptIds: [f.konzept, ...(lektion.konzepte || [])] }, '📖 Spickzettel zu dieser Frage');
         },
       });
@@ -289,17 +292,15 @@ export async function renderLesson(app, chapterId, lessonId) {
         seite.geloest = true;
         if (!info?.sofort) {
           richtig();
-          ticker.erfolg({ serie: ctx.serie, comeback: fehlversucheHier >= 3 });
-          if (fehlversucheHier >= 3) {
-            zaehle('comebacks');
-            meldeAbzeichen(abzeichenPruefen({ ereignis: 'comeback' }));
-          }
+          karte.querySelectorAll('.figur-blase-spott').forEach((e) => e.remove());
+          verbuendeterLobt(karte);
+          if (fehlversucheHier >= 3) zaehle('comebacks');
           const betrag = xpFuerStep(step);
           if (betrag) {
-            const erg = vergibXp(betrag, { key: stepKey, serie: ctx.serie });
+            const erg = vergibXp(betrag, { key: stepKey });
             if (erg.xp) {
               ctx.xpGesamt += erg.xp;
-              ctx.xpListe.push([`${SCHRITT_ICONS[step.type]} ${step.etappe ? 'Etappe' : SCHRITT_NAMEN[step.type]}${ctx.serie >= 3 ? ` (Serie ×${comboFaktor(ctx.serie)})` : ''}`, erg.xp]);
+              ctx.xpListe.push([`${SCHRITT_ICONS[step.type]} ${step.etappe ? 'Etappe' : SCHRITT_NAMEN[step.type]}`, erg.xp]);
             }
             verarbeiteXp(erg, karte.querySelector('.rueckmeldung-ok') || karte);
           }
@@ -316,10 +317,9 @@ export async function renderLesson(app, chapterId, lessonId) {
                 etappeId: step.etappeId,
               });
               const ok = karte.querySelector('.rueckmeldung-ok');
-              if (ok) ok.innerHTML += ' <a href="#/projekt">In der FUNKEN-Website gespeichert →</a>';
+              if (ok) ok.innerHTML += ' <a href="#/projekt">In deiner Website gespeichert →</a>';
               konfetti('klein');
             }
-            meldeAbzeichen(abzeichenPruefen({ ereignis: 'code' }));
           }
         }
         if (dots.length && seiten.indexOf(seite) === aktuell) aktualisiereNav();
@@ -327,7 +327,7 @@ export async function renderLesson(app, chapterId, lessonId) {
       wrong: () => {
         fehlversucheHier++;
         falsch();
-        ticker.fehler(fehlversucheHier);
+        gespinstSpottet(karte, fehlversucheHier);
         // Nach dem ersten Fehlversuch: Erklärung dieser Lektion nachlesen – ohne Lösung
         nachlesenLink(karte, {});
       },
@@ -342,7 +342,7 @@ export async function renderLesson(app, chapterId, lessonId) {
     controller.push(c);
   });
 
-  /* ---------- Aufgaben-Leiste: Aufgabe bleibt sichtbar, wenn sie aus dem Bild scrollt ---------- */
+  /* ---------- Aufgaben-Leiste ---------- */
   let beobachter = null;
   function leisteFuer(seite) {
     if (beobachter) {
@@ -355,7 +355,7 @@ export async function renderLesson(app, chapterId, lessonId) {
     if (!step || ['explain', 'example'].includes(step.type)) return;
     const text = step.task || step.question || step.text || '';
     if (!text) return;
-    app.querySelector('#al-art').textContent = `${SCHRITT_ICONS[step.type] || ''} ${step.mode === 'fix' ? 'Fehlerjagd' : step.etappe ? 'Etappe · FUNKEN-Website' : SCHRITT_NAMEN[step.type] || ''}`;
+    app.querySelector('#al-art').textContent = `${SCHRITT_ICONS[step.type] || ''} ${step.mode === 'fix' ? 'Fehlerjagd' : step.etappe ? 'Etappe · deine Website' : SCHRITT_NAMEN[step.type] || ''}`;
     app.querySelector('#al-text').innerHTML = md(text);
     const inhalt = seite.el.querySelector('.schritt-inhalt');
     if (!inhalt || !('IntersectionObserver' in window)) return;
@@ -450,14 +450,12 @@ export async function renderLesson(app, chapterId, lessonId) {
         ctx.xpListe.push(['⭐ 3 Sterne', erg2.xp]);
       }
     }
-    const bonus = tagesbonusPruefen();
-    if (bonus?.xp) {
-      ctx.xpGesamt += bonus.xp;
-      ctx.xpListe.push(['🎯 Tagesziel erreicht', bonus.xp]);
-    }
     const fertigKapitel = kapitelFertig(kapitel);
-    const neu = abzeichenPruefen({ ereignis: 'lektion', kapitelFertig: (id) => (id === chapterId ? fertigKapitel : alle.find((k) => k.id === id) ? kapitelFertig(alle.find((k) => k.id === id)) : false) });
+    const neu = meilensteinePruefen({ ereignis: 'lektion' });
     const naechste = await naechsteLektion(chapterId, lessonId);
+    const knoten = hinterhaltKnotenId(kapitel, lessonIndex);
+    const hinterhalt = knoten ? spielFuerKnoten(ort?.nr || 1, Math.floor(lessonIndex / 2)) : null;
+    const hinterhaltGespielt = knoten && !!getState().hinterhalte.knoten[`${chapterId}/${knoten}`];
     const pose = sterne === 3 ? 'jubel-geschafft' : sterne === 2 ? 'gut-gemacht' : 'motivation-herz';
     const begruendung =
       sterne === 3
@@ -474,30 +472,29 @@ export async function renderLesson(app, chapterId, lessonId) {
     abschlussKarte = document.createElement('section');
     abschlussKarte.className = 'schritt schritt-abschluss pager-seite abschluss';
     abschlussKarte.innerHTML = `
-      <img src="${robby(pose)}" alt="" style="width:130px;height:130px;object-fit:contain">
+      ${figurBild('robby', { pose, groesse: 130 })}
       <h2>${erster ? 'Lektion geschafft!' : 'Nochmal geschafft!'}</h2>
       <div class="sterne-gross">${[1, 2, 3].map((n) => `<span class="stern ${n <= sterne ? '' : 'leer'}">★</span>`).join('')}</div>
       <p style="color:var(--muted)">${begruendung}</p>
       ${ctx.xpGesamt ? `<div class="abschluss-xp">+${ctx.xpGesamt} XP</div><ul class="abschluss-liste">${ctx.xpListe.map(([t, x]) => `<li><span>${t}</span><span>+${x}</span></li>`).join('')}</ul>` : '<p style="color:var(--muted)">Wiederholt – keine neuen XP, aber Übung macht sicher.</p>'}
       ${merksaetze.length ? `<div class="merksaetze"><h3>💡 Das nimmst du mit</h3><ul>${merksaetze.map((k) => `<li><b>${escapeHtml(k.titel)}:</b> ${escapeHtml(k.merke)}</li>`).join('')}</ul><button class="btn btn-geist btn-klein" type="button" id="merk-nachlesen" style="margin-top:0.5rem">📖 Karten im Spickzettel ansehen</button></div>` : ''}
-      ${wiederholt ? `<div class="merksaetze"><h3>🔁 Wiederholung</h3><p style="margin:0;font-size:0.92rem">Diese Lektion hat Altes neu verknüpft. Was noch wackelt, kommt im Soundcheck automatisch wieder – und steht jederzeit im <a href="#/spickzettel">Spickzettel</a>.</p></div>` : ''}
-      ${fertigKapitel ? `<div class="hinweis-box" style="margin-top:0.75rem">🎉 Training komplett – jetzt das <a href="#/abnahme/${chapterId}">Match</a>${runde ? ` gegen ${escapeHtml(runde.crew)}` : ''}: Sam nimmt ab.</div>` : ''}
+      ${wiederholt ? `<div class="merksaetze"><h3>🔁 Wiederholung</h3><p style="margin:0;font-size:0.92rem">Diese Lektion hat Altes neu verknüpft. Was noch wackelt, kommt im Soundcheck und in Hinterhalten automatisch wieder – und steht jederzeit im <a href="#/spickzettel">Spickzettel</a>.</p></div>` : ''}
+      ${hinterhalt && !hinterhaltGespielt ? `<div class="hinweis-box hinterhalt-hinweis" style="margin-top:0.75rem">${sigilSvg(ort?.gespinst || 'knoten', { groesse: 40 })} <span>🕸 <strong>Hinterhalt!</strong> ${escapeHtml(ort?.gespinstName || 'Das Gespinst')} ${escapeHtml(hinterhalt.angriff)}. Eine Runde ${escapeHtml(hinterhalt.titel)}, dann geht es weiter.</span></div>` : ''}
+      ${fertigKapitel ? `<div class="hinweis-box" style="margin-top:0.75rem">⚔️ Alle Lektionen geschafft – jetzt das <a href="#/duell/${chapterId}">Duell gegen ${escapeHtml(ort?.gespinstName || 'das Gespinst')}</a>. Sam prüft jeden Knoten.</div>` : ''}
       <div class="abschluss-buttons">
-        ${fertigKapitel ? `<a class="btn btn-primaer" href="#/abnahme/${chapterId}">🥊 Zum Match →</a>` : naechste ? `<a class="btn btn-primaer" href="#/kapitel/${chapterId}">Weiter in der Runde →</a>` : ''}
-        ${steps.some((st) => st.etappe) ? '<a class="btn btn-sekundaer" href="#/projekt">🌐 FUNKEN-Website ansehen</a>' : ''}
-        ${!fertigKapitel && naechste && naechste.chapterId === chapterId ? `<a class="btn btn-sekundaer" href="#/lektion/${naechste.chapterId}/${naechste.lessonId}">Direkt zur nächsten Lektion</a>` : ''}
+        ${fertigKapitel ? `<a class="btn btn-primaer" href="#/duell/${chapterId}">⚔️ Zum Duell →</a>` : hinterhalt && !hinterhaltGespielt ? `<a class="btn btn-primaer" href="#/hinterhalt/${chapterId}/${hinterhalt.id}/${knoten}">${hinterhalt.icon} Hinterhalt: ${escapeHtml(hinterhalt.titel)} →</a>` : naechste && naechste.chapterId === chapterId ? `<a class="btn btn-primaer" href="#/lektion/${naechste.chapterId}/${naechste.lessonId}">Nächste Lektion →</a>` : ''}
+        ${steps.some((st) => st.etappe) ? '<a class="btn btn-sekundaer" href="#/projekt">🌐 Website ansehen</a>' : ''}
+        <a class="btn btn-sekundaer" href="#/ort/${chapterId}">Zum Ort</a>
         <button class="btn btn-geist abschluss-nochmal" type="button">← Nochmal ansehen</button>
-      </div>
-      <p style="color:var(--muted);font-size:0.85rem;margin-top:1rem">💾 Tipp: Auf deiner <a href="#/keycard">Spielerkarte</a> kannst du deinen Spielstand als Datei sichern – wichtig an Schulrechnern.</p>`;
+      </div>`;
     seitenEl.appendChild(abschlussKarte);
     abschlussKarte.querySelector('.abschluss-nochmal').addEventListener('click', () => zeige(0, 'zurueck'));
     abschlussKarte.querySelector('#merk-nachlesen')?.addEventListener('click', () => nachlesen({ tab: 'spickzettel', bisIndex: steps.length }));
     zeige(seiten.length, 'vor');
     sound.fanfare();
     konfetti(sterne === 3 ? 'gross' : 'mittel');
-    if (erg.rangup) setTimeout(() => zeigeLevelup(erg.levelup, erg.rangup), 900);
-    else if (erg.levelup || erg2?.levelup) setTimeout(() => zeigeLevelup(erg.levelup || erg2.levelup), 900);
-    meldeAbzeichen(neu);
+    if (erg.levelup || erg2?.levelup) setTimeout(() => zeigeLevelup(erg.levelup || erg2.levelup), 900);
+    meldeMeilensteine(neu);
   }
 
   function weiter() {
@@ -544,12 +541,10 @@ export async function renderLesson(app, chapterId, lessonId) {
   }, { passive: true });
 
   zeige(0, 'vor');
-  comboAnzeigen();
 
   return {
     destroy: () => {
       window.removeEventListener('keydown', onKey);
-      reaktionenEntfernen();
       nachschlagenSchliessen();
       if (beobachter) beobachter.disconnect();
       controller.forEach((c) => c?.destroy?.());
