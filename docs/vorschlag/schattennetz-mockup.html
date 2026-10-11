@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebWerkstatt – Vorschlag „SCHATTENNETZ“ (Mockups)</title>
+<!-- Statische Mockups für docs/VORSCHLAG-SCHATTENNETZ.md: Fantasiewelt Hyperia, Gegnerin Seidra, neun Gespinste.
+     Bildschirme: Titel, Karte (Startseite), Lektion mit Gespinst, Hinterhalt, Duell, Gespinste-Galerie, Storyboard, Handy.
+     Schriften/Figuren laden über den Repo-Server (siehe scripts/intro-video/stichproben.mjs). -->
+<style>
+@font-face { font-family: 'Unbounded Variable'; font-weight: 200 900; src: url('/node_modules/@fontsource-variable/unbounded/files/unbounded-latin-wght-normal.woff2') format('woff2-variations'); }
+@font-face { font-family: 'Atkinson Hyperlegible'; font-weight: 400; src: url('/node_modules/@fontsource/atkinson-hyperlegible/files/atkinson-hyperlegible-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Atkinson Hyperlegible'; font-weight: 700; src: url('/node_modules/@fontsource/atkinson-hyperlegible/files/atkinson-hyperlegible-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono Variable'; font-weight: 100 800; src: url('/node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2') format('woff2-variations'); }
+
+:root {
+  --display: 'Unbounded Variable', sans-serif;
+  --text: 'Atkinson Hyperlegible', sans-serif;
+  --mono: 'JetBrains Mono Variable', monospace;
+  --bg: #0f0c1f;
+  --surface: #1a1630;
+  --surface-2: #241e42;
+  --line: #2e2854;
+  --line-2: #3e3770;
+  --ink: #f1eefc;
+  --ink-2: #bdb6d9;
+  --muted: #8b84ad;
+  --primary: #ff6b35;
+  --primary-dunkel: #b8431a;
+  --funke: #ffc53d;
+  --seidra: #e23cff;
+  --seidra-dunkel: #3a1550;
+  --netz: #4a3a7a;
+  --ok: #2ee59d;
+  --fail: #ff4d6d;
+  --web: #9b8cff;
+  --html: #ff6b35;
+  --css: #3fb0ff;
+  --js: #ffd166;
+  --show: #2ee59d;
+  --radius: 18px;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #1d1a33; font-family: var(--text); color: var(--ink); font-size: 17px; line-height: 1.5; padding: 24px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; letter-spacing: -0.01em; margin: 0; }
+.rahmen { background: var(--bg); width: 1280px; margin: 0 auto 40px; border-radius: 22px; overflow: hidden; position: relative; color: var(--ink); }
+.rahmen.desktop { height: 852px; }
+.rahmen.kino { height: 752px; }
+.rahmen.handy { width: 390px; height: 876px; }
+.label { font: 700 12px/1 var(--display); color: #0f0c1f; background: #f1eefc; padding: 10px 16px; letter-spacing: 0.08em; }
+
+/* Kopfzeile */
+.top { height: 64px; display: flex; align-items: center; gap: 28px; padding: 0 32px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.marke { display: flex; align-items: center; gap: 10px; font: 700 18px var(--display); }
+.marke i { width: 34px; height: 34px; border-radius: 10px; background: var(--primary); color: #fff; display: grid; place-items: center; font: 800 14px var(--mono); font-style: normal; }
+.tabs { display: flex; gap: 6px; margin-left: 12px; }
+.tabs span { padding: 8px 14px; border-radius: 999px; font-weight: 700; color: var(--ink-2); font-size: 15px; }
+.tabs span.an { background: #3d2a1c; color: var(--primary); }
+.rechts { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+.pille { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; flex: none; border: 2px solid var(--line-2); border-radius: 999px; padding: 6px 12px 6px 8px; font: 700 14px var(--display); }
+.pille b { width: 26px; height: 26px; border-radius: 50%; background: var(--primary); color: #fff; display: grid; place-items: center; font-size: 12px; }
+.pille.orte { padding: 6px 14px; color: var(--ink-2); }
+.pille.orte b { background: var(--funke); color: #1a1200; width: auto; border-radius: 6px; padding: 0 7px; font-size: 11px; height: 22px; }
+
+/* Bausteine */
+.karte { background: var(--surface); border: 2px solid var(--line); border-radius: var(--radius); padding: 20px 22px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 14px; padding: 14px 24px; font: 700 17px var(--text); border: 2px solid transparent; text-decoration: none; cursor: pointer; white-space: nowrap; }
+.btn-p { background: var(--primary); color: #fff; box-shadow: 0 4px 0 var(--primary-dunkel); }
+.btn-s { background: var(--surface-2); color: var(--ink); border-color: var(--line-2); box-shadow: 0 3px 0 var(--line-2); }
+.btn-g { background: transparent; color: var(--ink-2); border-color: var(--line-2); }
+.chip { display: inline-block; font: 700 12px var(--display); letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 10px; border-radius: 8px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
+.chip.html { background: #3d2a1c; color: var(--html); }
+.chip.css { background: #15304a; color: var(--css); }
+.chip.seidra { background: var(--seidra-dunkel); color: var(--seidra); }
+.chip.ok { background: #0f3a2b; color: var(--ok); }
+.avatar { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font: 800 15px var(--display); color: #0f0c1f; flex: none; }
+.avatar.sam { background: var(--funke); }
+.avatar.ayla { background: var(--css); }
+.avatar.jonas { background: var(--web); }
+
+/* Sigille (Gespinste) */
+.sigil { width: 96px; height: 96px; border-radius: 50%; display: grid; place-items: center; flex: none; background: var(--seidra-dunkel); border: 3px solid var(--seidra); }
+.sigil svg { width: 70px; height: 70px; }
+.sigil.klein { width: 56px; height: 56px; border-width: 2px; }
+.sigil.klein svg { width: 40px; height: 40px; }
+.sigil.gross { width: 170px; height: 170px; border-width: 4px; }
+.sigil.gross svg { width: 124px; height: 124px; }
+
+/* ---------- Titel ---------- */
+.titel { position: relative; height: 100%; overflow: hidden; }
+.titel svg.netz { position: absolute; right: -60px; top: -40px; width: 760px; height: 760px; opacity: 0.9; }
+.titel .text { position: absolute; left: 80px; top: 110px; max-width: 700px; }
+.titel .ueber { font: 700 14px var(--display); letter-spacing: 0.22em; color: var(--seidra); text-transform: uppercase; }
+.titel h1 { font-size: 92px; line-height: 0.95; letter-spacing: -0.03em; font-weight: 800; margin: 14px 0 18px; }
+.titel .tagline { font-size: 22px; color: var(--ink-2); max-width: 620px; margin: 0 0 28px; }
+.titel .aktion { display: flex; gap: 14px; align-items: center; }
+.titel .orte-zahl { position: absolute; left: 80px; bottom: 60px; display: flex; gap: 36px; }
+.titel .orte-zahl div b { display: block; font: 800 40px/1 var(--display); color: var(--funke); }
+.titel .orte-zahl div span { font: 700 12px var(--display); letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; }
+
+/* ---------- Karte ---------- */
+.lage { display: grid; grid-template-columns: 1fr 600px; gap: 28px; padding: 28px 32px; height: calc(852px - 64px - 32px); }
+.jetzt { border-color: #5a2f1c; background: #221712; display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; }
+.jetzt h2 { font-size: 24px; margin: 6px 0 4px; }
+.jetzt p { margin: 0; color: var(--ink-2); }
+.jetzt .btn { margin-top: 14px; }
+.jetzt .gespinst-zeile { margin-top: 10px; font: 500 14px var(--mono); color: var(--seidra); }
+div.orte { margin-top: 18px; display: grid; gap: 10px; }
+.ort { display: grid; grid-template-columns: 56px 1fr auto; align-items: center; gap: 16px; padding: 12px 16px; background: var(--surface); border: 2px solid var(--line); border-radius: 16px; }
+.ort .nr { width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; font: 800 18px var(--display); color: #0f0c1f; }
+.ort strong { display: block; font-family: var(--display); font-size: 15px; }
+.ort small { color: var(--muted); font-size: 14px; }
+.ort.frei { border-color: #4a3d1a; }
+.ort.frei .nr { background: var(--funke); }
+.ort.jetzt-o { border-color: var(--primary); }
+.ort.jetzt-o .nr { background: var(--primary); color: #fff; }
+.ort.schatten .nr { background: var(--seidra-dunkel); color: var(--seidra); border: 2px solid #6a2a8a; }
+.ort.schatten strong { color: var(--ink-2); }
+.sterne { color: var(--funke); font-size: 16px; letter-spacing: -1px; }
+.karte-hyperia { padding: 14px; display: flex; flex-direction: column; align-items: center; }
+.karte-hyperia h3 { font-size: 15px; color: var(--ink-2); margin: 4px 0 6px; }
+.karte-hyperia svg { width: 560px; height: 640px; }
+.karte-hyperia .stand { margin-top: 6px; font-weight: 700; color: var(--ink-2); font-size: 14px; }
+
+/* ---------- Lektion ---------- */
+.lektion { padding: 24px 32px; max-width: 980px; margin: 0 auto; position: relative; }
+.lek-kopf { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.lek-kopf .zurueck { color: var(--muted); font-weight: 700; text-decoration: none; }
+.lek-kopf h2 { font-size: 20px; }
+.schritte { display: flex; gap: 6px; flex: 1; max-width: 360px; }
+.schritte i { flex: 1; height: 8px; border-radius: 999px; background: var(--line); }
+.schritte i.ok { background: var(--ok); }
+.schritte i.aktiv { background: var(--primary); }
+.aufgabe { padding: 24px 26px; }
+.aufgabe .chip { margin-bottom: 10px; }
+.aufgabe p { font-size: 19px; margin: 0 0 18px; }
+.werkbank { display: grid; grid-template-columns: 1.1fr 1fr; gap: 14px; }
+.editor { background: #0a0816; border: 2px solid var(--line); border-radius: 14px; overflow: hidden; }
+.editor .tabsx { display: flex; gap: 2px; background: #06050f; padding: 8px 10px 0; }
+.editor .tabsx span { font: 500 12px var(--mono); color: #8a84a8; padding: 6px 12px; border-radius: 8px 8px 0 0; }
+.editor .tabsx span.an { background: #0a0816; color: #fff; }
+.editor pre { margin: 0; padding: 16px 18px; font: 500 15px/1.65 var(--mono); color: #e9ecf7; }
+.t { color: #ff8a5c; } .a { color: #7fd1ff; } .v { color: #ffd166; } .c { color: #6c6790; }
+.vorschau { background: #fff; border-radius: 14px; padding: 18px; font-family: Georgia, serif; color: #111; }
+.vorschau h4 { font-family: Georgia, serif; font-size: 22px; margin: 0 0 8px; }
+.vorschau ul { margin: 0; padding-left: 22px; font-size: 16px; }
+.aktionen { display: flex; gap: 12px; margin-top: 18px; align-items: center; }
+.aktionen .nachlesen { margin-left: auto; }
+.rueck-fehl { margin-top: 14px; border: 2px solid #5a2234; background: #2a1420; border-radius: 12px; padding: 12px 16px; font-weight: 700; color: var(--fail); }
+.spott { display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: center; margin-top: 14px; }
+.spott .blase { background: var(--seidra-dunkel); border: 2px solid #6a2a8a; border-radius: 4px 16px 16px 16px; padding: 12px 16px; font-size: 17px; }
+.spott .blase b { display: block; font: 700 11px var(--display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--seidra); margin-bottom: 3px; }
+.lob { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: center; margin-top: 14px; }
+.lob .blase { background: #142e24; border: 2px solid #1d4a3a; border-radius: 4px 16px 16px 16px; padding: 10px 16px; font-size: 16px; }
+.lob .blase b { display: block; font: 700 11px var(--display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ok); margin-bottom: 2px; }
+
+/* ---------- Hinterhalt ---------- */
+.alarm { height: 54px; display: flex; align-items: center; gap: 16px; padding: 0 32px; background: var(--seidra-dunkel); border-bottom: 2px solid var(--seidra); font: 700 15px var(--display); color: #f0c2ff; letter-spacing: 0.04em; }
+.alarm .punkt { width: 12px; height: 12px; border-radius: 50%; background: var(--seidra); }
+.alarm .timer { margin-left: auto; font: 800 30px var(--display); color: var(--seidra); letter-spacing: 0.02em; }
+.hinterhalt { padding: 22px 32px; max-width: 980px; margin: 0 auto; }
+.hh-kopf { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; white-space: nowrap; }
+.hh-kopf h2 { font-size: 22px; }
+.bruecke { margin-left: auto; display: flex; align-items: center; gap: 10px; font: 700 13px var(--display); color: var(--ink-2); letter-spacing: 0.06em; }
+.bruecke .balken { width: 150px; height: 12px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+.bruecke .balken i { display: block; height: 100%; width: 60%; background: var(--funke); border-radius: 999px; }
+.spiel { padding: 26px 28px; }
+.spiel .frage { font-size: 20px; font-weight: 700; margin: 0 0 16px; }
+.bloecke { display: grid; gap: 10px; }
+.block { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border: 2px solid var(--line-2); border-radius: 14px; font: 500 17px var(--mono); background: var(--surface-2); box-shadow: 0 3px 0 var(--line-2); }
+.block b { width: 30px; height: 30px; border-radius: 8px; background: var(--surface); display: grid; place-items: center; font: 700 13px var(--display); color: var(--ink-2); }
+.block .griff { margin-left: auto; color: var(--muted); font-family: var(--text); letter-spacing: 2px; }
+.block.sitzt { border-color: var(--funke); box-shadow: 0 3px 0 #7a5a10; background: #2a2210; }
+.block.sitzt b { background: var(--funke); color: #1a1200; }
+.runden { display: flex; gap: 8px; margin-top: 18px; }
+.runden i { width: 34px; height: 8px; border-radius: 999px; background: var(--line); }
+.runden i.ok { background: var(--ok); }
+.runden i.aktiv { background: var(--seidra); }
+.robby { position: absolute; right: 10px; top: 200px; width: 150px; }
+.robby-blase { position: absolute; right: 24px; top: 150px; background: var(--surface); border: 2px solid var(--line-2); border-radius: 14px 14px 4px 14px; padding: 8px 12px; font-size: 14px; font-weight: 700; max-width: 150px; }
+.spiel-leiste { display: flex; gap: 12px; margin-top: 18px; }
+.spiel-kachel { flex: 1; border: 2px solid var(--line); border-radius: 14px; padding: 12px 14px; display: flex; gap: 10px; align-items: center; background: var(--surface); font-weight: 700; font-size: 15px; }
+.spiel-kachel span { font-size: 22px; }
+.spiel-kachel.an { border-color: var(--seidra); background: var(--seidra-dunkel); }
+
+/* ---------- Duell ---------- */
+.duell { padding: 36px 32px; max-width: 980px; margin: 0 auto; }
+.duell .buehne { display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: center; }
+.duell .buehne .chip { margin-bottom: 10px; }
+.duell h2 { font-size: 30px; margin: 0 0 8px; }
+.duell p { margin: 0 0 8px; color: var(--ink-2); font-size: 18px; }
+.duell .zitat { margin-top: 18px; display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: center; }
+.duell .zitat .blase { background: var(--surface); border: 2px solid var(--line); border-radius: 4px 16px 16px 16px; padding: 10px 16px; font-size: 16px; }
+.duell .zitat .blase b { display: block; font: 700 11px var(--display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+.duell .fakten { display: flex; gap: 14px; margin-top: 22px; }
+.duell .fakten div { flex: 1; background: var(--surface); border: 2px solid var(--line); border-radius: 14px; padding: 12px 16px; }
+.duell .fakten b { display: block; font: 800 22px var(--display); color: var(--funke); }
+.duell .fakten span { color: var(--muted); font-size: 14px; }
+.duell .aktion { margin-top: 22px; display: flex; gap: 12px; }
+
+/* ---------- Galerie ---------- */
+.galerie { padding: 24px 32px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.figur { background: var(--surface); border: 2px solid var(--line); border-radius: 16px; padding: 16px 14px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.figur strong { font: 700 16px var(--display); margin-top: 10px; }
+.figur small { color: var(--ink-2); font-size: 13px; line-height: 1.35; margin-top: 4px; }
+.figur .wo { margin-top: 8px; font: 700 10px var(--display); letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; }
+.figur.koenigin { grid-column: span 5; flex-direction: row; gap: 28px; text-align: left; align-items: center; border-color: var(--seidra); padding: 18px 28px; }
+.figur.koenigin strong, .figur.koenigin small, .figur.koenigin .wo { display: block; }
+.figur.koenigin .sigil.gross { width: 140px; height: 140px; }
+.figur.koenigin strong { font-size: 22px; margin-top: 0; }
+.figur.koenigin small { font-size: 14px; }
+.figur.freund { border-color: #2a4a3a; }
+.figur.freund .sigil { background: #14301f; border-color: var(--ok); }
+
+/* ---------- Storyboard ---------- */
+.board { padding: 28px 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.frame { background: var(--surface); border: 2px solid var(--line); border-radius: 16px; overflow: hidden; }
+.frame .bild { height: 214px; position: relative; overflow: hidden; background: #09071a; }
+.frame .bild svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.frame .bild .mitte { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 20px; }
+.frame .bild .mitte b { font: 800 34px/1.05 var(--display); }
+.frame .bild .mitte .k { font: 700 11px var(--display); letter-spacing: 0.22em; color: var(--seidra); text-transform: uppercase; margin-bottom: 8px; display: block; }
+.frame .text { padding: 12px 16px 14px; }
+.frame .text small { display: block; font: 700 11px var(--display); letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
+.frame .text p { margin: 0; font-size: 15px; color: var(--ink-2); }
+.frame .bild .crew { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 18px; }
+.frame .bild .crew div { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; font: 800 20px var(--display); color: #0f0c1f; }
+.frame .bild .unten { position: absolute; left: 12px; right: 12px; bottom: 12px; text-align: center; font: 700 14px var(--display); color: var(--ink); background: rgba(9,7,26,0.82); border-radius: 8px; padding: 4px 8px; }
+
+/* ---------- Handy ---------- */
+.h-top { height: 56px; display: flex; align-items: center; padding: 0 18px; gap: 10px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.h-inhalt { padding: 16px; height: calc(876px - 32px - 56px - 70px); overflow: hidden; }
+.h-nav { position: absolute; left: 0; right: 0; bottom: 0; height: 70px; background: var(--surface); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); }
+.h-nav div { display: grid; place-items: center; font: 700 12px var(--display); color: var(--muted); gap: 2px; }
+.h-nav div span { font-size: 22px; }
+.h-nav div.an { color: var(--primary); }
+.h-karte { display: flex; justify-content: center; }
+.h-karte svg { width: 300px; height: 230px; }
+.h-alarm { display: flex; align-items: center; gap: 10px; background: var(--seidra-dunkel); border: 2px solid #6a2a8a; border-radius: 12px; padding: 10px 12px; font: 700 13px var(--display); color: #f0c2ff; margin-bottom: 12px; }
+.h-alarm .punkt { width: 10px; height: 10px; border-radius: 50%; background: var(--seidra); }
+</style>
+</head>
+<body>
+
+<!-- Sigille als wiederverwendbare Symbole -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="s-knoten" viewBox="0 0 100 100"><path d="M20 55 C 20 20, 60 20, 60 50 S 30 85, 45 60 S 85 30, 75 60 S 40 90, 30 70" fill="none" stroke="#e23cff" stroke-width="7" stroke-linecap="round"/><circle cx="38" cy="42" r="4" fill="#fff"/><circle cx="56" cy="40" r="4" fill="#fff"/></symbol>
+    <symbol id="s-krakel" viewBox="0 0 100 100"><path d="M15 30 l12 -10 12 12 12 -12 12 12 12 -12 10 10 M15 55 l14 -8 14 8 14 -8 14 8 14 -8 M18 78 l12 -6 12 6 12 -6 12 6 12 -6" fill="none" stroke="#e23cff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="42" cy="47" r="4" fill="#fff"/><circle cx="60" cy="47" r="4" fill="#fff"/></symbol>
+    <symbol id="s-luecke" viewBox="0 0 100 100"><circle cx="50" cy="52" r="34" fill="#e23cff"/><path d="M50 52 m-19 -4 l8 -9 6 7 7 -9 7 8 5 -5 4 10 -5 8 -8 4 -7 -3 -6 5 -8 -4 z" fill="#09071a"/><circle cx="36" cy="30" r="4" fill="#fff"/><circle cx="64" cy="30" r="4" fill="#fff"/></symbol>
+    <symbol id="s-zerr" viewBox="0 0 100 100"><g fill="none" stroke="#e23cff" stroke-width="5"><path d="M18 25 L85 20 M15 45 L82 48 M20 68 L88 62 M12 85 L80 88"/><path d="M28 15 L22 92 M50 12 L58 90 M72 16 L66 94"/></g><circle cx="40" cy="55" r="4" fill="#fff"/><circle cx="60" cy="55" r="4" fill="#fff"/></symbol>
+    <symbol id="s-schwindel" viewBox="0 0 100 100"><path d="M50 12 C 22 12, 14 40, 20 62 C 26 82, 38 92, 50 92 Z" fill="#e23cff"/><path d="M50 12 C 78 12, 86 40, 80 62 C 74 82, 62 92, 50 92 Z" fill="#8a2ab0"/><circle cx="36" cy="44" r="5" fill="#fff"/><circle cx="64" cy="44" r="5" fill="#fff"/><path d="M30 66 q10 8 18 0" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path d="M52 70 q10 -8 18 0" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></symbol>
+    <symbol id="s-blass" viewBox="0 0 100 100"><path d="M24 90 V48 a26 26 0 0 1 52 0 V90 l-9 -8 -8 8 -9 -8 -9 8 -9 -8 z" fill="#9a93b8"/><path d="M36 46 h10 M54 46 h10" stroke="#1a1630" stroke-width="4" stroke-linecap="round"/></symbol>
+    <symbol id="s-streu" viewBox="0 0 100 100"><g fill="#e23cff"><circle cx="24" cy="26" r="7"/><circle cx="60" cy="18" r="5"/><circle cx="82" cy="40" r="8"/><circle cx="44" cy="48" r="10"/><circle cx="20" cy="66" r="6"/><circle cx="70" cy="70" r="9"/><circle cx="46" cy="84" r="5"/></g><g fill="#fff"><circle cx="42" cy="46" r="3"/><circle cx="48" cy="46" r="3"/><circle cx="68" cy="68" r="2.5"/><circle cx="73" cy="68" r="2.5"/></g></symbol>
+    <symbol id="s-quetsch" viewBox="0 0 100 100"><rect x="12" y="34" width="76" height="34" rx="6" fill="#e23cff"/><path d="M12 40 h76 M12 62 h76" stroke="#8a2ab0" stroke-width="3"/><path d="M34 46 l10 4 M66 46 l-10 4" stroke="#fff" stroke-width="4" stroke-linecap="round"/><circle cx="40" cy="55" r="3.5" fill="#fff"/><circle cx="60" cy="55" r="3.5" fill="#fff"/></symbol>
+    <symbol id="s-starr" viewBox="0 0 100 100"><path d="M50 10 l34 20 v40 l-34 20 -34 -20 v-40 z" fill="#5fc8ff"/><path d="M50 10 v80 M16 30 l34 20 34 -20" fill="none" stroke="#0f0c1f" stroke-width="3"/><path d="M38 58 l8 -10 -4 -8 M62 60 l-6 -12" fill="none" stroke="#fff" stroke-width="3"/><circle cx="40" cy="66" r="3" fill="#0f0c1f"/><circle cx="60" cy="66" r="3" fill="#0f0c1f"/></symbol>
+    <symbol id="s-seidra" viewBox="0 0 100 100"><g stroke="#e23cff" stroke-width="5" fill="none" stroke-linecap="round"><path d="M40 50 L14 30 L8 14 M40 56 L10 54 M40 62 L12 80 M44 66 L30 92"/><path d="M60 50 L86 30 L92 14 M60 56 L90 54 M60 62 L88 80 M56 66 L70 92"/></g><ellipse cx="50" cy="64" rx="18" ry="22" fill="#e23cff"/><circle cx="50" cy="38" r="12" fill="#e23cff"/><path d="M40 28 l4 -10 6 8 6 -8 4 10" fill="#ffc53d"/><circle cx="45" cy="38" r="3" fill="#ff4d6d"/><circle cx="55" cy="38" r="3" fill="#ff4d6d"/><circle cx="43" cy="33" r="1.6" fill="#ff4d6d"/><circle cx="57" cy="33" r="1.6" fill="#ff4d6d"/></symbol>
+    <symbol id="s-funke" viewBox="0 0 100 100"><path d="M50 8 l9 28 28 9 -28 9 -9 28 -9 -28 -28 -9 28 -9 z" fill="#ffc53d"/><circle cx="50" cy="54" r="8" fill="#1a1200"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ Titel ============ -->
+<section class="rahmen kino" id="titel">
+  <div class="label">0 · TITEL (VORSPANN-ENDE / STARTBILDSCHIRM)</div>
+  <div class="titel">
+    <svg class="netz" viewBox="0 0 760 760">
+      <g fill="none" stroke="#4a3a7a" stroke-width="2">
+        <path d="M560 60 L560 700 M560 60 L120 700 M560 60 L760 500 M560 60 L300 760 M560 60 L700 760 M560 60 L80 300 M560 60 L760 260"/>
+        <path d="M400 200 Q 480 170 560 200 Q 640 220 700 300 M340 330 Q 450 300 560 330 Q 680 350 760 430 M270 460 Q 420 430 560 470 Q 700 500 760 560 M200 590 Q 400 560 560 610 Q 680 630 740 700 M470 120 Q 520 110 560 120 Q 600 130 640 170"/>
+      </g>
+      <g transform="translate(560 60)">
+        <use href="#s-seidra" x="-110" y="-20" width="220" height="220"/>
+      </g>
+    </svg>
+    <div class="text">
+      <div class="ueber">Hyperia · Die Nacht, in der die Brücken rissen</div>
+      <h1>SCHATTEN<br>NETZ</h1>
+      <p class="tagline">Eine Spinnenkönigin. Neun Gespinste. Achtzehn Orte unter ihrem Netz. Und eine Werkstatt, die ein anderes Netz webt: eines, das verbindet.</p>
+      <div class="aktion"><span class="btn btn-p">Lehrling werden →</span><span class="btn btn-g">Vorspann nochmal</span></div>
+    </div>
+    <div class="orte-zahl"><div><b>18</b><span>Orte</span></div><div><b>9</b><span>Gespinste</span></div><div><b>1</b><span>Königin</span></div></div>
+  </div>
+</section>
+
+<!-- ============ Karte ============ -->
+<section class="rahmen desktop" id="karte">
+  <div class="label">1 · HYPERIA (STARTSEITE: KARTE)</div>
+  <div class="top">
+    <div class="marke"><i>&lt;/&gt;</i>WebWerkstatt</div>
+    <div class="tabs"><span class="an">Hyperia</span><span>Website</span><span>Ich</span></div>
+    <div class="rechts"><span class="pille orte"><b>3 / 18</b> Orte befreit</span><span class="pille"><b>4</b> 1.240 XP</span></div>
+  </div>
+  <div class="lage">
+    <div>
+      <div class="karte jetzt">
+        <div class="sigil"><svg><use href="#s-krakel"/></svg></div>
+        <div>
+          <span class="chip seidra">Ort 4 · Listental · Gespinst Krakel</span>
+          <h2>Krakel hat die Listen zerkritzelt.</h2>
+          <p>Jonas wartet an der Brücke nach Listental. Fünf Lektionen, zwei Hinterhalte, dann das Duell. Die Programm-Tafel der FUNKEN-Website braucht saubere Listen.</p>
+          <div class="gespinst-zeile">KRAKEL › „Punkte? Nummern? Alles in eine Zeile. Hihi.“</div>
+          <span class="btn btn-p">Nach Listental →</span>
+        </div>
+      </div>
+      <div class="orte">
+        <div class="ort frei"><div class="nr">3</div><div><strong>Schriftfels · Text</strong><small>befreit · Gespinst Krakel vertrieben · 13 von 15 Sternen</small></div><div class="sterne">★★★</div></div>
+        <div class="ort jetzt-o"><div class="nr">4</div><div><strong>Listental · Listen</strong><small>5 Lektionen · 2 Hinterhalte · Duell gegen Krakel</small></div><div class="chip seidra">jetzt</div></div>
+        <div class="ort schatten"><div class="nr">5</div><div><strong>Brückenstadt · Links</strong><small>unter dem Netz · Gespinst Lücke</small></div></div>
+        <div class="ort schatten"><div class="nr">6</div><div><strong>Spiegelsee · Bilder &amp; Medien</strong><small>unter dem Netz · Gespinst Lücke</small></div></div>
+        <div class="ort schatten"><div class="nr">7</div><div><strong>Rasterfeste · Tabellen</strong><small>unter dem Netz · Gespinst Zerr</small></div></div>
+      </div>
+    </div>
+    <div class="karte karte-hyperia">
+      <h3>Hyperia · Die Lichtstraße von der Quelle zum Funkenfest</h3>
+      <svg viewBox="0 0 560 640">
+        <path d="M30 560 Q 60 470 150 500 Q 230 520 250 600 Q 170 640 60 620 Z" fill="#1f1a3d"/>
+        <path d="M150 380 Q 260 330 400 420 Q 470 470 420 560 Q 300 600 250 520 Q 200 470 150 380 Z" fill="#2a1f3f"/>
+        <path d="M60 180 Q 160 120 300 200 Q 360 250 330 360 Q 250 380 150 340 Q 70 300 60 180 Z" fill="#1a2440"/>
+        <path d="M330 60 Q 450 40 520 140 Q 540 230 470 300 Q 400 320 340 260 Q 300 180 330 60 Z" fill="#2c2614"/>
+        <path d="M400 330 Q 500 300 540 380 Q 550 450 490 470 Q 430 460 400 400 Z" fill="#14301f"/>
+        <g fill="none" stroke="#4a3a7a" stroke-width="1.5" opacity="0.9">
+          <path d="M360 20 L120 330 M360 20 L540 300 M360 20 L250 220 M360 20 L470 480 M360 20 L560 160"/>
+          <path d="M250 120 Q 360 90 470 130 M200 200 Q 360 160 520 230 M180 280 Q 360 240 540 330 M300 330 Q 420 300 530 400"/>
+        </g>
+        <path d="M70 580 C 120 540, 180 560, 200 500 C 220 440, 150 420, 130 360 C 110 300, 170 270, 230 280 C 300 290, 320 350, 300 400 C 280 450, 360 480, 400 440 C 440 400, 380 330, 420 260 C 460 190, 400 120, 440 90" fill="none" stroke="#ffc53d" stroke-width="4" stroke-linecap="round" opacity="0.95"/>
+        <path d="M200 500 C 220 440, 150 420, 130 360 C 110 300, 170 270, 230 280 C 300 290, 320 350, 300 400 C 280 450, 360 480, 400 440 C 440 400, 380 330, 420 260 C 460 190, 400 120, 440 90" fill="none" stroke="#4a3a7a" stroke-width="4" stroke-dasharray="6 8" stroke-linecap="round"/>
+        <g font-family="Unbounded Variable" font-weight="800" font-size="11" text-anchor="middle">
+          <g><circle cx="70" cy="580" r="14" fill="#ffc53d"/><text x="70" y="584" fill="#1a1200">1</text><text x="70" y="610" fill="#ffc53d" font-size="10">Quellgrund</text></g>
+          <g><circle cx="150" cy="552" r="14" fill="#ffc53d"/><text x="150" y="556" fill="#1a1200">2</text><text x="150" y="578" fill="#ffc53d" font-size="10">Runenfeld</text></g>
+          <g><circle cx="200" cy="500" r="14" fill="#ffc53d"/><text x="200" y="504" fill="#1a1200">3</text><text x="238" y="504" fill="#ffc53d" font-size="10" text-anchor="start">Schriftfels</text></g>
+          <g><circle cx="160" cy="430" r="17" fill="#ff6b35" stroke="#fff" stroke-width="3"/><text x="160" y="435" fill="#fff" font-size="12">4</text><text x="200" y="434" fill="#ff6b35" font-size="11" text-anchor="start">Listental</text></g>
+          <g fill="#3a1550" stroke="#e23cff" stroke-width="2">
+            <circle cx="130" cy="360" r="13"/><circle cx="175" cy="285" r="13"/><circle cx="240" cy="282" r="13"/><circle cx="300" cy="330" r="13"/><circle cx="300" cy="400" r="13"/>
+            <circle cx="350" cy="470" r="13"/><circle cx="400" cy="440" r="13"/><circle cx="425" cy="380" r="13"/><circle cx="395" cy="320" r="13"/><circle cx="420" cy="260" r="13"/><circle cx="455" cy="210" r="13"/>
+            <circle cx="430" cy="150" r="13"/><circle cx="440" cy="90" r="13"/>
+          </g>
+          <g fill="#e23cff" font-size="10">
+            <text x="130" y="364">5</text><text x="175" y="289">6</text><text x="240" y="286">7</text><text x="300" y="334">8</text><text x="300" y="404">9</text><text x="350" y="474">10</text><text x="400" y="444">11</text><text x="425" y="384">12</text><text x="395" y="324">13</text><text x="420" y="264">14</text><text x="455" y="214">15</text><text x="430" y="154">16</text><text x="440" y="94">17</text>
+          </g>
+          <g transform="translate(360 20)"><use href="#s-seidra" x="-28" y="-14" width="56" height="56"/></g>
+          <text x="360" y="78" fill="#e23cff" font-size="10">18 · Funkenfest</text>
+          <text x="120" y="640" fill="#8b84ad" font-size="10" letter-spacing="2">DIE QUELLE</text>
+          <text x="90" y="170" fill="#8b84ad" font-size="10" letter-spacing="2">RUNENMARK</text>
+          <text x="330" y="600" fill="#8b84ad" font-size="10" letter-spacing="2">KASKADIA</text>
+          <text x="520" y="500" fill="#8b84ad" font-size="10" letter-spacing="2" text-anchor="end">FUNKENLAND</text>
+        </g>
+      </svg>
+      <div class="stand">Jeder befreite Ort leuchtet. Das Netz zieht sich zurück.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Lektion mit Gespinst ============ -->
+<section class="rahmen desktop" id="lektion">
+  <div class="label">2 · LEKTION: FEHLER → GESPINST SPOTTET UND GIBT DEN HINWEIS · RICHTIG → VERBÜNDETE LOBEN</div>
+  <div class="top">
+    <div class="marke"><i>&lt;/&gt;</i>WebWerkstatt</div>
+    <div class="tabs"><span class="an">Hyperia</span><span>Website</span><span>Ich</span></div>
+    <div class="rechts"><span class="pille orte"><b>3 / 18</b> Orte befreit</span><span class="pille"><b>4</b> 1.240 XP</span></div>
+  </div>
+  <div class="lektion">
+    <div class="lek-kopf">
+      <a class="zurueck" href="#">← Listental</a>
+      <h2>Ungeordnete Listen</h2>
+      <div class="schritte"><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="aktiv"></i><i></i><i></i><i></i><i></i><i></i></div>
+      <span style="font:700 16px var(--display);color:var(--muted)">5 / 10</span>
+    </div>
+    <div class="karte aufgabe">
+      <span class="chip html">Aufgabe</span>
+      <p><strong>Baue</strong> eine ungeordnete Liste mit den drei Bühnen: Neonpuls, Basslager, Waldbühne.</p>
+      <div class="werkbank">
+        <div class="editor">
+          <div class="tabsx"><span class="an">programm.html</span></div>
+<pre><span class="c">1</span>  <span class="t">&lt;ul&gt;</span>
+<span class="c">2</span>    <span class="t">&lt;li&gt;</span>Neonpuls<span class="t">&lt;/li&gt;</span>
+<span class="c">3</span>    <span class="t">&lt;li&gt;</span>Basslager
+<span class="c">4</span>    <span class="t">&lt;li&gt;</span>Waldbühne<span class="t">&lt;/li&gt;</span>
+<span class="c">5</span>  <span class="t">&lt;/ul&gt;</span>
+<span class="c">6</span></pre>
+        </div>
+        <div class="vorschau"><h4>Bühnen</h4><ul><li>Neonpuls</li><li>Basslager<ul><li>Waldbühne</li></ul></li></ul></div>
+      </div>
+      <div class="rueck-fehl">✘ Noch nicht: 2 von 3 Prüfungen · Ein Listenpunkt wird nicht geschlossen.</div>
+      <div class="spott">
+        <div class="sigil klein"><svg><use href="#s-krakel"/></svg></div>
+        <div class="blase"><b>Krakel · Gespinst · 2. Versuch</b>Hihi, Waldbühne sitzt jetzt IN Basslager. Mein Werk. Einer deiner Punkte hat kein Ende. Schau dir Zeile 3 an.</div>
+      </div>
+      <div class="lob">
+        <div class="avatar jonas">J</div>
+        <div class="blase"><b>Jonas · Brückenbauer · nach der Lösung</b>Drei Punkte, drei Enden. So hält eine Liste. Krakel kriegt hier nichts mehr zu kritzeln.</div>
+      </div>
+      <div class="aktionen">
+        <span class="btn btn-p">Prüfen</span>
+        <span class="btn btn-s">💡 Tipp</span>
+        <span class="btn btn-s nachlesen">📖 Nachlesen</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Hinterhalt ============ -->
+<section class="rahmen desktop" id="hinterhalt">
+  <div class="label">3 · HINTERHALT (ZWISCHENSPIEL, 60 SEKUNDEN)</div>
+  <div class="alarm"><span class="punkt"></span>HINTERHALT · Lücke zerreißt die Brücke nach Brückenstadt<span class="timer">0:41</span></div>
+  <div class="hinterhalt">
+    <div class="hh-kopf">
+      <h2>🌉 Brückenbau</h2>
+      <span style="font:700 16px var(--display);color:var(--ink-2)">Brücke 3 von 5 · 14 Punkte</span>
+      <div class="bruecke">BRÜCKE STEHT ZU <span class="balken"><i></i></span> 60 %</div>
+    </div>
+    <div class="karte spiel">
+      <p class="frage">Lücke hat die Bausteine verstreut. Bring die Seite in die richtige Reihenfolge.</p>
+      <div class="bloecke">
+        <div class="block sitzt"><b>1</b>&lt;!DOCTYPE html&gt;<span class="griff">sitzt ✓</span></div>
+        <div class="block sitzt"><b>2</b>&lt;html lang="de"&gt;<span class="griff">sitzt ✓</span></div>
+        <div class="block sitzt"><b>3</b>&lt;head&gt; … &lt;/head&gt;<span class="griff">sitzt ✓</span></div>
+        <div class="block"><b>?</b>&lt;/body&gt;<span class="griff">⋮⋮ ziehen</span></div>
+        <div class="block"><b>?</b>&lt;body&gt; … <span class="griff">⋮⋮ ziehen</span></div>
+      </div>
+      <div class="runden"><i class="ok"></i><i class="ok"></i><i class="aktiv"></i><i></i><i></i></div>
+    </div>
+    <div class="spiel-leiste">
+      <div class="spiel-kachel"><span>🕷️</span>Knotenjagd</div>
+      <div class="spiel-kachel an"><span>🌉</span>Brückenbau</div>
+      <div class="spiel-kachel"><span>👉</span>Wahr oder Lüge</div>
+      <div class="spiel-kachel"><span>🔮</span>Runenpaare</div>
+      <div class="spiel-kachel"><span>🧵</span>Fäden flicken</div>
+    </div>
+  </div>
+  <div class="robby-blase">Erst der Kopf, dann der Körper. Zieh!</div>
+  <img class="robby" src="/public/figuren/robby/sicherheit.png" alt="">
+</section>
+
+<!-- ============ Duell ============ -->
+<section class="rahmen" id="duell" style="height: 620px;">
+  <div class="label">4 · DUELL (= ABNAHME, GEMISCHTE AUFGABEN, AB 80 % REISST DAS GESPINST)</div>
+  <div class="top">
+    <div class="marke"><i>&lt;/&gt;</i>WebWerkstatt</div>
+    <div class="tabs"><span class="an">Hyperia</span><span>Website</span><span>Ich</span></div>
+    <div class="rechts"><span class="pille orte"><b>9 / 18</b> Orte befreit</span><span class="pille"><b>7</b> 3.080 XP</span></div>
+  </div>
+  <div class="duell">
+    <div class="buehne">
+      <div class="sigil gross"><svg><use href="#s-blass"/></svg></div>
+      <div>
+        <span class="chip css">Ort 10 · Lichtfälle · Kaskadia</span>
+        <h2>Duell gegen Blass</h2>
+        <p>Blass hat die Lichtfälle grau gewaschen. Jede Farbe, jede Eigenschaft, jede Regel, die du hier setzt, holt einen Strahl zurück. Ab 80 % reißt das Gespinst.</p>
+        <div class="zitat"><div class="avatar sam">S</div><div class="blase"><b>Sam · Meisterin der Werkstatt</b>Ich prüfe jeden Knoten. Nicht, um dich zu fangen. Damit das Netz hält, wenn Seidra daran zieht.</div></div>
+      </div>
+    </div>
+    <div class="fakten"><div><b>11</b><span>Aufgaben, gemischt aus Lektion und Soundcheck</span></div><div><b>80 %</b><span>reißen das Gespinst, Sterne ab 80 / 90 / 95 %</span></div><div><b>+120 XP</b><span>und Lichtfälle leuchtet auf der Karte</span></div></div>
+    <div class="aktion"><span class="btn btn-p">Gespinst zerreißen →</span><span class="btn btn-g">Erst nochmal nachlesen</span></div>
+  </div>
+</section>
+
+<!-- ============ Galerie ============ -->
+<section class="rahmen" id="gespinste" style="height: 960px;">
+  <div class="label">5 · SEIDRA UND IHRE GESPINSTE (FLACHE SIGILLE, ERSATZWEISE KI-BILDER WIE IN PYQUEST)</div>
+  <div class="galerie">
+    <div class="figur koenigin"><div class="sigil gross"><svg><use href="#s-seidra"/></svg></div><div><strong>Seidra, die Spinnenkönigin</strong><small>Einst die beste Weberin der Werkstatt. Sie wob Fallen statt Brücken und wurde verstoßen. Aus der Tiefe spinnt sie das Schattennetz: Jeder Weg soll zu ihr führen. Endgegnerin am Funkenfest (Ort 18).</small><div class="wo">„Ein Netz, das verbindet, ist schwach. Ein Netz, das fängt, ist Macht.“</div></div></div>
+    <div class="figur"><div class="sigil"><svg><use href="#s-knoten"/></svg></div><strong>Knoten</strong><small>verknotet Runen: Tags ohne Ende, falsch verschachtelt</small><div class="wo">Orte 2 · 8</div></div>
+    <div class="figur"><div class="sigil"><svg><use href="#s-krakel"/></svg></div><strong>Krakel</strong><small>zerkritzelt Text: Überschriften, Absätze, Listen in einer Zeile</small><div class="wo">Orte 3 · 4</div></div>
+    <div class="figur"><div class="sigil"><svg><use href="#s-luecke"/></svg></div><strong>Lücke</strong><small>zerreißt Brücken: falsche Adressen, 404, Bilder ins Leere</small><div class="wo">Orte 1 · 5 · 6</div></div>
+    <div class="figur"><div class="sigil"><svg><use href="#s-zerr"/></svg></div><strong>Zerr</strong><small>verzerrt Raster: Zellen verschoben, Zeilen zu kurz</small><div class="wo">Ort 7</div></div>
+    <div class="figur"><div class="sigil"><svg><use href="#s-schwindel"/></svg></div><strong>Schwindel</strong><small>täuscht: Formulare ohne Namen, fremde Bilder, Datenfallen</small><div class="wo">Orte 9 · 15</div></div>
+    <div class="figur"><div class="sigil"><svg><use href="#s-blass"/></svg></div><strong>Blass</strong><small>wäscht Farben aus: CSS-Syntax, Eigenschaften, Schrift</small><div class="wo">Orte 10 · 12</div></div>
+    <div class="figur"><div class="sigil"><svg><use href="#s-streu"/></svg></div><strong>Streu</strong><small>streut Treffer: Selektoren treffen das Falsche</small><div class="wo">Ort 11</div></div>
+    <div class="figur"><div class="sigil"><svg><use href="#s-quetsch"/></svg></div><strong>Quetsch</strong><small>quetscht Kisten: Box-Modell, Abstände, Flexbox</small><div class="wo">Orte 13 · 14</div></div>
+    <div class="figur"><div class="sigil"><svg><use href="#s-starr"/></svg></div><strong>Starr</strong><small>lässt Funken erstarren: JavaScript tut nichts, Namen falsch</small><div class="wo">Orte 16 · 17</div></div>
+    <div class="figur freund"><div class="sigil"><svg><use href="#s-funke"/></svg></div><strong>Die Werkstatt</strong><small>Sam (Meisterin), Ayla (Lichtweberin), Jonas (Brückenbauer), Robby (der Funke) – loben, wenn es sitzt</small><div class="wo">überall</div></div>
+  </div>
+</section>
+
+<!-- ============ Storyboard ============ -->
+<section class="rahmen" id="storyboard" style="height: 800px;">
+  <div class="label">6 · VORSPANN-STORYBOARD (70 SEKUNDEN, MIT DER VORHANDENEN VIDEO-PIPELINE)</div>
+  <div class="board">
+    <div class="frame">
+      <div class="bild">
+        <svg viewBox="0 0 400 214" preserveAspectRatio="none">
+          <rect x="0" y="150" width="400" height="64" fill="#101a2c"/>
+          <path d="M0 170 Q 100 160 200 172 T 400 168 V214 H0 Z" fill="#17284a"/>
+          <g fill="#1a1630"><rect x="60" y="80" width="150" height="80"/><rect x="230" y="100" width="110" height="60"/></g>
+          <g fill="#ffc53d"><rect x="80" y="100" width="10" height="12"/><rect x="110" y="100" width="10" height="12"/><rect x="140" y="100" width="10" height="12"/></g>
+          <rect x="60" y="70" width="150" height="10" fill="#241e42"/>
+        </svg>
+        <div class="unten">Heilbronn, die alte Weberei am Neckar. Mitternacht.</div>
+      </div>
+      <div class="text"><small>Bild 1 · 0–10 s</small><p>Das Fabrikgelände, auf dem FUNKEN steigen soll. In einem Fenster brennt Licht: die Werkstatt.</p></div>
+    </div>
+    <div class="frame">
+      <div class="bild">
+        <svg viewBox="0 0 400 214">
+          <rect x="120" y="40" width="160" height="140" rx="6" fill="#241e42"/>
+          <g stroke="#ffc53d" stroke-width="2" opacity="0.9"><path d="M135 50 V170 M150 50 V170 M165 50 V170 M180 50 V170 M195 50 V170 M210 50 V170 M225 50 V170 M240 50 V170 M255 50 V170 M270 50 V170"/></g>
+          <g stroke="#3fb0ff" stroke-width="3"><path d="M130 90 H270 M130 120 H270 M130 150 H270"/></g>
+          <circle cx="200" cy="110" r="26" fill="#ffc53d" opacity="0.9"/>
+        </svg>
+        <div class="unten">Der Große Webstuhl. Fäden aus Licht.</div>
+      </div>
+      <div class="text"><small>Bild 2 · 10–22 s</small><p>Sam öffnet den Keller. Zwischen den Fäden öffnet sich ein Tor: Hyperia, das Reich, das aus dem Netz gewoben ist.</p></div>
+    </div>
+    <div class="frame">
+      <div class="bild">
+        <svg viewBox="0 0 400 214">
+          <g fill="#1a2440"><ellipse cx="80" cy="150" rx="60" ry="22"/><ellipse cx="220" cy="120" rx="70" ry="26"/><ellipse cx="340" cy="160" rx="50" ry="20"/></g>
+          <g stroke="#ffc53d" stroke-width="3" fill="none"><path d="M130 140 Q 160 100 170 118 M285 125 Q 310 150 300 150"/></g>
+          <g fill="#3fb0ff"><rect x="200" y="80" width="6" height="40"/><rect x="214" y="90" width="6" height="30"/><rect x="228" y="84" width="6" height="36"/></g>
+          <g fill="#ffd166"><circle cx="60" cy="130" r="3"/><circle cx="90" cy="125" r="3"/><circle cx="330" cy="140" r="3"/></g>
+        </svg>
+        <div class="unten">Brücken aus Licht. Runenstädte. Lichtfälle. Funken.</div>
+      </div>
+      <div class="text"><small>Bild 3 · 22–34 s</small><p>„Was im Netz gebaut wird, wird hier zu Land. Jede Seite ein Ort, jeder Link eine Brücke.“</p></div>
+    </div>
+    <div class="frame">
+      <div class="bild">
+        <svg viewBox="0 0 400 214">
+          <g fill="none" stroke="#4a3a7a" stroke-width="1.5"><path d="M200 0 L20 214 M200 0 L380 214 M200 0 L110 214 M200 0 L290 214 M200 0 L200 214 M60 80 Q 200 50 340 80 M30 140 Q 200 100 370 140 M10 200 Q 200 150 390 200"/></g>
+          <g transform="translate(200 40)"><use href="#s-seidra" x="-45" y="-30" width="90" height="90"/></g>
+          <g fill="#9a93b8"><ellipse cx="80" cy="170" rx="50" ry="16"/><ellipse cx="320" cy="175" rx="50" ry="16"/></g>
+        </svg>
+        <div class="unten">Seidra erwacht. Das Schattennetz legt sich über Hyperia.</div>
+      </div>
+      <div class="text"><small>Bild 4 · 34–48 s</small><p>Brücken reißen. Farben verblassen. Funken erlöschen. Neun Gespinste besetzen die Orte der Lichtstraße.</p></div>
+    </div>
+    <div class="frame">
+      <div class="bild"><div class="crew"><div style="background:#ffc53d">S</div><div style="background:#3fb0ff">A</div><div style="background:#9b8cff">J</div><div style="background:#2ee59d">R</div><div style="background:#ff6b35;color:#fff">DU</div></div><div class="unten">Die Werkstatt. Und der neue Lehrling.</div></div>
+      <div class="text"><small>Bild 5 · 48–60 s</small><p>Sam: „Ein Netz hält, wenn jeder Knoten hält. Du lernst Knoten, die Seidra nicht lösen kann.“</p></div>
+    </div>
+    <div class="frame">
+      <div class="bild"><div class="mitte"><div><span class="k">Hyperia · Achtzehn Orte</span><b style="font-size:29px">SCHATTENNETZ</b><div style="margin-top:10px;font:700 13px var(--display);color:var(--funke)">ORT 1 · QUELLGRUND. LOS.</div></div></div></div>
+      <div class="text"><small>Bild 6 · 60–70 s</small><p>Titel. Dann der Schnitt in die App: Quellgrund leuchtet auf der Karte, der Knopf „Lehrling werden“.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Handy ============ -->
+<section class="rahmen handy" id="handy">
+  <div class="label">7 · HANDY</div>
+  <div class="h-top"><div class="marke"><i>&lt;/&gt;</i>WebWerkstatt</div><span class="pille orte" style="margin-left:auto"><b>3 / 18</b></span></div>
+  <div class="h-inhalt">
+    <div class="h-alarm"><span class="punkt"></span>KRAKEL › „ALLES IN EINE ZEILE. HIHI.“</div>
+    <div class="h-karte">
+      <svg viewBox="0 0 300 230">
+        <path d="M20 200 Q 60 150 130 170 Q 200 190 220 210 Q 120 230 20 200 Z" fill="#1f1a3d"/>
+        <path d="M60 60 Q 150 20 240 70 Q 270 120 230 160 Q 150 150 100 130 Q 50 110 60 60 Z" fill="#2a1f3f"/>
+        <g fill="none" stroke="#4a3a7a" stroke-width="1.2"><path d="M200 10 L40 150 M200 10 L290 140 M200 10 L130 200 M120 60 Q 200 40 280 70 M90 110 Q 200 80 290 120"/></g>
+        <path d="M30 195 C 80 180, 110 185, 130 165 C 150 145, 100 120, 120 95 C 140 70, 200 80, 210 50" fill="none" stroke="#ffc53d" stroke-width="3"/>
+        <g font-family="Unbounded Variable" font-weight="800" font-size="9" text-anchor="middle">
+          <circle cx="30" cy="195" r="10" fill="#ffc53d"/><text x="30" y="198" fill="#1a1200">1</text>
+          <circle cx="90" cy="182" r="10" fill="#ffc53d"/><text x="90" y="185" fill="#1a1200">2</text>
+          <circle cx="130" cy="165" r="10" fill="#ffc53d"/><text x="130" y="168" fill="#1a1200">3</text>
+          <circle cx="112" cy="122" r="12" fill="#ff6b35" stroke="#fff" stroke-width="2"/><text x="112" y="126" fill="#fff">4</text>
+          <g fill="#3a1550" stroke="#e23cff" stroke-width="1.5"><circle cx="130" cy="90" r="9"/><circle cx="170" cy="78" r="9"/><circle cx="210" cy="50" r="9"/></g>
+          <g transform="translate(200 10)"><use href="#s-seidra" x="-16" y="-8" width="32" height="32"/></g>
+        </g>
+      </svg>
+    </div>
+    <div class="karte jetzt" style="grid-template-columns:1fr;margin-top:8px;padding:16px 18px">
+      <div>
+        <span class="chip seidra">Ort 4 · Listental</span>
+        <h2 style="font-size:20px">Krakel hat die Listen zerkritzelt.</h2>
+        <p style="font-size:15px">5 Lektionen · 2 Hinterhalte · Duell</p>
+      </div>
+      <span class="btn btn-p" style="width:100%">Nach Listental →</span>
+    </div>
+    <div class="orte" style="margin-top:12px">
+      <div class="ort frei" style="padding:12px 14px"><div class="nr" style="width:44px;height:44px;border-radius:12px">3</div><div><strong style="font-size:15px">Schriftfels</strong><small>befreit · ★★★</small></div></div>
+      <div class="ort schatten" style="padding:12px 14px"><div class="nr" style="width:44px;height:44px;border-radius:12px">5</div><div><strong style="font-size:15px">Brückenstadt</strong><small>unter dem Netz · Lücke</small></div></div>
+    </div>
+  </div>
+  <div class="h-nav"><div class="an"><span>🗺️</span>Hyperia</div><div><span>🌐</span>Website</div><div><span>🙂</span>Ich</div></div>
+</section>
+
+</body>
+</html>
