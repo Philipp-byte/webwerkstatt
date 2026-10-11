@@ -32,6 +32,14 @@ export const ABZEICHEN = [
   { id: 'level-10', icon: '🔟', titel: 'Level 10', text: 'Level 10 erreicht.', check: (s, c) => c.level >= 10 },
   { id: 'level-25', icon: '🚀', titel: 'Level 25', text: 'Level 25 erreicht.', check: (s, c) => c.level >= 25 },
   { id: 'eigene-website', icon: '🌐', titel: 'Meine Website', text: 'Alle Pflicht-Kriterien der eigenen Website erfüllt.', check: (s) => s.showtime?.pflichtErfuellt === true },
+  // Story und Gewohnheiten (Zwischenspiele, Serie, Tagesziel)
+  { id: 'spaeher', icon: '🔭', titel: 'Späher', text: 'Fünf Spähberichte beim ersten Versuch gelöst.', check: (s) => (s.stats.spaehVolltreffer || 0) >= 5 },
+  { id: 'funker', icon: '📻', titel: 'Funker', text: 'Fünf Crew-Funk-Sprüche gehört.', check: (s) => Object.keys(s.story?.gesehen || {}).filter((k) => k.startsWith('funk:')).length >= 5 },
+  { id: 'kartensammler', icon: '🃏', titel: 'Kartensammler', text: 'Sechs Trophäenkarten an der Wand.', check: (s) => Object.keys(s.story?.karten || {}).length >= 6 },
+  { id: 'serie-3-tage', icon: '🔥', titel: '3 Tage am Stück', text: 'An drei Tagen hintereinander trainiert.', check: (s) => (s.streak?.beste || 0) >= 3 },
+  { id: 'serie-7-tage', icon: '🗓️', titel: 'Wochenserie', text: 'Sieben Tage am Stück trainiert.', check: (s) => (s.streak?.beste || 0) >= 7 },
+  { id: 'tagesziel', icon: '🎯', titel: 'Tagesziel', text: 'Alle drei Tagesziele an einem Tag erreicht.', check: (s) => (s.stats.tagesziele || 0) >= 1 },
+  { id: 'tagesziel-5', icon: '🏹', titel: 'Fünf volle Tage', text: 'Das Tagesziel fünfmal erreicht.', check: (s) => (s.stats.tagesziele || 0) >= 5 },
 ];
 
 export function pruefeAbzeichen(state, ctx) {

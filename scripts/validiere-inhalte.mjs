@@ -284,5 +284,75 @@ try {
 } catch (e) {
   melde('FEHLER', 'story/intro', `intro.json fehlt oder ungültig: ${e.message}`);
 }
+// Spickzettel (konzepte.json): jede Karte hat kurz, beispiel, sprache, merke – Wortlimits
+try {
+  const karten = lade(path.join(WURZEL, 'konzepte.json'));
+  for (const k of karten) {
+    const wo = `konzepte/${k.id}`;
+    for (const feld of ['titel', 'block', 'kurz', 'beispiel', 'sprache', 'merke']) if (!k[feld]) melde('FEHLER', wo, `Spickzettel-Feld ${feld} fehlt`);
+    if (woerter(k.kurz) > 40) melde('WARNUNG', wo, `kurz hat ${woerter(k.kurz)} Wörter (Regel: max. 40)`);
+    if (woerter(k.merke) > 14) melde('WARNUNG', wo, `merke hat ${woerter(k.merke)} Wörter (Regel: max. 14)`);
+    if (!['html', 'css', 'js', 'text'].includes(k.sprache)) melde('FEHLER', wo, `unbekannte sprache ${k.sprache}`);
+  }
+} catch (e) {
+  melde('FEHLER', 'konzepte', `konzepte.json ungültig: ${e.message}`);
+}
+// Trophäenkarten (crews.json): regel + beispiel je Runde
+try {
+  const crews = lade(path.join(WURZEL, 'story', 'crews.json'));
+  for (const r of crews.runden || []) {
+    const wo = `story/crews/${r.chapter}`;
+    if (!r.regel) melde('FEHLER', wo, 'Trophäenkarte: regel fehlt');
+    if (!r.beispiel) melde('FEHLER', wo, 'Trophäenkarte: beispiel fehlt');
+    if (r.regel && woerter(r.regel) > 45) melde('WARNUNG', wo, `regel hat ${woerter(r.regel)} Wörter (Regel: max. 45)`);
+  }
+} catch {
+  /* oben schon gemeldet */
+}
+// Zwischenspiele (story/szenen.json): je Kapitel anpfiff, funk (mit gültigem `nach`), abpfiff; Zeilen, Aufgabe, Lösungs-Leck
+try {
+  const szenen = lade(path.join(WURZEL, 'story', 'szenen.json'));
+  const SPRECHER_SZENE = ['sam', 'ayla', 'jonas', 'robby', 'gegner', 'erzaehler'];
+  const ROBBY_POSEN = fs.readdirSync(path.join(WURZEL, '..', 'figuren', 'robby')).map((f) => f.replace(/\.png$/, ''));
+  for (const chId of alleKapitel) {
+    const r = szenen.runden?.[chId];
+    if (!r) {
+      melde('FEHLER', `story/szenen/${chId}`, 'keine Zwischenspiele');
+      continue;
+    }
+    const kapitel = lade(path.join(WURZEL, 'chapters', chId, 'chapter.json'));
+    for (const art of ['anpfiff', 'funk', 'abpfiff']) {
+      const sz = r[art];
+      const wo = `story/szenen/${chId}/${art}`;
+      if (!sz) {
+        melde('FEHLER', wo, 'fehlt');
+        continue;
+      }
+      if (!Array.isArray(sz.zeilen) || sz.zeilen.length < 2) melde('FEHLER', wo, 'mindestens 2 Zeilen');
+      if (!Array.isArray(sz.ausklang) || !sz.ausklang.length) melde('FEHLER', wo, 'ausklang fehlt');
+      for (const z of [...(sz.zeilen || []), ...(sz.ausklang || [])]) {
+        if (!SPRECHER_SZENE.includes(z.wer)) melde('FEHLER', wo, `unbekannter Sprecher ${z.wer}`);
+        if (!z.text) melde('FEHLER', wo, 'Zeile ohne text');
+        else if (!z.text.startsWith('@') && woerter(z.text) > 45) melde('WARNUNG', wo, `Zeile hat ${woerter(z.text)} Wörter (Regel: max. 45)`);
+        if (z.wer === 'robby' && z.pose && !ROBBY_POSEN.includes(z.pose)) melde('FEHLER', wo, `unbekannte Robby-Pose ${z.pose}`);
+        if (z.text && z.text.startsWith('@') && !['@niederlage', '@trash', '@spott', '@schwaeche'].includes(z.text)) melde('FEHLER', wo, `unbekannter Platzhalter ${z.text}`);
+      }
+      if (art === 'funk' && !kapitel.lessons.includes(sz.nach)) melde('FEHLER', wo, `nach="${sz.nach}" ist keine Lektion dieses Kapitels`);
+      const a = sz.aufgabe;
+      if (!a) {
+        melde('FEHLER', wo, 'aufgabe fehlt');
+        continue;
+      }
+      if (!['quiz', 'fill', 'order', 'pair', 'bug'].includes(a.type)) melde('FEHLER', wo, `Aufgabentyp ${a.type} ist in Szenen nicht erlaubt`);
+      if (a.type === 'quiz' && (!Array.isArray(a.options) || a.options.length < 3 || typeof a.correct !== 'number' || !a.explanation)) melde('FEHLER', wo, 'quiz unvollständig (options ≥ 3, correct, explanation)');
+      if (a.type === 'bug' && (!Array.isArray(a.lines) || typeof a.line !== 'number' || a.line >= a.lines.length || !a.explanation)) melde('FEHLER', wo, 'bug unvollständig');
+      if (a.type === 'pair' && (!Array.isArray(a.pairs) || a.pairs.length < 3)) melde('FEHLER', wo, 'pair braucht mindestens 3 Paare');
+      if (a.type === 'fill' && (!a.template || !a.template.includes('___') || !a.accept)) melde('FEHLER', wo, 'fill unvollständig');
+      if (a.type === 'order' && (!Array.isArray(a.lines) || a.lines.length < 3)) melde('FEHLER', wo, 'order braucht mindestens 3 Zeilen');
+    }
+  }
+} catch (e) {
+  melde('FEHLER', 'story/szenen', `szenen.json fehlt oder ungültig: ${e.message}`);
+}
 console.log(`\n${ziel.length} Kapitel, ${lektionen} Lektionen geprüft — ${fehler} Fehler, ${warnungen} Warnungen`);
 process.exit(fehler ? 1 : 0);

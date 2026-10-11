@@ -8,13 +8,21 @@ Spielerische Lernplattform für **HTML, CSS und ein wenig JavaScript** – für 
 
 Sechs Wochen vor **FUNKEN**, dem Schülerfestival der Stadt, ist die Festival-Website verschwunden – die Agentur hat den Server abgeschaltet, ohne Sicherung. Sam vom Kollektiv FUNKEN macht ein Turnier daraus: den **WEBCUP**. 18 Crews, 18 Runden im K.-o.-Modus, eine Jury – die Gewinner-Website geht live. Die Lernenden sind der **Rookie** der Underdog-Crew **Nachtschicht** (Ayla, Jonas und der Bot Robby) und treten Runde für Runde gegen Crews an, die jeweils einen typischen Anfängerfehler verkörpern: Tag-Salat, CAPSLOCK CREW, Kommakinder, Hier-klicken-Gang, Inline Kings, Die Wichtigtuer … bis zum Finale gegen Team Template („Warum lernen, wenn man klicken kann?“). Jede Runde: Training (Lektionen) → Match (Abnahme durch Sam, ab 80 % fliegt die Gegner-Crew raus). Mit der **Spielerkarte** (Rang Rookie → Legende, Werte für HTML/CSS/JS, Trophäenwand) bauen sie die Website **Schritt für Schritt** – erst das Gerüst (HTML), dann Licht und Farbe (CSS), zum Schluss Strom (JavaScript). Am Ende bauen sie ihre eigene Website.
 
+## Neu (Oktober 2026)
+
+- **Vorspann als Video** (92 s, eigener Soundtrack, Untertitel), gerendert aus einem HTML-Storyboard – dazu Comic-Fassung und Onboarding mit Spielerkarte. Details: [`docs/AENDERUNGEN-2026-10.md`](docs/AENDERUNGEN-2026-10.md).
+- **54 Zwischenspiele**: Anpfiff (Spähbericht: den Fehler der Gegner-Crew erkennen), Crew-Funk (Wiederholung mitten im Training) und Abpfiff (Trophäenkarte) in jeder Runde.
+- **Nachlesen während jeder Aufgabe**: Erklärungen und Beispiele der Lektion, Spickzettel (88 Konzept-Karten) und Trophäenkarten – nie die Lösung.
+- **Tagesziel, Tages-Serie, Trophäenkarten, Crew-Embleme**, neue Startseite mit „Nächster Schritt“, Runden-Ablauf auf der Kapitelseite.
+
 ## Was drin ist
 
 - **18 Runden** (= Kapitel, gespielt an 18 Stationen des Festivalgeländes), 86 Lektionen, 889 Schritte, 266 Code-Aufgaben (davon 82 Etappen und 42 Fehlerjagden), 340 Fragen im Wiederholungspool, 18 Abnahmen – alles selbstkorrigierend (DOM, berechnete CSS-Werte, Konsole, Klick-Simulation).
 - **Gamification:** XP, Level, Ränge, Sterne, Serien-Multiplikator, 30 Abzeichen, Match (Boss-Level) gegen die Gegner-Crew jeder Runde mit Spielstand und RAUS-Stempel, Reaktions-Sprechblasen (Spott der Gegner, Jubel und Trost der Crew), Spielerkarte mit Trophäenwand, drei Minispiele im Trainingslager (Blitzrunde, Fehlerjagd, Bühnenaufbau).
 - **Wiederholung, die sitzt:** Soundcheck (Leitner-System) vor jeder Lektion, Wiederholungslektion in jedem Kapitel, Matches mit altem und neuem Stoff, Etappen, die Altes weiterverwenden.
 - **Das Projekt:** Alle bauen dieselbe FUNKEN-Website (Start, Programm, Galerie, Tickets, Impressum, style.css, script.js) in 82 Etappen – als echte, klickbare Website mit ZIP-Download. Finale „Showtime“: eigene Website mit automatisch geprüfter Checkliste.
-- **Vorspann** in drei Akten (18 Szenen, animierte Kulissen, Gegner-Captains), Lehrkraft-Modus, heller/dunkler Modus, Klangkulisse.
+- **Vorspann** als Video oder Comic (18 Szenen, animierte Kulissen, Gegner-Captains), Onboarding mit Spielerkarte, Lehrkraft-Modus, heller/dunkler Modus, Klangkulisse.
+- **Story-Zwischenspiele** mit Lernaufgabe (Anpfiff, Crew-Funk, Abpfiff), **Trophäenkarten** (Fehler, Regel, Beispiel je besiegter Crew), **Spickzettel** und **Nachlesen** in jeder Aufgabe, **Tagesziel** und **Tages-Serie**.
 - **Aufgaben verraten nie die Lösung**: Sie beschreiben das Ziel; Tipps sind gestuft und ohne Komplettlösung (Validator erzwingt das).
 
 Konzept, Didaktik, Story: siehe [`docs/`](docs/) – `KONZEPT.md`, `DIDAKTIK.md`, `PROJEKT-BIBEL.md`, `AUTOREN-HANDBUCH.md`, `AUTOREN-BRIEFING.md`, offene Fragen in `FRAGEN.md`.
@@ -44,7 +52,11 @@ public/content/chapters/<id>/pool.json       Fragenpool (Soundcheck, Backstage)
 public/content/chapters/<id>/boss.json       Match (Abnahme)
 public/content/projekt/etappen.json          GENERIERT: die 82 Etappen der FUNKEN-Website
 public/content/story/intro.json              Vorspann-Szenen
-public/content/story/crews.json              Turnier: eigene Crew, 18 Gegner-Crews (Trash-Talk, Spott, Niederlage)
+public/content/story/crews.json              Turnier: eigene Crew, 18 Gegner-Crews (Trash-Talk, Spott, Niederlage, Trophäenkarte: regel/beispiel)
+public/content/story/szenen.json             Zwischenspiele: Anpfiff, Crew-Funk, Abpfiff je Runde (Dialog + Aufgabe)
+public/content/konzepte.json                 Konzept-Register + Spickzettel (kurz, beispiel, merke)
+public/intro/                                Vorspann-Video (mp4), Poster, Untertitel (vtt) – gerendert, siehe unten
+scripts/intro-video/                         Storyboard (HTML), Soundtrack-Synth, Stichproben
 content-src/                                 Quellen: Etappen-Kette (etappen/*.mjs), Kapitel-Generatoren (kapitel-NN.mjs)
 src/                                         App (Vite, Vanilla JS, CodeMirror 6)
 ```
@@ -57,13 +69,23 @@ node scripts/validiere-inhalte.mjs     # Schema, Wortlimits, Lösungs-Leck, Pool
 npm run build && node scripts/browser-test.mjs    # jede Code-Aufgabe: Lösung besteht, Starter fällt durch (Playwright)
 node scripts/e2e-lektion.mjs <kapitel> <lektion>  # eine Lektion komplett durchspielen
 node scripts/e2e-abnahme.mjs <kapitel>            # ein Match komplett durchspielen
+npm run smoke                                     # Rauchtest aller Ansichten inkl. Zwischenspiele, Nachlesen, Trophäen (--shots für Screenshots)
 ```
 
 Im Browser: Route `#/pruefung` (Lehrkraft-Modus) zeigt dieselbe Prüfung.
 
-## Bilder und Videos für den Vorspann
+## Das Vorspann-Video
 
-`scripts/generate-intro-assets.mjs` erzeugt mit einem OpenAI-Schlüssel (`OPENAI_API_KEY` als Umgebungsvariable) Szenenbilder unter `public/intro/assets/` und trägt sie in `public/content/story/intro.json` ein. Ohne Bilder nutzt der Vorspann die eingebauten SVG-Kulissen.
+Das Video entsteht komplett lokal und reproduzierbar – ohne externe Dienste:
+
+```
+npm run intro:proben /tmp/proben   # Stichproben-Screenshots des Storyboards (scripts/intro-video/storyboard.html)
+npm run intro:video                # rendert public/intro/webcup-intro.mp4 (+ .webm als Fallback) + Poster + Untertitel (ca. 4 Minuten)
+```
+
+`scripts/intro-video/storyboard.html` ist ein deterministischer Film (`seek(t)`), `scripts/intro-video/musik.mjs` erzeugt den Soundtrack synthetisch, `scripts/render-intro-video.mjs` fotografiert mit Chromium und mischt mit ffmpeg. Das Storyboard lässt sich im Browser mit `?play` in Echtzeit ansehen (über `npm run intro:proben` startet kurz ein Server; für den Dauerbetrieb reicht `npx vite` nicht, da Pfade auf `/node_modules` und `/public` zeigen – einfach den Renderer-Server nutzen).
+
+`scripts/generate-intro-assets.mjs` kann weiterhin mit einem OpenAI-Schlüssel Szenenbilder für die Comic-Fassung erzeugen (`public/intro/assets/`).
 
 ## Lizenz
 

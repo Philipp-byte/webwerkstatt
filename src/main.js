@@ -9,10 +9,11 @@ import './styles/werkbank.css';
 import './styles/views.css';
 import './styles/intro.css';
 import './styles/turnier.css';
+import './styles/story.css';
 
 import { initRouter } from './router.js';
 import { startBackground } from './background.js';
-import { getSettings, getState, onChange, introGesehen, istLehrkraft } from './store.js';
+import { getSettings, getState, onChange, introGesehen, istLehrkraft, getStreak } from './store.js';
 import { levelFortschritt, rangAus } from './gamification/xp.js';
 import { sound } from './gamification/sound.js';
 import { loadCurriculum } from './content.js';
@@ -29,8 +30,10 @@ function renderTopbar() {
   const s = getState();
   const lf = levelFortschritt(s.xp);
   const rang = rangAus(s.xp);
+  const streak = getStreak();
   el.innerHTML = `
     ${istLehrkraft() ? '<a class="chip chip-farbe" style="--farbe: var(--js)" href="#/lehrkraft" title="Lehrkraft-Modus aktiv">🔓 Lehrkraft</a>' : ''}
+    <a class="streak-chip ${streak.aktiv >= 2 ? 'heiss' : streak.aktiv ? '' : 'kalt'}" href="#/" title="Tage in Folge gespielt – heute ${streak.heuteGespielt ? 'schon' : 'noch nicht'} gezählt">🔥 ${streak.aktiv}</a>
     <a class="xp-pille" href="#/keycard" title="${rang.titel} · Level ${lf.level} · ${s.xp} XP">
       <span class="level-kreis">${lf.level}</span>
       <span class="xp-balken"><span style="width:${Math.round(lf.anteil * 100)}%"></span></span>

@@ -26,6 +26,7 @@ export const loadBoss = (ch) => ladeJson(`chapters/${ch}/boss.json`).catch(() =>
 export const loadEtappen = () => ladeJson('projekt/etappen.json');
 export const loadIntro = () => ladeJson('story/intro.json');
 export const loadCrews = () => ladeJson('story/crews.json');
+export const loadSzenen = () => ladeJson('story/szenen.json').catch(() => ({ runden: {} }));
 export const loadLehrkraft = () => ladeJson('lehrkraft.json').catch(() => ({ hash: '' }));
 
 export async function alleKapitelIds() {
@@ -94,6 +95,23 @@ export async function etappeAufloesen(id) {
     solution[datei] = e.files[datei];
   }
   return { ...e, starter, solution, project: { page: e.page, save: e.save } };
+}
+
+// Zwischenspiele (Anpfiff, Crew-Funk, Abpfiff) einer Runde
+export async function szenenFuer(chapterId) {
+  const d = await loadSzenen();
+  return d.runden?.[chapterId] || null;
+}
+
+// Alle Konzepte, die eine Lektion und alle davor eingeführt haben (für Nachschlagen)
+export async function konzepteBis(chapterId, lessonId) {
+  const flat = await flacheLektionen();
+  const i = flat.findIndex((x) => x.chapterId === chapterId && x.lessonId === lessonId);
+  const bis = i >= 0 ? flat.slice(0, i + 1) : flat;
+  const lektionen = await Promise.all(bis.map((x) => loadLesson(x.chapterId, x.lessonId).catch(() => null)));
+  const ids = [];
+  lektionen.forEach((l) => (l?.konzepte || []).forEach((k) => !ids.includes(k) && ids.push(k)));
+  return ids;
 }
 
 // Turnier-Runde (Gegner-Crew) zu einem Kapitel, dazu die eigene Crew und die Turnierdaten

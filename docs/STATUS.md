@@ -1,6 +1,6 @@
 # Stand der Arbeiten (wird fortgeschrieben)
 
-Zuletzt aktualisiert: 27.09.2026
+Zuletzt aktualisiert: 11.10.2026
 
 ## Fertig
 
@@ -16,14 +16,16 @@ Zuletzt aktualisiert: 27.09.2026
 
 - **Story-Schicht „WEBCUP“ (27.09.2026, nach Philipps Rückmeldung „mehr spielerisch, schülernäher“):** Turnier mit 18 Gegner-Crews (`public/content/story/crews.json`), neuer Vorspann in drei Akten, Turnierplan statt Gelände-Karte, Runden-Seiten mit Gegner-Karte und Trash-Talk, Match mit Spielstand („Nachtschicht 7 : 1 Tag-Salat“), RAUS-Stempel und Niederlage-Zeile, Reaktions-Sprechblasen in Lektionen (Spott/Trost/Jubel mit Abkühlzeit), Spielerkarte mit HTML/CSS/JS-Werten und Trophäenwand, Ränge Rookie → Starter → Pro → Captain → MVP → Legende, Trainingslager, drei neue Abzeichen (Erste Runde, Halbzeit, WEBCUP-Sieger). Alle 86 Lektionen, 82 Etappen und 18 Abnahmen sind unverändert gültig; E2E-Tests (Lektion, Match) grün.
 
+- **Überarbeitung Oktober 2026** (siehe `AENDERUNGEN-2026-10.md`): Vorspann-Video (Storyboard + Soundtrack + Renderer), Comic-Fassung und Onboarding; 54 Zwischenspiele (Anpfiff/Crew-Funk/Abpfiff) mit Szenen-Engine; Trophäenkarten und Crew-Embleme; Nachlesen-Seitenleiste, Aufgaben-Leiste, Spickzettel (88 Karten), Merksätze; Tagesziel, Tages-Serie, 7 neue Abzeichen; Startseite mit „Nächster Schritt“, Runden-Ablauf; Router-Fix; Validator für die neuen Inhalte; Rauchtest `npm run smoke`. QA: Validator 0 Fehler, Build, Rauchtest, E2E Lektion (02/01) und Match (01) grün.
+
 ## In Arbeit
 
-- nichts – nächster Schritt ist Philipps Rückmeldung (siehe unten).
+- nichts – nächster Schritt ist Philipps Rückmeldung zu `AENDERUNGEN-2026-10.md` (Abschnitte 8 und 9) und `FRAGEN.md`.
 
 ## Offen / wartet auf Philipp
 
 - Antworten auf `FRAGEN.md` (Story WEBCUP okay?, Lösungen, Match-Sperre, Umfang, API-Schlüssel für Bilder, Arbeitsblätter …).
-- Bilder/Videos für den Vorspann (`scripts/generate-intro-assets.mjs`, braucht `OPENAI_API_KEY` in der Umgebung).
+- Sprecherstimmen für das Vorspann-Video (braucht einen TTS-Schlüssel in der Cloud-Umgebung oder eigene Aufnahmen); Szenenbilder für die Comic-Fassung (`scripts/generate-intro-assets.mjs`, `OPENAI_API_KEY`).
 - Feinschliff nach erstem Unterrichtseinsatz.
 
 ## So prüfst du den Stand
@@ -32,5 +34,7 @@ Zuletzt aktualisiert: 27.09.2026
 npm install
 npm run dev                                   # http://localhost:5174/webwerkstatt/
 node scripts/qa-kapitel.mjs 01-wie-das-web-funktioniert   # komplette Prüfung eines Kapitels
+npm run smoke                                 # Rauchtest aller Ansichten (Zwischenspiele, Nachlesen, Trophäen, mobil)
+npm run intro:video                           # Vorspann-Video neu rendern
 ```
 Lehrkraft-Modus (Spielerkarte → Lehrkraft, Passwort `Werkstatt-2026`) schaltet alle Runden frei.

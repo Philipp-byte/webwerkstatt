@@ -49,6 +49,8 @@ Jede Crew hat Farbe, Icon, Trash-Talk vor dem Match, Spott-Sprüche bei Fehlern 
 
 **So läuft eine Runde:** **Training** (die Lektionen des Kapitels inkl. Etappe an der FUNKEN-Website) → **Match** (die Abnahme durch die Jury Sam: gemischte Aufgaben, jeder Punkt geht an die Nachtschicht oder an die Gegner-Crew; ab 80 % ist die Runde gewonnen, die Crew fliegt raus – RAUS-Stempel auf Turnierplan und Trophäenwand). Während des Trainings melden sich Gegner (Spott beim ersten Fehlversuch) und Crew (Trost beim zweiten, Jubel bei Serien und Comebacks) in kleinen Sprechblasen – dosiert, mit Abkühlzeit.
 
+**Zwischenspiele (seit Oktober 2026):** Jede Runde hat drei kurze Story-Szenen mit Lernaufgabe (`public/content/story/szenen.json`, Route `#/szene/<kapitel>/<art>`): den **Anpfiff** vor dem Training (Sam eröffnet, der Captain tönt, Robby liefert den **Spähbericht**: Finde den Fehler im Code der Gegner-Crew), den **Crew-Funk** mitten im Training (Lagebesprechung aus Halle 7 mit Wiederholungsaufgabe) und den **Abpfiff** nach dem gewonnenen Match (Niederlage-Zeile, **Trophäenkarte** mit Fehler, Regel und Beispiel, Trophäen-Frage). Jede besiegte Crew hinterlässt damit eine Wiederholungskarte an der Wand der Spielerkarte. Alle Crews haben ein eigenes **Emblem** (prozedural erzeugtes SVG-Abzeichen).
+
 **Der Turnier-Auftrag** bleibt die FUNKEN-Website: Alle bauen dieselbe Seite in 82 Etappen, gleicher Zwischenstand für alle (siehe `PROJEKT-BIBEL.md`). Erst im **Finale „Showtime“** baut jede:r eine eigene Website nach eigener Idee.
 
 ---
@@ -70,6 +72,10 @@ Jede Crew hat Farbe, Icon, Trash-Talk vor dem Match, Spott-Sprüche bei Fehlern 
 | **Turnierplan** | Startseite: Karte des Festivalgeländes bei Nacht mit 18 Stationen (= Runden) plus Runden-Karten je Block mit Gegner-Crew, Status (gesperrt / jetzt / RAUS-Stempel), Sternen | Fortschritt auf einen Blick, „Ich räume das Turnier ab“ |
 | **Runden-Zähler** | „Aktuelle Runde 3 / 18 · 2 Crews rausgeworfen · 16 Runden bis zum Pokal“ | Dramaturgie |
 | **Sicherung** | Spielstand als Datei **herunterladen/laden** (Schulrechner!) – kein Konto, keine Server | Datenschutz, PyQuest-Prinzip |
+| **Zwischenspiele** | Anpfiff (Spähbericht), Crew-Funk, Abpfiff je Runde: Dialog + Aufgabe, 20/20/30 XP, **Volltreffer** +10 beim ersten Versuch | Story mit Lernanlass, Vorwissen aktivieren, wiederholen |
+| **Trophäenkarten** | umdrehbare Sammelkarte je besiegter Crew: vorne Emblem und RAUS-Stempel, hinten Fehler, Regel, Beispiel | Sammeln = Wiederholen |
+| **Tagesziel** | drei Ziele pro Tag (Lektion, 3 Soundcheck-Fragen, Zwischenspiel oder Training), alle drei: +60 XP | regelmäßiges, kurzes Üben |
+| **Tages-Serie** | Tage in Folge gespielt (Flamme in der Kopfzeile), beste Serie auf der Spielerkarte; kein Verlust-Mechanismus | Gewohnheit ohne Druck |
 
 **Kein Lebens-System, kein Ranglisten-Server, keine Zeitstrafen** – Druck kommt nur aus dem Spiel, nicht aus Verlusten. Der Spott der Gegner ist immer auf die Crew gemünzt („Wieder daneben? Willkommen im Salat.“), nie auf die Person.
 
@@ -101,7 +107,9 @@ Jede Crew hat Farbe, Icon, Trash-Talk vor dem Match, Spott-Sprüche bei Fehlern 
 
 ## 5. Vorspann (Intro)
 
-Szenenbasiert, 18 Szenen in drei Akten, manuell weiterklicken, jederzeit überspringbar, aus der Spielerkarte erneut abspielbar:
+**Video (Standard):** `public/intro/webcup-intro.mp4` (dazu `.webm` als Fallback) – 92 Sekunden, 1280×720, eigener synthetischer Soundtrack, Untertitel (`.vtt`). Gerendert aus `scripts/intro-video/storyboard.html` mit `scripts/render-intro-video.mjs` (Chromium + ffmpeg, keine externen Dienste). Elf Szenen: Vorhang, Skyline, 404, Sams Aufruf mit WEBCUP-Titel, die 18 Crews, Halle 7, der Plan (Gerüst/Licht/Strom), die Spielerkarte, die Karte mit 18 Stationen, Anpfiff Runde 1, Logo. Danach **Onboarding**: Name für die Spielerkarte, drei Crew-Regeln, „Anpfiff: Runde 1“ (führt zum ersten Zwischenspiel).
+
+**Comic-Fassung (Alternative):** szenenbasiert, 18 Szenen in drei Akten, manuell weiterklicken, jederzeit überspringbar, aus der Spielerkarte erneut abspielbar:
 
 1. **„Der Aufruf“** – Sam vor dem toten Bildschirm (404); statt zu heulen ruft Sam den WEBCUP aus; der Turnierplan; die ersten Gegner tönen (Kev Kabel, GEN-1).
 2. **„Die Nachtschicht“** – Ayla, Jonas, Robby in Halle 7; der Spielplan: Gerüst → Licht → Strom; du wirst in den Kader geholt; Sam erklärt die Jury-Regel (80 %).
@@ -118,7 +126,7 @@ Kulissen als animierte SVG/CSS-Szenen (Skyline bei Nacht, dunkles Festivalgelän
 - **Vite + Vanilla JS (ES-Module)**, CodeMirror 6, canvas-confetti, JSZip (Website als ZIP herunterladen). Keine Frameworks, kein Server, kein Konto.
 - **Hosting:** GitHub Pages (`base: /webwerkstatt/`).
 - **Speicher:** `localStorage` (`webwerkstatt2.*`), Export/Import als JSON-Datei.
-- **Inhalte datengetrieben:** `public/content/curriculum.json`, `chapters/<id>/chapter.json`, `lessons/*.json`, `pool.json` (Fragenpool je Kapitel), `boss.json` (Match), `konzepte.json` (Konzept-Register), `story/intro.json` (Vorspann-Szenen), `story/crews.json` (Turnier, eigene Crew, 18 Gegner-Crews).
+- **Inhalte datengetrieben:** `public/content/curriculum.json`, `chapters/<id>/chapter.json`, `lessons/*.json`, `pool.json` (Fragenpool je Kapitel), `boss.json` (Match), `konzepte.json` (Konzept-Register + Spickzettel), `story/intro.json` (Comic-Vorspann), `story/crews.json` (Turnier, eigene Crew, 18 Gegner-Crews mit Trophäenkarte), `story/szenen.json` (Zwischenspiele).
 - **Qualitätssicherung:** `scripts/validiere-inhalte.mjs` (Schema + Lösungs-Leck + Turnierdaten), `scripts/pruefe-kette.mjs` (Etappen-Kette), `scripts/browser-test.mjs` (Playwright: jede Code-Aufgabe – Lösung besteht, Starter fällt durch), `e2e-lektion.mjs`/`e2e-abnahme.mjs` (Lektion und Match durchspielen), Route `#/pruefung` in der App.
 - **Lehrkraft-Modus:** Passwort (nur SHA-256-Hash im Repo), schaltet alle Runden frei, verändert keinen Lernstand.
 
@@ -140,3 +148,5 @@ Kulissen als animierte SVG/CSS-Szenen (Skyline bei Nacht, dunkles Festivalgelän
 | `#/pruefung` | interne Prüfung aller Code-Aufgaben |
 | `#/lehrkraft` | Lehrkraft-Modus |
 | `#/bericht` | druckbarer Lernbericht (Runden, Sterne, Matches, Konzepte, Abzeichen) |
+| `#/szene/<kapitel>/<anpfiff\|funk\|abpfiff>` | Zwischenspiel einer Runde (Dialog + Aufgabe, Trophäenkarte) |
+| `#/spickzettel` | alle Konzept-Karten (Regel, Beispiel, Merksatz) mit Lernstand |

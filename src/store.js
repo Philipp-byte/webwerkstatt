@@ -27,7 +27,13 @@ function leerer() {
     project: { pages: {}, css: null, js: null, etappen: {} },
     showtime: { html: null, css: null, js: null, pflichtErfuellt: false },
     solutions: {},
-    intro: { seen: false },
+    intro: { seen: false, video: false },
+    // Story-Schicht: gesehene Zwischenspiele (anpfiff/funk/abpfiff je Runde) und gesammelte Trophäenkarten
+    story: { gesehen: {}, karten: {} },
+    // Tages-Serie: an wie vielen Tagen in Folge gespielt wurde
+    streak: { tage: 0, letzter: '', beste: 0 },
+    // Zähler für das heutige Tagesziel
+    tag: { datum: '', lektionen: 0, soundcheck: 0, training: 0, szenen: 0, bonus: false },
   };
 }
 
@@ -205,6 +211,7 @@ export function lektionAbschliessen(chapterId, lessonId, { stars, konzepte = [],
     s.lessonCounter++;
     lerneKonzepte(s, konzepte);
   }
+  tagZaehlen(s, 'lektionen');
   save();
   return { erster, eintrag };
 }
@@ -230,6 +237,11 @@ export function abnahmeSpeichern(chapterId, { anteil, passed }) {
     versuche: alt.versuche + 1,
     at: Date.now(),
   };
+  if (passed) {
+    streakFortschreiben(s);
+    // Trophäenkarte der besiegten Crew kommt in die Sammlung
+    if (!s.story.karten[chapterId]) s.story.karten[chapterId] = Date.now();
+  }
   save();
   return s.boss[chapterId];
 }
@@ -300,10 +312,103 @@ export function setIntroGesehen(v = true) {
   save();
 }
 
+export function setVideoGesehen(v = true) {
+  const s = load();
+  s.intro.video = v;
+  save();
+}
+
 export function setName(name) {
   const s = load();
   s.name = String(name || '').slice(0, 30);
   save();
+}
+
+/* ---------- Tages-Serie (Streak) und Tagesziel ---------- */
+
+function gestern() {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  return d.toISOString().slice(0, 10);
+}
+
+// Zählt den heutigen Tag als gespielt; Tage in Folge ergeben die Serie.
+function streakFortschreiben(s) {
+  const h = heute();
+  if (s.streak.letzter === h) return s.streak;
+  s.streak.tage = s.streak.letzter === gestern() ? s.streak.tage + 1 : 1;
+  s.streak.letzter = h;
+  s.streak.beste = Math.max(s.streak.beste || 0, s.streak.tage);
+  return s.streak;
+}
+
+function tagZaehlen(s, feld, n = 1) {
+  const h = heute();
+  if (s.tag.datum !== h) s.tag = { datum: h, lektionen: 0, soundcheck: 0, training: 0, szenen: 0, bonus: false };
+  s.tag[feld] = (s.tag[feld] || 0) + n;
+  streakFortschreiben(s);
+}
+
+// Von außen: Aktivität melden (soundcheck, training, szenen). Lektionen und Matches zählen automatisch.
+export function aktivitaet(feld, n = 1) {
+  const s = load();
+  tagZaehlen(s, feld, n);
+  save();
+  return { streak: s.streak, tag: s.tag };
+}
+
+export function getStreak() {
+  const s = load();
+  // Serie ist nur „lebendig“, wenn heute oder gestern gespielt wurde
+  const lebendig = s.streak.letzter === heute() || s.streak.letzter === gestern();
+  return { ...s.streak, aktiv: lebendig ? s.streak.tage : 0, heuteGespielt: s.streak.letzter === heute() };
+}
+
+export const TAGESZIEL = [
+  { id: 'lektionen', ziel: 1, titel: 'Eine Lektion abschließen', icon: '🏁' },
+  { id: 'soundcheck', ziel: 3, titel: 'Drei Soundcheck-Fragen richtig', icon: '🎚️' },
+  { id: 'extra', ziel: 1, titel: 'Ein Zwischenspiel oder eine Trainings-Runde', icon: '🎬' },
+];
+export const TAGESZIEL_XP = 60;
+
+export function getTagesziel() {
+  const s = load();
+  const t = s.tag.datum === heute() ? s.tag : { lektionen: 0, soundcheck: 0, training: 0, szenen: 0, bonus: false };
+  const stand = TAGESZIEL.map((z) => {
+    const wert = z.id === 'extra' ? (t.szenen || 0) + (t.training || 0) : t[z.id] || 0;
+    return { ...z, wert: Math.min(wert, z.ziel), erfuellt: wert >= z.ziel };
+  });
+  return { stand, alle: stand.every((z) => z.erfuellt), bonus: !!t.bonus };
+}
+
+// Tagesbonus auszahlen, wenn alle drei Ziele erfüllt sind (einmal pro Tag).
+export function tagesbonusPruefen() {
+  const s = load();
+  const z = getTagesziel();
+  if (!z.alle || z.bonus || s.tag.datum !== heute()) return null;
+  s.tag.bonus = true;
+  s.stats.tagesziele = (s.stats.tagesziele || 0) + 1;
+  save();
+  return vergibXp(TAGESZIEL_XP);
+}
+
+/* ---------- Story: Zwischenspiele und Trophäenkarten ---------- */
+
+export function szeneGesehen(id) {
+  return !!load().story.gesehen[id];
+}
+
+export function setSzeneGesehen(id) {
+  const s = load();
+  const erste = !s.story.gesehen[id];
+  s.story.gesehen[id] = Date.now();
+  if (erste) tagZaehlen(s, 'szenen');
+  save();
+  return erste;
+}
+
+export function getKarten() {
+  return load().story.karten;
 }
 
 /* ---------- Sichern & Laden ---------- */

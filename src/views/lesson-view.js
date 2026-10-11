@@ -1,19 +1,23 @@
 // Lektions-Player: Soundcheck (Wiederholung) → Schritte (ein Schritt pro Seite) → Abschluss.
 // XP pro Schritt (einmalig), Serie/Combo, Sterne, Abzeichen, Etappen-Speicherung.
+// Didaktik-Schicht: „Nachlesen“ (Erklärungen dieser Lektion + Spickzettel) ist in jedem
+// Aufgaben-Schritt erreichbar, die Aufgabe bleibt als Leiste sichtbar, wenn sie aus dem
+// Bild scrollt, und am Ende stehen die Merksätze der Lektion.
 
-import { loadChapter, loadLesson, loadAlleKapitel, naechsteLektion, poolFuer, etappeAufloesen } from '../content.js';
+import { loadChapter, loadLesson, loadAlleKapitel, loadKonzepte, naechsteLektion, poolFuer, etappeAufloesen } from '../content.js';
 import {
   getState, vergibXp, zaehle, merkeCombo, lektionAbschliessen, loesungMerken, abzeichenPruefen,
-  frageGestellt, getProjekt, projektSpeichern, lessonKey,
+  frageGestellt, getProjekt, projektSpeichern, lessonKey, aktivitaet, tagesbonusPruefen,
 } from '../store.js';
 import { antwort as leitnerAntwort, soundcheckAuswahl } from '../gamification/leitner.js';
-import { XP, comboFaktor, levelAus } from '../gamification/xp.js';
+import { XP, comboFaktor } from '../gamification/xp.js';
 import { kapitelFrei, lektionFrei, kapitelFertig } from '../progress.js';
 import { renderStep, SCHRITT_NAMEN, SCHRITT_ICONS } from '../engine/steps.js';
 import { md, escapeHtml } from '../engine/markdown.js';
 import { sound } from '../gamification/sound.js';
 import { konfetti, toast, xpFlieger } from '../gamification/celebrate.js';
 import { erzeugeTicker, reaktionenEntfernen } from '../gamification/reaktionen.js';
+import { oeffneNachschlagen, nachschlagenSchliessen } from '../engine/nachschlagen.js';
 
 const robby = (pose) => new URL(`figuren/robby/${pose}.png`, document.baseURI).href;
 
@@ -87,6 +91,11 @@ export async function renderLesson(app, chapterId, lessonId) {
   const runde = ticker.runde;
   const ctx = { fehler: 0, tipps: 0, loesungGesehen: false, serie: 0, xpGesamt: 0, xpListe: [], comebackKandidat: 0 };
 
+  // Nachschlagen: Erklärungen dieser Lektion bis zum aktuellen Schritt + Spickzettel
+  let aktuellerStepIndex = 0;
+  const nachschlagenOptionen = (extra = {}) => ({ lektion, bisIndex: aktuellerStepIndex, konzeptIds: lektion.konzepte || [], ...extra });
+  const nachlesen = (extra) => oeffneNachschlagen(nachschlagenOptionen(extra));
+
   app.innerHTML = `
     <div class="lektion-seite">
       <div class="lektion-kopf">
@@ -94,9 +103,17 @@ export async function renderLesson(app, chapterId, lessonId) {
         <h1>${escapeHtml(lektion.title)}</h1>
         ${runde ? `<span class="chip chip-farbe" style="--farbe:${escapeHtml(runde.farbe)}" title="Training für das Match gegen ${escapeHtml(runde.crew)}">${runde.icon} Runde ${runde.runde} · vs. ${escapeHtml(runde.crew)}</span>` : ''}
         <span class="combo-anzeige" id="combo">🔥 Serie <span id="combo-zahl">0</span> · ×<span id="combo-faktor">1</span></span>
+        <button class="btn btn-geist btn-klein nachschlagen-knopf" type="button" id="nachlesen" title="Erklärungen dieser Lektion und Spickzettel – ohne Lösung">📖 Nachlesen</button>
         <div class="pager-fortschritt">
           <span class="pager-zaehler"></span>
           <div class="pager-dots" role="tablist"></div>
+        </div>
+      </div>
+      <div class="aufgaben-leiste" id="aufgaben-leiste" aria-live="polite">
+        <div style="flex:1;min-width:0"><div class="schritt-art" id="al-art"></div><div class="aufgaben-text" id="al-text"></div></div>
+        <div class="aufgaben-knoepfe">
+          <button class="btn btn-geist btn-klein" type="button" id="al-mehr">Ganze Aufgabe</button>
+          <button class="btn btn-sekundaer btn-klein" type="button" id="al-nachlesen">📖 Nachlesen</button>
         </div>
       </div>
       <div class="pager"><div class="pager-seiten"></div></div>
@@ -115,6 +132,13 @@ export async function renderLesson(app, chapterId, lessonId) {
   const btnWeiter = app.querySelector('.pager-weiter');
   const navEl = app.querySelector('.pager-nav');
   const comboEl = app.querySelector('#combo');
+  const leiste = app.querySelector('#aufgaben-leiste');
+  app.querySelector('#nachlesen').addEventListener('click', () => nachlesen());
+  app.querySelector('#al-nachlesen').addEventListener('click', () => nachlesen());
+  app.querySelector('#al-mehr').addEventListener('click', () => {
+    leiste.classList.toggle('offen');
+    app.querySelector('#al-mehr').textContent = leiste.classList.contains('offen') ? 'Weniger' : 'Ganze Aufgabe';
+  });
 
   function comboAnzeigen() {
     comboEl.classList.toggle('an', ctx.serie >= 2);
@@ -137,8 +161,19 @@ export async function renderLesson(app, chapterId, lessonId) {
     sound.falsch();
   }
 
+  // Kleiner „Nachlesen“-Link unter einer Rückmeldung (einmal pro Karte)
+  function nachlesenLink(karte, extra, text = '📖 Nachlesen: Erklärung und Beispiele zu diesem Thema') {
+    if (karte.querySelector('.nachlesen-link')) return;
+    const a = document.createElement('button');
+    a.type = 'button';
+    a.className = 'btn btn-geist btn-klein nachlesen-link';
+    a.textContent = text;
+    a.addEventListener('click', () => nachlesen(extra));
+    karte.appendChild(a);
+  }
+
   /* ---------- Blätter-Zustand (vor dem Rendern, weil Erklär-Schritte sich sofort als gelöst melden) ---------- */
-  const seiten = []; // { el, geloest, art }
+  const seiten = []; // { el, geloest, art, stepIndex }
   let dots = [];
   let aktuell = 0;
   let maxErreicht = 0;
@@ -168,14 +203,14 @@ export async function renderLesson(app, chapterId, lessonId) {
     sc.hidden = true;
     sc.innerHTML = `<div class="soundcheck-kopf">
         <img src="${robby('erklaeren')}" alt="" style="width:64px;height:64px;object-fit:contain">
-        <div style="flex:1"><div class="schritt-art">🎚️ Soundcheck</div><strong>Kurz aufwärmen: ${soundcheckFragen.length} Fragen zu Dingen, die du schon kennst.</strong><div style="color:var(--muted);font-size:0.9rem">Jede richtige Antwort bringt ${XP.soundcheck} XP${schonErledigt ? ' (Lektion schon geschafft – diesmal ohne XP)' : ''}. Überspringen geht auch – aber dann bleibt der Stoff in der Wiederholungsschleife.</div></div>
+        <div style="flex:1"><div class="schritt-art">🎚️ Soundcheck</div><strong>Kurz aufwärmen: ${soundcheckFragen.length} Fragen zu Dingen, die du schon kennst.</strong><div style="color:var(--muted);font-size:0.9rem">Jede richtige Antwort bringt ${XP.soundcheck} XP${schonErledigt ? ' (Lektion schon geschafft – diesmal ohne XP)' : ''} und zählt fürs Tagesziel. Falsch? Dann gibt es den passenden Spickzettel zum Nachlesen.</div></div>
         <button class="btn btn-geist btn-klein sc-skip" type="button">Überspringen</button>
       </div>
       <div class="sc-fragen"></div>`;
     seitenEl.appendChild(sc);
     const fragenEl = sc.querySelector('.sc-fragen');
     let scIndex = 0;
-    const seite = { el: sc, geloest: false, art: 'soundcheck' };
+    const seite = { el: sc, geloest: false, art: 'soundcheck', stepIndex: 0 };
     seiten.push(seite);
 
     function naechsteFrage() {
@@ -197,6 +232,7 @@ export async function renderLesson(app, chapterId, lessonId) {
           if (!versucht) {
             leitnerAntwort(getState(), f.konzept, true);
             zaehle('soundcheckCorrect');
+            aktivitaet('soundcheck');
             richtig();
             if (!schonErledigt) {
               const erg = vergibXp(XP.soundcheck, { key: `${key}#sc:${f.id}:${s0.lessonCounter}` });
@@ -221,6 +257,7 @@ export async function renderLesson(app, chapterId, lessonId) {
           if (!versucht) leitnerAntwort(getState(), f.konzept, false);
           versucht = true;
           falsch();
+          nachlesenLink(box, { tab: 'spickzettel', fokus: f.konzept, konzeptIds: [f.konzept, ...(lektion.konzepte || [])] }, '📖 Spickzettel zu dieser Frage');
         },
       });
     }
@@ -240,7 +277,7 @@ export async function renderLesson(app, chapterId, lessonId) {
     karte.className = `schritt schritt-${step.type} pager-seite`;
     karte.hidden = true;
     seitenEl.appendChild(karte);
-    const seite = { el: karte, geloest: false, art: step.type };
+    const seite = { el: karte, geloest: false, art: step.type, stepIndex: i, step };
     seiten.push(seite);
     const stepKey = `${key}#${i}`;
     let fehlversucheHier = 0;
@@ -291,6 +328,8 @@ export async function renderLesson(app, chapterId, lessonId) {
         fehlversucheHier++;
         falsch();
         ticker.fehler(fehlversucheHier);
+        // Nach dem ersten Fehlversuch: Erklärung dieser Lektion nachlesen – ohne Lösung
+        nachlesenLink(karte, {});
       },
       hint: () => {
         ctx.tipps++;
@@ -302,6 +341,34 @@ export async function renderLesson(app, chapterId, lessonId) {
     });
     controller.push(c);
   });
+
+  /* ---------- Aufgaben-Leiste: Aufgabe bleibt sichtbar, wenn sie aus dem Bild scrollt ---------- */
+  let beobachter = null;
+  function leisteFuer(seite) {
+    if (beobachter) {
+      beobachter.disconnect();
+      beobachter = null;
+    }
+    leiste.classList.remove('an', 'offen');
+    app.querySelector('#al-mehr').textContent = 'Ganze Aufgabe';
+    const step = seite?.step;
+    if (!step || ['explain', 'example'].includes(step.type)) return;
+    const text = step.task || step.question || step.text || '';
+    if (!text) return;
+    app.querySelector('#al-art').textContent = `${SCHRITT_ICONS[step.type] || ''} ${step.mode === 'fix' ? 'Fehlerjagd' : step.etappe ? 'Etappe · FUNKEN-Website' : SCHRITT_NAMEN[step.type] || ''}`;
+    app.querySelector('#al-text').innerHTML = md(text);
+    const inhalt = seite.el.querySelector('.schritt-inhalt');
+    if (!inhalt || !('IntersectionObserver' in window)) return;
+    beobachter = new IntersectionObserver(
+      (eintraege) => {
+        const e = eintraege[0];
+        const weg = !e.isIntersecting && e.boundingClientRect.top < 60;
+        leiste.classList.toggle('an', weg);
+      },
+      { rootMargin: '-60px 0px 0px 0px', threshold: 0 }
+    );
+    beobachter.observe(inhalt);
+  }
 
   /* ---------- Blättern ---------- */
   dots = seiten.map((seite, i) => {
@@ -341,6 +408,8 @@ export async function renderLesson(app, chapterId, lessonId) {
     if (abschlussKarte) abschlussKarte.hidden = true;
     aktuell = i;
     maxErreicht = Math.max(maxErreicht, i);
+    const seite = i < seiten.length ? seiten[i] : null;
+    aktuellerStepIndex = seite?.art === 'soundcheck' ? 0 : seite ? seite.stepIndex : steps.length;
     const ziel = i >= seiten.length ? abschlussKarte : seiten[i].el;
     if (ziel) {
       ziel.hidden = false;
@@ -350,6 +419,8 @@ export async function renderLesson(app, chapterId, lessonId) {
       const wb = ziel.querySelector('.cm-editor');
       if (wb) setTimeout(() => wb.querySelector('.cm-content')?.dispatchEvent(new Event('resize')), 50);
     }
+    nachschlagenSchliessen();
+    leisteFuer(seite);
     aktualisiereNav();
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
@@ -379,6 +450,11 @@ export async function renderLesson(app, chapterId, lessonId) {
         ctx.xpListe.push(['⭐ 3 Sterne', erg2.xp]);
       }
     }
+    const bonus = tagesbonusPruefen();
+    if (bonus?.xp) {
+      ctx.xpGesamt += bonus.xp;
+      ctx.xpListe.push(['🎯 Tagesziel erreicht', bonus.xp]);
+    }
     const fertigKapitel = kapitelFertig(kapitel);
     const neu = abzeichenPruefen({ ereignis: 'lektion', kapitelFertig: (id) => (id === chapterId ? fertigKapitel : alle.find((k) => k.id === id) ? kapitelFertig(alle.find((k) => k.id === id)) : false) });
     const naechste = await naechsteLektion(chapterId, lessonId);
@@ -390,6 +466,11 @@ export async function renderLesson(app, chapterId, lessonId) {
           ? 'Du hast die Musterlösung angesehen – deshalb 1 Stern. Wiederhol die Lektion für mehr.'
           : `${ctx.fehler} Fehler${ctx.tipps ? `, ${ctx.tipps} Tipp${ctx.tipps > 1 ? 's' : ''}` : ''} – deshalb ${sterne} von 3 Sternen. Wiederholen zählt das bessere Ergebnis.`;
 
+    // Merksätze: die Konzepte dieser Lektion in einem Satz – zum Mitnehmen
+    const konzepte = await loadKonzepte().catch(() => []);
+    const merksaetze = (lektion.konzepte || []).map((id) => konzepte.find((k) => k.id === id)).filter((k) => k && k.merke);
+    const wiederholt = !merksaetze.length && /wiederholung|projekt|zusammen/.test(lessonId);
+
     abschlussKarte = document.createElement('section');
     abschlussKarte.className = 'schritt schritt-abschluss pager-seite abschluss';
     abschlussKarte.innerHTML = `
@@ -398,16 +479,19 @@ export async function renderLesson(app, chapterId, lessonId) {
       <div class="sterne-gross">${[1, 2, 3].map((n) => `<span class="stern ${n <= sterne ? '' : 'leer'}">★</span>`).join('')}</div>
       <p style="color:var(--muted)">${begruendung}</p>
       ${ctx.xpGesamt ? `<div class="abschluss-xp">+${ctx.xpGesamt} XP</div><ul class="abschluss-liste">${ctx.xpListe.map(([t, x]) => `<li><span>${t}</span><span>+${x}</span></li>`).join('')}</ul>` : '<p style="color:var(--muted)">Wiederholt – keine neuen XP, aber Übung macht sicher.</p>'}
+      ${merksaetze.length ? `<div class="merksaetze"><h3>💡 Das nimmst du mit</h3><ul>${merksaetze.map((k) => `<li><b>${escapeHtml(k.titel)}:</b> ${escapeHtml(k.merke)}</li>`).join('')}</ul><button class="btn btn-geist btn-klein" type="button" id="merk-nachlesen" style="margin-top:0.5rem">📖 Karten im Spickzettel ansehen</button></div>` : ''}
+      ${wiederholt ? `<div class="merksaetze"><h3>🔁 Wiederholung</h3><p style="margin:0;font-size:0.92rem">Diese Lektion hat Altes neu verknüpft. Was noch wackelt, kommt im Soundcheck automatisch wieder – und steht jederzeit im <a href="#/spickzettel">Spickzettel</a>.</p></div>` : ''}
       ${fertigKapitel ? `<div class="hinweis-box" style="margin-top:0.75rem">🎉 Training komplett – jetzt das <a href="#/abnahme/${chapterId}">Match</a>${runde ? ` gegen ${escapeHtml(runde.crew)}` : ''}: Sam nimmt ab.</div>` : ''}
       <div class="abschluss-buttons">
-        ${fertigKapitel ? `<a class="btn btn-primaer" href="#/abnahme/${chapterId}">🥊 Zum Match →</a>` : naechste ? `<a class="btn btn-primaer" href="#/lektion/${naechste.chapterId}/${naechste.lessonId}">Nächste Lektion →</a>` : ''}
+        ${fertigKapitel ? `<a class="btn btn-primaer" href="#/abnahme/${chapterId}">🥊 Zum Match →</a>` : naechste ? `<a class="btn btn-primaer" href="#/kapitel/${chapterId}">Weiter in der Runde →</a>` : ''}
         ${steps.some((st) => st.etappe) ? '<a class="btn btn-sekundaer" href="#/projekt">🌐 FUNKEN-Website ansehen</a>' : ''}
-        <a class="btn btn-sekundaer" href="#/kapitel/${chapterId}">Zur Runde</a>
+        ${!fertigKapitel && naechste && naechste.chapterId === chapterId ? `<a class="btn btn-sekundaer" href="#/lektion/${naechste.chapterId}/${naechste.lessonId}">Direkt zur nächsten Lektion</a>` : ''}
         <button class="btn btn-geist abschluss-nochmal" type="button">← Nochmal ansehen</button>
       </div>
       <p style="color:var(--muted);font-size:0.85rem;margin-top:1rem">💾 Tipp: Auf deiner <a href="#/keycard">Spielerkarte</a> kannst du deinen Spielstand als Datei sichern – wichtig an Schulrechnern.</p>`;
     seitenEl.appendChild(abschlussKarte);
     abschlussKarte.querySelector('.abschluss-nochmal').addEventListener('click', () => zeige(0, 'zurueck'));
+    abschlussKarte.querySelector('#merk-nachlesen')?.addEventListener('click', () => nachlesen({ tab: 'spickzettel', bisIndex: steps.length }));
     zeige(seiten.length, 'vor');
     sound.fanfare();
     konfetti(sterne === 3 ? 'gross' : 'mittel');
@@ -435,7 +519,7 @@ export async function renderLesson(app, chapterId, lessonId) {
       return;
     }
     const tag = document.activeElement?.tagName;
-    if (tag === 'TEXTAREA' || tag === 'INPUT' || document.activeElement?.closest('.cm-editor')) return;
+    if (tag === 'TEXTAREA' || tag === 'INPUT' || document.activeElement?.closest('.cm-editor, .nachschlagen')) return;
     if (e.key === 'ArrowRight') weiter();
     if (e.key === 'ArrowLeft') zurueck();
   };
@@ -466,6 +550,8 @@ export async function renderLesson(app, chapterId, lessonId) {
     destroy: () => {
       window.removeEventListener('keydown', onKey);
       reaktionenEntfernen();
+      nachschlagenSchliessen();
+      if (beobachter) beobachter.disconnect();
       controller.forEach((c) => c?.destroy?.());
     },
   };

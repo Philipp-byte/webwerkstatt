@@ -52,6 +52,8 @@ public/content/chapters/<id>/lessons/<l>.json   Lektionen
 public/content/chapters/<id>/pool.json          Fragenpool (Soundcheck, Backstage, Abnahme)
 public/content/chapters/<id>/boss.json          Abnahme
 public/content/projekt/etappen.json             GENERIERT aus content-src/etappen.mjs – nicht von Hand ändern
+public/content/story/szenen.json                Zwischenspiele je Runde (Anpfiff, Crew-Funk, Abpfiff)
+public/content/story/crews.json                 Gegner-Crews inkl. Trophäenkarte (regel, beispiel, sprache)
 ```
 
 ### Lektion
@@ -166,3 +168,40 @@ node scripts/validiere-inhalte.mjs <kapitel-id>
 ```
 
 Kein Browser nötig (und nicht erlaubt) – die Browser-Prüfung aller Code-Aufgaben (`node scripts/browser-test.mjs` bzw. Route `#/pruefung`) läuft zentral. Deine Pflicht: valides JSON, Schema eingehalten, Wortlimits, solution korrekt und vollständig, Gegenprobe-Regel bedacht, keine Lösung in task und hints.
+
+### Spickzettel (Felder in `konzepte.json`)
+
+Jedes Konzept braucht neben `id`, `titel`, `block`:
+
+```json
+{ "id": "css.padding", "titel": "Innenabstand", "block": "css",
+  "kurz": "padding ist der Innenabstand – Luft zwischen Inhalt und Rahmen. …",   // ≤ 40 Wörter, Regel in Alltagssprache
+  "beispiel": ".karte {\n  padding: 16px 24px;\n}",                              // generischer Code – nie eine Aufgabenlösung
+  "sprache": "css",                                                              // html | css | js | text
+  "merke": "padding = innen." }                                                   // ein Satz, ≤ 14 Wörter
+```
+
+Die Karte wird lesbar, sobald die einführende Lektion abgeschlossen ist, und erscheint in jeder Aufgabe unter „Nachlesen“. Beispiele dürfen Festival-Bezug haben, aber nicht die Etappe einer Lektion vorwegnehmen.
+
+### Zwischenspiele (`story/szenen.json`)
+
+Je Kapitel-ID drei Szenen:
+
+```json
+"04-listen": {
+  "anpfiff": { "zeilen": [ { "wer": "sam", "text": "…" }, { "wer": "gegner", "text": "…" }, { "wer": "ayla", "text": "…" }, { "wer": "robby", "pose": "erklaeren", "text": "Spähbericht: …" } ],
+               "aufgabe": { "type": "bug", "text": "…", "lines": ["…"], "line": 2, "explanation": "…" },
+               "ausklang": [ { "wer": "jonas", "text": "…" } ] },
+  "funk":    { "nach": "02-geordnete-listen", "zeilen": [ … ], "aufgabe": { "type": "pair", … }, "ausklang": [ … ] },
+  "abpfiff": { "zeilen": [ { "wer": "sam", "text": "…" }, { "wer": "gegner", "text": "@niederlage" }, … ], "aufgabe": { "type": "quiz", … }, "ausklang": [ … ] }
+}
+```
+
+- Sprecher: `sam`, `ayla`, `jonas`, `robby` (mit `pose` aus `public/figuren/robby/`), `gegner` (Captain der Runde), `erzaehler`. Zeilen ≤ 45 Wörter.
+- Platzhalter im Text: `@niederlage`, `@trash`, `@spott`, `@schwaeche` (aus `crews.json`).
+- `aufgabe`: `quiz`, `fill`, `order`, `pair` oder `bug` – lösbar mit dem, was die Zeilen davor sagen (Anpfiff: die Regel wird im Dialog genannt) bzw. mit den Lektionen davor (Funk, Abpfiff). Niemals `code`.
+- `funk.nach` muss eine Lektions-ID des Kapitels sein.
+
+### Trophäenkarte (`story/crews.json`, je Runde)
+
+`regel` (≤ 45 Wörter: die richtige Praxis, die der Schwäche der Crew gegenübersteht), `beispiel` (kurzer Code), `sprache` (html/css/js/text). Die Karte ist eine Wiederholungskarte – kein Aufgabentext.

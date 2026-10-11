@@ -1,17 +1,13 @@
-// Kapitelseite = eine Runde des WEBCUP: Gegner-Crew, Training (Lektionen mit
-// Sternen) und das Match (Abnahme durch die Jury Sam).
+// Kapitelseite = eine Runde des WEBCUP: Gegner-Crew mit Emblem, der Ablauf der Runde
+// (Anpfiff → Lektionen → Crew-Funk → Match → Abpfiff) als Liste mit Status, dazu die
+// Trophäenkarte, sobald die Runde gewonnen ist.
 
-import { loadChapter, loadAlleKapitel, loadLesson, loadBoss, blockFuer, rundeFuer } from '../content.js';
-import { getState } from '../store.js';
-import { kapitelStand, kapitelFrei, lektionFrei, abnahmeFrei, sterneHtml } from '../progress.js';
+import { loadChapter, loadAlleKapitel, blockFuer, rundeFuer } from '../content.js';
+import { kapitelFrei, sterneHtml } from '../progress.js';
 import { escapeHtml } from '../engine/markdown.js';
-
-function lektionsArt(id) {
-  if (id.includes('wiederholung')) return 'Wiederholung';
-  if (id.includes('projekt')) return 'Meilenstein';
-  if (id.includes('eigene-website')) return 'Finale';
-  return 'Lektion';
-}
+import { crewEmblem } from '../engine/emblem.js';
+import { ablaufFuer } from '../engine/ablauf.js';
+import { trophaeenKarteHtml, trophaeenAktivieren } from '../engine/trophaee.js';
 
 export async function renderChapter(app, chapterId) {
   const [kapitel, alle, story] = await Promise.all([
@@ -34,13 +30,24 @@ export async function renderChapter(app, chapterId) {
     return;
   }
 
-  const titel = await Promise.all(kapitel.lessons.map((l) => loadLesson(chapterId, l).then((x) => x.title).catch(() => l)));
-  const boss = await loadBoss(chapterId);
-  const stand = kapitelStand(kapitel);
-  const s = getState();
-  let naechsteGefunden = false;
+  const { eintraege, naechste, stand } = await ablaufFuer(kapitel, { kapitelIstFrei: frei });
   const trash = runde?.trash?.length ? runde.trash[Math.floor(Math.random() * runde.trash.length)] : null;
-  const matchFrei = abnahmeFrei(kapitel);
+  const lektionen = eintraege.filter((e) => e.art === 'lektion');
+
+  const eintragHtml = (e) => {
+    const klasse = ['ablauf-eintrag', e.art, e.status, e.art === 'match' && e.bestanden ? 'bestanden' : ''].filter(Boolean).join(' ');
+    const href = e.frei ? e.href : `#/kapitel/${chapterId}`;
+    const nr = e.art === 'lektion' ? (e.erledigt ? '✓' : e.frei ? e.nr : '🔒') : e.frei || e.erledigt ? e.icon : '🔒';
+    let status = '';
+    if (e.art === 'lektion') status = e.erledigt ? (e.versuche > 1 ? `${e.versuche}× gespielt` : 'geschafft') : e.frei ? '' : 'erst die Lektion davor';
+    if (e.art === 'szene') status = e.erledigt ? 'gesehen – jederzeit wiederholbar' : e.frei ? e.untertitel : e.id === 'funk' ? 'wird frei nach der Lektion davor' : e.id === 'abpfiff' ? 'kommt nach dem gewonnenen Match' : '';
+    if (e.art === 'match') status = e.bestanden ? `Gewonnen mit ${Math.round(e.best * 100)} % – Freundschaftsspiel jederzeit` : e.frei ? `Sam nimmt ab – ab 80 % fliegt ${gegner} raus` : 'wird frei, wenn alle Lektionen geschafft sind';
+    return `<a class="${klasse}" href="${href}" style="--farbe:${e.art === 'szene' ? escapeHtml(runde?.farbe || kapitel.color) : kapitel.color}" ${e.frei ? '' : 'aria-disabled="true"'}>
+      <span class="lektion-nr">${nr}</span>
+      <span style="min-width:0"><span class="lektion-art">${e.art === 'lektion' ? e.untertitel : e.art === 'szene' ? 'Zwischenspiel' : 'Match'}</span><strong>${escapeHtml(e.titel)}${e.art === 'match' && runde ? ` · Nachtschicht vs. ${gegner}` : ''}</strong>${status ? `<small>${status}</small>` : ''}</span>
+      <span style="display:flex;align-items:center;gap:0.5rem">${e.art === 'lektion' && e.erledigt ? sterneHtml(e.stars) : ''}${e.status === 'naechste' ? '<span class="chip chip-farbe chip-jetzt" style="--farbe: var(--spark)">Jetzt</span>' : ''}${e.art === 'match' && e.bestanden ? '<span class="stempel" style="position:static;transform:rotate(-6deg)">Raus</span>' : ''}</span>
+    </a>`;
+  };
 
   app.innerHTML = `
     <div class="lektion-seite auftritt">
@@ -55,7 +62,7 @@ export async function renderChapter(app, chapterId) {
       </div>
 
       ${runde ? `<div class="gegner-karte ${stand.abgenommen ? 'besiegt' : ''}" style="--farbe:${escapeHtml(runde.farbe)}">
-        <span class="runde-gegner">${runde.icon}</span>
+        ${crewEmblem(runde, { groesse: 84, raus: stand.abgenommen, klasse: 'emblem-gross' })}
         <div>
           <div class="vs">Gegner in dieser Runde</div>
           <h2>${escapeHtml(runde.crew)} <span style="font-weight:400;color:var(--muted);font-size:0.85rem">· Captain ${escapeHtml(runde.captain)}</span></h2>
@@ -68,43 +75,21 @@ export async function renderChapter(app, chapterId) {
       <div class="karte" style="margin-bottom:1rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
         <div style="flex:1;min-width:200px"><div class="balken" style="--farbe:${kapitel.color}"><span style="width:${Math.round((stand.erledigt / stand.gesamt) * 100)}%"></span></div></div>
         <div>Training: ${stand.erledigt} / ${stand.gesamt} Lektionen · ${stand.sterne} / ${stand.maxSterne} Sterne</div>
+        ${naechste ? `<a class="btn btn-primaer btn-klein" href="${naechste.href}">Weiter: ${escapeHtml(naechste.titel)} →</a>` : stand.abgenommen && alle[index + 1] && kapitelFrei(index + 1, alle) ? `<a class="btn btn-primaer btn-klein" href="#/kapitel/${alle[index + 1].id}">Runde ${index + 2} →</a>` : ''}
       </div>
-      <div class="lektionen-liste">
-        ${kapitel.lessons
-          .map((l, i) => {
-            const eintrag = s.lessons[`${chapterId}/${l}`];
-            const offen = lektionFrei(kapitel, l, true);
-            let klasse = eintrag?.done ? 'erledigt' : '';
-            if (!eintrag?.done && offen && !naechsteGefunden) {
-              klasse += ' naechste';
-              naechsteGefunden = true;
-            }
-            if (!offen) klasse += ' gesperrt';
-            return `<a class="lektion-karte ${klasse}" href="${offen ? `#/lektion/${chapterId}/${l}` : `#/kapitel/${chapterId}`}" style="--farbe:${kapitel.color}" ${offen ? '' : 'aria-disabled="true"'}>
-              <span class="lektion-nr">${eintrag?.done ? '✓' : offen ? i + 1 : '🔒'}</span>
-              <span><span class="lektion-art">${lektionsArt(l)}</span><strong>${escapeHtml(titel[i])}</strong>${eintrag?.done ? `<small>${eintrag.versuche > 1 ? `${eintrag.versuche}× gespielt` : 'geschafft'}</small>` : ''}</span>
-              <span>${eintrag?.done ? sterneHtml(eintrag.stars) : ''}</span>
-            </a>`;
-          })
-          .join('')}
-      </div>
-      ${boss ? `<div class="karte abnahme-karte ${stand.abgenommen ? 'bestanden' : ''}">
-        <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
-          <div style="font-size:2rem">${stand.abgenommen ? '🏆' : '🥊'}</div>
-          <div style="flex:1;min-width:220px">
-            <strong>Match · Runde ${index + 1}${runde ? `: Nachtschicht vs. ${escapeHtml(runde.crew)}` : ''}</strong>
-            <div style="color:var(--muted);font-size:0.9rem">${stand.abgenommen
-              ? `Gewonnen mit ${Math.round(stand.abnahme.best * 100)} %${stand.abnahme.best >= 1 ? ' – zu null!' : ''}. Nochmal antreten geht immer (Freundschaftsspiel, keine neuen XP).`
-              : matchFrei
-                ? `Sam (Jury) nimmt ab: gemischte Aufgaben aus dieser und früheren Runden. Ab ${Math.round((boss.bestanden || 0.8) * 100)} % fliegt ${gegner} raus und die nächste Runde ist frei.`
-                : `Wird frei, sobald das Training komplett ist – dann tritt die Nachtschicht gegen ${gegner} an.`}</div>
-          </div>
-          <a class="btn ${stand.abgenommen ? 'btn-sekundaer' : 'btn-primaer'} ${matchFrei ? '' : 'btn-gesperrt'}" href="${matchFrei ? `#/abnahme/${chapterId}` : `#/kapitel/${chapterId}`}" ${matchFrei ? '' : 'aria-disabled="true" style="opacity:0.5;pointer-events:none"'}>${stand.abgenommen ? 'Nochmal antreten' : 'Zum Match →'}</a>
-        </div>
+
+      <div class="block-titel">So läuft die Runde · ${lektionen.length} Lektionen, ${eintraege.filter((e) => e.art === 'szene').length} Zwischenspiele, 1 Match</div>
+      <div class="ablauf">${eintraege.map(eintragHtml).join('')}</div>
+
+      ${stand.abgenommen && runde ? `<div class="sektion karte" style="display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:center">
+        <div style="width:170px">${trophaeenKarteHtml(runde, { gewonnen: true, klein: true })}</div>
+        <div><h2 style="font-size:1.1rem">🃏 Trophäenkarte gesammelt</h2><p style="color:var(--ink-2);margin:0">Klick auf die Karte: Rückseite mit Fehler und Regel. Alle Karten hängen auf deiner <a href="#/keycard">Spielerkarte</a> – und stehen in jeder Aufgabe unter „Nachlesen“.</p></div>
       </div>` : ''}
+
       <div class="schritt-buttons" style="margin-top:1rem">
         ${index > 0 ? `<a class="btn btn-geist" href="#/kapitel/${alle[index - 1].id}">← Runde ${index}: ${escapeHtml(alle[index - 1].title)}</a>` : ''}
         ${index < alle.length - 1 && kapitelFrei(index + 1, alle) ? `<a class="btn btn-geist" href="#/kapitel/${alle[index + 1].id}">Runde ${index + 2}: ${escapeHtml(alle[index + 1].title)} →</a>` : ''}
       </div>
     </div>`;
+  trophaeenAktivieren(app);
 }

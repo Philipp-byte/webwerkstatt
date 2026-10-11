@@ -10,6 +10,8 @@ import { escapeHtml } from '../engine/markdown.js';
 import { toast } from '../gamification/celebrate.js';
 import { sound } from '../gamification/sound.js';
 import { meldeAbzeichen } from './lesson-view.js';
+import { trophaeenKarteHtml, trophaeenAktivieren } from '../engine/trophaee.js';
+import { getStreak } from '../store.js';
 
 const robby = (pose) => new URL(`figuren/robby/${pose}.png`, document.baseURI).href;
 
@@ -35,6 +37,8 @@ export async function renderKeycard(app) {
   const einst = getSettings();
   const code = `WC-${String(s.stats.firstActive || 0).slice(-6).padStart(6, '0')}-${String(lf.level).padStart(2, '0')}`;
   const gewonnen = Object.values(s.boss).filter((b) => b.passed).length;
+  const streak = getStreak();
+  const szenen = Object.keys(s.story?.gesehen || {}).length;
 
   const bloecke = [
     { titel: 'Web-Grundlagen', prefix: 'web.', farbe: 'var(--basics)' },
@@ -105,17 +109,15 @@ export async function renderKeycard(app) {
         <div class="stat-kachel"><strong>${genauigkeit} %</strong><small>Treffsicherheit</small></div>
         <div class="stat-kachel"><strong>${s.stats.longestCombo}</strong><small>Längste Serie</small></div>
         <div class="stat-kachel"><strong>${gewonnen}</strong><small>Matches gewonnen</small></div>
+        <div class="stat-kachel"><strong>🔥 ${streak.aktiv}</strong><small>Tage in Folge (beste: ${streak.beste || 0})</small></div>
+        <div class="stat-kachel"><strong>${szenen}</strong><small>Zwischenspiele gesehen</small></div>
       </div>
 
       ${crews.runden.length ? `<div class="sektion karte">
         <h2>🏆 Trophäenwand <span class="chip">${gewonnen} / ${crews.runden.length} Crews raus</span></h2>
-        <p style="color:var(--muted);font-size:0.9rem">Jede gewonnene Runde hängt hier: die Crew, die du im Match geschlagen hast. Fahr mit der Maus über eine Crew, um ihre Schwäche zu sehen.</p>
-        <div class="trophaeen">
-          ${crews.runden.map((r, i) => {
-            const besiegt = !!s.boss[r.chapter]?.passed;
-            const klasse = besiegt ? 'besiegt' : i === naechsteRundeIdx ? 'naechste' : 'offen';
-            return `<div class="trophaee ${klasse}" style="--farbe:${escapeHtml(r.farbe)}" title="${escapeHtml(r.crew)} (Captain ${escapeHtml(r.captain)}) – ${escapeHtml(r.schwaeche)}"><span class="icon">${r.icon}</span>R${r.runde} · ${escapeHtml(r.crew)}${besiegt ? '<span class="stempel">Raus</span>' : ''}</div>`;
-          }).join('')}
+        <p style="color:var(--muted);font-size:0.9rem">Jede gewonnene Runde hängt hier als Sammelkarte. Klick auf eine gewonnene Karte: Auf der Rückseite stehen der Fehler der Crew und die Regel, die du stattdessen gelernt hast – deine persönliche Wiederholung.</p>
+        <div class="trophaeen-wand">
+          ${crews.runden.map((r, i) => trophaeenKarteHtml(r, { gewonnen: !!s.boss[r.chapter]?.passed, naechste: i === naechsteRundeIdx })).join('')}
         </div>
       </div>` : ''}
 
@@ -166,6 +168,7 @@ export async function renderKeycard(app) {
       </div>
     </div>`;
 
+  trophaeenAktivieren(app);
   app.querySelector('#name').addEventListener('change', (e) => setName(e.target.value));
 
   app.querySelector('#export').addEventListener('click', () => {

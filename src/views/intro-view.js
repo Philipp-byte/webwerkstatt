@@ -1,11 +1,13 @@
-// Der Vorspann (WEBCUP): Szenen mit animierten SVG-Kulissen (oder generierten Bildern,
-// falls unter public/intro/assets/<kulisse>.webp vorhanden), Sprechblase mit
-// Schreibmaschinen-Effekt, Klangkulisse. Manuell weiterklicken, jederzeit überspringbar.
+// Der Vorspann (WEBCUP) in zwei Fassungen: als Video (public/intro/webcup-intro.mp4,
+// gerendert mit scripts/render-intro-video.mjs) oder als Comic zum Durchklicken (Szenen mit
+// animierten SVG-Kulissen, Sprechblase mit Schreibmaschinen-Effekt). Danach wird die
+// Spielerkarte ausgestellt (Name, drei Crew-Regeln) und es geht zum Anpfiff der ersten Runde.
 
 import { loadIntro, loadCrews } from '../content.js';
-import { setIntroGesehen } from '../store.js';
+import { setIntroGesehen, setVideoGesehen, setName, getState } from '../store.js';
 import { sound } from '../gamification/sound.js';
 import { escapeHtml } from '../engine/markdown.js';
+import { nachtschichtEmblem } from '../engine/emblem.js';
 
 const robby = (pose) => new URL(`figuren/robby/${pose}.png`, document.baseURI).href;
 const TON_FARBEN = { erzaehler: '#8fd3ff', sam: '#4ade80', ayla: '#38c7ff', jonas: '#ffd84d', robby: '#ff8a3d', system: '#fb7185', gegner: '#fb7185' };
@@ -164,6 +166,12 @@ async function bildVorhanden(url) {
   });
 }
 
+const VIDEO = () => new URL('intro/webcup-intro.mp4', document.baseURI).href;
+const VIDEO_WEBM = () => new URL('intro/webcup-intro.webm', document.baseURI).href;
+const POSTER = () => new URL('intro/webcup-intro-poster.jpg', document.baseURI).href;
+const UNTERTITEL = () => new URL('intro/webcup-intro.vtt', document.baseURI).href;
+const ANPFIFF = '#/szene/01-wie-das-web-funktioniert/anpfiff';
+
 export async function renderIntro(app) {
   const daten = await loadIntro();
   const szenen = daten.szenen;
@@ -177,18 +185,25 @@ export async function renderIntro(app) {
       if (await bildVorhanden(url)) bilder[k] = url;
     })
   );
+  const videoDa = await bildVorhanden(POSTER());
 
   app.innerHTML = `<div class="intro" id="intro"></div>`;
   const intro = app.querySelector('#intro');
   let index = -1;
   let tippTimer = null;
   let aktuelleKulisse = null;
+  let videoEl = null;
 
-  function ende() {
-    setIntroGesehen(true);
-    location.hash = '#/';
+  function kopfzeile(rechts) {
+    return `<div class="intro-kopf" style="position:relative">
+        <span class="brand"><span class="brand-mark">&lt;/&gt;</span>WebWerkstatt</span>
+        <div class="intro-akt"><span id="akt-label">Vorspann</span><strong id="akt-titel">${escapeHtml(daten.titel)}</strong></div>
+        <div class="rechts">${rechts}</div>
+        <div class="intro-fortschritt" id="fortschritt"></div>
+      </div>`;
   }
 
+  /* ---------- Startbildschirm ---------- */
   function startbildschirm() {
     intro.innerHTML = `<div class="intro-start">
       <div class="intro-kulisse animiert">${KULISSEN.arena({ leinwand: false })}</div><div class="intro-vignette"></div>
@@ -197,29 +212,107 @@ export async function renderIntro(app) {
         <div class="chip chip-farbe" style="--farbe:#ffc857;margin-bottom:1rem">WebWerkstatt · Vorspann</div>
         <h1>${escapeHtml(daten.titel)}</h1>
         <p>${escapeHtml(daten.untertitel)}</p>
-        <div class="schritt-buttons">
-          <button class="btn btn-primaer btn-gross" type="button" id="start">▶ Vorspann starten</button>
-          <button class="btn btn-geist" type="button" id="skip">Ohne Vorspann zum Turnierplan ›</button>
+        <div class="startoptionen">
+          ${videoDa ? '<button class="btn btn-primaer btn-gross" type="button" id="video">▶ Vorspann ansehen · 1½ Minuten</button>' : ''}
+          <button class="btn ${videoDa ? 'btn-sekundaer' : 'btn-primaer btn-gross'}" type="button" id="start">${videoDa ? '📖 Als Comic lesen' : '▶ Vorspann starten'}</button>
+          <button class="btn btn-geist" type="button" id="skip">Ohne Vorspann weiter ›</button>
         </div>
       </div></div>`;
+    intro.querySelector('#video')?.addEventListener('click', () => {
+      sound.klick();
+      videoAbspielen();
+    });
     intro.querySelector('#start').addEventListener('click', () => {
       sound.klick();
       spieler();
     });
-    intro.querySelector('#skip').addEventListener('click', ende);
+    intro.querySelector('#skip').addEventListener('click', () => onboarding(false));
   }
 
+  /* ---------- Video ---------- */
+  function videoAbspielen() {
+    intro.innerHTML = `${kopfzeile('<button class="btn btn-geist btn-klein" id="skip" type="button">Überspringen ›</button>')}
+      <div class="intro-video-wrap">
+        <video id="film" controls autoplay playsinline preload="auto" poster="${POSTER()}" crossorigin="anonymous">
+          <source src="${VIDEO()}" type="video/mp4">
+          <source src="${VIDEO_WEBM()}" type="video/webm">
+          <track kind="subtitles" srclang="de" label="Deutsch" src="${UNTERTITEL()}">
+          Dein Browser kann das Video nicht abspielen – lies den Vorspann als Comic.
+        </video>
+      </div>
+      <nav class="intro-steuerung" style="position:relative">
+        <button class="btn btn-sekundaer" id="comic" type="button">📖 Als Comic lesen</button>
+        <div class="mitte"><strong>Die Geschichte des WEBCUP</strong>Ton an lohnt sich – Untertitel gibt es über das Video-Menü.</div>
+        <button class="btn btn-primaer" id="weiter" type="button">Weiter ›</button>
+      </nav>`;
+    videoEl = intro.querySelector('#film');
+    const fertig = () => {
+      setVideoGesehen(true);
+      onboarding(true);
+    };
+    videoEl.addEventListener('ended', fertig);
+    videoEl.addEventListener('error', () => {
+      // Video nicht abspielbar → Comic-Fassung
+      spieler();
+    }, { once: true });
+    intro.querySelector('#weiter').addEventListener('click', () => {
+      if (videoEl.currentTime > 60) setVideoGesehen(true);
+      onboarding(videoEl.currentTime > 60);
+    });
+    intro.querySelector('#skip').addEventListener('click', () => onboarding(false));
+    intro.querySelector('#comic').addEventListener('click', () => {
+      videoEl.pause();
+      spieler();
+    });
+    videoEl.play().catch(() => {});
+  }
+
+  /* ---------- Onboarding: Spielerkarte ausstellen ---------- */
+  function onboarding(gesehen) {
+    clearInterval(tippTimer);
+    if (videoEl) {
+      videoEl.pause();
+      videoEl = null;
+    }
+    setIntroGesehen(true);
+    const s = getState();
+    const regeln = [
+      ['Fehler sind Training.', 'Du bekommst genaue Rückmeldung statt Rätselraten – und kannst jederzeit nachlesen, nie die Lösung abschreiben.'],
+      ['Wiederholung gewinnt Runden.', 'Soundcheck, Crew-Funk und Trophäenkarten holen Altes zurück, bis es sitzt.'],
+      ['Backups, Sam. Backups.', 'Sichere deinen Spielstand als Datei auf der Spielerkarte – Schulrechner vergessen gern.'],
+    ];
+    intro.innerHTML = `<div class="intro-onboarding">
+      <div class="intro-kulisse animiert">${KULISSEN.spielerkarte()}</div><div class="intro-vignette"></div>
+      <div class="karte auftritt">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.5rem">${nachtschichtEmblem({ groesse: 64 })}<div><div class="chip chip-farbe" style="--farbe:#ffc857">Spielerkarte ausstellen</div><h2 style="margin:0.3rem 0 0">Willkommen in der Nachtschicht, Rookie.</h2></div></div>
+        <p style="color:#c9cfdd;margin:0.5rem 0 0.9rem">${gesehen ? 'Du kennst die Geschichte.' : 'Kurzfassung: Die Festival-Website ist weg, 18 Crews kämpfen im WEBCUP darum, sie neu zu bauen – und du bist der Rookie der Underdog-Crew.'} Wie soll dein Name auf der Spielerkarte stehen? (Optional – du kannst ihn später ändern.)</p>
+        <input class="intro-name" id="name" type="text" maxlength="30" placeholder="Dein Name oder Spielername" value="${escapeHtml(s.name || '')}" autocomplete="nickname">
+        <div class="intro-regeln">
+          ${regeln.map(([t, x], i) => `<div class="intro-regel"><span class="nr">${i + 1}</span><span><b>${t}</b> ${x}</span></div>`).join('')}
+        </div>
+        <div class="schritt-buttons">
+          <button class="btn btn-primaer btn-gross" type="button" id="los">📣 Anpfiff: Runde 1 vs. Die Offliner ›</button>
+          <a class="btn btn-sekundaer" href="#/">Zum Turnierplan</a>
+          ${videoDa ? '<button class="btn btn-geist" type="button" id="nochmal">🎬 Video ansehen</button>' : '<button class="btn btn-geist" type="button" id="nochmal">📖 Comic ansehen</button>'}
+        </div>
+      </div></div>`;
+    const name = intro.querySelector('#name');
+    const speichern = () => setName(name.value.trim());
+    name.addEventListener('change', speichern);
+    intro.querySelector('#los').addEventListener('click', () => {
+      speichern();
+      sound.fanfare();
+      location.hash = ANPFIFF;
+    });
+    intro.querySelector('#nochmal').addEventListener('click', () => (videoDa ? videoAbspielen() : spieler()));
+    setTimeout(() => name.focus(), 300);
+  }
+
+  /* ---------- Comic-Fassung (Szenen) ---------- */
   function spieler() {
     intro.innerHTML = `
-      <div class="intro-kopf" style="position:relative">
-        <span class="brand"><span class="brand-mark">&lt;/&gt;</span>WebWerkstatt</span>
-        <div class="intro-akt"><span id="akt-label"></span><strong id="akt-titel"></strong></div>
-        <div class="rechts">
-          <button class="icon-btn" id="ton" type="button" title="Ton">${sound.istStumm() ? '🔇' : '🔊'}</button>
-          <button class="btn btn-geist btn-klein" id="skip" type="button">Überspringen ›</button>
-        </div>
-        <div class="intro-fortschritt" id="fortschritt"></div>
-      </div>
+      ${kopfzeile(`<button class="icon-btn" id="ton" type="button" title="Ton">${sound.istStumm() ? '🔇' : '🔊'}</button>
+          <button class="btn btn-geist btn-klein" id="skip" type="button">Überspringen ›</button>`)}
       <div class="intro-buehne">
         <div class="intro-kulisse" id="kulisse-a"></div>
         <div class="intro-kulisse weg" id="kulisse-b"></div>
@@ -238,7 +331,7 @@ export async function renderIntro(app) {
           <button class="btn btn-primaer" id="weiter" type="button">Weiter ›</button>
         </nav>
       </div>`;
-    intro.querySelector('#skip').addEventListener('click', endbildschirm);
+    intro.querySelector('#skip').addEventListener('click', () => onboarding(false));
     intro.querySelector('#weiter').addEventListener('click', weiter);
     intro.querySelector('#zurueck').addEventListener('click', zurueck);
     intro.querySelector('#ton').addEventListener('click', (e) => {
@@ -250,6 +343,7 @@ export async function renderIntro(app) {
       weiter();
     });
     index = -1;
+    aktuelleKulisse = null;
     weiter();
   }
 
@@ -328,7 +422,7 @@ export async function renderIntro(app) {
       el.textContent = s.text;
       return;
     }
-    if (index >= szenen.length - 1) return endbildschirm();
+    if (index >= szenen.length - 1) return onboarding(true);
     index++;
     zeigeSzene(index);
   }
@@ -338,40 +432,29 @@ export async function renderIntro(app) {
     zeigeSzene(index);
   }
 
-  function endbildschirm() {
-    clearInterval(tippTimer);
-    setIntroGesehen(true);
-    intro.innerHTML = `<div class="intro-ende">
-      <div class="intro-kulisse animiert">${KULISSEN.arena({ leinwand: false })}</div><div class="intro-vignette"></div>
-      <div style="position:relative">
-        <div class="chip chip-farbe" style="--farbe:#ffc857;margin-bottom:1rem">Das Turnier beginnt</div>
-        <h1>${escapeHtml(daten.titel)}</h1>
-        <p>${escapeHtml(daten.untertitel)}<br>Deine Spielerkarte ist ausgestellt. Runde 1: die Offliner am Info-Point.</p>
-        <div class="schritt-buttons">
-          <a class="btn btn-primaer btn-gross" href="#/kapitel/01-wie-das-web-funktioniert">Anpfiff: Runde 1 ›</a>
-          <a class="btn btn-sekundaer" href="#/">Zum Turnierplan</a>
-          <button class="btn btn-geist" type="button" id="nochmal">Noch einmal ansehen</button>
-        </div>
-      </div></div>`;
-    intro.querySelector('#nochmal').addEventListener('click', spieler);
-    sound.fanfare();
-  }
-
   const onKey = (e) => {
     if (!app.isConnected) {
       window.removeEventListener('keydown', onKey);
       return;
     }
-    if (index < 0) return;
+    if (index < 0 || !intro.querySelector('#text')) return;
+    if (document.activeElement?.tagName === 'INPUT') return;
     if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
       e.preventDefault();
       weiter();
     }
     if (e.key === 'ArrowLeft') zurueck();
-    if (e.key === 'Escape') endbildschirm();
+    if (e.key === 'Escape') onboarding(false);
   };
   window.addEventListener('keydown', onKey);
 
   startbildschirm();
-  return { destroy: () => { clearInterval(tippTimer); window.removeEventListener('keydown', onKey); document.body.classList.remove('intro-aktiv'); } };
+  return {
+    destroy: () => {
+      clearInterval(tippTimer);
+      if (videoEl) videoEl.pause();
+      window.removeEventListener('keydown', onKey);
+      document.body.classList.remove('intro-aktiv');
+    },
+  };
 }

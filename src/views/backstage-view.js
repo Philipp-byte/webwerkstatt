@@ -3,7 +3,7 @@
 // Fragen kommen aus den Pools der Kapitel, die schon begonnen wurden.
 
 import { loadAlleKapitel, poolFuer } from '../content.js';
-import { getState, xpBackstage, zaehle, abzeichenPruefen, merkeCombo } from '../store.js';
+import { getState, xpBackstage, zaehle, abzeichenPruefen, merkeCombo, aktivitaet, tagesbonusPruefen } from '../store.js';
 import { antwort as leitnerAntwort } from '../gamification/leitner.js';
 import { XP } from '../gamification/xp.js';
 import { renderStep } from '../engine/steps.js';
@@ -181,6 +181,8 @@ async function spiel(app, id) {
     if (rekord) s.backstage.highscores[id] = wert;
     const xpBetrag = id === 'blitz' ? richtig * XP.blitz : id === 'jagd' ? richtig * XP.jagd : richtig * XP.aufbau;
     const erg = xpBackstage(xpBetrag);
+    if (richtig >= 1) aktivitaet('training');
+    const bonus = tagesbonusPruefen();
     const neu = abzeichenPruefen({ ereignis: 'backstage' });
     const dauer = Math.round((Date.now() - start) / 1000);
     buehne.innerHTML = `<section class="schritt spiel-ergebnis auftritt">
@@ -188,6 +190,7 @@ async function spiel(app, id) {
       <h2>${id === 'blitz' ? 'richtige Antworten in 60 Sekunden' : `von ${Math.min(runden, fragen.length)} Runden geschafft`}</h2>
       <p style="color:var(--muted)">${rekord ? '🏆 Neue Bestleistung!' : `Bestleistung: ${alt}`} · ${punkte} Punkte · ${dauer} s</p>
       ${erg.xp ? `<div class="abschluss-xp">+${erg.xp} XP${erg.gedeckelt ? ' (Tagesdeckel erreicht)' : ''}</div>` : '<p style="color:var(--muted)">Tagesdeckel erreicht – heute gibt es keine Backstage-XP mehr, üben lohnt sich trotzdem.</p>'}
+      ${bonus?.xp ? `<div class="hinweis-box">🎯 Tagesziel erreicht – <strong>+${bonus.xp} XP</strong> Bonus.</div>` : ''}
       <div class="abschluss-buttons">
         <a class="btn btn-primaer" href="#/backstage/${id}" onclick="setTimeout(()=>location.reload(),0)">Nochmal</a>
         <a class="btn btn-sekundaer" href="#/backstage">Andere Spiele</a>

@@ -13,6 +13,8 @@ import { sound } from '../gamification/sound.js';
 import { konfetti } from '../gamification/celebrate.js';
 import { erzeugeTicker, reaktionenEntfernen } from '../gamification/reaktionen.js';
 import { zeigeLevelup, meldeAbzeichen } from './lesson-view.js';
+import { crewEmblem, nachtschichtEmblem } from '../engine/emblem.js';
+import { szeneGesehen } from '../store.js';
 
 const robby = (pose) => new URL(`figuren/robby/${pose}.png`, document.baseURI).href;
 
@@ -47,7 +49,7 @@ export async function renderBoss(app, chapterId) {
   let serie = 0;
   let treffer = 0;
   const ergebnisse = [];
-  const gegnerAvatar = (extra = '') => `<span class="runde-gegner ${extra}" style="--farbe:${escapeHtml(runde?.farbe || '#8f97ab')}">${runde?.icon || '❔'}</span>`;
+  const gegnerAvatar = (extra = '', groesse = 44) => crewEmblem(runde, { groesse, raus: extra.includes('raus') });
 
   app.innerHTML = `
     <div class="lektion-seite">
@@ -58,7 +60,7 @@ export async function renderBoss(app, chapterId) {
         <div class="pager-fortschritt"><span class="pager-zaehler" id="zaehler"></span><div class="pager-dots" id="dots"></div></div>
       </div>
       <div class="match-kopf" style="--farbe:${escapeHtml(runde?.farbe || '#8f97ab')}">
-        <span class="match-team"><span class="runde-gegner" style="--farbe: var(--spark)">🌙</span>${escapeHtml(crewName)}</span>
+        <span class="match-team">${nachtschichtEmblem({ groesse: 44 })}${escapeHtml(crewName)}</span>
         <span class="match-stand" id="stand">0 : 0</span>
         <span class="match-team">${gegner}${gegnerAvatar()}</span>
         <span class="match-jury">Jury: Sam · ${escapeHtml(boss.title)} · ab ${Math.round(boss.bestanden * 100)} % gewonnen</span>
@@ -200,20 +202,22 @@ export async function renderBoss(app, chapterId) {
 
     buehne.innerHTML = `<section class="schritt abschluss auftritt">
       <div class="match-ergebnis">
-        <span class="runde-gegner" style="--farbe: var(--spark);width:84px;height:84px;font-size:2.6rem">🌙</span>
+        ${nachtschichtEmblem({ groesse: 84 })}
         <span class="match-stand" style="font-size:2.4rem">${punkte} : ${gegnerPunkte}</span>
-        <span style="position:relative">${gegnerAvatar(passed ? 'raus' : '')}${passed ? '<span class="stempel gross">Raus</span>' : ''}</span>
+        <span style="position:relative">${gegnerAvatar(passed ? 'raus' : '', 84)}${passed ? '<span class="stempel gross">Raus</span>' : ''}</span>
       </div>
       <h2>${passed ? `Runde ${idx + 1} gewonnen!` : 'Noch nicht gewonnen'}</h2>
       <div class="abschluss-xp">${prozent} %</div>
       <p style="color:var(--muted)">Sam: „${samSagt}“</p>
+      ${!passed ? `<p style="font-size:0.9rem"><a href="#/spickzettel">📖 Spickzettel</a> und die <a href="#/kapitel/${chapterId}">Lektionen der Runde</a> helfen vor der Revanche – im Match selbst gibt es kein Nachlesen.</p>` : ''}
       ${spruch ? `<blockquote class="trash-blase" style="--farbe:${escapeHtml(runde.farbe)};text-align:left;max-width:560px;margin:0.5rem auto 0.75rem"><b>${escapeHtml(runde.captain)} · ${escapeHtml(runde.crew)}</b>${escapeHtml(spruch)}</blockquote>` : ''}
       ${xp ? `<div class="abschluss-xp">+${xp} XP</div>` : erster ? '' : passed ? '<p style="color:var(--muted)">Freundschaftsspiel – die Runde war schon gewonnen, keine neuen XP.</p>' : ''}
       <ul class="abschluss-liste">${ergebnisse.map((r) => `<li><span>${r.ok ? '✅' : '❌'} ${r.titel}</span><span>${r.punkte}/${r.max}</span></li>`).join('')}</ul>
       <img src="${robby(passed ? 'erfolg-pokal' : 'nachdenken')}" alt="" style="width:110px;height:110px;object-fit:contain">
       <div class="abschluss-buttons">
-        ${passed && naechstes ? `<a class="btn btn-primaer" href="#/kapitel/${naechstes.id}">Runde ${idx + 2}${naechsteRunde ? `: vs. ${escapeHtml(naechsteRunde.crew)}` : `: ${escapeHtml(naechstes.title)}`} →</a>` : ''}
-        ${passed && !naechstes ? '<a class="btn btn-primaer" href="#/showtime">🏆 Pokal geholt – Showtime →</a>' : ''}
+        ${passed && !szeneGesehen(`abpfiff:${chapterId}`) ? `<a class="btn btn-primaer" href="#/szene/${chapterId}/abpfiff">🏁 Abpfiff &amp; Trophäenkarte →</a>` : ''}
+        ${passed && naechstes ? `<a class="btn ${szeneGesehen(`abpfiff:${chapterId}`) ? 'btn-primaer' : 'btn-sekundaer'}" href="#/szene/${naechstes.id}/anpfiff">Runde ${idx + 2}${naechsteRunde ? `: vs. ${escapeHtml(naechsteRunde.crew)}` : `: ${escapeHtml(naechstes.title)}`} →</a>` : ''}
+        ${passed && !naechstes ? '<a class="btn btn-sekundaer" href="#/showtime">🏆 Pokal geholt – Showtime →</a>' : ''}
         ${!passed ? `<a class="btn btn-primaer" href="#/abnahme/${chapterId}" onclick="location.reload()">Revanche</a>` : ''}
         <a class="btn btn-sekundaer" href="#/kapitel/${chapterId}">Zur Runde</a>
         <a class="btn btn-geist" href="#/">Zum Turnierplan</a>

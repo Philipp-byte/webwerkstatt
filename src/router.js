@@ -1,4 +1,6 @@
-// Hash-Router. Views werden bei Bedarf dynamisch geladen.
+// Hash-Router. Views werden bei Bedarf dynamisch geladen. Jede Navigation rendert in
+// einen eigenen Container; eingehängt wird nur die jeweils aktuelle – so überschreibt
+// eine langsame ältere Ansicht nie eine neuere (z. B. bei schnellen Klicks).
 
 const routen = {
   '': () => import('./views/map-view.js').then((m) => m.renderMap),
@@ -13,12 +15,16 @@ const routen = {
   pruefung: () => import('./views/pruefung-view.js').then((m) => m.renderPruefung),
   lehrkraft: () => import('./views/lehrkraft-view.js').then((m) => m.renderLehrkraft),
   bericht: () => import('./views/bericht-view.js').then((m) => m.renderBericht),
+  szene: () => import('./views/szene-view.js').then((m) => m.renderSzene),
+  spickzettel: () => import('./views/spickzettel-view.js').then((m) => m.renderSpickzettel),
 };
 
 let aktuelleView = null;
+let navigation = 0;
 
 async function route() {
-  const app = document.getElementById('app');
+  const wurzel = document.getElementById('app');
+  const meine = ++navigation;
   const parts = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean).map(decodeURIComponent);
   const name = parts[0] || '';
   if (aktuelleView?.destroy) {
@@ -29,15 +35,29 @@ async function route() {
     }
   }
   aktuelleView = null;
-  app.innerHTML = '<p class="laden">Lade …</p>';
+  wurzel.innerHTML = '<p class="laden">Lade …</p>';
   document.body.classList.toggle('intro-aktiv', name === 'intro');
+  const container = document.createElement('div');
+  container.className = 'ansicht';
   try {
     const lade = routen[name] || routen[''];
     const render = await lade();
-    aktuelleView = (await render(app, ...parts.slice(1))) || null;
+    if (meine !== navigation) return;
+    const view = (await render(container, ...parts.slice(1))) || null;
+    if (meine !== navigation) {
+      try {
+        view?.destroy?.();
+      } catch {
+        /* egal */
+      }
+      return;
+    }
+    wurzel.replaceChildren(container);
+    aktuelleView = view;
   } catch (e) {
     console.error(e);
-    app.innerHTML = `<div class="karte gesperrt-karte"><h2>Ups!</h2><p>Diese Seite konnte nicht geladen werden.</p><p><a class="btn btn-sekundaer" href="#/">Zurück zum Turnierplan</a></p></div>`;
+    if (meine !== navigation) return;
+    wurzel.innerHTML = `<div class="karte gesperrt-karte"><h2>Ups!</h2><p>Diese Seite konnte nicht geladen werden.</p><p><a class="btn btn-sekundaer" href="#/">Zurück zum Turnierplan</a></p></div>`;
   }
   window.scrollTo(0, 0);
 }

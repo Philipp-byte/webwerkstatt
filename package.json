@@ -6,7 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "validate": "node scripts/validiere-inhalte.mjs",
+    "smoke": "npm run build && node scripts/smoke-test.mjs",
+    "intro:video": "node scripts/render-intro-video.mjs",
+    "intro:proben": "node scripts/intro-video/stichproben.mjs"
   },
   "license": "MIT",
   "devDependencies": {

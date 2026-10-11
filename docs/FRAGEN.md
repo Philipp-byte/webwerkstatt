@@ -15,3 +15,11 @@ Antworten bitte einfach in den Chat – ich passe Konzept und Inhalte dann an. B
 11. **Heller Modus:** Standard ist dunkel („Werkstatt bei Nacht“); ein heller Modus ist per Schalter da. Soll für den Beamer eher hell Standard sein?
 12. **Lernbericht:** Es gibt einen druckbaren Lernbericht (`#/bericht`, Spielerkarte → Lernbericht), den die Lernenden dir ausgedruckt oder als PDF geben können. Reicht das als Rückmeldung, oder brauchst du etwas anderes (z. B. Export als CSV)?
 13. **Klasseninterne Rangliste:** Ohne Server geht keine echte Rangliste. Möglich wäre eine „Turniertafel“, auf der die Lehrkraft exportierte Spielstände einliest und die Klasse anonym (Pseudonym) vergleicht – Runden gewonnen, Sterne, Werte. Wunsch?
+
+## Neu (Überarbeitung Oktober 2026)
+
+14. **Vorspann-Video:** Das Video läuft ohne Sprecherstimme (Typo-Animation + Untertitel + Soundtrack). Soll ich mit einem TTS-Schlüssel (`OPENAI_API_KEY` in der Cloud-Umgebung) Stimmen für Sam, Ayla, Jonas, Robby und die Erzählung erzeugen – oder nehmt ihr die Stimmen selbst auf (Schülerprojekt)?
+15. **Anpfiff verpflichtend?** Aktuell ist der Anpfiff (Spähbericht) der empfohlene erste Schritt jeder Runde, Lektionen sind aber nicht dahinter gesperrt. Soll er Pflicht werden?
+16. **Standard-Einstieg:** Video oder Comic zuerst anbieten? (Aktuell Video, Comic als zweite Option.)
+17. **Tagesziel/Serie:** 60 XP Bonus pro Tag und die Serien-Flamme – richtig dosiert, oder zu viel Druck?
+18. **Trophäenkarten-Texte:** Regel und Beispiel je Crew stehen in `crews.json` – bitte einmal fachlich gegenlesen (besonders Recht im Web, Runde 15).
