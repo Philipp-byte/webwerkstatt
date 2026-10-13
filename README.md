@@ -50,7 +50,7 @@ python app.py create-admin admin <passwort>       # ersten Admin anlegen
 python app.py                                     # http://localhost:5000
 ```
 
-Danach als Admin anmelden und unter **Ich → Klassen** Lehrkräfte, Klassen und Accounts anlegen; die Pseudonym-Passwort-Liste wird einmal zum Drucken gezeigt. Jede Person meldet sich mit Pseudonym und Passwort an, der Spielstand ist an jedem Rechner da. Ohne Server verhält sich die App wie bisher (sie erkennt den Modus selbst über `/api/ping`). Docker, HTTPS, Backup, API: [`server/README.md`](server/README.md). Ende-zu-Ende-Test: `node scripts/schulmodus-test.mjs`.
+Mittwald: Schritt-für-Schritt in [`docs/DEPLOY-MITTWALD.md`](docs/DEPLOY-MITTWALD.md), Upload-Paket mit `sh scripts/paket-schulserver.sh`. Danach als Admin anmelden und unter **Ich → Klassen** Lehrkräfte, Klassen und Accounts anlegen; die Pseudonym-Passwort-Liste wird einmal zum Drucken gezeigt. Jede Person meldet sich mit Pseudonym und Passwort an, der Spielstand ist an jedem Rechner da. Ohne Server verhält sich die App wie bisher (sie erkennt den Modus selbst über `/api/ping`). Docker, HTTPS, Backup, API: [`server/README.md`](server/README.md). Ende-zu-Ende-Test: `node scripts/schulmodus-test.mjs`.
 
 ## Grafiken erzeugen (OpenAI-Bild-API)
 

@@ -1,5 +1,6 @@
 *.pyc
 arbeitsblaetter/blaetter/
+deploy/
 dist-schule/
 dist/
 node_modules/
